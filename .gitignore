@@ -1,6 +1,10 @@
 *.pdf
 *.csv
 *.htaccess
+*.zip
+*.gz
+*.sql
+
 apis
 api-test
 buildingPdfUploads
@@ -12,3 +16,12 @@ planPictures
 protected/extensions
 wp
 framework
+assets
+
+.DS_Store
+.buildpath
+.idea
+.project
+.settings
+protected/config/database.php
+
