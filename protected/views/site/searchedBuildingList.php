@@ -571,8 +571,8 @@
                             <dd>
                             	<table class="ah_msg">
                                 	<tbody>
-									<?php
-                                    $days = array('month'=>'Mon','fire'=>'Tue','water'=>'Wed','wood'=>'Thu','gold'=>'Fri','soil'=>'Sat','day'=>'Sun');
+                                    <?php
+									$days = array('月'=>'Mon','火'=>'Tue','水'=>'Wed','木'=>'Thu','金'=>'Fri','土'=>'Sat','日'=>'Sun');
 									if(isset($negotiationDetails) && count($negotiationDetails) > 0){
 										foreach($negotiationDetails as $negotiation){
 											$day = array_search((date('D',strtotime($negotiation['added_on']))), $days);
@@ -584,35 +584,33 @@
 													if($floor['floor_up'] != ""){
 														$floorName .= " ~ ".$floor['floor_up'];
 													}
-													$floorName .= " / ".$floor['area_m']." square meters";
+													$floorName .= " / ".$floor['area_ping']." ".Yii::app()->controller->__trans('tsubo').' '.$negotiation['negotiation_note'];;
 												}
 											}else{
 												$floorName = '';
 											}
 									?>
-                                    <tr>
-                                    	<th scope="row">
-											<?php echo date('Y.m.d',strtotime($negotiation['added_on'])); ?>(<?php echo $day; ?>)
-                                        </th>
-                                       	<td>
-										<?php
- 					if($negotiation['negotiation_type'] == 1){
-						echo Yii::app()->controller->__trans('Tsubo unit price').' ( '.Yii::app()->controller->__trans('floor').' ) ';
-					}elseif($negotiation['negotiation_type'] == 2){
-						echo Yii::app()->controller->__trans('Deposit negotiation value');
-					}elseif($negotiation['negotiation_type'] == 3){
-						echo Yii::app()->controller->__trans('Key money negotiation value');
-					}elseif($negotiation['negotiation_type'] == 5){
-							echo Yii::app()->controller->__trans('Tsubo').' ( '.Yii::app()->controller->__trans('reference value').' ) ';
-					}else{
-						echo Yii::app()->controller->__trans('Other negotiations information');
-					}
-													echo " ".$floorName;
-										?>
-                                        </td>
-                                    </tr>
-									<?php
-                                    	}
+                                    	<tr>
+                                        	<th scope="row">
+                                            	<?php echo date('Y.m.d',strtotime($negotiation['added_on'])); ?>(<?php echo $day; ?>)
+                                            </th>
+                                            <td>
+												<?php
+                                                if($negotiation['negotiation_type'] == 1){
+                                                    echo Yii::app()->controller->__trans('Tsubo unit price negotiation value (common expenses included)');
+                                                }elseif($negotiation['negotiation_type'] == 2){
+                                                    echo Yii::app()->controller->__trans('Deposit negotiation value');
+                                                }elseif($negotiation['negotiation_type'] == 3){
+                                                    echo Yii::app()->controller->__trans('Key money negotiation value');
+                                                }else{
+                                                    echo Yii::app()->controller->__trans('Other negotiations information');
+                                                }
+                                                echo " ".$floorName;
+                                                ?>
+                                          	</td>
+                                        </tr>
+                                    <?php
+										}
 									}
 									?>
                                     </tbody>
