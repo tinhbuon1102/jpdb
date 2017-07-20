@@ -1,0 +1,1096 @@
+2016/10/03 15:55:02 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(819): FloorController->redirect()
+#1 unknown(0): FloorController->actionUpdate()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=floor/update&id=187&window=1
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (819)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 15:56:11 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 15:57:58 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:02:30 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:02:44 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:03:31 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:03:34 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:04:58 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:05:22 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:6)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (6)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:15 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:4)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (4)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:29 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:39 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:40 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:41 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:07:42 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:3)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(2): spl_autoload_call()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(354): require()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /home/jp-officedb/jp-officedb.com/public_html/index.php(27): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php (3)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (2)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (27)
+2016/10/03 16:15:18 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/protected/components/Controller.php:1) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(30): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (30)
+2016/10/03 16:15:34 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/index.php:5) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(30): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (30)
+2016/10/03 16:15:38 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/index.php:5) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(30): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (30)
+2016/10/03 16:21:22 [error] [php] Cannot modify header information - headers already sent by (output started at /home/jp-officedb/jp-officedb.com/public_html/index.php:5) (/home/jp-officedb/jp-officedb.com/public_html/framework/web/CHttpRequest.php:889)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(30): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/singleBuilding&id=117
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (30)
+2016/10/03 19:46:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor%2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor%2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=64&print_type=11&print_route=1&print_map=1&print_each_building=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=&r=floor%252FaddProposedToCart
+---
+2016/10/03 19:46:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor%2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor%2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=64&print_type=11&print_route=1&print_map=1&print_each_building=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=&r=floor%252FaddProposedToCart
+---
+2016/10/03 19:51:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor%2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor%2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=64&print_type=11&print_route=1&print_map=1&print_each_building=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=&r=floor%252FaddProposedToCart
+---
+2016/10/03 19:51:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor%2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor%2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=64&print_type=11&print_route=1&print_map=1&print_each_building=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=&r=floor%252FaddProposedToCart
+---
+2016/10/03 21:56:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor%2FaddProposedToCart'".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor%2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=floor%252FaddProposedToCart'
+---
+2016/10/03 22:00:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "addProposedToCart&hdnProArticleId=59".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php:483
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(270): CController->missingAction('addProposedToCa...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): CController->run('addProposedToCa...')
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor/addPropos...')
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=floor%2FaddProposedToCart%26hdnProArticleId=59
+---
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "floor_scale_up" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "floor_scale_down" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "exp_rent" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "exp_rent2" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "exp_rent_opt" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "build_year" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "build_month" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "total_rent_space_unit" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "shared_rate" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_ev_group" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_ev_group2" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_ev_group3" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_ev_group4" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_ev_group5" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ent_op_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "b_parking_num" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_week" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sat" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sun" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "limit_time_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_week" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sat" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sun" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_condition_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "park_time_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "ceiling_height" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "air_control_type" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "opticle_cable" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:11:32 [warning] [application] Failed to set unsafe attribute "notes" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (72)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:22:30 [error] [php] number_format() expects parameter 1 to be double, string given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php:565)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php(46): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#6 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(832): FloorController->renderPartial()
+#7 unknown(0): FloorController->actionUpdate()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=floor/update&id=187&msg=1
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php (565)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php (46)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (832)
+2016/10/04 15:22:39 [error] [php] number_format() expects parameter 1 to be double, string given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php:565)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php(46): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#6 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(832): FloorController->renderPartial()
+#7 unknown(0): FloorController->actionUpdate()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=floor/update&id=187&window=1
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php (565)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php (46)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (832)
+2016/10/04 15:23:46 [error] [php] number_format() expects parameter 1 to be double, string given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php:565)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php(46): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#6 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(832): FloorController->renderPartial()
+#7 unknown(0): FloorController->actionUpdate()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=floor/update&id=187&window=1
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php (565)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php (46)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (832)
+2016/10/04 15:24:01 [error] [php] number_format() expects parameter 1 to be double, string given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php:565)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php(46): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#6 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(832): FloorController->renderPartial()
+#7 unknown(0): FloorController->actionUpdate()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=floor/update&id=187&window=1
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/_form.php (565)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/update.php (46)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (832)
+2016/10/04 15:50:28 [error] [php] file_get_contents(http://api.html2pdfrocket.com/pdf) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 400 A server error has occured.  Possibly I made a mistake while coding this bit..   I've been automatically notified (/home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php:198)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): ProposedArticleController->runAction()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): ProposedArticleController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): ProposedArticleController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): ProposedArticleController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=proposedArticle/newPdf
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php (198)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 15:58:30 [error] [php] file_get_contents(http://api.html2pdfrocket.com/pdf) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 400 A server error has occured.  Possibly I made a mistake while coding this bit..   I've been automatically notified (/home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php:198)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): ProposedArticleController->runAction()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): ProposedArticleController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): ProposedArticleController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): ProposedArticleController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=proposedArticle/newPdf
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php (198)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 16:16:54 [error] [php] file_get_contents(http://api.html2pdfrocket.com/pdf) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 400 A server error has occured.  Possibly I made a mistake while coding this bit..   I've been automatically notified (/home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php:198)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): ProposedArticleController->runAction()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): ProposedArticleController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): ProposedArticleController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): ProposedArticleController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=proposedArticle/newPdf
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php (198)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 16:25:57 [error] [php] file_get_contents(http://api.html2pdfrocket.com/pdf) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 400 A server error has occured.  Possibly I made a mistake while coding this bit..   I've been automatically notified (/home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php:198)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): ProposedArticleController->runAction()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): ProposedArticleController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): ProposedArticleController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): ProposedArticleController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=proposedArticle/newPdf
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php (198)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/04 21:14:20 [error] [php] file_get_contents(http://api.html2pdfrocket.com/pdf) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ (/home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php:198)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): ProposedArticleController->runAction()
+#2 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): ProposedArticleController->filterAccessControl()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): ProposedArticleController->runActionWithFilters()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): ProposedArticleController->run()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=proposedArticle/newPdf
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/ProposedArticleController.php (198)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/05 10:11:44 [error] [exception.CException] exception 'CException' with message 'Property "FloorUpdateHistory.preceding_user" is not defined.' in /home/jp-officedb/jp-officedb.com/public_html/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/db/ar/CActiveRecord.php(145): CComponent->__get('preceding_user')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CModel.php(596): CActiveRecord->__get('preceding_user')
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/singleBuildingDetails.php(4333): CModel->offsetGet('preceding_user')
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require('/home/jp-office...')
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/jp-office...', Array, true)
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): CBaseController->renderFile('/home/jp-office...', Array, true)
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(782): CController->renderPartial('singleBuildingD...', Array, true)
+#7 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(1908): CController->render('singleBuildingD...', Array)
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionSingleBuilding()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): CController->run('singleBuilding')
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('building/single...')
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#20 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php?r=building/singleBuilding&id=187
+HTTP_REFERER=http://jp-officedb.com/index.php?r=building/singleBuilding&id=205
+---
+2016/10/05 10:23:37 [error] [exception.CException] exception 'CException' with message 'Property "FloorUpdateHistory.preceding_user" is not defined.' in /home/jp-officedb/jp-officedb.com/public_html/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/db/ar/CActiveRecord.php(145): CComponent->__get('preceding_user')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CModel.php(596): CActiveRecord->__get('preceding_user')
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/singleBuildingDetails.php(4333): CModel->offsetGet('preceding_user')
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require('/home/jp-office...')
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/jp-office...', Array, true)
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): CBaseController->renderFile('/home/jp-office...', Array, true)
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(782): CController->renderPartial('singleBuildingD...', Array, true)
+#7 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(1908): CController->render('singleBuildingD...', Array)
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionSingleBuilding()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): CController->run('singleBuilding')
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('building/single...')
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#20 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php?r=building/singleBuilding&id=187
+HTTP_REFERER=http://jp-officedb.com/index.php?r=building/singleBuilding&id=205
+---
+2016/10/05 18:11:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor 2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor 2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=65&print_type=11&print_route=1&print_each_building=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=Test&r=floor%202FaddProposedToCart
+---
+2016/10/05 18:13:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "floor 2FaddProposedToCart".' in /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('floor 2FaddProp...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?hdnProArticleId=65&print_type=11&print_route=1&add_cover=1&print_time_floor=1&print_time_entrance=1&header_name=Test&r=floor%202FaddProposedToCart
+---
+2016/10/05 23:04:50 [error] [exception.CException] exception 'CException' with message 'Property "Floor.payment_by_installments_detail" is not defined.' in /home/jp-officedb/jp-officedb.com/public_html/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/db/ar/CActiveRecord.php(145): CComponent->__get('payment_by_inst...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CModel.php(596): CActiveRecord->__get('payment_by_inst...')
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/singleBuildingDetails.php(626): CModel->offsetGet('payment_by_inst...')
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require('/home/jp-office...')
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/jp-office...', Array, true)
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): CBaseController->renderFile('/home/jp-office...', Array, true)
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(782): CController->renderPartial('singleBuildingD...', Array, true)
+#7 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(1908): CController->render('singleBuildingD...', Array)
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionSingleBuilding()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): CController->run('singleBuilding')
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('building/single...')
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#20 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php?r=building/singleBuilding&id=196
+---
+2016/10/05 23:06:24 [error] [exception.CException] exception 'CException' with message 'Property "Floor.payment_by_installments_detail" is not defined.' in /home/jp-officedb/jp-officedb.com/public_html/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/db/ar/CActiveRecord.php(145): CComponent->__get('payment_by_inst...')
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CModel.php(596): CActiveRecord->__get('payment_by_inst...')
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/singleBuildingDetails.php(626): CModel->offsetGet('payment_by_inst...')
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(126): require('/home/jp-office...')
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/jp-office...', Array, true)
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): CBaseController->renderFile('/home/jp-office...', Array, true)
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(782): CController->renderPartial('singleBuildingD...', Array, true)
+#7 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(1908): CController->render('singleBuildingD...', Array)
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionSingleBuilding()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): CController->run('singleBuilding')
+#18 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('building/single...')
+#19 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#20 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php?r=building/singleBuilding&id=196
+---
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "floor_scale_up" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "floor_scale_down" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "exp_rent" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "exp_rent2" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "exp_rent_opt" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "build_year" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "build_month" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "total_rent_space_unit" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "shared_rate" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_ev_group" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_ev_group2" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_ev_group3" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_ev_group4" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_ev_group5" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ent_op_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "b_parking_num" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_week" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sat" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sun" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "limit_time_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_condition_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_week_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_week_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_sat_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_sat_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_sun_start" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "park_time_sun_finish" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "ceiling_height" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "air_control_type" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "opticle_cable" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 12:59:49 [warning] [application] Failed to set unsafe attribute "notes" of "Building".
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (73)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 16:37:00 [error] [php] min() [<a href='function.min'>function.min</a>]: Array must contain at least one element (/home/jp-officedb/jp-officedb.com/public_html/protected/views/building/printDetails.php:2064)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): BuildingController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): BuildingController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(3200): BuildingController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionPrintBuildingDetails()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): BuildingController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/printBuildingDetails
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/printDetails.php (2064)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (3200)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 16:45:17 [error] [php] min() [<a href='function.min'>function.min</a>]: Array must contain at least one element (/home/jp-officedb/jp-officedb.com/public_html/protected/views/building/printDetails.php:2064)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): BuildingController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): BuildingController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php(3200): BuildingController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): BuildingController->actionPrintBuildingDetails()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): BuildingController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): BuildingController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): BuildingController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): BuildingController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?r=building/printBuildingDetails
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/building/printDetails.php (2064)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/BuildingController.php (3200)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 20:10:21 [error] [php] array_count_values() expects parameter 1 to be array, null given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php:2049)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(1271): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): FloorController->actionAddProposedToCart()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?hdnProArticleId=62&print_type=11&r=floor%2FaddProposedToCart
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php (2049)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (1271)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 20:11:16 [error] [php] array_count_values() expects parameter 1 to be array, null given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php:2049)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(1271): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): FloorController->actionAddProposedToCart()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?hdnProArticleId=62&print_type=11&r=floor%2FaddProposedToCart
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php (2049)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (1271)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/06 20:14:55 [error] [php] array_count_values() expects parameter 1 to be array, null given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php:2048)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(1271): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): FloorController->actionAddProposedToCart()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?hdnProArticleId=62&print_type=11&r=floor%2FaddProposedToCart
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php (2048)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (1271)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2016/10/07 11:06:13 [error] [php] array_count_values() expects parameter 1 to be array, null given (/home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php:2051)
+Stack trace:
+#0 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CBaseController.php(95): FloorController->renderInternal()
+#1 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(869): FloorController->renderFile()
+#2 /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php(1271): FloorController->renderPartial()
+#3 /home/jp-officedb/jp-officedb.com/public_html/framework/web/actions/CInlineAction.php(49): FloorController->actionAddProposedToCart()
+#4 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(133): FloorController->runAction()
+#6 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CInlineFilter.php(58): FloorController->filterAccessControl()
+#9 /home/jp-officedb/jp-officedb.com/public_html/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CController.php(265): FloorController->runActionWithFilters()
+#12 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(282): FloorController->run()
+#13 /home/jp-officedb/jp-officedb.com/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/jp-officedb/jp-officedb.com/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/jp-officedb/jp-officedb.com/public_html/index.php(26): CWebApplication->run()
+REQUEST_URI=/index.php?hdnProArticleId=62&print_type=11&r=floor%2FaddProposedToCart
+in /home/jp-officedb/jp-officedb.com/public_html/protected/views/floor/printDetails.php (2051)
+in /home/jp-officedb/jp-officedb.com/public_html/protected/controllers/FloorController.php (1271)
+in /home/jp-officedb/jp-officedb.com/public_html/index.php (26)
+2017/02/02 05:32:39 [error] [exception.RuntimeException] exception 'RuntimeException' with message 'The exit status code '1' says something went wrong:
+stderr: "Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[=============>                                              ] 22%[================>                                           ] 27%[================>                                           ] 28%[==================>                                         ] 30%[==================>                                         ] 31%[========================>                                   ] 41%[==========================>                                 ] 44%[============================>                               ] 48%[==============================>                             ] 51%[================================>                           ] 54%[==================================>                         ] 58%[====================================>                       ] 61%[=====================================>                      ] 63%[==========================================>                 ] 71%[============================================>               ] 74%[=============================================>              ] 76%[==============================================>             ] 78%[================================================>           ] 80%[====================================================>       ] 87%[=====================================================>      ] 89%[======================================================>     ] 90%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[>                                                           ] Page 1 of 205[>                                                           ] Page 2 of 205[>                                                           ] Page 3 of 205[>                                                           ] Page 4 of 205[=>                                                          ] Page 5 of 205[=>                                                          ] Page 6 of 205[=>                                                          ] Page 7 of 205[=>                                                          ] Page 8 of 205[==>                                                         ] Page 9 of 205[==>                                                         ] Page 10 of 205[===>                                                        ] Page 11 of 205[===>                                                        ] Page 12 of 205[===>                                                        ] Page 13 of 205[===>                                                        ] Page 14 of 205[====>                                                       ] Page 15 of 205[====>                                                       ] Page 16 of 205[====>                                                       ] Page 17 of 205[====>                                                       ] Page 18 of 205[=====>                                                      ] Page 19 of 205[=====>                                                      ] Page 20 of 205[======>                                                     ] Page 21 of 205[======>                                                     ] Page 22 of 205[======>                                                     ] Page 23 of 205[======>                                                     ] Page 24 of 205[=======>                                                    ] Page 25 of 205[=======>                                                    ] Page 26 of 205[=======>                                                    ] Page 27 of 205[=======>                                                    ] Page 28 of 205[========>                                                   ] Page 29 of 205[========>                                                   ] Page 30 of 205[=========>                                                  ] Page 31 of 205[=========>                                                  ] Page 32 of 205[=========>                                                  ] Page 33 of 205[=========>                                                  ] Page 34 of 205[==========>                                                 ] Page 35 of 205[==========>                                                 ] Page 36 of 205[==========>                                                 ] Page 37 of 205[==========>                                                 ] Page 38 of 205[===========>                                                ] Page 39 of 205[===========>                                                ] Page 40 of 205[============>                                               ] Page 41 of 205[============>                                               ] Page 42 of 205[============>                                               ] Page 43 of 205[============>                                               ] Page 44 of 205[============>                                               ] Page 45 of 205[=============>                                              ] Page 46 of 205[=============>                                              ] Page 47 of 205[=============>                                              ] Page 48 of 205[=============>                                              ] Page 49 of 205[==============>                                             ] Page 50 of 205[==============>                                             ] Page 51 of 205[===============>                                            ] Page 52 of 205[===============>                                            ] Page 53 of 205[===============>                                            ] Page 54 of 205[===============>                                            ] Page 55 of 205[================>                                           ] Page 56 of 205[================>                                           ] Page 57 of 205[================>                                           ] Page 58 of 205[================>                                           ] Page 59 of 205[=================>                                          ] Page 60 of 205[=================>                                          ] Page 61 of 205[==================>                                         ] Page 62 of 205[==================>                                         ] Page 63 of 205[==================>                                         ] Page 64 of 205[==================>                                         ] Page 65 of 205[===================>                                        ] Page 66 of 205[===================>                                        ] Page 67 of 205[===================>                                        ] Page 68 of 205[===================>                                        ] Page 69 of 205[====================>                                       ] Page 70 of 205[====================>                                       ] Page 71 of 205[=====================>                                      ] Page 72 of 205[=====================>                                      ] Page 73 of 205[=====================>                                      ] Page 74 of 205[=====================>                                      ] Page 75 of 205[======================>                                     ] Page 76 of 205[======================>                                     ] Page 77 of 205[======================>                                     ] Page 78 of 205[======================>                                     ] Page 79 of 205[=======================>                                    ] Page 80 of 205[=======================>                                    ] Page 81 of 205[========================>                                   ] Page 82 of 205[========================>                                   ] Page 83 of 205[========================>                                   ] Page 84 of 205[========================>                                   ] Page 85 of 205[========================>                                   ] Page 86 of 205[=========================>                                  ] Page 87 of 205[=========================>                                  ] Page 88 of 205[=========================>                                  ] Page 89 of 205[=========================>                                  ] Page 90 of 205[==========================>                                 ] Page 91 of 205[==========================>                                 ] Page 92 of 205[===========================>                                ] Page 93 of 205[===========================>                                ] Page 94 of 205[===========================>                                ] Page 95 of 205[===========================>                                ] Page 96 of 205[============================>                               ] Page 97 of 205[============================>                               ] Page 98 of 205[============================>                               ] Page 99 of 205[============================>                               ] Page 100 of 205[=============================>                              ] Page 101 of 205[=============================>                              ] Page 102 of 205[==============================>                             ] Page 103 of 205[==============================>                             ] Page 104 of 205[==============================>                             ] Page 105 of 205[==============================>                             ] Page 106 of 205[===============================>                            ] Page 107 of 205[===============================>                            ] Page 108 of 205[===============================>                            ] Page 109 of 205[===============================>                            ] Page 110 of 205[================================>                           ] Page 111 of 205[================================>                           ] Page 112 of 205Done                                                                          
+Exit with code 1 due to network error: ContentNotFoundError
+"
+stdout: ""
+command: /usr/local/wkhtmltox/bin/wkhtmltopdf --lowquality --margin-bottom '0' --margin-left '0' --margin-right '0' --margin-top '0' --page-height '210' --page-width '297' --javascript-delay '20000' --print-media-type 'http://office-jpdb.com/index.php?hdnProArticleId=87&print_type=11&r=floor/addProposedToCart&print=true&zoom=16&zoombuilding=&user=admin' '/var/www/public_html/pdfArticle/87_proposed_article1485980282-2.pdf'.' in /var/www/public_html/protected/vendors/vendor/knplabs/knp-snappy/src/Knp/Snappy/AbstractGenerator.php:336
+Stack trace:
+#0 /var/www/public_html/protected/vendors/vendor/knplabs/knp-snappy/src/Knp/Snappy/AbstractGenerator.php(151): Knp\Snappy\AbstractGenerator->checkProcessStatus(1, '', 'Loading pages (...', '/usr/local/wkht...')
+#1 /var/www/public_html/protected/vendors/vendor/knplabs/knp-snappy/src/Knp/Snappy/Pdf.php(62): Knp\Snappy\AbstractGenerator->generate('http://office-j...', '/var/www/public...', Array, false)
+#2 /var/www/public_html/protected/commands/GeneratePdfCommand.php(29): Knp\Snappy\Pdf->generate('http://office-j...', '/var/www/public...')
+#3 [internal function]: GeneratePdfCommand->actionIndex('87', '16', '', '/index.php?hdnP...', 'admin', '87_proposed_art...')
+#4 /var/www/public_html/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(GeneratePdfCommand), Array)
+#5 /var/www/public_html/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#6 /var/www/public_html/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#7 /var/www/public_html/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#8 /var/www/public_html/framework/yiic.php(33): CApplication->run()
+#9 /var/www/public_html/protected/yiic.php(7): require_once('/var/www/public...')
+#10 {main}
+---

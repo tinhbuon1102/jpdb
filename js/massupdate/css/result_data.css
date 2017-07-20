@@ -1,0 +1,721 @@
+@charset "euc-jp";
+
+/*::::::::::::::::::::::::::::::::::::::::::::
+検索結果一覧
+::::::::::::::::::::::::::::::::::::::::::::*/
+/***--- パーツスタイル読み込み ---***/
+@import url("parts_bd_business.css");
+@import url("parts-title_style.css");
+/*@import url("/style/parts-popup.css");*/
+
+/***--- 個別スタイル ---***/
+
+/* 一括更新 */
+div#contents div.bt_allupdate {
+	width: 75px;
+    cursor: pointer;
+    font-size: 0.9em;
+    height: 16px;
+    line-height: 16px;
+    margin-right: 4px;
+}
+div#contents div.bt_allupdate a {
+    background: url("img/ico_arrow_b.gif") no-repeat scroll 8px center #2E7BBA;
+    color: #FFFFFF;
+    display: block;
+    padding: 3px 5px 0 14px;
+    text-decoration: none;
+}
+div#contents div.bt_allupdate a:hover {
+    background: url("img/ico_arrow_b.gif") no-repeat scroll 8px center #4B9AD2;
+}
+
+/*--------------------------------------------
+	上書き
+--------------------------------------------*/
+div#contents {
+	width: 100%;
+}
+
+div#contents div.ttl_h2 {
+	width: 980px;
+}
+
+/*==========================================================
+	検索結果一覧
+==========================================================*/
+/*--------------------------------------------
+	ビル情報
+--------------------------------------------*/
+div#contents div.build_info {
+	width: 100%;
+	
+	/*margin-bottom: 30px;*/
+	margin-bottom: 15px;
+}
+
+
+
+/*--------------------------------------------
+	ビル情報ー営業情報(他のページの営業情報はparts_bd_business.cssにて読み込んでいる)
+--------------------------------------------*/
+div#contents div.bd_business {
+	width: 980px;
+}
+
+
+/*--------------------------------------------
+	ビル情報ービルデータ
+--------------------------------------------*/
+div#contents div.build_info div.bd_info {
+	width: 100%;
+}
+
+
+
+/* 区分所有オーナー */
+div#contents div.build_info div.bd_info div.owner_name {
+	width: 980px;
+	float: none;
+}
+
+/* フロア情報 */
+div#contents div.build_info div.bd_info table.fl_data_b {
+	width: 1371px;
+	border-left: 1px solid #e1e1e1;
+	border-top: 1px solid #e1e1e1;
+	font-size: 0.8em;
+	float: none;
+	margin-bottom: 15px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b tr.bg td {
+	background-color: #ebf2fa;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b td.hover {
+	background-color: #ebf2fa;
+	cursor: pointer;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b tr.matching {
+	background-color: #fefbe0;
+}
+
+
+
+div#contents div.build_info div.bd_info table.fl_data_b th,
+div#contents div.build_info div.bd_info table.fl_data_b td {
+	border-right: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+	padding: 8px 0;
+	text-align:center;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b th {
+	background: #f2f2f2;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .id {
+	width: 68px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .no {
+	width: 51px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .imp {
+	width: 40px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .area {
+	width: 70px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .prm {
+	width: 82px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .csc {
+	width: 87px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .pra {
+	width: 85px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .rdps {
+	width: 56px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .km {
+	width: 54px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .chg {
+	width: 58px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .rnw {
+	width: 58px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .sc {
+	width: 89px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .fr {
+	width: 58px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .fee {
+	width: 76px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .note {
+	width: 423px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b td.note {
+	width: 418px;
+	text-align: left;
+	padding-left: 5px;
+}
+
+div#contents div.build_info div.bd_info table.fl_data_b .no span.nod {
+	font-size: 10px;
+}
+
+/*==========================================================
+	フロア情報　別ウィンドウ
+==========================================================*/
+/*--------------------------------------------
+	タイトル
+--------------------------------------------*/
+div.fl_list{
+	width: 100%!important;
+	/*padding:14px 10px 0;*/
+	margin: 0!important;
+}
+
+div.fl_list div#main {
+	padding:14px 10px 0;
+}
+
+div#contents div.ttl_fl {
+	border-top: 1px solid #2e3231;
+	border-bottom: 1px solid #2e3231;
+	padding: 7px 0 7px 8px;
+	margin-bottom: 20px;
+	font-size: 0.85em;
+	font-weight: bold;
+}
+
+div#contents div.ttl_fl div.bdnm {
+	width: 550px;
+	float: left;
+	padding-top: 3px;
+}
+
+div#contents div.ttl_fl span.bd_id {
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+div#contents div.ttl_fl ul.rm_ss {
+	float: left;
+}
+
+div#contents div.ttl_fl ul.rm_ss li {
+	width: 80px;
+	float: left;
+	font-size: 0.95em;
+	padding-top: 5px;
+}
+
+div#contents div.ttl_fl ul.rm_ss li.bt_box_rm {
+	padding-top: 0;
+}
+
+div#contents div.ttl_fl ul.rm_ss li input.bt_rm_display{
+	width: 46px;
+	height: 23px;
+	border: none;
+	cursor: pointer;
+	display: block;
+	background: #2E3231;
+	color:#FFF;
+}
+
+div#contents div.ttl_fl ul.rm_ss li input.bt_rm_display:hover{
+	background: #575C64;
+}
+
+
+div#contents div.ttl_fl div.bt_fl_add {
+	float: right;
+	height: 23px;
+	/*font-size: 0.75em;*/
+	line-height: 20px;
+	cursor: pointer;
+}
+
+div#contents div.ttl_fl div.bt_fl_add a {
+	display: block;
+	padding:2px 5px 1px;
+	background: #2E7BBA;
+	color: #fff;
+	text-decoration:none;
+	cursor: pointer;
+	
+}
+
+div#contents div.ttl_fl div.bt_fl_add a:hover {
+	background: #4B9AD2;
+}
+
+/*--------------------------------------------
+	フロア情報
+--------------------------------------------*/
+
+div#contents table.fl_data_c {
+	width: 980px;
+	/*width: 100%;*/
+	border-left: 1px solid #e1e1e1;
+	table-layout: fixed;
+	font-size: 0.75em;
+	float: none;
+	margin-bottom: 38px;
+}
+
+div#contents table.fl {
+	table-layout: auto;
+}
+
+div#contents table.fl_data_c tr.bg td {
+	background-color: #F1F8FC;
+}
+
+div#contents table.fl_data_c tr.massUpdateTarget td {
+	background-color: #FEE9EB;
+}
+
+
+div#contents table.fl_data_c th,
+div#contents table.fl_data_c td {
+	border-right: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+	
+	text-align:center;
+	/*table-layout: fixed;*/
+}
+
+div#contents table.fl_data_c th {
+	border-top: 1px solid #e1e1e1;
+	background: #f2f2f2;
+	padding: 8px 0;
+}
+
+div#contents table.fl_data_c td {
+	padding: 8px 0;
+	line-height: 1.6em;
+	white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+-webkit-text-overflow: ellipsis;
+-o-text-overflow: ellipsis;
+}
+
+div#contents table.fl_data_c th:first-child {
+	border-left: 1px solid #e1e1e1;
+}
+
+div#contents table.fl_data_c .w {
+	/*width: 100px;*/
+	width: 70px;
+}
+
+div#contents table.fl_data_c td input {
+	border: 1px solid #d3d8df;
+}
+
+div#contents table.fl_data_c input.hint_exists {
+	background: #fff url(img/right_click_icon.gif) right center no-repeat;
+}
+
+div#contents table.fl_data_c input.error_value {
+	background-color:pink!important;
+}
+
+
+li.s{
+	background: #fff url(img/menu_to_form_icon.gif) left center no-repeat;
+	font-weight:bold;
+	text-indent: 20px;
+}
+
+li.hint{
+	color:#333;
+}
+
+/* 一括更新表 */
+div#contents table.fl_data_c tr.dmy th {
+	border-top: none;
+	border-right: none;
+	background: #fff;
+	padding: 0;
+	height: 0;
+}
+div#contents table.fl_data_c .ck {
+	/*width: 100px;*/
+	width: 20px;
+}
+
+div#contents table.fl_data_c th.tfd_a {
+	width: 106px;
+}
+
+div#contents table.fl_data_c th.tfd_b {
+	width: 143px;
+}
+
+div#contents table.fl_data_c th.tfd_c {
+	width: 73px;
+}
+
+div#contents table.fl_data_c th.tfd_d {
+	width: 191px;
+}
+
+div#contents table.fl_data_c th.tfd_e {
+	width: 155px;
+}
+
+div#contents table.fl_data_c th.tfd_f {
+	width: 81px;
+}
+
+div#contents table.fl_data_c .fd_a {
+	width: 36px!important;
+}
+
+div#contents table.fl_data_c .fd_b {
+	width: 44px!important;
+}
+
+div#contents table.fl_data_c .fd_c {
+	/*width: 50px!important;*/
+	width: 60px!important;
+}
+
+div#contents table.fl_data_c .fd_d {
+	/*width: 55px!important;*/
+	width: 65px!important;
+}
+
+div#contents table.fl_data_c .fd_e {
+	width: 68px!important;
+}
+
+div#contents table.fl_data_c .fd_f {
+	width: 80px!important;
+}
+
+div#contents table.fl_data_c .col_edit_on {
+	width: 100px!important;
+}
+
+div#contents table.fl_data_c .input_wrong {
+	border: 2px solid red;
+}
+
+div#contents table.fl_data_c .f_updated {
+	display: inline;
+}
+
+div#contents table.fl_data_c .f_not_updated {
+	display: none;
+}
+
+select.f_rentstart option
+{
+	background-color:#EEE;
+	color:#333;
+	padding-left:5px;
+}
+
+select.f_rentstart optgroup
+{
+	background-color:#333;
+	color:#EEE;
+	padding-left:5px;
+}
+
+select.f_rentstart optgroup option
+{
+	background-color:#EEE;
+	color:#333;
+	margin-left:-5px;
+	padding-left:13px;
+}
+
+/* 一括更新 */
+div#contents table.fl_data_c tr.all td {
+	background: #FEFBE0;
+	border-top: 3px double #999999;
+}
+
+div#contents table.fl_data_c .id {
+	width: 68px;
+}
+
+div#contents table.fl_data_c .no {
+	width: 51px;
+}
+
+div#contents table.fl_data_c .imp {
+	width: 40px;
+}
+
+div#contents table.fl_data_c .area {
+	width: 70px;
+}
+
+div#contents table.fl_data_c .prm {
+	width: 82px;
+}
+
+div#contents table.fl_data_c .csc {
+	width: 87px;
+}
+
+div#contents table.fl_data_c .pra {
+	width: 85px;
+}
+
+div#contents table.fl_data_c .rdps {
+	width: 56px;
+}
+
+div#contents table.fl_data_c .km {
+	width: 54px;
+}
+
+div#contents table.fl_data_c .chg {
+	width: 58px;
+}
+
+div#contents table.fl_data_c .rnw {
+	width: 58px;
+}
+
+div#contents table.fl_data_c .sc {
+	width: 89px;
+}
+
+div#contents table.fl_data_c .fr {
+	width: 58px;
+}
+
+div#contents table.fl_data_c .fee {
+	width: 76px;
+}
+
+div#contents table.fl_data_c .note {
+	width: 423px;
+}
+
+div#contents table.fl_data_c td.note {
+	width: 418px;
+	text-align: left;
+	padding-left: 5px;
+}
+
+div#contents table.fl_data_c .no span.nod {
+	font-size: 10px;
+}
+
+/*--------------------------------------------
+	フロアの追加・削除
+--------------------------------------------*/
+div#contents table.floor_edit {
+	border: 1px solid #e1e1e1;
+	font-size: 0.8em;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+div#contents table.floor_edit th {
+	width: 165px;
+	border-bottom: 1px solid #e1e1e1;
+	padding: 10px;
+	background: #EFEFEF;
+	text-align: left;
+}
+
+div#contents table.floor_edit td {
+	border-bottom: 1px solid #e1e1e1;
+	padding: 10px 10px 10px 7px;
+}
+
+div#contents table.floor_edit td.fl_edit {
+	width: 250px;
+}
+
+div#contents table.floor_edit td.bt {
+	width: 50px;
+}
+
+div#contents table.floor_edit td.fl_edit label {
+	padding-right: 20px;
+}
+
+div#contents table.floor_edit td input[type="text"] {
+	width: 50px;
+}
+
+div#contents table.floor_edit td span {
+	padding-left: 10px;
+	color: #cc0000;
+}
+
+/* 追加・削除ボタン */
+div#contents table.floor_edit td.bt input.bt_carry,
+div#contents table.floor_edit td.bt input.bt_add{
+	width: 41px;
+	height: 18px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+div#contents table.floor_edit td.bt input.bt_carry{
+	background: url(img/bt_carry_b.gif) left top no-repeat;
+}
+
+div#contents table.floor_edit td.bt input.bt_carry:hover{
+	background: url(img/bt_carry_b_on.gif) left top no-repeat;
+}
+
+div#contents table.floor_edit td.bt input.bt_add{
+	background: url(img/bt_add_b.gif) left top no-repeat;
+}
+
+div#contents table.floor_edit td.bt input.bt_add:hover{
+	background: url(img/bt_add_b_on.gif) left top no-repeat;
+}
+
+/*--------------------------------------------
+	フロア情報
+--------------------------------------------*/
+div#contents div.form_box {
+	border-bottom: 1px dotted #cacaca;
+	border-top: 1px dotted #cacaca;
+	padding: 12px 0 5px ;
+	margin-bottom: 12px;
+	margin-top: 20px;
+}
+
+div#contents table.edit_input{
+	width: 100%;
+	font-size: 0.8em;
+}
+
+div#contents table.edit_input th{
+	width: 101px;
+	padding: 4px 0 11px 4px;
+	background: #efefef url(img/bg_th.gif) left bottom repeat-x;
+	text-align: left;
+}
+
+div#contents table.edit_input td{
+	padding: 0 0 7px 6px;
+}
+
+/* input */
+
+div#contents table.edit_input td label.rd {
+	margin-right: 10px;
+}
+
+div#contents table.edit_input td label.rd input{
+	margin-right: 5px;
+}
+
+
+/* 更新・登録ボタン */
+div#contents div.bt_input_box{
+	width: 116px;
+	padding-left: 3px;
+}
+
+div#contents div.bt_input_box input.bt_fl_update{
+	width: 116px;
+	height: 23px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+	background: url(img/bt_fl_update.gif) left top no-repeat;
+}
+
+div#contents div.bt_input_box input.bt_fl_update:hover{
+	background: url(img/bt_fl_update_on.gif) left top no-repeat;
+}
+
+
+
+/*--------------------------------------------------------
+	clearfix
+	一括で記述
+--------------------------------------------------------*/
+
+div#contents div.refine dl.refine_ty1 dd ul.se_condition:after,
+div#contents div.refine dl.refine_ty2 table.ref_condition td ul.rcd_list:after,
+div#contents div.refine div.bt_refine_box:after,
+div#contents div.search_bulding:after,
+div#contents div.search_bulding dl.viewmode:after,
+div#contents div.build_info div.title ul.tab_archive:after,
+div#contents div.bd_business:after,
+div#contents div.build_info div.bd_info:after,
+div#contents div.build_info div.bd_info table.fl_data_b td.fc ul.ico_facility:after,
+div#contents dl.popup_ty1 dd ul.title_ahv:after,
+div#contents div.ttl_fl:after,
+div#contents div.ttl_fl ul.rm_ss:after{
+	content:".";
+	height:0;
+	clear:both;
+	display:block;
+	visibility:hidden;
+}
+
+*+html div#contents div.refine dl.refine_ty1 dd ul.se_condition,
+*+html div#contents div.refine dl.refine_ty2 table.ref_condition td ul.rcd_list,
+*+html div#contents div.refine div.bt_refine_box,
+*+html div#contents div.search_bulding,
+*+html div#contents div.search_bulding dl.viewmode,
+*+html div#contents div.build_info div.title ul.tab_archive,
+*+html div#contents div.bd_business,
+*+html div#contents div.build_info div.bd_info,
+*+html div#contents div.build_info div.bd_info table.fl_data_b td.fc ul.ico_facility,
+*+html div#contents dl.popup_ty1 dd ul.title_ahv,
+*+html div#contents div.ttl_fl,
+*+html div#contents div.ttl_fl ul.rm_ss{
+	display: inline-block;
+}
+
+* html div#contents div.refine dl.refine_ty1 dd ul.se_condition,
+* html div#contents div.refine dl.refine_ty2 table.ref_condition td ul.rcd_list,
+* html div#contents div.refine div.bt_refine_box,
+* html div#contents div.search_bulding,
+* html div#contents div.search_bulding dl.viewmode,
+* html div#contents div.build_info div.title ul.tab_archive,
+* html div#contents div.bd_business,
+* html div#contents div.build_info div.bd_info,
+* html div#contents div.build_info div.bd_info table.fl_data_b td.fc ul.ico_facility,
+* html div#contents dl.popup_ty1 dd ul.title_ahv,
+* html div#contents div.ttl_fl,
+* html div#contents div.ttl_fl ul.rm_ss{
+	display: inline-block;
+}

@@ -1,0 +1,227 @@
+@charset "euc-jp";
+
+/*::::::::::::::::::::::::::::::::::::::::::::
+ビル情報ー営業情報
+::::::::::::::::::::::::::::::::::::::::::::*/
+/*--------------------------------------------
+	ビル情報ー営業情報
+--------------------------------------------*/
+div#contents div.bd_business {
+	margin-bottom: 20px;
+}
+
+/* 手数料・フリーレント・管理会社 */
+div#contents div.bd_business div.bus_info {
+	float: left;
+	padding-right: 15px;
+}
+div#contents div.bd_business dl.price_box {
+	/*width: 91px;
+	height: 87px;
+	border: 3px solid #E7E7E7;*/
+	width: 93px;
+	height: 63px;
+	border: 2px solid #E7E7E7;
+	padding: 0 2px;
+	font-size: 0.8em;
+	margin-right: 5px;
+	margin-bottom: 3px;
+	float: left;
+}
+
+div#contents div.bd_business dl.free {
+	/*margin-right: 15px;*/
+	margin-right: 0px;
+}
+
+div#contents div.bd_business dl.price_box dt {
+	/*height: 28px;
+	border-bottom: 1px dotted #cecece;
+	line-height: 28px;*/
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+}
+
+div#contents div.bd_business dl.price_box dd {
+	/*height: 51px;
+	padding-top: 7px;*/
+	height:38px;
+	padding-top: 4px;
+	text-align: center;
+	position: relative;
+}
+
+div#contents div.bd_business dl.price_box dd p.period {
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+div#contents div.bd_business dl.price_box dd p.period span {
+	font-weight:bold;
+}
+
+div#contents div.bd_business dl.price_box dd p.period span.charge_a {
+	color: #2d7ab9;
+}
+
+div#contents div.bd_business dl.price_box dd p.period span.charge_b {
+	color: #e0ab0A;
+}
+
+div#contents div.bd_business dl.price_box dd p.period span.charge_c {
+	color: #cc3300;
+}
+
+div#contents div.bd_business dl.price_box dd p.point {
+	font-size: 0.9em;
+}
+
+div#contents div.bd_business dl.price_box dd div.bt_update {
+	width: 28px;
+	height: 14px;
+	position: absolute;
+	/*bottom: 0;*/
+	bottom: -2px;
+	right: -2px;
+	text-align:center;
+}
+
+div#contents div.bd_business dl.price_box dd div.bt_update a {
+	display: block;
+	width: 28px;
+	height: 12px;
+	padding-top: 2px;
+	font-size: 0.75em;
+	color: #fff;
+	background: #2e3231;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+div#contents div.bd_business dl.price_box dd div.bt_update a:hover {
+	background: #575c64;
+}
+
+div#contents div.bd_business div.ad_data {
+	clear: both;
+	height: 19px;
+	line-height: 19px;
+	border: 2px solid #E7E7E7;
+	padding: 0 2px;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+/* 伝達事項・賃料交渉 */
+div#contents div.bd_business dl.archive_box {
+	width: 370px;
+	/*height: 93px;*/
+	float: left;
+}
+
+div#contents div.bd_business dl.cmc {
+	margin-right: 18px;
+}
+
+div#contents div.bd_business dl.archive_box dt {
+	width: 370px;
+	height: 27px;
+	border-top: 3px solid #2e3231;
+	border-bottom: 1px solid #d0d0d0;
+	font-size: 0.8em;
+	font-weight:bold;
+	text-align: center;
+	line-height: 27px;
+	position: relative;
+}
+
+div#contents div.bd_business dl.archive_box dt div.bt_msg {
+	width: 58px;
+	height: 19px;
+	position:absolute;
+	top: 4px;
+	right: 0;
+	font-size: 0.75em;
+	line-height: 19px;
+	cursor: pointer;
+}
+
+
+
+div#contents div.bd_business dl.archive_box dt div.bt_msg a {
+	display: block;
+	width: 50px;
+	height: 19px;
+	padding-left:8px;
+	background: #2E7BBA url(img/ico_arrow_b.gif) 8px center no-repeat;
+	color: #fff;
+	text-decoration:none;
+	cursor: pointer;
+}
+
+div#contents div.bd_business dl.archive_box dt div.bt_msg a:hover {
+	background: #4B9AD2 url(img/ico_arrow_b.gif) 8px center no-repeat;
+}
+
+div#contents div.bd_business dl.archive_box dd {
+	border-bottom: 1px solid #d0d0d0;
+	/*height: 61px;*/
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg {
+	width: 370px;
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg tr {
+	border-bottom: 1px dotted #e1e1e1;
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg tr.none {
+	border-bottom: none;
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg th,
+div#contents div.bd_business dl.archive_box dd table.ah_msg td {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg th {
+	font-size: 0.7em;
+	text-align:left;
+	width: 77px;
+	padding-left: 5px;
+}
+
+div#contents div.bd_business dl.archive_box dd table.ah_msg td {
+	width: 288px;
+	font-size: 0.8em;
+}
+
+
+
+
+
+/*--------------------------------------------------------
+	clearfix
+	一括で記述
+--------------------------------------------------------*/
+div#contents div.bd_business:after,
+div#contents div.bd_business div.bus_info:after{
+	content:".";
+	height:0;
+	clear:both;
+	display:block;
+	visibility:hidden;
+}
+
+*+html div#contents div.bd_business,
+*+html div#contents div.bd_business div.bus_info{
+	display: inline-block;
+}
+
+* html div#contents div.bd_business,
+* html div#contents div.bd_business div.bus_info{
+	display: inline-block;
+}

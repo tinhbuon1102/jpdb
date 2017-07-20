@@ -1,0 +1,210 @@
+@charset "euc-jp";
+
+/*::::::::::::::::::::::::::::::::::::::::::::
+panel切り替え
+::::::::::::::::::::::::::::::::::::::::::::*/
+/*--------------------------------------------
+	タブ切り替え
+--------------------------------------------*/
+/* tab */
+ul.tab_d,
+ul.tab_d2{
+	padding: 0;
+	height:37px;
+}
+
+ul.tab_d{
+	border-bottom: 1px solid #dcdcdc;
+}
+
+ul.tab_d2{
+	border-top: 1px solid #dcdcdc;
+}
+
+ul.tab_d li,
+ul.tab_d2 li{
+	list-style-type:none;
+	height:26px;
+	padding-top: 11px;
+	float:left;
+	font-size: 0.8em;
+	margin-right: 3px;
+}
+
+ul.tab_d2 li {
+	padding-top: 0px;
+}
+
+ul.tab_d li a,
+ul.tab_d2 li a{
+	display:block;
+	height:26px;
+	outline:none;
+	
+	text-align:center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+ul.tab_d li a {
+	background:url(img/bg_d_tab_off.gif) left top no-repeat;
+}
+
+ul.tab_d2 li a {
+	background:url(img/bg_d_tab_off.gif) left bottom no-repeat;
+}
+
+ul.tab_d li a span,
+ul.tab_d2 li a span{
+	display:block;
+	height:22px;
+	padding: 4px 0 0;
+	color:#333;
+}
+
+/* 4文字 */
+ul.tab_d li a.ty_a span,
+ul.tab_d2 li a.ty_a span{
+	/*width: 88px;*/
+	width: 82px;
+}
+
+/* 6文字 */
+ul.tab_d li a.ty_b span,
+ul.tab_d2 li a.ty_b span{
+	/*width: 116px;*/
+	width: 102px;
+}
+
+/* 11文字 */
+ul.tab_d li a.ty_c span,
+ul.tab_d2 li a.ty_c span{
+	/*width: 145px;*/
+	width: 139px;
+}
+
+/* 3文字 */
+ul.tab_d li a.ty_d span,
+ul.tab_d2 li a.ty_d span{
+	/*width: 60px;*/
+	width: 52px;
+}
+
+/* 5文字 */
+ul.tab_d li a.ty_e span,
+ul.tab_d2 li a.ty_e span{
+	/*width: 100px;*/
+	width: 92px;
+}
+
+/* 8文字 */
+ul.tab_d li a.ty_f span,
+ul.tab_d2 li a.ty_f span{
+	width: 130px;
+}
+
+ul.tab_d li a span {
+	background:url(img/bg_d_tab_off_r.gif) right top no-repeat;
+}
+
+ul.tab_d li a:hover {
+	background:url(img/bg_d_tab_ovr.gif) left top no-repeat;
+}
+
+ul.tab_d li a:hover span {
+	background:url(img/bg_d_tab_ovr_r.gif) right top no-repeat;
+	color: #797979;
+}
+
+ul.tab_d li a.selected{
+	background:url(img/bg_d_tab_on.gif) left top no-repeat;
+	cursor:default;
+}
+
+ul.tab_d li a.selected span {
+	background:url(/search/img/bg_d_tab_on_r.gif) right top no-repeat;
+	color:#fff;
+	font-weight:bold;
+}
+
+ul.tab_d2 li a span {
+	background:url(/search/img/bg_d_tab_off_r.gif) right bottom no-repeat;
+}
+
+ul.tab_d2 li a:hover {
+	background:url(/search/img/bg_d_tab_ovr.gif) left bottom no-repeat;
+}
+
+ul.tab_d2 li a:hover span {
+	background:url(/search/img/bg_d_tab_ovr_r.gif) right bottom no-repeat;
+	color: #797979;
+}
+
+ul.tab_d2 li a.selected{
+	background:url(/search/img/bg_d_tab_on.gif) left bottom no-repeat;
+	cursor:default;
+}
+
+ul.tab_d2 li a.selected span {
+	background:url(/search/img/bg_d_tab_on_r.gif) right bottom no-repeat;
+	color:#fff;
+	font-weight:bold;
+}
+/* tab print */
+ul.tab_d li.print,
+ul.tab_d2 li.print{
+	width: 133px;
+	list-style-type:none;
+	height:35px;
+	padding-top: 0px;
+	float:right;
+	margin-right: 0;
+}
+
+ul.tab_d2 li.print {
+	height:28px;
+	padding-top: 7px;
+}
+
+ul.tab_d li.print a,
+ul.tab_d2 li.print a{
+	display:block;
+	height:28px;
+	outline:none;
+	text-decoration: none;
+	cursor: pointer;
+	background: none;
+}
+
+/* contents */
+div.panel{
+	clear:both;
+	padding: 20px 0;
+}
+
+div.panel div.panel_box{
+	padding:0;
+}
+
+/*--------------------------------------------------------
+	clearfix
+	一括で記述
+--------------------------------------------------------*/
+ul.tab_d:after,
+div.panel div.panel_box:after{
+	content:".";
+	height:0;
+	clear:both;
+	display:block;
+	visibility:hidden;
+}
+
+*+html ul.tab_d,
+*+html div.panel div.panel_box{
+	display: inline-block;
+}
+
+* html ul.tab_d,
+* html div.panel div.panel_box{
+	display: inline-block;
+}

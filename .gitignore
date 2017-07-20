@@ -1,0 +1,14 @@
+*.pdf
+*.csv
+*.htaccess
+apis
+api-test
+buildingPdfUploads
+buildingPictures
+floorPictures
+marketAreaPicture
+pdfArticle
+planPictures
+protected/extensions
+wp
+framework

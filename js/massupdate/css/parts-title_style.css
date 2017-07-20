@@ -1,0 +1,53 @@
+@charset "euc-jp";
+
+/*::::::::::::::::::::::::::::::::::::::::::::
+共通見出し
+::::::::::::::::::::::::::::::::::::::::::::*/
+div#contents div.ttl_h2{
+	margin-bottom: 20px;
+	padding: 5px 0;
+	border-top: 1px solid #2E7BBA;
+	border-bottom: 1px solid #2E7BBA;
+	color:#2578B6;
+}
+
+div#contents div.ttl_h2 h2{
+	/*width: 800px;*/
+	font: bold 0.95em "メイリオ","Meiryo","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","Osaka","ＭＳ Ｐゴシック", "MS P Gothic",Verdana,Arial, Helvetica, sans-serif;
+	/*line-height: 30px;*/
+	padding: 5px 0 2px 0;
+}
+
+div#contents div.ttl_h2 img {
+	vertical-align: bottom;
+}
+
+/*div#contents h2{
+	margin-bottom: 20px;
+	padding: 10px 0 10px 5px;
+	border-top: 1px solid #2E7BBA;
+	border-bottom: 1px solid #2E7BBA;
+	color:#2578B6;
+	font: bold 0.95em "メイリオ","Meiryo","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","Osaka","ＭＳ Ｐゴシック", "MS P Gothic",Verdana,Arial, Helvetica, sans-serif;
+}*/
+
+/*--------------------------------------------------------
+	clearfix
+	一括で記述
+--------------------------------------------------------*/
+
+div#contents div.ttl_h2:after{
+	content:".";
+	height:0;
+	clear:both;
+	display:block;
+	visibility:hidden;
+}
+
+*+html div#contents div.ttl_h2{
+	display: inline-block;
+}
+
+* html div#contents div.ttl_h2{
+	display: inline-block;
+}

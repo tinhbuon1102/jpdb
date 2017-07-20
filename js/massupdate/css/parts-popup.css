@@ -1,0 +1,3405 @@
+@charset "euc-jp";
+
+/*::::::::::::::::::::::::::::::::::::::::::::
+popup
+::::::::::::::::::::::::::::::::::::::::::::*/
+
+/*--------------------------------------------------------
+	popupー共通　フレーム
+--------------------------------------------------------*/
+/* 累積成約件数・累積案内件数・累積面談件数 */
+dl.popup_ty1 {
+	width: 652px!important;
+	height:394px;
+	padding: 0!important;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+/* 賃料交渉・伝達事項 */
+dl.popup_ty2 {
+	width: 652px!important;
+	height:454px;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+/* フリーレント */
+dl.popup_ty3 {
+	width: 420px!important;
+	
+	/*height:413px;*/
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+/* 各種編集・登録・印刷 */
+dl.popup_ty4 {
+	width: 652px!important;
+	padding: 0!important;
+	position:absolute;
+	/*min-height: 50px!important;
+	height: auto!important;*/
+	overflow-y: hidden!important;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+	min-height: 0!important;
+}
+
+
+dl.popup_ty5 {
+	width: 952px!important;
+	padding: 0!important;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+dl.popup_ty6 {
+	width: 420px!important;
+	padding: 0!important;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+dl.popup_ty7 {
+	width: 554px!important;
+	padding: 0!important;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+/* ランク別顧客情報一覧 */
+dl.popup_ty8 {
+	width: 533px!important;
+	padding: 0!important;
+	position:absolute;
+	-webkit-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 3px 3px 1px 0px rgba(51,51,51,0.3); /* CSS3 */
+}
+
+/*dl.ht_a {
+	height:344px;
+}
+
+dl.ht_b {
+	height:370px;
+}
+
+dl.ht_c {
+	height:326px;
+}
+
+dl.ht_d {
+	height:160px;
+}
+
+dl.ht_e {
+	height:232px;
+}
+
+dl.ht_f {
+	height:300px;
+}*/
+div.ui-dialog {
+	background: none!important;
+	border-radius: 0!important;        /* CSS3草案 */  
+    -webkit-border-radius: 0!important;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 0!important;
+	border: none!important;
+}
+div.ui-dialog-titlebar {
+	padding: 0!important;
+	border-radius: 0!important;        /* CSS3草案 */  
+    -webkit-border-radius: 0!important;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 0!important;
+	border: none!important;
+}
+
+div.ui-dialog-titlebar span{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+/* 注：検索画面のビル新規登録ポップアップタイトルはsearch.cssにて調整 */
+
+div.ui-dialog-titlebar,
+dl.popup_ty1 dt,
+dl.popup_ty2 dt,
+dl.popup_ty3 dt,
+dl.popup_ty4 dt,
+dl.popup_ty5 dt,
+dl.popup_ty6 dt,
+dl.popup_ty7 dt,
+dl.popup_ty8 dt{
+	height:30px;
+	text-align:center;
+	background: #2578b6;
+	color: #fff;
+	font-size: 0.8em;
+	font-weight:bold;
+	line-height: 30px;
+	position:relative;
+}
+
+dl.popup_ty8 dt{
+	background: #2E3231;
+}
+
+div.ui-dialog-titlebar span {
+	font-weight:bold;
+}
+
+div.ui-dialog-titlebar a.ui-dialog-titlebar-close {
+	display: block;
+	width: 18px;
+	height: 18px;
+	position:absolute!important;
+	top: 7px!important;
+	right: 7px!important;
+	cursor: pointer;
+	background: url(img/bt_close.gif) left top no-repeat;
+	text-indent: -1000em;
+	margin:0!important;
+	border-radius: 0!important;        /* CSS3草案 */  
+    -webkit-border-radius: 0!important;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 0!important;
+	border: none!important;
+	padding: 0!important;
+}
+
+dl.popup_ty1 dt div.bt_close,
+dl.popup_ty2 dt div.bt_close,
+dl.popup_ty3 dt div.bt_close,
+dl.popup_ty4 dt div.bt_close,
+dl.popup_ty5 dt div.bt_close,
+dl.popup_ty6 dt div.bt_close,
+dl.popup_ty7 dt div.bt_close,
+dl.popup_ty8 dt div.bt_close{
+	width: 18px;
+	height: 18px;
+	position:absolute;
+	top: 7px;
+	right: 7px;
+	cursor: pointer;
+}
+
+dl.popup_ty1 dd,
+dl.popup_ty2 dd,
+dl.popup_ty3 dd,
+dl.popup_ty4 dd,
+dl.popup_ty5 dd,
+dl.popup_ty6 dd{
+	padding:0 10px;
+	background: #fff;
+	border-bottom: 3px solid #2578b6;
+	border-left: 3px solid #2578b6;
+	border-right: 3px solid #2578b6;
+	
+}
+
+dl.popup_ty1 dd,
+dl.popup_ty2 dd,
+dl.popup_ty4 dd {
+	width: 626px\9;
+	*width: 626px;
+}
+
+dl.popup_ty1 dd:not(:target),
+dl.popup_ty2 dd:not(:target),
+dl.popup_ty4 dd:not(:target) {
+	width: 626px\9;
+}
+
+dl.popup_ty3 dd:not(:target),
+dl.popup_ty6 dd:not(:target){
+	width: 394px\9;
+}
+
+dl.popup_ty5 dd:not(:target) {
+	width: 926px\9;
+}
+
+dl.popup_ty7 dd{
+	padding:0;
+	background: #fff;
+	border-bottom: 3px solid #2578b6;
+	border-left: 3px solid #2578b6;
+	border-right: 3px solid #2578b6;
+}
+
+dl.popup_ty8 dd{
+	padding:0 10px;
+	background: #fff;
+	border-bottom: 3px solid #2E3231;
+	border-left: 3px solid #2E3231;
+	border-right: 3px solid #2E3231;
+}
+
+dl.popup_ty1 dd {
+	height: 364px;
+}
+
+/*dl.popup_ty2 dd {
+	height: 424px;
+}*/
+
+dl.popup_ty2 dd,
+dl.popup_ty3 dd {
+	padding-top: 14px;
+	padding-bottom: 10px;
+	/*height: 380px;*/
+}
+
+dl.popup_ty4 dd,
+dl.popup_ty5 dd,
+dl.popup_ty6 dd,
+dl.popup_ty8 dd{
+	padding-top: 14px;
+}
+
+/*dl.ht_a dd {
+	height:314px;
+}
+
+dl.ht_b dd {
+	height:340px;
+}
+
+dl.ht_c dd {
+	height:296px;
+}
+
+dl.ht_d dd {
+	height:130px;
+}
+
+dl.ht_e dd {
+	height:202px;
+}
+
+dl.ht_f dd {
+	height:270px;
+}*/ 
+
+/*--------------------------------------------------------
+	popupー累積成約件数・累積案内件数・累積面談件数
+--------------------------------------------------------*/
+/* タイトル　共通項目 */
+dl.popup_ty1 dd ul.title_ahv {
+	padding-top: 12px;
+	height: 38px;
+}
+
+dl.popup_ty1 dd ul.title_ahv li.ttl {
+	width: 123px;
+	padding-left:8px;
+	border-left-width: 3px;
+	border-left-style:solid;
+	font-size: 0.85em;
+	font-weight: bold;
+	float: left;
+}
+
+dl.popup_ty1 dd ul.title_ahv li.ahv_num {
+	font-size: 0.85em;
+	font-weight: bold;
+	float: left;
+	padding-top: 1px;
+}
+
+dl.popup_ty1 dd ul.title_ahv li.chv_update {
+	width: 100px;
+	text-align:right;
+	font-size: 0.8em;
+	float:right;
+	padding-top: 2px;
+}
+
+ /* 累積面談件数 */
+dl#meeting dd ul.title_ahv li.ttl {
+	color: #669bac;
+	border-left-color: #669bac;
+}
+
+dl#meeting dd ul.title_ahv li.ahv_num {
+	color: #669bac;
+}
+
+ /* 累積案内件数 */
+dl#guide dd ul.title_ahv li.ttl {
+	color: #aea160;
+	border-left-color: #aea160;
+}
+
+dl#guide dd ul.title_ahv li.ahv_num {
+	color: #aea160;
+}
+
+ /* 累積成約件数 */
+dl#close dd ul.title_ahv li.ttl {
+	color: #d08787;
+	border-left-color: #d08787;
+}
+
+dl#close dd ul.title_ahv li.ahv_num {
+	color: #d08787;
+}
+
+/*--------------------------------------------------------
+	popupー賃料交渉・伝達事項
+--------------------------------------------------------*/
+dl.popup_ty2 dd table.msg_input {
+	height: 110px;
+}
+
+dl.popup_ty2 dd table.msg_input th {
+	width: 40px;
+	font-size: 0.8em;
+	text-align: left;
+	vertical-align:top;
+	padding-top: 35px;
+}
+
+dl.popup_ty2 dd table.msg_input td {
+	vertical-align:top;
+	padding-top: 15px;
+}
+
+dl.popup_ty2 dd table.msg_input td textarea {
+	width: 586px;
+	height: 50px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty2 dd table.msg_input td div.bt_send {
+	width: 37px;
+	margin: 10px auto 0;
+}
+
+dl.popup_ty2 dd table td p.app {
+	font-size: 0.9em;
+	margin-bottom: 3px;
+}
+
+dl.popup_ty2 dd table td div.pr_ct {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty2 dd table td div.pr_ct input[type="text"] {
+	margin-right: 5px;
+}
+
+dl.popup_ty2 dd div.btn_message_box {
+	
+}
+
+dl.popup_ty2 dd div.btn_message_box{
+	width: 146px;
+	height: 23px;
+	border: none;
+	cursor: pointer;
+	display: block;
+	margin-left: 450px;
+	margin-top: 10px;
+}
+
+dl.popup_ty2 dd table td.bt_msg_delete input {
+	margin-right: 10px;
+}
+
+dl.popup_ty2 dd div.btn_message_box input.btn_message{
+	width: 146px;
+	height: 23px;
+	color: #fff;
+	font-size: 0.75em;
+	background: #333;
+	border: none;
+	cursor: pointer;
+}
+
+dl.popup_ty2 dd div.btn_message_box input.btn_message:hover{
+	background: #575C64;
+}
+
+/*--------------------------------------------------------
+	popupーフリーレント、メモ
+--------------------------------------------------------*/
+/*dl.popup_ty3 dd {
+	padding-top: 10px;
+}*/
+dl.popup_ty3 dd table.free_input {
+	height: 66px;
+	/*width: 140px;*/
+	/*width: 240px;*/
+	margin: 0 auto;
+}
+
+dl.popup_ty3 dd table.free_input td {
+	font-size: 0.8em;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty3 dd table.free_input td.ty_a {
+	/*width: 70px;*/
+	width: 160px;
+	text-align:right;
+	padding-right: 10px;
+}
+
+dl.popup_ty3 dd table.free_input td.ty_a input {
+}
+
+dl.popup_ty3 dd table.free_input td.ty_d {
+	/*width: 70px;*/
+	width: 160px;
+	padding-right: 10px;
+}
+
+dl.popup_ty3 dd table.free_input td.ty_b {
+	/*width: 40px;*/
+}
+
+dl.popup_ty3 dd table.free_input td.ty_c {
+	width: 26px;
+	padding-left: 4px;
+}
+
+dl.popup_ty3 dd table.free_input td.ty_b input.fr_period {
+	width: 36px;
+}
+
+dl.popup_ty3 dd table.free_input td.bt_fr {
+	vertical-align:top;
+	padding-top: 7px;
+	padding-bottom:0;
+}
+
+
+
+/*--------------------------------------------------------
+	popupー共通　履歴
+--------------------------------------------------------*/
+dl.popup_ty1 dd div.popup_box,
+dl.popup_ty2 dd div.popup_box,
+dl.popup_ty3 dd div.popup_box,
+dl.popup_ty6 dd div.popup_box{
+	overflow-y:scroll;
+	height: 296px;
+}
+
+dl.popup_ty6 dd div.popup_box {
+	margin-bottom: 10px;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data,
+dl.popup_ty2 dd div.popup_box table.ahv_data{
+	width: 606px;
+	border-top: 1px dotted #d0d0d0;
+}
+
+dl.popup_ty3 dd div.popup_box table.ahv_data,
+dl.popup_ty6 dd div.popup_box table.ahv_data{
+	width: 374px;
+	border-top: 1px dotted #d0d0d0;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data tr.bg,
+dl.popup_ty2 dd div.popup_box table.ahv_data tr.bg,
+dl.popup_ty3 dd div.popup_box table.ahv_data tr.bg,
+dl.popup_ty6 dd div.popup_box table.ahv_data tr.bg{
+	background: #f1f8fc;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data th,
+dl.popup_ty1 dd div.popup_box table.ahv_data td,
+dl.popup_ty2 dd div.popup_box table.ahv_data th,
+dl.popup_ty2 dd div.popup_box table.ahv_data td,
+dl.popup_ty3 dd div.popup_box table.ahv_data th,
+dl.popup_ty3 dd div.popup_box table.ahv_data td,
+dl.popup_ty6 dd div.popup_box table.ahv_data th,
+dl.popup_ty6 dd div.popup_box table.ahv_data td{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data tr,
+dl.popup_ty2 dd div.popup_box table.ahv_data tr,
+dl.popup_ty3 dd div.popup_box table.ahv_data tr,
+dl.popup_ty6 dd div.popup_box table.ahv_data tr{
+	border-bottom: 1px dotted #d0d0d0;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data th,
+dl.popup_ty2 dd div.popup_box table.ahv_data th,
+dl.popup_ty3 dd div.popup_box table.ahv_data th{
+	padding-left: 12px;
+	width: 90px;
+	font-size: 0.7em;
+	text-align: left;
+	vertical-align:top;
+	padding-top: 8px;
+}
+
+dl.popup_ty1 dd div.popup_box table.ahv_data td{
+	width: 504px;
+	font-size: 0.8em;
+	vertical-align: top;
+}
+
+dl.popup_ty2 dd div.popup_box table.ahv_data td,
+dl.popup_ty3 dd div.popup_box table.ahv_data td{
+	font-size: 0.8em;
+}
+
+dl.popup_ty2 dd div.popup_box table.ahv_data td.txt_msg{
+	width: 454px;
+}
+dl.popup_ty2 dd div.popup_box table.ahv_data td.txt_msg_b{
+	width: 222px;
+}
+
+dl.popup_ty2 dd div.popup_box table.ahv_data td.bt_msg_delete,
+dl.popup_ty3 dd div.popup_box table.ahv_data td.bt_msg_delete{
+	width: 50px;
+	text-align: right;
+}
+
+
+/* オーナー業者対応履歴 */
+dl.popup_ty6 dd div.popup_box table.ahv_data {
+	font-size: 0.8em;
+}
+
+dl.popup_ty6 dd div.popup_box table.ahv_data th {
+	background: #efefef;
+	border-bottom: 1px solid #e1e1e1;
+	border-top: 1px solid #e1e1e1;
+}
+
+dl.popup_ty6 dd div.popup_box table.ahv_data .date {
+	width: 100px;
+}
+
+dl.popup_ty6 dd div.popup_box table.ahv_data .saler {
+	width: 50px;
+}
+
+/*--------------------------------------------------------
+	popupー各種編集・更新・登録・リスト関連
+--------------------------------------------------------*/
+dl.popup_ty2 dd table.edit_input,
+dl.popup_ty4 dd table.edit_input,
+dl.popup_ty5 dd table.edit_input,
+dl.popup_ty6 dd table.edit_input{
+	/*width: 626px;*/
+	width: 100%;
+	font-size: 0.8em;
+	/*margin-top: 14px;*/
+}
+
+dl.popup_ty4 dd table.print_tp {
+	width: 626px;
+}
+
+dl.popup_ty5 dd table.floor_info,
+dl.popup_ty5 dd table.ei_tya{
+	width: 463px!important;
+	float: left;
+}
+
+dl.popup_ty4 dd table.build_info {
+	width: 313px!important;
+	float: left;
+}
+
+dl.popup_ty5 dd table.bd_facility{
+	clear: both;
+	width: 926px!important;
+}
+
+dl.popup_ty5 dd table.ei_tyd{
+	clear: both;
+	width: 896px!important;
+}
+
+dl.popup_ty5 dd table.bd_facility td.w,
+dl.popup_ty5 dd table.edit_input td.w{
+	width: 352px;
+}
+
+dl.popup_ty4 dd table.admins {
+	width: 626px;
+}
+
+dl.popup_ty4 dd table.translate {
+	width: 470px;
+}
+
+dl.popup_ty4 dd table.mt,
+dl.popup_ty5 dd table.mt,
+dl.popup_ty4 dd .mt2,
+dl.popup_ty5 dd .mt2,
+dl.popup_ty6 dd .mt2{
+	margin-bottom: 10px;
+}
+
+dl.popup_ty2 dd table.edit_input th,
+dl.popup_ty4 dd table.edit_input th,
+dl.popup_ty5 dd table.edit_input th,
+dl.popup_ty6 dd table.edit_input th{
+	padding: 4px 0 11px 4px;
+	background: #efefef url(img/bg_th.gif) left bottom repeat-x;
+	text-align: left;
+}
+
+dl.popup_ty4 dd table.translate th{
+	padding: 4px 0 16px 4px;
+	background: #efefef url(img/bg_th_e.gif) left bottom repeat-x;
+	text-align: left;
+}
+
+dl.popup_ty2 dd table.edit_input th,
+dl.popup_ty4 dd table.edit_input th,
+dl.popup_ty6 dd table.edit_input th{
+	width: 86px!important;
+}
+
+dl.popup_ty5 dd table.edit_input th,
+dl.popup_ty4 dd table.translate th{
+	width: 101px!important;
+}
+
+dl.popup_ty5 dd table.edit_input th em {
+	font-weight: bold;
+}
+
+dl.popup_ty4 dd table.edit_input th.w3 {
+	width: 111px!important;
+}
+
+dl.popup_ty2 dd table.edit_input td,
+dl.popup_ty4 dd table.edit_input td,
+dl.popup_ty5 dd table.edit_input td,
+dl.popup_ty6 dd table.edit_input td{
+	padding: 0 0 7px 6px;
+}
+
+dl.popup_ty4 dd table.translate td{
+	padding: 0 0 12px 6px;
+}
+
+/* input */
+dl.popup_ty4 dd table.edit_input td input.ty1,
+dl.popup_ty5 dd table.edit_input td input.ty1{
+	width:140px;
+}
+
+dl.popup_ty2 dd table.edit_input td input.ty2,
+dl.popup_ty4 dd table.edit_input td input.ty2,
+dl.popup_ty5 dd table.edit_input td input.ty2{
+	width:200px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty3,
+dl.popup_ty5 dd table.edit_input td input.ty3{
+	width:266px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty4,
+dl.popup_ty5 dd table.edit_input td input.ty4{
+	width:90px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty5,
+dl.popup_ty5 dd table.edit_input td input.ty5{
+	width:100px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty6,
+dl.popup_ty5 dd table.edit_input td input.ty6{
+	width:480px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty7,
+dl.popup_ty5 dd table.edit_input td input.ty7{
+	width:400px;
+}
+
+dl.popup_ty2 dd table.edit_input td input.ty8,
+dl.popup_ty4 dd table.edit_input td input.ty8,
+dl.popup_ty5 dd table.edit_input td input.ty8{
+	width:50px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty9,
+dl.popup_ty5 dd table.edit_input td input.ty9{
+	width:630px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty10,
+dl.popup_ty5 dd table.edit_input td input.ty10{
+	width:300px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.ty11,
+dl.popup_ty5 dd table.edit_input td input.ty11{
+	width:34px;
+}
+
+dl.popup_ty2 dd table.edit_input td input.ty12,
+dl.popup_ty4 dd table.edit_input td input.ty12,
+dl.popup_ty5 dd table.edit_input td input.ty12{
+	width:75px;
+}
+
+dl.popup_ty5 dd table.edit_input td input.ty13{
+	width:730px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.mt,
+dl.popup_ty5 dd table.edit_input td input.mt{
+	margin-top: 3px;
+}
+
+dl.popup_ty4 dd table.edit_input td input.mb1,
+dl.popup_ty5 dd table.edit_input td input.mb1{
+	margin-bottom: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td label.rd,
+dl.popup_ty5 dd table.edit_input td label.rd {
+	margin-left: 10px;
+}
+
+dl.popup_ty2 dd table.edit_input td label.rd2,
+dl.popup_ty4 dd table.edit_input td label.rd2,
+dl.popup_ty5 dd table.edit_input td label.rd2 {
+	margin-right: 10px;
+}
+
+dl.popup_ty4 dd table.edit_input td label.rd3,
+dl.popup_ty5 dd table.edit_input td label.rd3 {
+	margin-right: 8px;
+}
+
+dl.popup_ty4 dd table.edit_input td label.rd4,
+dl.popup_ty5 dd table.edit_input td label.rd4 {
+	margin-left: 20px;
+}
+
+dl.popup_ty4 dd table.edit_input td label.rd input,
+dl.popup_ty5 dd table.edit_input td label.rd input,
+dl.popup_ty4 dd table.edit_input td label.rd2 input,
+dl.popup_ty5 dd table.edit_input td label.rd2 input,
+dl.popup_ty4 dd table.edit_input td label.rd3 input,
+dl.popup_ty5 dd table.edit_input td label.rd3 input,
+dl.popup_ty4 dd table.edit_input td label.rd4 input,
+dl.popup_ty5 dd table.edit_input td label.rd4 input{
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td label input.ip,
+dl.popup_ty5 dd table.edit_input td label input.ip{
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd textarea.txta1,
+dl.popup_ty5 dd textarea.txta1{
+	width: 570px;
+	height: 80px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty4 dd textarea.txta2,
+dl.popup_ty5 dd textarea.txta2{
+	width: 420px;
+	height: 60px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty4 dd textarea.txta3,
+dl.popup_ty5 dd textarea.txta3{
+	width: 266px;
+	height: 40px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty4 dd textarea.txta4,
+dl.popup_ty5 dd textarea.txta4{
+	width: 480px;
+	height: 80px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty4 dd textarea.txta5,
+dl.popup_ty5 dd textarea.txta5{
+	width: 300px;
+	height: 40px;
+	font-size: 0.9em;
+}
+
+
+
+dl.popup_ty4 dd textarea.txta6,
+dl.popup_ty5 dd textarea.txta6,
+dl.popup_ty6 dd textarea.txta6{
+	width: 384px;
+	height: 60px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty5 dd textarea.txta7{
+	width: 730px;
+	height: 60px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty5 dd textarea.txta8{
+	width: 630px;
+	height: 60px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty4 dd select.sc1,
+dl.popup_ty5 dd select.sc1,
+dl.popup_ty6 dd select.sc1{
+	width: 100px;
+}
+
+/* テキスト */
+dl.popup_ty4 dd div.txt_sup,
+dl.popup_ty5 dd div.txt_sup,
+dl.popup_ty6 dd div.txt_sup{
+	font-size: 0.8em;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty4 dd .txt_sup2,
+dl.popup_ty5 dd .txt_sup2,
+dl.popup_ty6 dd .txt_sup2{
+	font-size: 0.8em;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+/* 印刷 */
+dl.popup_ty5 dd div.ttl_pop {
+	border-left: 4px solid #2e7bba;
+	padding-left: 7px;
+	font-size: 0.85em;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+/* 印刷 */
+dl.popup_ty4 dd table.edit_input td ul.print_tp_list li {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul li input.p_ttl{
+	width: 300px;
+	margin-left: 10px;
+}
+
+/* フロア情報 */
+dl.popup_ty5 dd div.ttl_fl {
+	border-top: 1px solid #2e3231;
+	border-bottom: 1px solid #2e3231;
+	padding: 7px 0 7px 8px;
+}
+
+dl.popup_ty5 dd div.ttl_fl span.fl_id {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-right: 6px;
+}
+
+dl.popup_ty5 dd div.ttl_fl img.mr {
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+dl.popup_ty5 dd div.ttl_fl span.kubun {
+	padding: 4px 6px;
+	line-height: 1em;
+	font-size: 0.8em;
+	color: #fff;
+	background: #333;
+}
+
+dl.popup_ty5 dd div.ttl_fl span.att {
+	color:#cc0000;
+	padding-right: 6px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty5 dd div.ttl_fl span.f_data {
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+dl.popup_ty5 dd table.f_info th input[type="checkbox"],
+dl.popup_ty5 dd table.f_info_b th input[type="checkbox"]{
+	margin-right: 3px;
+}
+
+dl.popup_ty5 dd table.f_info td {
+	width: 352px;
+}
+
+dl.popup_ty5 dd table.edit_input td p.last_data {
+	font-size: 0.8em;
+	color: #999;
+	margin-top: 3px;
+}
+
+ /* 建物情報の編集 */
+dl.popup_ty5 dd table.edit_input td span.plr {
+	padding-left: 20px;
+}
+
+dl.popup_ty5 dd div.bd_info_box {
+	height: 500px;
+	overflow-y:scroll;
+	margin-bottom: 10px;
+}
+
+ /* 情報公開・非公開 */
+dl.popup_ty5 dd table.edit_input td ul.att {
+	width: 600px;
+	padding: 3px 10px;
+	background: #f0f8fb;
+	font-size: 0.8em;
+	margin-top: 3px;
+}
+
+dl.popup_ty5 dd table.edit_input td div.ch_tax {
+	width: 133px;
+	height: 20px;
+	margin: 0 auto;
+	padding-bottom: 5px;
+}
+
+dl.popup_ty5 dd div.closed_info {
+	padding: 8px 6px;
+	background: #fefbe0;
+	font-size: 0.8em;
+	margin: 10px 0 20px;
+}
+
+dl.popup_ty5 dd div.closed_info input[type="checkbox"]{
+	margin-right: 3px;
+}
+
+dl.popup_ty5 dd div.closed_info span {
+	color: #cc0000;
+	padding-right: 20px;
+}
+
+dl.popup_ty5 dd div.closed_info label {
+	margin-right: 10px;
+}
+
+dl.popup_ty5 dd div.closed_info label input {
+	margin-right: 5px;
+}
+
+ /* チェックをいれたフロアにもコピー */
+dl.popup_ty5 dd div.txt_f {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+dl.popup_ty5 dd table.f_update {
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid #e1e1e1;
+	font-size: 0.8em;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd table.f_update th {
+	border-bottom: 1px solid #d0d0d0;
+	text-align: left;
+	padding-top:6px;
+	padding-bottom: 6px;
+	background: #f2f2f2;
+}
+
+dl.popup_ty5 dd table.f_update td {
+	border-bottom: 1px solid #d0d0d0;
+	padding-top:3px;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty5 dd table.f_update .bt {
+	width: 22px;
+	text-align: center;
+}
+
+dl.popup_ty5 dd table.f_update .ico {
+	width: 38px;
+	padding-left: 4px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.f_update .fl_id {
+	width: 238px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.f_update .fl_num {
+	width: 190px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.f_update .fl_area {
+	width: 174px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.f_update .update {
+	width: 260px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.f_update tr.this {
+	color: #999;
+}
+
+ /* 成約情報の更新見出し */
+dl.popup_ty5 dd div.ttl_h4 {
+	padding: 0 0 4px 4px;
+	font-size: 0.8em;
+	font-weight: bold;
+	border-bottom: 1px dotted #e1e1e1;
+	margin-bottom: 5px;
+}
+
+ /* 区分所有情報リンク */
+dl.popup_ty5 dd a.link_kubun {
+	padding: 4px 6px;
+	line-height: 1em;
+	font-size: 0.8em;
+	color: #fff;
+	background: #333;
+	cursor: pointer;
+	margin-left: 6px;
+}
+
+dl.popup_ty5 dd a.link_kubun:hover {
+	background: #575c64;
+}
+
+ /* 過去の履歴見出し */
+dl.popup_ty4 dd div.ttl_h3,
+dl.popup_ty5 dd div.ttl_h3 {
+	height: 21px;
+	padding: 3px 0 0 15px;
+	background: #2e3231;
+	color: #fff;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 19px;
+	margin-bottom: 7px;
+}
+
+ /* 過去の履歴リスト */
+dl.popup_ty5 dd table.admin_info {
+	width: 926px;
+	margin-bottom: 35px;
+	border-top: 1px solid #d0d0d0;
+}
+
+dl.popup_ty5 dd table.admin_info tr {
+	border-bottom: 1px solid #d0d0d0;
+}
+
+dl.popup_ty5 dd table.admin_info th,
+dl.popup_ty5 dd table.admin_info td {
+	padding: 5px 0;
+	font-size: 0.8em;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.admin_info th {
+	width: 264px;
+	padding-left: 24px;
+}
+
+dl.popup_ty5 dd table.admin_info th.ico_corptype_2 {
+	background: url(img/ico_bd_ad.gif) 1px center no-repeat;
+}
+
+dl.popup_ty5 dd table.admin_info th.ico_corptype_1 {
+	background: url(img/ico_ower.gif) 1px center no-repeat;
+}
+
+dl.popup_ty5 dd table.admin_info th.ico_corptype_3 {
+	background: url(img/ico_general.gif) 1px center no-repeat;
+}
+
+dl.popup_ty5 dd table.admin_info td.ad_name {
+	width: 128px;
+	
+}
+
+dl.popup_ty5 dd table.admin_info td.ad_contact {
+	width: 264px;
+}
+
+dl.popup_ty5 dd table.admin_info td.ad_type {
+	width: 50px;
+}
+
+dl.popup_ty5 dd table.admin_info td.ad_charge {
+	width: 70px;
+}
+
+dl.popup_ty5 dd table.admin_info td.ad_update {
+	width: 126px;
+}
+
+table.admin_info td.bt_ad_rn {
+	width: 34px;
+	
+}
+
+
+ /* 建物環境の編集 */
+
+dl.popup_ty5 dd table.edit_input td ul.facility {
+	font-size: 1em;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.mb {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li {
+	float: left;
+	width: 200px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li.fty_a {
+	width: 184px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li.fty_b {
+	width: 144px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li.fty_c {
+	width: 236px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.facility li.fty_d {
+	width: 130px;
+}
+
+dl.popup_ty5 dd table.fc_t {
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid #e1e1e1;
+	font-size: 0.8em;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd table.fc_t th {
+	border-bottom: 1px dotted #d0d0d0;
+	text-align: left;
+	padding-top:6px;
+	padding-bottom: 6px;
+	background: #f2f2f2;
+}
+
+dl.popup_ty5 dd table.fc_t tr.sub th {
+	background: #f9f9f9;
+}
+
+dl.popup_ty5 dd table.fc_t th.fci {
+	width: 146px;
+}
+
+dl.popup_ty5 dd table.fc_t th.fci input[type="checkbox"] {
+	margin-right: 3px;
+}
+
+dl.popup_ty5 dd table.fc_t th.flb {
+	width: 196px;
+}
+
+dl.popup_ty5 dd table.fc_t th.fl {
+	width: 196px;
+	border-bottom: 1px dotted #d0d0d0;
+	padding-top:3px;
+	padding-bottom: 3px;
+	background: none;
+}
+
+dl.popup_ty5 dd table.fc_t td {
+	width: 146px;
+	border-bottom: 1px dotted #d0d0d0;
+	padding-top:3px;
+	padding-bottom: 3px;
+}
+
+ /* 表示状態の管理 */
+dl.popup_ty5 dd table.edit_input td ul.dp_admin,
+dl.popup_ty5 dd table.edit_input td ul.dp_admin_b{
+	font-size: 1em;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.dp_admin li {
+	width: 203px;
+	float: left;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.dp_admin_b li {
+	width: 250px;
+	float: left;
+	padding-bottom: 5px;
+}
+
+dl.popup_ty5 dd table.edit_input td ul.dp_admin li input[type="radio"],
+dl.popup_ty5 dd table.edit_input td ul.dp_admin_b li input[type="radio"]{
+	margin-right: 5px;
+}
+
+dl.popup_ty5 dd table.edit_input td.not_reason {
+	vertical-align: middle;
+}
+
+dl.popup_ty5 dd table.edit_input td.not_reason div.txt_not_reason {
+	width:150px;
+	float: left;
+	padding-top: 5px;
+}
+
+dl.popup_ty5 dd table.edit_input td.not_reason div.input_not_reason {
+	width:500x;
+	float: left;
+}
+
+dl.popup_ty5 dd table.edit_input td.not_reason textarea {
+	margin-top: 5px;
+}
+
+ /* 駅徒歩情報の編集 */
+dl.popup_ty4 dd table.st_edit {
+	width: 626px;
+	border-top: 1px dotted #e1e1e1;
+}
+
+dl.popup_ty4 dd table.st_edit tr {
+	border-bottom: 1px dotted #e1e1e1;
+}
+
+dl.popup_ty4 dd table.st_edit th,
+dl.popup_ty4 dd table.st_edit td {
+	padding: 5px 0;
+	text-align: left;
+	font-size: 0.8em;
+}
+
+dl.popup_ty4 dd table.st_edit th {
+	background: #f2f2f2;
+}
+
+dl.popup_ty4 dd table.st_edit .st_id {
+	width: 330px;
+	padding-left: 40px;
+}
+
+dl.popup_ty4 dd table.st_edit .st_name {
+	width: 160px;
+}
+
+dl.popup_ty4 dd table.st_edit .time {
+	width: 96px;
+}
+
+dl.popup_ty4 dd table.st_edit tr.bg { 
+background: #f1f8fc;
+}
+
+dl.popup_ty4 dd p.txt_st {
+	font-size: 0.8em;
+	padding: 10px 0 16px;
+	text-align: center;
+}
+
+ /* 業者関連 */
+dl.popup_ty4 dd div.ad_entry_box,
+dl.popup_ty5 dd div.ad_entry_box {
+	overflow-y:scroll;
+	height: 320px;
+	margin-bottom: 10px;
+}
+dl.popup_ty5 dd div.admin_box {
+	/*width: 463px;*/
+	width: 443px;
+	float: left;
+}
+
+
+ /* 町名指定 */
+dl.popup_ty4 dd ul.town_list {
+	width: 100%;
+	width: 626px\9;
+	*width: 626px;
+	font-size: 0.75em;
+	margin-bottom: 7px;
+	
+}
+
+dl.popup_ty4 dd ul.town_list:not(:target) {
+	width: 626px\9;
+}
+
+dl.popup_ty4 dd ul.town_list li {
+	width: 125px;
+	float: left;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty4 dd ul.town_list li input {
+	margin-right: 5px;
+}
+
+
+/* タスク関連 */
+dl.popup_ty4 dd table.edit_input td div.cus_display {
+	width: 266px;
+	position: relative;
+	float: left;
+}
+
+dl.popup_ty4 dd table.edit_input td div.cus_display div.cus_list {
+	width: 270px;
+	position:absolute;
+	top: 21px;
+	left: 0px;
+	background: #fff;
+	border: 1px solid #ccc;
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(51,51,51,0.3); /* Safari, Chrome用 */
+	-moz-box-shadow: 2px 2px 2px 0px rgba(51,51,51,0.3); /* Firefox用 */
+	box-shadow: 2px 2px 2px 0px rgba(51,51,51,0.3); /* CSS3 */
+	padding: 3px 0;
+}
+
+dl.popup_ty4 dd table.edit_input td div.cus_display div.cus_list ul {
+	overflow-y:scroll;
+	height: 80px;
+	padding-left: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.cus_display div.cus_list ul li {
+	width: 244px;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty4 dd table.edit_input td img.ico_phase {
+	float: left;
+	margin-left: 20px;
+}
+
+/*  タスク　ビルリスト*/
+dl.popup_ty4 dd  #list_floor_lists {
+	overflow-y:scroll;
+	height: 100px;
+	background: #FDFBD9!important;
+	margin-top: 10px;
+}
+
+ /* タスクリスト */
+dl.popup_ty4 dd table.edit_input td ul.tk_list {
+	width: 490px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.tk_list li {
+	/*width: 140px;*/
+	width: 150px;
+	float: left;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.tk_list li input {
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.ap_select {
+	padding-bottom: 10px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.ap_select input {
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.ap_select label {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.mtp1 {
+	margin-left: 0;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.tk_list li.tk_cl {
+	color: #cc0000;
+}
+
+dl.popup_ty4 dd table.edit_input td div.mtp2 {
+	margin-left: 140px;
+}
+
+dl.popup_ty4 dd table.edit_input td div.mtp3 {
+	margin-left: 280px;
+}
+
+ /* panel tab menu css上書き */
+ul.tasks {
+	width: 490px;
+}
+ul.tasks li {
+	font-size: 1em!important;
+}
+
+div.taskpl{
+	padding: 10px 0!important;
+}
+
+ /* タスク結果報告 */
+dl.popup_ty4 dd table.task_output {
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty4 dd table.task_output th,
+dl.popup_ty4 dd table.task_output td {
+	text-align: left;
+	vertical-align: top;
+}
+
+
+dl.popup_ty4 dd table.task_output th {
+	width: 170px;
+}
+
+dl.popup_ty4 dd table.task_output td.tk_ph {
+	width: 116px;	
+}
+
+dl.popup_ty4 dd table.task_output td.tk_d {
+	width: 35px;	
+}
+
+dl.popup_ty4 dd ul.stt_phase {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty4 dd ul.stt_phase li {
+	float: left;
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd ul.stt_phase li.tk_rank {
+	padding-top: 2px;
+	font-size: 0.85em;
+}
+
+dl.popup_ty4 dd div.ttl_customer {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-bottom: 12px;
+	border-bottom: 1px dotted #e1e1e1;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty4 dd div.tk_sup {
+	font-size: 0.8em;
+	color: #cc0000;
+	margin-bottom: 10px;
+}
+ 
+dl.popup_ty4 dd div.ttl_next {
+	height: 25px;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 25px;
+	text-align: center;
+	background: #f1f8fc;
+	margin-bottom: 10px;
+}
+
+/* 下部下線（顧客関連） */
+dl.popup_ty4 dd table.mline,
+dl.popup_ty5 dd table.mline{
+	border-bottom: 1px dotted #cacaca;
+	margin-bottom: 7px;
+}
+
+ /* 担当者リスト */
+dl.popup_ty4 dd table.edit_input td ul.sales_list {
+	width: 100%;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.sales_list li {
+	width: 100px;
+	float: left;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.sales_list li input {
+	margin-right: 5px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.sales_list li.sl_login {
+	width: 120px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.sales_list li.sl_login span {
+	font-size: 0.8em;
+	color: #cc0000;
+	padding-left: 3px;
+}
+
+/* リスト関連 */
+dl.popup_ty4 dd table.edit_input td ul.ap_condition,
+dl.popup_ty5 dd table.edit_input td ul.ap_condition{
+	padding-top: 3px;
+}
+
+dl.popup_ty4 dd table.edit_input td ul.ap_condition li,
+dl.popup_ty5 dd table.edit_input td ul.ap_condition li{
+	padding: 0 0 6px 22px;
+	background: url(img/ico_circle.gif) 8px 3px no-repeat;
+}
+
+dl.popup_ty5 dd table.edit_input td div.stock_bd_box {
+	overflow-y:scroll;
+	height: 140px;
+	margin-bottom: 5px;
+}
+
+ /* 新規物件登録 */
+dl.popup_ty5 dd ul.new_bd {
+	width: 100%;
+}
+
+dl.popup_ty5 dd ul.new_bd li {
+	width: 140px;
+	float: left;
+}
+
+dl.popup_ty5 dd ul.new_bd li input {
+	margin-right: 5px;
+}
+
+dl.popup_ty5 dd span.lm {
+	margin-left: 20px;
+}
+
+
+ /* 履歴入力・編集 */
+dl.popup_ty6 dd ul.ad_active,
+dl.popup_ty6 dd ul.ad_active_b,
+dl.popup_ty6 dd div.ad_active{
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty6 dd ul.mt10,
+dl.popup_ty6 dd div.mt10{
+	margin-top: 10px;
+}
+
+dl.popup_ty6 dd ul.ad_active li {
+	width: 94px;
+	float: left;
+	padding-bottom: 3px;
+}
+
+dl.popup_ty6 dd ul.ad_active_b li {
+	float: left;
+	padding-bottom: 3px;
+	padding-right: 3px;
+}
+
+dl.popup_ty6 dd ul.ad_active li input,
+dl.popup_ty6 dd ul.ad_active_b li input {
+	margin-right: 5px;
+}
+
+dl.popup_ty6 dd textarea.a_mb {
+	margin-bottom: 20px;
+}
+
+ /*顧客管理　新規売上報告 */
+dl.popup_ty4 dd div.nsales_box,
+dl.popup_ty5 dd div.nsales_box {
+	overflow-y:scroll;
+	height: 500px;
+	margin-bottom: 10px;
+}
+
+ /*顧客管理　新規顧客 */
+dl.popup_ty4 dd div.ttl_h3b,
+dl.popup_ty5 dd div.ttl_h3b {
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-bottom: 10px;
+	padding-left: 16px;
+	padding-bottom: 5px;
+	background: url(/img/ico_circle.gif) left 3px no-repeat;
+	border-bottom: 1px dotted #cacaca;
+}
+
+/* 現地レポートタイトル編集 */
+dl.popup_ty5 dd table.edit_input th span.sup {
+	font-size: 0.8em;
+	color: #999;
+}
+
+dl.popup_ty5 dd table.img_upload {
+	float: left;
+	margin-top: 20px;
+}
+
+dl.popup_ty5 dd table.edit_input td table.img_upload td {
+	padding: 0;
+}
+
+dl.popup_ty5 dd table.edit_input td table.img_upload td.jpg_sup {
+	padding-top: 10px;
+}
+
+dl.popup_ty5 dd div.fileinputs {  
+ 	position: relative;
+	width: 475px;
+ 	height:20px;  
+} 
+
+dl.popup_ty5 dd input.upfile {
+	width: 475px;
+	height: 30px;
+	position: relative;  
+	text-align: right;  
+	-moz-opacity:0 ;  
+	filter:alpha(opacity: 0);  
+	opacity: 0;  
+	z-index: 2;
+	cursor: pointer;
+}
+
+dl.popup_ty5 dd div.fakefile {  
+	position: absolute;  
+	top: 0px;  
+	left: 0px;  
+	z-index: 1;  
+}
+
+dl.popup_ty5 dd #targetInput {
+	width: 400px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+dl.popup_ty5 dd input.bt_upload {
+	width: 131px;
+	height: 24px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+	background: url(img/bt_upload.jpg) left top no-repeat;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+
+dl.popup_ty5 dd input.bt_upload:hover {
+	background: url(/search/img/bt_upload_on.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.preview_box {
+	width: 112px;
+	float: left;
+	border: 1px solid #e1e1e1;
+	padding: 5px 0;
+	text-align: center;
+	margin-left: 35px;
+}
+
+dl.popup_ty5 dd div.preview_box p {
+	margin-bottom: 3px;
+}
+
+/* 顧客一覧　放置期間設定 */
+dl.popup_ty5 dd table.term_set {
+	/*width: 100%;*/
+	border: 1px solid #999;
+	margin: 10px auto 25px;
+}
+
+dl.popup_ty5 dd table.term_set th,
+dl.popup_ty5 dd table.term_set td {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	font-size: 0.8em;
+	border-right: 1px solid #999;
+	border-bottom: 1px dotted #999;
+}
+
+dl.popup_ty5 dd table.term_set th {
+	border-bottom: 1px dotted #999;
+}
+
+dl.popup_ty5 dd table.term_set tr.sl_spot th {
+	width: 129px;
+	background: #f2f2f2;
+	border-bottom: 1px solid #999;
+}
+
+dl.popup_ty5 dd table.term_set td {
+	text-align: center;
+	border-bottom: 1px dotted #999;
+}
+
+dl.popup_ty5 dd table.term_set th.area {
+	width: 99px!important;
+	text-align: left;
+	padding-left: 10px;
+}
+
+div#contents table.term_set td {
+	width: 129px;
+}
+
+dl.popup_ty5 dd table.term_set tr.bg {
+	background: #f1f8fc;
+}
+
+dl.popup_ty5 dd table.term_set td input {
+	width: 72px;
+	margin-right: 5px;
+}
+
+/* 図面取り寄せ登録 */
+dl.popup_ty4 dd div.ttl_h3c,
+dl.popup_ty5 dd div.ttl_h3c,
+dl.popup_ty6 dd div.ttl_h3c {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-left: 16px;
+	margin-bottom: 5px;
+	background: url(/img/ico_circle.gif) left 3px no-repeat;
+}
+
+
+/*--------------------------------------------------------
+	popupー案内済み・成約・申し込み履歴
+--------------------------------------------------------*/
+dl.popup_ty4 dd div.popup_box {
+	overflow-y:scroll;
+	height: 130px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv{
+	width: 600px;
+	border-bottom: 1px dotted #e1e1e1;
+	margin: 0!important;
+}
+
+dl.popup_ty4 dd div.popup_box dl.bg {
+	background: #f1f8fc;
+}
+
+dl.popup_ty4 dd div.popup_box dl.tl {
+	border-top: 1px dotted #e1e1e1;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dt {
+	font-size: 0.85em;
+	padding: 10px 0;
+	height: auto;
+	text-align:left;
+	background: none;
+	color: #333;
+	line-height: normal;
+	position: static;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dt a {
+	font-weight: bold;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd {
+	font-size: 0.8em;
+	padding:0 0 10px 0;
+	background: none;
+	border: none;
+	height: auto;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d {
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li {
+	float: left;
+	padding-right: 30px;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.upd {
+	width: 162px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.snm {
+	width: 124px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.pr {
+	width: 154px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.chg {
+	width: 160px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.chk {
+	width: 212px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.add {
+	width: 230px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.fl {
+	width: 82px;
+	padding-right: 0;
+}
+
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d li.date {
+	width: 76px;
+	padding-right: 0;
+}
+
+/*--------------------------------------------------------
+	popupー地図
+--------------------------------------------------------*/
+dl.popup_ty4 dd div.pop_map {
+	width: 626px;
+	height: 626px;
+	padding-bottom: 10px;
+}
+
+/*--------------------------------------------------------
+	popupーマニュアル
+--------------------------------------------------------*/
+dl.popup_ty6 dd ul.m_list{
+	padding: 50px 0;
+	margin-left: 100px;
+}
+
+dl.popup_ty6 dd ul.m_list li {
+	font-size: 0.8em;
+	margin-bottom: 16px;
+	padding-left: 16px;
+	background: url(/img/ico_circle.gif) left center no-repeat;
+}
+
+/*--------------------------------------------------------
+	ボタン
+--------------------------------------------------------*/
+/* その他ボタン */
+dl.popup_ty4 dd div.bt_input_boxb,
+dl.popup_ty5 dd div.bt_input_boxb,
+dl.popup_ty6 dd div.bt_input_boxb{
+	clear: both;
+	border-top: 1px dotted #cacaca;
+	padding: 10px 0;
+	text-align: center;
+	
+}
+
+/* 送信ボタン */
+dl.popup_ty2 dd div.bt_send,
+dl.popup_ty3 dd div.bt_send {
+	width: 37px;
+	margin: 0 auto;
+}
+
+dl.popup_ty2 dd div.bt_send input.bt_send,
+dl.popup_ty3 dd div.bt_send input.bt_send{
+	width: 37px;
+	height: 18px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+	background: url(/img/bt_send.gif) left top no-repeat;
+}
+
+dl.popup_ty2 dd div.bt_send input.bt_send:hover,
+dl.popup_ty3 dd div.bt_send input.bt_send:hover{
+	background: url(/img/bt_send_on.gif) left top no-repeat;
+}
+
+dl.popup_ty2 dd div.mbp {
+	margin-bottom: 10px!important;
+}
+
+/* 更新・登録ボタン */
+dl.popup_ty2 dd div.bt_input_box,
+dl.popup_ty4 dd div.bt_input_box,
+dl.popup_ty5 dd div.bt_input_box,
+dl.popup_ty6 dd div.bt_input_box{
+	clear: both;
+	border-top: 1px dotted #cacaca;
+	
+}
+
+dl.popup_ty5 dd div.bbb {
+	border-top: none;
+	border-bottom: 1px dotted #cacaca;
+}
+
+dl.popup_ty4 dd div.bt_input,
+dl.popup_ty5 dd div.bt_input,
+dl.popup_ty6 dd div.bt_input{
+	width: 34px;
+	/*padding: 10px 0;*/
+	margin: 10px auto;
+}
+
+dl.popup_ty5 dd div.bt_input_b {
+	width: 82px;
+	margin: 10px auto;
+}
+
+dl.popup_ty5 dd div.bt_input_c {
+	width: 130px;
+	margin: 10px auto;
+}
+
+dl.popup_ty5 dd div.bt_input_d {
+	width: 116px;
+	margin: 10px auto;
+}
+
+dl.popup_ty5 dd div.bt_input_e {
+	width: 142px;
+	margin: 10px auto;
+}
+
+dl.popup_ty6 dd div.bt_input_f {
+	width: 156px;
+	margin: 10px auto;
+}
+
+dl.popup_ty4 dd div.bt_input_g,
+dl.popup_ty5 dd div.bt_input_g{
+	width: 76px;
+	margin: 10px auto;
+}
+
+dl.popup_ty5 dd div.bt_input_h {
+	width: 440px;
+	margin: 10px auto;
+}
+
+
+dl.popup_ty4 dd div.bt_input input.bt_upd,
+dl.popup_ty5 dd div.bt_input input.bt_upd,
+dl.popup_ty6 dd div.bt_input input.bt_upd,
+dl.popup_ty4 dd div.bt_input input.bt_carry,
+dl.popup_ty5 dd div.bt_input input.bt_carry,
+dl.popup_ty6 dd div.bt_input input.bt_carry,
+dl.popup_ty4 dd div.bt_input input.bt_entry,
+dl.popup_ty5 dd div.bt_input input.bt_entry,
+dl.popup_ty6 dd div.bt_input input.bt_entry,
+dl.popup_ty4 dd div.bt_input input.bt_change,
+dl.popup_ty5 dd div.bt_input input.bt_change,
+dl.popup_ty6 dd div.bt_input input.bt_change,
+dl.popup_ty4 dd div.bt_input input.bt_select,
+dl.popup_ty5 dd div.bt_input input.bt_select,
+dl.popup_ty6 dd div.bt_input input.bt_select,
+dl.popup_ty4 dd div.bt_input input.bt_add,
+dl.popup_ty5 dd div.bt_input input.bt_add,
+dl.popup_ty6 dd div.bt_input input.bt_add{
+	width: 34px;
+	height: 19px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty4 dd div.bt_input_b input.bt_stock,
+dl.popup_ty5 dd div.bt_input_b input.bt_stock,
+dl.popup_ty4 dd div.bt_input_b input.bt_copy,
+dl.popup_ty5 dd div.bt_input_b input.bt_copy{
+	width: 82px;
+	height: 23px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty4 dd div.bt_input_c input.bt_fusion,
+dl.popup_ty5 dd div.bt_input_c input.bt_fusion{
+	width: 130px;
+	height: 23px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty4 dd div.bt_input_d input.bt_fl_update,
+dl.popup_ty5 dd div.bt_input_d input.bt_fl_update{
+	width: 116px;
+	height: 23px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty5 dd div.bt_input_g input.bt_bdsearch{
+	width: 76px;
+	height: 31px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_bdfusion{
+	width: 440px;
+	height: 42px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_flfusion{
+	width: 440px;
+	height: 42px;
+	text-indent: -1000em;
+	border: none;
+	cursor: pointer;
+	display: block;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_upd,
+dl.popup_ty5 dd div.bt_input input.bt_upd,
+dl.popup_ty6 dd div.bt_input input.bt_upd{
+	background: url(/img/bt_update.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_upd:hover,
+dl.popup_ty5 dd div.bt_input input.bt_upd:hover,
+dl.popup_ty6 dd div.bt_input input.bt_upd:hover{
+	background: url(/img/bt_update_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_carry,
+dl.popup_ty5 dd div.bt_input input.bt_carry,
+dl.popup_ty6 dd div.bt_input input.bt_carry{
+	background: url(/img/bt_carry.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_carry:hover,
+dl.popup_ty5 dd div.bt_input input.bt_carry:hover,
+dl.popup_ty6 dd div.bt_input input.bt_carry:hover{
+	background: url(/img/bt_carry_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_entry,
+dl.popup_ty5 dd div.bt_input input.bt_entry,
+dl.popup_ty6 dd div.bt_input input.bt_entry{
+	background: url(/img/bt_entry.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_entry:hover,
+dl.popup_ty5 dd div.bt_input input.bt_entry:hover,
+dl.popup_ty6 dd div.bt_input input.bt_entry:hover{
+	background: url(/img/bt_entry_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_change,
+dl.popup_ty5 dd div.bt_input input.bt_change,
+dl.popup_ty6 dd div.bt_input input.bt_change{
+	background: url(/img/bt_change.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_change:hover,
+dl.popup_ty5 dd div.bt_input input.bt_change:hover,
+dl.popup_ty6 dd div.bt_input input.bt_change:hover{
+	background: url(/img/bt_change_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_select,
+dl.popup_ty5 dd div.bt_input input.bt_select,
+dl.popup_ty6 dd div.bt_input input.bt_select{
+	background: url(/img/bt_select.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_select:hover,
+dl.popup_ty5 dd div.bt_input input.bt_select:hover,
+dl.popup_ty6 dd div.bt_input input.bt_select:hover{
+	background: url(/img/bt_select_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_add,
+dl.popup_ty5 dd div.bt_input input.bt_add,
+dl.popup_ty6 dd div.bt_input input.bt_add{
+	background: url(/img/bt_add.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input input.bt_add:hover,
+dl.popup_ty5 dd div.bt_input input.bt_add:hover{
+	background: url(/img/bt_add_on.gif) left top no-repeat;
+}
+
+dl.popup_ty6 dd div.bt_input input.bt_save{
+	width: 44px;
+	height: 22px;
+	text-indent: 0;
+	font-size: 0.75em;
+	background: #2e3231;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+dl.popup_ty6 dd div.bt_input input.bt_save:hover{
+	background: #575c64;
+}
+
+dl.popup_ty4 dd div.bt_input_b input.bt_stock,
+dl.popup_ty5 dd div.bt_input_b input.bt_stock{
+	background: url(/img/bt_stock.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_b input.bt_stock:hover,
+dl.popup_ty5 dd div.bt_input_b input.bt_stock:hover {
+	background: url(/img/bt_stock_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_b input.bt_copy,
+dl.popup_ty5 dd div.bt_input_b input.bt_copy{
+	background: url(/img/bt_copy.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_b input.bt_copy:hover,
+dl.popup_ty5 dd div.bt_input_b input.bt_copy:hover {
+	background: url(/img/bt_copy_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_c input.bt_fusion,
+dl.popup_ty5 dd div.bt_input_c input.bt_fusion{
+	background: url(/img/bt_fusion.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_c input.bt_fusion:hover,
+dl.popup_ty5 dd div.bt_input_c input.bt_fusion:hover {
+	background: url(/img/bt_fusion_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_d input.bt_fl_update,
+dl.popup_ty5 dd div.bt_input_d input.bt_fl_update{
+	background: url(img/bt_fl_update.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_d input.bt_fl_update:hover,
+dl.popup_ty5 dd div.bt_input_d input.bt_fl_update:hover{
+	background: url(/img/bt_fl_update_on.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_e input.bt_bill_pr,
+dl.popup_ty5 dd div.bt_input_e input.bt_bill_pr{
+	background: url(/img/bt_bill_pr.gif) left top no-repeat;
+}
+
+dl.popup_ty4 dd div.bt_input_e input.bt_bill_pr:hover,
+dl.popup_ty5 dd div.bt_input_e input.bt_bill_pr:hover{
+	background: url(/img/bt_bill_pr_on.gif) left top no-repeat;
+}
+
+dl.popup_ty6 dd div.bt_input_f input.bt_order_n{
+	display: block;
+	width: 156px;
+	height: 24px;
+	background: #2E3231;
+	text-align: center;
+	color:#fff;
+	border: none;
+	cursor: pointer;
+	font-size: 0.75em;
+}
+
+dl.popup_ty6 dd div.bt_input_f input.bt_order_n:hover{
+	background: #575C64;
+}
+
+dl.popup_ty4 dd div.bt_input_g input.bt_entry_b{
+	display: block;
+	width: 76px;
+	height: 24px;
+	background: #2E3231;
+	text-align: center;
+	color:#fff;
+	border: none;
+	cursor: pointer;
+	font-size: 0.75em;
+}
+
+dl.popup_ty4 dd div.bt_input_g input.bt_entry_b:hover{
+	background: #575C64;
+}
+
+dl.popup_ty5 dd div.bt_input_g input.bt_bdsearch{
+	background: url(/img/bt_search.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.bt_input_g input.bt_bdsearch:hover{
+	background: url(/img/bt_search_on.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_bdfusion{
+	background: url(/img/bt_bdfusion.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_bdfusion:hover{
+	background: url(/img/bt_bdfusion_on.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_flfusion{
+	background: url(/img/bt_flfusion.jpg) left top no-repeat;
+}
+
+dl.popup_ty5 dd div.bt_input_h input.bt_flfusion:hover{
+	background: url(/img/bt_flfusion_on.jpg) left top no-repeat;
+}
+
+ 
+
+/*--------------------------------------------------------
+	popupー物件表示地図
+--------------------------------------------------------*/
+dl.popup_ty7 dd ul.ico_price {
+	padding: 10px 0 10px 12px;
+}
+
+dl.popup_ty7 dd ul.ico_price li {
+	float: left;
+	padding-left: 16px;
+	margin-right: 16px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty7 dd ul.ico_price li.price_a {
+	background: url(/img/ico_price_a.gif) left center no-repeat;
+}
+
+dl.popup_ty7 dd ul.ico_price li.price_b {
+	background: url(/img/ico_price_b.gif) left center no-repeat;
+}
+
+dl.popup_ty7 dd ul.ico_price li.price_c {
+	background: url(/img/ico_price_c.gif) left center no-repeat;
+}
+
+dl.popup_ty7 dd ul.ico_price li.price_d {
+	background: url(/img/ico_price_d.gif) left center no-repeat;
+}
+
+dl.popup_ty7 dd ul.ico_price li.price_e {
+	background: url(/img/ico_price_e.gif) left center no-repeat;
+}
+
+dl.popup_ty7 dd div.map_box {
+	width: 548px;
+	position: relative;
+}
+
+dl.popup_ty7 dd div.map_box img {
+	vertical-align: bottom;
+}
+
+dl.popup_ty7 dd div.bd_detail{
+	position: absolute;
+	width: 186px;
+	z-index: 10000000000;
+	
+}
+
+dl.popup_ty7 dd div.bd_detail img.fukidashi {
+	display: block;
+	vertical-align: bottom;
+	margin-top: -1px;
+	margin-left: 58px;
+}
+
+dl.popup_ty7 dd div.bd_box {
+	width: 178px;
+	background: #fff;
+	border: 1px solid #2B7BBA;
+	border-radius: 6px;        /* CSS3草案 */  
+    -webkit-border-radius: 6px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 6px;   /* Firefox用 */
+	
+	padding: 4px;
+}
+
+dl.popup_ty7 dd  div.bd_box img.ph {
+	display: block;
+	float: left;
+	margin-right: 4px;
+}
+
+dl.popup_ty7 dd div.bd_box div.bd_info {
+	width: 121px;
+	float: left;
+	font-size: 0.8em;
+	
+}
+
+
+dl.popup_ty7 dd div.bd_box div.bd_info a {
+	font-size: 0.8em;
+}
+
+dl.popup_ty7 dd div.bd_box p.bt_close {
+	display: block;
+	width: 13px;
+	height: 13px;
+	float: left;
+	cursor: pointer;
+}
+
+/*--------------------------------------------------------
+	popupーランク別顧客情報一覧
+--------------------------------------------------------*/
+dl.popup_ty8 dd div.list_box {
+	overflow-y:scroll;
+	height: 770px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty8 dd div.list_box div.rank_sam {
+	margin-bottom: 10px;
+}
+
+dl.popup_ty8 dd div.list_box div.rank_sam div.cus_sam {
+	float: left;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+dl.popup_ty8 dd div.list_box div.rank_sam div.sls_sam {
+	float: right;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-align: right;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list {
+	width: 487px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt{/* ポップアップの設定削除 */
+	height:auto;
+	text-align:left;
+	background: #f2f2f2;
+	color: #333;
+	font-size: 0.8em;
+	font-weight:bold;
+	line-height: normal;
+	position: inherit;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd{/* ポップアップの設定削除 */
+	background: #fff;
+	border: none;
+	padding: 0;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank {
+	padding: 5px;
+	background: #f2f2f2;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank div.rank{
+	width: 100px;
+	float: left;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank div.num{
+	width: 240px;
+	float: left;
+	font-weight: bold;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank div.sales{
+	width: 137px;
+	float: left;
+	text-align: right;
+	font-weight: bold;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus {
+	padding-top: 5px;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d {
+	width: 100%;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d tr {
+	border-bottom: 1px dotted #e1e1e1;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td {
+	font-size: 0.75em;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td.name {
+	width: 212px;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td.stt {
+	width: 100px;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td.sls {
+	width: 165px;
+	text-align: right;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td.name a {
+	color:#2e7bba;
+}
+
+dl.popup_ty8 dd div.list_box dl.r_cus_list dd.cus table.cus_d td.name a:hover {
+	color:#67a6da;
+}
+
+/*--------------------------------------------------------
+	popupーオーナー向けメール・FAX送信テスト
+--------------------------------------------------------*/
+/* mailコンテンツ */
+dl.popup_ty5 dd dl.mail {
+	border: 1px solid #cacaca;
+	margin-bottom: 14px!important;
+}
+
+dl.popup_ty5 dd dl.mnone {
+	margin-bottom: 0;
+}
+
+dl.popup_ty5 dd dl.mail dt {
+	height: auto;
+	color: #333;
+	font-weight: normal;
+	line-height: 1em;
+	border-bottom: 1px solid #cacaca;
+	background: #f2f2f2;
+	text-align: center;
+	font-size: 0.8em;
+	height: 22px;
+	line-height: 22px;
+}
+
+dl.popup_ty5 dd dl.mail dd {
+	border: none;
+	padding: 13px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty5 dd dl.mail dd div.m_detail {
+	padding: 13px;
+	border: 1px solid #e7e7e7;
+}
+
+dl.popup_ty5 dd dl.mail dd div.m_detail p {
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd dl.mail dd div.m_detail p.mb {
+	margin-bottom: 30px;
+}
+
+dl.popup_ty5 dd dl.mail dd div.m_detail p span {
+	margin-right: 15px;
+}
+
+/* mail送信日時 */
+dl.popup_ty5 dd table.mail_data {
+	border: 1px solid #cacaca;
+	font-size: 0.8em;
+	width: 100%;
+	margin-bottom: 14px;
+}
+dl.popup_ty5 dd table.mail_data  th,
+dl.popup_ty5 dd table.mail_data  td {
+	border-bottom: 1px dotted #e1e1e1;
+	padding-top:5px;
+	padding-bottom: 5px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.mail_data th {
+	width: 133px;
+	padding-left: 14px;
+	background: #f2f2f2;
+}
+
+dl.popup_ty5 dd table.mail_data  td {
+	padding-left: 10px;
+}
+
+dl.popup_ty5 dd table.mail_data  td span.mmr {
+	margin-right: 10px;
+}
+
+dl.popup_ty5 dd table.mail_data  td input.ttl_mail {
+	width: 340px;
+}
+
+ /* テスト送信ボタン */
+dl.popup_ty5 dd div.bt_test {
+	width: 82px;
+	height: 23px;
+	text-align:center;
+	font-size: 0.7em;
+	margin-left: 22px;
+	margin: 0 auto 14px;
+}
+
+dl.popup_ty5 dd div.bt_test a.bt_t_send {
+	display: block;
+	width: 82px;
+	height: 23px;
+	line-height: 23px;
+	color: #fff;
+	background: #2e3231;
+	text-decoration: none;
+	cursor: pointer;
+	text-align:center;
+	margin: 0 3px;
+	/*font-size: 0.8em;*/
+}
+
+dl.popup_ty5 dd div.bt_test a.bt_t_send:hover {
+	background: #575c64;
+}
+
+/*--------------------------------------------------------
+	popupー物件情報一括更新
+--------------------------------------------------------*/
+/* 見出し */
+dl.popup_ty5 dd div.ttl_fl {
+	border-top: 1px solid #2e3231;
+	border-bottom: 1px solid #2e3231;
+	padding: 7px 0 7px 8px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd  div.ttl_fl span.fl_id {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-right: 6px;
+}
+
+dl.popup_ty5 dd div.ttl_fl span.f_data {
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+/* フロア情報アップデート */
+dl.popup_ty5 dd table.fla_update {
+	font-size: 0.75em;
+}
+
+dl.popup_ty5 dd table.fla_update th {
+	width: 91px!important;
+	padding: 3px 0 8px 4px;
+	background: #efefef url(/img/bg_th_b.gif) left bottom repeat-x;
+}
+
+dl.popup_ty5 dd table.fla_update td {
+	vertical-align: top;
+	padding: 0 0 5px 6px;
+}
+
+dl.popup_ty5 dd div.flab {
+	border-top: 1px solid #cacaca;
+	padding-top: 7px;
+}
+
+dl.popup_ty5 dd table.fla_update td.w1 {
+	width: 270px;
+}
+
+dl.popup_ty5 dd table.fla_update td.w2 {
+	width: 334px;
+}
+
+dl.popup_ty5 dd table.fla_update .bt {
+	width: 110px;
+	font-weight: bold;
+}
+
+dl.popup_ty5 dd table.fla_update .bt span {
+	font-weight: bold;
+}
+dl.popup_ty5 dd table.fla_update .bt p {
+	margin-left: 18px;
+	font-weight: bold;
+}
+
+dl.popup_ty5 dd table.fla_update td input[type="text"] {
+	width: 74px;
+}
+
+dl.popup_ty5 dd table.fla_update td input[type="radio"] {
+	margin-right: 3px;
+}
+
+dl.popup_ty5 dd table.fla_update .bt input[type="checkbox"] {
+	margin-right: 3px;
+}
+
+dl.popup_ty5 dd table.fla_update td input.dy {
+	width: 50px;
+}
+
+dl.popup_ty5 dd table.fla_update td p {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty5 dd table.fla_update td div {
+	float: left;
+	margin-right: 10px;
+}
+
+dl.popup_ty5 dd div.fl_box {
+	height: 450px;
+	overflow-y:scroll;
+	margin-bottom: 10px;
+}
+
+
+
+dl.popup_ty5 dd table.fls_update {
+	font-size: 0.8em;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd table.fls_update th {
+	border-top: 1px solid #cacaca;
+	padding-top:6px;
+	padding-bottom: 6px;
+	background: #f2f2f2;
+}
+
+dl.popup_ty5 dd table.fls_update td {
+	border-top: 1px solid #cacaca;
+	/*text-align: center;*/
+	padding-top:6px;
+	padding-bottom: 6px;
+	vertical-align: top;
+}
+
+dl.popup_ty5 dd table.fls_update .bt {
+	width: 110px;
+	font-weight: bold;
+}
+
+
+
+dl.popup_ty5 dd table.fls_update .bt p {
+	margin-left: 18px;
+	font-weight: bold;
+}
+
+dl.popup_ty5 dd table.fls_update .bt input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+dl.popup_ty5 dd table.fls_update .rm {
+	width: 76px;
+	text-align: center;
+}
+
+dl.popup_ty5 dd table.fls_update .prm {
+	width: 152px;
+}
+
+dl.popup_ty5 dd table.fls_update th.prm {
+	width: 132px;
+	padding-left: 20px;
+	text-align:left;
+}
+
+dl.popup_ty5 dd table.fls_update .csc {
+	width: 152px;
+}
+
+dl.popup_ty5 dd table.fls_update th.csc {
+	width: 132px;
+	padding-left: 20px;
+	text-align:left;
+}
+
+dl.popup_ty5 dd table.fls_update .dps {
+	width: 158px;
+}
+
+dl.popup_ty5 dd table.fls_update th.dps {
+	width: 128px;
+	padding-left: 30px;
+	text-align:left;
+}
+
+dl.popup_ty5 dd table.fls_update .money {
+	width: 144px;
+}
+
+dl.popup_ty5 dd table.fls_update th.money {
+	width: 114px;
+	padding-left: 30px;
+	text-align:left;
+}
+
+dl.popup_ty5 dd table.fls_update .sc {
+	width: 134px;
+	text-align: center;
+}
+
+dl.popup_ty5 dd table.fls_update td input[type="text"] {
+	width: 94px;
+}
+
+dl.popup_ty5 dd table.fls_update td input[type="radio"] {
+	margin-right: 5px;
+}
+
+dl.popup_ty5 dd table.fls_update td p {
+	margin-bottom: 5px;
+}
+
+
+dl.popup_ty5 dd div.txt_f_b {
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-bottom: 10px;
+	padding-top: 30px;
+}
+
+/*--------------------------------------------------------
+	popupー重複ビルの統合
+--------------------------------------------------------*/
+/* 統合するビル検索 */
+dl.popup_ty5 dd div.ttl_bdfusion {
+	border-top: 1px solid #2e3231;
+	border-bottom: 1px solid #2e3231;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 7px 0 7px 4px;
+	margin-bottom: 10px;
+}
+
+/* ビル検索結果 */
+dl.popup_ty5 dd div.ttl_bdresult {
+	font-size: 0.95em;
+	font-weight: bold;
+	padding: 10px 0 10px 4px;
+	color: #2478B6;
+}
+
+dl.popup_ty5 dd div.ttl_bdresult span {
+	margin-left: 10px;
+	font-size: 0.9em;
+}
+
+dl.popup_ty5 dd ul.bd_list {
+	overflow-y:scroll;
+	height: 350px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd ul.bd_list li {
+	width: 906px;
+	padding-bottom: 15px;
+}
+
+/* マスタービル選択 */
+dl.popup_ty5 dd div.bd_master {
+	margin-bottom: 20px;
+	font-size: 0.8em;
+}
+
+dl.popup_ty5 dd div.bd_master select {
+	width: 300px;
+}
+
+dl.popup_ty5 dd div.bd_master span {
+	margin-left: 10px;
+}
+
+/* 見出し */
+dl.popup_ty5 dd div.ttl_bdnm {
+	border-top: 2px solid #2e3231;
+	border-bottom: 1px solid #2e3231;
+	padding: 7px 0 7px 5px;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty5 dd  div.ttl_bdnm div.bd_ck {
+	width: 26px;
+	float: left;
+}
+
+dl.popup_ty5 dd div.ttl_bdnm div.bdnm {
+	width: 300px;
+	font-size: 0.8em;
+	font-weight: bold;
+	float: left;
+}
+
+dl.popup_ty5 dd div.ttl_bdnm div.bdadd {
+	width: 400px;
+	font-size: 0.8em;
+	float: left;
+}
+
+/* フロア情報管理 */
+dl.popup_ty5 dd table.bdfl_data {
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;
+	font-size: 0.8em;
+	/*width: 100%;*/
+}
+
+dl.popup_ty5 dd table.bdfl_data th {
+	border-bottom: 1px solid #d0d0d0;
+	padding-top:5px;
+	padding-bottom: 5px;
+	background: #f2f2f2;
+}
+
+dl.popup_ty5 dd table.bdfl_data td {
+	border-bottom: 1px dotted #e1e1e1;
+	padding-top:5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+dl.popup_ty5 dd table.bdfl_data tr.bg td {
+	background: #f1f8fc;
+}
+
+dl.popup_ty5 dd table.bdfl_data .ck {
+	width: 20px;
+	border-bottom: 1px dotted #e1e1e1;
+}
+
+dl.popup_ty5 dd table.bdfl_data .code {
+	width: 89px;
+	padding-left: 7px;
+	text-align: left;
+}
+
+dl.popup_ty5 dd table.bdfl_data .code_d {
+	width: 89px;
+	padding-left: 7px;
+	text-align: left;
+	border-bottom: 1px dotted #e1e1e1;
+}
+
+
+
+dl.popup_ty5 dd table.bdfl_data .no {
+	width: 110px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .spot {
+	width: 76px;
+}
+
+dl.popup_ty5 dd table.fl_select .spot {/* フロア選択用 */
+	width: 70px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .prm {
+	width: 98px;
+}
+
+dl.popup_ty5 dd table.fl_select .prm {
+	width: 94px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .csc {
+	width: 92px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .dps {
+	width: 60px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .money {
+	width: 72px;
+}
+
+dl.popup_ty5 dd table.fl_select .money {
+	width: 66px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .am {
+	width: 60px;
+}
+
+dl.popup_ty5 dd table.fl_select .am {
+	width: 56px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .period {
+	width: 80px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .sc {
+	width: 92px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .update {
+	width: 70px;
+}
+
+dl.popup_ty5 dd table.bdfl_data .code_d img {
+	vertical-align:middle;
+	margin-right: 7px;
+}
+
+/*--------------------------------------------------------
+	popupービルフロアテキスト自動入力
+--------------------------------------------------------*/
+dl.popup_ty5 dd #text-wrapper label.ttl_txt_bd{
+	display:block;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #FFF;
+	height: 21px;
+	padding: 3px 0 0 15px;
+	background: #2e3231;
+	margin-bottom: 14px;
+	margin-top: 20px;
+}
+dl.popup_ty5 dd #text-wrapper label.ttl_txt{
+	display:block;
+	padding-left: 12px;
+	height: 24px;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px dotted #e1e1e1;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 24px;
+	background: url(/img/ico_ttl.gif) left center no-repeat;
+	margin-bottom: 14px;
+}
+
+dl.popup_ty5 dd #text-wrapper textarea{
+		float:left;
+		width:600px;
+		height:100px;
+		resize:none;
+		margin:0 10px 0 5px;
+		
+	}	
+dl.popup_ty5 dd #text-wrapper button{
+		padding:5px 15px;
+	}
+	
+dl.popup_ty5 dd div.txt_input_box {
+	overflow-y:scroll;
+	height: 350px;
+	margin-bottom: 10px;
+}
+	
+dl.popup_ty5 dd .buil_text_container{
+		/*height:140px;*/
+		overflow: hidden;
+		margin-bottom: 20px;
+	}
+dl.popup_ty5 dd .floor_text_container{
+		/*height:145px;*/
+		overflow: hidden;
+		margin-bottom: 15px;
+	}
+	
+dl.popup_ty5 dd .floor_text_container p{
+		font-size: 0.8em;
+		margin-bottom: 5px;
+	}
+	
+dl.popup_ty5 dd .floor_text_container ul.floor_ttl_box {
+	overflow: hidden;
+}
+
+dl.popup_ty5 dd .floor_text_container ul.floor_ttl_box li {
+	float: left;
+	font-size: 0.8em;
+	margin-bottom: 5px;
+	margin-right: 20px;
+}
+
+dl.popup_ty5 dd .floor_text_container ul.floor_ttl_box li.txt_fl_nm {
+	padding-top: 8px;
+}
+
+dl.popup_ty5 dd .floor_text_container ul.txt_fl_input {
+	overflow: hidden;
+}
+
+dl.popup_ty5 dd .floor_text_container ul.txt_fl_input li {
+	float: left;
+	width: 420px;
+	margin:0 10px 0 5px;
+	/*font-size: 0.8em;*/
+}
+
+dl.popup_ty5 dd .floor_text_container ul.txt_fl_input li p{
+	margin-bottom: 3px;
+}
+	
+dl.popup_ty5 dd .floor_text_container ul.txt_fl_input li textarea.fl_input {
+	float:none;
+	width: 420px!important;
+	height:100px;
+	margin:0!important;
+	resize:none;
+}
+	
+dl.popup_ty5 dd div.bt_txt_save{
+	border-top: 1px dotted #cacaca;
+	padding: 10px 0;
+	text-align: center;
+}
+
+/*--------------------------------------------------------
+	popupービルフロアテキスト自動入力
+--------------------------------------------------------*/
+dl.popup_ty6 dd img.ph_txt {
+	display: block;
+	float: left;
+	margin-bottom: 10px;
+}
+dl.popup_ty6 dd div.ph_txt_box {
+	width: 272px;
+	float: right;
+	margin-bottom: 10px;
+}
+dl.popup_ty6 dd textarea.ph_txt_input{
+	width: 272px;
+	height: 120px;
+	font-size: 0.9em;
+}
+
+/*--------------------------------------------------------
+	popupービル名・住所の編集
+--------------------------------------------------------*/
+dl.popup_ty4 dd div.input_translate_languge {
+	width: 470px;
+	float: left;
+}
+
+dl.popup_ty4 dd div.translate_box {
+	width: 130px;
+	float: left;
+}
+
+dl.popup_ty4 dd div.translate_box div.bt_input_translate {
+	width: 124px;
+	margin-bottom: 40px;
+}
+
+dl.popup_ty4 dd div.translate_box div.bt_input_translate input.bt_translate{
+	display: block;
+	width: 124px;
+	height: 20px;
+	background: #2e7bba;
+	text-align: center;
+	color:#fff;
+	border: none;
+	cursor: pointer;
+	font-size: 0.75em;
+}
+
+dl.popup_ty4 dd div.translate_box div.bt_input_translate input.bt_translate:hover{
+	background: #4b9ad2;
+}
+
+/*--------------------------------------------------------
+	popupーオーナー・業者・一覧対応履歴
+--------------------------------------------------------*/
+dl.popup_ty6 dd div.ttl_ahv_input {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #cacaca;
+}
+
+dl.popup_ty6 dd div.ttl_ahv_input .owerid{
+	font-size: 0.8em;
+	margin-bottom: 2px;
+}
+
+dl.popup_ty6 dd div.ttl_ahv_input .owername {
+	font-size: 0.95em;
+	font-weight: bold;
+}
+
+dl#ahv_input dd div.ad_active label {
+	display:inline-block;
+	margin-bottom: 8px;
+}
+
+dl#ahv_input dd div.ad_active label input[type="radio"] {
+	margin-right: 5px;
+}
+
+dl#ahv_input dd div.fileinputs {  
+ 	position: relative;
+	width: 310px;
+ 	height:20px;  
+} 
+
+dl#ahv_input dd input.upfile {
+	width: 310px;
+	height: 20px;
+	position: relative;  
+	text-align: right;  
+	-moz-opacity:0 ;  
+	filter:alpha(opacity: 0);  
+	opacity: 0;  
+	z-index: 2;
+	cursor: pointer;
+}
+
+dl#ahv_input dd div.fakefile {  
+	position: absolute;  
+	top: 0px;  
+	left: 0px;  
+	z-index: 1;  
+}
+
+dl#ahv_input dd #targetInput {
+	width: 208px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+dl.popup_ty6 dd #uploadpdf {
+	width: 320px;
+	padding: 6px 20px 16px;
+	margin: 5px 0 10px;
+	background: #EFEFEF;
+}
+
+dl.popup_ty6 dd div#oi_status1,
+dl.popup_ty6 dd div#oi_status4,
+dl.popup_ty6 dd div#oi_status2{
+	width: 320px;
+	padding: 6px 20px 10px;
+	margin: 5px 0 10px;
+	background: #EFEFEF;
+}
+
+dl.popup_ty6 dd #oi_status1 select#oi_status1,
+dl.popup_ty6 dd #oi_status2 select#oi_status2{
+	width: 310px;
+}
+
+dl.popup_ty6 dd div#oi_status2 div.finish_list {
+	margin-bottom: 5px;
+}
+
+dl.popup_ty6 dd div#oi_status2 #date_time {
+	width: 200px;
+}
+
+dl.popup_ty6 dd #uploadpdf p,
+dl.popup_ty6 dd div#oi_status1 p,
+dl.popup_ty6 dd div#oi_status2 p{
+	margin-bottom: 3px;
+}
+
+
+/* 一覧リストPDF削除 */
+dl.popup_ty6 dd p.txt_list_remove {
+	font-size: 0.8em;
+	padding: 10px 0 20px;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv {
+	border-top: 1px dotted #cacaca;
+	padding: 10px 0;
+	text-align: center;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"] {
+	display: inline-block;
+	width: 70px;
+	height: 19px;
+	padding: 0 10px;
+	font-size: 0.7em;
+    text-align: center;
+	border: none;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+dl#dialog-confirm,
+dl#dialog-hide-owner{
+	height: auto!important;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#ok_remove,
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#ok_hidden{
+	background: #2e3231 none repeat scroll 0 0;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#ok_remove:hover,
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#ok_hidden:hover{
+	background: #575c64 none repeat scroll 0 0;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#cancle_remove,
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#cancle_hidden{
+	background: #979da6 none repeat scroll 0 0;
+	margin-left: 20px;
+}
+
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#cancle_remove:hover,
+dl.popup_ty6 dd div.bt_input_box_rmv input[type="button"]#cancle_hidden:hover{
+	background: #a5abb2 none repeat scroll 0 0;
+}
+
+/*--------------------------------------------------------
+	popupーオーナー・業者・一覧対応履歴
+--------------------------------------------------------*/
+dl.popup_ty6 dd div.ttl_mwatch {
+	font-size: 0.8em;
+	margin-bottom: 10px;
+}
+
+dl.popup_ty6 dd input.mwatch {
+	width: 380px;
+	margin-bottom: 20px;
+}
+
+/*--------------------------------------------------------
+	clearfix
+	一括で記述
+--------------------------------------------------------*/
+dl.popup_ty1 dd ul.title_ahv:after,
+dl.popup_ty5 dd table.edit_input td ul.facility:after,
+dl.popup_ty4 dd ul.town_list:after,
+dl.popup_ty4 dd table.edit_input td ul.tk_list:after,
+dl.popup_ty4 dd ul.stt_phase:after,
+dl.popup_ty4 dd table.edit_input td ul.sales_list:after,
+dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d:after,
+dl.popup_ty5 dd div.admin_box:after,
+dl.popup_ty6 dd ul.ad_active:after,
+dl.popup_ty6 dd ul.ad_active_b:after,
+dl.popup_ty5 dd ul.new_bd:after,
+dl.popup_ty5 dd #owner_rep_info:after,
+dl.popup_ty7 dd ul.ico_price:after,
+dl.popup_ty7 dd div.bd_box:after,
+dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank:after,
+dl.popup_ty8 dd div.list_box div.rank_sam:after,
+dl.popup_ty5 dd div.ttl_bdnm:after{
+	content:".";
+	height:0;
+	clear:both;
+	display:block;
+	visibility:hidden;
+}
+
+*+html dl.popup_ty1 dd ul.title_ahv,
+*+html dl.popup_ty5 dd table.edit_input td ul.facility,
+*+html dl.popup_ty4 dd ul.town_list,
+*+html dl.popup_ty4 dd table.edit_input td ul.tk_list,
+*+html dl.popup_ty4 dd ul.stt_phase,
+*+html dl.popup_ty4 dd table.edit_input td ul.sales_list,
+*+html dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d,
+*+html dl.popup_ty5 dd div.admin_box,
+*+html dl.popup_ty6 dd ul.ad_active,
+*+html dl.popup_ty6 dd ul.ad_active_b,
+*+html dl.popup_ty5 dd ul.new_bd,
+*+html dl.popup_ty5 dd #owner_rep_info,
+*+html dl.popup_ty7 dd ul.ico_price,
+*+html dl.popup_ty7 dd div.bd_box,
+*+html dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank,
+*+html dl.popup_ty8 dd div.list_box div.rank_sam,
+*+html dl.popup_ty5 dd div.ttl_bdnm{
+	display: inline-block;
+}
+
+* html dl.popup_ty1 dd ul.title_ahv,
+* html dl.popup_ty5 dd table.edit_input td ul.facility,
+* html dl.popup_ty4 dd ul.town_list,
+* html dl.popup_ty4 dd table.edit_input td ul.tk_list,
+* html dl.popup_ty4 dd ul.stt_phase,
+* html dl.popup_ty4 dd table.edit_input td ul.sales_list,
+* html dl.popup_ty4 dd div.popup_box dl.list_ahv dd ul.alist_d,
+* html dl.popup_ty5 dd div.admin_box,
+* html dl.popup_ty6 dd ul.ad_active,
+* html dl.popup_ty6 dd ul.ad_active_b,
+* html dl.popup_ty5 dd ul.new_bd,
+* html dl.popup_ty5 dd #owner_rep_info,
+* html dl.popup_ty7 dd ul.ico_price,
+* html dl.popup_ty7 dd div.bd_box,
+* html dl.popup_ty8 dd div.list_box dl.r_cus_list dt.stt_rank,
+* html dl.popup_ty8 dd div.list_box div.rank_sam,
+* html dl.popup_ty5 dd div.ttl_bdnm{
+	display: inline-block;
+}

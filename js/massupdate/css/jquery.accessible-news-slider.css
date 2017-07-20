@@ -1,0 +1,58 @@
+.news_slider{
+	position: relative;
+	text-align: left;
+}
+
+.news_slider .fl{
+	float: left;
+	display: inline;
+}
+
+.news_slider img{
+	display: block;
+	border: 0;
+}
+
+.news_slider .messaging{
+	display: block;
+	padding: 5px;
+	margin: 0 20px 5px 20px;
+}
+
+.news_slider .prev,
+.news_slider .next{
+	position: absolute;
+	display: none;
+}
+
+.news_slider .container{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.news_slider .news_items{
+    /*
+        The width must be equal to .item ((width + margin-right) * 2).
+    */
+	position: relative;
+	overflow: hidden;
+}
+
+.news_slider .view_all{
+	font-size: .8em;
+	padding: 5px;
+	margin: 0 0 2px 0;
+	border-top: #eeeeed 1px solid;
+	border-bottom: #eeeeed 1px solid;
+	text-align: center;
+}
+
+.news_slider .item{
+    /*
+        Must contain a width and a margin-right.
+    */
+/*	width: 92px;
+	margin-right: 10px;*/
+}

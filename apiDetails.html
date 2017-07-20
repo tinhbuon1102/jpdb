@@ -1,0 +1,62 @@
+<!--get route list -->
+<script type="text/javascript" src="<?php //echo Yii::app()->baseUrl; ?>/apis/expGuiRail/expGuiRail.js?key=LE_sPqb4mJja7QXp" charset="UTF-8"></script>
+<script type="text/javascript">
+var rail;
+  /*
+   * Initialize the parts
+   */
+  function init(){
+    // 路線情報
+    rail = new expGuiRail();
+    rail.setConfigure("type",rail.TYPE_TRAIN);
+    rail.searchCorporation(setCorporationList);
+  }
+  /*
+   * Call of Companies get back
+   */
+  function setCorporationList(isSuccess){
+    if(!isSuccess){
+      alert("会社一覧が取得できませんでした");
+    }else{
+      //会社一覧
+      var corpList = rail.getCorporationList().split(",");
+      if(corpList[0] != ""){
+          rail.searchRail(corpList[0],setRailList);
+          }
+      }
+  }
+  /*
+   * Routes list acquisition callback
+   */
+  function setRailList(isSuccess){
+    if(!isSuccess){
+      alert("路線一覧が取得できませんでした");
+    }else{
+      //路線一覧
+      var railList = rail.getRailList().split(",");
+      if(railList[0] != ""){
+          rail.searchStation(railList[0],rail.DIRECTION_NONE,setStationList);
+      }
+    }
+  }
+  /*
+   * Stop station list acquisition of callback
+   */
+  function setStationList(isSuccess){
+    if(!isSuccess){
+      alert("駅一覧が取得できませんでした");
+    }else{
+      //駅一覧の出力
+      var buffer = "";
+      var stationList = rail.getStationList().split(",");
+      for(var i=0;i<stationList.length;i++){
+        buffer+=stationList[i]+"\n";
+      }
+      alert(buffer);
+    }
+  }
+</script> 
+
+to run  - put  onLoad="Javascript:init();" in body tag
+
+<!--end-->
