@@ -333,7 +333,7 @@ $(document).ready(function(e) {
 			formData.append('file', $('#planPicture')[0].files[0]);
 			formData.append('buildingId', currentBuildingId);
 			formData.append('floorId', currentFloorId);		
-
+			formData.append('planPictureStandard', $('#planPictureStandard').is(':checked') ? 1 : 0);
 			// Using the core $.ajax() method
 			$.ajax({
 				url: url,

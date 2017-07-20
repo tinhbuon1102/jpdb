@@ -3571,15 +3571,22 @@ if(count($getGoogleMapKeyDetails) > 0){
                         <table class="file_table_clean">
                           <tbody>
                             <tr>
-                              <td class="file_td_clean" style="padding: 0 4px 0 0"><div id="wordpress_file_upload_textbox_1" class="file_div_clean divFakePath">
+                              <td class="file_td_clean" style="padding: 10px 4px 0 0; vertical-align: top;"><div id="wordpress_file_upload_textbox_1" class="file_div_clean divFakePath">
                                   <input type="text" id="fileName_1" class="file_input_textbox" disabled />
                                   <div class="file_space_clean"></div>
                                 </div>
                                 <form class="file_input_uploadform" id="uploadform_1" name="uploadform_1" method="post" enctype="multipart/form-data">
                                   <input type="file" class="file_input_hidden uploadPlanClass" name="planPicture" id="planPicture" tabindex="1">
-                                </form></td>
-                              <td><button type="button" class="btnTrigglerFile"><?php echo Yii::app()->controller->__trans('ファイルを選択'); ?></button></td>
-                              <td class="file_td_clean"><div id="wordpress_file_upload_submit_1" class="file_div_clean">
+                                  <div class="standard_wraper">
+                                  	<label>
+	                                  	<?php echo Yii::app()->controller->__trans('基準階'); ?>
+                                  	</label>
+                                  	<input type="checkbox" name="planPictureStandard" id="planPictureStandard" />
+                                  </div>
+                                </form>
+                                </td>
+                              <td class="file_td_clean" style="vertical-align: top;"><button type="button" class="btnTrigglerFile"><?php echo Yii::app()->controller->__trans('ファイルを選択'); ?></button></td>
+                              <td  style="vertical-align: top;"class="file_td_clean"><div id="wordpress_file_upload_submit_1" class="file_div_clean">
                               <input type="hidden" name="hdnSingleFloorPlanUp" id="hdnSingleFloorPlanUp" class="hdnSingleFloorPlanUp" value="<?php echo $globalFloorId;//$floorDetails['floor_id']; ?>"/>
                                   <input align="center" type="button" id="btnUploadPlanPicture" name="btnUploadPlanPicture" value="<?php echo Yii::app()->controller->__trans('アップロード'); ?>" class="btnUploadPlanPicture">
                                 </div></td>
