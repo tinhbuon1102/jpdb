@@ -2637,6 +2637,12 @@ class FloorController extends Controller{
 				$loguser_id = $users->user_id;
 				$buildingDetails = Building::model()->findByPk($_POST['buildingId']);	
 				
+				if ($_POST['planPictureStandard'])
+				{
+					$buildingDetails->plan_standard_id = $model->plan_picture_id;
+					$buildingDetails->save(false);
+				}
+				
 				$changeLogModel = new BuildingUpdateLog;
 				$changeLogModel->building_id = $_POST['buildingId'];				
 				$changeLogModel->change_content = '('.$buildingDetails['prefecture'].')'.Yii::app()->controller->__trans('New Plan Picture has been added');
