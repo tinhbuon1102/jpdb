@@ -574,7 +574,7 @@
                                                     	<input type="radio" class="price_rent" name="Floor[rent_unit_price_opt]" <?php echo isset($model->rent_unit_price_opt) && $model->rent_unit_price_opt == '-2' ?  $check :''; ?> value="-2"  id="rent_radio2">
 														<?php echo Yii::app()->controller->__trans('ask');?>
                                                     </label><br>
-                                                    <input type="text" name="Floor[rent_unit_price]" value="<?php echo isset($model->rent_unit_price) && $model->rent_unit_price != '' && $model->rent_unit_price != 0 ? number_format(str_replace(',','',$model->rent_unit_price)) :''; ?>" id="rent_unit_price" class="ty1 mt price_rent rent_unit_price">
+                                                    <input type="text" name="Floor[rent_unit_price]" value="<?php echo isset($model->rent_unit_price) && $model->rent_unit_price != '' && $model->rent_unit_price != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price)) :''; ?>" id="rent_unit_price" class="ty1 mt price_rent rent_unit_price">
 													<?php echo Yii::app()->controller->__trans('yen/坪');?>
                                                 </td>
                                                 <th>
@@ -582,7 +582,7 @@
 													<?php echo Yii::app()->controller->__trans('total rent price');?>
                                                 </th>
                                                 <td>
-                                                	<input type="text"  name="Floor[total_rent_price]" id="total_rent_price" value="<?php echo isset($model->total_rent_price) && $model->total_rent_price != '' ?  number_format(str_replace(',','',$model->total_rent_price)) :''; ?>" class="ty1 price_rent">
+                                                	<input type="text"  name="Floor[total_rent_price]" id="total_rent_price" value="<?php echo isset($model->total_rent_price) && $model->total_rent_price != '' ?  HelperFunctions::formatNumber(str_replace(',','',$model->total_rent_price)) :''; ?>" class="ty1 price_rent">
                                                    
 													<?php echo Yii::app()->controller->__trans('yen');?>
                                                 </td>
@@ -614,7 +614,7 @@
                                                     	<input type="radio" name="Floor[unit_condo_fee_opt]" class="price_mente" <?php echo isset($model->unit_condo_fee_opt) && $model->unit_condo_fee_opt == '-3' ?  $check :''; ?> value="-3">
 														<?php echo Yii::app()->controller->__trans('include');?>
                                                     </label><br>
-                                                    <input type="text" name="Floor[unit_condo_fee]" id="unit_condo_fee" value="<?php echo isset($model->unit_condo_fee) && $model->unit_condo_fee != '' ? number_format($model->unit_condo_fee) :''; ?>" class="ty1 mt price_mente unit_condo_fee">
+                                                    <input type="text" name="Floor[unit_condo_fee]" id="unit_condo_fee" value="<?php echo isset($model->unit_condo_fee) && $model->unit_condo_fee != '' ? HelperFunctions::formatNumber($model->unit_condo_fee) :''; ?>" class="ty1 mt price_mente unit_condo_fee">
 													<?php echo Yii::app()->controller->__trans('yen/坪');?>
                                                 </td>
                                                 <th class="m">
@@ -662,7 +662,7 @@
 																<?php echo Yii::app()->controller->__trans('months分');?>
                                                         </span>
                                                         <span class="double-input">
-                                                        	<input type="text" name="Floor[deposit]" id="f_price_t_shiki" value="<?php echo isset($model->deposit) && $model->deposit != '' ? number_format($model->deposit) :''; ?>" class="ty1 mt price_shiki deposit_opt_i">
+                                                        	<input type="text" name="Floor[deposit]" id="f_price_t_shiki" value="<?php echo isset($model->deposit) && $model->deposit != '' ? HelperFunctions::formatNumber($model->deposit) :''; ?>" class="ty1 mt price_shiki deposit_opt_i">
 															<?php echo Yii::app()->controller->__trans('yen/坪');?>
                                                         </span>
                                                     </label>
@@ -672,7 +672,7 @@
 													<?php echo Yii::app()->controller->__trans('total deposit');?>
                                                 </th>
                                                 <td>
-                                                	<input type="text" name="Floor[total_deposit]" id="f_price_a_shiki" value="<?php echo isset($model->total_deposit) && $model->total_deposit != '' ? number_format($model->total_deposit) :''; ?>" class="ty1 price_shiki deposit_opt_i">
+                                                	<input type="text" name="Floor[total_deposit]" id="f_price_a_shiki" value="<?php echo isset($model->total_deposit) && $model->total_deposit != '' ? HelperFunctions::formatNumber($model->total_deposit) :''; ?>" class="ty1 price_shiki deposit_opt_i">
 													<?php echo Yii::app()->controller->__trans('yen');?>
                                                 </td>
                                             </tr>

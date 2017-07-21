@@ -764,6 +764,7 @@ $(document).ready(function(e) {
 		if($(this).val() != ''){
 		}
 		var total_rent_price = $('#total_rent_price').val();
+		total_rent_price = total_rent_price.replace(/,/g, "");
 		var area_ping = $('#area-tsubo').val();
 		if(total_rent_price != '' && total_rent_price !='undefined'){
 			var output = total_rent_price / area_ping;
