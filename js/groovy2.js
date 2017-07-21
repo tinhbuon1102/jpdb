@@ -335,6 +335,7 @@ $(document).ready(function(e) {
 			formData.append('floorId', currentFloorId);		
 			formData.append('planPictureStandard', $('#planPictureStandard').is(':checked') ? 1 : 0);
 			// Using the core $.ajax() method
+			$('body').LoadingOverlay("show");
 			$.ajax({
 				url: url,
 				data: formData,
@@ -350,6 +351,7 @@ $(document).ready(function(e) {
 				}else{
 					alert(resp.msg);
 				}
+				$('body').LoadingOverlay("hide");
 			});
 		}else{
 			alert('Please Select File to Upload');
@@ -358,6 +360,7 @@ $(document).ready(function(e) {
 	$(document).on('click','.btnAllocatePlanPicture',function(e){
 		var formData = $("#frmAllocatePlanPicture").serialize();
 		var url = $("#frmAllocatePlanPicture").data('action');
+		$('body').LoadingOverlay("show");
 		call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 			if(resp.status == 1){
 				alert(resp.msg);
@@ -365,6 +368,7 @@ $(document).ready(function(e) {
 			}else{
 				alert('Something went wrong.');
 			}
+			$('body').LoadingOverlay("hide");
 		});
 	});
 	$(document).on('click','.btnRemoveSelectedPlanPicture',function(e){
@@ -376,6 +380,7 @@ $(document).ready(function(e) {
 			if(confirm("本当に実行してよろしいですか？") == true){
 				var formData = $("#deleteSelectedPlanPicture").serialize();
 				var url = $("#deleteSelectedPlanPicture").data('action');
+				$('body').LoadingOverlay("show");
 				call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 					if(resp.status == 1){
 						alert(resp.msg);
@@ -383,6 +388,7 @@ $(document).ready(function(e) {
 					}else{
 						alert('Something went wrong.');
 					}
+					$('body').LoadingOverlay("hide");
 				});
 			}else{
 				return false;
@@ -691,6 +697,7 @@ $(document).ready(function(e) {
 		e.preventDefault();
 		var formdata = $('.frmUpBuildingPicture').serialize();
 		var url = baseUrl+'/index.php?r=buildingPictures/saveUploadedBuildPicture';
+		$('body').LoadingOverlay("show");
 		call({url:url,params:{formdata:formdata},type:'POST',dataType : 'json'},function(resp){
 			if(resp.status == 1){
 				alert('写真が追加されました。');
@@ -699,6 +706,7 @@ $(document).ready(function(e) {
 			}else{
 				alert('Something went wrong.');
 			}
+			$('body').LoadingOverlay("hide");
 		});
 	});
 	/********************************* end ************************************/
