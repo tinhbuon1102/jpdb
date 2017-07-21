@@ -943,7 +943,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         </div>
                     </div>
                     <div class="manageInfoResponse">
-                    	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?></h4>
+                    	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?><span class="button-right"><a href="#">Add</a></span></h4>
                         <table class="admin_info admin_mb ad_list">
                         	<tbody>
                                 <tr>
@@ -5835,6 +5835,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 					  <th><?php echo Yii::app()->controller->__trans('contact address'); ?></th>
 					  <td colspan="3"><input type="text" name="company_tel" id="bo_tel1" value="" class="ty6 company_tel"></td>
 					</tr>
+					<!--added newly-->
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('TEL'); ?></th>
+					  <td><input type="text" name="manage_tel" id="manage_tel" value="" class="ty3 manage_tel"></td>
+					  <th><?php echo Yii::app()->controller->__trans('FAX'); ?></th>
+					  <td><input type="text" name="manage_fax" id="manage_fax" value="" class="ty3 manage_fax"></td>
+					</tr>
+					<!--/added newly-->
 					<tr>
 					  <th><?php echo Yii::app()->controller->__trans('person in charge1'); ?></th>
 					  <td><input type="text" name="person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
@@ -5876,6 +5884,173 @@ if(count($getGoogleMapKeyDetails) > 0){
     </div>
   </div>
 </div>
+
+<!--New Modal Popup for append management history-->
+<div class="modal-box hide" id="addManagementModal">
+  <div class="content managementHistoryContent">
+    <div class="box-header">
+      <h2 class="popup-label"><?php echo Yii::app()->controller->__trans('Window/Owners edit・add'); ?></h2>
+      <button type="button" class="btnModalClose" id="btnModalClose">X</button>
+    </div>
+    <div class="box-content">
+    	<div class="messageManagement hide"></div>
+      <div class="formbox f-full owner-info">
+        <div class="table-inner">
+        	<?php
+			$divcls = $divlbl = '';
+			if($isCompart != ""){
+				$divcls = 'color-blue';
+				$divlbl = $isCompart;
+			}
+			
+			if($isShared != ""){
+				$divcls = 'color-orange';
+				$divlbl = $isShared;
+			}
+			?>
+        	<div class="differentOwner <?php echo $divcls; ?>"><?php echo $divlbl; ?></div>
+			<form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="">
+				<input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo isset($_GET['id']) && $_GET['id'] != "" ? $_GET['id'] : 0; ?>"/>
+				<input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
+				<?php /*?><table class="edit_input f_info_b mline tb-floor one-col mix-col">
+				  <tbody>
+					<tr>
+					  <th class="minsize"><?php echo Yii::app()->controller->__trans('this floor is condominium ownership'); ?></th>
+					  <td><label class="rd2">
+						  <input type="radio" value="1" name="is_condominium_ownership">
+						  <?php echo Yii::app()->controller->__trans('YES'); ?> </label>
+						<label class="rd2">
+						  <input type="radio" value="0" name="is_condominium_ownership">
+						 <?php echo Yii::app()->controller->__trans('NO'); ?>  </label></td>
+					</tr>
+				  </tbody>
+				</table><?php */?>
+				<table class="edit_input f_info mt tb-floor one-col mix-col">
+				  <tbody>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('trader ID'); ?></th>
+					  <td colspan="3">
+						<input type="text" name="searchTraderText" class="ty3 searchTraderText" id="searchTraderText" style="float:left;">
+						<input type="button" name="btnSearchTrader" id="btnSearchTrader" class="btnSearchTrader bt_entry autoWidth" value="業者を検索">
+						<br/>
+						<div class="traderResp">
+                        	<span id="owner_id_select">
+                            	<select id="tradersList"  class="auto tradersList" name="trader_id">
+                                	<option value="0"><?php echo Yii::app()->controller->__trans('saved traders'); ?>↓</option>
+									<?php
+                                    $tradersDetails = Traders::model()->findAll('is_active = 1 AND building_id = '.$buildingDetails['building_id'].' AND floor_id = '.$_GET['id']);
+									if(isset($tradersDetails) && count($tradersDetails) > 0){
+										foreach($tradersDetails as $tradersList){
+									?>
+                                    <option value="<?php echo $tradersList['trader_id']; ?>" ><?php echo $tradersList['traderId'].' '.$tradersList['trader_name']; ?></option>
+									<?php
+                                    	}
+									}else{
+									?>
+                                    <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available'); ?></option>
+									<?php
+                                    }
+									?>
+                                </select>
+                            </span> &nbsp;
+                        </div>
+                        <div class="loadTraders" style="display:none;">
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                            </div>
+                        </div>
+					   <!-- ←
+						<input type="text" name="newTrader" id="newTrader" class="ty1 newTrader">
+						<input type="button" name="add-trader" id="btnAddTrader" class="btnAddTrader bt_entry autoWidth" value="Add Traders">--></td>
+					</tr>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('ownership type'); ?></th>
+					  <td><select name="ownership_type" id="bo_type" data-role="none" class="ownership_type" required>
+						  <option value="">-</option>
+						  <?php 
+						  foreach ($aVendorType as $vendorValue => $vendorName)
+						  {
+							echo '<option value="'. $vendorValue .'" >'. $vendorName .'</option>';
+						  }
+						  ?>
+						</select></td>
+					  <th><?php echo Yii::app()->controller->__trans('Form of Transaction'); ?></th>
+					  <td><select name="management_type" id="bo_contract" class="management_type" data-role="none">
+						  <option value="">-</option>
+						  <option value="-1"><?php echo Yii::app()->controller->__trans('unknown'); ?></option>
+						  <option value="1">専任媒介</option>
+						  <option value="2">一般媒介</option>
+						  <option value="3">代理</option>
+						  <option value="4">貸主</option>
+						</select>
+					  </td>
+					</tr>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('Window'); ?></th>
+					  <td colspan="3"><input type="checkbox" name="is_current" id="is_current" class="is_current" value="1" /><?php echo Yii::app()->controller->__trans('Setting this trader owner properties window');?></td>
+					</tr>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('company name'); ?></th>
+					  <td colspan="3"><input type="text" name="owner_company_name" id="bo_name" value="" class="ty6 owner_company_name" required></td>
+					</tr>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('contact address'); ?></th>
+					  <td colspan="3"><input type="text" name="company_tel" id="bo_tel1" value="" class="ty6 company_tel"></td>
+					</tr>
+					<!--added newly-->
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('TEL'); ?></th>
+					  <td><input type="text" name="manage_tel" id="manage_tel" value="" class="ty3 manage_tel"></td>
+					  <th><?php echo Yii::app()->controller->__trans('FAX'); ?></th>
+					  <td><input type="text" name="manage_fax" id="manage_fax" value="" class="ty3 manage_fax"></td>
+					</tr>
+					<!--/added newly-->
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('person in charge1'); ?></th>
+					  <td><input type="text" name="person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
+					  <th><?php echo Yii::app()->controller->__trans('person in charge2'); ?></th>
+					  <td><input type="text" name="person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
+					</tr>
+					<tr>
+					  <th><?php echo Yii::app()->controller->__trans('charge'); ?></th>
+					  <td colspan="3">
+						<label class="rd2">
+							<input type="radio" name="charge" value="unknown" class="radiUnknown">
+							<?php echo Yii::app()->controller->__trans('unknown'); ?>
+						</label>
+						<label class="rd2">
+							<input type="radio" name="charge" value="ask" class="radiAsk">
+							<?php echo Yii::app()->controller->__trans('ask'); ?>
+						</label>
+						<label class="rd2">
+						  <input type="radio" name="charge" value="undecided" class="radiUndecided">
+						  <?php echo Yii::app()->controller->__trans('undecided'); ?>  </label>
+						<label class="rd2">
+						  <input type="radio" name="charge" value="<?php echo Yii::app()->controller->__trans('none'); ?>" class="radiNone">
+						  <?php echo Yii::app()->controller->__trans('none'); ?>  </label>
+						|
+						<input type="text" name="change_txt" id="bo_fee" size="5" value="" class="ty8 change_txt"></td>
+					</tr>
+				  </tbody>
+				</table>
+				<table class="edit_input f_info_b mline tb-floor one-col mix-col">
+				  <tbody>
+					<tr>
+					  <td align="center"><button type="button" name="btnAddNewHistory" class="btnAddNewHistory" id="btnAddNewHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
+					</tr>
+				  </tbody>
+				</table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/new modal-->
 
 <!--Modal Popup for Add Free Rent-->
 <div class="modal-box hide" id="modalFreeRent">

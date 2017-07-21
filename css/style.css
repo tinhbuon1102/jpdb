@@ -1,38 +1,4 @@
 @charset "UTF-8";
-
-/*
-
-
-
-  Theme Name: LOVE MAG
-
-
-
-  Description: LOVE MAG THEME
-
-
-
-  Theme URI: 
-
-
-
-  Author: HEART HUNGER
-
-
-
-  Author URI:
-
-
-
-  
-
-
-
-
-
-
-
-*/
 @font-face {
     font-family: 'icomoon';
     src:    url('fonts/icomoon.eot?f2l00j');
@@ -3946,4 +3912,13 @@ div#main.cart-content.scroll .min-white-box {
 ul.pagination li.active a{
 	background: #e0e0e0;
 	color: #20bf20;
+}
+span.button-right {
+    float: right;
+}
+.button-right a {
+    background: rgba(18,170,235,1);
+    color: #FFF;
+    padding: 0 10px;
+    line-height: 1;
 }
