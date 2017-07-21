@@ -693,6 +693,11 @@ $(document).ready(function(e) {
 		$('#modalUploadPicture').addClass('show');
 		$('#modalUploadPicture').fadeIn(1000);
 	});
+	
+	$(document).on('click','#add_new_owner',function(e){
+		$('#appendManagementModal').show();
+	});
+	
 	$(document).on('click','.btnUpBuildingPicture',function(e){
 		e.preventDefault();
 		var formdata = $('.frmUpBuildingPicture').serialize();
