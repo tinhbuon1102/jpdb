@@ -1094,3 +1094,19 @@ Stack trace:
 #9 /var/www/public_html/protected/yiic.php(7): require_once('/var/www/public...')
 #10 {main}
 ---
+2017/07/21 12:37:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `ownership_management` `t` WHERE floor_id =  AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1.
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/building/singleBuildingDetails.php (64)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/BuildingController.php (2078)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/index.php (26)
+2017/07/21 14:42:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY floor_update_history_id DESC' at line 1. The SQL statement executed was: SELECT * FROM `floor_update_history` `t` WHERE floor_id =  ORDER BY floor_update_history_id DESC.
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/building/singleBuildingDetails.php (4422)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/FloorController.php (2725)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/index.php (26)
+2017/07/21 14:43:44 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `ownership_management` `t` WHERE floor_id =  AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1.
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/building/singleBuildingDetails.php (64)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/FloorController.php (2726)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/index.php (26)
+2017/07/21 14:43:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `ownership_management` `t` WHERE floor_id =  AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1.
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/building/singleBuildingDetails.php (64)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/FloorController.php (2726)
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/index.php (26)

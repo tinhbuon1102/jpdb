@@ -2691,8 +2691,7 @@ class FloorController extends Controller{
 	}	
 
 	public function actionAllocatePlanToFloor(){
-		$formData = $_REQUEST['formData'];
-		parse_str($formData, $getArray);
+		$getArray = $_POST;
 		$i = 0;
 		
  		$standard_plan = 0;		
@@ -2708,17 +2707,6 @@ class FloorController extends Controller{
  		$buildingDetails->plan_standard_id=$standard_plan;
  		$buildingDetails->save(false);
 		
-// 		$i=0;
-// 		foreach($getArray['allocateFloorId'] as $floorId){
-// 			if($floorId==0) continue;
-// 			$floorDetails = Floor::model()->findByPk($floorId);
-// 			$floorDetails->plan_picture_id = $getArray['planPictureId'][$i]!=0?$getArray['planPictureId'][$i]:$standard_plan;
-// 			$floorDetails->save(false);
-// 			$i++;
-// 		}
-// 		$resp = array('status'=>1);
-// 		echo json_encode($resp);
-// 		die;
 		$i=0;
 		foreach($getArray['allocateFloorId'] as $floorId){
 			if($floorId==0) continue;
@@ -2729,14 +2717,20 @@ class FloorController extends Controller{
 		}
 		
 		
-		$resp = array('status'=>1);
+		$resp = array('status'=>1, 'msg'=>Yii::app()->controller->__trans('Standard plan have been set successfully !'));
+		
+		$currentFloorId = (int)$getArray['floorId'];
+		$floorDetails = Floor::model()->findByPk($currentFloorId);
+		$_REQUEST['id'] = $_GET['id'] = $currentFloorId;
+		$this->pageTitle = $buildingDetails['name'].' | Japan Properties DB';
+		$resp['html'] = $this->render('/building/singleBuildingDetails',array('floorDetails'=>$floorDetails,'buildingDetails'=>$buildingDetails), true);
+		
 		echo json_encode($resp);
 		die;
 	}	
 
 	public function actionRemoveSelectedPlanPicture(){
-		$formData = $_REQUEST['formData'];
-		parse_str($formData, $getArray);
+		$getArray = $_POST;
 		
 		foreach($getArray['deletePlanPicture'] as $planId){
 			$floorDetails = Floor::model()->find('plan_picture_id = '.$planId);
@@ -2758,7 +2752,14 @@ class FloorController extends Controller{
 			$changeLogModel->added_on = date('Y-m-d H:i:s');
 			$changeLogModel->save(false);
 		}
-		$resp = array('status'=>1);
+		$resp = array('status'=>1, 'msg'=>Yii::app()->controller->__trans('Plan Picture are removed completely !'));
+		
+		$currentFloorId = (int)$getArray['floorId'];
+		$floorDetails = Floor::model()->findByPk($currentFloorId);
+		$_REQUEST['id'] = $_GET['id'] = $currentFloorId;
+		$this->pageTitle = $buildingDetails['name'].' | Japan Properties DB';
+		$resp['html'] = $this->render('/building/singleBuildingDetails',array('floorDetails'=>$floorDetails,'buildingDetails'=>$buildingDetails), true);
+		
 		echo json_encode($resp);
 		die;
 	}

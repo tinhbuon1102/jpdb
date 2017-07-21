@@ -358,9 +358,10 @@ $(document).ready(function(e) {
 	$(document).on('click','.btnAllocatePlanPicture',function(e){
 		var formData = $("#frmAllocatePlanPicture").serialize();
 		var url = $("#frmAllocatePlanPicture").data('action');
-		call({url:url,params:{formData:formData},type:'POST',dataType:'json'},function(resp){
+		call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 			if(resp.status == 1){
-				location.reload();
+				alert(resp.msg);
+				getTabAjaxContent(resp, '#tab4');
 			}else{
 				alert('Something went wrong.');
 			}
@@ -375,9 +376,10 @@ $(document).ready(function(e) {
 			if(confirm("本当に実行してよろしいですか？") == true){
 				var formData = $("#deleteSelectedPlanPicture").serialize();
 				var url = $("#deleteSelectedPlanPicture").data('action');
-				call({url:url,params:{formData:formData},type:'POST',dataType:'json'},function(resp){
+				call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 					if(resp.status == 1){
-						location.reload();
+						alert(resp.msg);
+						getTabAjaxContent(resp, '#tab4');
 					}else{
 						alert('Something went wrong.');
 					}

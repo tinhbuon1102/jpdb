@@ -1,6 +1,10 @@
 <?php
 // Custom helper 
 class HelperFunctions extends CApplicationComponent {
+	public static function pr($data)
+	{
+		echo '<pre>'; print_r($data); echo '</pre>';
+	}
 	public static function formatNumber($number)
 	{
 		$number = str_replace(',', '', $number);
