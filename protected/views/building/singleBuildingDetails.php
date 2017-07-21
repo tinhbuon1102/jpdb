@@ -943,7 +943,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         </div>
                     </div>
                     <div class="manageInfoResponse">
-                    	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?></h4>
+                    	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?><span class="button-right"><a href="#">Add</a></span></h4>
                         <table class="admin_info admin_mb ad_list">
                         	<tbody>
                                 <tr>
