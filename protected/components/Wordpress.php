@@ -477,6 +477,11 @@ class Wordpress extends CApplicationComponent
 					}
 					
 					/* ------ Update some meta fields */
+					// Update search fields all languages
+					$search_text = $building->name . ' ' . $building->name_en;
+					$search_text .= $building->name_kana . ' ' . $building->search_keywords_ja . ' ' . $building->search_keywords_en;
+					update_post_meta($post_id, 'estate_property_search', $search_text);
+					
 					// Update price
 					update_post_meta($post_id, 'estate_property_price', (float)str_replace(',', '', $floor->rent_unit_price));
 					update_post_meta($post_id, 'estate_property_featured', (int)$building->is_featured);
@@ -514,6 +519,10 @@ class Wordpress extends CApplicationComponent
 						delete_post_meta($post_id, 'estate_property_district');
 						delete_post_meta($post_id, 'estate_property_town');
 						delete_post_meta($post_id, 'estate_property_featured');
+						
+						delete_post_meta($post_id, 'estate_property_search');
+						delete_post_meta($post_id, 'estate_property_search_keywords');
+						delete_post_meta($post_id, 'estate_property_kana_name');
 							
 						delete_post_meta($post_id, self::BUILDING_TYPE_CONTENT);
 						delete_post_meta($post_id, self::FLOOR_TYPE_CONTENT);
