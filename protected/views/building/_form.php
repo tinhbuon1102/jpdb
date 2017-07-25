@@ -41,9 +41,29 @@
                             </th>
                             <td>
 								<?php echo $form->textField($model,'name_en',array('size'=>60,'maxlength'=>255,'class'=>'ty9 mb1')); ?><br/>
-								<?php echo $form->error($model,'name'); ?>
+								<?php echo $form->error($model,'name_en'); ?>
                             </td>
                        	</tr>
+                       	
+                       	<tr>
+                        	<th scope="row">
+								<?php echo Yii::app()->controller->__trans('Search Keyword Japanese'); ?>
+                            </th>
+                            <td>
+								<?php echo $form->textField($model,'search_keywords_ja',array('class'=>'ty9 mb1')); ?>
+								<?php echo $form->error($model,'search_keywords_ja'); ?>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                        	<th scope="row">
+								<?php echo Yii::app()->controller->__trans('Search keywords English'); ?>
+                            </th>
+                            <td>
+								<?php echo $form->textField($model,'search_keywords_en',array('class'=>'ty9 mb1')); ?>
+								<?php echo $form->error($model,'search_keywords_en'); ?>
+                            </td>
+                        </tr>
                        	
                         <tr>
                         	<th scope="row">

@@ -409,6 +409,12 @@ class Wordpress extends CApplicationComponent
 						update_post_meta($post_id, 'estate_property_size', $floor->area_m);
 						update_post_meta($post_id, 'estate_property_size_unit', 'm2');
 						
+						// Update kana name
+						update_post_meta($post_id, 'estate_property_kana_name', $building->name_kana);
+						
+						// Update search keywords
+						update_post_meta($post_id, 'estate_property_search_keywords', $building->search_keywords_en);
+						
 						// Update station
 						update_post_meta($post_id, 'estate_property_station', isset($aStations[0]) ? ($aStations[0]['name_en'] ? $aStations[0]['name_en'] : $aStations[0]['name']) : '');
 						
@@ -444,6 +450,12 @@ class Wordpress extends CApplicationComponent
 						// Update size
 						update_post_meta($post_id, 'estate_property_size', $floor->area_ping);
 						update_post_meta($post_id, 'estate_property_size_unit', 'tsubo');
+						
+						// Update kana name
+						update_post_meta($post_id, 'estate_property_kana_name', $building->name_kana);
+						
+						// Update search keywords
+						update_post_meta($post_id, 'estate_property_search_keywords', $building->search_keywords_ja);
 						
 						// Update station
 						update_post_meta($post_id, 'estate_property_station', isset($aStations[0]) ? $aStations[0]['name'] : '');

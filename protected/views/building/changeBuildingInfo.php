@@ -24,7 +24,25 @@
 				<?php echo Yii::app()->controller->__trans('Building Name English'); ?>
             </td>
             <td>
-                <input type="text" name="name_en" class="name ty9 mb1" id="Building_name" value="<?php echo isset($buildingDetails['name_en']) && $buildingDetails['name_en'] != "" ? $buildingDetails['name_en'] : ''; ?>" style="width:350px;" />
+                <input type="text" name="name_en" class="name ty9 mb1" id="Building_name_en" value="<?php echo isset($buildingDetails['name_en']) && $buildingDetails['name_en'] != "" ? $buildingDetails['name_en'] : ''; ?>" style="width:350px;" />
+            </td>
+        </tr>
+        
+        <tr>
+        	<td>
+				<?php echo Yii::app()->controller->__trans('Search Keyword Japanese'); ?>
+            </td>
+            <td>
+                <input type="text" name="search_keywords_ja" class="name ty9 mb1" id="search_keywords_ja" value="<?php echo isset($buildingDetails['search_keywords_ja']) && $buildingDetails['search_keywords_ja'] != "" ? $buildingDetails['search_keywords_ja'] : ''; ?>" style="width:100%;" />
+            </td>
+        </tr>
+        
+        <tr>
+        	<td>
+				<?php echo Yii::app()->controller->__trans('Search Keyword English'); ?>
+            </td>
+            <td>
+                <input type="text" name="search_keywords_en" class="name ty9 mb1" id="search_keywords_en" value="<?php echo isset($buildingDetails['search_keywords_en']) && $buildingDetails['search_keywords_en'] != "" ? $buildingDetails['search_keywords_en'] : ''; ?>" style="width:100%;" />
             </td>
         </tr>
         

@@ -148,6 +148,8 @@ class BuildingController extends Controller{
 			$model->attributes=$_POST['Building'];
 			$model->name = $_POST['Building']['name'];
 			$model->name_en = $_POST['Building']['name_en'];
+			$model->search_keywords_ja = $_POST['Building']['search_keywords_ja'];
+			$model->search_keywords_en = $_POST['Building']['search_keywords_en'];
 			$model->is_featured = $_POST['Building']['is_featured'];
 			$model->description_ja = $_POST['Building']['description_ja'];
 			$model->description_en = $_POST['Building']['description_en'];
@@ -612,6 +614,8 @@ class BuildingController extends Controller{
 		if(isset($_POST['Building'])){
 			$model->name = $_POST['Building']['name'];
 			$model->name_en = $_POST['Building']['name_en'];
+			$model->search_keywords_ja = $_POST['Building']['search_keywords_ja'];
+			$model->search_keywords_en = $_POST['Building']['search_keywords_en'];
 			$model->is_featured = $_POST['Building']['is_featured'];
 			$model->description_ja = $_POST['Building']['description_ja'];
 			$model->description_en = $_POST['Building']['description_en'];
@@ -2170,6 +2174,8 @@ class BuildingController extends Controller{
 			$buildingDetails = Building::model()->findByPk($getArray['id']);
 			$buildingDetails->name = $getArray['name'];
 			$buildingDetails->name_en = $getArray['name_en'];
+			$buildingDetails->search_keywords_ja = $getArray['search_keywords_ja'];
+			$buildingDetails->search_keywords_en = $getArray['search_keywords_en'];
 			$buildingDetails->is_featured = $getArray['is_featured'];
 			$buildingDetails->description_ja = $getArray['description_ja'];
 			$buildingDetails->description_en = $getArray['description_en'];
