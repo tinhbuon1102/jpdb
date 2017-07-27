@@ -68,6 +68,23 @@ dl, dt, dd { margin: 0; }
     font-size: 12px !important;
     line-height: 1 !important;
 }
+.send-update-btn {
+    float: right;
+    clear: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+a.sendupdate-button {
+    background: rgb(18,170,235);
+    background: rgba(18,170,235,1);
+    color: #FFF;
+    min-width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
 .empty-room { margin-bottom: 20px; }
 
 .form-style-5 input, .form-style-5 input[type="text"], .form-style-5 input[type="date"], .form-style-5 input[type="datetime"], .form-style-5 input[type="email"], .form-style-5 input[type="number"], .form-style-5 input[type="search"], .form-style-5 input[type="time"], .form-style-5 input[type="url"], .form-style-5 textarea, .form-style-5 select { background: rgba(255,255,255,.1); border: 0; border-radius: 4px; font-size: 12px; height: 30px; line-height: 30px; margin: 0; outline: 0; padding: 4px; width: 100%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; background-color: #e8eeef; color: #8a97a0; -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; }

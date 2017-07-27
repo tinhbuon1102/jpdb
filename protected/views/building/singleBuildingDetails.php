@@ -721,11 +721,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                             </tr>
                         </tbody>
                     </table>
-                    <div>
+                    <div class="floor-edit-btn">
                     	<a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$globalFloorId)); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$globalFloorId,'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;">
                         	<button type="button" class="btnSingleEditFloor"><?php echo Yii::app()->controller->__trans('edit・update'); ?></button>
                         </a>
                     </div>
+                    <div class="send-update-btn"><a href="#" class="sendupdate-button">Send Update</a></div>
                 </div><!--/table-box-->
                 
                 <div class="other-info-col table-box">
