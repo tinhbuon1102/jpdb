@@ -5369,9 +5369,11 @@ class BuildingController extends Controller{
 		// Send as english
 		$url = get_option('siteurl') . '/?lang=en&api_send_follow_email='.$floor_id;
 		$output = $this->setCurl($url);
+		
 		// Send as japanese
 		$url = get_option('siteurl') . '/?lang=ja&api_send_follow_email='.$floor_id;
 		$output = $this->setCurl($url);
+		
 		// Register again yii autoload
 		spl_autoload_register(array(
 			'YiiBase',
