@@ -3939,3 +3939,27 @@ span.button-right {
     padding: 0 10px;
     line-height: 1;
 }
+/*filter premium office*/
+.list-item.filter-front-properties {
+    margin-bottom: 15px;
+}
+.condition_results.front_results {
+    background: #F5F5F1;
+}
+.front_results .header-bg.divSearchCondition {
+    padding: 0;
+}
+.filter-location, .filter-keywords {
+    border-bottom: 2px dotted #FFF;
+    border-color: rgb(213,219,225);
+    border-color: rgba(213,219,225,1);
+    padding: 0px 0 20px;
+    margin-bottom: 20px;
+}
+.search-floor > .checkbox-formtype:first-child {
+    margin-left: 0;
+}
+.filter-keywords input#keyword {
+    height: 30px;
+    line-height: 30px;
+}
