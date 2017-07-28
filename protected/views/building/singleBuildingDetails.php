@@ -726,7 +726,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                         	<button type="button" class="btnSingleEditFloor"><?php echo Yii::app()->controller->__trans('edit・update'); ?></button>
                         </a>
                     </div>
-                    <div class="send-update-btn"><a href="#" class="sendupdate-button">Send Update</a></div>
+                    
+                    <?php if ($floorDetails['show_frontend']) {?>
+                    <div class="send-update-btn"><a href="javascript:void(0)" class="sendupdate-button">Send Update</a></div>
+                    <?php }?>
                 </div><!--/table-box-->
                 
                 <div class="other-info-col table-box">

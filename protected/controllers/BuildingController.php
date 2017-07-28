@@ -37,7 +37,7 @@ class BuildingController extends Controller{
 						'searchFloorOwnerName','seachOwnerDropdown','saveMapAccessDetails','saveStaionReachTime','searchBuildingByAddress',
 						'printBuildingDetails','route','getNearestStation','getCorporationList','getLineList','getStationList','getBuildingList',
 						'getDisctrictList','getDisctrictListTest','getTownList','getTownListTest','buildingFilterByAddress','getCustomerDrop','sort',
-						'deleteBulkTrans','deleteOfficeAlert','cloneOfficeAlert','removeFreeRent', 'deleteBulkNego', 'isExist', 'migrateOfficeWordpress'),
+						'deleteBulkTrans','deleteOfficeAlert','cloneOfficeAlert','removeFreeRent', 'deleteBulkNego', 'isExist', 'migrateOfficeWordpress', 'sendEmailFollowed'),
 				'users'=>array('@'),
 			),
 
@@ -5336,5 +5336,38 @@ class BuildingController extends Controller{
 	
 		echo '<pre>'; print_r(count($buildings));
 		die;
+	}
+	
+	public function actionSendEmailFollowed()
+	{
+		// @TODO remove below
+		spl_autoload_unregister(array(
+			'YiiBase',
+			'autoload'
+		));
+			
+		// Include wordpress class
+		include Yii::getPathOfAlias('webroot') . '/wp/wp-blog-header.php';
+		
+		$floor_id = $_POST['floor_id'];
+		
+		// create curl resource
+		$ch = curl_init();
+		// set url
+		curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_send_follow_email='.$floor_id);
+		//return the transfer as a string
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		// $output contains the output string
+		$output = curl_exec($ch);
+		// close curl resource to free up system resources
+		curl_close($ch);
+		
+		// Register again yii autoload
+		spl_autoload_register(array(
+			'YiiBase',
+			'autoload'
+		));
+		
+		echo json_encode(array('success' => $output ? 1 : 0)); die;
 	}
 }

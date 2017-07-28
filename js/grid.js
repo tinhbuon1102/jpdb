@@ -36,6 +36,24 @@ $(document).on('click','.cart-content button',function(e){
 	e.stopPropagation();
 });
 
+$(document).on('click','.sendupdate-button',function(e){	  
+	e.preventDefault();
+	if (confirm('Are you sure you want to send updated floor email to followers ?'))
+	{
+		$('body').LoadingOverlay("show");
+		var url = baseUrl+'/index.php?r=building/sendEmailFollowed';
+		$.ajax({
+			url: url,
+			method: "POST",
+			data: {floor_id: $('.hdnFloorId:eq(0)').val()},
+			dataType : 'json'
+		}).success(function(resp){
+			$('body').LoadingOverlay("hide");
+			alert('Email was sent to followers');
+		});
+	}
+});
+
 try{
 $("#list_cart").sortable({
     placeholder: 'min-white-box placeholder',
