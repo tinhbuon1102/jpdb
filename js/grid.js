@@ -38,7 +38,7 @@ $(document).on('click','.cart-content button',function(e){
 
 $(document).on('click','.sendupdate-button',function(e){	  
 	e.preventDefault();
-	if (confirm('Are you sure you want to send updated floor email to followers ?'))
+	if (confirm('本当に更新通知メールを会員に送りますか？'))
 	{
 		$('body').LoadingOverlay("show");
 		var url = baseUrl+'/index.php?r=building/sendEmailFollowed';
@@ -49,7 +49,7 @@ $(document).on('click','.sendupdate-button',function(e){
 			dataType : 'json'
 		}).success(function(resp){
 			$('body').LoadingOverlay("hide");
-			alert('Email was sent to followers');
+			alert('更新通知メールが送信されました。');
 		});
 	}
 });
