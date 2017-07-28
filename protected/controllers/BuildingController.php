@@ -5338,6 +5338,21 @@ class BuildingController extends Controller{
 		die;
 	}
 	
+	
+	private function setCurl($url) {
+		// create curl resource
+		$ch = curl_init();
+		// set url
+		curl_setopt($ch, CURLOPT_URL, $url);
+		//return the transfer as a string
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		// $output contains the output string
+		$output = curl_exec($ch);
+		// close curl resource to free up system resources
+		curl_close($ch);
+		return $output;
+	}
+	
 	public function actionSendEmailFollowed()
 	{
 		// @TODO remove below
@@ -5351,17 +5366,14 @@ class BuildingController extends Controller{
 		
 		$floor_id = $_POST['floor_id'];
 		
-		// create curl resource
-		$ch = curl_init();
-		// set url
-		curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_send_follow_email='.$floor_id);
-		//return the transfer as a string
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		// $output contains the output string
-		$output = curl_exec($ch);
-		// close curl resource to free up system resources
-		curl_close($ch);
-		
+		// Send as english
+		$url = get_option('siteurl') . '/?lang=en&api_send_follow_email='.$floor_id;
+		$output = $this->setCurl($url);
+		print_r($output);
+		// Send as japanese
+		$url = get_option('siteurl') . '/?lang=ja&api_send_follow_email='.$floor_id;
+		$output = $this->setCurl($url);
+		print_r($output);die;
 		// Register again yii autoload
 		spl_autoload_register(array(
 			'YiiBase',
