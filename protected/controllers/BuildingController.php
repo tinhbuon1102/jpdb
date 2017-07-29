@@ -5355,30 +5355,18 @@ class BuildingController extends Controller{
 	
 	public function actionSendEmailFollowed()
 	{
-		// @TODO remove below
-		spl_autoload_unregister(array(
-			'YiiBase',
-			'autoload'
-		));
-			
-		// Include wordpress class
-		include Yii::getPathOfAlias('webroot') . '/wp/wp-blog-header.php';
+		$query = 'SELECT option_value  as siteurl FROM wp_options where option_name="siteurl" LIMIT 1';
+		$options = Yii::app()->db->createCommand($query)->queryRow();
 		
 		$floor_id = $_POST['floor_id'];
 		
 		// Send as english
-		$url = get_option('siteurl') . '/?lang=en&api_send_follow_email='.$floor_id;
+		$url = $options['siteurl'] . '/?lang=en&api_send_follow_email='.$floor_id;
 		$output = $this->setCurl($url);
 		
 		// Send as japanese
-		$url = get_option('siteurl') . '/?lang=ja&api_send_follow_email='.$floor_id;
+		$url = $options['siteurl'] . '/?lang=ja&api_send_follow_email='.$floor_id;
 		$output = $this->setCurl($url);
-		
-		// Register again yii autoload
-		spl_autoload_register(array(
-			'YiiBase',
-			'autoload'
-		));
 		
 		echo json_encode(array('success' => $output ? 1 : 0)); die;
 	}
