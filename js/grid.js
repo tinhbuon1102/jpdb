@@ -45,7 +45,7 @@ $(document).on('click','.sendupdate-button',function(e){
 		$.ajax({
 			url: url,
 			method: "POST",
-			data: {floor_id: $('.hdnFloorId:eq(0)').val()},
+			data: {floor_id: $('#frmUpBuildingPicture .hdnFloorId:eq(0)').val()},
 			dataType : 'json'
 		}).success(function(resp){
 			$('body').LoadingOverlay("hide");
