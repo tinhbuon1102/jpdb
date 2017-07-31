@@ -27,6 +27,7 @@
       		</span>
       	</div>
       	</div>
+      	<!--show more options-->
        	<div class="row basic-filter">
         	<div class="form_part col_1">
             	<div class="col_wrap">
@@ -3528,83 +3529,7 @@
             </div>
             <div class="clear"></div>
          </div>
-           <!--show more options-->
-            <div class="more-filter">
-            	<div class="second_part">
-                	<div class="TextField">
-                    	<div class="searchform-param">
-                        	<label class="searchform-label date-update">設備</label>
-                            <div class="fac-check-wrapper">
-                            	<input type="checkbox" value="1" id="slideThree" name="facilities[]">男女別トイレ
-                                <input type="checkbox" value="2" id="slideThree" name="facilities[]" class="checkbox-one">OAフロア
-                                <input type="checkbox" value="3" id="slideThree" name="facilities[]" class="checkbox-one">個別空調
-                                <input type="checkbox" value="4" id="slideThree" name="facilities[]" class="checkbox-one">フロア分割可
-                                <input type="checkbox" value="5" id="slideThree" name="facilities[]" class="checkbox">耐震補強
-                                <input type="checkbox" value="6" id="slideThree" name="facilities[]" class="checkbox">一棟貸し可
-                                <input type="checkbox" value="7" id="slideThree" name="facilities[]" class="checkbox-one">緊急発電装置対応
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="second_part">
-                	<div class="TextField">
-                    	<div class="searchform-param">
-                        	<label class="searchform-label date-update Floor-title">フロア種別</label>
-                            <span class="searchform-input-wrapper select-numbers search-floor">
-							                            	<input type="checkbox" value="1" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">事務所							                            	<input type="checkbox" value="2" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">店舗							                            	<input type="checkbox" value="3" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">ショールーム							                            	<input type="checkbox" value="5" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">倉庫							                            	<input type="checkbox" value="6" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">住居							                            	<input type="checkbox" value="7" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">駐車場							                            	<input type="checkbox" value="8" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">軽飲食							                            	<input type="checkbox" value="9" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">重飲食							                            	<input type="checkbox" value="10" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">医院							                            	<input type="checkbox" value="11" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">エステ							                            	<input type="checkbox" value="12" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">教室							                            	<input type="checkbox" value="13" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">物販							                            	<input type="checkbox" value="14" id="slideThree" name="floorType[]" class="checkbox-formtype chck_space">レンタルオフィス							                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col_two clearfix">
-                	<div class="second_part">
-                    	<div class="TextField">
-                        	<div class="searchform-param">
-                            	<label class="searchform-label date-update passible-title">取引形態</label>
-                                <span class="searchform-input-wrapper select-numbers search-floor">
-								<input type="checkbox" name="formTypeList[]" value="1" class="checkbox-formtype chck_space">貸主<input type="checkbox" name="formTypeList[]" value="2" class="checkbox-formtype chck_space">代理<input type="checkbox" name="formTypeList[]" value="3" class="checkbox-formtype chck_space">一般媒介<input type="checkbox" name="formTypeList[]" value="4" class="checkbox-formtype chck_space">専任媒介<input type="checkbox" name="formTypeList[]" value="7" class="checkbox-formtype chck_space">不明                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="second_part">
-                    	<div class="TextField">
-                        	<div class="searchform-param">
-                            	<label class="searchform-label date-update type-title">貸主/業者 種別</label>
-                                <span class="searchform-input-wrapper select-numbers search-floor">
-                                	<input type="checkbox" value="7" id="slideThree" name="lenderType[]">貸主
-                                    <input type="checkbox" value="10" id="slideThree" name="lenderType[]" class="checkbox-one">業者
-                                    <input type="checkbox" value="-1" id="slideThree" name="lenderType[]" class="checkbox-one">不明
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col_two clearfix">
-                	<div class="second_part">
-                    	<div class="TextField">
-                        	<div class="searchform-param">
-                            	<label class="searchform-label date-update passible-title">駅からの徒歩</label>
-                                <div class="fac-check-wrapper">
-                                	<input type="radio" value="3" id="slideThree" name="walkFromStation">3分以内
-                                    <input type="radio" value="5" id="slideThree" name="walkFromStation" class="checkbox-two">5分以内
-                                    <input type="radio" value="10" id="slideThree" name="walkFromStation" class="checkbox-two">10分以内
-                                    <input type="radio" value="15" id="slideThree" name="walkFromStation" class="checkbox-two">15分以内
-                               	</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="second_part">
-                    	<div class="TextField">
-                        	<div class="searchform-param">
-                            	<label class="searchform-label date-update">短期貸し対応</label>
-                                <span class="searchform-input-wrapper select-numbers search-floor">
-                                	<input type="checkbox" value="1" id="slideThree" name="shortRent">短期貸し対応
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/show more options-->
+         <!--/show more options-->
         </div>
    		
    		<div class="searchform-controls clearfix">

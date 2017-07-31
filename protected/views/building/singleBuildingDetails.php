@@ -728,7 +728,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     </div>
                     
                     <?php if ($floorDetails['show_frontend']) {?>
-                    <div class="send-update-btn"><a href="javascript:void(0)" class="sendupdate-button">Send Update</a></div>
+                    <div class="send-update-btn"><a href="javascript:void(0)" class="sendupdate-button"><?php echo Yii::app()->controller->__trans('Send Update'); ?></a></div>
                     <?php }?>
                 </div><!--/table-box-->
                 
