@@ -327,6 +327,7 @@ class Wordpress extends CApplicationComponent
 						}
 						else {
 							// create curl resource
+							echo get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);die;
 							$ch = curl_init();
 							// set url
 							curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
