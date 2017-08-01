@@ -85,6 +85,12 @@ $("#list_cart").sortable({
 }catch(err){}
 
 function initSlider() {
+	if ($('#button_show_option').length)
+	{
+		$('body').on('click', '#button_show_option, #button_hide_option', function(){
+			$('#advanced_options').slideToggle();
+		});
+	}
 	if ($(".slider-range").length) {
 		$(".slider-range").each(function(index, element) {
 	        var minval = maxval = 0;
