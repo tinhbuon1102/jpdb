@@ -169,12 +169,6 @@ class BuildingPicturesController extends Controller{
 		$buildingDetails->main_image = $cImgs[$imgId];
 		$buildingDetails->save(false);
 		
-// 		echo '<pre>'; 
-// 		print_r($_POST);
-// 		var_dump($imgId);
-// 		print_r($cImgs);
-// 		print_r($cImgs[$imgId]);
-// 		print_r($buildingDetails);die;
 		// BEGIN - Create wordpress building reference
 		$wordpress = new Wordpress();
 		$wordpress->processIntergrateWordpress($buildingDetails->building_id, Wordpress::BUILDING_TYPE, 'update');
