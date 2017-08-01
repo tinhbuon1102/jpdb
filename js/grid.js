@@ -87,10 +87,10 @@ $("#list_cart").sortable({
 function initSlider() {
 	if ($('#button_show_option').length)
 	{
-		$('body').on('click', '#button_show_option, #button_hide_option', function(){
+		$('body').on('click', '#button_show_option, #button_hidden_option', function(){
 			$('#advanced_options').slideToggle();
 			$('#button_show_option').toggle();
-			$('#button_hide_option').toggle();
+			$('#button_hidden_option').toggle();
 		});
 	}
 	if ($(".slider-range").length) {
