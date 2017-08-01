@@ -320,25 +320,16 @@ class Wordpress extends CApplicationComponent
 						$aImages = explode(',', $aImage);
 						$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
 							
-						$attach = $this->get_image_id($aImages[0]);
-						if ($attach && $attach->ID) {
-							$image = null;
-							set_post_thumbnail( $post_id, $attach->ID );
-						}
-						else {
-							// create curl resource
-							$ch = curl_init();
-							// set url
-							curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
-							//return the transfer as a string
-							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-							// $output contains the output string
-							$output = curl_exec($ch);
-							// close curl resource to free up system resources
-							curl_close($ch);
-							
-							var_dump($output);die;
-						}
+						// create curl resource
+						$ch = curl_init();
+						// set url
+						curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
+						//return the transfer as a string
+						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+						// $output contains the output string
+						$output = curl_exec($ch);
+						// close curl resource to free up system resources
+						curl_close($ch);
 					}
 					
 					
