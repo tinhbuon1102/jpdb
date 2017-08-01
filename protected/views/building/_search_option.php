@@ -111,13 +111,13 @@ $searchOptions = HelperFunctions::searchSearchOptions();
                         	<div class="cost searchform-label">総額</div>
                             	<div class="float-left">
                                 	<label>下限</label>
-                                	<?php echo CHtml::dropDownList('unit_condo_fee_min', $_REQUEST['unit_condo_fee_min'], $searchOptions['condo_unit'],   array('class' => 'select-one', 'id' => 'costMinAmount') ); ?>
+                                	<?php echo CHtml::dropDownList('total_rent_price_min', $_REQUEST['total_rent_price_min'], $searchOptions['total_rent'],   array('class' => 'select-one', 'id' => 'costMinAmount') ); ?>
                                     <span>円</span>
                                 </div>
                                 <div class="float-left between">~</div>
                                 <div class="float-left maxside">
                                 	<label>上限</label>
-                                    <?php echo CHtml::dropDownList('unit_condo_fee_max', $_REQUEST['unit_condo_fee_max'], $searchOptions['condo_unit'],   array('class' => 'select-one', 'id' => 'costMaxAmount') ); ?>
+                                    <?php echo CHtml::dropDownList('total_rent_price_max', $_REQUEST['total_rent_price_max'], $searchOptions['total_rent'],   array('class' => 'select-one', 'id' => 'costMaxAmount') ); ?>
                                     <span>円</span>
                                 </div>
                             </div>

@@ -125,7 +125,7 @@ class HelperFunctions extends CApplicationComponent {
 		$aSearchOptions['area'] = self::getAreaArray();
 		$aSearchOptions['floor'] = self::getDownUpFloorArray();
 		$aSearchOptions['rent_unit'] = self::getRentUnitArray();
-		$aSearchOptions['condo_unit'] = self::getAmountArray();
+		$aSearchOptions['total_rent'] = self::getAmountArray();
 		$aSearchOptions['built_year'] = self::getBuildYearArray();
 		$aSearchOptions['move_in_date'] = self::getMoveDateArray();
 		$aSearchOptions['location'] = self::getLocationArray();

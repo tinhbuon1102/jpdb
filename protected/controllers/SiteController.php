@@ -194,13 +194,13 @@ class SiteController extends Controller{
 			$criteria->addBetweenCondition('CAST(REPLACE(f.rent_unit_price, ",", "") as SIGNED) ', $rent_unit_min, $rent_unit_max);
 		}
 		
-		if ($_REQUEST['unit_condo_fee_min'] || $_REQUEST['unit_condo_fee_max'])
+		if ($_REQUEST['total_rent_price_min'] || $_REQUEST['total_rent_price_max'])
 		{
-			$unit_condo_fee_min = $_REQUEST['unit_condo_fee_min'];
-			$unit_condo_fee_max = $_REQUEST['unit_condo_fee_max'] ? $_REQUEST['unit_condo_fee_max'] : 9999999999;
+			$total_rent_price_min = $_REQUEST['total_rent_price_min'];
+			$total_rent_price_max = $_REQUEST['total_rent_price_max'] ? $_REQUEST['total_rent_price_max'] : 9999999999;
 		
 				
-			$criteria->addBetweenCondition('CAST(REPLACE(f.unit_condo_fee, ",", "") as SIGNED) ', $unit_condo_fee_min, $unit_condo_fee_max);
+			$criteria->addBetweenCondition('CAST(REPLACE(f.total_rent_price, ",", "") as SIGNED) ', $total_rent_price_min, $total_rent_price_max);
 		}
 		
 		if ($_REQUEST['built_year'])
