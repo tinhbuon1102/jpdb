@@ -2641,12 +2641,6 @@ class FloorController extends Controller{
 				{
 					$buildingDetails->plan_standard_id = $model->plan_picture_id;
 					$buildingDetails->save(false);
-					
-					// BEGIN - Create wordpress building reference
-					$wordpress = new Wordpress();
-					$wordpress->processIntergrateWordpress($buildingDetails->building_id, Wordpress::BUILDING_TYPE, 'update');
-					$wordpress->reGenerateLocations();
-					// End - processing with wordpress
 				}
 				
 				$changeLogModel = new BuildingUpdateLog;

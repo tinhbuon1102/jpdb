@@ -20,6 +20,13 @@ $(document).ready(function(e) {
 		
 		if($(tabID + " ul.tabs2").length > 0){
 			$(tabID + " ul.tabs2").jTabs({content: ".tabs_content2", animate: true});
+			$(tabID + " ul.tabs3").jTabs({content: ".tabs_content3", animate: true});
+			
+			function accordion(){
+				$(this).toggleClass("active").next().slideToggle(300);
+			}
+			$(".accordion .toggle").click(accordion);
+			
 			setTimeout(function(){
 				$(tabID + " ul.tabs2 li:eq("+ childTabActivateIndex +")").trigger('click');
 				$(tabID).css('opacity', '1');
