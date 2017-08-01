@@ -161,16 +161,11 @@ class SiteController extends Controller{
 		if ($_REQUEST['area_ping_min'] || $_REQUEST['area_ping_max'])
 		{
 			$_REQUEST['area_ping_min'] = (int)$_REQUEST['area_ping_min'];
-			$_REQUEST['area_ping_max'] = (int)$_REQUEST['area_ping_max'];
+			$_REQUEST['area_ping_max'] = (int)($_REQUEST['area_ping_max'] ? $_REQUEST['area_ping_max'] : 9999999999);
 			
 			$area_ping_min = $_REQUEST['area_ping_min'];
 			$area_ping_max = $_REQUEST['area_ping_max'];
 			
-			if ($area_ping_max < $area_ping_min)
-			{
-				$area_ping_min = $_REQUEST['area_ping_max'];
-				$area_ping_max = $_REQUEST['area_ping_min'];
-			}
 			
 			$criteria->addBetweenCondition('cast(REPLACE(f.area_ping, ",", "") as SIGNED)', $area_ping_min, $area_ping_max);
 		}
@@ -178,33 +173,21 @@ class SiteController extends Controller{
 		if ($_REQUEST['floor_down'] || $_REQUEST['floor_up'])
 		{
 			$_REQUEST['floor_down'] = (int)$_REQUEST['floor_down'];
-			$_REQUEST['floor_up'] = (int)$_REQUEST['floor_up'];
+			$_REQUEST['floor_up'] = (int)($_REQUEST['floor_up'] ? $_REQUEST['floor_up'] : 9999999999);
 				
 			$floor_down = $_REQUEST['floor_down'];
 			$floor_up = $_REQUEST['floor_up'];
 				
-			if ($floor_up < $floor_down)
-			{
-				$floor_down = $_REQUEST['floor_up'];
-				$floor_up = $_REQUEST['floor_down'];
-			}
-				
 			$criteria->addCondition('(
 					(f.floor_down != "" AND cast(f.floor_down as SIGNED)  BETWEEN '.$floor_down.' AND '.$floor_up.') 
-					OR (f.floor_up != "" AND cast(f.floor_up as SIGNED)  BETWEEN '.$floor_down.' AND '.$floor_up.')
 					)');
 		}
 		
 		if ($_REQUEST['rent_unit_min'] || $_REQUEST['rent_unit_max'])
 		{
 			$rent_unit_min = $_REQUEST['rent_unit_min'];
-			$rent_unit_max = $_REQUEST['rent_unit_max'];
+			$rent_unit_max = $_REQUEST['rent_unit_max'] ? $_REQUEST['rent_unit_max'] : 9999999999;
 				
-			if ($rent_unit_max < $rent_unit_min)
-			{
-				$rent_unit_min = $_REQUEST['rent_unit_max'];
-				$rent_unit_max = $_REQUEST['rent_unit_min'];
-			}
 			$rent_unit_min *= 10000;
 			$rent_unit_max *= 10000;
 			
@@ -214,13 +197,8 @@ class SiteController extends Controller{
 		if ($_REQUEST['unit_condo_fee_min'] || $_REQUEST['unit_condo_fee_max'])
 		{
 			$unit_condo_fee_min = $_REQUEST['unit_condo_fee_min'];
-			$unit_condo_fee_max = $_REQUEST['unit_condo_fee_max'];
+			$unit_condo_fee_max = $_REQUEST['unit_condo_fee_max'] ? $_REQUEST['unit_condo_fee_max'] : 9999999999;
 		
-			if ($unit_condo_fee_max < $unit_condo_fee_min)
-			{
-				$unit_condo_fee_min = $_REQUEST['unit_condo_fee_max'];
-				$unit_condo_fee_max = $_REQUEST['unit_condo_fee_min'];
-			}
 				
 			$criteria->addBetweenCondition('CAST(REPLACE(f.unit_condo_fee, ",", "") as SIGNED) ', $unit_condo_fee_min, $unit_condo_fee_max);
 		}
@@ -234,13 +212,7 @@ class SiteController extends Controller{
 		if ($_REQUEST['move_in_date_min'] || $_REQUEST['move_in_date_max'])
 		{
 			$move_in_date_min = $_REQUEST['move_in_date_min'];
-			$move_in_date_max = $_REQUEST['move_in_date_max'];
-		
-			if ($move_in_date_max < $move_in_date_min)
-			{
-				$move_in_date_min = $_REQUEST['move_in_date_max'];
-				$move_in_date_max = $_REQUEST['move_in_date_min'];
-			}
+			$move_in_date_max = $_REQUEST['move_in_date_max'] ? $_REQUEST['move_in_date_max'] : '9999-12-12';
 		
 			$criteria->addBetweenCondition('f.move_in_date > 0 AND DATE_FORMAT(STR_TO_DATE(SUBSTR(move_in_date,1,7), "%Y/%m"), "%Y-%m")', $move_in_date_min, $move_in_date_max);
 		}
