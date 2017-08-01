@@ -1542,7 +1542,7 @@ class BuildingController extends Controller{
 				 $flag = 1;  $fFlag = 1;
 				 $searchCriteria['costMin'] = $costMin;
 				 $searchCriteria['costMax'] = $costMax;
-				 $queryString .=" AND unit_condo_fee  > ".$costMin." AND unit_condo_fee <= ".$costMax."";
+				 $queryString .=" AND total_rent_price  > ".$costMin." AND total_rent_price <= ".$costMax."";
 			}
 
 			if(isset($floorMin) && isset($floorMax) && $floorMax  != 0 ){
