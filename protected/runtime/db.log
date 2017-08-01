@@ -1,0 +1,330 @@
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `building`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/SiteController.php (162)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `building`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/SiteController.php (162)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM (SELECT t.* FROM `building` `t` INNER JOIN `floor` f ON t.building_id = f.building_id WHERE (f.show_frontend=:ycp0) AND (f.area_ping BETWEEN :ycp1 AND :ycp2) GROUP BY t.building_id) sq. Bound with :ycp0=1, :ycp1='5', :ycp2='500'
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/SiteController.php (162)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT t.* FROM `building` `t` INNER JOIN `floor` f ON t.building_id = f.building_id WHERE (f.show_frontend=:ycp0) AND (f.area_ping BETWEEN :ycp1 AND :ycp2) GROUP BY t.building_id ORDER BY f.modified_on DESC LIMIT 20. Bound with :ycp0=1, :ycp1='5', :ycp2='500'
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/controllers/SiteController.php (168)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT district FROM building INNER JOIN floor ON building.building_id = floor.building_id WHERE floor.show_frontend=1 GROUP by district
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/HelperFunctions.php (113)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `word_translation`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `word_translation`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Area' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '下限' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '上限' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Search Result' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'No Data Available' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `google_map_api_key`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (252)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `google_map_api_key`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (252)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `google_map_api_key` `t` ORDER BY google_map_api_key_id DESC LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (252)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '建物名・顧客名から検索' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Setting' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Help' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `users`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (304)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `users`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (304)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `users` `t` WHERE username = "admin" LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (304)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `admin_details`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (305)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `admin_details`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (305)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 10 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (305)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Change Password' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `site_setting`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (324)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `site_setting`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (324)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `site_setting` `t` WHERE `t`.`site_setting_id`=1 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (324)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Company Name' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Japan Properties' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'TOP' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'MANAGE PROPERTIES' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'MANAGE CUSTOMERS' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'MARKET INFO' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'PROPOSED ARTICLE' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'LIST' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `users` `t` WHERE `t`.`username`=:yp0 LIMIT 1. Bound with :yp0='admin'
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (381)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `cart`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (383)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `cart`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (383)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `cart` `t` WHERE user_id=:x ORDER BY `order`. Bound with :x='10'
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/header.php (383)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Properties that you added' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Printing' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Reset' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'View Cart in List' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `floor`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `floor`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=1452 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `building_pictures`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `building_pictures`
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'undecided' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=1453 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'undecided' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=1454 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 876 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'undecided' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=1446 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=841 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 841 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=556 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=743 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=744 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=745 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=746 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 784 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = '階' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'ask' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `floor` `t` WHERE `t`.`floor_id`=1502 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (26)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building` `t` WHERE `t`.`building_id`=1251 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (27)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `building_pictures` `t` WHERE building_id = 1251 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (28)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'tsubo' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Japan properties operation description' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Basic Usage' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Property Management Manual' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Customer management manual' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Proposed documentation manual' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Print the property printed documentation' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show route map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'showing use of time for floor' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'showing use of time for entrance' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show route map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Run' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show route map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show numbering instead of text label for whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'showing use of time for floor' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'showing use of time for entrance' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Enter header name' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `users` `t` WHERE user_role = "a"
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (193)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 16 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 18 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 19 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 20 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 21 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 22 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 23 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (196)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show route map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show numbering instead of text label for whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Enter header name' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `users` `t` WHERE user_role = "a"
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (215)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 16 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 18 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 19 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 20 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 21 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 22 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 23 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (218)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show numbering instead of text label for whole map' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Show maps for each building' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Add cover' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Enter header name' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `users` `t` WHERE user_role = "a"
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (236)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 16 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 18 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 19 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 20 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 21 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 22 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `admin_details` `t` WHERE user_id = 23 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (239)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Run' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Change Your Password' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Change' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Change Site Setting' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `site_setting` `t` WHERE `t`.`site_setting_id`=1 LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/views/layouts/footer.php (303)
+2017/08/01 20:34:22 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `word_translation` `t` WHERE word = 'Change' LIMIT 1
+in /Volumes/DATA/MyWorks/Documents/office-jpdb.com/protected/components/Controller.php (482)

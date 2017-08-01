@@ -3963,3 +3963,8 @@ span.button-right {
     height: 30px;
     line-height: 30px;
 }
+
+.location_list li {
+	list-style-type: none;
+	width: 30%
+}

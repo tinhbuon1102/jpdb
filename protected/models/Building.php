@@ -35,6 +35,17 @@
  */
 class Building extends CActiveRecord
 {
+	private $floors;
+	
+	public function setFloors ($floors)
+	{
+		$this->floors = $floors;
+	}
+	
+	public function getFloors ()
+	{
+		return $this->floors;
+	}
 	/**
 	 * @return string the associated database table name
 	 */

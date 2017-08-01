@@ -83,6 +83,68 @@ $("#list_cart").sortable({
     },
 });
 }catch(err){}
+
+function initSlider() {
+	if ($(".slider-range").length) {
+		$(".slider-range").each(function(index, element) {
+	        var minval = maxval = 0;
+			if(typeof $(this).attr('min') != 'undefined' && $(this).attr('min') != '') minval = $(this).attr('min');
+			if(typeof $(this).attr('max') != 'undefined' && $(this).attr('max') != '') maxval = $(this).attr('max');
+			$(this).slider({
+			range: true,
+			min: 0,
+		    step: $(this).attr('step') ? $(this).attr('step') : 1,
+			max: $('#maxVal option:last').val(),
+			values: [minval, maxval ],
+			stop: function(event,ui){
+				$("#amount").val("$"+ui.values[0]+"-$"+ui.values[1]);
+				$('#minVal').val(ui.values[0]);
+				$('#maxVal').val(ui.values[1]).trigger('change');
+			}
+		});
+	    });
+		$(document).on('change','#minVal',function(){
+			var minVal = parseInt($(this).val());
+			var maxVal = parseInt($('#maxVal').val());
+			$( ".slider-range" ).slider( "values",[minVal, maxVal ]);
+		});
+		$(document).on('change','#maxVal',function(){
+			var minVal = parseInt($('#minVal').val());
+			var maxVal = parseInt($(this).val());
+			$( ".slider-range" ).slider( "values",[minVal, maxVal ]);
+		});
+		$(".slider-range-1").each(function(index, element) {
+	        var minval = maxval = 0;
+			if(typeof $(this).attr('min') != 'undefined' && $(this).attr('min') != '') minval = $(this).attr('min');
+			if(typeof $(this).attr('max') != 'undefined' && $(this).attr('max') != '') maxval = $(this).attr('max');
+			$(this).slider({
+			range: true,
+			min: 0,
+			max: 5,
+			step: 0.5,
+			values: [minval, maxval ],
+			stop: function( event, ui ) {
+				$("#amount").val("$"+ui.values[0]+"-$"+ui.values[1]);
+				$('#minVal-1').val(ui.values[0]);
+				$('#maxVal-1').val(ui.values[ 1 ]).trigger('change');
+			}
+		});
+	    });
+
+		$(document).on('change','#minVal-1',function(){
+			var minVal1 = parseInt($(this).val());
+			var maxVal1 = parseInt($('#maxVal-1').val());
+			$( ".slider-range-1" ).slider( "values",[minVal1, maxVal1 ]);
+		});
+		$(document).on('change','#maxVal-1',function(){
+			var minVal1 = parseInt($('#minVal-1').val());
+			var maxVal1 = parseInt($(this).val());
+			$( ".slider-range-1" ).slider( "values",[minVal1, maxVal1 ]);
+		});
+	}
+}
+
+initSlider();
 });
 
 

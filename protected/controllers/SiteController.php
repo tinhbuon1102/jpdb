@@ -125,15 +125,125 @@ class SiteController extends Controller{
 	
 	public function actionFrontSearch(){
 		$offset = (int)$_REQUEST['offset'];
-		$limit = 20;
+		$limit = 10;
 		
 		$criteria = new CDbCriteria;
 		$criteria->select = 't.*';
 		$criteria->join ='INNER JOIN `floor` f ON t.building_id = f.building_id';
-		$criteria->condition = 'f.show_frontend = :value';
-		$criteria->params = array(":value" => "1");
+		$criteria->addInCondition('f.show_frontend', array(1),' AND');
+		
+// 		$criteria->condition = 'f.show_frontend = :frontend_value';
+// 		$criteria->params = array(":frontend_value" => "1");
 		$criteria->group = 't.building_id';
 		$criteria->order = 'f.modified_on DESC';
+		
+		
+		// Search with conditions
+		if ($_REQUEST['keyword'])
+		{
+			$keyword = $_REQUEST['keyword'];
+			$criteria->addCondition('(
+				t.name LIKE "%'.$keyword.'%" OR 
+				t.name LIKE "%'.$keyword.'%" OR
+				t.name_en LIKE "%'.$keyword.'%" OR
+				t.search_keywords_ja LIKE "%'.$keyword.'%" OR
+				t.search_keywords_en LIKE "%'.$keyword.'%" OR
+				t.name_kana LIKE "%'.$keyword.'%" OR
+				t.old_name LIKE "%'.$keyword.'%"
+			)');
+		}
+		
+		if ($_REQUEST['location'])
+		{
+			$criteria->addInCondition('t.district', $_REQUEST['location']);
+		}
+		
+		if ($_REQUEST['area_ping_min'] || $_REQUEST['area_ping_max'])
+		{
+			$_REQUEST['area_ping_min'] = (int)$_REQUEST['area_ping_min'];
+			$_REQUEST['area_ping_max'] = (int)$_REQUEST['area_ping_max'];
+			
+			$area_ping_min = $_REQUEST['area_ping_min'];
+			$area_ping_max = $_REQUEST['area_ping_max'];
+			
+			if ($area_ping_max < $area_ping_min)
+			{
+				$area_ping_min = $_REQUEST['area_ping_max'];
+				$area_ping_max = $_REQUEST['area_ping_min'];
+			}
+			
+			$criteria->addBetweenCondition('cast(REPLACE(f.area_ping, ",", "") as SIGNED)', $area_ping_min, $area_ping_max);
+		}
+		
+		if ($_REQUEST['floor_down'] || $_REQUEST['floor_up'])
+		{
+			$_REQUEST['floor_down'] = (int)$_REQUEST['floor_down'];
+			$_REQUEST['floor_up'] = (int)$_REQUEST['floor_up'];
+				
+			$floor_down = $_REQUEST['floor_down'];
+			$floor_up = $_REQUEST['floor_up'];
+				
+			if ($floor_up < $floor_down)
+			{
+				$floor_down = $_REQUEST['floor_up'];
+				$floor_up = $_REQUEST['floor_down'];
+			}
+				
+			$criteria->addCondition('(
+					(f.floor_down != "" AND cast(f.floor_down as SIGNED)  BETWEEN '.$floor_down.' AND '.$floor_up.') 
+					OR (f.floor_up != "" AND cast(f.floor_up as SIGNED)  BETWEEN '.$floor_down.' AND '.$floor_up.')
+					)');
+		}
+		
+		if ($_REQUEST['rent_unit_min'] || $_REQUEST['rent_unit_max'])
+		{
+			$rent_unit_min = $_REQUEST['rent_unit_min'];
+			$rent_unit_max = $_REQUEST['rent_unit_max'];
+				
+			if ($rent_unit_max < $rent_unit_min)
+			{
+				$rent_unit_min = $_REQUEST['rent_unit_max'];
+				$rent_unit_max = $_REQUEST['rent_unit_min'];
+			}
+			$rent_unit_min *= 10000;
+			$rent_unit_max *= 10000;
+			
+			$criteria->addBetweenCondition('CAST(REPLACE(f.rent_unit_price, ",", "") as SIGNED) ', $rent_unit_min, $rent_unit_max);
+		}
+		
+		if ($_REQUEST['unit_condo_fee_min'] || $_REQUEST['unit_condo_fee_max'])
+		{
+			$unit_condo_fee_min = $_REQUEST['unit_condo_fee_min'];
+			$unit_condo_fee_max = $_REQUEST['unit_condo_fee_max'];
+		
+			if ($unit_condo_fee_max < $unit_condo_fee_min)
+			{
+				$unit_condo_fee_min = $_REQUEST['unit_condo_fee_max'];
+				$unit_condo_fee_max = $_REQUEST['unit_condo_fee_min'];
+			}
+				
+			$criteria->addBetweenCondition('CAST(REPLACE(f.unit_condo_fee, ",", "") as SIGNED) ', $unit_condo_fee_min, $unit_condo_fee_max);
+		}
+		
+		if ($_REQUEST['built_year'])
+		{
+			$built_year = $_REQUEST['built_year'];
+			$criteria->addCondition('t.built_year LIKE "%'.$built_year.'%"');
+		}
+		
+		if ($_REQUEST['move_in_date_min'] || $_REQUEST['move_in_date_max'])
+		{
+			$move_in_date_min = $_REQUEST['move_in_date_min'];
+			$move_in_date_max = $_REQUEST['move_in_date_max'];
+		
+			if ($move_in_date_max < $move_in_date_min)
+			{
+				$move_in_date_min = $_REQUEST['move_in_date_max'];
+				$move_in_date_max = $_REQUEST['move_in_date_min'];
+			}
+		
+			$criteria->addBetweenCondition('f.move_in_date > 0 AND DATE_FORMAT(STR_TO_DATE(SUBSTR(move_in_date,1,7), "%Y/%m"), "%Y-%m")', $move_in_date_min, $move_in_date_max);
+		}
 		
 		$count= Building::model()->count($criteria);
 		
@@ -143,7 +253,23 @@ class SiteController extends Controller{
 		
 		$buildingDetails = Building::model()->findAll($criteria);
 		
-// 		echo '<pre>'; print_r($pages);die;
+		foreach ($buildingDetails as &$building)
+		{
+			$floorCriteria = clone $criteria;
+			$floorCriteria->select = 'f.*';
+			$floorCriteria->alias = 'f';
+			$floorCriteria->join ='INNER JOIN `building` t ON t.building_id = f.building_id';
+			$floorCriteria->limit = -1;
+			$floorCriteria->offset = -1;
+			$floorCriteria->group = 'f.floor_id';
+			$floorCriteria->order = 'cast(f.floor_down as SIGNED) ASC, cast(f.floor_up as SIGNED) ASC';
+			$floorCriteria->addInCondition('f.building_id', array($building['building_id']),' AND');
+// 			echo '<pre>'; print_r($floorCriteria);die;
+			$floors = Floor::model()->findAll($floorCriteria);
+			$building->setFloors($floors);
+		}
+		
+		
 		$this->render('searchedBuildingList',array(
 			'resultData'=>$buildingDetails, 
 			'front_only' => true, 
