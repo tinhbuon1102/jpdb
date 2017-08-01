@@ -8,6 +8,21 @@
 				<?php echo Yii::app()->controller->__trans('Search Result'); ?>
             </h1>
         </header>
+        
+        <?php if (isset($pages) && !empty($pages)) {
+			$pgWidget = '<div class="pagination search_building_pages" >';
+			$pgWidget .= $this->widget('CLinkPager', array(
+				'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+				'nextPageLabel'=>'<i class="fa fa-chevron-right"></i>',
+				'selectedPageCssClass' => 'active',
+				'htmlOptions'=>array('class'=>'pagination'),
+				'header'=>'',
+				'pages'=>$pages,
+			),true);
+			$pgWidget .= '</div>';
+			echo $pgWidget;
+		}
+		?>
 		<div class="list-item-wraper">
 		<?php
         if(isset($resultData) && count($resultData) > 0){

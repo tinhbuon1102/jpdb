@@ -3968,3 +3968,7 @@ span.button-right {
 	list-style-type: none;
 	width: 30%
 }
+
+.search_building_pages ul.pagination {
+	width: 100%;
+}
