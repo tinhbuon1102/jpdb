@@ -43,7 +43,7 @@ $searchOptions = HelperFunctions::searchSearchOptions();
       	</div>
       	</div>
       	<!--show more options-->
-       	<div class="row basic-filter" id="advanced_options" style="display: none;">
+       	<div class="row basic-filter" id="advanced_options">
         	<div class="form_part col_1">
             	<div class="col_wrap">
                 	<div class="col-right-one">
