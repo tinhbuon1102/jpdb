@@ -66,7 +66,7 @@ class HelperFunctions extends CApplicationComponent {
 		$aReturn[] = '-';
 		for ( $i = 10000; $i <= $totalNumber; $i = $i + 10000 )
 		{
-			$aReturn["$i"] = $i;
+			$aReturn["$i"] = self::formatNumber($i);
 		}
 	
 		return $aReturn;
