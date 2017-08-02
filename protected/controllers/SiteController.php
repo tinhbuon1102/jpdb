@@ -132,8 +132,6 @@ class SiteController extends Controller{
 		$criteria->join ='INNER JOIN `floor` f ON t.building_id = f.building_id';
 		$criteria->addInCondition('f.show_frontend', array(1),' AND');
 		
-// 		$criteria->condition = 'f.show_frontend = :frontend_value';
-// 		$criteria->params = array(":frontend_value" => "1");
 		$criteria->group = 't.building_id';
 		$criteria->order = 'f.modified_on DESC';
 		
