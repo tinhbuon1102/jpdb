@@ -144,6 +144,10 @@ $searchOptions = HelperFunctions::searchSearchOptions();
         </div>
    		
    		<div class="searchform-controls clearfix">
+   			<div class="orderby_wraper">
+   				<label>Order By</label>
+   				<?php echo CHtml::dropDownList('order_by', $_REQUEST['order_by'], $searchOptions['orderby'],   array('class' => 'select-one', 'id' => 'order_by') ); ?>
+   			</div>
    			<div class="bt-refine">
    			<?php echo CHtml::submitButton('Filter', array('id' => 'search_hidden_submit', 'name' => 'search')); ?>
    			</div>

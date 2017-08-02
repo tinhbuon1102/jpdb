@@ -136,6 +136,7 @@ class SiteController extends Controller{
 		$criteria->order = 'f.modified_on DESC';
 		
 		
+		
 		// Search with conditions
 		if ($_REQUEST['keyword'])
 		{
@@ -213,6 +214,44 @@ class SiteController extends Controller{
 			$move_in_date_max = $_REQUEST['move_in_date_max'] ? $_REQUEST['move_in_date_max'] : '9999-12-12';
 		
 			$criteria->addBetweenCondition('f.move_in_date > 0 AND DATE_FORMAT(STR_TO_DATE(SUBSTR(move_in_date,1,7), "%Y/%m"), "%Y-%m")', $move_in_date_min, $move_in_date_max);
+		}
+		
+		// Order by
+		// Search with conditions
+		if ($_REQUEST['order_by'])
+		{
+			$orderby = $_REQUEST['order_by'];
+			
+			$aReturn['location_asc'] = Yii::app()->controller->__trans('Location Ascending');
+			$aReturn['location_desc'] = Yii::app()->controller->__trans('Location Descending');
+			
+			$aReturn['size_asc'] = Yii::app()->controller->__trans('Size Ascending');
+			$aReturn['size_desc'] = Yii::app()->controller->__trans('Size Descending');
+			
+			$aReturn['name_asc'] = Yii::app()->controller->__trans('Name Ascending');
+			$aReturn['name_desc'] = Yii::app()->controller->__trans('Name Descending');
+			
+			switch ($orderby)
+			{
+				case 'location_asc' :
+					$criteria->order = 't.district ASC';
+					break;
+				case 'location_desc' :
+					$criteria->order = 't.district DESC';
+					break;
+				case 'name_asc' :
+					$criteria->order = 't.name ASC';
+					break;
+				case 'name_desc' :
+					$criteria->order = 't.name DESC';
+					break;
+				case 'size_asc' :
+					$criteria->order = 'cast(REPLACE(f.area_ping, ",", "") as SIGNED) ASC';
+					break;
+				case 'size_desc' :
+					$criteria->order = 'cast(REPLACE(f.area_ping, ",", "") as SIGNED) DESC';
+					break;
+			}
 		}
 		
 		$count= Building::model()->count($criteria);

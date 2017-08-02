@@ -120,6 +120,21 @@ class HelperFunctions extends CApplicationComponent {
 		return $aReturn;
 	}
 	
+	public static function getOrderByArray() {
+		$aReturn[''] = '-';
+		
+		$aReturn['name_asc'] = Yii::app()->controller->__trans('Name Ascending');
+		$aReturn['name_desc'] = Yii::app()->controller->__trans('Name Descending');
+
+		$aReturn['location_asc'] = Yii::app()->controller->__trans('Location Ascending');
+		$aReturn['location_desc'] = Yii::app()->controller->__trans('Location Descending');
+		
+		$aReturn['size_asc'] = Yii::app()->controller->__trans('Size Ascending');
+		$aReturn['size_desc'] = Yii::app()->controller->__trans('Size Descending');
+		
+		return $aReturn;
+	}
+	
 	public static function searchSearchOptions(){
 		$aSearchOptions = array();
 		$aSearchOptions['area'] = self::getAreaArray();
@@ -129,6 +144,7 @@ class HelperFunctions extends CApplicationComponent {
 		$aSearchOptions['built_year'] = self::getBuildYearArray();
 		$aSearchOptions['move_in_date'] = self::getMoveDateArray();
 		$aSearchOptions['location'] = self::getLocationArray();
+		$aSearchOptions['orderby'] = self::getOrderByArray();
 		return $aSearchOptions;
 	}
 }

@@ -367,7 +367,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     </a>
                 </li>
                 <li class="list-nav">
-                    <a href="http://office-jpdb.com/index.php?r=site/frontSearch" class="po-list">
+                    <a href="<?php echo Yii::app()->createUrl('site/frontSearch'); ?>" class="po-list">
                         <span><?php echo Yii::app()->controller->__trans('LIST'); ?></span>
                     </a>
                 </li>
