@@ -353,11 +353,11 @@ $(document).ready(function(e) {
 				dataType : 'json'
 			}).success(function(resp){
 				if(resp.status = 1){
-					alert(resp.msg);
-					getTabAjaxContent(resp, '#tab4');
+					setAlertMessage(resp.msg, true);
 				}else{
-					alert(resp.msg);
+					setAlertMessage(resp.msg, false);
 				}
+				getTabAjaxContent(resp, '#tab4');
 				$('body').LoadingOverlay("hide");
 			});
 		}else{
@@ -370,11 +370,11 @@ $(document).ready(function(e) {
 		$('body').LoadingOverlay("show");
 		call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 			if(resp.status == 1){
-				alert(resp.msg);
-				getTabAjaxContent(resp, '#tab4');
+				setAlertMessage(resp.msg, true);
 			}else{
-				alert('Something went wrong.');
+				setAlertMessage('Something went wrong.', false);
 			}
+			getTabAjaxContent(resp, '#tab4');
 			$('body').LoadingOverlay("hide");
 		});
 	});
@@ -390,11 +390,11 @@ $(document).ready(function(e) {
 				$('body').LoadingOverlay("show");
 				call({url:url,params:formData,type:'POST',dataType:'json'},function(resp){
 					if(resp.status == 1){
-						alert(resp.msg);
-						getTabAjaxContent(resp, '#tab4');
+						setAlertMessage(resp.msg, true);
 					}else{
-						alert('Something went wrong.');
+						setAlertMessage('Something went wrong.', false);
 					}
+					getTabAjaxContent(resp, '#tab4');
 					$('body').LoadingOverlay("hide");
 				});
 			}else{
@@ -712,12 +712,12 @@ $(document).ready(function(e) {
 		$('body').LoadingOverlay("show");
 		call({url:url,params:{formdata:formdata},type:'POST',dataType : 'json'},function(resp){
 			if(resp.status == 1){
-				alert('写真が追加されました。');
-				getTabAjaxContent(resp, '#tab4');
+				setAlertMessage('写真が追加されました。', true);
 				$('#frmUpBuildingPicture ul li').remove();
 			}else{
-				alert('Something went wrong.');
+				setAlertMessage('Something went wrong.', false);
 			}
+			getTabAjaxContent(resp, '#tab4');
 			$('body').LoadingOverlay("hide");
 		});
 	});
