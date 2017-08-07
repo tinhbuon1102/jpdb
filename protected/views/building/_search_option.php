@@ -21,7 +21,7 @@ $searchOptions = HelperFunctions::searchSearchOptions();
    	<div class="header-bg">
      	<div class="filter-keywords">
       	<div class="searchform-param">
-			<?php echo CHtml::label('Keywords', 'keyword', array('class' => 'searchform-label date-update Floor-title') ); ?>
+			<?php echo CHtml::label('キーワード', 'keyword', array('class' => 'searchform-label date-update Floor-title') ); ?>
       		<span class="searchform-input-wrapper select-numbers search-floor">
       			<?php echo CHtml::textField('keyword', @$_REQUEST['keyword'], array('id' => 'keyword', 'class' => 'form-control Typeahead-input', 'placeholder' => 'キーワードで検索')); ?>
       		</span>
@@ -29,7 +29,7 @@ $searchOptions = HelperFunctions::searchSearchOptions();
       	</div>
       	<div class="filter-location">
       	<div class="searchform-param">
-      		<label class="searchform-label date-update Floor-title">Location</label>
+      		<label class="searchform-label date-update Floor-title">区</label>
       		<span class="searchform-input-wrapper select-numbers search-floor">
       			<ul class="location_list">
       			<?php foreach ($searchOptions['location'] as $location_key => $location) {?>
@@ -145,15 +145,15 @@ $searchOptions = HelperFunctions::searchSearchOptions();
    		
    		<div class="searchform-controls clearfix">
    			<div class="orderby_wraper">
-   				<label>Order By</label>
+   				<label><?php echo Yii::app()->controller->__trans('Order By'); ?></label>
    				<?php echo CHtml::dropDownList('order_by', $_REQUEST['order_by'], $searchOptions['orderby'],   array('class' => 'select-one', 'id' => 'order_by') ); ?>
    			</div>
    			<div class="bt-refine">
-   			<?php echo CHtml::submitButton('Filter', array('id' => 'search_hidden_submit', 'name' => 'search')); ?>
+   			<?php echo CHtml::submitButton('絞り込み検索', array('id' => 'search_hidden_submit', 'name' => 'search')); ?>
    			</div>
    			<div class="refine-more">
-   				<?php echo CHtml::htmlButton('Show more options', array('id' => 'button_show_option', 'style' => 'display: inline-block;')); ?>
-   				<?php echo CHtml::htmlButton('Hide options', array('id' => 'button_hidden_option', 'style' => 'display: none;')); ?>
+   				<?php echo CHtml::htmlButton('オプションを表示', array('id' => 'button_show_option', 'style' => 'display: inline-block;')); ?>
+   				<?php echo CHtml::htmlButton('オプションを隠す', array('id' => 'button_hidden_option', 'style' => 'display: none;')); ?>
 			</div>
    		</div>
    	</div>
