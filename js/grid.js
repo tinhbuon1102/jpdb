@@ -11,6 +11,7 @@ function setAlertMessage(message, success)
 	var divMessage = '<div id="dynamic_message" style="display: none;" class="'+ (success ? 'success' : 'error') +'">'+ message +'</div>';
 	$('#dynamic_message').remove();
 	$('body').append(divMessage);
+	$('.btnModalClose').trigger('click');
 	$('#dynamic_message').fadeIn('slow');
 	setTimeout(function(){
 		$('#dynamic_message').fadeOut('slow');
