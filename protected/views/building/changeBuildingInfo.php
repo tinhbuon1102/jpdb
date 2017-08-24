@@ -129,11 +129,20 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor'); ?>
                             </th>
                             <td>
-								<input type="text" name="avg_neighbor_fee_min" value="<?php echo @$buildingDetails['avg_neighbor_fee_min']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            <input type="text" name="avg_neighbor_fee_max" value="<?php echo @$buildingDetails['avg_neighbor_fee_max']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" id="avg_neighbor_fee_min" name="avg_neighbor_fee_min" value="<?php echo @$buildingDetails['avg_neighbor_fee_min']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
+                           		<input type="text" id="avg_neighbor_fee_max" name="avg_neighbor_fee_max" value="<?php echo @$buildingDetails['avg_neighbor_fee_max']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
                                 <p class="note">
 									<?php echo Yii::app()->controller->__trans('Please enter neighbor avg fee for premium office website.'); ?>
                                 </p>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<th scope="row">
+								<?php echo Yii::app()->controller->__trans('Average rent of neighbor Calculated'); ?>
+                            </th>
+                            <td>
+								<input type="text" readonly="readonly" id="avg_neighbor_fee_min_sqm" name="avg_neighbor_fee_min_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
+                            	<input type="text" readonly="readonly" id="avg_neighbor_fee_max_sqm" name="avg_neighbor_fee_max_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
                             </td>
                         </tr>
                         
@@ -375,7 +384,16 @@
                     	&nbsp;<?php echo Yii::app()->controller->__trans('坪'); ?>
                     </font>
                 </font>
+			</td>
+        </tr>
+        <tr>
+        	<td>
+            	<?php echo Yii::app()->controller->__trans('std_floor_space Calculated'); ?>
             </td>
+        	<td>
+				<input readonly="readonly" class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="<?php echo isset($std_floor_space_calculated) && $std_floor_space_calculated != "" ? $std_floor_space_calculated : ''; ?>">
+				<?php echo Yii::app()->controller->__trans('㎡/円');?>
+        	</td>
         </tr>
         <tr>
         	<td>

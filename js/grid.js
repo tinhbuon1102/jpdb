@@ -18,6 +18,31 @@ function setAlertMessage(message, success)
 	}, 4000)
 }
 
+function calculatedFields(oldField, newField, rate){
+	if (!$(oldField).length || !$(newField).length) {
+		return ;
+	}
+	
+	  var orginal_vale = $(oldField).val();
+		orginal_vale = orginal_vale.replace(/,/g, "");
+		var formatedTotal = '';
+		if (orginal_vale && !isNaN(orginal_vale))
+		{
+			var price_calculated = orginal_vale * rate;
+			formatedTotal = addCommas(Math.round(price_calculated));
+		}
+		$(newField).val(formatedTotal);
+}
+
+
+// Calculated fields when initialize
+function calculateFieldInit(){
+	  calculatedFields('#std_floor_space', '#std_floor_space_calculated', OFFICE_DB_FEE_RATE);
+	  calculatedFields('#avg_neighbor_fee_min', '#avg_neighbor_fee_min_sqm', OFFICE_DB_FEE_RATE);
+	  calculatedFields('#avg_neighbor_fee_max', '#avg_neighbor_fee_max_sqm', OFFICE_DB_FEE_RATE);
+	  calculatedFields('#rent_unit_price', '#rent_unit_price_calculated', OFFICE_DB_FEE_RATE);
+}
+
 $(document).ready(function(e) {
 	function scrollCartBox()
 	  {
@@ -36,6 +61,21 @@ $(document).ready(function(e) {
 	  }
 
 	  scrollCartBox();
+	  
+	  $('body').on('change keyup', '#std_floor_space', function(){
+		  calculatedFields('#std_floor_space', '#std_floor_space_calculated', OFFICE_DB_FEE_RATE);
+	  });
+	  
+	  
+	  $('body').on('change keyup', '#avg_neighbor_fee_min', function(){
+		  calculatedFields('#avg_neighbor_fee_min', '#avg_neighbor_fee_min_sqm', OFFICE_DB_FEE_RATE);
+	  });
+	  
+	  $('body').on('change keyup', '#avg_neighbor_fee_max', function(){
+		  calculatedFields('#avg_neighbor_fee_max', '#avg_neighbor_fee_max_sqm', OFFICE_DB_FEE_RATE);
+	  });
+	  
+	  calculateFieldInit();
 	  
 $(document).on('click','.cart-content .header-title',function(e){	  
 	$(".cart-content #list_cart").slideToggle(function(){

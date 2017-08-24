@@ -161,11 +161,20 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor'); ?>
                             </th>
                             <td>
-								<input type="text" name="Building[avg_neighbor_fee_min]" value="<?php echo $model->avg_neighbor_fee_min?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            <input type="text" name="Building[avg_neighbor_fee_max]" value="<?php echo $model->avg_neighbor_fee_max?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" id="avg_neighbor_fee_min" name="Building[avg_neighbor_fee_min]" value="<?php echo $model->avg_neighbor_fee_min?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
+                            <input type="text" id="avg_neighbor_fee_max" name="Building[avg_neighbor_fee_max]" value="<?php echo $model->avg_neighbor_fee_max?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
                                 <p class="note">
 									<?php echo Yii::app()->controller->__trans('Please enter neighbor avg fee for premium office website.'); ?>
                                 </p>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<th scope="row">
+								<?php echo Yii::app()->controller->__trans('Average rent of neighbor Calculated'); ?>
+                            </th>
+                            <td>
+								<input type="text" readonly="readonly" id="avg_neighbor_fee_min_sqm" name="Building[avg_neighbor_fee_min_sqm]" value="" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
+                            	<input type="text" readonly="readonly" id="avg_neighbor_fee_max_sqm" name="Building[avg_neighbor_fee_max_sqm]" value="" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
                             </td>
                         </tr>
                         <?php /*?><tr>
@@ -417,7 +426,7 @@
 							<?php echo Yii::app()->controller->__trans('Standard Floor Space'); ?>
                         </th>
                         <td>
-							<?php echo $form->textField($model,'std_floor_space',array('size'=>30,'maxlength'=>30,'class'=>'ty5')); ?>
+							<?php echo $form->textField($model,'std_floor_space',array('size'=>30,'maxlength'=>30,'class'=>'ty5', 'id' => 'std_floor_space')); ?>
                             <font>
                             	<font>
                                 	&nbsp;<?php echo Yii::app()->controller->__trans('坪'); ?>
@@ -426,6 +435,15 @@
 							<?php echo $form->error($model,'std_floor_space'); ?>
                         </td>
                     </tr>
+                    <tr>
+			        	<td>
+			            	<?php echo Yii::app()->controller->__trans('std_floor_space Calculated'); ?>
+			            </td>
+			        	<td>
+							<input readonly="readonly" class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="">
+							<?php echo Yii::app()->controller->__trans('㎡/円');?>
+			        	</td>
+			        </tr>
                     <tr>
                     	<th scope="row">
 							<?php echo Yii::app()->controller->__trans('Total Floor Space'); ?>

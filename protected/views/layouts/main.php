@@ -20,6 +20,9 @@
     
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
 
+	<script type="text/javascript">
+		var OFFICE_DB_FEE_RATE = <?php echo OFFICE_DB_FEE_RATE?>;
+	</script>
 </head>
 
 <body class="archive category category-manage-customers category-3">

@@ -541,6 +541,7 @@ $(document).ready(function(e) {
 		var url = $(this).attr("href");
 		call({url:url,params:{},type:'POST',dataType:'json'},function(resp){
 			$('.divChangeInfo').html(resp);
+			calculateFieldInit();
 		});
 		$('.updateBuildingInfo').removeClass('hide');
 		$('.updateBuildingInfo').addClass('show');
@@ -702,10 +703,19 @@ $(document).ready(function(e) {
 		//console.log("Unit Price = "+rent_unit_price+" & Area = "+area_ping);
 		if(rent_unit_price != '' && rent_unit_price !='undefined'){
 			var output = rent_unit_price * area_ping;
+			 
 			if(output != 0){
 				var formatedTotal = addCommas(Math.round(output));
 				$('#total_rent_price').val(formatedTotal);
 			}
+			
+			formatedTotal = '';
+			if (!isNaN(rent_unit_price))
+			{
+				var price_calculated = rent_unit_price * OFFICE_DB_FEE_RATE;
+				formatedTotal = addCommas(Math.round(price_calculated));
+			}
+			$('#rent_unit_price_calculated').val(formatedTotal);
 		}
 		
 		if($('#f_price_m_shiki').val() != ''){

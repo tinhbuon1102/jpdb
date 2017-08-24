@@ -3,6 +3,9 @@
 /* @var $model Floor */
 /* @var $form CActiveForm */
 ?>
+<script type="text/javascript">
+	var OFFICE_DB_FEE_RATE = <?php echo OFFICE_DB_FEE_RATE?>;
+</script>
 <div class="form">	
 	<?php
     	$buildingName = $buildingRandId = $buildingId = '';
@@ -566,6 +569,7 @@
 													<?php echo Yii::app()->controller->__trans('rent unit price');?>
                                                 </th>
                                                 <td>
+                                                	<div>
                                                 	<label class="rd2">
                                                     	<input type="radio" class="price_rent" name="Floor[rent_unit_price_opt]" <?php echo isset($model->rent_unit_price_opt) && $model->rent_unit_price_opt == '-1' ?  $check :''; ?> value="-1" id="rent_radio1">
 														<?php echo Yii::app()->controller->__trans('undecided');?>
@@ -576,6 +580,12 @@
                                                     </label><br>
                                                     <input type="text" name="Floor[rent_unit_price]" value="<?php echo isset($model->rent_unit_price) && $model->rent_unit_price != '' && $model->rent_unit_price != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price)) :''; ?>" id="rent_unit_price" class="ty1 mt price_rent rent_unit_price">
 													<?php echo Yii::app()->controller->__trans('yen/坪');?>
+													</div>
+													<div>
+														<label class="rd2"><?php echo Yii::app()->controller->__trans('rent_unit_price Calculated');?></label>
+														<input readonly="readonly" type="text" name="Floor[rent_unit_price_calculated]" value="<?php echo isset($model->rent_unit_price_calculated) && $model->rent_unit_price_calculated != '' && $model->rent_unit_price_calculated != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price_calculated)) :''; ?>" id="rent_unit_price_calculated" class="ty1 mt price_rent rent_unit_price_calculated">
+														<?php echo Yii::app()->controller->__trans('㎡/円');?>
+													</div>
                                                 </td>
                                                 <th>
                                                 	<input type="checkbox" name="checked[total_rent_price]" value="1" style="margin-right:2px;">
