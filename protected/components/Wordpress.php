@@ -308,33 +308,6 @@ class Wordpress extends CApplicationComponent
 					update_post_meta($post_id, 'post_title_building', $post_title_building);
 					update_post_meta($post_id, 'floor_vacancy', $floor->vacancy_info);
 					
-					// Get image
-					$picture = BuildingPictures::model()->findByAttributes(array('building_id'=>$building->building_id));
-					if ($picture && $lang == 'ja')
-					{
-						if ($picture->main_image)
-							$aImage = $picture->main_image;
-						elseif ($picture->front_images)
-							$aImage = $picture->front_images;
-							
-						$aImages = explode(',', $aImage);
-						$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
-							
-						// create curl resource
-						$ch = curl_init();
-						// set url
-						curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
-						//return the transfer as a string
-						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-						// $output contains the output string
-						$output = curl_exec($ch);
-						var_dump(get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
-						var_dump($output);die;
-						// close curl resource to free up system resources
-						curl_close($ch);
-					}
-					
-					
 					// Store array post id with lang
 					$post_ids[$lang] = (int)$post_id;
 			
@@ -544,6 +517,31 @@ class Wordpress extends CApplicationComponent
 						}
 					}
 					
+					// Get image
+					$picture = BuildingPictures::model()->findByAttributes(array('building_id'=>$building->building_id));
+					if ($picture && $lang == 'ja')
+					{
+						if ($picture->main_image)
+							$aImage = $picture->main_image;
+							elseif ($picture->front_images)
+							$aImage = $picture->front_images;
+								
+							$aImages = explode(',', $aImage);
+							$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
+								
+							// create curl resource
+							$ch = curl_init();
+							// set url
+							curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_id .'&building_id='.$building->building_id);
+							//return the transfer as a string
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							// $output contains the output string
+							$output = curl_exec($ch);
+							// close curl resource to free up system resources
+							curl_close($ch);
+					}
+					
+					// Break of switch case
 					break;
 			}
 		}
