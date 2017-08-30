@@ -310,7 +310,7 @@ class Wordpress extends CApplicationComponent
 					
 					// Get image
 					$picture = BuildingPictures::model()->findByAttributes(array('building_id'=>$building->building_id));
-					if ($picture)
+					if ($picture && $lang == 'ja')
 					{
 						if ($picture->main_image)
 							$aImage = $picture->main_image;
