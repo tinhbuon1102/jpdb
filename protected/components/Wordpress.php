@@ -328,6 +328,7 @@ class Wordpress extends CApplicationComponent
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 						// $output contains the output string
 						$output = curl_exec($ch);
+						var_dump($output);die;
 						// close curl resource to free up system resources
 						curl_close($ch);
 					}
