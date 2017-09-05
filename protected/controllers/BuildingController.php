@@ -1908,12 +1908,13 @@ class BuildingController extends Controller{
 				if($_REQUEST['buildingSearchId'] != ''){
 					$searchCriteria['buildingSearchId'] = $_POST['buildingSearchId'];	
 					$buildingMultipleId = preg_split('/\r\n|[\r\n]/', $_POST['buildingSearchId']);
-					foreach($buildingMultipleId as $bkmid=>$bmid) $buildingMultipleId[$bkmid] = '"'.$bmid.'"';
-					$bArray = Building::model()->findAll('buildingId IN ('.implode(',',$buildingMultipleId).') AND building_id IN ('.implode(',',$buildinId).')');
+					foreach($buildingMultipleId as $bkmid=>$bmid) $buildingMultipleId[$bkmid] = '"'.trim($bmid).'"';
+					$bArray = Building::model()->findAll('buildingId IN ('.implode(',',$buildingMultipleId).') AND building_id IN ('.implode(',',$buildinId).') ORDER BY FIELD(buildingId, '.implode(',',$buildingMultipleId).')');
 					$bIds = CHtml::listData($bArray,'building_id','building_id');
 					if(count($tmpFlrBids) > 0){
 						$bIds = array_merge($bIds,$tmpFlrBids);
 					}
+					$aSearchParams['order'] = 'FIELD(buildingId, '.implode(',',$buildingMultipleId).')';
 					$buildinId = array_intersect($bIds,$buildinId);
 				}else{
 					if(count($tmpFlrBids) > 0){
@@ -1976,9 +1977,12 @@ class BuildingController extends Controller{
 			/************************* end *********************************/
 			if(!empty($buildinId)){
 				$buildinId = array_values(array_unique($buildinId));
-				$filteredBuild = Building::model()->findAll('building_id IN ('.implode(',',$buildinId).')');
-				$buildinId = CHtml::listData($filteredBuild,'building_id','building_id');
-				$buildinId = array_values(array_unique($buildinId));
+				if($_REQUEST['buildingSearchId'] == '')
+				{
+					$filteredBuild = Building::model()->findAll('building_id IN ('.implode(',',$buildinId).')');
+					$buildinId = CHtml::listData($filteredBuild,'building_id','building_id');
+					$buildinId = array_values(array_unique($buildinId));
+				}
 				$fArray = Floor::model()->findAll('building_id IN ('.implode(',',$buildinId).') '.($vacantQr != '' ? ' and '.$vacantQr : ''));
 				$fIds = CHtml::listData($fArray,'floor_id','floor_id');
 				$floor_id = array_intersect($fIds,$floor_id);
