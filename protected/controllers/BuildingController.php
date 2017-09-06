@@ -1977,7 +1977,7 @@ class BuildingController extends Controller{
 			/************************* end *********************************/
 			if(!empty($buildinId)){
 				$buildinId = array_values(array_unique($buildinId));
-				if($_REQUEST['buildingSearchId'] == '')
+				if(!isset($_REQUEST['buildingSearchId']) || $_REQUEST['buildingSearchId'] == '')
 				{
 					$filteredBuild = Building::model()->findAll('building_id IN ('.implode(',',$buildinId).')');
 					$buildinId = CHtml::listData($filteredBuild,'building_id','building_id');
