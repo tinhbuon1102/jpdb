@@ -1307,13 +1307,24 @@ class FloorController extends Controller{
 			$fIds = explode(',',$floorIds);
 			foreach($fIds as $fId){
 				$fDetails = Floor::model()->findBypk($fId);
+				// Check option radio to allow or not allow floor with no vacancy
+				if (in_array($_REQUEST['print_type'], array(10, 11)))
+				{
+					// Not allow with these options
+					if (!$fDetails->vacancy_info)
+					{
+						continue;
+					}
+				}
 				if(count($fDetails) > 0){
 					$allFloorIds[] = $fId;
 				}
 			}
 			foreach($allBuildId as $id){
 				$bDetails = Building::model()->findByPk($id);
-				if(count($bDetails) > 0){
+				$buildingFloors = Floor::model()->findByAttributes(array('building_id' => $id, 'floor_id' => $allFloorIds));
+				
+				if(count($bDetails) > 0 && count($buildingFloors) > 0){
 					$buildCartDetails[] = $bDetails;
 				}
 			}
