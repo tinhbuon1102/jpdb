@@ -2,6 +2,12 @@
 /********** get google map api key **********/
 $gApiKey = 'AIzaSyCMeCU-45BrK0vyJCc4y2TYMdDJLNGdifM';
 //$gApiKey = 'AIzaSyDJlHTWIHfZsuOIZChVv0Dx9LoAl0PL7a0';
+
+$glob_where = '';
+if (in_array($_REQUEST['print_type'], array(10, 11)))
+{
+	$glob_where = ' and vacancy_info = 1';
+}
 /***************** end ****************/
 
 if(isset($_GET['proposedUsername'])) {
@@ -446,7 +452,7 @@ if($requestData['print_type'] == 10){
         <?php include('_print_summary.php');?>
         <td colspan="6" class="list_floor var-top"><table class="lists">
             <?php
-				$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' And vacancy_info = 1' );
+				$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id'] . $glob_where );
 				
 // 				for ($j=0; $j<20; $j++) {
 // 					$floorDetails[] = $floorDetails[0];
@@ -863,9 +869,9 @@ if($requestData['print_type']==8){
 //					}else if($buildCart['air_control_type'] == 1){
 //						echo Yii::app()->controller->__trans('Zone control');
 //					}
-					$fDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' And vacancy_info = 1' );
+					$fDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where );
 					$pFloors = $proposedFloors;
-					$fDetailsTmp = $floorDetails;
+					$fDetailsTmp = (array)$floorDetails;
 					foreach($fDetailsTmp as $floorKey => $floor){
 						if(!in_array($floor['floor_id'],$pFloors)){
 							unset($fDetails[$floorKey]);
@@ -1092,7 +1098,7 @@ if($requestData['print_type']==8){
     <table class="f_info">
       <tbody>
         <?php
-			$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']);
+			$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where );
 			$floorDetailsTmp = $floorDetails;
 			foreach($floorDetailsTmp as $floorKey => $floor){
 				if(!in_array($floor['floor_id'],$proposedFloors)){
@@ -1115,7 +1121,7 @@ if($requestData['print_type']==8){
 		?>
         <!--if multiple floors,loop-->
         <tr style="border-bottom:1px solid #fff;">
-          <td class="f_emp" style="width:45px;"><span style=""><?php echo $floorId['floorId']; ?></span></td>
+          <td class="f_emp" style="width:45px;"><span><?php echo !$floorId['vacancy_info'] ? '*' : '' ?></span><span style=""><?php echo $floorId['floorId']; ?></span></td>
           <!--floor ID-->
           <td class="f_floor_str" style="width:35px;"><?php
 		  if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
@@ -1586,7 +1592,7 @@ if($requestData['print_type'] == 11){
 		$logged_user_id = $user->user_id;
 		$buildingNumber = 1;
 		foreach($buildCartDetails as $buildCart){
-			$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' And vacancy_info = 1' );
+			$floorDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where );
 			$pFloors = $proposedFloors;//explode(',',$prosalData['floor_id']);
 			$floorDetailsTmp = $floorDetails;
 			foreach($floorDetailsTmp as $floorKey => $floor){
@@ -2080,7 +2086,7 @@ if($requestData['print_type'] == 11){
                   <tr>
                     <th>空調制御</th>
                     <td><?php
-		                    $fDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' And vacancy_info = 1' );
+		                    $fDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where );
 		                    $pFloors = $proposedFloors;
 		                    $fDetailsTmp = $floorDetails;
 		                    foreach($fDetailsTmp as $floorKey => $floor){
@@ -2132,7 +2138,7 @@ if($requestData['print_type'] == 11){
                   <tr>
                     <th>OAフロア</th>
                     <td><?php
-                                                            $floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' AND vacancy_info = 1');
+                                                            $floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where);
                                                             $oaDefaultArray = array('フリーアクセス','3WAY','2WAY','1WAY','引き込み可','非対応');
 															$oaFloor = array();
 															$oaHeight = array();
