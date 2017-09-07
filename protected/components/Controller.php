@@ -478,10 +478,10 @@ class Controller extends CController {
 	}
 
 	public static function __trans($word){
-
+		global $glob_language;
 		$transaltionDetails = WordTranslation::model()->find("word = '".$word."'");
 
-		if(isset($transaltionDetails) && count($transaltionDetails) > 0 && !empty($transaltionDetails)){
+		if(isset($transaltionDetails) && count($transaltionDetails) > 0 && !empty($transaltionDetails) && ((isset($glob_language) && $glob_language == 'ja') || !isset($glob_language))){
 
 			return $transaltionDetails['translation'];
 

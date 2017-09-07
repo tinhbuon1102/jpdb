@@ -1279,31 +1279,26 @@ if(isset($searchallCond->hdnRPrefId)){
             	<div class="searchTabInner clearfix">
                 	<div class="routeSearchCriteria">
                     	<div class="divPrefectureList prefecture-route">
-                        	<ul class="prefectureList">
+                        	<div class="prefectureList">
+                        		<h2 class="pre-title"> <?php echo Yii::app()->controller->__trans('Prefecture'); ?></h2>
 							<?php
 								if(isset($_GET['type']) && $_GET['type'] == 'office'){
 									$prefectureList = Prefecture::model()->findAll();
 								}else{
 									$prefectureList = Prefecture::model()->getAvailablePrefecture();
 								}
-								$actPref = 13;
+								$actPref = '';
 								if(isset($searchallCond->hdnRPrefId)) $actPref = $searchallCond->hdnRPrefId;
+								
 								if(isset($prefectureList) && count($prefectureList) > 0){
+									$aPrefectures = array('' => '-');
 									foreach($prefectureList as $prefecture){
-							?>
-                            	<li class="singlePrefecture <?php echo ($actPref == $prefecture['code']) ? 'activePrefecture' : ''?>" data-value="<?php echo $prefecture['code']; ?>">
-								<?php 
-								if($actPref == $prefecture['code'] && isset($searchallCond->hdnRPrefId)){ $searchallCond->hdnRPrefName = $prefecture['prefecture_name'];
-									echo '<i class="fa fa-check-square item-check" aria-hidden="true"></i>';
-								}
-								echo $prefecture['prefecture_name'];
-								 ?>
-                              	</li>
-							<?php
-                            		}
+										$aPrefectures[$prefecture['code']] = $prefecture['prefecture_name'];
+									}
+									echo CHtml::dropDownList('singlePrefecture', $aPrefectures, $aPrefectures,   array('class' => 'singlePrefecture', 'id' => 'singlePrefecture') );
 								}
 							?>
-                            </ul>
+                            </div>
                         </div>
                         <div class="route-option first">
                         	<div class="divPrefectureList">
