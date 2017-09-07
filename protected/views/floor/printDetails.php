@@ -1643,7 +1643,12 @@ if($requestData['print_type'] == 11){
         		// Show Plan for current floor
         		$plan_id = $floorDetails[0]->plan_picture_id;
         	}
-        	
+        	if ($_GET['testimg'])
+        	{
+        		
+        		HelperFunctions::pr($plan_id);
+        		HelperFunctions::pr($floorDetails);
+        	}
         	$planPictureDetails = PlanPicture::model()->findAll('plan_picture_id = ' . (int)$plan_id);
         	if ( isset($planPictureDetails) && count($planPictureDetails) > 0 )
         	{
