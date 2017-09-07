@@ -857,13 +857,13 @@ $(document).ready(function(e) {
 	}
 	
 	/*********************** get list of corporator, line & station / and get building list ********************/
-	$(document).on('click','.singlePrefecture, .corporates, .lines, .stations,.listli',function(){
+	$(document).on('click','.corporates, .lines, .stations,.listli',function(){
 		$(this).find('i').remove();
 		$(this).prepend('<i class="fa fa-check-square item-check" aria-hidden="true"></i>');
 	});
-	$(document).on('click','.singlePrefecture',function(){
-		var code = $(this).data('value');
-		var precName = $(this).text().trim();		
+	$(document).on('change','.singlePrefecture',function(){
+		var code = $(this).val();
+		var precName = $(this).find('option:selected').text().trim();		
 		$('.singlePrefecture').removeClass('activePrefecture');
 		$(this).addClass('activePrefecture');
 		var url = baseUrl+'/index.php?r=building/getCorporationList';
