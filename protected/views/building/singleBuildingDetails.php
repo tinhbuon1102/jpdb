@@ -3717,6 +3717,31 @@ if(count($getGoogleMapKeyDetails) > 0){
                             </select>
                        	</td>
                       </tr>
+                      <tr>
+                      	<td>-
+                      	</td>
+                      	<td><?php echo Yii::app()->controller->__trans('Article floor'); ?></td>
+                      	<td>-</td>
+                      	<td>-</td>
+                      	<td class="dw_num">
+                      		<select name=article_plan_id id=article_plan_id class=article_plan_id>
+                        	<option value="0">-</option>
+                            <?php
+                            	if(isset($planPictureList) && count($planPictureList) > 0){
+                                	foreach($planPictureList as $planPicture){
+                                		$selected = '';
+                                		if($buildingDetails['article_plan_id'] == $planPicture['plan_picture_id']){
+                                			$selected = 'selected';
+                                		}
+							?>
+                            <option value="<?php echo $planPicture['plan_picture_id'] ?>" <?=$selected?>><?php echo $planPicture['plan_rand_number'] ?></option>
+                            <?php
+                            	    }
+                            	}
+                            ?>
+                            </select>
+                       	</td>
+                      </tr>
                       </tbody>
                     </table>
                     <table>

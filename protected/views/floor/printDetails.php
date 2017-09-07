@@ -1327,7 +1327,7 @@ if($requestData['print_type']==8){
           <?php
           if(isset($floorId['contract_period_opt']) && $floorId['contract_period_opt'] != ""){
           	if($floorId['contract_period_opt'] == 1){
-          		echo '普通借';
+          		echo '通常';
           	}elseif($floorId['contract_period_opt'] == 2){
           		echo '定借';
           	}elseif($floorId['contract_period_opt'] == 3){
@@ -1634,85 +1634,27 @@ if($requestData['print_type'] == 11){
         <img src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>"/>
         <div style="padding-top:15px" class="plan-img">
         <?php
-			                                    $planPictureDetails = PlanPicture::model()->findAll('building_id = '.$buildCart['building_id'].' order by plan_picture_id desc');
-									
-                                    $latesPlan = array();
-                                    if(isset($floorDetails) && count($floorDetails) > 0){                                    	
-                                    	foreach($floorDetails as $plan){
-                                    		if($plan->plan_picture_id==0) continue;
-                                    		$latesPlan[] = $plan->plan_picture_id;
-                                    	}
-                                    	//$latesPlan = end($latesPlan);
-                                    	
-                                    	if(count($latesPlan)>0) {
-                                    		$latesPlan = reset($latesPlan);
-                                    		$planPictureDetails = PlanPicture::model()->findAll('plan_picture_id = '.$latesPlan);
-                                    		if(isset($planPictureDetails) && count($planPictureDetails) > 0){
-                                    			$latesPlan = array();
-                                    			foreach($planPictureDetails as $plan){
-                                    				$latesPlan[] = $plan->name;
-                                    			}
-                                    			$latesPlan = reset($latesPlan);
-                                    		}
-                                    	}
-                                    	else{
-                                    		$plan_standard_id = $buildCart['plan_standard_id'];
-                                    		$planPictureDetails = PlanPicture::model()->findAll('plan_picture_id = '.$plan_standard_id);
-                                    		if(isset($planPictureDetails) && count($planPictureDetails) > 0){
-                                    			$latesPlan = array();
-                                    			foreach($planPictureDetails as $plan){
-                                    				$latesPlan[] = $plan->name;
-                                    			}
-                                    			//$latesPlan = end($latesPlan);
-                                    			$latesPlan = reset($latesPlan);
-                                    		} else {
-                                    			$latesPlan = 'no_plan.jpg';
-                                    		}
-                                    	}                                    	
-                                    } else {
-                                    	$plan_standard_id = $buildCart['plan_standard_id'];
-                                    	$planPictureDetails = PlanPicture::model()->findAll('plan_picture_id = '.$plan_standard_id);
-                                    	if(isset($planPictureDetails) && count($planPictureDetails) > 0){
-                                    		$latesPlan = array();
-                                    		foreach($planPictureDetails as $plan){
-                                    			$latesPlan[] = $plan->name;
-                                    		}
-                                    		//$latesPlan = end($latesPlan);
-                                    		$latesPlan = reset($latesPlan);
-                                    	} else {
-                                    		$latesPlan = 'no_plan.jpg';
-                                    	}
-                                    }
-									
-									$areFloor = array();
-                            $unk = $netk = $grosk = 0;
-                            foreach($floorDetails as $areFloor){
-                                if(isset($areFloor['calculation_method'])):
-                                switch($areFloor['calculation_method']){
-                                    case 0:
-                                        $unk += 1;
-                                        break;
-                                    case 1:
-                                        $netk +=1;
-                                        break;
-                                    case 2:
-                                        $grosk +=1;
-                                        break;
-                                }
-                                endif;
-                            }                            
-                            $callAre = array('確認中','ネット','グロス');
-                            $aArr = array($unk,$netk,$grosk);
-                            $aMax = max($aArr);
-                            $aAllRepeat = array_count_values($aArr);
-                            $indexMax = array_search($aMax,$aArr);
-                            if($aAllRepeat[$aMax] > 1){
-                                $label = $callAre[0];
-                            }else{
-                                $label = $callAre[$indexMax];
-                            }
-                                ?>
-          <img src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$latesPlan; ?>" /></div>
+        	if (count($floorDetails) > 1)
+        	{
+        		// Show Plan from article field
+        		$plan_id = $buildCart['article_plan_id'];
+        	}
+        	else {
+        		// Show Plan for current floor
+        		$plan_id = $floorDetails[0]->plan_picture_id;
+        	}
+        	
+        	$planPictureDetails = PlanPicture::model()->findAll('plan_picture_id = ' . (int)$plan_id);
+        	if ( isset($planPictureDetails) && count($planPictureDetails) > 0 )
+        	{
+        		$planName = $planPictureDetails[0]->name;
+        	}
+        	else
+        	{
+        		$planName = 'no_plan.jpg';
+        	}
+			?>
+          <img src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$planName; ?>" /></div>
         </td>
         <td class="td_col2_3">
         <table class="current_status">

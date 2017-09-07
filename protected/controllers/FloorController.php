@@ -2715,7 +2715,8 @@ class FloorController extends Controller{
  		}
  		
  		$buildingDetails = Building::model()->findByPk($getArray['bid']);
- 		$buildingDetails->plan_standard_id=$standard_plan;
+ 		$buildingDetails->plan_standard_id = $standard_plan;
+ 		$buildingDetails->article_plan_id = $getArray['article_plan_id'];
  		$buildingDetails->save(false);
 		
 		$i=0;
