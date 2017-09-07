@@ -864,7 +864,6 @@ $(document).ready(function(e) {
 	$(document).on('change','.singlePrefecture',function(){
 		var code = $(this).val();
 		var precName = $(this).find('option:selected').text().trim();		
-		$('.singlePrefecture').removeClass('activePrefecture');
 		$(this).addClass('activePrefecture');
 		var url = baseUrl+'/index.php?r=building/getCorporationList';
 		$('#hdnRPrefId').val(code);
@@ -1013,7 +1012,7 @@ $(document).ready(function(e) {
 	
 	$(document).on('click','.corporates',function(){
 		var corporate = $(this).data('value').trim();
-		var prefecName = $('.singlePrefecture.activePrefecture').text().trim();
+		var prefecName = $('.singlePrefecture option:selected').text().trim();
 		$('.corporates').removeClass('activeCorporate');
 		$(this).addClass('activeCorporate');
 		var url = baseUrl+'/index.php?r=building/getLineList';
@@ -1035,7 +1034,7 @@ $(document).ready(function(e) {
 	});
 	$(document).on('click','.lines',function(){
 		var code = $(this).data('value');
-		var prefecName = $('.singlePrefecture.activePrefecture').text().trim();
+		var prefecName = $('.singlePrefecture option:selected').text().trim();
 		var lineText = $(this).text();
 		$('.lines').removeClass('activeLine');
 		$(this).addClass('activeLine');
