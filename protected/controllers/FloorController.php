@@ -533,6 +533,9 @@ class FloorController extends Controller{
 			if(isset($_POST['Floor']['contract_period_optchk']) && $_POST['Floor']['contract_period_optchk'] != ''){
 				$model->contract_period_optchk	 = 1;
 			}
+			else {
+				$model->contract_period_optchk	 = '';
+			}
 			$model->contract_period_duration	 = $_POST['Floor']['contract_period_duration'];
 			$model->air_conditioning_facility_type	 = $_POST['Floor']['air_conditioning_facility_type'];
 			$model->air_conditioning_details	 = $_POST['Floor']['air_conditioning_details'];			
