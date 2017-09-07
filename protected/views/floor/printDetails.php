@@ -4,7 +4,7 @@ $gApiKey = 'AIzaSyCMeCU-45BrK0vyJCc4y2TYMdDJLNGdifM';
 //$gApiKey = 'AIzaSyDJlHTWIHfZsuOIZChVv0Dx9LoAl0PL7a0';
 
 $glob_where = '';
-if (in_array($_REQUEST['print_type'], array(10, 11)))
+if (in_array($_REQUEST['print_type'], array(10, 11)) && false)
 {
 	$glob_where = ' and vacancy_info = 1';
 }
