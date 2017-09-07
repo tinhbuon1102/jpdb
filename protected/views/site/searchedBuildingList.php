@@ -380,7 +380,7 @@
                                             echo Yii::app()->controller->renderPrice($list['total_deposit']).' 円';
                                         }
                                         if($list['deposit_opt'] != ''){
-                                            echo '<br/>';
+                                            echo '';
                                             if($list['deposit_opt'] == -1){
                                                 echo Yii::app()->controller->__trans('undecided');
                                             }else if($list['deposit_opt'] == -3){

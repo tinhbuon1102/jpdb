@@ -1327,7 +1327,7 @@ if($requestData['print_type']==8){
           <?php
           if(isset($floorId['contract_period_opt']) && $floorId['contract_period_opt'] != ""){
           	if($floorId['contract_period_opt'] == 1){
-          		echo '通常';
+          		echo '普通借';
           	}elseif($floorId['contract_period_opt'] == 2){
           		echo '定借';
           	}elseif($floorId['contract_period_opt'] == 3){
