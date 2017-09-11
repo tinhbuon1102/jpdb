@@ -788,7 +788,7 @@ class CustomerController extends Controller{
 			$resp .= '<table class="market_update">';
 						$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
 						$logged_user_id = $user->user_id;
-                        $query = 'SELECT * FROM `office_alert` where is_off = 0 AND user_id = '.$logged_user_id.' ORDER BY office_alert_id DESC LIMIT 16';
+                        $query = 'SELECT * FROM `office_alert` JOIN customer  ON customer.customer_id = office_alert.customer_id where is_off = 0 AND user_id = '.$logged_user_id.' ORDER BY office_alert_id DESC LIMIT 16';
                         $officeAlertDetails = Yii::app()->db->createCommand($query)->queryAll();
                         if(isset($officeAlertDetails) && count($officeAlertDetails) && !empty($officeAlertDetails)){
                             foreach($officeAlertDetails as $officeAlert){
@@ -828,7 +828,7 @@ class CustomerController extends Controller{
 					$arrayResp = array('status'=>true,'content'=>$resp);
 		}else{
 			$resp .= '<table class="market_update">';
-                        $query = 'SELECT * FROM `office_alert` where is_off = 0 ORDER BY office_alert_id DESC LIMIT 16';
+                        $query ='SELECT * FROM `office_alert` JOIN customer  ON customer.customer_id = office_alert.customer_id WHERE office_alert.is_off =0 ORDER BY office_alert.office_alert_id DESC LIMIT 16';
                         $officeAlertDetails = Yii::app()->db->createCommand($query)->queryAll();
                         if(isset($officeAlertDetails) && count($officeAlertDetails) && !empty($officeAlertDetails)){
                             foreach($officeAlertDetails as $officeAlert){

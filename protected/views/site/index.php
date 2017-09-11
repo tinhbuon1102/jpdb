@@ -45,11 +45,12 @@
                 <div class="respDisplayAlert">
                     <table class="market_update">
                     <?php
-                        $query = 'SELECT * FROM `office_alert` where is_off = 0  ORDER BY office_alert_id DESC LIMIT 16';
+                        $query = 'SELECT * FROM `office_alert` JOIN customer  ON customer.customer_id = office_alert.customer_id WHERE office_alert.is_off =0 ORDER BY office_alert.office_alert_id DESC LIMIT 16';
                         $officeAlertDetails = Yii::app()->db->createCommand($query)->queryAll();
                         if(isset($officeAlertDetails) && count($officeAlertDetails) && !empty($officeAlertDetails)){
                             foreach($officeAlertDetails as $officeAlert){
                                 $salesDetails = AdminDetails::model()->find('user_id = '.$officeAlert['user_id']);
+                            $customerDetails = Customer::model()->findByPk($officeAlert['customer_id']);
                     ?>
                         <tr>
                             <td class="update_date">

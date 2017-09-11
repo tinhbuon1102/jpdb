@@ -168,6 +168,7 @@ td.no-border { border: none !important; }
 td.cam_date { width: 20mm; }
 th.bo_name { width: 370px; }
 th.bo_fee { width: 12mm; }
+th.bo_tel1 { width: 58mm;}
 th.bo_upd { width: 21mm; }
 td.f_emp { width: 20mm; }
 td.f_price_m_shiki { width: 7mm; }
@@ -1174,7 +1175,7 @@ if($requestData['print_type']==8){
 					}else if($floorId['deposit_opt'] == -3){
 						echo Yii::app()->controller->__trans('none');
 					}else if($floorId['deposit_opt'] == -2){
-						echo Yii::app()->controller->__trans('undecided･ask');
+						echo Yii::app()->controller->__trans('ask');
 					}
 				}
 				if(isset($floorId['deposit_month']) &&  $floorId['deposit_month'] != ''){
@@ -1327,13 +1328,13 @@ if($requestData['print_type']==8){
           <?php
           if(isset($floorId['contract_period_opt']) && $floorId['contract_period_opt'] != ""){
           	if($floorId['contract_period_opt'] == 1){
-          		echo '通常';
+          		echo '定期・普通';
           	}elseif($floorId['contract_period_opt'] == 2){
-          		echo '定借';
+          		echo '定期・普通';
           	}elseif($floorId['contract_period_opt'] == 3){
           		echo '定借希望';
           	}else{
-          		echo '-';
+          		echo '未定';
           	}
           }else{
           	echo '-';

@@ -746,7 +746,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if (is_numeric($finalComission[0]['charge'])){
                                             $charge = '<span class="charge_a">△</span>'.number_format($finalComission[0]['charge'],1,'.','');
                                         }else{
-                                            $charge = $finalComission[0]['charge'];
+											$charge = Yii::app()->controller->__trans(ucfirst($finalComission[0]['charge']));;
                                         }
                                     }else{
                                         $charge = '-';
