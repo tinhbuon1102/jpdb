@@ -712,7 +712,7 @@ $(document).ready(function(e) {
 			formatedTotal = '';
 			if (!isNaN(rent_unit_price))
 			{
-				var price_calculated = rent_unit_price * OFFICE_DB_FEE_RATE;
+				var price_calculated = rent_unit_price / OFFICE_DB_FEE_RATE;
 				formatedTotal = addCommas(Math.round(price_calculated));
 			}
 			$('#rent_unit_price_calculated').val(formatedTotal);

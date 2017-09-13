@@ -28,7 +28,13 @@ function calculatedFields(oldField, newField, rate){
 		var formatedTotal = '';
 		if (orginal_vale && !isNaN(orginal_vale))
 		{
-			var price_calculated = orginal_vale * rate;
+			if (oldField == 'std_floor_space')
+			{
+				var price_calculated = orginal_vale * rate;
+			}
+			else {
+				var price_calculated = orginal_vale / rate;
+			}
 			formatedTotal = addCommas(Math.round(price_calculated));
 		}
 		$(newField).val(formatedTotal);
