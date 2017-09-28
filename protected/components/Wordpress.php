@@ -585,7 +585,7 @@ class Wordpress extends CApplicationComponent
 				{
 					foreach ($aFavorites as $user_id => $favorite)
 					{
-						$favorite = array_value($favorite);
+						$favorite = array_values($favorite);
 						if (isset($favorite[0]) && !in_array($post_ids['ja'], $favorite)  && !in_array($post_ids['en'], $favorite))
 						{
 							// Get building id from this id
