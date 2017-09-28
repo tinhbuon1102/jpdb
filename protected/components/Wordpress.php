@@ -585,6 +585,7 @@ class Wordpress extends CApplicationComponent
 				{
 					foreach ($aFavorites as $user_id => $favorite)
 					{
+						$favorite = array_value($favorite);
 						if (isset($favorite[0]) && !in_array($post_ids['ja'], $favorite)  && !in_array($post_ids['en'], $favorite))
 						{
 							// Get building id from this id
@@ -592,7 +593,7 @@ class Wordpress extends CApplicationComponent
 								SELECT *
 								FROM wp_posts
 								WHERE ID='.(int)$favorite[0])->queryRow();
-								
+							
 							if ($pRow && isset($pRow['ID']))
 							{
 								$favoriteBID = substr($pRow['pinged'], strlen(self::FLOOOR_BUILDING_PARENT));
