@@ -658,7 +658,7 @@ if(isset($customCondition)){
                                             }else if($list->deposit_opt == -3){
                                                 echo Yii::app()->controller->__trans('none');
                                             }else if($list->deposit_opt == -2){
-                                                echo Yii::app()->controller->__trans('undecided･ask');
+                                                echo Yii::app()->controller->__trans('ask');
                                             }
                                         }
                                         if(isset($list->deposit_month) &&  $list->deposit_month != ''){

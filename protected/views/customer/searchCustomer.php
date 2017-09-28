@@ -23,6 +23,8 @@
                         	<label class="searchform-label"><?php echo Yii::app()->controller->__trans('Person in charge for customers'); ?></label>
                             <span class="searchform-input-wrapper">
                             	<div class="radio-button-wrapper">
+                                 <input id="all_customer" type="checkbox" name="all_customer"  value="1">
+                                    <label >All</label>
 								<?php
                                 if(isset($saleStaffList) && $saleStaffList != ''){
 									$i = 0;
@@ -32,7 +34,7 @@
 											$check ='checked';
 										}
 								?>
-                                	<input type="checkbox" name="personInChargeforCustomer[]" <?php echo $check; ?>  value="<?php echo $saleStaff['id']; ?>">
+                                	<input  class="customer_id" type="checkbox" name="personInChargeforCustomer[]" <?php echo $check; ?>  value="<?php echo $saleStaff['id']; ?>">
                                     <label ><?php echo $saleStaff['name']; ?></label>
 								<?php
                                 	$i++;
@@ -185,4 +187,12 @@
         <div class="post customerList"></div>
     </div>
 </div>
-
+<script type="text/javascript">
+   $(document).ready(function () {
+        $("#all_customer").click(function () {
+            $(".customer_id").attr('checked', this.checked);
+    
+        });
+   });
+    
+</script>

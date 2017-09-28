@@ -372,7 +372,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 											}else if($floorDetails['deposit_opt'] == -3){
 												echo Yii::app()->controller->__trans('none').'<br/>';
 											}else if($floorDetails['deposit_opt'] == -2){
-												echo Yii::app()->controller->__trans('undecided･ask').'<br/>';
+												echo Yii::app()->controller->__trans('ask').'<br/>';
 											}
 										}
 										if(isset($floorDetails['deposit_month']) &&  $floorDetails['deposit_month'] != ''){
@@ -2116,7 +2116,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <?php
                                             if(isset($related['deposit']) && $related['deposit'] != "" && $related['deposit'] != 0){
                                                 echo number_format($related['deposit']).Yii::app()->controller->__trans('yen / tsubo');
-                                            }
+                                            }else{
+                                                    echo "-";
+                                                }
                                         ?>
                                     </td>
                                     <td>

@@ -1,7 +1,317 @@
 <td class="facility_summary var-top">
 	<table class="facility-info">
+		<?php
+                    	$contractArray = $renewalArray = $renewalFeeMonthArray = $keymoneyArray = $keyMoneyMonthArray = $amortizationArray = $repaymentMonthArray = array();
+						$fName = $renewalDetails = $renewalOpt = $keyMoneyDetails =  $keyMoneyOpt = $amortizationDetails = $repaymentOpt = '';
+						$contractPeriodOptChk = '';
+						foreach($floorDetails as $floor){
+							if($floorId['renewal_fee_opt'] != 0){
+								$renewalArray[$floor['floor_id']] = $floorId['renewal_fee_opt'];
+							}
+							$renewalFeeMonthArray[$floor['floor_id']] = $floorId['renewal_fee_recent'];
+							if($floorId['key_money_opt'] != 0){
+								$keymoneyArray[$floor['floor_id']] = $floorId['key_money_opt'];
+							}
+							$keyMoneyMonthArray[$floor['floor_id']] = $floorId['key_money_month'];
+							if($floorId['repayment_opt'] != 0){
+								$amortizationArray[$floor['floor_id']] = $floorId['repayment_opt'];
+							}
+							$repaymentMonthArray[$floor['floor_id']] = $floorId['repayment_amt'];
+                            if((isset($floorId['repayment_amt_opt'])) && ($floorId['repayment_amt_opt'] != 0)){
+                                $repaymentAmtOptArray[$floor['floor_id']]=$floorId['repayment_amt_opt'];
+                            }
+                            if(isset($floorId['contract_period_optchk']) && $floorId['contract_period_optchk'] == 1){
+                            	$contractPeriodOptChk =  '年数相談';
+                            }
+						}
+                        //print_r($amortizationArray); echo "<br/><br/>END";
+						$renewalArray = array_unique($renewalArray);
+						$keymoneyArray = array_unique($keymoneyArray);
+						$amortizationArray = array_unique($amortizationArray);
+						
+						$renewalFeeMonthArray = array_unique($renewalFeeMonthArray);
+						$keyMoneyMonthArray = array_unique($keyMoneyMonthArray);
+                        //Emphes
+                        $MaxOccAmt = (count($repaymentMonthArray)>0) ? array_search(max(array_count_values($repaymentMonthArray)), array_count_values($repaymentMonthArray)) : '';
+                        $MaxOccUnit = (count($repaymentAmtOptArray)>0) ? array_search(max(array_count_values($repaymentAmtOptArray)), array_count_values($repaymentAmtOptArray)) : '';
+                        if(isset($repaymentAmtOptArray[array_search($MaxOccAmt,$repaymentMonthArray)])){
+                            $MaxOccUnit = $repaymentAmtOptArray[array_search($MaxOccAmt,$repaymentMonthArray)];
+                        }
+                        //print_r($repaymentMonthArray); echo "<br/><br/>----";
+                        //print_r($repaymentAmtOptArray);
+                        //echo "Count ".@array_count_values($repaymentAmtOptArray)."<br/>";
+                        //Emphes
+						$repaymentMonthArray = array_unique($repaymentMonthArray);
+                        
+                        //echo $MaxOccAmt.'-'.$MaxOccUnit.'</br>';
+						
+						$k = 0;
+						if(count($renewalArray) > 0){
+							foreach($renewalArray as $key=>$val){
+								if($k == count($renewalArray)-1){
+									$slsh = '';
+								}else{
+									$slsh = '/';
+								}
+								$floorId = Floor::model()->findByPk($key);
+								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+									if(strpos($floorId['floor_down'], '-') !== false){
+										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+									}else{
+										$floorDown = $floorId['floor_down'];
+									}
+									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+									}else{
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+									}
+								}
+								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+									$fName .= '&nbsp;'.$floorId['roomname'];
+								}
+								if($val != 0 && $val != ""){
+									if($val == 2){
+										$renewalOpt = Yii::app()->controller->__trans('None');
+									}else if($val == -1){
+										$renewalOpt = Yii::app()->controller->__trans('unknown');
+									}else if($val == -2){
+										$renewalOpt = Yii::app()->controller->__trans('Undecided');
+									}
+									$renewalDetails .= $renewalOpt.(count($renewalArray) > 2 ? '('.$fName.')'.$slsh : '');
+								}
+								$k++;
+							}
+						}else{
+							foreach($renewalFeeMonthArray as $key=>$val){
+								if($k == count($renewalFeeMonthArray)-1){
+									$slsh = '';
+								}else{
+									$slsh = '/';
+								}
+								$floorId = Floor::model()->findByPk($key);
+								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+									if(strpos($floorId['floor_down'], '-') !== false){
+										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+									}else{
+										$floorDown = $floorId['floor_down'];
+									}
+									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+									}else{
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+									}
+								}
+								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+									$fName .= '&nbsp;'.$floorId['roomname'];
+								}
+								$renewalDetails .= $val.(count($renewalFeeMonthArray) > 2 ? '('.$fName.')'.$slsh : '');
+								$k++;
+							}
+							if($renewalDetails!="")
+								$renewalDetails .= Yii::app()->controller->__trans('ヶ月');;
+						}
+						$j = 0;
+						if(count($keymoneyArray) > 0){
+							foreach($keymoneyArray as $key=>$val){
+								if($j == count($keymoneyArray)-1){
+									$slsh = '';
+								}else{
+									$slsh = '/';
+								}
+								$floorId = Floor::model()->findByPk($key);
+								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+									if(strpos($floorId['floor_down'], '-') !== false){
+										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+									}else{
+										$floorDown = $floorId['floor_down'];
+									}
+									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+									}else{
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+									}
+								}
+								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+									$fName .= '&nbsp;'.$floorId['roomname'];
+								}
+								if($val != 0 && $val != ""){
+									if($val == 2){
+										$keyMoneyOpt = Yii::app()->controller->__trans('None');
+									}else if($val == -1){
+										$keyMoneyOpt = Yii::app()->controller->__trans('unknown');
+									}else if($val == -2){
+										$keyMoneyOpt = Yii::app()->controller->__trans('Undecided');
+									}
+									$keyMoneyDetails .= $keyMoneyOpt.(count($keymoneyArray) > 2 ? '('.$fName.')'.$slsh : '');
+								}
+								$j++;
+							}
+						}else{
+							foreach($keyMoneyMonthArray as $key=>$val){
+								if($j == count($keyMoneyMonthArray)-1){
+															$slsh = '';
+														}else{
+															$slsh = '/';
+														}
+														$floorId = Floor::model()->findByPk($key);
+														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+															if(strpos($floorId['floor_down'], '-') !== false){
+																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+															}else{
+																$floorDown = $floorId['floor_down'];
+															}									
+															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+															}else{
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+															}
+														}
+														
+														if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+															$fName .= '&nbsp;'.$floorId['roomname'];
+														}
+														$keyMoneyDetails .= ($val!=''?$val.'ヶ月':'').(count($keyMoneyMonthArray) > 2 ? '('.$fName.')'.$slsh : '');
+														$j++;
+													}
+												}
+												
+												$z = 0;
+												if(count($amortizationArray) > 0){
+													foreach($amortizationArray as $key=>$val){
+														if($z == count($amortizationArray)-1){
+															$slsh = '';
+														}else{
+															$slsh = '/';
+														}
+														$floorId = Floor::model()->findByPk($key);
+														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+															if(strpos($floorId['floor_down'], '-') !== false){
+																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+															}else{
+																$floorDown = $floorId['floor_down'];
+															}									
+															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+															}else{
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+															}
+														}
+														
+														if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+															$fName .= '&nbsp;'.$floorId['roomname'];
+														}
+														if($val != 0 && $val != ""){
+															if($val == -3){
+																$repaymentOpt = Yii::app()->controller->__trans('None');
+															}else if($val == -4){
+																$repaymentOpt = Yii::app()->controller->__trans('unknown');
+															}else if($val == -1){
+																$repaymentOpt = Yii::app()->controller->__trans('Undecided');
+															}else if($val == -2){
+																$repaymentOpt = Yii::app()->controller->__trans('Consultation');
+															}else if($val == -5){
+																$repaymentOpt = Yii::app()->controller->__trans('Sliding');
+															}
+															$amortizationDetails .= $repaymentOpt.(count($amortizationArray) > 2 ? '('.$fName.')'.$slsh : '');
+														}
+														$z++;
+													}
+												}else{
+													foreach($repaymentMonthArray as $key=>$val){
+														if($z == count($repaymentMonthArray)-1){
+															$slsh = '';
+														}else{
+															$slsh = '/';
+														}
+														$floorId = Floor::model()->findByPk($key);
+														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
+															if(strpos($floorId['floor_down'], '-') !== false){
+																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+															}else{
+																$floorDown = $floorId['floor_down'];
+															}									
+															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+															}else{
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+															}
+														}
+														
+														if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
+															$fName .= '&nbsp;'.$floorId['roomname'];
+														}
+														$amortizationDetails .= ($val != "" ? $val : "").(count($repaymentMonthArray) > 2 ? '('.$fName.')'.$slsh : '');
+														$z++;
+													}
+												}
+												$contractOptArray = array();
+                                                foreach($floorDetails as $floor){
+                                                    $floorId = Floor::model()->findByPk($floor['floor_id']);
+                                                    if(isset( $floorId['contract_period_duration']) &&  $floorId['contract_period_duration'] != ''){
+                                                        $contractArray[] = $floorId['contract_period_duration'];
+														$contractOptArray[] =  $floorId['contract_period_opt'];
+                                                    }
+                                                }
+												
+												
+                                                $contractdiff= array_diff_assoc($contractArray, array_unique($contractArray));
+                                            ?>
+			<tr>
+			<th>更新料</th><!--label-->
+			<td><?php
+// 									echo count($floorDetails);
+// 									if(substr($renewalDetails, -1)=="" || substr($renewalDetails, -1)==" ")
+										echo $renewalDetails!=''?$renewalDetails:'-'; 
+// 									else
+// 										echo $renewalDetails.Yii::app()->controller->__trans('ヶ月');
+								?></td>
+			</tr>
+			<tr>
+			<th>償却</th><!--label-->
+			<td>
+				<?php 
+								if($amortizationDetails!='') {
+									echo $amortizationDetails.' '; 
+	                                if($MaxOccUnit && $MaxOccAmt){
+										if($MaxOccUnit == 1){
+											echo Yii::app()->controller->__trans('ヶ月');
+										}elseif($MaxOccUnit == 2){
+											echo Yii::app()->controller->__trans('%');
+										}else{
+											echo '';
+										}
+	                                }
+								}  else echo '-';
+                                ?>
+			</td>
+			</tr>
+			<tr>
+			<th>礼金</th><!--label-->
+			<td><?php echo $keyMoneyDetails!=''?$keyMoneyDetails:'-'; ?></td>
+			</tr>
+			<tr>
+			<th>契約形態</th><!--label-->
+			<td>
+				<?php
+									$contractDefaultArray = array('1'=>'普通借家','2'=>'定借','3'=>'定借希望');
+									foreach($contractDefaultArray as $key=>$val){
+										if(in_array($key,$contractOptArray)){
+											$temp .= ''.$val;
+											break;
+										}
+									}
+									
+									if($temp=='-' && $contractPeriodOptChk!='')
+										echo $contractPeriodOptChk;
+									else if($contractPeriodOptChk=='')
+										echo $temp;
+									else 
+										echo $temp.':'.$contractPeriodOptChk;
+								?>
+			</td>
+			</tr>
 		<tr>
-			<td>空調設備</td><!--label-->
+			<th>空調設備</th><!--label-->
 			<td>
 				<?php
 //					if($buildCart['air_control_type'] == 0){
@@ -42,7 +352,7 @@
 			</td><!--air condition facility-->
 		</tr>
 		<tr>
-			<td>OAフロア</td><!--label-->
+			<th>OAフロア</th><!--label-->
 			<td>
 				<?php
 					$floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' AND vacancy_info = 1');
@@ -84,7 +394,7 @@
 			</td><!--OA floor-->
 		</tr>
 		<tr>
-			<td>天井高</td><!--label-->
+			<th>天井高</th><!--label-->
 			<td>
 				<?php 
 //				echo $buildCart['ceiling_height'] != "" ? $buildCart['ceiling_height'].'mm' : "-"; 
@@ -98,11 +408,11 @@
 				?>
 			</td><!--celling height-->
 		</tr>
-		<tr>
-			<td>光ケーブル</td><!--label-->
+		<!--<tr>
+			<th>光ケーブル</th>
 			<td>
 				<?php
-					if($buildCart['opticle_cable'] == 0){
+					/*if($buildCart['opticle_cable'] == 0){
 						echo Yii::app()->controller->__trans('unknown');
 					}else if($buildCart['opticle_cable'] == 1){
 						echo Yii::app()->controller->__trans('Pull Yes');
@@ -110,15 +420,15 @@
 						echo Yii::app()->controller->__trans('Nothing');
 					}else{
 						echo '-';
-					}
+					}*/
 				?>
 			</td>
 		</tr>
 		<tr>
-			<td>エレベーター</td><!--label-->
+			<th>エレベーター</th>
 							<td>
                                 <?php
-					if(isset($buildCart['elevator']) && $buildCart['elevator'] != ''){
+					/*if(isset($buildCart['elevator']) && $buildCart['elevator'] != ''){
 						if(strlen($buildCart['elevator']) > 2){
 							$elevatorExp = explode('-',$buildCart['elevator']);
 							if($elevatorExp[0] == 1){
@@ -143,27 +453,27 @@
 						}
 					}else{
 						echo '-';
-					}
+					}*/
 				?>
 			</td><!--elevetor-->
-		</tr>
+		<!--</tr>
 		<tr>
-			<td>駐車場</td><!--label-->
+			<th>駐車場</th>
 			<td>
-				<?php
-					$parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
+				<?php 
+					/*$parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
 					if($parkingUnitNo[0] == 1){
 						echo $parkingUnitNo[1] != "" ? $parkingUnitNo[1].'台' : "-";
 					}else if($parkingUnitNo[0] == 2){
 						echo Yii::app()->controller->__trans('noexist');
 					}else if($parkingUnitNo[0] == 3){
 						echo Yii::app()->controller->__trans('exist but unknown unit number');
-					}
+					}*/
 				?>
 			</td><!--parking-->
-		</tr>
+		<!--</tr>-->
 		<tr>
-			<td class="no-border">コメント</td><!--label-->
+			<th class="no-border">コメント</th><!--label-->
                             <td class="no-border">
                             	<?php
 				if($buildCart['notes'] != ""){
@@ -209,21 +519,3 @@
 		?>
 	</table>
 </td><!--facility summary-->
-		
-<td class="build_img var-top">
-	<?php
-		$buildPics = BuildingPictures::model()->find('building_id = '.$buildCart['building_id']);
-		$main_img = $buildPics['main_image'];
-		if($main_img != ""){
-			$buildPics = 'front/'.$main_img;
-		}else{
-			$buildPics = explode(',',$buildPics['front_images']);
-			$buildPics = 'front/'.$buildPics[0];
-		}
-		
-		if($buildPics == "front/"){
-			$buildPics = 'noimg_building.png';
-		}
-	?>
-	<img src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>" />
-</td><!--building main image-->		

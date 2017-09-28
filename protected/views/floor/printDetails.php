@@ -121,7 +121,16 @@ table.building-profile.single-info td.title { border-top: 5px solid #e11b30; }
 table.summary.building-summary, table.summary.contract-info { margin-bottom: 4mm; }
 table.summary.time-to-use { margin-bottom: 10mm; }
 /*printout ver2*/
-
+td.facility_summary > table.facility-info > tbody > tr > th {
+    background: none;
+    line-height: 1.2;
+    padding: 0 1mm;
+    font-weight: normal;
+    font-size: 7pt;
+    width: 18mm;
+    border-bottom: 1px solid #CCC;
+	text-align: left;
+}
 table.building-list { width: 100%; }
 table.building-list th { font-size: 5pt; line-height: 1.1; background: #e11b30; padding: 2mm 0; }
 table.building-list td { font-size: 7pt; border-right: 1px solid #CCC; line-height: 1.2; }
@@ -129,12 +138,14 @@ th.label_1 { width: 8mm; }
 th.label_2 { width: 65mm; }
 .label_3 { width: 11mm; }
 .label_4, .label_5, .label_6, .label_7 { width: 22mm; }
+.label_7_1, .label_7_2, .label_7_3, .label_7_4 { width: 15mm; }
 .label_8 { width: 20mm; }
 th.label_9 { /*width: 55mm;*/ }
 th.label_10 { width: 30mm; }
 table.building-list td img { max-width: 26mm; margin: 2mm auto; display: block; }
 td.build_img img { width: 100%; }
 table.building-list td table td { height: 5mm; line-height: 1.2; border: none; padding: 0 1mm; }
+table.building-list td.summary_td td { width: 3mm; }
 table.building-list td table td.build_name { height: 10.3mm; font-size: 10pt; border-bottom: 1px solid #CCC; }
 table.building-list td table td.build_name span.build_no { text-align: right; font-size: 5pt; display: block; }
 table.building-list td table td.build_name, table.building-list td table td.build_no { background: #efefef; }
@@ -142,6 +153,7 @@ table.building-list td table { width: 100%; }
 td.summary_td { padding: 0; vertical-align: top; }
 table.building-list td table.lists td { padding: 0; }
 td.label_4, td.label_5, td.label_6, td.label_7 { text-align: right; }
+td.label_4.center { text-align: center; }
 table.lists tr:nth-child(even) td { background-color: #f4f4f4; }
 table.lists tr.row_second td, table.building-list td table.lists td.center.label_3 { border-bottom: 1px solid #CCC; }
 table.building-list td table.lists td.center.label_3 { border-right: 1px solid #CCC; }
@@ -152,7 +164,7 @@ table.building-list td table.facility-info td { border-bottom: 1px solid #CCC; }
 
 }*/
 table.facility-info td.comment-texts { font-size: 5pt !important; height: auto; line-height: 1.4; }
-td.no-border { border: none !important; }
+.no-border { border: none !important; }
 .building-list tr { border-bottom: 2px solid #CCC; border-left: 1px solid #CCC; }
 .building-list tr table tr, .building-list tr.tr-th { border: none; }
 .op-wht {
@@ -181,7 +193,7 @@ td.f_price_amo_str, td.f_price_keymoney_str, td.f_oa { width: 11mm; }
 td.f_purpose1, td.f_purpose2, td.f_purpose3, td.f_purpose4, td.f_purpose8 { width: 8mm; }
 td.f_floor_str { width: 10mm; }
 table.f_info { background: #f4f4f4; border-top: 1px solid #CCC; margin-bottom: 5mm; }
-section.sheet.commercial table td, section.sheet.commercial table th { font-size: 0.55em; line-height: 1.4; text-align: left; font-weight: normal; padding:2px; height:auto; }
+section.sheet.commercial table td, section.sheet.commercial table th { font-size: 0.55em; line-height: 1.2; text-align: left; font-weight: normal; padding:2px; height:auto; }
 table.bd_data { border-bottom: 1px solid #e11b30; border-top: 3px solid #e11b30; }
 table.b_info.br { border-bottom: 1px solid #e9e9e9; }
 span.owner_type { border: 1px solid #000; padding: 2px; line-height: 1; display: inline-block; margin-right: 5px; }
@@ -470,7 +482,8 @@ if($requestData['print_type'] == 10){
 					$floorId = Floor::model()->findByPk($floor['floor_id']);
 					if($indexFloor && ($indexFloor % 18 == 0 )) {
 						echo '</table></td>';
-						include('_print_facility_summary.php');
+					    include('_print_facility_summary.php');
+						include('_print_type2_bldimg.php');
 						echo '</tr></table></section>
 						</div>
 						<div class="sheet_wrapper">
@@ -519,9 +532,9 @@ if($requestData['print_type'] == 10){
 					echo '&nbsp;'.$floorId['roomname'];
 				}
 				?></td>
-	              <td class="label_4"><?php
+	              <td class="label_4 center"><?php
 				if(isset($floorId['area_ping']) && $floorId['area_ping'] != ""){
-					echo $floorId['area_ping']/*." ".Yii::app()->controller->__trans('Ping')*/;
+					echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪');
 				}else{
 					echo '-';
 				}
@@ -537,7 +550,7 @@ if($requestData['print_type'] == 10){
 					  $expFloorParts = explode(',',$floorId['floor_partition']);
 						if(!empty($expFloorParts)){
 							foreach($expFloorParts as $part){
-								echo $part/*.'坪'*/.',<br/>';
+								echo $part.'坪'.',<br/>';
 							}
 						}
 						
@@ -545,7 +558,7 @@ if($requestData['print_type'] == 10){
 				?>
                 <?php
 					if(isset($floorId['area_net']) && $floorId['area_net'] != ""){
-						echo "ネット: ".$floorId['area_net']/*." 坪"*/;
+						echo "ネット: ".$floorId['area_net']." 坪";
 					}else{
 						echo '';
 					}
@@ -611,7 +624,7 @@ if($requestData['print_type'] == 10){
 						}else if($floorId['deposit_opt'] == -3){
 							echo Yii::app()->controller->__trans('none');
 						}else if($floorId['deposit_opt'] == -2){
-							echo Yii::app()->controller->__trans('undecided･ask');
+							echo Yii::app()->controller->__trans('ask');
 						}
 					}
 					if(isset($floorId['deposit_month']) &&  $floorId['deposit_month'] != ''){
@@ -635,7 +648,7 @@ if($requestData['print_type'] == 10){
               <td class="label_8 center">即入居</td>
             </tr>
             <tr class="row_second">
-              <td class="label_4"><?php echo $floorId['area_m'] != "" && $floorId['area_m'] != 0 ? $floorId['area_m']/*.'m&sup2;'*/ : '-'; ?></td>
+              <td class="label_4 center"><?php echo $floorId['area_m'] != "" && $floorId['area_m'] != 0 ? $floorId['area_m'].'m&sup2;' : '-'; ?></td>
               <!--area of space by meter-->
               <td class="label_5">
               <?php 
@@ -681,6 +694,7 @@ if($requestData['print_type'] == 10){
           </table></td>
         <!--list of the floor-->
         <?php include('_print_facility_summary.php');?>
+        <?php include('_print_type2_bldimg.php');?>
       </tr>
       <?php
 				$buildingNumber++;
@@ -1022,7 +1036,7 @@ if($requestData['print_type']==8){
         <tr>
           <td class="cam_date"><?php  echo date('y-m-d',strtotime($log['added_on'])); ?></td>
           <!--date of updated-->
-          <td colspan="10">
+          <td colspan="6">
           <?php
 			//echo $log['change_content'];
 			if(isset($log['note'])){
@@ -1124,10 +1138,7 @@ if($requestData['print_type']==8){
         <tr style="border-bottom:1px solid #fff;">
           <td class="f_emp" style="width:45px;"><span><?php echo !$floorId['vacancy_info'] ? '*' : '' ?></span><span style=""><?php echo $floorId['floorId']; ?></span></td>
           <!--floor ID-->
-          <td class="f_floor_str" style="width:35px;"><?php
-		  if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
-			echo '<span class="senko">先行有</span><br/>';
-			}
+          <td class="f_floor_str" style="width:30px;"><?php
             if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 				if(strpos($floorId['floor_down'], '-') !== false){
 					$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
@@ -1141,7 +1152,7 @@ if($requestData['print_type']==8){
 				}
 			}
 			if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
-				echo '&nbsp;'.$floorId['roomname'];
+				echo ''.$floorId['roomname'];
 			}
 		?></td>
           <!--stair of the floor-->
@@ -1155,15 +1166,20 @@ if($requestData['print_type']==8){
 		 ?></td>
           <!--area space of the floor-->
           <td class="f_rentstart" style="width:50px;">
+          
           <?php
+			
 			if(isset($floorId['move_in_date']) && $floorId['move_in_date'] != "" && (string)$floorId['move_in_date'] != '0'){
 				echo $floorId['move_in_date'];
 			}else{
 				echo '-';
 			}
+			if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
+			echo '<span>(先行有)</span>';
+			}
 			?></td>
           <!--date to rent start for the floor-->
-          <td class="f_price_m_shiki" style="width:40px;">敷
+          <td class="f_price_m_shiki" style="width:45px;">敷
             <?php
 				/*if(isset($floorId['total_deposit']) && $floorId['total_deposit'] != "0" && $floorId['total_deposit'] != ""){
 					echo Yii::app()->controller->renderPrice($floorId['total_deposit']).' 円';
@@ -1310,15 +1326,15 @@ if($requestData['print_type']==8){
 				if($floorId['oa_type'] == '非対応'){
 					echo 'OA 非対応';
 				}else if($floorId['oa_type'] == 'フリーアクセス'){
-					echo 'フリーアクセス';
+					echo 'OA'.Yii::app()->controller->__trans('無');
 				}else if($floorId['oa_type'] == '1WAY'){
-					echo 'OA '.Yii::app()->controller->__trans('1WAY');
+					echo 'OA'.Yii::app()->controller->__trans('有');
 				}else if($floorId['oa_type'] == '2WAY'){
-					echo 'OA '.Yii::app()->controller->__trans('2WAY');
+					echo 'OA'.Yii::app()->controller->__trans('有');
 				}else if($floorId['oa_type'] == '3WAY'){
-					echo 'OA '.Yii::app()->controller->__trans('3WAY');
+					echo 'OA'.Yii::app()->controller->__trans('有');
 				}else if($floorId['oa_type'] == '引き込み可'){
-					echo 'OA 引き込み可';
+					echo 'OA'.Yii::app()->controller->__trans('無');
 				}else{
 					echo '-';
 				}
@@ -1334,7 +1350,7 @@ if($requestData['print_type']==8){
           	}elseif($floorId['contract_period_opt'] == 3){
           		echo '定借希望';
           	}else{
-          		echo '未定';
+          		echo '定期';
           	}
           }else{
           	echo '-';
@@ -1793,7 +1809,7 @@ if($requestData['print_type'] == 11){
 															}else if($floorId['deposit_opt'] == -3){
 																echo Yii::app()->controller->__trans('none');
 															}else if($floorId['deposit_opt'] == -2){
-																echo Yii::app()->controller->__trans('undecided･ask');
+																echo Yii::app()->controller->__trans('ask');
 															}
 														}
 														

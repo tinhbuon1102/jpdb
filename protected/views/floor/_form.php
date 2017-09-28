@@ -583,7 +583,7 @@
 													</div>
 													<div>
 														<label class="rd2"><?php echo Yii::app()->controller->__trans('rent_unit_price Calculated');?></label>
-														<input readonly="readonly" type="text" name="Floor[rent_unit_price_calculated]" value="<?php echo isset($model->rent_unit_price_calculated) && $model->rent_unit_price_calculated != '' && $model->rent_unit_price_calculated != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price_calculated)) :''; ?>" id="rent_unit_price_calculated" class="ty1 mt price_rent rent_unit_price_calculated">
+														<input readonly type="text" name="Floor[rent_unit_price_calculated]" value="<?php echo isset($model->rent_unit_price_calculated) && $model->rent_unit_price_calculated != '' && $model->rent_unit_price_calculated != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price_calculated)) :''; ?>" id="rent_unit_price_calculated" class="ty1 mt price_rent rent_unit_price_calculated">
 														<?php echo Yii::app()->controller->__trans('㎡/円');?>
 													</div>
                                                 </td>
@@ -663,7 +663,7 @@
                                                     </label>
                                                     <label class="rd2">
                                                     	<input type="radio" class="price_shiki clearinput" data-input="deposit_opt_i" name="Floor[deposit_opt]" <?php echo isset($model->deposit_opt) && $model->deposit_opt == '-2' ?  $check :''; ?> value="-2">
-                                                        <?php echo Yii::app()->controller->__trans('undecided･ask');?>
+                                                        <?php echo Yii::app()->controller->__trans('ask');?>
                                                     </label>
                                                     <p>--</p>
                                                     <label class="rd2">

@@ -137,6 +137,11 @@ class CustomerController extends Controller{
 	public function actionDelete($id){
 		$this->loadModel($id)->delete();
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!empty($id)){
+          $query='DELETE FROM `office_alert` WHERE `customer_id`='.$id;
+		  Yii::app()->db->createCommand($query)->execute();
+;
+		}
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('searchCustomer'));
 	}
@@ -223,8 +228,10 @@ class CustomerController extends Controller{
 		if(isset($_REQUEST['formdata']) && $_REQUEST['formdata']!= ''){
 			$getString = $_REQUEST['formdata'];
 			parse_str($getString, $getArray);
-			$personInchagreForCustomer = '';
-			if(isset($getArray['personInChargeforCustomer']) && count($getArray['personInChargeforCustomer']) > 0 && !empty($getArray['personInChargeforCustomer'])){
+			if(isset($getArray['all_customer']) && ($getArray['all_customer']==1)){
+				$personInchagreForCustomer = '';
+			}
+			elseif(isset($getArray['personInChargeforCustomer']) && count($getArray['personInChargeforCustomer']) > 0 && !empty($getArray['personInChargeforCustomer'])){
 				$personInchagreForCustomer = implode(',',$getArray['personInChargeforCustomer']);
 			}
 			
