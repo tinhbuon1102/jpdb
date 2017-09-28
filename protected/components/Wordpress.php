@@ -602,8 +602,14 @@ class Wordpress extends CApplicationComponent
 									{
 										// Add this one to favorite list
 										$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
-										array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
-										array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
+										if (!in_array($get_user_meta_favorites[0], $post_ids['ja']))
+										{
+											array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
+										}
+										if (!in_array($get_user_meta_favorites[0], $post_ids['en']))
+										{
+											array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
+										}
 										update_user_meta( $user_id, 'realty_user_favorites', $get_user_meta_favorites[0] );
 									}
 								}
