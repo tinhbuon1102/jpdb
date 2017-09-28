@@ -584,7 +584,7 @@ class Wordpress extends CApplicationComponent
 				if (!empty($aFavorites))
 				{
 					$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
-					$get_user_meta_favorites[0] = array_unique($get_user_meta_favorites);
+					$get_user_meta_favorites[0] = array_unique($get_user_meta_favorites[0]);
 					foreach ($aFavorites as $user_id => $favorites)
 					{
 						if (!in_array($post_ids['ja'], $favorites)  && !in_array($post_ids['en'], $favorites))
