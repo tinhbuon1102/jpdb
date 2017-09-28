@@ -583,27 +583,29 @@ class Wordpress extends CApplicationComponent
 				}
 				if (!empty($aFavorites))
 				{
-					foreach ($aFavorites as $user_id => $favorite)
+					foreach ($aFavorites as $user_id => $favorites)
 					{
-						$favorite = array_values($favorite);
-						if (isset($favorite[0]) && !in_array($post_ids['ja'], $favorite)  && !in_array($post_ids['en'], $favorite))
+						if (!in_array($post_ids['ja'], $favorites)  && !in_array($post_ids['en'], $favorites))
 						{
-							// Get building id from this id
-							$pRow = Yii::app()->db->createCommand('
+							foreach ($favorites as $favoriteID)
+							{
+								// Get building id from this id
+								$pRow = Yii::app()->db->createCommand('
 								SELECT *
 								FROM wp_posts
-								WHERE ID='.(int)$favorite[0])->queryRow();
-							
-							if ($pRow && isset($pRow['ID']))
-							{
-								$favoriteBID = substr($pRow['pinged'], strlen(self::FLOOOR_BUILDING_PARENT));
-								if ($favoriteBID == $building->building_id)
+								WHERE ID='.(int)$favoriteID)->queryRow();
+									
+								if ($pRow && isset($pRow['ID']))
 								{
-									// Add this one to favorite list
-									$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
-									array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
-									array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
-									update_user_meta( $user_id, 'realty_user_favorites', $get_user_meta_favorites[0] );
+									$favoriteBID = substr($pRow['pinged'], strlen(self::FLOOOR_BUILDING_PARENT));
+									if ($favoriteBID == $building->building_id)
+									{
+										// Add this one to favorite list
+										$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
+										array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
+										array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
+										update_user_meta( $user_id, 'realty_user_favorites', $get_user_meta_favorites[0] );
+									}
 								}
 							}
 						}
