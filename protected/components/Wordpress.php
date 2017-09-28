@@ -557,68 +557,6 @@ class Wordpress extends CApplicationComponent
 				$this->is_bulk_added = true;
 			}
 			
-			if ($post_type == 'property' && count($post_ids))
-			{
-				// Add favorite and follow automatically if building is fav or followed
-				$aFavorites = array();
-				$aFollows = array();
-				$favoriteFollows = Yii::app()->db->createCommand('
-					SELECT *
-					FROM wp_usermeta
-					WHERE
-						meta_key="realty_user_favorites"
-						OR meta_key="realty_user_follow"')->queryAll();
-				if ($favoriteFollows && !empty($favoriteFollows))
-				{
-					foreach ($favoriteFollows as $favoriteFollow)
-					{
-						if ($favoriteFollow['meta_key'] == 'realty_user_favorites')
-						{
-							$aFavorites[$favoriteFollow['user_id']] = unserialize($favoriteFollow['meta_value']);
-						}
-						else{
-							$aFollows[$favoriteFollow['user_id']] = unserialize($favoriteFollow['meta_value']);
-						}
-					}
-				}
-				if (!empty($aFavorites))
-				{
-					$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
-					$get_user_meta_favorites[0] = isset($get_user_meta_favorites[0]) ? array_unique($get_user_meta_favorites[0]) : array(0);
-					foreach ($aFavorites as $user_id => $favorites)
-					{
-						if (!in_array($post_ids['ja'], $favorites)  && !in_array($post_ids['en'], $favorites))
-						{
-							foreach ($favorites as $favoriteID)
-							{
-								// Get building id from this id
-								$pRow = Yii::app()->db->createCommand('
-								SELECT *
-								FROM wp_posts
-								WHERE ID='.(int)$favoriteID)->queryRow();
-									
-								if ($pRow && isset($pRow['ID']))
-								{
-									$favoriteBID = substr($pRow['pinged'], strlen(self::FLOOOR_BUILDING_PARENT));
-									if ($favoriteBID == $building->building_id)
-									{
-										// Add this one to favorite list
-										if (!in_array($get_user_meta_favorites[0], $post_ids['ja']))
-										{
-											array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
-										}
-										if (!in_array($get_user_meta_favorites[0], $post_ids['en']))
-										{
-											array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
-										}
-										update_user_meta( $user_id, 'realty_user_favorites', $get_user_meta_favorites[0] );
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 		
 		if (count($_POST) || $_GET['id'])
