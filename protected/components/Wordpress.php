@@ -97,6 +97,35 @@ class Wordpress extends CApplicationComponent
 		return $attachment;
 	}
 	
+	public function removeBuildingFavorite($post_id, $building_id)
+	{
+		global $wpdb;
+		// remove favorite if no post of this building
+		$userFavs = $wpdb->get_results("SELECT user_id FROM $wpdb->usermeta WHERE meta_value LIKE '%i:". $building_id .";%' AND meta_key = 'realty_user_favorites' GROUP BY user_id");
+		if (count($userFavs))
+		{
+			$buildingPostCount = $wpdb->get_row("SELECT COUNT(*) as count
+					FROM $wpdb->posts
+					WHERE
+					post_type='property'
+					AND post_status='publish'
+					AND pinged=" . self::FLOOOR_BUILDING_PARENT . $building_id);
+			if (!$buildingPostCount->count)
+			{
+				// Delete user favorite building
+				foreach ($userFavs as $userFav)
+				{
+					$get_user_meta_favorites = get_user_meta( $userFav->user_id, 'realty_user_favorites', false ); // false = array()
+					if (isset($get_user_meta_favorites[0]) && isset($get_user_meta_favorites[0][$building_id]))
+					{
+						unset($get_user_meta_favorites[0][$building_id]);
+						update_user_meta( $userFav->user_id, 'realty_user_favorites', $get_user_meta_favorites[0]);
+					}
+				}
+			}
+		}
+	}
+	
 	public function processIntergrateWordpress ( $office_type_id, $office_type, $office_action, $office_params = array() )
 	{
 		$buildings = new Building();
@@ -137,6 +166,7 @@ class Wordpress extends CApplicationComponent
 		
 		$districts = $this->getAvailableCities();
 
+		global $wpdb;
 		$post_types = array('property', self::POST_TYPE_NEWS);
 		$langs = array('en', 'ja');
 		$office_type_ori = $office_type;
@@ -168,11 +198,18 @@ class Wordpress extends CApplicationComponent
 					{
 						foreach ($posts as $post_id)
 						{
-							wp_delete_post($post_id);
+							$building_id = get_post_meta($post_id, self::FLOOR_BUILDING_TYPE, true);
+							
 							PLL()->model->post->delete_translation( $post_id );
+							wp_delete_post($post_id);
+							
+							if ($post_type == 'property')
+							{
+								$this->removeBuildingFavorite($post_id, $building_id);
+							}
 						}
 					}
-			
+					
 					break;
 				case 'create' :
 				case 'update' :
@@ -235,8 +272,15 @@ class Wordpress extends CApplicationComponent
 					
 					// Continue loop if $floor->show_frontend == 0
 					if ($post_id && !$floor->show_frontend) {
+						$building_id = get_post_meta($post_id, self::FLOOR_BUILDING_TYPE, true);
+						
 						PLL()->model->post->delete_translation( $post_id );
 						wp_delete_post($post_id);
+						
+						if ($post_type == 'property')
+						{
+							$this->removeBuildingFavorite($post_id, $building_id);
+						}
 					}
 					
 					if (!$floor->show_frontend) continue;
@@ -533,22 +577,22 @@ class Wordpress extends CApplicationComponent
 				{
 					if ($picture->main_image)
 						$aImage = $picture->main_image;
-						elseif ($picture->front_images)
+					elseif ($picture->front_images)
 						$aImage = $picture->front_images;
 							
-						$aImages = explode(',', $aImage);
-						$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
-							
-						// create curl resource
-						$ch = curl_init();
-						// set url
-						curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_ids['ja'] .'&building_id='.$building->building_id);
-						//return the transfer as a string
-						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-						// $output contains the output string
-						$output = curl_exec($ch);
-						// close curl resource to free up system resources
-						curl_close($ch);
+					$aImages = explode(',', $aImage);
+					$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
+						
+					// create curl resource
+					$ch = curl_init();
+					// set url
+					curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_ids['ja'] .'&building_id='.$building->building_id);
+					//return the transfer as a string
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					// $output contains the output string
+					$output = curl_exec($ch);
+					// close curl resource to free up system resources
+					curl_close($ch);
 				}
 			}
 			
@@ -557,68 +601,6 @@ class Wordpress extends CApplicationComponent
 				$this->is_bulk_added = true;
 			}
 			
-			if ($post_type == 'property' && count($post_ids))
-			{
-				// Add favorite and follow automatically if building is fav or followed
-				$aFavorites = array();
-				$aFollows = array();
-				$favoriteFollows = Yii::app()->db->createCommand('
-					SELECT *
-					FROM wp_usermeta
-					WHERE
-						meta_key="realty_user_favorites"
-						OR meta_key="realty_user_follow"')->queryAll();
-				if ($favoriteFollows && !empty($favoriteFollows))
-				{
-					foreach ($favoriteFollows as $favoriteFollow)
-					{
-						if ($favoriteFollow['meta_key'] == 'realty_user_favorites')
-						{
-							$aFavorites[$favoriteFollow['user_id']] = unserialize($favoriteFollow['meta_value']);
-						}
-						else{
-							$aFollows[$favoriteFollow['user_id']] = unserialize($favoriteFollow['meta_value']);
-						}
-					}
-				}
-				if (!empty($aFavorites))
-				{
-					$get_user_meta_favorites = get_user_meta( $user_id, 'realty_user_favorites', false ); // false = array()
-					$get_user_meta_favorites[0] = isset($get_user_meta_favorites[0]) ? array_unique($get_user_meta_favorites[0]) : array(0);
-					foreach ($aFavorites as $user_id => $favorites)
-					{
-						if (!in_array($post_ids['ja'], $favorites)  && !in_array($post_ids['en'], $favorites))
-						{
-							foreach ($favorites as $favoriteID)
-							{
-								// Get building id from this id
-								$pRow = Yii::app()->db->createCommand('
-								SELECT *
-								FROM wp_posts
-								WHERE ID='.(int)$favoriteID)->queryRow();
-									
-								if ($pRow && isset($pRow['ID']))
-								{
-									$favoriteBID = substr($pRow['pinged'], strlen(self::FLOOOR_BUILDING_PARENT));
-									if ($favoriteBID == $building->building_id)
-									{
-										// Add this one to favorite list
-										if (!in_array($get_user_meta_favorites[0], $post_ids['ja']))
-										{
-											array_unshift( $get_user_meta_favorites[0], $post_ids['ja'] ); // Add To Beginning Of Favorites Array
-										}
-										if (!in_array($get_user_meta_favorites[0], $post_ids['en']))
-										{
-											array_unshift( $get_user_meta_favorites[0], $post_ids['en'] ); // Add To Beginning Of Favorites Array
-										}
-										update_user_meta( $user_id, 'realty_user_favorites', $get_user_meta_favorites[0] );
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 		
 		if (count($_POST) || $_GET['id'])
