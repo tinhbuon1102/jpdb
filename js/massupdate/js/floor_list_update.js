@@ -1024,13 +1024,13 @@
 			{
 				//空室を表示
 				$("tr.floorlist[f_emp=0]").hide();
-				$("input[name=switch_emp][value='0']").attr('checked', false);
+				$("input[name=switch_emp][value='0']").prop('checked', false);
 			}
 			else if(value == 0)
 			{
 				//満室を表示
 				$("tr.floorlist[f_emp=1]").hide();
-				$("input[name=switch_emp][value='1']").attr('checked', false);
+				$("input[name=switch_emp][value='1']").prop('checked', false);
 			}
 		}
 		else {

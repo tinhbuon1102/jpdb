@@ -3193,7 +3193,7 @@ class FloorController extends Controller{
 			$id = $_REQUEST['id'];
 			$buildingDetails = Building::model()->findByPk($id);
 			$userList = Users::model()->findAll('is_active = 1 AND user_role = "a"');
-			$floorList = Floor::model()->findAll(" building_id = ".$id);
+			$floorList = Floor::model()->findAll(" building_id = ".$id . " ORDER BY cast(floor_down as SIGNED) ASC, cast(floor_up as SIGNED) ASC");
 			$this->renderPartial('viewFloorMass',array('buildingDetails'=>$buildingDetails,'floorList'=> $floorList, 'users'=>$userList));
 		}
 		die();
