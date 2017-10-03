@@ -171,8 +171,8 @@ div#contents table.fl_data_c th {
 		<th scope="col" col="f_emp" class="w">空満			
 			<span style="font-size:10px">
 				<br>
-				<input type="radio" name="switch_emp" value="1" />空
-				<input type="radio" name="switch_emp" value="0" />満
+				<input type="checkbox" name="switch_emp" value="1" />空
+				<input type="checkbox" name="switch_emp" value="0" />満
 			</span>
 		</th>
 		<th scope="col" col="f_acreg" class="w">坪数</th>
