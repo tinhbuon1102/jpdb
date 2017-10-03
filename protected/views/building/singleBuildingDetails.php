@@ -236,6 +236,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         }else{
                                             echo $floorDown.' '.Yii::app()->controller->__trans('階');
                                         }
+                                        echo '<div class="floor_name">' . ($floorDetails['roomname'] ? ' ' . $floorDetails['roomname'] : '') . '</div>';
                                     }
                                     ?>
                                 </td>
