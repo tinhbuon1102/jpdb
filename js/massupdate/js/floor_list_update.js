@@ -204,17 +204,7 @@
 
 		//空満表示の切り替え
 		$("input[name=switch_emp]").click(function(){
-			val = $(this).val();
-			checked = $(this).attr("checked");
-			
-			if(checked == undefined)
-			{
-				switch_emp_floor(-1);
-			}
-			else
-			{
-				switch_emp_floor(val);
-			}
+			switch_emp_floor($(this).val());
 		});
 		
 		//一括更新ターゲットの全チェックの切り替え
@@ -1032,13 +1022,11 @@
 		{
 			//空室を表示
 			$("tr.floorlist[f_emp=0]").hide();
-			$("input[name=switch_emp][value=0]").attr("checked", false);
 		}
 		else if(value == 0)
 		{
 			//満室を表示
 			$("tr.floorlist[f_emp=1]").hide();
-			$("input[name=switch_emp][value=1]").attr("checked", false);
 		}
 	
 	}

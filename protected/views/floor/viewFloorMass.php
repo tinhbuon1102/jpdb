@@ -171,8 +171,8 @@ div#contents table.fl_data_c th {
 		<th scope="col" col="f_emp" class="w">空満			
 			<span style="font-size:10px">
 				<br>
-				<input type="checkbox" name="switch_emp" value="1" />空
-				<input type="checkbox" name="switch_emp" value="0" />満
+				<input type="radio" name="switch_emp" value="1" />空
+				<input type="radio" name="switch_emp" value="0" />満
 			</span>
 		</th>
 		<th scope="col" col="f_acreg" class="w">坪数</th>
@@ -245,7 +245,7 @@ div#contents table.fl_data_c th {
 		$d1 = date('Y-m-d H:i:s',strtotime($floor['modified_on']));
 		$d2 = date('y.m.d H',strtotime($floor['modified_on']));
 	?>
-	<tr f_no="<?=$fid?>" f_emp="0" class="floorlist ">
+	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist ">
 		<input type="hidden" name="f_id[]" value="<?=$fid?>">
 		<td f_no="<?=$fid?>" col="" od=""  class="ck" scope="col">
 			<input type="checkbox" class="mass_update_target" value="<?=$fid?>">
