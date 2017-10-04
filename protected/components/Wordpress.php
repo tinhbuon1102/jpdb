@@ -255,7 +255,7 @@ class Wordpress extends CApplicationComponent
 						$post_title_building = $post_title = $lang == 'en' ? ($building->name_en ? $building->name_en : $building->name) : $building->name;
 						if ($post_type == 'property')
 						{
-							$post_title = $post_title . ' ' . implode('~', $floorLevel) . ' ' . $floor->roomname;
+							$post_title = $post_title . ' ' . implode('~', $floorLevel);
 						}
 						$post_description = $lang == 'en' ? $building->description_en : $building->description_ja;
 					}
