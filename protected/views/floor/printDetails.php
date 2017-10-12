@@ -645,7 +645,15 @@ if($requestData['print_type'] == 10){
 				}
 				?>
 				</td>
-              <td class="label_8 center">即入居</td>
+              <td class="label_8 center">
+              <?php 
+              if(isset($floorId['move_in_date']) && $floorId['move_in_date'] != "" && (string)$floorId['move_in_date'] != '0'){
+              	echo $floorId['move_in_date'];
+              }else{
+              	echo '-';
+              }
+              ?>
+			</td>
             </tr>
             <tr class="row_second">
               <td class="label_4 center"><?php echo $floorId['area_m'] != "" && $floorId['area_m'] != 0 ? $floorId['area_m'].'m&sup2;' : '-'; ?></td>
