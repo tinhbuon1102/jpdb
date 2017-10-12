@@ -875,7 +875,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             if(strpos($floor['floor_down'], '-') !== false){
                                                                 $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
-                                                                $floorDown = $floorDetails['floor_down'];
+                                                                $floorDown = $floor['floor_down'];
                                                             }
                                                             $floorName .= $floorDown;
                                                             if($floor['floor_up'] != ""){
