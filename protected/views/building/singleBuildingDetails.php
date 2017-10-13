@@ -889,17 +889,22 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                                 $negUnit = 'ヶ月';
                                                                 $negVal = $negotiation['negotiation'];
                                                             }
+                                                            elseif($negotiation['negotiation_type'] == 4){
+                                                            	$negVal = $negotiation['negotiation'];
+                                                            }
 															if(strpos($floor['floor_down'], '-') !== false){
                                                                 $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
                                                             }
+                                                            $floorName .= $negUnitB.$negVal.$negUnit . ' ';
+                                                            
                                                             $floorName .= $floorDown;
                                                             if($floor['floor_up'] != ""){
-                                                                $floorName .= " ~ ".$floor['floor_up'];
+                                                            	$floorName .= " ~ ".$floor['floor_up'];
                                                             }
                                                             
-                                                            $floorName .= '階 '.$negUnitB.$negVal.$negUnit.' '.$floor['area_ping'].' '.Yii::app()->controller->__trans('tsubo'). ''.$negotiation['negotiation_note'];
+                                                            $floorName .= '階 ' . $floor['area_ping'].' '.Yii::app()->controller->__trans('tsubo'). ''.$negotiation['negotiation_note'];
                                                         }	
                                                     }else{
                                                         $floorName = '';
