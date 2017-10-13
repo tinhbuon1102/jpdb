@@ -8,6 +8,8 @@ if (in_array($_REQUEST['print_type'], array(10, 11)) && false)
 {
 	$glob_where = ' and vacancy_info = 1';
 }
+
+$glob_where .= ' ORDER BY cast(floor_down AS SIGNED) ASC, cast(floor_up AS SIGNED) ASC';
 /***************** end ****************/
 
 if(isset($_GET['proposedUsername'])) {
