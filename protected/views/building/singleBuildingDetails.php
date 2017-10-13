@@ -872,7 +872,24 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                     if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
                                                         $floorName = '';
                                                         foreach($allocateFloorDetails as $floor){
-                                                            if(strpos($floor['floor_down'], '-') !== false){
+                                                            
+                                                            $negUnitB = '';
+                                                            $negUnit = '';
+                                                            $negVal = '';
+                                                            
+                                                            if($negotiation['negotiation_type'] == 1){
+                                                                $negUnit = '/坪';
+                                                                $negUnitB = '¥';
+                                                                $negVal = number_format($negotiation['negotiation']);
+                                                            }elseif($negotiation['negotiation_type'] == 5){
+                                                                $negUnit = '/坪';
+                                                                $negUnitB = '¥';
+                                                                $negVal = number_format($negotiation['negotiation']);
+                                                            }elseif($negotiation['negotiation_type'] == 2 || $negotiation['negotiation_type'] == 3){
+                                                                $negUnit = 'ヶ月';
+                                                                $negVal = $negotiation['negotiation'];
+                                                            }
+															if(strpos($floor['floor_down'], '-') !== false){
                                                                 $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
@@ -881,24 +898,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             if($floor['floor_up'] != ""){
                                                                 $floorName .= " ~ ".$floor['floor_up'];
                                                             }
-                                                            $negUnitB = '';
-                                                            $negUnit = '';
-                                                            $negVal = '';
                                                             
-                                                            if($negotiation['negotiation_type'] == 1){
-                                                                $negUnit = '(共益費込み)';
-                                                                $negUnitB = '¥';
-                                                                $negVal = number_format($negotiation['negotiation']);
-                                                            }elseif($negotiation['negotiation_type'] == 5){
-                                                                $negUnit = '(共益費込み)';
-                                                                $negUnitB = '¥';
-                                                                $negVal = number_format($negotiation['negotiation']);
-                                                            }elseif($negotiation['negotiation_type'] == 2 || $negotiation['negotiation_type'] == 3){
-                                                                $negUnit = 'ヶ月';
-                                                                $negVal = $negotiation['negotiation'];
-                                                            }	
-                                                            
-                                                            $floorName .= " 階 / ".$floor['area_ping'].' '.Yii::app()->controller->__trans('tsubo').' | '.$negUnitB.' '.$negVal.' '.$negUnit.' '.$negotiation['negotiation_note'];
+                                                            $floorName .= '階 '.$negUnitB.$negVal.$negUnit.' '.$floor['area_ping'].' '.Yii::app()->controller->__trans('tsubo'). ''.$negotiation['negotiation_note'];
                                                         }	
                                                     }else{
                                                         $floorName = '';
@@ -912,15 +913,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                     <td>
                                                         <?php
                                                         if($negotiation['negotiation_type'] == 1){
-                                                            echo '坪単価(底値)';
+                                                            echo '底値:';
                                                         }elseif($negotiation['negotiation_type'] == 2){
-                                                            echo Yii::app()->controller->__trans('Deposit negotiation value');
+                                                            echo Yii::app()->controller->__trans('敷金:');
                                                         }elseif($negotiation['negotiation_type'] == 3){
-                                                            echo Yii::app()->controller->__trans('Key money negotiation value');
+                                                            echo Yii::app()->controller->__trans('礼金:');
                                                         }elseif($negotiation['negotiation_type'] == 5){
-                                                            echo '坪単価(目安値)';
+                                                            echo '目安値:';
                                                         }else{
-                                                            echo Yii::app()->controller->__trans('Other negotiations information');
+                                                            echo Yii::app()->controller->__trans('その他:');
                                                         }
                                                         echo ' '.$floorName;
                                                         ?>
