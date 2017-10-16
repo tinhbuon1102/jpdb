@@ -3177,7 +3177,7 @@ class BuildingController extends Controller{
 	}
 	public function actionGetListOfRentsNegotiation(){
 		$buildingId = $_REQUEST['buildingId'];
-		$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildingId.' order by rent_negotiation_id desc');
+		$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildingId.' order by rent_negotiation_id desc LIMIT 3');
 		$getFoorList = Floor::model()->findAll('building_id = '.$buildingId);
 		if(isset($getFoorList) && count($getFoorList) > 0){
 			$floorRander = '';
@@ -3205,16 +3205,6 @@ class BuildingController extends Controller{
 								if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
 									$floorName = '';
 									foreach($allocateFloorDetails as $floor){
-										if(strpos($floor['floor_down'], '-') !== false){
-											$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
-										}else{
-											$floorDown = $floor['floor_down'];
-										}
-										if($floor['floor_up'] != ""){
-											$floorName .= $floorDown." ~ ".$floor['floor_up'];
-										}else{
-											$floorName .= $floorDown.' '.Yii::app()->controller->__trans("階");
-										}
 										$negUnitB = '';
 										$negUnit = '';
 										$negVal = '';
@@ -3233,7 +3223,17 @@ class BuildingController extends Controller{
 										}else{
 											$negVal = $negotiationList['negotiation'];
 										}
-																
+												
+										if(strpos($floor['floor_down'], '-') !== false){
+											$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+										}else{
+											$floorDown = $floor['floor_down'];
+										}
+										if($floor['floor_up'] != ""){
+											$floorName .= $floorDown." ~ ".$floor['floor_up'];
+										}else{
+											$floorName .= $floorDown.' '.Yii::app()->controller->__trans("階");
+										}
 										
 										$floorName .= " / ".$floor['area_ping'].' '.Yii::app()->controller->__trans("tsubo").' | '.$negUnitB .' '. $negVal.' '.$negUnit.' '.$negotiationList['negotiation_note'];
 									}

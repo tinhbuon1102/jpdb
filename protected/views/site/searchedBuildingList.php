@@ -581,7 +581,7 @@
                             	<div class="bt_msg">
 								<?php
                                 	$totalNegotiation = 0;
-									$negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildingList['building_id']);
+									$negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildingList['building_id'] . ' LIMIT 3');
 									$totalNegotiation = count($negotiationDetails);
 								?>
                                 <input type="hidden" name="hdnNegBilId" id="hdnNegBilId" value="<?php echo $buildingList['building_id']; ?>"/>
@@ -590,51 +590,88 @@
                             </dt>
                             <dd>
                             	<table class="ah_msg">
-                                	<tbody>
-                                    <?php
-									$days = array('月'=>'Mon','火'=>'Tue','水'=>'Wed','木'=>'Thu','金'=>'Fri','土'=>'Sat','日'=>'Sun');
-									if(isset($negotiationDetails) && count($negotiationDetails) > 0){
-										foreach($negotiationDetails as $negotiation){
-											$day = array_search((date('D',strtotime($negotiation['added_on']))), $days);
-											$allocateFloorDetails = Floor::model()->findAllByAttributes(array('floor_id'=>explode(',',$negotiation['allocate_floor_id'])));
-											if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
-												$floorName = '';
-												foreach($allocateFloorDetails as $floor){
-													$floorName .= $floor['floor_down'];
-													if($floor['floor_up'] != ""){
-														$floorName .= " ~ ".$floor['floor_up'];
-													}
-													$floorName .= " / ".$floor['area_ping']." ".Yii::app()->controller->__trans('tsubo').' '.$negotiation['negotiation_note'];;
-												}
-											}else{
-												$floorName = '';
-											}
-									?>
-                                    	<tr>
-                                        	<th scope="row">
-                                            	<?php echo date('Y.m.d',strtotime($negotiation['added_on'])); ?>(<?php echo $day; ?>)
-                                            </th>
-                                            <td>
-												<?php
-                                                if($negotiation['negotiation_type'] == 1){
-                                                    echo Yii::app()->controller->__trans('Tsubo unit price negotiation value (common expenses included)');
-                                                }elseif($negotiation['negotiation_type'] == 2){
-                                                    echo Yii::app()->controller->__trans('Deposit negotiation value');
-                                                }elseif($negotiation['negotiation_type'] == 3){
-                                                    echo Yii::app()->controller->__trans('Key money negotiation value');
-                                                }else{
-                                                    echo Yii::app()->controller->__trans('Other negotiations information');
+                                            <tbody>
+                                            <?php
+                                            //$days = array('month'=>'Mon','fire'=>'Tue','water'=>'Wed','wood'=>'Thu','gold'=>'Fri','soil'=>'Sat','day'=>'Sun');
+                                            $days = array('月'=>'Mon','火'=>'Tue','水'=>'Wed','木'=>'Thu','金'=>'Fri','土'=>'Sat','日'=>'Sun');
+                                            if(isset($negotiationDetails) && count($negotiationDetails) > 0){
+                                                $i = 0;
+                                                foreach($negotiationDetails as $negotiation){
+                                                    if($i == 4){
+                                                        break;
+                                                    }
+                                                    $day = array_search((date('D',strtotime($negotiation['added_on']))), $days);
+                                                    $allocateFloorDetails = Floor::model()->findAllByAttributes(array('floor_id'=>explode(',',$negotiation['allocate_floor_id'])));
+                                                    if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
+                                                        $floorName = '';
+                                                        foreach($allocateFloorDetails as $floor){
+                                                            
+                                                            $negUnitB = '';
+                                                            $negUnit = '';
+                                                            $negVal = '';
+                                                            
+                                                            if($negotiation['negotiation_type'] == 1){
+                                                                $negUnit = '/坪';
+                                                                $negUnitB = '¥';
+                                                                $negVal = number_format($negotiation['negotiation']);
+                                                            }elseif($negotiation['negotiation_type'] == 5){
+                                                                $negUnit = '/坪';
+                                                                $negUnitB = '¥';
+                                                                $negVal = number_format($negotiation['negotiation']);
+                                                            }elseif($negotiation['negotiation_type'] == 2 || $negotiation['negotiation_type'] == 3){
+                                                                $negUnit = 'ヶ月';
+                                                                $negVal = $negotiation['negotiation'];
+                                                            }
+                                                            elseif($negotiation['negotiation_type'] == 4){
+                                                            	$negVal = $negotiation['negotiation'];
+                                                            }
+															if(strpos($floor['floor_down'], '-') !== false){
+                                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+                                                            }else{
+                                                                $floorDown = $floor['floor_down'];
+                                                            }
+                                                            $floorName .= $negUnitB.$negVal.$negUnit . ' ';
+                                                            
+                                                            $floorName .= $floorDown;
+                                                            if($floor['floor_up'] != ""){
+                                                            	$floorName .= " ~ ".$floor['floor_up'];
+                                                            }
+                                                            
+                                                            $floorName .= '階 ' . $floor['area_ping'].' '.Yii::app()->controller->__trans('tsubo'). ''.$negotiation['negotiation_note'];
+                                                        }	
+                                                    }else{
+                                                        $floorName = '';
+                                                    }
+                                            ?>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <?php echo date('Y.m.d',strtotime($negotiation['added_on'])); ?>
+                                                        (<?php echo $day; ?>)
+                                                    </th>
+                                                    <td>
+                                                        <?php
+                                                        if($negotiation['negotiation_type'] == 1){
+                                                            echo '底値:';
+                                                        }elseif($negotiation['negotiation_type'] == 2){
+                                                            echo Yii::app()->controller->__trans('敷金:');
+                                                        }elseif($negotiation['negotiation_type'] == 3){
+                                                            echo Yii::app()->controller->__trans('礼金:');
+                                                        }elseif($negotiation['negotiation_type'] == 5){
+                                                            echo '目安値:';
+                                                        }else{
+                                                            echo Yii::app()->controller->__trans('その他:');
+                                                        }
+                                                        echo ' '.$floorName;
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+													$i++;
                                                 }
-                                                echo " ".$floorName;
-                                                ?>
-                                          	</td>
-                                        </tr>
-                                    <?php
-										}
-									}
-									?>
-                                    </tbody>
-                                </table>
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
                             </dd>
                         </dl>
                     </div>
