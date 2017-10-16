@@ -5,7 +5,7 @@
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 
 <title>一括更新 <?=$buildingDetails['building_id'];?> : <?php echo $buildingDetails['name'];?></title>
 
