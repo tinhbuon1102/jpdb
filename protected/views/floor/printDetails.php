@@ -374,6 +374,10 @@ if($requestData['print_type'] == 10){
 			$user = Users::model()->findByAttributes(array('username'=>$user));
 			$company_id = $user->company;
 			$company = Company::model()->findByPK($company_id);
+			
+			$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
+			$company->phone = $userDetail->contact_number;
+			$company->email = $userDetail->email;
 		?>
     </div>
     <!--client company name-->
@@ -777,6 +781,10 @@ if($requestData['print_type']==8){
 
         $company_id = $user->company;
         $company = Company::model()->findByPK($company_id);
+        
+        $userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
+        $company->phone = $userDetail->contact_number;
+        $company->email = $userDetail->email;
       ?>
     </div>
     <!--client company name-->
@@ -1489,7 +1497,10 @@ if($requestData['print_type'] == 11){
 	  $user = Yii::app()->user->getId();
 	
 	$user = Users::model()->findByAttributes(array('username'=>$user));
+	$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
     $company = $proposedCompany;
+    $company['phone'] = $userDetail->contact_number;
+    $company['email'] = $userDetail->email;
       ?>
     </div>
     </div>
