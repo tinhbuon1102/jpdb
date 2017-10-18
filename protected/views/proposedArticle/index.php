@@ -344,6 +344,11 @@
         </div>
         <div class="box-content">
         	<form method="get" name="frmPrintPropose" id="frmPrintPropose" class="frmPrintPropose" data-action="<?php echo Yii::app()->createUrl('proposedArticle/cloneArticles'); ?>">
+        		<select id="print_language" name="print_language">
+        			<option value="ja"><?php echo Yii::app()->controller->__trans('Japanese'); ?></option>
+        			<option value="en"><?php echo Yii::app()->controller->__trans('English'); ?></option>
+        		</select>
+        		
             	<input type="hidden" name="hdnProArticleId" id="hdnProArticleId" class="hdnProArticleId" value="0"/>
                 <div class="radio1">
                 	<input type="radio" value="11"  name="print_type"  id="check1" checked="">ビル情報を個別に表示<br/>

@@ -1297,6 +1297,13 @@ class FloorController extends Controller{
 
 	public function actionAddProposedToCart(){
 	
+		global $glob_language;
+		
+		if ($_REQUEST['print_language'])
+		{
+			$glob_language = $_REQUEST['print_language'];
+		}
+		
 		$requestData = $_REQUEST;
 		
 		if(!isset($_REQUEST['printCart'])) {

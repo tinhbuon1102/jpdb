@@ -405,12 +405,12 @@ if($requestData['print_type'] == 10){
       <?php 
 	      if(isset($_GET['proposedUsername'])) {
 	      	$user = AdminDetails::model()->find('user_id = '.$_GET['proposedUsername']);
-	      	echo '<p class="username">' . Yii::app()->controller->__trans('担当者：') .$user['full_name'].'</p>';
+	      	echo '<p class="username">' . Yii::app()->controller->__trans('担当者：', 'ja') .$user['full_name'].'</p>';
 	      }
 	  ?>      
       </div>
       <div class="auth-right">
-		<p class="date"><?php echo Yii::app()->controller->__trans('日付'); ?>：<?php echo  date('Y.m.d'); ?></p>
+		<p class="date"><?php echo Yii::app()->controller->__trans('日付', 'ja'); ?>：<?php echo  date('Y.m.d'); ?></p>
       <!--author date to publish --> 
       </div>
       <div class="clear" style="clear:both;"></div>
@@ -436,26 +436,26 @@ if($requestData['print_type'] == 10){
         <th class="label_1"> <?php echo Yii::app()->controller->__trans('Map'); ?><br/>
           No. </th>
         <!--fixed texts-->
-        <th class="label_2"><?php echo Yii::app()->controller->__trans('ビル概要'); ?></th>
+        <th class="label_2"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_3"><?php echo Yii::app()->controller->__trans('募集階'); ?></th>
+        <th class="label_3"><?php echo Yii::app()->controller->__trans('募集階', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_4"<?php echo Yii::app()->controller->__trans('>面積(坪)'); ?><br/>
+        <th class="label_4"<?php echo Yii::app()->controller->__trans('>面積(坪)', 'ja'); ?><br/>
           (<?php echo Yii::app()->controller->__trans('m'); ?>&sup2;)</th>
         <!--fixed texts-->
-        <th class="label_5"><?php echo Yii::app()->controller->__trans('賃料(坪単価)'); ?><br/>
-          <?php echo Yii::app()->controller->__trans('総額'); ?></th>
+        <th class="label_5"><?php echo Yii::app()->controller->__trans('賃料(坪単価)', 'ja'); ?><br/>
+          <?php echo Yii::app()->controller->__trans('総額', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_6"><?php echo Yii::app()->controller->__trans('共益費(坪単価)'); ?><br/>
-          <?php echo Yii::app()->controller->__trans('総額'); ?></th>
+        <th class="label_6"><?php echo Yii::app()->controller->__trans('共益費(坪単価)', 'ja'); ?><br/>
+          <?php echo Yii::app()->controller->__trans('総額', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_7"><?php echo Yii::app()->controller->__trans('預託金'); ?></th>
+        <th class="label_7"><?php echo Yii::app()->controller->__trans('預託金', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_8"><?php echo Yii::app()->controller->__trans('入居可能日'); ?></th>
+        <th class="label_8"><?php echo Yii::app()->controller->__trans('入居可能日', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_9"><?php echo Yii::app()->controller->__trans('設備概要'); ?></th>
+        <th class="label_9"><?php echo Yii::app()->controller->__trans('設備概要', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_10"><?php echo Yii::app()->controller->__trans('ビル外観'); ?></th>
+        <th class="label_10"><?php echo Yii::app()->controller->__trans('ビル外観', 'ja'); ?></th>
         <!--fixed texts--> 
       </tr>
       <?php
@@ -500,16 +500,16 @@ if($requestData['print_type'] == 10){
 											'. Yii::app()->controller->__trans("Map") .'<br/>
 											No.
 										</th><!--fixed texts-->
-										<th class="label_2">'.Yii::app()->controller->__trans('ビル概要').'</th><!--fixed texts-->
-										<th class="label_3">'.Yii::app()->controller->__trans('募集階').'</th><!--fixed texts-->
-										<th class="label_4">'.Yii::app()->controller->__trans('面積(坪)').'<br/>('. Yii::app()->controller->__trans("m") .'&sup2;)</th>
+										<th class="label_2">'.Yii::app()->controller->__trans('ビル概要', 'ja').'</th><!--fixed texts-->
+										<th class="label_3">'.Yii::app()->controller->__trans('募集階', 'ja').'</th><!--fixed texts-->
+										<th class="label_4">'.Yii::app()->controller->__trans('面積(坪)', 'ja').'<br/>('. Yii::app()->controller->__trans("m") .'&sup2;)</th>
 										<!--fixed texts-->
-										<th class="label_5">'.Yii::app()->controller->__trans('賃料(坪単価)').'<br/>'.Yii::app()->controller->__trans('総額').'</th><!--fixed texts-->
-										<th class="label_6">'.Yii::app()->controller->__trans('共益費(坪単価)').'<br/>'.Yii::app()->controller->__trans('総額').'</th><!--fixed texts-->
-										<th class="label_7">'.Yii::app()->controller->__trans('預託金').'<br/>'.Yii::app()->controller->__trans('総額').'</th><!--fixed texts-->
-										<th class="label_8">'.Yii::app()->controller->__trans('入居可能日').'</th><!--fixed texts-->
-										<th class="label_9">'.Yii::app()->controller->__trans('設備概要').'</th><!--fixed texts-->
-										<th class="label_10">'.Yii::app()->controller->__trans('ビル外観').'</th><!--fixed texts-->
+										<th class="label_5">'.Yii::app()->controller->__trans('賃料(坪単価)', 'ja').'<br/>'.Yii::app()->controller->__trans('総額', 'ja').'</th><!--fixed texts-->
+										<th class="label_6">'.Yii::app()->controller->__trans('共益費(坪単価)', 'ja').'<br/>'.Yii::app()->controller->__trans('総額', 'ja').'</th><!--fixed texts-->
+										<th class="label_7">'.Yii::app()->controller->__trans('預託金', 'ja').'<br/>'.Yii::app()->controller->__trans('総額', 'ja').'</th><!--fixed texts-->
+										<th class="label_8">'.Yii::app()->controller->__trans('入居可能日', 'ja').'</th><!--fixed texts-->
+										<th class="label_9">'.Yii::app()->controller->__trans('設備概要', 'ja').'</th><!--fixed texts-->
+										<th class="label_10">'.Yii::app()->controller->__trans('ビル外観', 'ja').'</th><!--fixed texts-->
 									</tr>
 									<tr><td class="center">No.'. $buildingNumber .'</td></td>';
 						include('_print_summary.php');
@@ -520,18 +520,18 @@ if($requestData['print_type'] == 10){
             <tr class="row_fst">
               <td rowspan="2" class="center label_3"><?php
 			  	if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
-					echo '<span class="senko">'.Yii::app()->controller->__trans('先行有').'</span>';
+					echo '<span class="senko">'.Yii::app()->controller->__trans('先行有', 'ja').'</span>';
 				}
 				if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 					if(strpos($floorId['floor_down'], '-') !== false){
-						$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+						$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 					}else{
 						$floorDown = $floorId['floor_down'];
 					}
 					if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-						echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+						echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 					}else{
-						echo $floorDown.' '.Yii::app()->controller->__trans('階');
+						echo $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 					}
 				}
 				if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -540,23 +540,23 @@ if($requestData['print_type'] == 10){
 				?></td>
 	              <td class="label_4 center"><?php
 				if(isset($floorId['area_ping']) && $floorId['area_ping'] != ""){
-					echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪');
+					echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪', 'ja');
 				}else{
 					echo '-';
 				}
 				?>
                 <?php
 					if(isset($floorId['payment_by_installments']) && $floorId['payment_by_installments'] == 1){
-						echo Yii::app()->controller->__trans('分割例 :');
+						echo Yii::app()->controller->__trans('分割例 :', 'ja');
 					}else if(isset($floorId['payment_by_installments']) && $floorId['payment_by_installments'] == 2){
-						echo Yii::app()->controller->__trans('分割可 :');
+						echo Yii::app()->controller->__trans('分割可 :', 'ja');
 					}
 				?>
                 <?php if(isset($floorId['floor_partition']) && $floorId['floor_partition'] != ""){
 					  $expFloorParts = explode(',',$floorId['floor_partition']);
 						if(!empty($expFloorParts)){
 							foreach($expFloorParts as $part){
-								echo $part.Yii::app()->controller->__trans('坪').',<br/>';
+								echo $part.Yii::app()->controller->__trans('坪', 'ja').',<br/>';
 							}
 						}
 						
@@ -564,7 +564,7 @@ if($requestData['print_type'] == 10){
 				?>
                 <?php
 					if(isset($floorId['area_net']) && $floorId['area_net'] != ""){
-						echo Yii::app()->controller->__trans('ネット:').$floorId['area_net'].Yii::app()->controller->__trans('坪');
+						echo Yii::app()->controller->__trans('ネット:', 'ja').$floorId['area_net'].Yii::app()->controller->__trans('坪', 'ja');
 					}else{
 						echo '';
 					}
@@ -573,9 +573,9 @@ if($requestData['print_type'] == 10){
                 <?php
 					if($floorId['rent_unit_price_opt'] != ''){
 						if($floorId['rent_unit_price_opt'] == -1){
-							echo Yii::app()->controller->__trans('未定');
+							echo Yii::app()->controller->__trans('未定', 'ja');
 						}else if($floorId['rent_unit_price_opt'] == -2){
-							echo Yii::app()->controller->__trans('相談');
+							echo Yii::app()->controller->__trans('相談', 'ja');
 						}
 					}else{
 						echo '-';
@@ -595,13 +595,13 @@ if($requestData['print_type'] == 10){
 					if($floorId['unit_condo_fee'] == ""){
 						if($floorId['unit_condo_fee_opt'] != ''){
 							if($floorId['unit_condo_fee_opt'] == 0){
-								echo Yii::app()->controller->__trans('無し');
+								echo Yii::app()->controller->__trans('無し', 'ja');
 							}else if($floorId['unit_condo_fee_opt'] == -1){
-								echo Yii::app()->controller->__trans('未定');
+								echo Yii::app()->controller->__trans('未定', 'ja');
 							}else if($floorId['unit_condo_fee_opt'] == -2){
-								echo Yii::app()->controller->__trans('相談');
+								echo Yii::app()->controller->__trans('相談', 'ja');
 							}else if($floorId['unit_condo_fee_opt'] == -3){
-								echo Yii::app()->controller->__trans('賃料に込み (含む)');
+								echo Yii::app()->controller->__trans('賃料に込み (含む)', 'ja');
 							}
 						}else{
 							echo '-';
@@ -626,15 +626,15 @@ if($requestData['print_type'] == 10){
 					if($floorId['deposit_opt'] != ''){
 						echo '<br/>';
 						if($floorId['deposit_opt'] == -1){
-							echo Yii::app()->controller->__trans('未定');
+							echo Yii::app()->controller->__trans('未定', 'ja');
 						}else if($floorId['deposit_opt'] == -3){
-							echo Yii::app()->controller->__trans('無し');
+							echo Yii::app()->controller->__trans('無し', 'ja');
 						}else if($floorId['deposit_opt'] == -2){
-							echo Yii::app()->controller->__trans('相談');
+							echo Yii::app()->controller->__trans('相談', 'ja');
 						}
 					}
 					if(isset($floorId['deposit_month']) &&  $floorId['deposit_month'] != ''){
-						echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月');
+						echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 					}
 				?>
                 </font></font><br>
@@ -667,23 +667,23 @@ if($requestData['print_type'] == 10){
               <td class="label_5">
               <?php 
 	              if(isset($floorId['total_rent_price']) && $floorId['total_rent_price'] != ""){
-	              	echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円');
+	              	echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円', 'ja');
 	              }else if($floorId['rent_unit_price_opt']==-1 || $floorId['rent_unit_price_opt']==-2) {
 	              	$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' order by rent_negotiation_id desc LIMIT 1');
 	              	$rentNegotiationDetails = $rentNegotiationDetails[0];
 	              	//print_r($rentNegotiationDetails);
 	              	if($rentNegotiationDetails['negotiation_type']==1) {
-	              		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円');
+	              		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
 	              	} else if($rentNegotiationDetails['negotiation_type']==5) {
-	              		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円');
+	              		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
 	              	} else{
 	              		//echo '-';
 	              		$temp = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' AND (negotiation_type = 1 OR negotiation_type=5) order by rent_negotiation_id desc LIMIT 1');
 	              		$temp = $temp[0];
 	              		if($temp['negotiation_type']==1) {
-	              			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円');
+	              			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
 	              		} else if($temp['negotiation_type']==5) {
-	              			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円');
+	              			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
 	              		} else{
 	              			echo '-';
 	              		}
@@ -761,7 +761,7 @@ if($requestData['print_type']==8){
 <div class="sheet_wrapper">
   <section class="sheet cover" style="height: 177mm;">
     <div class="headtitle-wrapper">
-    <h1><?php echo $requestData['header_name']; ?><?php if($requestData['header_name']=='') echo '',Yii::app()->controller->__trans('オフィスビルご紹介資料') ?></h1>
+    <h1><?php echo $requestData['header_name']; ?><?php if($requestData['header_name']=='') echo '',Yii::app()->controller->__trans('オフィスビルご紹介資料', 'ja') ?></h1>
     <h4 class="subtitle en"><?php echo Yii::app()->controller->__trans('office building information'); ?></h4>
     <!--common sub title-->
     <div class="client_name">
@@ -769,7 +769,7 @@ if($requestData['print_type']==8){
 		$prosalData = ProposedArticle::model()->findByPK($requestData['hdnProArticleId']);
         $companyName = Customer::model()->findByPk($prosalData['customer_id']);
         if(trim($companyName['company_name'])!="") {
-        	echo $companyName['company_name'].Yii::app()->controller->__trans('様');
+        	echo $companyName['company_name'].Yii::app()->controller->__trans('様', 'ja');
         }
         
 		if(isset($_GET['user']))
@@ -812,13 +812,13 @@ if($requestData['print_type']==8){
       <?php 
 	      if(isset($_GET['proposedUsername'])) {
 	      	$user = AdminDetails::model()->find('user_id = '.$_GET['proposedUsername']);
-	      	echo '<p class="username">'.Yii::app()->controller->__trans('担当者').' : '.$user['full_name'].'</p>';
+	      	echo '<p class="username">'.Yii::app()->controller->__trans('担当者', 'ja').' : '.$user['full_name'].'</p>';
 	      }
 	  ?>      
       </div>
       <div class="auth-right">
       <p class="date">
-        <?php echo Yii::app()->controller->__trans('日付'); ?>：<?php  echo  date('Y.m.d'); ?>
+        <?php echo Yii::app()->controller->__trans('日付', 'ja'); ?>：<?php  echo  date('Y.m.d'); ?>
       </p>
       <!--author date to publish --> 
       </div>
@@ -858,14 +858,14 @@ if($requestData['print_type']==8){
     <table class="b_info br">
       <tbody>
         <tr>
-          <td class="b_build_str"><?php echo date('Y'.Yii::app()->controller->__trans('年').'m'.Yii::app()->controller->__trans('月'),strtotime($buildCart['built_year'])); ?></td>
+          <td class="b_build_str"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
           <td class="st_data station">
           <?PHP
    $nearestSt = BuildingStation::model()->getNearestStations($buildCart['building_id']);
    if(isset($nearestSt) && count($nearestSt) > 0){
     foreach($nearestSt as $nStation){
      if(isset($nStation['name']) && isset($nStation['time'])){
-      echo $nStation['name'].Yii::app()->controller->__trans('駅').$nStation['time'].Yii::app()->controller->__trans('分').$break;
+      echo $nStation['name'].Yii::app()->controller->__trans('駅', 'ja').$nStation['time'].Yii::app()->controller->__trans('分', 'ja').$break;
    break;
      }
     }
@@ -879,21 +879,21 @@ if($requestData['print_type']==8){
           ?></td>
           <td class="f_oa"></td>
           <td class="f_lightline_str">
-          <?php echo Yii::app()->controller->__trans('光');?>：
+          <?php echo Yii::app()->controller->__trans('光', 'ja');?>：
           <?php
 				if($buildCart['opticle_cable'] == 0){
-					echo Yii::app()->controller->__trans('不明');
+					echo Yii::app()->controller->__trans('不明', 'ja');
 				}else if($buildCart['opticle_cable'] == 1){
-					echo Yii::app()->controller->__trans('引き込み有');
+					echo Yii::app()->controller->__trans('引き込み有', 'ja');
 				}else if($buildCart['opticle_cable'] == 2){
-					echo Yii::app()->controller->__trans('無し');
+					echo Yii::app()->controller->__trans('無し', 'ja');
 				}else{
 					echo '-';
 				}
 			?></td>
           <!--electonic cable value-->
           <td class="f_air">
-          <?php echo Yii::app()->controller->__trans('空調');?>：
+          <?php echo Yii::app()->controller->__trans('空調', 'ja');?>：
           <?php
 //					if($buildCart['air_control_type'] == 0){
 //						echo Yii::app()->controller->__trans('不明');
@@ -913,11 +913,11 @@ if($requestData['print_type']==8){
 					
 					$res = Array(0=>'', 1=>'', 2=>'', 3=>'', 4=>'');
 					foreach($fDetails as $floor){
-						if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]=Yii::app()->controller->__trans('個別・セントラル');
-						if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別');
-						if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル');
-						if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明');
-						if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し');
+						if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]=Yii::app()->controller->__trans('個別・セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別', 'ja');
+						if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明', 'ja');
+						if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し', 'ja');
 					}
 					
 					$result = '-';
@@ -940,16 +940,16 @@ if($requestData['print_type']==8){
             if($elevatorExp[0] == 1){
             	echo Yii::app()->controller->__trans('Exist');
 				if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
-					echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基') : "";
-					echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗') : "";
-					echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用') : "";
-					echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗') : "";
-					echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基') : "";
+					echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
+					echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
+					echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
+					echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
+					echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
 					if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                 }else if($elevatorExp[0] == -2){
-                	echo Yii::app()->controller->__trans('不明');
+                	echo Yii::app()->controller->__trans('不明', 'ja');
                 }else if($elevatorExp[0] == 2){
-                	echo Yii::app()->controller->__trans('無');
+                	echo Yii::app()->controller->__trans('無', 'ja');
                 }else{
                 	echo '-';
                 }
@@ -959,11 +959,11 @@ if($requestData['print_type']==8){
           P<?php
           	$parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
 			if($parkingUnitNo[0] == 1){
-				echo Yii::app()->controller->__trans('有').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台').')' : "");
+				echo Yii::app()->controller->__trans('有', 'ja').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台', 'ja').')' : "");
 			}else if($parkingUnitNo[0] == 2){
-				echo Yii::app()->controller->__trans('無');
+				echo Yii::app()->controller->__trans('無', 'ja');
 			}else if($parkingUnitNo[0] == 3){
-				echo Yii::app()->controller->__trans('有るが台数不明');
+				echo Yii::app()->controller->__trans('有るが台数不明', 'ja');
 			}
 		  ?></td>
           <!--parking value--> 
@@ -1008,7 +1008,7 @@ if($requestData['print_type']==8){
 			?>
           </th>
           <!--commision fee-->
-          <th class="bo_upd"><?php echo Yii::app()->controller->__trans('更新'); ?>
+          <th class="bo_upd"><?php echo Yii::app()->controller->__trans('更新', 'ja'); ?>
             <?php  echo date('y-m-d',strtotime($owner['modified_on'])); ?>
           </th>
           <!--updated date--> 
@@ -1019,7 +1019,7 @@ if($requestData['print_type']==8){
         <!--/loop of owner if owners are multiple-->
       </tbody>
     </table>
-    <p class="last_update"><!--label--><?php echo Yii::app()->controller->__trans('ビル情報最終更新'); ?>：<!--/label--> 
+    <p class="last_update"><!--label--><?php echo Yii::app()->controller->__trans('ビル情報最終更新', 'ja'); ?>：<!--/label--> 
       <?php echo $buildCart['modified_on']; ?><!--latest updated date of building info--> 
     </p>
     <!--history of updated things-->
@@ -1070,14 +1070,14 @@ if($requestData['print_type']==8){
 					$floorName = '';
 					foreach($allocateFloorDetails as $floor){
 						if(strpos($floor['floor_down'], '-') !== false){
-							$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+							$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floor['floor_down']);
 						}else{
 							$floorDown = $floor['floor_down'];
 						}
 						if($floor['floor_up'] != ""){
-							$floorName .= $floorDown." ~ ".$floor['floor_up'].' '.Yii::app()->controller->__trans('階');
+							$floorName .= $floorDown." ~ ".$floor['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 						}else{
-							$floorName .= $floorDown.' '.Yii::app()->controller->__trans('階');
+							$floorName .= $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 						}
 						/*if($merge['negotiation_type'] == 4){
 							$negUnitList = '';
@@ -1088,13 +1088,13 @@ if($requestData['print_type']==8){
 						$negUnitB = '';
 						$negUnit = '';
 						if($log['negotiation_type'] == 1){
-							$negUnit = '('.Yii::app()->controller->__trans('共益費込み').')';
+							$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
 							$negUnitB = ' | ¥';
 						}elseif($log['negotiation_type'] == 5){
-							$negUnit = '('.Yii::app()->controller->__trans('共益費込み').')';
+							$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
 							$negUnitB = ' | ¥';
 						}elseif($log['negotiation_type'] == 2 || $log['negotiation_type'] == 3){
-							$negUnit = Yii::app()->controller->__trans('ヶ月');
+							$negUnit = Yii::app()->controller->__trans('ヶ月', 'ja');
 						}
 						
 						//$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').' | '.$negUnitB.Yii::app()->controller->renderPrice($log['negotiation']).' '.$negUnit;
@@ -1105,16 +1105,16 @@ if($requestData['print_type']==8){
 				}
 				
 				if($log['negotiation_type'] == 1){
-					echo Yii::app()->controller->__trans('坪単価(底値)');
+					echo Yii::app()->controller->__trans('坪単価(底値)', 'ja');
 				}elseif($log['negotiation_type'] == 2){									
-					echo Yii::app()->controller->__trans('敷金交渉値');
+					echo Yii::app()->controller->__trans('敷金交渉値', 'ja');
 				}elseif($log['negotiation_type'] == 3){
-					echo Yii::app()->controller->__trans('礼金交渉値');
+					echo Yii::app()->controller->__trans('礼金交渉値', 'ja');
 				}elseif($log['negotiation_type'] == 5){
 					echo '坪単価(目安値)';
 				}									
 				else{
-					echo Yii::app()->controller->__trans('その他交渉情報');
+					echo Yii::app()->controller->__trans('その他交渉情報', 'ja');
 				}
 				//echo " ".$log['negotiation'].'<br/>'.$floorName;
 				echo " ".$floorName;
@@ -1159,14 +1159,14 @@ if($requestData['print_type']==8){
           <td class="f_floor_str" style="width:30px;"><?php
             if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 				if(strpos($floorId['floor_down'], '-') !== false){
-					$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+					$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 				}else{
 					$floorDown = $floorId['floor_down'];
 				}
 				if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-					echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+					echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 				}else{
-					echo $floorDown.' '.Yii::app()->controller->__trans('階');
+					echo $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 				}
 			}
 			if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -1177,7 +1177,7 @@ if($requestData['print_type']==8){
           <td class="f_acreg_str" style="width:42px;">
           <?php
 			if(isset($floorId['area_ping']) && $floorId['area_ping'] != ""){
-				echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪');
+				echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪', 'ja');
 			}else{
 				echo '-';
 			}
@@ -1193,11 +1193,11 @@ if($requestData['print_type']==8){
 				echo '-';
 			}
 			if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
-			echo '<span>('.Yii::app()->controller->__trans('先行有').')</span>';
+			echo '<span>('.Yii::app()->controller->__trans('先行有', 'ja').')</span>';
 			}
 			?></td>
           <!--date to rent start for the floor-->
-          <td class="f_price_m_shiki" style="width:45px;"><?php echo Yii::app()->controller->__trans('敷'); ?>
+          <td class="f_price_m_shiki" style="width:45px;"><?php echo Yii::app()->controller->__trans('敷', 'ja'); ?>
             <?php
 				/*if(isset($floorId['total_deposit']) && $floorId['total_deposit'] != "0" && $floorId['total_deposit'] != ""){
 					echo Yii::app()->controller->renderPrice($floorId['total_deposit']).' 円';
@@ -1205,15 +1205,15 @@ if($requestData['print_type']==8){
 				if($floorId['deposit_opt'] != ''){
 					echo '';
 					if($floorId['deposit_opt'] == -1){
-						echo Yii::app()->controller->__trans('未定');
+						echo Yii::app()->controller->__trans('未定', 'ja');
 					}else if($floorId['deposit_opt'] == -3){
-						echo Yii::app()->controller->__trans('無し');
+						echo Yii::app()->controller->__trans('無し', 'ja');
 					}else if($floorId['deposit_opt'] == -2){
-						echo Yii::app()->controller->__trans('相談');
+						echo Yii::app()->controller->__trans('相談', 'ja');
 					}
 				}
 				if(isset($floorId['deposit_month']) &&  $floorId['deposit_month'] != ''){
-					echo ''.$floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月');
+					echo ''.$floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 				}
 			?>
             
@@ -1229,9 +1229,9 @@ if($requestData['print_type']==8){
           <?php
 				if($floorId['rent_unit_price_opt'] != ''){
 					if($floorId['rent_unit_price_opt'] == -1){
-						echo Yii::app()->controller->__trans('未定');
+						echo Yii::app()->controller->__trans('未定', 'ja');
 					}else if($floorId['rent_unit_price_opt'] == -2){
-						echo Yii::app()->controller->__trans('相談');
+						echo Yii::app()->controller->__trans('相談', 'ja');
 					}
 				}else{
 					echo '-';
@@ -1247,13 +1247,13 @@ if($requestData['print_type']==8){
           <!--rent fee per 1 tsubo of the floor-->
           <td class="f_price_a_rent" style="width:60px;"><?php echo $floorId['total_rent_price'] ? Yii::app()->controller->renderPrice($floorId['total_rent_price']).'円' : ''; ?></td>
           <!--total rent fee of the floor-->
-          <td class="f_price_rerent" style="width:55px;"><?php echo Yii::app()->controller->__trans('更');?>
+          <td class="f_price_rerent" style="width:55px;"><?php echo Yii::app()->controller->__trans('更', 'ja');?>
             <?php 
             if(isset($floorId['renewal_fee_opt']) && $floorId['renewal_fee_opt'] != ""){
             	if($floorId['renewal_fee_opt'] == 2){
-            		echo Yii::app()->controller->__trans('無し');
+            		echo Yii::app()->controller->__trans('無し', 'ja');
             	}elseif($floorId['renewal_fee_opt'] == -1){
-            		echo Yii::app()->controller->__trans('不明');
+            		echo Yii::app()->controller->__trans('不明', 'ja');
             	}elseif($floorId['renewal_fee_opt'] == -2){
             		echo Yii::app()->controller->__trans('Undecided･ask');
             	}else{
@@ -1263,30 +1263,30 @@ if($requestData['print_type']==8){
             
             if(isset($floorId['renewal_fee_reason']) && $floorId['renewal_fee_reason'] != ""){
             	if($floorId['renewal_fee_reason'] == 1){
-            		echo Yii::app()->controller->__trans('現賃料の');
+            		echo Yii::app()->controller->__trans('現賃料の', 'ja');
             	}elseif($floorId['renewal_fee_reason'] == 2){
-            		echo Yii::app()->controller->__trans('新賃料の');
+            		echo Yii::app()->controller->__trans('新賃料の', 'ja');
             	}else{
             		echo '';
             	}
             }
             
             if(isset($floorId['renewal_fee_recent']) && $floorId['renewal_fee_recent'] != ""){
-            	echo $floorId['renewal_fee_recent'].Yii::app()->controller->__trans('ヶ月');
+            	echo $floorId['renewal_fee_recent'].Yii::app()->controller->__trans('ヶ月', 'ja');
             }
             ?></td>
           <!--renewal fee-->
-          <td class="f_price_amo_str" style="width:50px;"><?php echo Yii::app()->controller->__trans('償');?>
+          <td class="f_price_amo_str" style="width:50px;"><?php echo Yii::app()->controller->__trans('償', 'ja');?>
             <?php
 				if(isset($floorId['repayment_opt']) && $floorId['repayment_opt'] != ""){
 					if($floorId['repayment_opt'] == -3){
-						echo Yii::app()->controller->__trans('無し');
+						echo Yii::app()->controller->__trans('無し', 'ja');
 					}elseif($floorId['repayment_opt'] == -4){
-						echo Yii::app()->controller->__trans('不明');
+						echo Yii::app()->controller->__trans('不明', 'ja');
 					}elseif($floorId['repayment_opt'] == -1){
-						echo Yii::app()->controller->__trans('未定');
+						echo Yii::app()->controller->__trans('未定', 'ja');
 					}elseif($floorId['repayment_opt'] == -2){
-						echo Yii::app()->controller->__trans('相談');
+						echo Yii::app()->controller->__trans('相談', 'ja');
 					}elseif($floorId['repayment_opt'] == -5){
 						echo Yii::app()->controller->__trans('Sliding');
 					}else{
@@ -1296,9 +1296,9 @@ if($requestData['print_type']==8){
 				
 				if(isset($floorId['repayment_reason']) && $floorId['repayment_reason'] != ""){
 					if($floorId['repayment_reason'] == 1){
-						echo Yii::app()->controller->__trans('現賃料の');
+						echo Yii::app()->controller->__trans('現賃料の', 'ja');
 					}elseif($floorId['repayment_reason'] == 2){
-						echo Yii::app()->controller->__trans('解約時賃料の');
+						echo Yii::app()->controller->__trans('解約時賃料の', 'ja');
 					}else{
 						echo '';
 					}
@@ -1309,7 +1309,7 @@ if($requestData['print_type']==8){
 				}
 				if(isset($floorId['repayment_amt_opt']) && $floorId['repayment_amt_opt'] != ""){
 					if($floorId['repayment_amt_opt'] == 1){
-						echo Yii::app()->controller->__trans('ヶ月');
+						echo Yii::app()->controller->__trans('ヶ月', 'ja');
 					}elseif($floorId['repayment_amt_opt'] == 2){
 						echo Yii::app()->controller->__trans('%');
 					}else{
@@ -1322,11 +1322,11 @@ if($requestData['print_type']==8){
             <?php
 				if(isset($floorId['key_money_opt']) && $floorId['key_money_opt'] != ""){
 					if($floorId['key_money_opt'] == 2){
-						echo Yii::app()->controller->__trans('無し');
+						echo Yii::app()->controller->__trans('無し', 'ja');
 					}elseif($floorId['key_money_opt'] == -1){
-						echo Yii::app()->controller->__trans('不明');
+						echo Yii::app()->controller->__trans('不明', 'ja');
 					}elseif($floorId['key_money_opt'] == -2){
-						echo Yii::app()->controller->__trans('未定･相談');
+						echo Yii::app()->controller->__trans('未定･相談', 'ja');
 					}else{
 						echo '';
 					}
@@ -1335,24 +1335,24 @@ if($requestData['print_type']==8){
 				}
 				
 				if(isset($floorId['key_money_month']) && $floorId['key_money_month'] != ""){
-					echo $floorId['key_money_month'].Yii::app()->controller->__trans('ヶ月');
+					echo $floorId['key_money_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 				}
 				?></td>
           <!--key money-->
           <td class="f_oa" style="width:30px;">
           <?php
 				if($floorId['oa_type'] == '非対応'){
-					echo 'OA'.Yii::app()->controller->__trans('非対応');
+					echo 'OA'.Yii::app()->controller->__trans('非対応', 'ja');
 				}else if($floorId['oa_type'] == 'フリーアクセス'){
-					echo 'OA'.Yii::app()->controller->__trans('無');
+					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else if($floorId['oa_type'] == '1WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有');
+					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
 				}else if($floorId['oa_type'] == '2WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有');
+					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
 				}else if($floorId['oa_type'] == '3WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有');
+					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
 				}else if($floorId['oa_type'] == '引き込み可'){
-					echo 'OA'.Yii::app()->controller->__trans('無');
+					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else{
 					echo '-';
 				}
@@ -1362,24 +1362,24 @@ if($requestData['print_type']==8){
           <?php
           if(isset($floorId['contract_period_opt']) && $floorId['contract_period_opt'] != ""){
           	if($floorId['contract_period_opt'] == 1){
-          		echo Yii::app()->controller->__trans('定期・普通');
+          		echo Yii::app()->controller->__trans('定期・普通', 'ja');
           	}elseif($floorId['contract_period_opt'] == 2){
-          		echo Yii::app()->controller->__trans('定期・普通');
+          		echo Yii::app()->controller->__trans('定期・普通', 'ja');
           	}elseif($floorId['contract_period_opt'] == 3){
-          		echo Yii::app()->controller->__trans('定借希望');
+          		echo Yii::app()->controller->__trans('定借希望', 'ja');
           	}else{
-          		echo Yii::app()->controller->__trans('定期');
+          		echo Yii::app()->controller->__trans('定期', 'ja');
           	}
           }else{
           	echo '-';
           }
           
           if(isset($floorId['contract_period_optchk']) && $floorId['contract_period_optchk'] == 1){
-          	echo '：'.Yii::app()->controller->__trans('年数相談');
+          	echo '：'.Yii::app()->controller->__trans('年数相談', 'ja');
           }
           
           if(isset($floorId['contract_period_duration']) && $floorId['contract_period_duration'] != ''){
-          	echo '：'.$floorId['contract_period_duration'].Yii::app()->controller->__trans('年');
+          	echo '：'.$floorId['contract_period_duration'].Yii::app()->controller->__trans('年', 'ja');
           }
           ?>
           </td>
@@ -1477,7 +1477,7 @@ if($requestData['print_type'] == 11){
   <section class="sheet cover" style="height: 177mm;">
     <div class="headtitle-wrapper">
     <!--client company name-->
-    <h1><?php echo $requestData['header_name']; ?><?php if($requestData['header_name']=='') echo '',Yii::app()->controller->__trans('オフィスビルご紹介資料') ?></h1>
+    <h1><?php echo $requestData['header_name']; ?><?php if($requestData['header_name']=='') echo '',Yii::app()->controller->__trans('オフィスビルご紹介資料', 'ja') ?></h1>
     <!--title of article *editable-->
     <!--common sub title-->
     <h4 class="subtitle en"><?php echo Yii::app()->controller->__trans('office building information'); ?></h4>
@@ -1488,7 +1488,7 @@ if($requestData['print_type'] == 11){
 	      $prosalData = ProposedArticle::model()->findByPK($requestData['hdnProArticleId']);
 	      $companyName = Customer::model()->findByPk($prosalData['customer_id']);
 	      if(trim($companyName['company_name'])!="")
-	      	echo $companyName['company_name'].Yii::app()->controller->__trans('様');	      
+	      	echo $companyName['company_name'].Yii::app()->controller->__trans('様', 'ja');	      
       }
       
 	if(isset($_GET['user']))
@@ -1534,13 +1534,13 @@ if($requestData['print_type'] == 11){
       <?php 
 	      if(isset($_GET['proposedUsername'])) {
 	      	$user = AdminDetails::model()->find('user_id = '.$_GET['proposedUsername']);
-	      	echo '<p class="username">'.Yii::app()->controller->__trans('担当者').': '.$user['full_name'].'</p>';
+	      	echo '<p class="username">'.Yii::app()->controller->__trans('担当者', 'ja').': '.$user['full_name'].'</p>';
 	      }
 	  ?>   
       </div>
       <div class="auth-right">
       <p class="date">
-        <?php echo Yii::app()->controller->__trans('日付'); ?>：<?php  echo  date('Y.m.d'); ?>
+        <?php echo Yii::app()->controller->__trans('日付', 'ja'); ?>：<?php  echo  date('Y.m.d'); ?>
       </p>
       <!--author date to publish --> 
       </div>
@@ -1569,11 +1569,11 @@ if($requestData['print_type'] == 11){
       </caption>
       <tr>
         <th class="center">No</th>
-        <th class="building-name"><?php echo Yii::app()->controller->__trans('ビル名'); ?></th>
-        <th class="building-addr"><?php echo Yii::app()->controller->__trans('所在地'); ?></th>
-        <th class="est-date"><?php echo Yii::app()->controller->__trans('竣工'); ?></th>
-        <th class="floor-space"><?php echo Yii::app()->controller->__trans('延床面積'); ?></th>
-        <th class="floor-construction"><?php echo Yii::app()->controller->__trans('構造'); ?></th>
+        <th class="building-name"><?php echo Yii::app()->controller->__trans('ビル名', 'ja'); ?></th>
+        <th class="building-addr"><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
+        <th class="est-date"><?php echo Yii::app()->controller->__trans('竣工', 'ja'); ?></th>
+        <th class="floor-space"><?php echo Yii::app()->controller->__trans('延床面積', 'ja'); ?></th>
+        <th class="floor-construction"><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
       </tr>
       <tr>
         <?php
@@ -1587,7 +1587,7 @@ if($requestData['print_type'] == 11){
         <td class="center"><?php echo $buildCart['name']; 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
         <td class="center"><?php echo $buildCart['address']; ?></td>
-        <td class="center"><?php echo date('Y'.Yii::app()->controller->__trans('年').'m'.Yii::app()->controller->__trans('月'),strtotime($buildCart['built_year'])); ?></td>
+        <td class="center"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
         <td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'m&sup2;' : "-"; ?></td>
         <?php /*?><td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'坪' : "-"; ?></td><?php */?>
         <td class="center">
@@ -1606,19 +1606,19 @@ if($requestData['print_type'] == 11){
     </table>
     <div class="notice clearfix">
       <div class="half left">
-        <p><?php echo Yii::app()->controller->__trans('※契約面積・金額が㎡表示の物件は坪に換算しています。(坪換算値=3.3058)。'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※契約面積・金額が㎡表示の物件は坪に換算しています。(坪換算値=3.3058)。', 'ja'); ?></p>
         <!--fixed texts-->
-        <p><?php echo Yii::app()->controller->__trans('※賃貸条件や建物設備は変更する可能性があります。正式な内容につきましては重要事項説明書をもってご説明致します。'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※賃貸条件や建物設備は変更する可能性があります。正式な内容につきましては重要事項説明書をもってご説明致します。', 'ja'); ?></p>
         <!--fixed texts-->
-        <p><?php echo Yii::app()->controller->__trans('※ご紹介致しました物件が既に商談又は決定済みの際はご了承の程お願い申し上げます。'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※ご紹介致しました物件が既に商談又は決定済みの際はご了承の程お願い申し上げます。', 'ja'); ?></p>
         <!--fixed texts-->
-        <p><?php echo Yii::app()->controller->__trans('※賃料等課税対象となる金額には別途消費税が加算されます。'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※賃料等課税対象となる金額には別途消費税が加算されます。', 'ja'); ?></p>
         <!--fixed texts--> 
       </div>
       <div class="half right">
-       <p><?php echo Yii::app()->controller->__trans('※目安値及び底値は想定される共益費込の坪単価で表示されております。契約坪単価を保証するものではございませんので、予めご了承ください。'); ?></p>
+       <p><?php echo Yii::app()->controller->__trans('※目安値及び底値は想定される共益費込の坪単価で表示されております。契約坪単価を保証するものではございませんので、予めご了承ください。', 'ja'); ?></p>
         <!--fixed texts--> 
-        <p><?php echo Yii::app()->controller->__trans('※契約が成立した場合仲介手数料として賃料の１カ月分を申し受けます。'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※契約が成立した場合仲介手数料として賃料の１カ月分を申し受けます。', 'ja'); ?></p>
         <!--fixed texts--> 
       </div>
     </div>
@@ -1696,15 +1696,15 @@ if($requestData['print_type'] == 11){
         </td>
         <td class="td_col2_3">
         <table class="current_status">
-            <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況'); ?></span>
+            <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
             <tr>
-              <th><?php echo Yii::app()->controller->__trans('階数'); ?></th>
-              <th colspan="2"><?php echo Yii::app()->controller->__trans('面積'); ?></th>
+              <th><?php echo Yii::app()->controller->__trans('階数', 'ja'); ?></th>
+              <th colspan="2"><?php echo Yii::app()->controller->__trans('面積', 'ja'); ?></th>
               <th></th>
-              <th><?php echo Yii::app()->controller->__trans('預託金'); ?></th>
-              <th><?php echo Yii::app()->controller->__trans('賃料'); ?></th>
-              <th><?php echo Yii::app()->controller->__trans('共益費'); ?></th>
-              <th><?php echo Yii::app()->controller->__trans('入居予定日/備考'); ?></th>
+              <th><?php echo Yii::app()->controller->__trans('預託金', 'ja'); ?></th>
+              <th><?php echo Yii::app()->controller->__trans('賃料', 'ja'); ?></th>
+              <th><?php echo Yii::app()->controller->__trans('共益費', 'ja'); ?></th>
+              <th><?php echo Yii::app()->controller->__trans('入居予定日/備考', 'ja'); ?></th>
             </tr>
             <?php
 // 				$pFloors = explode(',',$prosalData['floor_id']);
@@ -1724,15 +1724,15 @@ if($requestData['print_type'] == 11){
 							            </td>
 							             <td class="td_col2_3">
 							             	<table class="current_status" style="margin-top: 10px">
-												<span class="caption">'. Yii::app()->controller->__trans("募集状況").'</span>
+												<span class="caption">'. Yii::app()->controller->__trans("募集状況", 'ja').'</span>
 		                                        <tr>
-		                                            <th>'. Yii::app()->controller->__trans("階数").'</th>
-		                                            <th colspan="2">'. Yii::app()->controller->__trans("面積").'('. Yii::app()->controller->__trans("ネット").')</th>
+		                                            <th>'. Yii::app()->controller->__trans("階数", 'ja').'</th>
+		                                            <th colspan="2">'. Yii::app()->controller->__trans("面積", 'ja').'('. Yii::app()->controller->__trans("ネット", 'ja').')</th>
 													<th></th>
-		                                            <th>'. Yii::app()->controller->__trans("預託金").'</th>
-		                                            <th>'. Yii::app()->controller->__trans("賃料").'</th>
-		                                            <th>'. Yii::app()->controller->__trans("共益費").'</th>
-		                                            <th>'. Yii::app()->controller->__trans("入居予定日/備考").'</th>
+		                                            <th>'. Yii::app()->controller->__trans("預託金", 'ja').'</th>
+		                                            <th>'. Yii::app()->controller->__trans("賃料", 'ja').'</th>
+		                                            <th>'. Yii::app()->controller->__trans("共益費", 'ja').'</th>
+		                                            <th>'. Yii::app()->controller->__trans("入居予定日/備考", 'ja').'</th>
 		                                        </tr>';
 					}
             ?>
@@ -1745,14 +1745,14 @@ if($requestData['print_type'] == 11){
 				
 				if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 					if(strpos($floorId['floor_down'], '-') !== false){
-						$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+						$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 					}else{
 						$floorDown = $floorId['floor_down'];
 					}
 					if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-						echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+						echo $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 					}else{
-						echo $floorDown.' '.Yii::app()->controller->__trans('階');
+						echo $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 					}
 				}
 				if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -1762,23 +1762,23 @@ if($requestData['print_type'] == 11){
               <td class="space center"><font> <font>
                 <?php
                                                         if(isset($floorId['area_ping']) && $floorId['area_ping'] != ""){
-                                                            echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪');
+                                                            echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪', 'ja');
                                                         }else{
                                                             echo '-';
                                                         }echo "<br/>";
                                                         ?>
                 <?php
                                                             if(isset($floorId['payment_by_installments']) && $floorId['payment_by_installments'] == 1){
-                                                                echo Yii::app()->controller->__trans('分割例').' :';
+                                                                echo Yii::app()->controller->__trans('分割例', 'ja').' :';
                                                             }else if(isset($floorId['payment_by_installments']) && $floorDetails['payment_by_installments'] == 2){
-                                                                echo Yii::app()->controller->__trans('分割可').' :';
+                                                                echo Yii::app()->controller->__trans('分割可', 'ja').' :';
                                                             }
                                                         ?>
                 <?php if(isset($floorId['floor_partition']) && $floorId['floor_partition'] != ""){
                                                               $expFloorParts = explode(',',$floorId['floor_partition']);
                                                                 if(!empty($expFloorParts)){
                                                                     foreach($expFloorParts as $part){
-                                                                        echo $part.Yii::app()->controller->__trans('坪').','.'<br/>';
+                                                                        echo $part.Yii::app()->controller->__trans('坪', 'ja').','.'<br/>';
                                                                     }
                                                                 }
                                                                 
@@ -1796,7 +1796,7 @@ if($requestData['print_type'] == 11){
                 </font> </font> <font> <font>
                 <?php
                                                     if(isset($floorId['area_net']) && $floorId['area_net'] != ""){
-                                                        echo Yii::app()->controller->__trans('ネット').": ".$floorId['area_net'].Yii::app()->controller->__trans('坪');
+                                                        echo Yii::app()->controller->__trans('ネット', 'ja').": ".$floorId['area_net'].Yii::app()->controller->__trans('坪', 'ja');
                                                     }else{
                                                         echo '';
                                                     }
@@ -1826,31 +1826,31 @@ if($requestData['print_type'] == 11){
                                                         }
 														if($floorId['deposit_opt'] != ''){
 															if($floorId['deposit_opt'] == -1){
-																echo Yii::app()->controller->__trans('未定');
+																echo Yii::app()->controller->__trans('未定', 'ja');
 															}else if($floorId['deposit_opt'] == -3){
-																echo Yii::app()->controller->__trans('無し');
+																echo Yii::app()->controller->__trans('無し', 'ja');
 															}else if($floorId['deposit_opt'] == -2){
-																echo Yii::app()->controller->__trans('相談');
+																echo Yii::app()->controller->__trans('相談', 'ja');
 															}
 														}
 														
 														if(isset($floorId['deposit_month']) &&  $floorId['deposit_month'] != ''){
-															echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月');
+															echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 														}														
                                                     ?>
                 </font></font></td>
               <td class="rent-fee right-align"><font><font>
                 <?php
                                                         if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
-                                                            echo Yii::app()->controller->renderPrice($floorId['rent_unit_price']).Yii::app()->controller->__trans('円 / 坪');
+                                                            echo Yii::app()->controller->renderPrice($floorId['rent_unit_price']).Yii::app()->controller->__trans('円 / 坪', 'ja');
                                                         }else{
                                                             echo '';
                                                         }
 														if($floorId['rent_unit_price_opt'] != ''){
 															if($floorId['rent_unit_price_opt'] == -1){
-																echo Yii::app()->controller->__trans('未定');
+																echo Yii::app()->controller->__trans('未定', 'ja');
 															}else if($floorId['rent_unit_price_opt'] == -2){
-																echo Yii::app()->controller->__trans('相談');
+																echo Yii::app()->controller->__trans('相談', 'ja');
 															}
 														}else{
 															echo '';
@@ -1860,17 +1860,17 @@ if($requestData['print_type'] == 11){
               <td class="condo-fee right-align"><font><font>
                 <?php
                                                         if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
-                                                            echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee']).Yii::app()->controller->__trans('円 / 坪');
+                                                            echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee']).Yii::app()->controller->__trans('円 / 坪', 'ja');
                                                         }else{
                                                             if($floorId['unit_condo_fee_opt'] != ''){
 																if($floorId['unit_condo_fee_opt'] == 0){
-																	echo Yii::app()->controller->__trans('無し');
+																	echo Yii::app()->controller->__trans('無し', 'ja');
 																}else if($floorId['unit_condo_fee_opt'] == -1){
-																	echo Yii::app()->controller->__trans('未定');
+																	echo Yii::app()->controller->__trans('未定', 'ja');
 																}else if($floorId['unit_condo_fee_opt'] == -2){
-																	echo Yii::app()->controller->__trans('相談');
+																	echo Yii::app()->controller->__trans('相談', 'ja');
 																}else if($floorId['unit_condo_fee_opt'] == -3){
-																	echo Yii::app()->controller->__trans('賃料に込み (含む)');
+																	echo Yii::app()->controller->__trans('賃料に込み (含む)', 'ja');
 																}
 															}else{
 																echo '-';
@@ -1905,7 +1905,7 @@ if($requestData['print_type'] == 11){
               <td class="rent-fee right-align"><font><font>
                 <?php
 				                                        if(isset($floorId['total_rent_price']) && $floorId['total_rent_price'] != ""){
-                                                            echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円');
+                                                            echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円', 'ja');
                                                         }else if($floorId['rent_unit_price_opt']==-1 || $floorId['rent_unit_price_opt']==-2) { 
 //                                                         	echo $buildCart["building_id"].','.$floorId['floor_id'];
                                                         	
@@ -1914,16 +1914,16 @@ if($requestData['print_type'] == 11){
                                                         	$rentNegotiationDetails = $rentNegotiationDetails[0];
 //                                                         	print_r($rentNegotiationDetails);
                                                         	if($rentNegotiationDetails['negotiation_type']==1) {
-                                                        		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円');
+                                                        		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
                                                         	} else if($rentNegotiationDetails['negotiation_type']==5) {
-                                                        		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円');
+                                                        		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
                                                         	} else{
                                                         		$temp = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' AND (negotiation_type = 1 OR negotiation_type=5) order by rent_negotiation_id desc LIMIT 1');
                                                         		$temp = $temp[0];
                                                         		if($temp['negotiation_type']==1) {
-                                                        			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円');
+                                                        			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
                                                         		} else if($temp['negotiation_type']==5) {
-                                                        			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円');
+                                                        			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
                                                         		} else{
                                                         			echo '-';
                                                         		}
@@ -1937,7 +1937,7 @@ if($requestData['print_type'] == 11){
               <td class="condo-fee right-align"><font><font>
                 <?php
                                                         if(isset($floorId['total_condo_fee']) && $floorId['total_condo_fee'] != ""){
-                                                            echo Yii::app()->controller->renderPrice($floorId['total_condo_fee']).Yii::app()->controller->__trans('円');
+                                                            echo Yii::app()->controller->renderPrice($floorId['total_condo_fee']).Yii::app()->controller->__trans('円', 'ja');
                                                         }else{
                                                             
                                                         }
@@ -1962,8 +1962,8 @@ if($requestData['print_type'] == 11){
             </tr>
             <?php }?>
             <tr>
-              <td class="total"><?php echo Yii::app()->controller->__trans('計'); ?></td>
-              <td class="space center"><?php echo $sum_arem; ?><?php echo Yii::app()->controller->__trans('坪'); ?></td>
+              <td class="total"><?php echo Yii::app()->controller->__trans('計', 'ja'); ?></td>
+              <td class="space center"><?php echo $sum_arem; ?><?php echo Yii::app()->controller->__trans('坪', 'ja'); ?></td>
               <td class="space center"><?php echo $sum_are_net; ?><?php echo Yii::app()->controller->__trans('m'); ?>&sup2;</td>
               <td class="space center"></td>
               <td class="deposit right-align"></td>
@@ -1972,8 +1972,8 @@ if($requestData['print_type'] == 11){
               <td class="date-move center"></td>
             </tr>
             <tr>
-              <td class="right-align notes" colspan="7"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額'); ?><br/>
-                <?php echo Yii::app()->controller->__trans('賃料等課税対象となる金額には別途消費税が加算されます'); ?></td>
+              <td class="right-align notes" colspan="7"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額', 'ja'); ?><br/>
+                <?php echo Yii::app()->controller->__trans('賃料等課税対象となる金額には別途消費税が加算されます', 'ja'); ?></td>
             </tr>
           </table></td>
       </tr>
@@ -1998,24 +1998,24 @@ if($requestData['print_type'] == 11){
         <td class="var-top td_col2_3 details"><table class="building-details">
             <tr>
               <td class="var-top"><table class="summary building-summary">
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要'); ?></span>
+                  <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></span>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('所在地'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
                     <td><?php echo $buildCart['address']; ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('交通'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('交通', 'ja'); ?></th>
                     <td><?php
 							$trafficDetails = BuildingStation::model()->find('building_id = '.$buildCart['building_id'].' order by time');
-                            echo $trafficDetails['name'].Yii::app()->controller->__trans('駅').$trafficDetails['line'].Yii::app()->controller->__trans('徒歩').$trafficDetails['time'].Yii::app()->controller->__trans('分');
+                            echo $trafficDetails['name'].Yii::app()->controller->__trans('駅', 'ja').$trafficDetails['line'].Yii::app()->controller->__trans('徒歩', 'ja').$trafficDetails['time'].Yii::app()->controller->__trans('分', 'ja');
                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('竣工年月'); ?></th>
-                    <td><?php echo date('Y'.Yii::app()->controller->__trans('年').'m'.Yii::app()->controller->__trans('月'),strtotime($buildCart['added_on'])); ?></td>
+                    <th><?php echo Yii::app()->controller->__trans('竣工年月', 'ja'); ?></th>
+                    <td><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['added_on'])); ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('規模'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('規模', 'ja'); ?></th>
                     <td><?php
                                                         	if(isset($buildCart['floor_scale']) && $buildCart['floor_scale'] != ""){
 																$scaleExp = explode('-',$buildCart['floor_scale']);
@@ -2038,33 +2038,33 @@ if($requestData['print_type'] == 11){
 														?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('リニューアル'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('リニューアル', 'ja'); ?></th>
                     <td><?php echo $buildCart['renewal_data'] != "" ? $buildCart['renewal_data'] : "-"; ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('構造'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
                     <td><?php
                                                             $typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
                                                             echo $typeDetails['construction_type_name']!=''?$typeDetails['construction_type_name']:'-';
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('延床面積'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('延床面積', 'ja'); ?></th>
                     <td><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].' m&sup2;' : "-"; ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('基準階面積'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('基準階面積', 'ja'); ?></th>
                     <td><?php echo $buildCart['std_floor_space'] != "" ? $buildCart['std_floor_space'].' 坪' : "-"; ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('共用率'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('共用率', 'ja'); ?></th>
                     <td><?php echo $buildCart['shared_rate'] != "" ? $buildCart['shared_rate'].'%' : "-"; ?></td>
                   </tr>
                 </table>
                 <table class="summary facility-summary">
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('設備概要'); ?></span>
+                  <span class="caption"><?php echo Yii::app()->controller->__trans('設備概要', 'ja'); ?></span>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('空調制御'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('空調制御', 'ja'); ?></th>
                     <td><?php
 		                    $fDetails = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where );
 		                    $pFloors = $proposedFloors;
@@ -2077,11 +2077,11 @@ if($requestData['print_type'] == 11){
 		                    
 		                    $res = Array(0=>'', 1=>'', 2=>'', 3=>'', 4=>'');
 		                    foreach($fDetails as $floor){
-		                    	if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]=Yii::app()->controller->__trans('個別・セントラル');
-		                    	if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別');
-		                    	if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル');
-		                    	if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明');
-		                    	if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し');
+		                    	if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]=Yii::app()->controller->__trans('個別・セントラル', 'ja');
+		                    	if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別', 'ja');
+		                    	if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
+		                    	if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明', 'ja');
+		                    	if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し', 'ja');
 		                    }
 		                    
 		                    $result = '-';
@@ -2104,7 +2104,7 @@ if($requestData['print_type'] == 11){
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('天井高'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('天井高', 'ja'); ?></th>
                     <td><?php 
                     $res = Array();
                     foreach($fDetails as $floor){
@@ -2116,10 +2116,10 @@ if($requestData['print_type'] == 11){
                     ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('OAフロア'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('OAフロア', 'ja'); ?></th>
                     <td><?php
                                                             $floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where);
-                                                            $oaDefaultArray = array(Yii::app()->controller->__trans('フリーアクセス'),Yii::app()->controller->__trans('3WAY'),Yii::app()->controller->__trans('2WAY'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('引き込み可'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('非対応'));
+                                                            $oaDefaultArray = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),Yii::app()->controller->__trans('3WAY'),Yii::app()->controller->__trans('2WAY'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('非対応', 'ja'));
 															$oaFloor = array();
 															$oaHeight = array();
                                                             foreach($floorOAList as $floorOA){
@@ -2132,7 +2132,7 @@ if($requestData['print_type'] == 11){
                                                             	if(in_array($oaFloor[$i],$oaDefaultArray)){
                                                             		echo $oaFloor[$i];
                                                             		if($oaHeight[$i]!="" || (int)$oaHeight[$i]!=0) {
-                                                            			echo Yii::app()->controller->__trans('フリアク高').":".$oaHeight[$i]."mm";
+                                                            			echo Yii::app()->controller->__trans('フリアク高', 'ja').":".$oaHeight[$i]."mm";
                                                             		}
                                                             		$break = false;
                                                             		break;
@@ -2160,50 +2160,50 @@ if($requestData['print_type'] == 11){
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('セキュリティ'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('セキュリティ', 'ja'); ?></th>
                     <td><?php
                                                             $securityDetails = Security::model()->findByPk($buildCart['security_id']);
                                                             echo $securityDetails['security_name']!=''?$securityDetails['security_name']:'-';
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('光ケーブル'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('光ケーブル', 'ja'); ?></th>
                     <td><?php
                                                             if($buildCart['opticle_cable'] == 0){
-                                                                echo Yii::app()->controller->__trans('不明');
+                                                                echo Yii::app()->controller->__trans('不明', 'ja');
                                                             }else if($buildCart['opticle_cable'] == 1){
-                                                                echo Yii::app()->controller->__trans('引き込み有');
+                                                                echo Yii::app()->controller->__trans('引き込み有', 'ja');
                                                             }else if($buildCart['opticle_cable'] == 2){
-                                                                echo Yii::app()->controller->__trans('無');
+                                                                echo Yii::app()->controller->__trans('無', 'ja');
                                                             }else{
                                                                 echo '-';
                                                             }
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('エレベーター'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('エレベーター', 'ja'); ?></th>
                     <td><?php
                                                             if(isset($buildCart['elevator']) && $buildCart['elevator'] != ''){
                                                                 if(strlen($buildCart['elevator']) > 2){
                                                                     $elevatorExp = explode('-',$buildCart['elevator']);
                                                                     if($elevatorExp[0] == 1){
-                                                                        echo Yii::app()->controller->__trans('有');
+                                                                        echo Yii::app()->controller->__trans('有', 'ja');
 																		if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 																		
-																		echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基') : "";
-																		echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗') : "";
-																		echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用') : "";
-																		echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗') : "";
-																		echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基') : "";
+																		echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
+																		echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
+																		echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
+																		echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
+																		echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
 																		if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                                                                     }else{
                                                                         echo '-';
                                                                     }
                                                                 }else{
                                                                     if($buildCart['elevator'] == -2){
-                                                                        echo Yii::app()->controller->__trans('不明');
+                                                                        echo Yii::app()->controller->__trans('不明', 'ja');
                                                                     }else if($buildCart['elevator'] == 2){
-                                                                        echo Yii::app()->controller->__trans('無');
+                                                                        echo Yii::app()->controller->__trans('無', 'ja');
                                                                     }
                                                                 }
                                                             }else{
@@ -2212,17 +2212,17 @@ if($requestData['print_type'] == 11){
                                                         ?></td>
                   </tr>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('駐車場'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('駐車場', 'ja'); ?></th>
                     <td><?php
                                                             if(isset($buildCart['parking_unit_no']) && count($buildCart['parking_unit_no']) > 0){
                                                                 $parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
                                                                 if($parkingUnitNo[0] == 1){
-                                                                   echo Yii::app()->controller->__trans('exist').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台').')' : "");
+                                                                   echo Yii::app()->controller->__trans('exist').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台', 'ja').')' : "");
                                                                 }else if($parkingUnitNo[0] == 2){
-                                                                    echo Yii::app()->controller->__trans('無');
+                                                                    echo Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($parkingUnitNo[0] == 3){
 //                                                                     echo Yii::app()->controller->__trans('exist but unknown unit number');
-                                                                	echo Yii::app()->controller->__trans('有');
+                                                                	echo Yii::app()->controller->__trans('有', 'ja');
                                                                 }else echo '-';
                                                             } else echo '-';
                                                         ?></td>
@@ -2251,7 +2251,7 @@ if($requestData['print_type'] == 11){
                                 $repaymentAmtOptArray[$floor['floor_id']]=$floorId['repayment_amt_opt'];
                             }
                             if(isset($floorId['contract_period_optchk']) && $floorId['contract_period_optchk'] == 1){
-                            	$contractPeriodOptChk =  Yii::app()->controller->__trans('年数相談');
+                            	$contractPeriodOptChk =  Yii::app()->controller->__trans('年数相談', 'ja');
                             }
 						}
                         //print_r($amortizationArray); echo "<br/><br/>END";
@@ -2286,14 +2286,14 @@ if($requestData['print_type'] == 11){
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -2301,11 +2301,11 @@ if($requestData['print_type'] == 11){
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$renewalOpt = Yii::app()->controller->__trans('無し');
+										$renewalOpt = Yii::app()->controller->__trans('無し', 'ja');
 									}else if($val == -1){
-										$renewalOpt = Yii::app()->controller->__trans('不明');
+										$renewalOpt = Yii::app()->controller->__trans('不明', 'ja');
 									}else if($val == -2){
-										$renewalOpt = Yii::app()->controller->__trans('未定');
+										$renewalOpt = Yii::app()->controller->__trans('未定', 'ja');
 									}
 									$renewalDetails .= $renewalOpt.(count($renewalArray) > 2 ? '('.$fName.')'.$slsh : '');
 								}
@@ -2321,14 +2321,14 @@ if($requestData['print_type'] == 11){
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -2338,7 +2338,7 @@ if($requestData['print_type'] == 11){
 								$k++;
 							}
 							if($renewalDetails!="")
-								$renewalDetails .= Yii::app()->controller->__trans('ヶ月');;
+								$renewalDetails .= Yii::app()->controller->__trans('ヶ月', 'ja');;
 						}
 						$j = 0;
 						if(count($keymoneyArray) > 0){
@@ -2351,14 +2351,14 @@ if($requestData['print_type'] == 11){
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -2366,11 +2366,11 @@ if($requestData['print_type'] == 11){
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('無し');
+										$keyMoneyOpt = Yii::app()->controller->__trans('無し', 'ja');
 									}else if($val == -1){
-										$keyMoneyOpt = Yii::app()->controller->__trans('不明');
+										$keyMoneyOpt = Yii::app()->controller->__trans('不明', 'ja');
 									}else if($val == -2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('未定');
+										$keyMoneyOpt = Yii::app()->controller->__trans('未定', 'ja');
 									}
 									$keyMoneyDetails .= $keyMoneyOpt.(count($keymoneyArray) > 2 ? '('.$fName.')'.$slsh : '');
 								}
@@ -2386,14 +2386,14 @@ if($requestData['print_type'] == 11){
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -2416,14 +2416,14 @@ if($requestData['print_type'] == 11){
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -2432,15 +2432,15 @@ if($requestData['print_type'] == 11){
 														}
 														if($val != 0 && $val != ""){
 															if($val == -3){
-																$repaymentOpt = Yii::app()->controller->__trans('無し');
+																$repaymentOpt = Yii::app()->controller->__trans('無し', 'ja');
 															}else if($val == -4){
-																$repaymentOpt = Yii::app()->controller->__trans('不明');
+																$repaymentOpt = Yii::app()->controller->__trans('不明', 'ja');
 															}else if($val == -1){
-																$repaymentOpt = Yii::app()->controller->__trans('未定');
+																$repaymentOpt = Yii::app()->controller->__trans('未定', 'ja');
 															}else if($val == -2){
-																$repaymentOpt = Yii::app()->controller->__trans('相談');
+																$repaymentOpt = Yii::app()->controller->__trans('相談', 'ja');
 															}else if($val == -5){
-																$repaymentOpt = Yii::app()->controller->__trans('スライド式');
+																$repaymentOpt = Yii::app()->controller->__trans('スライド式', 'ja');
 															}
 															$amortizationDetails .= $repaymentOpt.(count($amortizationArray) > 2 ? '('.$fName.')'.$slsh : '');
 														}
@@ -2456,14 +2456,14 @@ if($requestData['print_type'] == 11){
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -2487,30 +2487,30 @@ if($requestData['print_type'] == 11){
                                                 $contractdiff= array_diff_assoc($contractArray, array_unique($contractArray));
                                             ?>
                  	<span class="caption">
-						<?php echo Yii::app()->controller->__trans('契約内容'); ?>
+						<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>
                     </span>
                     <tbody>
                     	<tr>
                         	<th>
-								<?php echo Yii::app()->controller->__trans('契約年数'); ?>
+								<?php echo Yii::app()->controller->__trans('契約年数', 'ja'); ?>
                             </th>
                             <!--fixed texts-->
                             <td>
 								<?php
 									$temp = '';
                                 	if(count($contractdiff) > 0){
-										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年') : ' '.Yii::app()->controller->__trans('年'));
+										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年', 'ja') : ' '.Yii::app()->controller->__trans('年', 'ja'));
 									}else{
 										$contactVar = array_values($contractArray);
 										if($contactVar[0] != ""){
-											$temp = $contactVar[0].Yii::app()->controller->__trans('年');
+											$temp = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
 										}else{
 											$temp = '-';
 										}
 									}
 								?>
 								<?php
-									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家'),'2'=>Yii::app()->controller->__trans('定借'),'3'=>Yii::app()->controller->__trans('定借希望'));
+									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
 									foreach($contractDefaultArray as $key=>$val){
 										if(in_array($key,$contractOptArray)){
 											$temp .= ' - '.$val;
@@ -2528,32 +2528,32 @@ if($requestData['print_type'] == 11){
                             </td>
                         </tr>
                         <tr>
-                        	<th><?php echo Yii::app()->controller->__trans('更新費'); ?></th>
+                        	<th><?php echo Yii::app()->controller->__trans('更新費', 'ja'); ?></th>
                             <td>
 								<?php
 // 									echo count($floorDetails);
 // 									if(substr($renewalDetails, -1)=="" || substr($renewalDetails, -1)==" ")
 										echo $renewalDetails!=''?$renewalDetails:'-'; 
 // 									else
-// 										echo $renewalDetails.Yii::app()->controller->__trans('ヶ月');
+// 										echo $renewalDetails.Yii::app()->controller->__trans('ヶ月', 'ja');
 								?>
                             </td>
                         </tr>
                         <tr>
-                        	<th><?php echo Yii::app()->controller->__trans('礼金'); ?></th>
+                        	<th><?php echo Yii::app()->controller->__trans('礼金', 'ja'); ?></th>
                             <td>
 								<?php echo $keyMoneyDetails!=''?$keyMoneyDetails:'-'; ?>
                             </td>
                         </tr>
                         <tr>
-                        	<th><?php echo Yii::app()->controller->__trans('償却費'); ?></th>
+                        	<th><?php echo Yii::app()->controller->__trans('償却費', 'ja'); ?></th>
                             <td>
 								<?php 
 								if($amortizationDetails!='') {
 									echo $amortizationDetails.' '; 
 	                                if($MaxOccUnit && $MaxOccAmt){
 										if($MaxOccUnit == 1){
-											echo Yii::app()->controller->__trans('ヶ月');
+											echo Yii::app()->controller->__trans('ヶ月', 'ja');
 										}elseif($MaxOccUnit == 2){
 											echo Yii::app()->controller->__trans('%');
 										}else{
@@ -2570,7 +2570,7 @@ if($requestData['print_type'] == 11){
                   <?php
 					if(isset($requestData['print_time_floor']) || isset($requestData['print_time_entrance'])){
                   ?>
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('使用時間'); ?></span>
+                  <span class="caption"><?php echo Yii::app()->controller->__trans('使用時間', 'ja'); ?></span>
                   <?php
 					}
                                                 if(isset($requestData['print_time_floor']) == 1){
@@ -2578,16 +2578,16 @@ if($requestData['print_type'] == 11){
                                                     if(isset($buildCart['limit_of_usage_time']) && $buildCart['limit_of_usage_time'] != ''){
                                                 ?>
                   <tr>
-                    <th rowspan="3"><?php echo Yii::app()->controller->__trans('使用時間'); ?></th>
+                    <th rowspan="3"><?php echo Yii::app()->controller->__trans('使用時間', 'ja'); ?></th>
                     <td><?php
                                                             $limit_of_usage_time = explode(',',$buildCart['limit_of_usage_time']);
                                                             $limitTimeExplode = explode('-',$limit_of_usage_time[0]);
                                                             if($limitTimeExplode[0] == 1){
-                                                                echo Yii::app()->controller->__trans('平日').': '.Yii::app()->controller->__trans('無');
+                                                                echo Yii::app()->controller->__trans('平日', 'ja').': '.Yii::app()->controller->__trans('無', 'ja');
                                                             }else if($limitTimeExplode[0] == 2){
-                                                                echo Yii::app()->controller->__trans('平日').'： '.Yii::app()->controller->__trans('制限有り').'('.$limitTimeExplode[1].')';
+                                                                echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode[1].')';
                                                             }else if($limitTimeExplode[0] == 3){
-                                                                echo Yii::app()->controller->__trans('平日').' : '.Yii::app()->controller->__trans('不明');
+                                                                echo Yii::app()->controller->__trans('平日', 'ja').' : '.Yii::app()->controller->__trans('不明', 'ja');
                                                             }else{
                                                                 echo '-';
                                                             }
@@ -2598,11 +2598,11 @@ if($requestData['print_type'] == 11){
                                                             if(isset($limit_of_usage_time[1]) && count($limit_of_usage_time[1]) > 0){
                                                                 $limitTimeExplode2 = explode('-',$limit_of_usage_time[1]);
                                                                 if($limitTimeExplode2[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('土曜').' : '.Yii::app()->controller->__trans('無');
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').' : '.Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($limitTimeExplode2[0] == 2){
-                                                                    echo Yii::app()->controller->__trans('土曜').'： '.Yii::app()->controller->__trans('制限有り').'('.$limitTimeExplode2[1].')';
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode2[1].')';
                                                                 }else if($limitTimeExplode2[0] == 3){
-                                                                    echo Yii::app()->controller->__trans('土曜').' : '.Yii::app()->controller->__trans('不明');
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').' : '.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2614,11 +2614,11 @@ if($requestData['print_type'] == 11){
                                                             if(isset($limit_of_usage_time[2]) && count($limit_of_usage_time[2]) > 0){
                                                                 $limitTimeExplode3 = explode('-',$limit_of_usage_time[2]);
                                                                 if($limitTimeExplode3[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('無');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($limitTimeExplode3[0] == 2){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('制限有り').'('.$limitTimeExplode3[1].')';
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode3[1].')';
                                                                 }else if($limitTimeExplode3[0] == 3){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('不明');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2632,18 +2632,18 @@ if($requestData['print_type'] == 11){
                                                 if(isset($requestData['print_time_entrance'] ) == 1){
                                                 ?>
                   <tr>
-                    <th rowspan="3"><?php echo Yii::app()->controller->__trans('正面玄関'); ?></th>
+                    <th rowspan="3"><?php echo Yii::app()->controller->__trans('正面玄関', 'ja'); ?></th>
                     <td><?php
                                                             $opTimeExp = $opTimeExplode = array();
                                                             if(isset($buildCart['ent_op_cl_time']) && $buildCart['ent_op_cl_time'] != ''){
                                                                 $opTimeExp = explode(',',$buildCart['ent_op_cl_time']);
                                                                 $opTimeExplode = explode('-',$opTimeExp[0]);
                                                                 if($opTimeExplode[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('平日').'： '.Yii::app()->controller->__trans('無');
+                                                                    echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($opTimeExplode[0] == 2){
-                                                                    echo Yii::app()->controller->__trans('平日').'： '.Yii::app()->controller->__trans('制限有り').'('.$opTimeExplode[1].')';
+                                                                    echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$opTimeExplode[1].')';
                                                                 }else if($opTimeExplode[0] == 3){
-                                                                    echo Yii::app()->controller->__trans('平日').'：'.Yii::app()->controller->__trans('不明');
+                                                                    echo Yii::app()->controller->__trans('平日', 'ja').'：'.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2654,11 +2654,11 @@ if($requestData['print_type'] == 11){
                                                             if(isset($opTimeExp[1]) && count($opTimeExp[1]) > 0){
                                                                 $opTimeExplode2= explode('-',$opTimeExp[1]);
                                                                 if($opTimeExplode2[0] == 1){
-                                                                    echo '土曜 : '.Yii::app()->controller->__trans('無');
+                                                                    echo '土曜 : '.Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($opTimeExplode2[0] == 2){
                                                                     echo '土曜： 制限有り('.$opTimeExplode2[1].')';
                                                                 }else if($opTimeExplode2[0] == 3){
-                                                                    echo '土曜 : '.Yii::app()->controller->__trans('不明');
+                                                                    echo '土曜 : '.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2670,11 +2670,11 @@ if($requestData['print_type'] == 11){
                                                             if(isset($opTimeExp[2]) && count($opTimeExp[2])>0){
                                                                 $opTimeExplode3= explode('-',$opTimeExp[2]);
                                                                 if($opTimeExplode3[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('無');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($opTimeExplode3[0] == 2){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('制限有り').'('.$opTimeExplode3[1].')';
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$opTimeExplode3[1].')';
                                                                 }else if($opTimeExplode3[0] == 3){
-                                                                    echo Yii::app()->controller->__trans('休日').'： '.Yii::app()->controller->__trans('不明');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2697,22 +2697,22 @@ if($requestData['print_type'] == 11){
                                                         if($expVal[0] != "" || $expVal[1] != ""){
                                             ?>
                 <table class="summary memo">
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('備考'); ?></span>
+                  <span class="caption"><?php echo Yii::app()->controller->__trans('備考', 'ja'); ?></span>
                   <tr>
-                    <th><?php echo Yii::app()->controller->__trans('見込賃料'); ?></th>
+                    <th><?php echo Yii::app()->controller->__trans('見込賃料', 'ja'); ?></th>
                     <td><?php														
                                                             if($expVal[0] != ""){
                                                                 echo Yii::app()->controller->renderPrice($expVal[0]);
                                                                 if($expVal[1] != ""){
                                                                     echo " ~";
                                                                 }else{
-                                                                    echo Yii::app()->controller->__trans('円');
+                                                                    echo Yii::app()->controller->__trans('円', 'ja');
                                                                 }
                                                             }
                                                             if($expVal[1] != ""){
-                                                                echo Yii::app()->controller->renderPrice($expVal[1]).Yii::app()->controller->__trans('円');
+                                                                echo Yii::app()->controller->renderPrice($expVal[1]).Yii::app()->controller->__trans('円', 'ja');
                                                             }
-                                                            echo isset($expRent[1]) && $expRent[1] == 1 ? Yii::app()->controller->__trans('(共益費含む)') : Yii::app()->controller->__trans('(共益費含まない)');
+                                                            echo isset($expRent[1]) && $expRent[1] == 1 ? Yii::app()->controller->__trans('(共益費含む)', 'ja') : Yii::app()->controller->__trans('(共益費含まない)', 'ja');
                                                         ?></td>
                   </tr>
                   <tr>
@@ -2748,7 +2748,7 @@ if($requestData['print_type'] == 11){
 						$zoom = isset($arr_zoom[$buildingNumber-1])?$arr_zoom[$buildingNumber-1]:16;
 					?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <?php echo '<span class="build_title">'.$buildingNumber.'.'.($buildCart['bill_check']==1?$buildCart['name']:$buildCart['name'].Yii::app()->controller->__trans('ビル'))."<span>"; ?>
+  <section class="sheet"> <?php echo '<span class="build_title">'.$buildingNumber.'.'.($buildCart['bill_check']==1?$buildCart['name']:$buildCart['name'].Yii::app()->controller->__trans('ビル', 'ja'))."<span>"; ?>
 	<iframe id="map_<?=$buildingNumber?>" name="map_<?=$buildingNumber?>" src="/buildingmap.php?key=<?=$gApiKey?>&lat=<?=$lat?>&lng=<?=$lng?>&zoom=<?=$zoom?>" style="width:277mm;height:179mm;"></iframe>
   </section>
 </div>
@@ -2767,7 +2767,7 @@ if(isset($_GET['print_map'])) {
 	if(isset($buildCartDetails) && count($buildCartDetails) > 0){
 		foreach($buildCartDetails as $buildCart){
 			$array[] = $buildCart['map_lat'].','.$buildCart['map_long'];
-			$buildNameArray[] = $buildCart['bill_check']==1?$buildCart['name']:$buildCart['name'].Yii::app()->controller->__trans('ビル');
+			$buildNameArray[] = $buildCart['bill_check']==1?$buildCart['name']:$buildCart['name'].Yii::app()->controller->__trans('ビル', 'ja');
 		}
 	}
 

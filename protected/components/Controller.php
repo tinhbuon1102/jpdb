@@ -477,20 +477,22 @@ class Controller extends CController {
 		return $aLines;
 	}
 
-	public static function __trans($word){
+	public static function __trans($word, $default_lang = 'en'){
 		global $glob_language;
-		$transaltionDetails = WordTranslation::model()->find("word = '".$word."'");
-
-		if(isset($transaltionDetails) && count($transaltionDetails) > 0 && !empty($transaltionDetails) && ((isset($glob_language) && $glob_language == 'ja') || !isset($glob_language))){
-
-			return $transaltionDetails['translation'];
-
-		}else{
-
+		$glob_language = $glob_language ? $glob_language : 'ja';
+		
+		if (($glob_language == 'ja' && $default_lang == 'ja') || ($glob_language == 'en' && $default_lang == 'en'))
+		{
 			return $word;
-
 		}
-
+		else {
+			$transaltionDetails = WordTranslation::model()->find("word = '".$word."'");
+			if(isset($transaltionDetails) && count($transaltionDetails) > 0 && !empty($transaltionDetails)){
+				return $transaltionDetails['translation'];
+			}else{
+				return $word;
+			}
+		}
 	}
 
   public static function __getConditionsForView($req)
