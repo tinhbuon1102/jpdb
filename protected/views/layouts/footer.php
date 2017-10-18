@@ -144,6 +144,10 @@
         <div class="box-content">
         	<dd>
             	<form name="temp" action="<?php echo Yii::app()->createUrl('building/printBuildingDetails'); ?>" method="post" id="frmPrintDetails">
+            		<select id="print_language" name="print_language">
+	        			<option value="ja"><?php echo Yii::app()->controller->__trans('Japanese'); ?></option>
+	        			<option value="en"><?php echo Yii::app()->controller->__trans('English'); ?></option>
+	        		</select>
 <!--               	<input type="hidden" name="html"/>
                     <div class="radio1">
                     	<input type="radio" value="11"  name="print_type"  id="check1" checked="">ビル情報を個別に表示<br/>

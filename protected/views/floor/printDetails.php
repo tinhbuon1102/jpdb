@@ -3,6 +3,8 @@
 $gApiKey = 'AIzaSyCMeCU-45BrK0vyJCc4y2TYMdDJLNGdifM';
 //$gApiKey = 'AIzaSyDJlHTWIHfZsuOIZChVv0Dx9LoAl0PL7a0';
 
+$language = isset($_GET['print_language']) ? $_GET['print_language'] : 'ja';
+
 $glob_where = '';
 if (in_array($_REQUEST['print_type'], array(10, 11)) && false)
 {
@@ -375,9 +377,13 @@ if($requestData['print_type'] == 10){
 			$company_id = $user->company;
 			$company = Company::model()->findByPK($company_id);
 			
-			$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
-			$company->phone = $userDetail->contact_number;
-			$company->email = $userDetail->email;
+			if(isset($_GET['proposedUsername']))
+			{
+				$proposedUsername = Users::model()->find('user_id = '.$_GET['proposedUsername']);
+				$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$proposedUsername->user_id));
+				$company['phone'] = $userDetail->contact_number;
+				$company['email'] = $userDetail->email;
+			}
 		?>
     </div>
     <!--client company name-->
@@ -782,9 +788,13 @@ if($requestData['print_type']==8){
         $company_id = $user->company;
         $company = Company::model()->findByPK($company_id);
         
-        $userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
-        $company->phone = $userDetail->contact_number;
-        $company->email = $userDetail->email;
+        if(isset($_GET['proposedUsername']))
+        {
+        	$proposedUsername = Users::model()->find('user_id = '.$_GET['proposedUsername']);
+        	$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$proposedUsername->user_id));
+        	$company['phone'] = $userDetail->contact_number;
+        	$company['email'] = $userDetail->email;
+        }
       ?>
     </div>
     <!--client company name-->
@@ -1497,10 +1507,14 @@ if($requestData['print_type'] == 11){
 	  $user = Yii::app()->user->getId();
 	
 	$user = Users::model()->findByAttributes(array('username'=>$user));
-	$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$user->user_id));
     $company = $proposedCompany;
-    $company['phone'] = $userDetail->contact_number;
-    $company['email'] = $userDetail->email;
+    if(isset($_GET['proposedUsername']))
+    {
+    	$proposedUsername = Users::model()->find('user_id = '.$_GET['proposedUsername']);
+    	$userDetail = AdminDetails::model()->findByAttributes(array('user_id'=>$proposedUsername->user_id));
+    	$company['phone'] = $userDetail->contact_number;
+    	$company['email'] = $userDetail->email;
+    }
       ?>
     </div>
     </div>
@@ -1584,7 +1598,7 @@ if($requestData['print_type'] == 11){
         	foreach($buildCartDetails as $buildCart){
         ?>
         <td class="center"><?php echo $buildingNumber; ?></td>
-        <td class="center"><?php echo $buildCart['name']; 
+        <td class="center"><?php echo ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
         <td class="center"><?php echo $buildCart['address']; ?></td>
         <td class="center"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
@@ -1650,7 +1664,7 @@ if($requestData['print_type'] == 11){
   <section class="sheet">
     <table class="building-profile single-info">
       <tr>
-        <td colspan="2" class="title"><?php echo $buildingNumber.'-'.$buildCart['name']; 
+        <td colspan="2" class="title"><?php echo $buildingNumber.'-'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
       </tr>
       <tr>
