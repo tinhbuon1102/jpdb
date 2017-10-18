@@ -486,7 +486,7 @@ class Controller extends CController {
 			return $word;
 		}
 		else {
-			$transaltionDetails = WordTranslation::model()->find("word = '".$word."'");
+			$transaltionDetails = WordTranslation::model()->find("word = '".trim($word)."'");
 			if(isset($transaltionDetails) && count($transaltionDetails) > 0 && !empty($transaltionDetails)){
 				return $transaltionDetails['translation'];
 			}else{
