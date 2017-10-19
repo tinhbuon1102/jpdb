@@ -658,13 +658,7 @@ if($requestData['print_type'] == 10){
 				?>
 				</td>
               <td class="label_8 center">
-              <?php 
-              if(isset($floorId['move_in_date']) && $floorId['move_in_date'] != "" && (string)$floorId['move_in_date'] != '0'){
-              	echo $floorId['move_in_date'];
-              }else{
-              	echo '-';
-              }
-              ?>
+              <?php  echo HelperFunctions::translateBuildingValue('move_in_date', $buildCart, $floorId); ?>
 			</td>
             </tr>
             <tr class="row_second">
@@ -719,7 +713,7 @@ if($requestData['print_type'] == 10){
       <?php
 				$buildingNumber++;
 				$array[] = $buildCart['map_lat'].','.$buildCart['map_long'];
-				$buildNameArray[] = $buildCart['name'];
+				$buildNameArray[] = ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
 				}
 			}
 			?>
@@ -738,7 +732,7 @@ if($requestData['print_type'] == 10){
 				$zoom = isset($arr_zoom[$buildingNumber-1])?$arr_zoom[$buildingNumber-1]:16;
 	?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <?php echo '<span class="build_title">'.$buildingNumber.'.'.$buildCart['name']."<span>"; 
+  <section class="sheet"> <?php echo '<span class="build_title">'.$buildingNumber.'.'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en'])."<span>"; 
 //($buildCart['bill_check']==1?'':' ビル').
   ?><br>
 	<iframe id="map_<?=$buildingNumber?>" name="map_<?=$buildingNumber?>" src="http://office-jpdb.com/buildingmap.php?key=<?=$gApiKey?>&lat=<?=$lat?>&lng=<?=$lng?>&zoom=<?=$zoom?>" style="width:277mm;height:179mm;"></iframe>
@@ -859,7 +853,7 @@ if($requestData['print_type']==8){
       <tbody>
         <tr>
           <td class="b_no"><span style=""><?php echo $buildCart['buildingId']; ?></span></td>
-          <td class="b_nm"><?php echo $buildingNumber.'.'.$buildCart['name']
+          <td class="b_nm"><?php echo $buildingNumber.'.'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
           //.($buildCart['bill_check']?"":" ビル"); ?></td>
           <td class="b_address"><?php echo $buildCart['address']; ?></td>
         </tr>
@@ -1612,7 +1606,7 @@ if($requestData['print_type'] == 11){
       </tr>
       <?php
 		      $array[] = $buildCart['map_lat'].','.$buildCart['map_long'];
-		      $buildNameArray[] = $buildCart['name'];
+		      $buildNameArray[] = ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
 		      $buildingNumber++;
 	      }
       }
@@ -1892,13 +1886,9 @@ if($requestData['print_type'] == 11){
                                                         }
                                                     ?>
                 </font></font></td>
-              <td class="date-move center"><?php
-                                                    if(isset($floorId['move_in_date']) && $floorId['move_in_date'] != "" && (string)$floorId['move_in_date'] != '0'){
-                                                        echo $floorId['move_in_date'];
-                                                    }else{
-                                                        echo '-';
-                                                    }
-                                                ?></td>
+              <td class="date-move center">
+              	<?php  echo HelperFunctions::translateBuildingValue('move_in_date', $buildCart, $floorId); ?>
+			</td>
               <?php $sum_arem += $floorId['area_ping']; ?>
               <?php $sum_are_net += $floorId['area_m']; ?>
             </tr>
@@ -2015,18 +2005,18 @@ if($requestData['print_type'] == 11){
                   <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></span>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
-                    <td><?php echo $buildCart['address']; ?></td>
+                    <td><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('交通', 'ja'); ?></th>
-                    <td><?php
-							$trafficDetails = BuildingStation::model()->find('building_id = '.$buildCart['building_id'].' order by time');
-                            echo $trafficDetails['name'].Yii::app()->controller->__trans('駅', 'ja').$trafficDetails['line'].Yii::app()->controller->__trans('徒歩', 'ja').$trafficDetails['time'].Yii::app()->controller->__trans('分', 'ja');
-                        ?></td>
+                    <td>
+                    	<?php  echo HelperFunctions::translateBuildingValue('station_access', $buildCart); ?>
+                    </td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('竣工年月', 'ja'); ?></th>
-                    <td><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['added_on'])); ?></td>
+                    <td><?php  echo HelperFunctions::translateBuildingValue('built_year', $buildCart); ?>
+                    </td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('規模', 'ja'); ?></th>
