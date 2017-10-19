@@ -327,8 +327,8 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.validate.min.js"></script>
 
 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/groovy.js?t=1"></script> 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/groovy2.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/groovy.js?t=<?php echo time()?>"></script> 
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/groovy2.js?t=<?php echo time()?>></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/drag_drop/jquery.knob.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/drag_drop/jquery.ui.widget.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/drag_drop/jquery.iframe-transport.js"></script>
