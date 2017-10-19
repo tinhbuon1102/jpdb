@@ -3327,7 +3327,7 @@ class BuildingController extends Controller{
 	public function actionGetStationsLines(){
 		$building_id = $_REQUEST['buildingId'];
 // 		$sql = 'SELECT `line` FROM building_station WHERE building_id='.(int)$building_id.' GROUP BY `line` ORDER BY `line` ASC;';
-		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `line` ASC;';
+		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `building_station_id` DESC;';
 		
 		$results = BuildingStation::model()->findAllBySql($sql);
 		$listHtml = '';
