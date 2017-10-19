@@ -487,6 +487,35 @@ $(document).ready(function(e) {
 			}
 		});
 	});
+	
+	$(document).on('click','.btnTranslateLines',function(e){
+		e.preventDefault();
+		buildingId = $(this).parent().find('.buildingID').val();
+		var url = baseUrl+'/index.php?r=building/getStationsLines';
+		call({url:url,params:{buildingId:buildingId},type:'POST',dataType : 'json'},function(resp){
+			 $('#frmTranslateStationLines table tbody').html(resp.list);
+		});
+
+		$('#modalTranslateStationLines').removeClass('hide');
+		$('#modalTranslateStationLines').addClass('show');
+		$('#modalTranslateStationLines').fadeIn(1000);
+	});
+	$(document).on('click','.btnTranslateStationLines',function(e){
+		e.preventDefault();
+		var url = $('#frmTranslateStationLines').data('action');
+		$('body').LoadingOverlay("show");
+		$.ajax({
+			url: url,
+			data: $('#frmTranslateStationLines').serialize(),
+			type: "POST",
+			dataType : 'json'
+		}).success(function(resp){
+			$('body').LoadingOverlay("hide");
+			alert("Data successfully updated.");
+		}).error(function(){
+			$('body').LoadingOverlay("hide");
+		});
+	});
 	/*************************************** end ****************************/
 
 	/*********************************** Cart in list ********************/

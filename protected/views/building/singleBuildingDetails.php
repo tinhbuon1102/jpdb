@@ -1894,6 +1894,12 @@ if(count($getGoogleMapKeyDetails) > 0){
 									}
 									?>
                                     </ul><!--ul.route-->
+                                    <div class="bt_update">
+		                            	<input type="hidden" name="buildingID" class="buildingID" value="<?php echo $globalBuildingId; ?>"/>
+		                                <a href="#" class="btnTranslateLines">
+		                                	<?php echo Yii::app()->controller->__trans('Translate Station Lines'); ?>
+		                                </a>
+		                            </div>
                                 </dd>
                             </dl><!--dl.access-->
                             <div class="bt_update">
@@ -6207,6 +6213,36 @@ if(count($getGoogleMapKeyDetails) > 0){
                 </tr>
             </table>
         </form>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Popup for Change Map Access-->
+<div class="modal-box hide" id="modalTranslateStationLines">
+  <div class="content1 transmissionContent">
+    <div class="box-header">
+      <h2 class="popup-label"><?php echo Yii::app()->controller->__trans('Tranlsation Lines'); ?></h2>
+      <button type="button" class="btnModalClose" id="btnModalClose">X</button>
+    </div>
+    <div class="box-content">
+      <form name="frmTranslateStationLines" id="frmTranslateStationLines" class="frmTranslateStationLines" data-action="<?php echo Yii::app()->createUrl('building/saveStaionLines'); ?>">
+        <input type="hidden" name="mapBuildId" class="mapBuildId" value="<?=$globalBuildingId?>"/>
+		<table>
+			<thead>
+	        	<tr>
+	            	<td><?php echo Yii::app()->controller->__trans('Station Line'); ?></td>
+	            	<td><?php echo Yii::app()->controller->__trans('Station Name English'); ?></td>
+	            </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+	        	<tr>
+	            	<td colspan="2"><button type="button" class="btnTranslateStationLines"><?php echo Yii::app()->controller->__trans('Submit'); ?></button></td>
+	          	</tr>
+          	</tbody>
+        </table>
+      </form> 
     </div>
   </div>
 </div>

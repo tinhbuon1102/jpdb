@@ -37,7 +37,9 @@ class BuildingController extends Controller{
 						'searchFloorOwnerName','seachOwnerDropdown','saveMapAccessDetails','saveStaionReachTime','searchBuildingByAddress',
 						'printBuildingDetails','route','getNearestStation','getCorporationList','getLineList','getStationList','getBuildingList',
 						'getDisctrictList','getDisctrictListTest','getTownList','getTownListTest','buildingFilterByAddress','getCustomerDrop','sort',
-						'deleteBulkTrans','deleteOfficeAlert','cloneOfficeAlert','removeFreeRent', 'deleteBulkNego', 'isExist', 'migrateOfficeWordpress', 'sendEmailFollowed'),
+						'deleteBulkTrans','deleteOfficeAlert','cloneOfficeAlert','removeFreeRent', 'deleteBulkNego', 'isExist', 'migrateOfficeWordpress', 'sendEmailFollowed',
+						'getStationsLines', 'saveStaionLines'
+				),
 				'users'=>array('@'),
 			),
 
@@ -3322,6 +3324,35 @@ class BuildingController extends Controller{
 		die;
 	}	
 
+	public function actionGetStationsLines(){
+		$building_id = $_REQUEST['buildingId'];
+// 		$sql = 'SELECT `line` FROM building_station WHERE building_id='.(int)$building_id.' GROUP BY `line` ORDER BY `line` ASC;';
+		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `line` ASC;';
+		$results = BuildingStation::model()->findAllBySql($sql);
+		$listHtml = '';
+		foreach($results as $resultIndex => $result)
+		{
+			$listHtml .= '<tr>';
+			$listHtml .= '<td><input type="text" name="line['. $resultIndex .']" id="stationLine" class="stationLine" value="'. $result->line .'"/></td>';
+			$listHtml .= '<td><input type="text" name="line_en['. $resultIndex .']" id="stationLineEn" class="stationLineEn" value="'. $result->line_en .'"/></td>';
+			$listHtml .= '</tr>';
+		}
+		echo json_encode(array('list' => $listHtml));die;
+	}
+	
+	public function actionSaveStaionLines(){
+		if (isset($_POST['line_en']))
+		{
+			foreach ($_POST['line_en'] as $index => $line_en)
+			{
+				if ($line_en)
+				{
+					BuildingStation::model()->updateAll(array( 'line_en' => $line_en), 'line="' . $_POST['line'][$index].'"' );
+				}
+			}
+		}
+	}
+	
 	public function actionGetMapAccessDetails(){
 		$building_id = $_REQUEST['buildingId'];
 	}
