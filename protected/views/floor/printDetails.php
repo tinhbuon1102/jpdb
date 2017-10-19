@@ -862,7 +862,7 @@ if($requestData['print_type']==8){
     <table class="b_info br">
       <tbody>
         <tr>
-          <td class="b_build_str"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
+          <td class="b_build_str"><?php echo HelperFunctions::translateBuildingValue('built_year', $buildCart); ?></td>
           <td class="st_data station">
           <?PHP
    $nearestSt = BuildingStation::model()->getNearestStations($buildCart['building_id']);
@@ -1191,11 +1191,8 @@ if($requestData['print_type']==8){
           
           <?php
 			
-			if(isset($floorId['move_in_date']) && $floorId['move_in_date'] != "" && (string)$floorId['move_in_date'] != '0'){
-				echo $floorId['move_in_date'];
-			}else{
-				echo '-';
-			}
+          	echo HelperFunctions::translateBuildingValue('move_in_date', $buildCart, $floorId);
+          
 			if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
 			echo '<span>('.Yii::app()->controller->__trans('先行有', 'ja').')</span>';
 			}
@@ -1595,7 +1592,7 @@ if($requestData['print_type'] == 11){
         <td class="center"><?php echo ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
         <td class="center"><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?></td>
-        <td class="center"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
+        <td class="center"><?php echo HelperFunctions::translateBuildingValue('built_year', $buildCart); ?></td>
         <td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'m&sup2;' : "-"; ?></td>
         <?php /*?><td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'坪' : "-"; ?></td><?php */?>
         <td class="center">
