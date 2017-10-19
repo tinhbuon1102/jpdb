@@ -512,6 +512,7 @@ $(document).ready(function(e) {
 		}).success(function(resp){
 			$('body').LoadingOverlay("hide");
 			alert(resp.msg);
+			$('.btnModalClose').trigger('click');
 		}).error(function(){
 			$('body').LoadingOverlay("hide");
 		});
