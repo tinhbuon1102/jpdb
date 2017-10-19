@@ -6232,7 +6232,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 			<thead>
 	        	<tr>
 	            	<td><?php echo Yii::app()->controller->__trans('Station Line'); ?></td>
-	            	<td><?php echo Yii::app()->controller->__trans('Station Name English'); ?></td>
+	            	<td><?php echo Yii::app()->controller->__trans('Station Line English'); ?></td>
 	            </tr>
             </thead>
             <tbody></tbody>
