@@ -511,7 +511,7 @@ $(document).ready(function(e) {
 			dataType : 'json'
 		}).success(function(resp){
 			$('body').LoadingOverlay("hide");
-			alert("Data successfully updated.");
+			alert(resp.msg);
 		}).error(function(){
 			$('body').LoadingOverlay("hide");
 		});

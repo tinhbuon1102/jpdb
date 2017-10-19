@@ -3328,6 +3328,7 @@ class BuildingController extends Controller{
 		$building_id = $_REQUEST['buildingId'];
 // 		$sql = 'SELECT `line` FROM building_station WHERE building_id='.(int)$building_id.' GROUP BY `line` ORDER BY `line` ASC;';
 		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `line` ASC;';
+		echo $sql;die;
 		$results = BuildingStation::model()->findAllBySql($sql);
 		$listHtml = '';
 		foreach($results as $resultIndex => $result)
@@ -3351,6 +3352,8 @@ class BuildingController extends Controller{
 				}
 			}
 		}
+		$resp = array('status'=>1,'msg'=> Yii::app()->controller->__trans('Data successfully updated.'));
+		echo json_encode($resp);die;
 	}
 	
 	public function actionGetMapAccessDetails(){
