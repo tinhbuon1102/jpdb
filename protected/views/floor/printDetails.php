@@ -726,7 +726,7 @@ if($requestData['print_type'] == 10){
 			$buildingNumber = 0;
 			foreach($buildCartDetails as $buildCart){
 				$buildingNumber++;
-				$address = $buildCart['address'];
+				$address = HelperFunctions::translateBuildingValue('address', $buildCart);
 				$lat = $buildCart['map_lat'];
 				$lng = $buildCart['map_long'];
 				$zoom = isset($arr_zoom[$buildingNumber-1])?$arr_zoom[$buildingNumber-1]:16;
@@ -855,7 +855,7 @@ if($requestData['print_type']==8){
           <td class="b_no"><span style=""><?php echo $buildCart['buildingId']; ?></span></td>
           <td class="b_nm"><?php echo $buildingNumber.'.'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
           //.($buildCart['bill_check']?"":" ビル"); ?></td>
-          <td class="b_address"><?php echo $buildCart['address']; ?></td>
+          <td class="b_address"><?php echo HelperFunctions::translateBuildingValue('address', $buildCart); ?></td>
         </tr>
       </tbody>
     </table>
@@ -1455,7 +1455,7 @@ if($requestData['print_type']==8){
 				$buildingNumber = 0;
 				foreach($buildCartDetails as $buildCart){
 					$buildingNumber++;
-					$address = $buildCart['address'];
+					$address = HelperFunctions::translateBuildingValue('address', $buildCart);
 					$lat = $buildCart['map_lat'];
 					$lng = $buildCart['map_long'];
 					$zoom = isset($arr_zoom[$buildingNumber-1])?$arr_zoom[$buildingNumber-1]:16;
@@ -1594,7 +1594,7 @@ if($requestData['print_type'] == 11){
         <td class="center"><?php echo $buildingNumber; ?></td>
         <td class="center"><?php echo ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
-        <td class="center"><?php echo $buildCart['address']; ?></td>
+        <td class="center"><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?></td>
         <td class="center"><?php echo date('Y'.Yii::app()->controller->__trans('年', 'ja').'m'.Yii::app()->controller->__trans('月', 'ja'),strtotime($buildCart['built_year'])); ?></td>
         <td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'m&sup2;' : "-"; ?></td>
         <?php /*?><td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'坪' : "-"; ?></td><?php */?>
@@ -2746,7 +2746,7 @@ if($requestData['print_type'] == 11){
 			
 			if(isset($requestData['print_each_building']) && $requestData['print_each_building'] == 1){
 				if(isset($buildCartDetails) && count($buildCartDetails) > 0){
-						$address = $buildCart['address'];
+						$address = HelperFunctions::translateBuildingValue('address', $buildCart);
 						$lat = $buildCart['map_lat'];
 						$lng = $buildCart['map_long'];
 						$zoom = isset($arr_zoom[$buildingNumber-1])?$arr_zoom[$buildingNumber-1]:16;
