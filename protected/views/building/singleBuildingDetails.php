@@ -6222,7 +6222,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 <div class="modal-box hide" id="modalTranslateStationLines">
   <div class="content1 transmissionContent">
     <div class="box-header">
-      <h2 class="popup-label"><?php echo Yii::app()->controller->__trans('Tranlsation Lines'); ?></h2>
+      <h2 class="popup-label"><?php echo Yii::app()->controller->__trans('Translation Lines'); ?></h2>
       <button type="button" class="btnModalClose" id="btnModalClose">X</button>
     </div>
     <div class="box-content">
