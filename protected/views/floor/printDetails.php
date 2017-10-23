@@ -2134,7 +2134,7 @@ if($requestData['print_type'] == 11){
                                                             	if(in_array($oaFloor[$i],$oaDefaultArray)){
                                                             		if (strpos($oaFloor[$i], 'WAY') !== false)
                                                             		{
-                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]);
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]) . ' - ';
                                                             		}
                                                             		else {
                                                             			echo Yii::app()->controller->__trans($oaFloor[$i], 'ja');
