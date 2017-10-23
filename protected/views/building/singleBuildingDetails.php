@@ -1854,7 +1854,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             if($station['time'] <= 15){
                                     ?>
                                     	<li>
-											<?php echo $station['station']; ?><?php echo Yii::app()->controller->__trans('駅'); ?>
+											<?php echo str_replace('station', '', $station['station']); ?><?php echo Yii::app()->controller->__trans('駅'); ?>
                                             <span>
 												<?php
                                                 if($station['time'] != ""){
