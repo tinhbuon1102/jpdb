@@ -2120,7 +2120,8 @@ if($requestData['print_type'] == 11){
                     <th><?php echo Yii::app()->controller->__trans('OAフロア', 'ja'); ?></th>
                     <td><?php
                                                             $floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where);
-                                                            $oaDefaultArray = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),Yii::app()->controller->__trans('3WAY'),Yii::app()->controller->__trans('2WAY'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('非対応', 'ja'));
+                                                            $oaDefaultArrayOriginal = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),Yii::app()->controller->__trans('3WAY'),Yii::app()->controller->__trans('2WAY'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('非対応', 'ja'));
+                                                            $oaDefaultArray = array('フリーアクセス','3WAY','2WAY','1WAY','引き込み可','非対応');
 															$oaFloor = array();
 															$oaHeight = array();
                                                             foreach($floorOAList as $floorOA){
@@ -2131,7 +2132,13 @@ if($requestData['print_type'] == 11){
                                                             $break = true;
                                                             for($i=0;$i<count($oaFloor);$i++) {
                                                             	if(in_array($oaFloor[$i],$oaDefaultArray)){
-                                                            		echo $oaFloor[$i];
+                                                            		if (strpos($oaFloor[$i], 'WAY') !== false)
+                                                            		{
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]);
+                                                            		}
+                                                            		else {
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i], 'ja');
+                                                            		}
                                                             		if($oaHeight[$i]!="" || (int)$oaHeight[$i]!=0) {
                                                             			echo Yii::app()->controller->__trans('フリアク高', 'ja').":".$oaHeight[$i]."mm";
                                                             		}
