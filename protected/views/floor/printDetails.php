@@ -1613,7 +1613,7 @@ if($requestData['print_type'] == 11){
       <div class="half left">
         <p><?php echo Yii::app()->controller->__trans('※契約面積・金額が㎡表示の物件は坪に換算しています。(坪換算値=3.3058)。', 'ja'); ?></p>
         <!--fixed texts-->
-        <p><?php echo Yii::app()->controller->__trans('※賃貸条件や建物設備は変更する可能性があります。正式な内容につきましては重要事項説明書をもってご説明致します。', 'ja'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※賃貸条件や建物設備は変更する可能性があります。正式正確な内容につきましては重要事項説明書をもってご説明致します。', 'ja'); ?></p>
         <!--fixed texts-->
         <p><?php echo Yii::app()->controller->__trans('※ご紹介致しました物件が既に商談又は決定済みの際はご了承の程お願い申し上げます。', 'ja'); ?></p>
         <!--fixed texts-->
