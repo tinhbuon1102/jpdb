@@ -1489,7 +1489,15 @@ if($requestData['print_type'] == 11){
 	      $prosalData = ProposedArticle::model()->findByPK($requestData['hdnProArticleId']);
 	      $companyName = Customer::model()->findByPk($prosalData['customer_id']);
 	      if(trim($companyName['company_name'])!="")
-	      	echo $companyName['company_name'].Yii::app()->controller->__trans('様', 'ja');	      
+	      {
+	      	if ($language == 'ja')
+	      	{
+	      		echo $companyName['company_name'].Yii::app()->controller->__trans('様', 'ja');
+	      	}
+	      	else {
+	      		echo 'Dear ' . $companyName['company_name'];
+	      	}
+	      }
       }
       
 	if(isset($_GET['user']))
