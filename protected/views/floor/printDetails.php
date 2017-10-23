@@ -2134,10 +2134,10 @@ if($requestData['print_type'] == 11){
                                                             	if(in_array($oaFloor[$i],$oaDefaultArray)){
                                                             		if (strpos($oaFloor[$i], 'WAY') !== false)
                                                             		{
-                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]) . ' - ';
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]);
                                                             		}
                                                             		else {
-                                                            			echo Yii::app()->controller->__trans($oaFloor[$i], 'ja');
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i], 'ja') . ' - ';
                                                             		}
                                                             		if($oaHeight[$i]!="" || (int)$oaHeight[$i]!=0) {
                                                             			echo Yii::app()->controller->__trans('フリアク高', 'ja').":".$oaHeight[$i]."mm";
