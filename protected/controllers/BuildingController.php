@@ -3327,7 +3327,7 @@ class BuildingController extends Controller{
 	public function actionGetStationsLines(){
 		$building_id = $_REQUEST['buildingId'];
 // 		$sql = 'SELECT `line` FROM building_station WHERE building_id='.(int)$building_id.' GROUP BY `line` ORDER BY `line` ASC;';
-		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `building_station_id` DESC;';
+		$sql = 'SELECT `line`, `line_en` FROM building_station GROUP BY `line` ORDER BY `line_en` DESC;';
 		
 		$results = BuildingStation::model()->findAllBySql($sql);
 		$listHtml = '';
@@ -3455,6 +3455,7 @@ class BuildingController extends Controller{
 		$buildingStationId = $getArray['hdnBuildingStationId'];
 		$stationReachTime = $getArray['stationReachTime'];
 		$stationNameEn = $getArray['stationNameEn'];
+		$aStationNames = array();
 		
 		$i = 0;
 		foreach($buildingStationId as $ids){
@@ -3463,7 +3464,19 @@ class BuildingController extends Controller{
 			$buildingStationDetails->name_en = $stationNameEn[$i];
 			$buildingStationDetails->save(false);
 			$i++;
+			
+			if ($buildingStationDetails->name_en)
+			{
+				$aStationNames[$buildingStationDetails->name] = $buildingStationDetails->name_en;
+			}
 		}
+		
+		// Save all line
+		foreach ($aStationNames as $station_name => $station_name_en)
+		{
+			BuildingStation::model()->updateAll(array( 'name_en' => $station_name_en), 'name="' . $station_name.'"' );
+		}
+		
 		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
 		$logged_user_id = $user->user_id;	
 		
@@ -3484,9 +3497,9 @@ class BuildingController extends Controller{
 		}
 		
 		// BEGIN - Create wordpress building reference
-		$wordpress = new Wordpress();
-		$wordpress->processIntergrateWordpress($getArray['mapBuildId'], Wordpress::BUILDING_TYPE, 'update');
-		$wordpress->reGenerateLocations();
+// 		$wordpress = new Wordpress();
+// 		$wordpress->processIntergrateWordpress($getArray['mapBuildId'], Wordpress::BUILDING_TYPE, 'update');
+// 		$wordpress->reGenerateLocations();
 		// End - processing with wordpress
 		
 		echo json_encode($resp);
