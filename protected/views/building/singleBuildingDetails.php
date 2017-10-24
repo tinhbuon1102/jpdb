@@ -5701,6 +5701,18 @@ if(count($getGoogleMapKeyDetails) > 0){
                                 </font></font>
                             </td>
                         </tr>
+                        <!--added new Oct 24th-->
+                        <tr>
+                            <th scope="row"><?php echo Yii::app()->controller->__trans('fixed floor'); ?></th>
+                            <td>
+                                <select><option value=""></option></select>
+                            </td>
+                            <td class="bt">
+                                <input type="button" value="Set" class="bt_add btnAddFixedFloor">
+                                <!--<input type="button" value="Add" class="bt_add btnAddFastFloor">-->
+                            </td>
+                        </tr>
+                        <!--/added new Oct 24th-->
                     </tbody>
                 </table>
                 <!--<input name="b_no" value="76389" type="hidden">
