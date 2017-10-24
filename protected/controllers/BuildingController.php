@@ -413,13 +413,19 @@ class BuildingController extends Controller{
 				
 				$listOfStation = $this->actionGetNearestStation($long, $lat);
 				foreach($listOfStation as $station){
+					// Get old name_en
+					$stationHasValue = $this->getStationHasValue($station, 'name', 'name_en');
+					// Get old line_en
+					$stationHasValue = $this->getStationHasValue($station, 'line', 'line_en');
+					
 					$stationModel = new BuildingStation;
 					$stationModel->building_id = $model->building_id;
 					$stationModel->prefecture = $prefecture;
 					$stationModel->corporate = $station['corporate'];
 					$stationModel->name = $station['name'];
-					$stationModel->name_en = $station['name_en'];
+					$stationModel->name_en = isset($stationHasValue->name_en) ? $stationHasValue->name_en : $station['name_en'];
 					$stationModel->line = $station['line'];
+					$stationModel->line_en = isset($stationHasValue->line_en) ? $stationHasValue->line_en : '';
 					$stationModel->distance = $station['distance'];
 					$stationModel->time = ceil($station['distance']/80);
 					$stationModel->save(false);
@@ -863,13 +869,19 @@ class BuildingController extends Controller{
 				}
 				$listOfStation = $this->actionGetNearestStation($long, $lat);
 				foreach($listOfStation as $station){
+					// Get old name_en
+					$stationHasValue = $this->getStationHasValue($station, 'name', 'name_en');
+					// Get old line_en
+					$stationHasValue = $this->getStationHasValue($station, 'line', 'line_en');
+					
 					$stationModel = new BuildingStation;
 					$stationModel->building_id = $id;
 					$stationModel->prefecture = $prefecture;
 					$stationModel->corporate = $station['corporate'];
 					$stationModel->name = $station['name'];
-					$stationModel->name_en = $station['name_en'];
+					$stationModel->name_en = isset($stationHasValue->name_en) ? $stationHasValue->name_en : $station['name_en'];
 					$stationModel->line = $station['line'];
+					$stationModel->line_en = isset($stationHasValue->line_en) ? $stationHasValue->line_en : '';
 					$stationModel->distance = $station['distance'];
 					$stationModel->time = ceil($station['distance']/80);
 					$stationModel->save(false);
@@ -2416,13 +2428,19 @@ class BuildingController extends Controller{
 				}
 				$listOfStation = $this->actionGetNearestStation($long, $lat);
 				foreach($listOfStation as $station){
+					// Get old name_en
+					$stationHasValue = $this->getStationHasValue($station, 'name', 'name_en');
+					// Get old line_en
+					$stationHasValue = $this->getStationHasValue($station, 'line', 'line_en');
+					
 					$stationModel = new BuildingStation;
 					$stationModel->building_id = $getArray['id'];
 					$stationModel->prefecture = $prefecture;
 					$stationModel->corporate = $station['corporate'];
 					$stationModel->name = $station['name'];
-					$stationModel->name_en = $station['name_en'];
+					$stationModel->name_en = isset($stationHasValue->name_en) ? $stationHasValue->name_en : $station['name_en'];
 					$stationModel->line = $station['line'];
+					$stationModel->line_en = isset($stationHasValue->line_en) ? $stationHasValue->line_en : '';
 					$stationModel->distance = $station['distance'];
 					$stationModel->time = ceil($station['distance']/80);
 					$stationModel->save(false);
@@ -4170,6 +4188,15 @@ class BuildingController extends Controller{
 		die;
 	}
 	
+	public function getStationHasValue($station, $name, $name_en)
+	{
+		return BuildingStation::model()->findBySql('
+							SELECT * FROM building_station
+							WHERE `'.$name.'` = "' . $station[$name] . '" AND '.$name_en.' IS NOT NULL AND '.$name_en.' != ""
+							LIMIT 1');
+		
+	}
+	
 	public function actionSort(){
 		if(isset($_POST['data']) && is_array($_POST['data'])){
 			$sortIDs = array();
@@ -4672,13 +4699,20 @@ class BuildingController extends Controller{
 		
 				$listOfStation = $this->actionGetNearestStation($long, $lat);
 				foreach($listOfStation as $station){
+					
+					// Get old name_en
+					$stationHasValue = $this->getStationHasValue($station, 'name', 'name_en');
+					// Get old line_en
+					$stationHasValue = $this->getStationHasValue($station, 'line', 'line_en');
+					
 					$stationModel = new BuildingStation;
 					$stationModel->building_id = $model->building_id;
 					$stationModel->prefecture = $prefecture;
 					$stationModel->corporate = $station['corporate'];
 					$stationModel->name = $station['name'];
-					$stationModel->name_en = $station['name_en'];
+					$stationModel->name_en = isset($stationHasValue->name_en) ? $stationHasValue->name_en : $station['name_en'];
 					$stationModel->line = $station['line'];
+					$stationModel->line_en = isset($stationHasValue->line_en) ? $stationHasValue->line_en : '';
 					$stationModel->distance = $station['distance'];
 					$stationModel->time = ceil($station['distance']/80);
 					$stationModel->save(false);
