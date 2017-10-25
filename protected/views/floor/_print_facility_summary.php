@@ -4,6 +4,7 @@
                     	$contractArray = $renewalArray = $renewalFeeMonthArray = $keymoneyArray = $keyMoneyMonthArray = $amortizationArray = $repaymentMonthArray = array();
 						$fName = $renewalDetails = $renewalOpt = $keyMoneyDetails =  $keyMoneyOpt = $amortizationDetails = $repaymentOpt = '';
 						$contractPeriodOptChk = '';
+						$repaymentAmtOptArray = $repaymentMonthArray = array();
 						foreach($floorDetails as $floor){
 							if($floorId['renewal_fee_opt'] != 0){
 								$renewalArray[$floor['floor_id']] = $floorId['renewal_fee_opt'];
@@ -16,7 +17,7 @@
 							if($floorId['repayment_opt'] != 0){
 								$amortizationArray[$floor['floor_id']] = $floorId['repayment_opt'];
 							}
-							$repaymentMonthArray[$floor['floor_id']] = $floorId['repayment_amt'];
+							$repaymentMonthArray[$floor['floor_id']] = $floorId['repayment_amt'] ? $floorId['repayment_amt'] : 0;
                             if((isset($floorId['repayment_amt_opt'])) && ($floorId['repayment_amt_opt'] != 0)){
                                 $repaymentAmtOptArray[$floor['floor_id']]=$floorId['repayment_amt_opt'];
                             }

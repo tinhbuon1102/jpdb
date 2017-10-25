@@ -489,9 +489,18 @@ if($requestData['print_type'] == 10){
 						unset($floorDetails[$floorKey]);
 					}
 				}
+				
+				if (count($floorDetails) < 4)
+				{
+					for($i=0; $i < 4 ; $i++)
+					{
+						$floorDetails[] = array();
+					}
+					$countFloor = count($floorDetails);
+				}
+				$breakFloorDetails = false;
 				foreach($floorDetails as $floor){
 					$indexFloor ++;
-					$floorId = Floor::model()->findByPk($floor['floor_id']);
 					if($indexFloor && ($indexFloor % 18 == 0 )) {
 						echo '</table></td>';
 					    include('_print_facility_summary.php');
@@ -516,12 +525,27 @@ if($requestData['print_type'] == 10){
 										<th class="label_8">'.Yii::app()->controller->__trans('入居可能日', 'ja').'</th><!--fixed texts-->
 										<th class="label_9">'.Yii::app()->controller->__trans('設備概要', 'ja').'</th><!--fixed texts-->
 										<th class="label_10">'.Yii::app()->controller->__trans('ビル外観', 'ja').'</th><!--fixed texts-->
-									</tr>
-									<tr><td class="center">No.'. $buildingNumber .'</td></td>';
-						include('_print_summary.php');
-						echo '<td colspan="6" class="list_floor var-top">
-							<table class="lists">';
+									</tr>';
+						if (!empty($floor))
+						{
+							echo '<tr><td class="center">No.'. $buildingNumber .'</td></td>';
+							
+							include('_print_summary.php');
+							echo '<td colspan="6" class="list_floor var-top">
+								<table class="lists">';
+						}
+						
+						if (empty($floor))
+						{
+							$floor = $floorDetails[$countFloor-1];
+							$breakFloorDetails = true;
+							break;
+						}
 					}
+					
+					if (empty($floor)) continue;
+					
+					$floorId = Floor::model()->findByPk($floor['floor_id']);
 			?>
             <tr class="row_fst">
               <td rowspan="2" class="center label_3"><?php
@@ -705,10 +729,14 @@ if($requestData['print_type'] == 10){
             <?php
 				}
 			?>
-          </table></td>
-        <!--list of the floor-->
-        <?php include('_print_facility_summary.php');?>
-        <?php include('_print_type2_bldimg.php');?>
+        <?php 
+        if (!$breakFloorDetails) {
+        	echo '</table></td>';
+	        include('_print_facility_summary.php');
+	        include('_print_type2_bldimg.php');
+        }
+        ?>
+        
       </tr>
       <?php
 				$buildingNumber++;
