@@ -549,4 +549,10 @@ class HelperFunctions extends CApplicationComponent {
 		}
 		
 	}
+	
+	public static function showFixedFloorText($floor)
+	{
+		$floor = (object)$floor;
+		return $floor->fixed_floor ? '<div class="fixed_floor">常に表示</div>' : '';
+	}
 }

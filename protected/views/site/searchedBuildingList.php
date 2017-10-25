@@ -256,6 +256,8 @@
 								if(isset($list['roomname']) && $list['roomname'] != ""){
 									echo '&nbsp;'.$list['roomname'];
 								}
+								
+								echo HelperFunctions::showFixedFloorText($list);
 								?>
                                 </td>
                                 <td>

@@ -580,6 +580,8 @@ if(isset($customCondition)){
 										$stairs = $floorDown;
 										$stairs .= '階'.$list->floor_up;
 										echo $stairs.'  '.$list->roomname;
+										
+										echo HelperFunctions::showFixedFloorText($list);
 									?>
                                 </td>
                                 <td>

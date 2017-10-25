@@ -236,7 +236,20 @@ $(document).ready(function(e) {
 			return true;
 		}
 	});
-	/**************************** end *******************************/	
+	/**************************** end *******************************/
+	
+	/********************** Set fixed floor ****************************/
+	$(document).on('click','.btnAddFixedFloor',function(e){
+		var id = $("#fixed_floor").val();
+		var currentFloorId = $("#currentFloorId").val();
+		var url = baseUrl+'/index.php?r=floor/setFixedFloor';
+		$('body').LoadingOverlay("show");
+		call({url:url,params:{id:id,currentFloorId:currentFloorId},type:'POST',dataType:'json'},function(resp){
+			$('body').LoadingOverlay("hide");
+			alert(resp.msg)
+		});
+	});
+	/**************************** end *******************************/
 
 	/********************** add fast floor ****************************/
 	$(document).on('click','.btnAddFastFloor',function(e){

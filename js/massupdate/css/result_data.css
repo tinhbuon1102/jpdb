@@ -1,16 +1,16 @@
 @charset "euc-jp";
 
 /*::::::::::::::::::::::::::::::::::::::::::::
-検索結果一覧
+罎�刈腟��筝�Η
 ::::::::::::::::::::::::::::::::::::::::::::*/
-/***--- パーツスタイル読み込み ---***/
+/***--- �������帥�����粋昭��---***/
 @import url("parts_bd_business.css");
 @import url("parts-title_style.css");
 /*@import url("/style/parts-popup.css");*/
 
-/***--- 個別スタイル ---***/
+/***--- ����鴻��ゃ� ---***/
 
-/* 一括更新 */
+/* 筝���贋� */
 div#contents div.bt_allupdate {
 	width: 75px;
     cursor: pointer;
@@ -31,7 +31,7 @@ div#contents div.bt_allupdate a:hover {
 }
 
 /*--------------------------------------------
-	上書き
+	筝����
 --------------------------------------------*/
 div#contents {
 	width: 100%;
@@ -42,10 +42,10 @@ div#contents div.ttl_h2 {
 }
 
 /*==========================================================
-	検索結果一覧
+	罎�刈腟��筝�Η
 ==========================================================*/
 /*--------------------------------------------
-	ビル情報
+	������
 --------------------------------------------*/
 div#contents div.build_info {
 	width: 100%;
@@ -57,7 +57,7 @@ div#contents div.build_info {
 
 
 /*--------------------------------------------
-	ビル情報ー営業情報(他のページの営業情報はparts_bd_business.cssにて読み込んでいる)
+	�������弱�罐����篁������吾��倶キ�����arts_bd_business.css���茯��莨若��с���
 --------------------------------------------*/
 div#contents div.bd_business {
 	width: 980px;
@@ -65,7 +65,7 @@ div#contents div.bd_business {
 
 
 /*--------------------------------------------
-	ビル情報ービルデータ
+	�������若�����若�
 --------------------------------------------*/
 div#contents div.build_info div.bd_info {
 	width: 100%;
@@ -73,13 +73,13 @@ div#contents div.build_info div.bd_info {
 
 
 
-/* 区分所有オーナー */
+/* �阪���������� */
 div#contents div.build_info div.bd_info div.owner_name {
 	width: 980px;
 	float: none;
 }
 
-/* フロア情報 */
+/* ����∽���*/
 div#contents div.build_info div.bd_info table.fl_data_b {
 	width: 1371px;
 	border-left: 1px solid #e1e1e1;
@@ -187,10 +187,10 @@ div#contents div.build_info div.bd_info table.fl_data_b .no span.nod {
 }
 
 /*==========================================================
-	フロア情報　別ウィンドウ
+	����∽��宴��ャ��ｃ����
 ==========================================================*/
 /*--------------------------------------------
-	タイトル
+	�帥����
 --------------------------------------------*/
 div.fl_list{
 	width: 100%!important;
@@ -275,7 +275,7 @@ div#contents div.ttl_fl div.bt_fl_add a:hover {
 }
 
 /*--------------------------------------------
-	フロア情報
+	����∽���
 --------------------------------------------*/
 
 div#contents table.fl_data_c {
@@ -358,7 +358,7 @@ li.hint{
 	color:#333;
 }
 
-/* 一括更新表 */
+/* 筝���贋�茵�*/
 div#contents table.fl_data_c tr.dmy th {
 	border-top: none;
 	border-right: none;
@@ -459,7 +459,7 @@ select.f_rentstart optgroup option
 	padding-left:13px;
 }
 
-/* 一括更新 */
+/* 筝���贋� */
 div#contents table.fl_data_c tr.all td {
 	background: #FEFBE0;
 	border-top: 3px double #999999;
@@ -536,7 +536,7 @@ div#contents table.fl_data_c .no span.nod {
 }
 
 /*--------------------------------------------
-	フロアの追加・削除
+	����≪�菴遵��糸���
 --------------------------------------------*/
 div#contents table.floor_edit {
 	border: 1px solid #e1e1e1;
@@ -579,7 +579,7 @@ div#contents table.floor_edit td span {
 	color: #cc0000;
 }
 
-/* 追加・削除ボタン */
+/* 菴遵��糸��ゃ��帥� */
 div#contents table.floor_edit td.bt input.bt_carry,
 div#contents table.floor_edit td.bt input.bt_add{
 	width: 41px;
@@ -607,7 +607,7 @@ div#contents table.floor_edit td.bt input.bt_add:hover{
 }
 
 /*--------------------------------------------
-	フロア情報
+	����∽���
 --------------------------------------------*/
 div#contents div.form_box {
 	border-bottom: 1px dotted #cacaca;
@@ -644,7 +644,7 @@ div#contents table.edit_input td label.rd input{
 }
 
 
-/* 更新・登録ボタン */
+/* �贋��紫��蚊��帥� */
 div#contents div.bt_input_box{
 	width: 116px;
 	padding-left: 3px;
@@ -668,7 +668,7 @@ div#contents div.bt_input_box input.bt_fl_update:hover{
 
 /*--------------------------------------------------------
 	clearfix
-	一括で記述
+	筝���ц�菴�
 --------------------------------------------------------*/
 
 div#contents div.refine dl.refine_ty1 dd ul.se_condition:after,
@@ -719,3 +719,5 @@ div#contents div.ttl_fl ul.rm_ss:after{
 * html div#contents div.ttl_fl ul.rm_ss{
 	display: inline-block;
 }
+
+.fixed_floor_mass {background: #f9e5e5;}

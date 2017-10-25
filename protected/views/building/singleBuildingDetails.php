@@ -239,6 +239,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         echo '<div class="floor_name">' . ($floorDetails['roomname'] ? ' ' . $floorDetails['roomname'] : '') . '</div>';
                                     }
                                     ?>
+                                    <?php echo HelperFunctions::showFixedFloorText($floorDetails)?>
                                 </td>
                                 <td>
 									<?php
@@ -5705,11 +5706,26 @@ if(count($getGoogleMapKeyDetails) > 0){
                         <tr>
                             <th scope="row"><?php echo Yii::app()->controller->__trans('fixed floor'); ?></th>
                             <td>
-                                <select><option value=""></option></select>
+                                <select name="fixed_floor" id="fixed_floor">
+                                <option value="">-</option>
+                                    <?php
+                                        if(isset($relatedAllFloorList) && count($relatedAllFloorList) > 0 ){
+                                            foreach($relatedAllFloorList as $allFloor){
+                                                if(strpos($allFloor['floor_down'], '-') !== false){
+                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $allFloor['floor_down']);
+                                                }else{
+                                                    $floorDown = $allFloor['floor_down'];
+                                                }
+                                    ?>
+                                    <option <?php echo $allFloor['fixed_floor'] ? 'selected' : '';?> value="<?php echo $allFloor['floor_id']; ?>"> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".Yii::app()->controller->__trans("階")." ".$allFloor['roomname'].")"; ?> </option>
+                                    <?php
+                                            }
+                                        }
+                                    ?>
+                                </select>
                             </td>
                             <td class="bt">
                                 <input type="button" value="Set" class="bt_add btnAddFixedFloor">
-                                <!--<input type="button" value="Add" class="bt_add btnAddFastFloor">-->
                             </td>
                         </tr>
                         <!--/added new Oct 24th-->

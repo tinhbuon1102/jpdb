@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor','addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend'),
+				'actions'=>array('create','update','getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -2377,6 +2377,34 @@ class FloorController extends Controller{
 		}
 		echo json_encode($resp);
 		die;		
+	}
+	
+	public function actionSetFixedFloor(){
+		$id = $_REQUEST['id'];
+		$currentFloorId = $_REQUEST['currentFloorId'];
+		$floorBuilding = Floor::model()->findByPk($currentFloorId);
+		
+		$floorDetails = Floor::model()->findByPk($id);
+		$resp = array();
+		
+		// Remove all fixed floor of this building
+		$buildingDetails = Building::model()->findByPk($floorBuilding['building_id']);
+		
+		if ($buildingDetails)
+		{
+			Floor::model()->updateAll(array( 'fixed_floor' => 0), 'building_id=' . (int)$buildingDetails['building_id'] );
+		}
+		
+		if ($floorDetails)
+		{
+			// set fixed floor
+			$floorDetails->fixed_floor = 1;
+			$floorDetails->save(false);
+		}
+		
+		$resp = array('status'=>1,'msg'=> Yii::app()->controller->__trans('Data successfully updated.'));
+		echo json_encode($resp);
+		die;
 	}
 
 	public function actionDeleteFloor(){

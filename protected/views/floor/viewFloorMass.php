@@ -245,7 +245,7 @@ div#contents table.fl_data_c th {
 		$d1 = date('Y-m-d H:i:s',strtotime($floor['modified_on']));
 		$d2 = date('y.m.d H',strtotime($floor['modified_on']));
 	?>
-	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist ">
+	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist <?php echo $floor->fixed_floor ? 'fixed_floor_mass' : ''?>">
 		<input type="hidden" name="f_id[]" value="<?=$fid?>">
 		<td f_no="<?=$fid?>" col="" od=""  class="ck" scope="col">
 			<input type="checkbox" class="mass_update_target" value="<?=$fid?>">
@@ -258,7 +258,7 @@ div#contents table.fl_data_c th {
 			<input type="hidden" name="f_update_flag[]" value="0">
 		</td>
 		<td f_no="<?=$fid?>" col="f_thisupdate" od="<?=$d1?>" class="w " style="" scope="col"><?=$d2?>時</td>
-		<td f_no="<?=$fid?>" col="f_floor" od=""  f_floor_down='<?=$floor->floor_down?>' f_floor_up='<?=$floor->floor_up?>'  class="w edit" style="" scope="col"><?=$floor->floor_down?>階</td>
+		<td f_no="<?=$fid?>" col="f_floor" od=""  f_floor_down='<?=$floor->floor_down?>' f_floor_up='<?=$floor->floor_up?>'  class="w edit" style="" scope="col"><?=$floor->floor_down?>階 <?php echo HelperFunctions::showFixedFloorText($floor)?></td>
 		<td f_no="<?=$fid?>" col="f_kubun" od="<?=$isCompartOpt?>"  class="w edit" style="" scope="col"><?=$isCompartOpt?></td>
 		<td f_no="<?=$fid?>" col="f_roomname" od="<?=$floor->roomname?>"  class="w edit" style="" scope="col"><?=$floor->roomname?></td>
 		<td f_no="<?=$fid?>" col="f_emp" od="<?=$floor->vacancy_info?>"  class="w edit" style="color:<? echo $floor->vacancy_info==0?"red":"blue"?>; font-weight:bold; " scope="col"><?=$floor->vacancy_info?></td>
