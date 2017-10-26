@@ -32,7 +32,9 @@ $searchOptions = HelperFunctions::searchSearchOptions();
       		<label class="searchform-label date-update Floor-title">区</label>
       		<span class="searchform-input-wrapper select-numbers search-floor">
       			<ul class="location_list">
-      			<?php foreach ($searchOptions['location'] as $location_key => $location) {?>
+      			<?php foreach ($searchOptions['location'] as $location_key => $location) {
+      				if (!$location) continue;
+      			?>
       			<li>
       				<?php echo CHtml::checkBox('location['.$location_key.']', $_REQUEST['location'][$location_key] == $location, array('class' => 'checkbox-formtype chck_space', 'id' => 'location_' . $location_key, 'value' => $location) ); ?>
       				<label for="location_<?php echo $location_key?>"><?php echo $location?></label>
