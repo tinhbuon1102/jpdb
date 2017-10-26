@@ -470,7 +470,9 @@ if($requestData['print_type'] == 10){
 				$logged_user_id = $user->user_id;
 				$buildingNumber = 1;
 				$indexFloor = 0;
+				$indexBuildCart = 0;
 				foreach($buildCartDetails as $buildCart){
+					$indexBuildCart++;
 			?>
       <tr>
         <td class="center">No.<?php echo $buildingNumber; ?></td>
@@ -499,8 +501,14 @@ if($requestData['print_type'] == 10){
 					$countFloor = count($floorDetails);
 				}
 				$breakFloorDetails = false;
-				foreach($floorDetails as $floor){
+				foreach($floorDetails as $indexFloorPrint => $floorPrintDetail){
 					$indexFloor ++;
+					
+					if (($indexBuildCart == count($buildCartDetails)) && empty($floorPrintDetail))
+					{
+						break;
+					}
+					
 					if($indexFloor && ($indexFloor % 18 == 0 )) {
 						echo '</table></td>';
 					    include('_print_facility_summary.php');
@@ -526,7 +534,7 @@ if($requestData['print_type'] == 10){
 										<th class="label_9">'.Yii::app()->controller->__trans('設備概要', 'ja').'</th><!--fixed texts-->
 										<th class="label_10">'.Yii::app()->controller->__trans('ビル外観', 'ja').'</th><!--fixed texts-->
 									</tr>';
-						if (!empty($floor))
+						if (!empty($floorPrintDetail))
 						{
 							echo '<tr><td class="center">No.'. $buildingNumber .'</td></td>';
 							
@@ -535,17 +543,17 @@ if($requestData['print_type'] == 10){
 								<table class="lists">';
 						}
 						
-						if (empty($floor))
+						if (empty($floorPrintDetail))
 						{
-							$floor = $floorDetails[$countFloor-1];
+							$floorPrintDetail = $floorDetails[$countFloor-1];
 							$breakFloorDetails = true;
 							break;
 						}
 					}
 					
-					if (empty($floor)) continue;
+					if (empty($floorPrintDetail)) continue;
 					
-					$floorId = Floor::model()->findByPk($floor['floor_id']);
+					$floorId = Floor::model()->findByPk($floorPrintDetail['floor_id']);
 			?>
             <tr class="row_fst">
               <td rowspan="2" class="center label_3"><?php
