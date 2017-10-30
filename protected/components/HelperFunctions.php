@@ -535,7 +535,7 @@ class HelperFunctions extends CApplicationComponent {
 				$trafficDetails = BuildingStation::model()->find('building_id = '.$building['building_id'].' order by time ASC');
 				if ($current_lang == LANGUAGE_EN)
 				{
-					return $trafficDetails['time']. ' min on foot from '.$trafficDetails['name_en'].' station('.($trafficDetails['line_en'] ? $trafficDetails['line_en'] : $trafficDetails['line']).' line)';
+					return $trafficDetails['time']. ' min on foot from '.str_replace('station', '', $trafficDetails['name_en']).' station('.($trafficDetails['line_en'] ? $trafficDetails['line_en'] : $trafficDetails['line']).' line)';
 				}
 				else {
 					return $trafficDetails['name'].Yii::app()->controller->__trans('駅', 'ja').$trafficDetails['line'].Yii::app()->controller->__trans('徒歩', 'ja').$trafficDetails['time'].Yii::app()->controller->__trans('分', 'ja');
