@@ -207,7 +207,7 @@
 							if(isset($flootList) && count($flootList) > 0){
 								foreach($flootList as $list){
 						?>
-                        	<tr class="trFloor <?php $this->changeColor($list->floor_id); ?> <?php echo $floor->fixed_floor ? 'fixed_floor_mass' : ''?> test" data-href='<?php echo Yii::app()->createUrl('building/singleBuilding',array('id'=>$list['floor_id'])); ?>'>
+                        	<tr class="trFloor <?php $this->changeColor($list->floor_id); ?> <?php echo $list['fixed_floor']? 'fixed_floor_mass' : ''?> test" data-href='<?php echo Yii::app()->createUrl('building/singleBuilding',array('id'=>$list['floor_id'])); ?>'>
                             	<td>
                                 	<input type="hidden" name="hdnBuildingId" id="hdnBuildingId" class="hdnBuildingId" value="<?php echo $buildingList['building_id']; ?>" />
                                     <input type="hidden" name="hdnFloorId" id="hdnFloorId" class="hdnFloorId" value="<?php echo $list['floor_id']; ?>" />
