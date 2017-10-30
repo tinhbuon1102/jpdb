@@ -467,13 +467,13 @@
                                                 </th>
                                                 <td>
                                                 	<input type="text" <?php echo $model->area_ping; ?> name="Floor[area_ping]" id="area-tsubo" value="<?php echo isset($model->area_ping) && $model->area_ping != '' ? $model->area_ping :''; ?>" class="ty1">
-													<?php echo Yii::app()->controller->__trans('坪');?>
+													<?php echo "坪";?>
                                                     <input type="button" class="ty-ex" id='area-con-btn_reverse' value="←">
                                                     <input type="button" class="ty-ex" id='area-con-btn' value="→">
                                                     <input type="text" name="Floor[area_m]" id="area-m2" value="<?php echo isset($model->area_m) && $model->area_m != '' ? $model->area_m :''; ?>"  class="ty1">
 													<?php echo Yii::app()->controller->__trans('m');?><sup>2</sup> <?php echo Yii::app()->controller->__trans('Net');?>：
                                                     <input type="text" name="Floor[area_net]" id="f_acreg_net" value="<?php echo isset($model->area_net) && $model->area_net != '' ? $model->area_net :''; ?>" class="ty1">
-													<?php echo Yii::app()->controller->__trans('坪');?>
+													<?php echo "坪";?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -542,7 +542,7 @@
                                                 </th>
                                                 <td>
                                                 	<input type="text" id="dividedArea"  class="ty1">
-													<?php echo Yii::app()->controller->__trans('坪');?>
+													<?php echo "坪";?>
                                                     <input type="button" class="sm-btn" id='addTxtDevided' value="<?php echo Yii::app()->controller->__trans('ADD');?>"><br/>
 													<?php
                                                     if(isset($model->floor_partition) && $model->floor_partition != ''){
@@ -582,7 +582,7 @@
 													<?php echo Yii::app()->controller->__trans('yen/坪');?>
 													</div>
 													<div>
-														<label class="rd2"><?php echo Yii::app()->controller->__trans('rent_unit_price Calculated');?></label>
+														<label class="rd2"><?php echo "単価自動計算";?></label>
 														<input readonly type="text" name="Floor[rent_unit_price_calculated]" value="<?php echo isset($model->rent_unit_price_calculated) && $model->rent_unit_price_calculated != '' && $model->rent_unit_price_calculated != 0 ? HelperFunctions::formatNumber(str_replace(',','',$model->rent_unit_price_calculated)) :''; ?>" id="rent_unit_price_calculated" class="ty1 mt price_rent rent_unit_price_calculated">
 														<?php echo Yii::app()->controller->__trans('㎡/円');?>
 													</div>
@@ -731,7 +731,7 @@
                                                     </label>
                                                     <label class="rd2">
                                                     	<input type="radio" name="Floor[repayment_opt]" class="price_amo price_amo_opt clearinput" data-input="repayment_opt_input" <?php echo isset($model->repayment_opt) && $model->repayment_opt == '-5' ?  $check :''; ?> value="-5">
-														<?php echo Yii::app()->controller->__trans('スライド式');?>
+														<?php echo "スライド式";?>
                                                     </label>
                                                     <p>--</p>
 													<?php $sel = 'selected'; ?>
@@ -801,22 +801,22 @@
                                                 </th>
                                                 <td>
                                                 	<label class="rd2">
-                                                    	<input type="radio" name="Floor[contract_period_opt]" value="1" <?php echo isset($model->contract_period_opt) && $model->contract_period_opt == '1' ?  $check :''; ?>>                            <?php echo Yii::app()->controller->__trans('普通借家');?>
+                                                    	<input type="radio" name="Floor[contract_period_opt]" value="1" <?php echo isset($model->contract_period_opt) && $model->contract_period_opt == '1' ?  $check :''; ?>>                            <?php echo "普通借家";?>
                                                     </label>
                                                     <label class="rd2">
                                                     	<input type="radio" name="Floor[contract_period_opt]" value="2" <?php echo isset($model->contract_period_opt) && $model->contract_period_opt == '2' ?  $check :''; ?>>
-														<?php echo Yii::app()->controller->__trans('定借');?>
+														<?php echo "定借";?><?php //echo Yii::app()->controller->__trans('定借');?>
                                                     </label>
                                                     <label class="rd2">
                                                     	<input type="radio" name="Floor[contract_period_opt]" value="3" <?php echo isset($model->contract_period_opt) && $model->contract_period_opt == '3' ?  $check :''; ?>>
-														<?php echo Yii::app()->controller->__trans('定借希望');?>
+														<?php echo "定借希望";?><?php //echo Yii::app()->controller->__trans('定借希望');?>
                                                     </label><br>
                                                     <input type="text" size="3" name="Floor[contract_period_duration]" value="<?php echo isset($model->contract_period_duration) && $model->contract_period_duration != '' ? $model->contract_period_duration :''; ?>" class="ty8 mt contractDuration">
-													<?php echo Yii::app()->controller->__trans('年');?>
+													<?php echo "年";?><?php //echo Yii::app()->controller->__trans('年');?>
                                                     <br>
                                                     <label class="rd2">
                                                     	<input type="checkbox" name="Floor[contract_period_optchk]" value="1" class="contractDurationOptNew" <?php echo isset($model->contract_period_optchk) && $model->contract_period_optchk == '1' ?  $check :''; ?>>
-														<?php echo Yii::app()->controller->__trans('年数相談');?>
+														<?php echo "年数相談";?><?php //echo Yii::app()->controller->__trans('年数相談');?>
                                                     </label>
                                                 </td>
                                             </tr>
@@ -1064,7 +1064,7 @@
                                                         <option value="3WAY" <?php echo isset($model->oa_type) && $model->oa_type == '3WAY' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('3WAY');?></option>
                                                         <option value="引き込み可" <?php echo isset($model->oa_type) && $model->oa_type == '引き込み可' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('引き込み可');?></option>
                                                    	</select>
-													<?php echo Yii::app()->controller->__trans('フリアク高');?>：
+													<?php echo "フリアク高";?>：
                                                     <input type="text" name="Floor[oa_height]" value="<?php echo isset($model->oa_height   )&& $model->oa_height != ''? $model->oa_height :''; ?>"  class="ty1">
 													<?php echo Yii::app()->controller->__trans('mm');?>
                                                 </td>
@@ -1535,7 +1535,7 @@
                                                             
                                                             if(isset($oFloor['repayment_amt_opt']) && $oFloor['repayment_amt_opt'] != ""){
                                                                 if($oFloor['repayment_amt_opt'] == 1){
-                                                                    echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                    echo "ヶ月"; 
                                                                 }elseif($oFloor['repayment_amt_opt'] == 2){
                                                                     echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                 }else{
@@ -1787,7 +1787,7 @@
                                                                     
                                                                     if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                         if($floorDetails['repayment_amt_opt'] == 1){
-                                                                            echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                            echo "ヶ月"; 
                                                                         }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                             echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                         }else{
@@ -2037,7 +2037,7 @@
                                                                     
                                                                     if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                         if($floorDetails['repayment_amt_opt'] == 1){
-                                                                            echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                            echo "ヶ月"; 
                                                                         }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                             echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                         }else{
@@ -2620,7 +2620,7 @@
                                                         
                                                         if(isset($oFloor['repayment_amt_opt']) && $oFloor['repayment_amt_opt'] != ""){
                                                             if($oFloor['repayment_amt_opt'] == 1){
-                                                                echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                echo "ヶ月"; 
                                                             }elseif($oFloor['repayment_amt_opt'] == 2){
                                                                 echo Yii::app()->controller->__trans('%')."<br>"; 
                                                             }else{
@@ -2871,7 +2871,7 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                        echo "ヶ月"; 
                                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                     }else{
@@ -3121,7 +3121,7 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                        echo "ヶ月"; 
                                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                     }else{
@@ -3823,7 +3823,7 @@
                                                         
                                                         if(isset($oFloor['repayment_amt_opt']) && $oFloor['repayment_amt_opt'] != ""){
                                                             if($oFloor['repayment_amt_opt'] == 1){
-                                                                echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                echo "ヶ月"; 
                                                             }elseif($oFloor['repayment_amt_opt'] == 2){
                                                                 echo Yii::app()->controller->__trans('%')."<br>"; 
                                                             }else{
@@ -4075,7 +4075,7 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                        echo "ヶ月"; 
                                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                     }else{
@@ -4325,7 +4325,7 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                                        echo "ヶ月"; 
                                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                                     }else{

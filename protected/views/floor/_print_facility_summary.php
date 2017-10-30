@@ -137,11 +137,11 @@
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('None');
+										$keyMoneyOpt = Yii::app()->controller->__trans('無し');
 									}else if($val == -1){
-										$keyMoneyOpt = Yii::app()->controller->__trans('unknown');
+										$keyMoneyOpt = Yii::app()->controller->__trans('不明');
 									}else if($val == -2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('Undecided');
+										$keyMoneyOpt = Yii::app()->controller->__trans('未定');
 									}
 									$keyMoneyDetails .= $keyMoneyOpt.(count($keymoneyArray) > 2 ? '('.$fName.')'.$slsh : '');
 								}
@@ -203,15 +203,15 @@
 														}
 														if($val != 0 && $val != ""){
 															if($val == -3){
-																$repaymentOpt = Yii::app()->controller->__trans('None');
+																$repaymentOpt = Yii::app()->controller->__trans('無し');
 															}else if($val == -4){
-																$repaymentOpt = Yii::app()->controller->__trans('unknown');
+																$repaymentOpt = Yii::app()->controller->__trans('不明');
 															}else if($val == -1){
-																$repaymentOpt = Yii::app()->controller->__trans('Undecided');
+																$repaymentOpt = Yii::app()->controller->__trans('未定');
 															}else if($val == -2){
-																$repaymentOpt = Yii::app()->controller->__trans('Consultation');
+																$repaymentOpt = Yii::app()->controller->__trans('相談');
 															}else if($val == -5){
-																$repaymentOpt = Yii::app()->controller->__trans('Sliding');
+																$repaymentOpt = Yii::app()->controller->__trans('スライド式');
 															}
 															$amortizationDetails .= $repaymentOpt.(count($amortizationArray) > 2 ? '('.$fName.')'.$slsh : '');
 														}
@@ -258,7 +258,7 @@
                                                 $contractdiff= array_diff_assoc($contractArray, array_unique($contractArray));
                                             ?>
 			<tr>
-			<th>更新料</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('更新料', 'ja'); ?></th><!--label-->
 			<td><?php
 // 									echo count($floorDetails);
 // 									if(substr($renewalDetails, -1)=="" || substr($renewalDetails, -1)==" ")
@@ -268,7 +268,7 @@
 								?></td>
 			</tr>
 			<tr>
-			<th>償却</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('償却', 'ja'); ?></th><!--label-->
 			<td>
 				<?php 
 								if($amortizationDetails!='') {
@@ -287,11 +287,11 @@
 			</td>
 			</tr>
 			<tr>
-			<th>礼金</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('礼金', 'ja'); ?></th><!--label-->
 			<td><?php echo $keyMoneyDetails!=''?$keyMoneyDetails:'-'; ?></td>
 			</tr>
 			<tr>
-			<th>契約形態</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('契約形態', 'ja'); ?></th><!--label-->
 			<td>
 				<?php
 									$contractDefaultArray = array('1'=>'普通借家','2'=>'定借','3'=>'定借希望');
@@ -312,7 +312,7 @@
 			</td>
 			</tr>
 		<tr>
-			<th>空調設備</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('空調設備', 'ja'); ?></th><!--label-->
 			<td>
 				<?php
 //					if($buildCart['air_control_type'] == 0){
@@ -353,11 +353,11 @@
 			</td><!--air condition facility-->
 		</tr>
 		<tr>
-			<th>OAフロア</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('OAフロア', 'ja'); ?></th><!--label-->
 			<td>
 				<?php
 					$floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' AND vacancy_info = 1');
-					$oaDefaultArray = array('フリーアクセス','3WAY','2WAY','1WAY','引き込み可','非対応');
+					$oaDefaultArray = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),'3WAY','2WAY','1WAY',Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('非対応', 'ja'));
 					$oaFloor = array();
 					$oaHeight = array();
                     foreach($floorOAList as $floorOA){
@@ -368,7 +368,7 @@
                     	if(in_array($oaFloor[$i],$oaDefaultArray)){
                     		echo $oaFloor[$i];
                     		if($oaHeight[$i]!="" || (int)$oaHeight[$i]!=0) {
-                    			echo " フリアク高:".$oaHeight[$i]."mm";
+                    			echo Yii::app()->controller->__trans('フリアク高', 'ja').":".$oaHeight[$i]."mm";
                         	}
                         	break;
                         }
@@ -395,7 +395,7 @@
 			</td><!--OA floor-->
 		</tr>
 		<tr>
-			<th>天井高</th><!--label-->
+			<th><?php echo Yii::app()->controller->__trans('天井高', 'ja'); ?></th><!--label-->
 			<td>
 				<?php 
 //				echo $buildCart['ceiling_height'] != "" ? $buildCart['ceiling_height'].'mm' : "-"; 
@@ -474,7 +474,7 @@
 			</td><!--parking-->
 		<!--</tr>-->
 		<tr>
-			<th class="no-border">コメント</th><!--label-->
+			<th class="no-border"><?php echo Yii::app()->controller->__trans('コメント', 'ja'); ?></th><!--label-->
                             <td class="no-border">
                             	<?php
 				if($buildCart['notes'] != ""){

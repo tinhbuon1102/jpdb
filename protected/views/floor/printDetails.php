@@ -1789,7 +1789,7 @@ if($requestData['print_type'] == 11){
               <td class="stairs center">
 			  	<?php
 				if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
-					echo '<span class="senko">先行有</span>';
+					echo '<span class="senko">'.Yii::app()->controller->__trans('先行有', 'ja').'</span>';
 				}
 				
 				if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
@@ -2090,7 +2090,7 @@ if($requestData['print_type'] == 11){
                     <th><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
                     <td><?php
                                                             $typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
-                                                            echo $typeDetails['construction_type_name']!=''?$typeDetails['construction_type_name']:'-';
+                                                            echo Yii::app()->controller->__trans($typeDetails['construction_type_name'])!=''?Yii::app()->controller->__trans($typeDetails['construction_type_name']):'-';
                                                         ?></td>
                   </tr>
                   <tr>
