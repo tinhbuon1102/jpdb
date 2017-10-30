@@ -1,0 +1,134 @@
+	.newform_info {
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+.newform_info td, .newform_info th {
+    border: 1px solid #e8e8e8;
+    padding: 0;
+	text-align: left;
+	word-wrap:break-word;
+}
+.newform_info.ad_list th {
+    width: 130px;
+	text-align: left;
+	padding: 0 5px;
+}
+.newform_info.ad_list td {
+    width: 36.5%;
+    text-align: left;
+}
+.newform_info td.col_3 {
+    width: auto;
+}
+.newform_info td.col_full {
+    width: 100%;
+}
+.newform_info td input.ty8 {
+    width: 50px;
+}
+.newform_info label.rd2 {
+    margin-left: 10px;
+    display: inline-block;
+}
+	.new_style_box h4.ontable {
+		margin: 0;
+	}
+.table-box.new_style_box {
+	-webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+	.bg_lb {
+		background: rgba(118,173,229,1) !important;
+		color: #FFF;
+	}
+	.bg_blue {
+		background: rgba(39,115,192,1) !important;
+		color: #FFF;
+	}
+.bg_navy {
+	background: rgb(33,79,126);
+	color: #FFF;
+}
+.no_bg {
+	background: none !important;
+}
+.inline-h4 {
+	display: inline-block;
+}
+	a.bg_blue {
+		color: #FFF !important;
+	}
+	.right-align {
+		text-align: right !important;
+	}
+	.bold_td {
+		font-weight: bold;
+	}
+.check_box_td {
+	width: 30px;
+	padding: 5px !important;
+}
+.newform_info.history_info_list td {
+    border: none;
+    border-bottom: 1px solid #e8e8e8;
+}
+.bulk_del_red {
+	background: red;
+	color: #FFF;
+	padding: 0 5px;
+}
+	tr.no_border td, tr.no_border th {
+		border: none !important;
+		padding: 0 5px;
+	}
+	.side_button, .button-right .side_button {
+		padding: 3px 8px;
+		line-height: 1;
+	}
+	td.center {
+		text-align: center;
+	}
+	.update_button {
+		padding: 5px 10px;
+		font-size: 14px;
+		min-width: 160px;
+		display: inline-block;
+	}
+	.pad_top_15 {
+		padding-top: 15px !important;
+	}
+	.trader_list .trader_item {
+		margin-right: 15px;
+	}
+	.trader_list .trader_item:last-child {
+		margin-right: 0px;
+	}
+	.trader_item label {
+		padding: 0 5px;
+	}
+	.traders_list td, .traders_list th {
+    padding: 5px;
+	}
+	.traders_list thead th {
+		background: rgba(237,240,243,1);
+	}
+	label.vacant_status {
+    border: 1px solid blue;
+    color: blue;
+    display: inline-block;
+    padding: 5px;
+    line-height: 1;
+    margin-left: 8px;
+	}
+	label.vacant_status.no_vacant {
+    border: 1px solid red;
+    color: red;
+	}
+	.traders_list .check {
+    width: 120px;
+	}
+	.floors_target_list .negFloor {
+	margin-left: 10px;
+    display: inline-block;
+	}

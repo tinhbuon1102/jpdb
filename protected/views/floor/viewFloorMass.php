@@ -254,7 +254,11 @@ div#contents table.fl_data_c th {
 			<a style="background-color:#333; padding:3px; color:white; border-radius: 3px;"><?=$fid?></a>
 		</td>
 		<td f_no="<?=$fid?>" col="f_update_flag" od=""  class="w edit" style="" scope="col">
-			<img id="f_update_flag<?=$fid?>" name="f_update_flag" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/img/ico_check_mark.gif" class="f_not_updated">
+			<img id="f_update_flag<?=$fid?>" name="f_update_flag" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/img/ico_check_mark.gif" class="f_not_updated" style="display: none">
+			<div class="bt_update">
+                          <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid)); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid,'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;" style="padding: 7px; text-decoration: none; background-color: #2E7BBA; color: #fff;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                
+            </div>
 			<input type="hidden" name="f_update_flag[]" value="0">
 		</td>
 		<td f_no="<?=$fid?>" col="f_thisupdate" od="<?=$d1?>" class="w " style="" scope="col"><?=$d2?>時</td>

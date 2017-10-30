@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend'),
+				'actions'=>array('create','update', 'update2', 'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -861,6 +861,438 @@ class FloorController extends Controller{
 			}
 		}
 		$this->renderPartial('update',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails,'floorSourceDetails'=>$floorSourceDetails,'userList'=>$userList,'updateHistory'=>$updateHistory));
+	}
+
+	public function actionUpdate2($id){
+		 $model=$this->loadModel($id);
+		$tradersDetails = Traders::model()->findAll('is_active = 1');
+		$useTypesDetails = UseTypes::model()->findAll('is_active = 1');
+		$floorSourceDetails = FloorSourceFromType::model()->findAll('is_active = 1');
+		$userList = Users::model()->findAll('is_active = 1 AND user_role = "a"');
+		$updateHistory = FloorUpdateHistory::model()->findAll('floor_id = '.$id.' ORDER BY floor_update_history_id DESC');
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		$getFlooOldDetails = Floor::model()->findByPk($id);
+		if(isset($_POST['Floor'])){		
+
+			if(isset($_GET['type']) && $_GET['type'] == 'duplicate' && $_GET['type'] != ""){
+				$model = new Floor;
+				$model->floorId = 'JPF'.mt_rand(1000,999999);
+			}else{
+				$model=$this->loadModel($id);
+			}
+			
+			$oldRentPrice = $model->rent_unit_price;
+			$newRentPrice = $_POST['Floor']['rent_unit_price'];
+			
+			if(isset($_POST['Floor']['buildingId']) && $_POST['Floor']['buildingId'] != ''){
+				$model->building_id = $_POST['Floor']['buildingId'];
+			}else{
+				$model->building_id = '';
+			}
+			$model->vacancy_info = $_POST['Floor']['vac_info'];
+			$model->preceding_user = $_POST['Floor']['pre_user'];
+			$model->preceding_details = $_POST['Floor']['pre_details'];
+			$model->preceding_check_datetime = $_POST['Floor']['pre_check_datetime'];
+			$model->move_in_date = $_POST['Floor']['move_date'];
+			$model->vacant_schedule = $_POST['Floor']['vac_sche'];
+			$model->floor_down = $_POST['Floor']['floor_down'];
+			$model->floor_up = $_POST['Floor']['floor_up'];
+			$model->roomname = $_POST['Floor']['roomname'];
+			if(isset($_POST['Floor']['maisonette_type']) && $_POST['Floor']['maisonette_type'] != ''){
+				$model->maisonette_type = $_POST['Floor']['maisonette_type'];
+			}else{
+				$model->maisonette_type = '';
+			}
+			$model->short_term_rent = $_POST['Floor']['short_term_rent'];
+			if(isset($_POST['Floor']['type_of_use']) && $_POST['Floor']['type_of_use'] != ''){
+				$model->type_of_use = implode(',',$_POST['Floor']['type_of_use']);
+			}
+			$model->area_ping = $_POST['Floor']['area_ping'];
+			$model->area_m = $_POST['Floor']['area_m'];
+			$model->area_net = $_POST['Floor']['area_net'];
+			if(isset($_POST['Floor']['calculation_method']) && $_POST['Floor']['calculation_method'] != ''){
+				$model->calculation_method = $_POST['Floor']['calculation_method'];
+			}else{
+				$model->calculation_method = '';
+			}
+			if(isset($_POST['Floor']['payment_by_installments']) && $_POST['Floor']['payment_by_installments'] != ''){
+				$model->payment_by_installments = $_POST['Floor']['payment_by_installments'];
+			}else{
+				$model->payment_by_installments = '';
+			}
+			
+			$model->core_section = isset($_POST['Floor']['core_section']) ? (int)$_POST['Floor']['core_section'] : 0;
+			$model->high_grade_building = isset($_POST['Floor']['high_grade_building']) ? (int)$_POST['Floor']['high_grade_building'] : 0;
+			
+			$model->payment_by_installments_note = $_POST['Floor']['payment_by_installments_detail'];
+			if(isset($_POST['Floor']['floor_partition']) && $_POST['Floor']['floor_partition'] != ''){
+				$model->floor_partition = implode(',',$_POST['Floor']['floor_partition']);
+			}else{
+				$model->floor_partition = '';
+			}
+			$model->rent_unit_price_opt = (int)$_POST['Floor']['rent_unit_price_opt'];
+			$model->rent_unit_price = $_POST['Floor']['rent_unit_price'];
+			$model->total_rent_price = $_POST['Floor']['total_rent_price'];
+			$model->unit_condo_fee_opt = (int)$_POST['Floor']['unit_condo_fee_opt'];
+			$model->unit_condo_fee = $_POST['Floor']['unit_condo_fee'];
+			$model->total_condo_fee = $_POST['Floor']['total_condo_fee'];
+			$model->deposit_opt = $_POST['Floor']['deposit_opt'];
+			$model->deposit_month = $_POST['Floor']['deposit_month'];
+			$model->deposit = $_POST['Floor']['deposit'];
+			$model->total_deposit = $_POST['Floor']['total_deposit'];
+			$model->key_money_opt = $_POST['Floor']['key_money_opt'];
+			$model->key_money_month = $_POST['Floor']['key_money_month'];
+			$model->repayment_opt = (int)$_POST['Floor']['repayment_opt'];
+			$model->repayment_reason = $_POST['Floor']['repayment_reason'];
+			$model->repayment_amt = $_POST['Floor']['repayment_amt'];
+			if(isset($_POST['Floor']['repayment_amt_opt']) && $_POST['Floor']['repayment_amt_opt'] != ''){
+				$model->repayment_amt_opt = $_POST['Floor']['repayment_amt_opt'];
+			}else{
+				$model->repayment_amt_opt = '';
+			}
+			$model->renewal_fee_opt	 = (int)$_POST['Floor']['renewal_fee_opt'];
+			$model->renewal_fee_reason	 = $_POST['Floor']['renewal_fee_reason'];
+			$model->renewal_fee_recent	 = $_POST['Floor']['renewal_fee_recent'];
+			$model->repayment_notes	 = $_POST['Floor']['repayment_notes'];
+			$model->notice_of_cancellation	 = $_POST['Floor']['notice_of_cancellation'];
+			if(isset($_POST['Floor']['contract_period_opt']) && $_POST['Floor']['contract_period_opt'] != ''){
+				$model->contract_period_opt	 = $_POST['Floor']['contract_period_opt'];
+			}else{
+				$model->contract_period_opt = '';
+			}
+			if(isset($_POST['Floor']['contract_period_optchk']) && $_POST['Floor']['contract_period_optchk'] != ''){
+				$model->contract_period_optchk	 = 1;
+			}
+			else {
+				$model->contract_period_optchk	 = '';
+			}
+			$model->contract_period_duration	 = $_POST['Floor']['contract_period_duration'];
+			$model->air_conditioning_facility_type	 = $_POST['Floor']['air_conditioning_facility_type'];
+			$model->air_conditioning_details	 = $_POST['Floor']['air_conditioning_details'];			
+
+			if(isset($_POST['Floor']['air_conditioning_time_used']) && $_POST['Floor']['air_conditioning_time_used'] == 2){
+				$model->air_conditioning_time_used	 = $_POST['Floor']['air_conditioning_time_used'].'-'.$_POST['Floor']['f_air_usetime_detail_week_start'].'~'.$_POST['Floor']['f_air_usetime_detail_week_finish'].'-'.$_POST['Floor']['f_air_usetime_detail_sat_start'].'~'.$_POST['Floor']['f_air_usetime_detail_sat_finish'].'-'.$_POST['Floor']['f_air_usetime_detail_sun_start'].'~'.$_POST['Floor']['f_air_usetime_detail_sun_finish'];
+			}else{
+				$model->air_conditioning_time_used	 = $_POST['Floor']['air_conditioning_time_used'];
+			}
+			$model->number_of_air_conditioning	 = $_POST['Floor']['number_of_air_conditioning'];
+			$model->optical_cable	 = (int)$_POST['Floor']['optical_cable'];
+			$model->oa_type = $_POST['Floor']['oa_type'];
+			$model->oa_height = $_POST['Floor']['oa_height'];
+			$model->ceiling_height = $_POST['Floor']['ceiling_height'];
+			$model->floor_material = $_POST['Floor']['floor_material'];
+			$model->electric_capacity = $_POST['Floor']['electric_capacity'];
+			$model->separate_toilet_by_gender = $_POST['Floor']['separate_toilet_by_gender'];
+			if(isset($_POST['Floor']['toilet_location']) && $_POST['Floor']['toilet_location'] != ''){
+				$model->toilet_location = $_POST['Floor']['toilet_location'];
+			}else{
+				$model->toilet_location = '';
+			}
+			if(isset($_POST['Floor']['washlet']) && $_POST['Floor']['washlet'] != ''){
+				$model->washlet = $_POST['Floor']['washlet'];
+			}else{
+				$model->washlet = '';
+			}
+			if(isset($_POST['Floor']['toilet_cleaning']) && $_POST['Floor']['toilet_cleaning']!= ''){
+				$model->toilet_cleaning = $_POST['Floor']['toilet_cleaning'];
+			}else{
+				$model->toilet_cleaning = '';
+			}
+			$model->notes = $_POST['Floor']['notes'];
+			if(isset($_POST['Floor']['floor_source_id']) && $_POST['Floor']['floor_source_id'] != ''){
+				$model->floor_source_id = $_POST['Floor']['floor_source_id'];
+			}
+			
+			if(isset($_POST['Floor']['web_publishing'])){
+				$model->web_publishing = $_POST['Floor']['web_publishing'];
+				if($_POST['Floor']['web_publishing_note'] != ""){
+					$model->web_publishing_note = $_POST['Floor']['web_publishing_note'];
+				}
+			}
+			
+			$model->update_person_in_charge = $_POST['Floor']['update_person_in_charge'];
+			$model->property_confirmation_person = $_POST['Floor']['property_confirmation_person'];
+
+			$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+			$loguser_id = $user->user_id;
+			$model->modified_by = $loguser_id;
+			$model->modified_on = date('Y-m-d H:i:s');
+// 			print_r($model);
+// 			exit;
+			if($model->save(false)){
+				
+				// BEGIN - Create wordpress building reference
+				$params['building_id'] = $model->building_id;
+				$wordpress = new Wordpress();
+				$wordpress->processIntergrateWordpress($model->floor_id, Wordpress::FLOOR_TYPE, 'update', $params);
+				$wordpress->reGenerateLocations();
+				// End - processing with wordpress
+				
+				$buildingDetails = Building::model()->findByPk($_POST['Floor']['buildingId']);
+				$town = $buildingDetails->town;
+				Yii::app()->closetown->calculateMarketCloseTown($town);
+				
+				$updateHistory = new FloorUpdateHistory();
+				$updateHistory->floor_id = $model->floor_id;
+				$updateHistory->building_id = $_POST['Floor']['buildingId'];
+				$updateHistory->vacancy_info = $_POST['Floor']['vac_info'];
+				$updateHistory->rent_unit_price = $_POST['Floor']['rent_unit_price'];
+				$updateHistory->rent_unit_price_opt = (int)$_POST['Floor']['rent_unit_price_opt'];
+				$updateHistory->unit_condo_fee = $_POST['Floor']['unit_condo_fee'];
+				$updateHistory->unit_condo_fee_opt = (int)$_POST['Floor']['unit_condo_fee_opt'];
+				$updateHistory->deposit_month = $_POST['Floor']['deposit_month'];
+				$updateHistory->key_money_opt = $_POST['Floor']['key_money_opt'];
+				$updateHistory->key_money_month = $_POST['Floor']['key_money_month'];
+				$updateHistory->deposit = $_POST['Floor']['deposit'];
+				$updateHistory->deposit_opt = $_POST['Floor']['deposit_opt'];
+
+				if(isset($_POST['Floor']['floor_source_id']) && $_POST['Floor']['floor_source_id'] != ''){
+					$updateHistory->floor_source_id = $_POST['Floor']['floor_source_id'];
+				}
+				$updateHistory->confirmation = '';
+				$updateHistory->update_person_in_charge = $_POST['Floor']['update_person_in_charge'];
+				$updateHistory->property_confirmation_person = $_POST['Floor']['property_confirmation_person'];
+				$updateHistory->modified_on = date('Y-m-d H:i:s');
+				$updateHistory->price_rise = 0;
+				if($oldRentPrice != $newRentPrice){
+					$priceDifference = $newRentPrice - $oldRentPrice;
+					if($priceDifference > 0){
+						$updateHistory->price_rise = 1;
+					}else{
+						$updateHistory->price_rise = 0;
+					}
+				}
+				$getAvailableFloor = Floor::model()->findAll('building_id = '.$_POST['Floor']['buildingId'].' AND vacancy_info = 1');	
+				$updateHistory->available_floor = count($getAvailableFloor);
+				
+				$getFloorForRent = Floor::model()->findAll('building_id = '.$_POST['Floor']['buildingId'].' AND rent_unit_price_opt = 0');
+				$totalRentSum = 0;
+				$finalRentAvg = 0;
+				if(count($getFloorForRent) > 0 && !empty($getFloorForRent)){
+					foreach($getFloorForRent as $fLoop){
+						$totalRentSum += $fLoop['rent_unit_price'];
+					}
+					$finalRentAvg = $totalRentSum/count($getFloorForRent);
+				}
+				$updateHistory->current_average_rent = $finalRentAvg;
+				
+				$oldPrecedingUser = $getFlooOldDetails->preceding_user;
+				$updateHistory->what_to_check = '';
+				if($_POST['Floor']['pre_user'] != $oldPrecedingUser){
+					$updateHistory->what_to_check = '先行有りの解除/先行有り';
+				}
+						
+				if($updateHistory->save(false)){
+					$users=Users::model()->findByAttributes(array('username'=>Yii::app()->user->id));
+					$loguser_id = $users->user_id;
+					
+					$buildingDetails = Building::model()->findByPk($model->building_id);
+
+					$changeLogModel = new BuildingUpdateLog;
+					$changeLogModel->building_id = $_POST['Floor']['buildingId'];
+					if(isset($_GET['type']) && $_GET['type'] == 'duplicate' && $_GET['type'] != ""){
+						$changeLogModel->change_content = '<a href="'.Yii::app()->createUrl("building/singleBuilding",array("id"=>$model->floor_id)).'">'.Yii::app()->controller->__trans('New floor').' ID:'.$id.' ('.$buildingDetails['prefecture'].')</a>'.Yii::app()->controller->__trans('has been added');
+					}else{
+						$changeLogModel->change_content = '<a href="'.Yii::app()->createUrl("building/singleBuilding",array("id"=>$model->floor_id)).'">'.Yii::app()->controller->__trans('Floor info').' ID:'.$id.' ('.$buildingDetails['prefecture'].')</a>'.Yii::app()->controller->__trans('has been updated');
+					}
+					$changeLogModel->added_by = $loguser_id;
+					$changeLogModel->added_on = date('Y-m-d H:i:s');
+					if($changeLogModel->save(false)){
+						
+						//check for office alert
+						$cFloorId = $id;
+						$currentFloor = Floor::model()->findByPk($cFloorId);
+						
+						$criteria=new CDbCriteria();
+						$criteria->order='office_alert_id DESC';					
+						$officeAlertList = OfficeAlert::model()->findAll($criteria);
+						
+						$i = 1;
+						foreach($officeAlertList as $officeAlert){
+							$getConditions = SearchSettings::model()->findByPk($officeAlert->cond_id);
+							$cond = json_decode($getConditions->ss_json,true);
+							$floorId = explode(',',$officeAlert->floor_id);
+							
+							$oAlert = OfficeAlert::model()->findByPk($officeAlert->office_alert_id);
+							$pass = true;
+							
+							if((isset($cond['areaMinValue']) && $cond['areaMinValue'] != 0) || (isset($cond['areaMaxValue']) && $cond['areaMaxValue'] != 0)){
+								$fArea = $currentFloor->area_ping;
+								if(!($fArea > $cond['areaMinValue']) && !($fArea < $cond['areaMaxValue'])){
+									$pass = false;
+								}
+							}
+							
+							if((isset($cond['floorMin']) && $cond['floorMin'] != 0) || (isset($cond['floorMax']) && $cond['floorMax'] != 0)){
+								$fMin = $currentFloor->floor_down;
+								$fMax = $currentFloor->floor_up;
+								if(!($fMin > $cond['floorMin']) && !($fMax <= $cond['floorMax'])){
+									$pass = false;
+								}
+							}
+							
+							if((isset($cond['unitMinValue']) && $cond['unitMinValue'] != 0) || (isset($cond['unitMaxValue']) && $cond['unitMaxValue'] != 0)){
+								$fUnit = $currentFloor->rent_unit_price;
+								if(!($fUnit > $cond['unitMinValue']) && !($fUnit <= $cond['unitMaxValue'])){
+									$pass = false;
+								}
+							}
+							
+							if((isset($cond['costMinAmount']) && $cond['costMinAmount'] != 0) || (isset($cond['costMaxAmount']) && $cond['costMaxAmount'] != 0)){
+								$fCost = $currentFloor->unit_condo_fee;
+								if(!($fCost > $cond['costMinAmount']) && !($fCost <= $cond['costMaxAmount'])){
+									$pass = false;
+								}
+							}
+							
+							if((isset($cond['possibleDataMin']) && $cond['possibleDataMin'] != 0) || (isset($cond['possibleDataMax']) && $cond['possibleDataMax'] != 0)){
+								$fMoveDate = $currentFloor->move_in_date;
+								$expDate = explode('/',$fMoveDate);
+								if(!(is_int($expDate[2]))){
+									unset($expDate[2]);
+									array_push($expDate,1);
+								}
+								$expDate = implode('/',$expDate);
+								$convertTime = strtotime($expDate);
+								$minDate = strtotime($cond['possibleDataMin']);
+								$maxDate = strtotime($cond['possibleDataMax']);
+								if(!($convertTime > $minDate) && !($convertTime < $maxDate)){
+									$pass = false;
+								}
+							}
+							
+							if(isset($cond['statusRequirement']) && !empty($cond['statusRequirement'])){
+								if(in_array("2", $cond['statusRequirement'])){
+									$fVacantSchedule = $currentFloor->vacant_schedule;
+									$expDate = explode('/',$fVacantSchedule);
+									if(!(is_int($expDate[2]))){
+										unset($expDate[2]);
+										array_push($expDate,1);
+									}
+									
+									$convertTime = strtotime($expDate);
+									$todayDate = strtotime('today');
+									$oneYearOn = strtotime("+ 365 day");
+									if(!($convertTime >= $todayDate) && !($convertTime <= $oneYearOn)){
+										$pass = false;
+									}
+								}
+								
+								if(in_array("1", $cond['statusRequirement'])){
+									if($currentFloor->vacancy_info != 1){
+										$pass = false;
+									}
+								}
+								
+								if(in_array("3", $cond['statusRequirement'])){
+									if($currentFloor->vacancy_info != 0){
+										$pass = false;
+									}
+								}
+							}
+							
+							if(isset($cond['facilities']) && !empty($cond['facilities'])){
+								$facilities = $cond['facilities'];
+								foreach($facilities as $fac){
+									if(in_array($fac,array('1','3'))){
+										if($fac == 1){
+											if($currentFloor->separate_toilet_by_gender != 2){
+												$pass = false;
+											}
+										}else{
+											if($currentFloor->air_conditioning_facility_type != "個別・セントラル"){
+												$pass = false;
+											}
+										}
+									}else{
+										if($fac == '2'){
+											if($currentFloor->oa_type != 2){
+												$pass = false;
+											}
+										}
+										if($fac == '4'){
+											if($currentFloor->floor_partition == ""){
+												$pass = false;
+											}
+										}
+									}
+								}
+							}
+							
+							if(isset($cond['floorType']) && !empty($cond['floorType'])){
+								$floorType = $currentFloor->type_of_use;
+								$fType = explode(',',$floorType);
+								
+								foreach($cond['floorType'] as $type){
+									if(!(in_array($type,$fType))){
+										$pass = false;
+									}
+								}
+							}
+							
+							if(isset($cond['formTypeList']) && !empty($cond['formTypeList'])){
+								$formTypeList = OwnershipManagement::model()->findAll('floor_id = '.$cFloorId);
+								$fManagementType = array();
+								foreach($formTypeList as $fType){
+									$fManagementType[] = $fType->management_type;
+								}
+								foreach($cond['formTypeList'] as $formType){
+									if(!(in_array($formType,$fManagementType))){
+										$pass = false;
+									}
+								}
+							}
+							
+							if(isset($cond['lenderType']) && !empty($cond['lenderType'])){
+								$lenderTypeList = OwnershipManagement::model()->findAll('floor_id = '.$cFloorId);
+								$fOwnerType = array();
+								foreach($lenderTypeList as $fLType){
+									$fOwnerType[] = $fLType->ownership_type;
+								}
+								foreach($cond['lenderType'] as $lenderType){
+									if(!(in_array($lenderType,$fOwnerType))){
+										$pass = false;
+									}
+								}
+							}
+							
+							if(isset($cond['hdnAddressFloorId']) && $cond['hdnAddressFloorId'] != 0){
+								$sFloorId = explode(',',$cond['hdnAddressFloorId']);
+								if(!in_array($cFloorId,$sFloorId)){
+									$pass = false;
+								}
+							}
+							
+							if(in_array($cFloorId,$floorId)){
+								$afterDiffFloorId = array_diff($floorId, array($cFloorId));
+							}else{
+								$afterDiffFloorId = $floorId;
+							}
+							
+							if($pass == true){
+								array_push($afterDiffFloorId,$cFloorId);
+								$fIds = implode(',',$afterDiffFloorId);
+								$oAlert->floor_id = $fIds;
+								$oAlert->save(false);
+							}
+							$i++;
+						}
+						if(isset($_GET['window']) && $_GET['window'] == 1){
+							//Yii::app()->user->setFlash('success', "フロア情報の更新が完了しました");
+							$this->redirect(array('floor/update','id'=>$model->floor_id,'msg'=>1));
+						}elseif(isset($_GET['msg']) && $_GET['msg'] == 1){
+							$this->redirect(array('floor/update','id'=>$model->floor_id,'msg'=>1));
+						}else{
+							$this->redirect(array('building/singleBuilding','id'=>$model->floor_id));
+						}
+						die;
+					}
+				}
+			}
+		}
+		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails,'floorSourceDetails'=>$floorSourceDetails,'userList'=>$userList,'updateHistory'=>$updateHistory));
+
 	}
 
 	/**
