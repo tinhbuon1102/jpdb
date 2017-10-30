@@ -496,7 +496,7 @@ if($requestData['print_type'] == 10){
 				{
 					for($i=0; $i < 4 ; $i++)
 					{
-						$floorDetails[] = array();
+// 						$floorDetails[] = array();
 					}
 					$countFloor = count($floorDetails);
 				}
@@ -738,8 +738,8 @@ if($requestData['print_type'] == 10){
 				}
 			?>
         <?php 
+        echo '</table></td>';
         if (!$breakFloorDetails) {
-        	echo '</table></td>';
 	        include('_print_facility_summary.php');
 	        include('_print_type2_bldimg.php');
         }
