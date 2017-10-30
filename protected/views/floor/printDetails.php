@@ -2090,7 +2090,7 @@ if($requestData['print_type'] == 11){
                     <th><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
                     <td><?php
                                                             $typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
-                                                            echo Yii::app()->controller->__trans($typeDetails['construction_type_name'])!=''?Yii::app()->controller->__trans($typeDetails['construction_type_name']):'-';
+                                                            echo $typeDetails['construction_type_name'] !='' ? Yii::app()->controller->__trans($typeDetails['construction_type_name'], 'ja') : '-';
                                                         ?></td>
                   </tr>
                   <tr>
