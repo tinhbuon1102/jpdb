@@ -57,14 +57,14 @@
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -92,14 +92,14 @@
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -109,7 +109,7 @@
 								$k++;
 							}
 							if($renewalDetails!="")
-								$renewalDetails .= Yii::app()->controller->__trans('ヶ月');;
+								$renewalDetails .= Yii::app()->controller->__trans('ヶ月', 'ja');;
 						}
 						$j = 0;
 						if(count($keymoneyArray) > 0){
@@ -122,14 +122,14 @@
 								$floorId = Floor::model()->findByPk($key);
 								if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 									if(strpos($floorId['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+										$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 									}else{
 										$floorDown = $floorId['floor_down'];
 									}
 									if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 									}else{
-										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+										$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 									}
 								}
 								if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
@@ -137,11 +137,11 @@
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('無し');
+										$keyMoneyOpt = Yii::app()->controller->__trans('無し', 'ja');
 									}else if($val == -1){
-										$keyMoneyOpt = Yii::app()->controller->__trans('不明');
+										$keyMoneyOpt = Yii::app()->controller->__trans('不明', 'ja');
 									}else if($val == -2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('未定');
+										$keyMoneyOpt = Yii::app()->controller->__trans('未定', 'ja');
 									}
 									$keyMoneyDetails .= $keyMoneyOpt.(count($keymoneyArray) > 2 ? '('.$fName.')'.$slsh : '');
 								}
@@ -157,14 +157,14 @@
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -187,14 +187,14 @@
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -203,15 +203,15 @@
 														}
 														if($val != 0 && $val != ""){
 															if($val == -3){
-																$repaymentOpt = Yii::app()->controller->__trans('無し');
+																$repaymentOpt = Yii::app()->controller->__trans('無し', 'ja');
 															}else if($val == -4){
-																$repaymentOpt = Yii::app()->controller->__trans('不明');
+																$repaymentOpt = Yii::app()->controller->__trans('不明', 'ja');
 															}else if($val == -1){
-																$repaymentOpt = Yii::app()->controller->__trans('未定');
+																$repaymentOpt = Yii::app()->controller->__trans('未定', 'ja');
 															}else if($val == -2){
-																$repaymentOpt = Yii::app()->controller->__trans('相談');
+																$repaymentOpt = Yii::app()->controller->__trans('相談', 'ja');
 															}else if($val == -5){
-																$repaymentOpt = Yii::app()->controller->__trans('スライド式');
+																$repaymentOpt = Yii::app()->controller->__trans('スライド式', 'ja');
 															}
 															$amortizationDetails .= $repaymentOpt.(count($amortizationArray) > 2 ? '('.$fName.')'.$slsh : '');
 														}
@@ -227,14 +227,14 @@
 														$floorId = Floor::model()->findByPk($key);
 														if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 															if(strpos($floorId['floor_down'], '-') !== false){
-																$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorId['floor_down']);
+																$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floorId['floor_down']);
 															}else{
 																$floorDown = $floorId['floor_down'];
 															}									
 															if(isset($floorId['floor_up']) && $floorId['floor_up'] != ''){
-																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' - '.$floorId['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
 															}else{
-																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階');
+																$fName =  $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
 															}
 														}
 														
@@ -264,7 +264,7 @@
 // 									if(substr($renewalDetails, -1)=="" || substr($renewalDetails, -1)==" ")
 										echo $renewalDetails!=''?$renewalDetails:'-'; 
 // 									else
-// 										echo $renewalDetails.Yii::app()->controller->__trans('ヶ月');
+// 										echo $renewalDetails.Yii::app()->controller->__trans('ヶ月', 'ja');
 								?></td>
 			</tr>
 			<tr>
@@ -275,7 +275,7 @@
 									echo $amortizationDetails.' '; 
 	                                if($MaxOccUnit && $MaxOccAmt){
 										if($MaxOccUnit == 1){
-											echo Yii::app()->controller->__trans('ヶ月');
+											echo Yii::app()->controller->__trans('ヶ月', 'ja');
 										}elseif($MaxOccUnit == 2){
 											echo Yii::app()->controller->__trans('%');
 										}else{
