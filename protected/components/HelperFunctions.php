@@ -297,9 +297,10 @@ class HelperFunctions extends CApplicationComponent {
 						{
 							$floor[$field] = date($dateFormatWithDate, $move_date);
 						}
+						
+						$floor[$field] = self::convertDateFormat($floor[$field]);
 					}
 		
-					$floor[$field] = self::convertDateFormat($floor[$field]);
 					return Yii::app()->controller->__trans($floor[$field]);
 				}
 				else {
