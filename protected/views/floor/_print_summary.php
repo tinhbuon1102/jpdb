@@ -46,7 +46,7 @@
                         </tr>
 						<tr>
 							<td><?php echo Yii::app()->controller->__trans('基準階面積', 'ja'); ?></td>
-							<td><?php echo $buildCart['std_floor_space'] != "" ? $buildCart['std_floor_space'].' 坪' : "-"; ?></td>
+							<td><?php echo $buildCart['std_floor_space'] != "" ? $buildCart['std_floor_space'].Yii::app()->controller->__trans('坪', 'ja') : "-"; ?></td>
 		</tr>
 	</table>
 </td>

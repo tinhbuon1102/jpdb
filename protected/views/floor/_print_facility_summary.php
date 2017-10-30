@@ -333,11 +333,11 @@
 					
 					$res = Array(0=>'', 1=>'', 2=>'', 3=>'', 4=>'');
 					foreach($fDetails as $floor){
-						if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]="個別・セントラル";
-						if($floor['air_conditioning_facility_type']=="個別") $res[1]="個別";
-						if($floor['air_conditioning_facility_type']=="セントラル") $res[2]="セントラル";
-						if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]="不明";
-						if($floor['air_conditioning_facility_type']=="無し") $res[4]="無し";
+						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('個別・セントラル', 'ja')) $res[0]=Yii::app()->controller->__trans('個別・セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('個別', 'ja')) $res[1]=Yii::app()->controller->__trans('個別', 'ja');
+						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('セントラル', 'ja')) $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('不明', 'ja') || $floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('不明', 'ja')) $res[3]==Yii::app()->controller->__trans('不明', 'ja');
+						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('無し', 'ja')) $res[4]=Yii::app()->controller->__trans('無し', 'ja');
 					}
 					
 					$result = '-';
