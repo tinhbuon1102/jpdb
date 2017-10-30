@@ -299,11 +299,8 @@ class HelperFunctions extends CApplicationComponent {
 						}
 						
 						$floor[$field] = self::convertDateFormat($floor[$field]);
-						return Yii::app()->controller->__trans($floor[$field]);
 					}
-					else {
-						return Yii::app()->controller->__trans($floor[$field], 'ja');
-					}
+					return Yii::app()->controller->__trans($floor[$field], 'ja');
 		
 				}
 				else {
