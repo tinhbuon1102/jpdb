@@ -294,7 +294,7 @@
 			<th><?php echo Yii::app()->controller->__trans('契約形態', 'ja'); ?></th><!--label-->
 			<td>
 				<?php
-									$contractDefaultArray = array('1'=>'普通借家','2'=>'定借','3'=>'定借希望');
+									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
 									foreach($contractDefaultArray as $key=>$val){
 										if(in_array($key,$contractOptArray)){
 											$temp .= ''.$val;
@@ -303,11 +303,11 @@
 									}
 									
 									if($temp=='-' && $contractPeriodOptChk!='')
-										echo $contractPeriodOptChk;
+										echo Yii::app()->controller->__trans($contractPeriodOptChk, 'ja');
 									else if($contractPeriodOptChk=='')
 										echo $temp;
 									else 
-										echo $temp.':'.$contractPeriodOptChk;
+										echo $temp.':'. Yii::app()->controller->__trans($contractPeriodOptChk, 'ja');
 								?>
 			</td>
 			</tr>
@@ -333,11 +333,11 @@
 					
 					$res = Array(0=>'', 1=>'', 2=>'', 3=>'', 4=>'');
 					foreach($fDetails as $floor){
-						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('個別・セントラル', 'ja')) $res[0]=Yii::app()->controller->__trans('個別・セントラル', 'ja');
-						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('個別', 'ja')) $res[1]=Yii::app()->controller->__trans('個別', 'ja');
-						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('セントラル', 'ja')) $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
-						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('不明', 'ja') || $floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('不明', 'ja')) $res[3]==Yii::app()->controller->__trans('不明', 'ja');
-						if($floor['air_conditioning_facility_type']==Yii::app()->controller->__trans('無し', 'ja')) $res[4]=Yii::app()->controller->__trans('無し', 'ja');
+						if($floor['air_conditioning_facility_type']=="個別・セントラル") $res[0]=Yii::app()->controller->__trans('個別・セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別', 'ja');
+						if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
+						if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明', 'ja');
+						if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し', 'ja');
 					}
 					
 					$result = '-';
@@ -356,8 +356,8 @@
 			<th><?php echo Yii::app()->controller->__trans('OAフロア', 'ja'); ?></th><!--label-->
 			<td>
 				<?php
-					$floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' AND vacancy_info = 1');
-					$oaDefaultArray = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),'3WAY','2WAY','1WAY',Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('非対応', 'ja'));
+					/*$floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id'].' AND vacancy_info = 1');
+					$oaDefaultArray = array('フリーアクセス','3WAY','2WAY','1WAY','引き込み可','非対応');
 					$oaFloor = array();
 					$oaHeight = array();
                     foreach($floorOAList as $floorOA){
@@ -372,7 +372,35 @@
                         	}
                         	break;
                         }
-                    }
+                    }*/
+				$floorOAList = Floor::model()->findAll('building_id = '.$buildCart['building_id']. $glob_where);
+                                                            $oaDefaultArrayOriginal = array(Yii::app()->controller->__trans('フリーアクセス', 'ja'),Yii::app()->controller->__trans('3WAY'),Yii::app()->controller->__trans('2WAY'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('引き込み可', 'ja'),Yii::app()->controller->__trans('1WAY'),Yii::app()->controller->__trans('非対応', 'ja'));
+                                                            $oaDefaultArray = array('フリーアクセス','3WAY','2WAY','1WAY','引き込み可','非対応');
+															$oaFloor = array();
+															$oaHeight = array();
+                                                            foreach($floorOAList as $floorOA){
+                                                                $oaFloor[] = $floorOA['oa_type'];
+                                                                $oaHeight[] = $floorOA['oa_height'];
+                                                            }
+                                                            
+                                                            $break = true;
+                                                            for($i=0;$i<count($oaFloor);$i++) {
+                                                            	if(in_array($oaFloor[$i],$oaDefaultArray)){
+                                                            		if (strpos($oaFloor[$i], 'WAY') !== false)
+                                                            		{
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i]);
+                                                            		}
+                                                            		else {
+                                                            			echo Yii::app()->controller->__trans($oaFloor[$i], 'ja') . ' - ';
+                                                            		}
+                                                            		if($oaHeight[$i]!="" || (int)$oaHeight[$i]!=0) {
+                                                            			echo Yii::app()->controller->__trans('フリアク高', 'ja').":".$oaHeight[$i]."mm";
+                                                            		}
+                                                            		$break = false;
+                                                            		break;
+                                                            	}
+                                                            }
+                                                            if($break) echo '-';
 					/*foreach($oaDefaultArray as $oa){
 						if(in_array($oa,$oaFloor)){
 							echo $oa;

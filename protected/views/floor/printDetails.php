@@ -1292,7 +1292,7 @@ if($requestData['print_type']==8){
             	}elseif($floorId['renewal_fee_opt'] == -1){
             		echo Yii::app()->controller->__trans('不明', 'ja');
             	}elseif($floorId['renewal_fee_opt'] == -2){
-            		echo Yii::app()->controller->__trans('Undecided･ask');
+            		echo Yii::app()->controller->__trans('未定･相談', 'ja');
             	}else{
             		echo '';
             	}
@@ -1641,8 +1641,10 @@ if($requestData['print_type'] == 11){
         <?php /*?><td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'坪' : "-"; ?></td><?php */?>
         <td class="center">
         <?php
-        $typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
-        echo $typeDetails['construction_type_name'];
+        /*$typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
+        echo $typeDetails['construction_type_name'];*/
+				$typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
+                                                            echo $typeDetails['construction_type_name'] !='' ? Yii::app()->controller->__trans($typeDetails['construction_type_name'], 'ja') : '-';
         ?></td>
       </tr>
       <?php
@@ -2099,7 +2101,7 @@ if($requestData['print_type'] == 11){
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('基準階面積', 'ja'); ?></th>
-                    <td><?php echo $buildCart['std_floor_space'] != "" ? $buildCart['std_floor_space'].' 坪' : "-"; ?></td>
+                    <td><?php echo $buildCart['std_floor_space'] != "" ? $buildCart['std_floor_space'].Yii::app()->controller->__trans('坪', 'ja') : "-"; ?></td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('共用率', 'ja'); ?></th>
@@ -2215,7 +2217,7 @@ if($requestData['print_type'] == 11){
                     <th><?php echo Yii::app()->controller->__trans('セキュリティ', 'ja'); ?></th>
                     <td><?php
                                                             $securityDetails = Security::model()->findByPk($buildCart['security_id']);
-                                                            echo $securityDetails['security_name']!=''?$securityDetails['security_name']:'-';
+                                                            echo $securityDetails['security_name']!=''?Yii::app()->controller->__trans($securityDetails['security_name'], 'ja'):'-';
                                                         ?></td>
                   </tr>
                   <tr>
