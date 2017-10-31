@@ -566,7 +566,7 @@ if(isset($customCondition)){
 										}
 										echo $vacInfo;
 										if($list->preceding_user == 1){
-												echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行有').'</span>';
+												echo '</br><span class="senko" style="background-color:yellow">'.'先行有'.'</span>';
 											}
 									?>
                                	</td>
@@ -713,9 +713,9 @@ if(isset($customCondition)){
 
 										if(isset($list->renewal_fee_reason) && $list->renewal_fee_reason != ""){
 											if($list->renewal_fee_reason == 1){
-												echo Yii::app()->controller->__trans('現賃料の');
+												echo '現賃料の';
 											}elseif($list->renewal_fee_reason == 2){
-												echo Yii::app()->controller->__trans('新賃料の');
+												echo '新賃料の';
 											}else{
 												echo '';
 											}
@@ -746,9 +746,9 @@ if(isset($customCondition)){
 	
 										if(isset($list->repayment_reason) && $list->repayment_reason != ""){
 											if($list->repayment_reason == 1){
-												echo Yii::app()->controller->__trans('現賃料の')."<br>";
+												echo '現賃料の'."<br>";
 											}elseif($list->repayment_reason == 2){
-												echo Yii::app()->controller->__trans('解約時賃料の')."<br>";
+												echo "解約時賃料の<br>";
 											}else{
 												echo '';
 											}
@@ -760,7 +760,7 @@ if(isset($customCondition)){
 	
 										if(isset($list->repayment_amt_opt) && $list->repayment_amt_opt != ""){
 											if($list->repayment_amt_opt == 1){
-												echo Yii::app()->controller->__trans('ヶ月');
+												echo 'ヶ月';
 											}elseif($list->repayment_amt_opt == 2){
 												echo Yii::app()->controller->__trans('%')."<br>";
 											}else{
@@ -866,7 +866,7 @@ if(isset($customCondition)){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                            <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
+                                            <span style='color:blue'><?php echo '空室'; ?></span>
                                         </td>
                                         <td>
                                             <?php
@@ -958,7 +958,7 @@ if(isset($customCondition)){
                                                     }
                                                 }
                                                 if(isset($related['deposit_month']) &&  $related['deposit_month'] != ''){
-                                                    echo '<br/>'.$related['deposit_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo '<br/>'.$related['deposit_month'].' '.'ヶ月';
                                                 }*/
                                             ?>
                                             <?php
@@ -982,7 +982,7 @@ if(isset($customCondition)){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
                                                 }
                                             ?>
                                         </td>
@@ -1002,9 +1002,9 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -1035,9 +1035,9 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                        echo '現賃料の'."<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                        echo "解約時賃料の<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -1049,7 +1049,7 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                        echo 'ヶ月'; 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -1158,7 +1158,7 @@ if(isset($customCondition)){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                            <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
+                                            <span style='color:blue'><?php echo '空室'; ?></span>
                                         </td>
                                         <td>
                                             <?php
@@ -1250,7 +1250,7 @@ if(isset($customCondition)){
                                                     }
                                                 }
                                                 if(isset($related['deposit_month']) &&  $related['deposit_month'] != ''){
-                                                    echo '<br/>'.$related['deposit_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo '<br/>'.$related['deposit_month'].' '.'ヶ月';
                                                 }*/
                                             ?>
                                             <?php
@@ -1274,7 +1274,7 @@ if(isset($customCondition)){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
                                                 }
                                             ?>
                                         </td>
@@ -1294,9 +1294,9 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -1327,9 +1327,9 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                        echo '現賃料の'."<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                        echo "解約時賃料の<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -1341,7 +1341,7 @@ if(isset($customCondition)){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                        echo 'ヶ月'; 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -1514,13 +1514,13 @@ if(isset($customCondition)){
                                                         if($negotiation['negotiation_type'] == 1){
                                                             echo '底値:';
                                                         }elseif($negotiation['negotiation_type'] == 2){
-                                                            echo Yii::app()->controller->__trans('敷金:');
+                                                            echo '敷金:';
                                                         }elseif($negotiation['negotiation_type'] == 3){
-                                                            echo Yii::app()->controller->__trans('礼金:');
+                                                            echo '礼金:';
                                                         }elseif($negotiation['negotiation_type'] == 5){
                                                             echo '目安値:';
                                                         }else{
-                                                            echo Yii::app()->controller->__trans('その他:');
+                                                            echo 'その他:';
                                                         }
                                                         echo ' '.$floorName;
                                                         ?>
@@ -1644,7 +1644,7 @@ if(isset($customCondition)){
             <?php echo Yii::app()->controller->__trans('Deposit negotiation value'); ?> 
             
               <input type="radio" name="negotiationType" id="negotiationType" class="negotiationType" value="3" data-label="" data-pre="" data-post="ヶ月"/>
-             <?php echo Yii::app()->controller->__trans('礼金交渉値'); ?> 
+             <?php echo '礼金交渉値'; ?> 
              
               <input type="radio" name="negotiationType" id="negotiationType" class="negotiationType" value="4" data-label="" data-pre="" data-post=""/>
              <?php echo Yii::app()->controller->__trans('Other negotiations information'); ?>  

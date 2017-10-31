@@ -235,7 +235,7 @@
 										}
 										echo $vacInfo;
 										if($list->preceding_user == 1){
-												echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行有').'</span>';
+												echo '</br><span class="senko" style="background-color:yellow">'.'先行有'.'</span>';
 											}
 									?>
                                 </td>
@@ -243,14 +243,14 @@
                                 <?php
                                 if(isset($list['floor_down']) && $list['floor_down'] != ""){
 									if(strpos($list['floor_down'], '-') !== false){
-										$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $list['floor_down']);
+										$floorDown = '地下'.' '.str_replace("-", "", $list['floor_down']);
 									}else{
 										$floorDown = $list['floor_down'];
 									}
 									if(isset($list['floor_up']) && $list['floor_up'] != ''){
-										echo $floorDown.' - '.$list['floor_up'].' '.Yii::app()->controller->__trans('階');
+										echo $floorDown.' - '.$list['floor_up'].' '.'階';
 									}else{
-										echo $floorDown.' '.Yii::app()->controller->__trans('階');
+										echo $floorDown.' '.'階';
 									}
 								}
 								if(isset($list['roomname']) && $list['roomname'] != ""){
@@ -443,9 +443,9 @@
 									
 									if(isset($list['renewal_fee_reason']) && $list['renewal_fee_reason'] != ""){
 										if($list['renewal_fee_reason'] == 1){
-											echo Yii::app()->controller->__trans('現賃料の'); 
+											echo "現賃料の"; 
 										}elseif($list['renewal_fee_reason'] == 2){
-											echo Yii::app()->controller->__trans('新賃料の'); 
+											echo "新賃料の"; 
 										}else{
 											echo '';
 										}
@@ -477,9 +477,9 @@
                                         
                                         if(isset($list['repayment_reason']) && $list['repayment_reason'] != ""){
                                             if($list['repayment_reason'] == 1){
-                                                echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                echo "現賃料の<br>"; 
                                             }elseif($list['repayment_reason'] == 2){
-                                                echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                echo "解約時賃料の<br>"; 
                                             }else{
                                                 echo '';
                                             }
@@ -491,7 +491,7 @@
                                         
                                         if(isset($list['repayment_amt_opt']) && $list['repayment_amt_opt'] != ""){
                                             if($list['repayment_amt_opt'] == 1){
-                                                echo Yii::app()->controller->__trans('ヶ月'); 
+                                                echo "ヶ月"; 
                                             }elseif($list['repayment_amt_opt'] == 2){
                                                 echo Yii::app()->controller->__trans('%')."<br>"; 
                                             }else{
@@ -628,7 +628,7 @@
                                                             	$negVal = $negotiation['negotiation'];
                                                             }
 															if(strpos($floor['floor_down'], '-') !== false){
-                                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+                                                                $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
                                                             }
@@ -655,13 +655,13 @@
                                                         if($negotiation['negotiation_type'] == 1){
                                                             echo '底値:';
                                                         }elseif($negotiation['negotiation_type'] == 2){
-                                                            echo Yii::app()->controller->__trans('敷金:');
+                                                            echo '敷金:';
                                                         }elseif($negotiation['negotiation_type'] == 3){
-                                                            echo Yii::app()->controller->__trans('礼金:');
+                                                            echo '礼金:';
                                                         }elseif($negotiation['negotiation_type'] == 5){
                                                             echo '目安値:';
                                                         }else{
-                                                            echo Yii::app()->controller->__trans('その他:');
+                                                            echo 'その他:';
                                                         }
                                                         echo ' '.$floorName;
                                                         ?>
@@ -721,7 +721,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <button type="button" class="btnAddTrans"><?php echo Yii::app()->controller->__trans('追加'); ?></button>
+                                <button type="button" class="btnAddTrans"><?php echo "追加"; ?></button>
                             </td>
                         </tr>
                     </table>

@@ -36,14 +36,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                 <?php
                     if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
                         if(strpos($floorDetails['floor_down'], '-') !== false){
-                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+                            $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
                         }else{
                             $floorDown = $floorDetails['floor_down'];
                         }									
                         if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
+                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
                         }else{
-                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
+                            echo $floorDown.' '.'階';
                         }
                     }
                     if(isset($floorDetails['roomname']) && $floorDetails['roomname'] != ""){
@@ -58,7 +58,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <?php echo isset($floorDetails['area_ping']) && $floorDetails['area_ping'] != "" ? $floorDetails['area_ping'].Yii::app()->controller->__trans('tsubo') : ""; ?>
                 </span>
                 <span class="pad-lef05">
-                    <?php echo isset($floorDetails['area_net']) && $floorDetails['area_net'] != "" ? 'ネット:'.$floorDetails['area_net'].Yii::app()->controller->__trans('坪') : ""; ?>
+                    <?php echo isset($floorDetails['area_net']) && $floorDetails['area_net'] != "" ? 'ネット:'.$floorDetails['area_net'].'坪' : ""; ?>
                 </span>
                 <?php
                     $managementCompartOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$globalFloorId.' AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1');
@@ -208,14 +208,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['vacancy_info']) && $floorDetails['vacancy_info'] != ""){
                                         if($floorDetails['vacancy_info'] == 1){
-                                            echo "<span style='color:blue'>".Yii::app()->controller->__trans('空室')."</span>";
+                                            echo "<span style='color:blue'>空室</span>";
                                             if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
                                             }
                                         }elseif($floorDetails['vacancy_info'] == 0){
-                                            echo "<span style='color:red'>".Yii::app()->controller->__trans('満室')."</span>";
+                                            echo "<span style='color:red'>".'満室'."</span>";
                                             if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
                                             }
                                         }else{
                                             echo '-';
@@ -227,14 +227,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
                                         if(strpos($floorDetails['floor_down'], '-') !== false){
-                                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+                                            $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
                                         }else{
                                             $floorDown = $floorDetails['floor_down'];
                                         }
                                         if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-                                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
+                                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
                                         }else{
-                                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
+                                            echo $floorDown.' '.'階';
                                         }
                                         echo '<div class="floor_name">' . ($floorDetails['roomname'] ? ' ' . $floorDetails['roomname'] : '') . '</div>';
                                     }
@@ -489,9 +489,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                         if($floorDetails['renewal_fee_reason'] == 1){
-                                            echo Yii::app()->controller->__trans('現賃料の'); 
+                                            echo "現賃料の"; 
                                         }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                            echo Yii::app()->controller->__trans('新賃料の'); 
+                                            echo "新賃料の"; 
                                         }else{
                                             echo '';
                                         }
@@ -522,9 +522,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                         if($floorDetails['repayment_reason'] == 1){
-                                            echo Yii::app()->controller->__trans('現賃料の'); 
+                                            echo "現賃料の"; 
                                         }elseif($floorDetails['repayment_reason'] == 2){
-                                            echo Yii::app()->controller->__trans('解約時賃料の'); 
+                                            echo "解約時賃料の"; 
                                         }else{
                                             echo '';
                                         }
@@ -536,7 +536,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                         if($floorDetails['repayment_amt_opt'] == 1){
-                                            echo Yii::app()->controller->__trans('ヶ月'); 
+                                            echo "ヶ月"; 
                                         }elseif($floorDetails['repayment_amt_opt'] == 2){
                                             echo Yii::app()->controller->__trans('%')."<br>"; 
                                         }else{
@@ -618,10 +618,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         $explodeString = explode('-',$floorDetails['air_conditioning_time_used']);
                                         if($explodeString[0] != 2){
                                             if($explodeString[0] == 0){
-                                                echo Yii::app()->controller->__trans('不明');
+                                                echo "不明";
                                             }
                                             if($explodeString[0] == 1){
-                                                echo Yii::app()->controller->__trans('利用時間制限なし（24時間）');
+                                                echo "利用時間制限なし（24時間）";
                                             }
                                         }else{
                                             echo Yii::app()->controller->__trans('weekday').'：- '.($explodeString[1] != "~" ? $explodeString[1] : "").'<br/>'.Yii::app()->controller->__trans('Sat').'：- '.($explodeString[2] != "~" ? $explodeString[2] : "").'<br/>'.Yii::app()->controller->__trans('Sun').'：- '.($explodeString[3] != "~" ? $explodeString[3] : "");
@@ -658,11 +658,11 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['separate_toilet_by_gender']) && $floorDetails['separate_toilet_by_gender'] != ""){
                                         if($floorDetails['separate_toilet_by_gender'] == 0){
-                                            echo Yii::app()->controller->__trans('Unknown'); 
+                                            echo "不明"; 
                                         }elseif($floorDetails['separate_toilet_by_gender'] == 1){
-                                            echo Yii::app()->controller->__trans('無し'); 
+                                            echo "無し"; 
                                         }elseif($floorDetails['separate_toilet_by_gender'] == 2){
-                                            echo Yii::app()->controller->__trans('有り'); 
+                                            echo "有り"; 
                                         }else{
                                             echo '-';
                                         }
@@ -894,7 +894,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             	$negVal = $negotiation['negotiation'];
                                                             }
 															if(strpos($floor['floor_down'], '-') !== false){
-                                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+                                                                $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
                                                             }
@@ -921,13 +921,13 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                         if($negotiation['negotiation_type'] == 1){
                                                             echo '底値:';
                                                         }elseif($negotiation['negotiation_type'] == 2){
-                                                            echo Yii::app()->controller->__trans('敷金:');
+                                                            echo '敷金:';
                                                         }elseif($negotiation['negotiation_type'] == 3){
-                                                            echo Yii::app()->controller->__trans('礼金:');
+                                                            echo '礼金:';
                                                         }elseif($negotiation['negotiation_type'] == 5){
                                                             echo '目安値:';
                                                         }else{
-                                                            echo Yii::app()->controller->__trans('その他:');
+                                                            echo 'その他:';
                                                         }
                                                         echo ' '.$floorName;
                                                         ?>
@@ -959,7 +959,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         <table class="admin_info admin_mb ad_list">
                         	<tbody>
                                 <tr>
-                                    <th><?php echo Yii::app()->controller->__trans('種別'); ?></th>
+                                    <th><?php echo "種別"; ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('management company name'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('Person in charge'); ?></th>
                                     <th><font><font><?php echo Yii::app()->controller->__trans('TEL / FAX'); ?></font></font></th>
@@ -1028,7 +1028,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 										<?php
                                         if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
                                             if($ownerList['management_type'] == -1){
-                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                             echo '不明'; 
                                             }elseif($ownerList['management_type'] == 1){
                                                 echo '専任媒介';
                                             }elseif($ownerList['management_type'] == 2){
@@ -1049,15 +1049,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     </td>
                                     <td class="ad_charge">
 										<?php
-                                        if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                            if (is_numeric($ownerList['charge'])){
+                                        if (is_numeric($ownerList['charge'])){
                                                 echo number_format($ownerList['charge'],1,'.','');
-                                            }else{
+                                            }
+                                            elseif (in_array($ownerList['charge'], array('ask', 'unknown', 'undecided'))){
+                                            	echo Yii::app()->controller->__trans($ownerList['charge']);
+                                            }
+                                            else{
                                                 echo $ownerList['charge'];
                                             }
-                                        }else{
-                                            echo '-';
-                                        }
                                         ?>
                                     </td>
                                     <td class="ad_update">
@@ -1152,15 +1152,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     </td>
                                     <td class="ad_charge">
 										<?php
-                                        if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                            if (is_numeric($ownerList['charge'])){
+                                        if (is_numeric($ownerList['charge'])){
                                                 echo number_format($ownerList['charge'],1,'.','');
-                                            }else{
+                                            }
+                                            elseif (in_array($ownerList['charge'], array('ask', 'unknown', 'undecided'))){
+                                            	echo Yii::app()->controller->__trans($ownerList['charge']);
+                                            }
+                                            else{
                                                 echo $ownerList['charge'];
                                             }
-                                        }else{
-                                            echo '-';
-                                        }
                                         ?>
                                     </td>
                                     <td class="ad_update">
@@ -1247,7 +1247,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <?php
                                         if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
                                             if($ownerList['management_type'] == -1){
-                                                echo Yii::app()->controller->__trans('Unknown'); 
+                                                echo '不明'; 
                                             }elseif($ownerList['management_type'] == 1){
                                                 echo '専任媒介';
                                             }elseif($ownerList['management_type'] == 2){
@@ -1354,7 +1354,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <?php
                                         if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
                                             if($ownerList['management_type'] == -1){
-                                                echo Yii::app()->controller->__trans('Unknown'); 
+                                                echo '不明'; 
                                             }elseif($ownerList['management_type'] == 1){
                                                 echo '専任媒介';
                                             }elseif($ownerList['management_type'] == 2){
@@ -1440,14 +1440,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 echo '-';
                                             }else{
                                                 if($floorUp != ""){
-                                                    echo Yii::app()->controller->__trans('地上');
+                                                    echo '地上';
                                                     echo $floorUp;
-                                                    echo Yii::app()->controller->__trans('階');
+                                                    echo '階';
                                                 }
                                                 if($floorDown != ""){
-                                                    echo Yii::app()->controller->__trans('地下');
+                                                    echo '地下';
                                                     echo $floorDown;
-                                                    echo Yii::app()->controller->__trans('階');
+                                                    echo '階';
                                                 }
                                             }
                                             ?>
@@ -1578,7 +1578,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 											<?php
                                             $extractParkingUnitNo = explode('-',$buildingDetails['parking_unit_no']);
                                             if($extractParkingUnitNo[0] == 1){
-                                                $parkingUnit = $extractParkingUnitNo[1].Yii::app()->controller->__trans('台');
+                                                $parkingUnit = $extractParkingUnitNo[1].'台';
                                             }else if($extractParkingUnitNo[0] == 2){
                                                 $parkingUnit = Yii::app()->controller->__trans('noexist');
                                             }else if($extractParkingUnitNo[0] == 3){
@@ -1707,7 +1707,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             }else if($wholesaleLease == 2){
                                                 $lease = Yii::app()->controller->__trans('Ask');
                                             }else if($wholesaleLease == 1){
-                                                $lease = Yii::app()->controller->__trans('可能');;
+                                                $lease = '可能';
                                             }else{
                                                 $lease = '-';
                                             }
@@ -1958,7 +1958,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <input type="hidden" name="hdnBuildingId" id="hdnBuildingId" class="hdnBuildingId" value="<?php echo $globalBuildingId; ?>" />
                                         <button type="button" class="btn btn-primary btnAddAll"><?php echo Yii::app()->controller->__trans('ADD ALL'); ?></button>
                                     </th>
-                                    <th><?php echo Yii::app()->controller->__trans('空満'); ?></th>
+                                    <th><?php echo '空満'; ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('number of stairs'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('area'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('rent / Ping'); ?></th>
@@ -2018,7 +2018,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         
                                         if($related['vacancy_info'] == '1'){
                                             $vacancyClass = 'empty';
-                                            $vacLabel = Yii::app()->controller->__trans('空');
+                                            $vacLabel = '空';
                                         }else{
                                             continue;
                                         }
@@ -2043,16 +2043,16 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                     </td>
                                     <td>
-                                        <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
+                                        <span style='color:blue'><?php echo '空室'; ?></span>
 										<? if($related['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
                                             }
 											?>
                                     </td>
                                     <td>
                                         <?php
                                         if(strpos($related['floor_down'], '-') !== false){
-                                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $related['floor_down']);
+                                            $floorDown = '地下'.' '.str_replace("-", "", $related['floor_down']);
                                         }else{
                                             $floorDown = $related['floor_down'];
                                         }
@@ -2149,7 +2149,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                             }
                                             if($related['key_money_month'] != ""){
-                                                echo $related['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                echo $related['key_money_month'].' '.'ヶ月';
                                             }
                                         ?>
                                     </td>
@@ -2169,9 +2169,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['renewal_fee_reason']) && $related['renewal_fee_reason'] != ""){
                                                 if($related['renewal_fee_reason'] == 1){
-                                                    echo Yii::app()->controller->__trans('現賃料の'); 
+                                                    echo '現賃料の'; 
                                                 }elseif($related['renewal_fee_reason'] == 2){
-                                                    echo Yii::app()->controller->__trans('新賃料の'); 
+                                                    echo '新賃料の'; 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2202,9 +2202,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['repayment_reason']) && $related['repayment_reason'] != ""){
                                                 if($related['repayment_reason'] == 1){
-                                                    echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                    echo "現賃料の<br>"; 
                                                 }elseif($related['repayment_reason'] == 2){
-                                                    echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                    echo "解約時賃料の<br>"; 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2216,7 +2216,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['repayment_amt_opt']) && $related['repayment_amt_opt'] != ""){
                                                 if($related['repayment_amt_opt'] == 1){
-                                                    echo Yii::app()->controller->__trans('ヶ月'); 
+                                                    echo "ヶ月"; 
                                                 }elseif($related['repayment_amt_opt'] == 2){
                                                     echo Yii::app()->controller->__trans('%')."<br>"; 
                                                 }else{
@@ -2331,12 +2331,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                        <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
+                                        <span style='color:blue'><?php echo "空室"; ?></span>
                                         </td>
                                         <td>
                                             <?php
                                             if(strpos($floorDetails['floor_down'], '-') !== false){
-                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+                                                $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
                                             }else{
                                                 $floorDown = $floorDetails['floor_down'];
                                             }
@@ -2447,7 +2447,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
                                                 }
                                             ?>
                                         </td>
@@ -2467,9 +2467,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2500,9 +2500,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                        echo "現賃料の<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                        echo "解約時賃料の<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2514,7 +2514,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                        echo "ヶ月"; 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -2622,16 +2622,16 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                           <span style='color:blue'> <?php echo Yii::app()->controller->__trans('空室'); ?></span>
+                                           <span style='color:blue'> <?php echo "空室"; ?></span>
 										   <? if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">先行申込有り</span>';
                                             }
 											?>
                                         </td>
                                         <td>
                                             <?php
                                             if(strpos($floorDetails['floor_down'], '-') !== false){
-                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+                                                $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
                                             }else{
                                                 $floorDown = $floorDetails['floor_down'];
                                             }
@@ -2742,7 +2742,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
+                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
                                                 }
                                             ?>
                                         </td>
@@ -2762,9 +2762,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2795,9 +2795,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                        echo "現賃料の<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                        echo "解約時賃料の<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2809,7 +2809,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo Yii::app()->controller->__trans('ヶ月'); 
+                                                        echo "ヶ月"; 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -3224,14 +3224,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             $floorName = '';
                                             foreach($allocateFloorDetails as $floor){
                                                 if(strpos($floor['floor_down'], '-') !== false){
-                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+                                                    $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
                                                 }else{
                                                     $floorDown = $floor['floor_down'];
                                                 }
                                                 if($floor['floor_up'] != ""){
-                                                    $floorName .= $floorDown." ~ ".$floor['floor_up'].' '.Yii::app()->controller->__trans('階');
+                                                    $floorName .= $floorDown." ~ ".$floor['floor_up'].' '.'階';
                                                 }else{
-                                                    $floorName .= $floorDown.' '.Yii::app()->controller->__trans('階');
+                                                    $floorName .= $floorDown.' '.'階';
                                                 }
                                                 if($merge['negotiation_type'] == 4){
                                                     $negUnitList = '円/坪';
@@ -3515,9 +3515,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 											$floorDown = $webFloor['floor_down'];
 										}									
 										if(isset($webFloor['floor_up']) && $webFloor['floor_up'] != ''){
-											echo $floorDown.' - '.$webFloor['floor_up'].' '.Yii::app()->controller->__trans('階');
+											echo $floorDown.' - '.$webFloor['floor_up'].' '.'階';
 										}else{
-											echo $floorDown.' '.Yii::app()->controller->__trans('階');
+											echo $floorDown.' '.'階';
 										}
 									}
 								?>
@@ -3599,7 +3599,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                   <input type="file" class="file_input_hidden uploadPlanClass" name="planPicture" id="planPicture" tabindex="1">
                                   <div class="standard_wraper">
                                   	<label>
-	                                  	<?php echo Yii::app()->controller->__trans('基準階'); ?>
+	                                  	<?php echo "基準階"; ?>
                                   	</label>
                                   	<input type="checkbox" name="planPictureStandard" id="planPictureStandard" />
                                   </div>
@@ -3641,10 +3641,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                             $flagClass = $lbl = '';
                             if($floor['vacancy_info'] == 1){
                                 $flagClass = 'empty';
-                                $lbl = Yii::app()->controller->__trans('空');
+                                $lbl = '空';
                             }else{
                                 $flagClass = 'full';
-                                $lbl = Yii::app()->controller->__trans('満');
+                                $lbl = '満';
                             }
                       ?>
                         <tr>
@@ -3660,15 +3660,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                           <td class="nm"><?php
                             if(isset($floor['floor_down']) && $floor['floor_down'] != ""){
                                 if(strpos($floor['floor_down'], '-') !== false){
-									$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+									$floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
 								}else{
 									$floorDown = $floor['floor_down'];
 								}
 								
                                 if(isset($floor['floor_up']) && $floor['floor_up'] != ""){
-                                    echo $floorDown." ~ ".$floor['floor_up'].Yii::app()->controller->__trans("階");
+                                    echo $floorDown." ~ ".$floor['floor_up'].'階';
                                 }else{
-									echo $floorDown.Yii::app()->controller->__trans("階");
+									echo $floorDown.'階';
 								}
                                 if(isset($floor['roomname']) && $floor['roomname'] != ""){
                                     echo $floor['roomname'];
@@ -4022,14 +4022,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 								<?php
 									if(isset($floorForPic['floor_down']) && $floorForPic['floor_down'] != ""){
 										if(strpos($floorForPic['floor_down'], '-') !== false){
-											$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorForPic['floor_down']);
+											$floorDown = '地下'.' '.str_replace("-", "", $floorForPic['floor_down']);
 										}else{
 											$floorDown = $floorForPic['floor_down'];
 										}									
 										if(isset($floorForPic['floor_up']) && $floorForPic['floor_up'] != ''){
-											echo $floorDown.' - '.$floorForPic['floor_up'].' '.Yii::app()->controller->__trans('階');
+											echo $floorDown.' - '.$floorForPic['floor_up'].' '.'階';
 										}else{
-											echo $floorDown.' '.Yii::app()->controller->__trans('階');
+											echo $floorDown.' '.'階';
 										}
 									}
 								?>
@@ -4418,9 +4418,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 						$floorDown = $floorDetails['floor_down'];
 					}
 					if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-						$titleHistory .= $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
+						$titleHistory .= $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
 					}else{
-						$titleHistory .= $floorDown.' '.Yii::app()->controller->__trans('階');
+						$titleHistory .= $floorDown.' '.'階';
 					}
 				}
 				$titleHistory .= '/';
@@ -4454,7 +4454,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                 	<tbody>
                     	<tr class="archive_ttl">
                         	<th scope="col" class="date"></th>
-                            <th scope="col" class="rm"><font><font><?php echo Yii::app()->controller->__trans('空満'); ?></font></font></th>
+                            <th scope="col" class="rm"><font><font><?php echo "空満"; ?></font></font></th>
                             <th scope="col" class="prm"><font><font><?php echo Yii::app()->controller->__trans('rent'); ?></font></font></th>
                             <th scope="col" class="csc"><font><font><?php echo Yii::app()->controller->__trans('condo fees'); ?></font></font></th>
                             <th scope="col" class="dps"><font><font><?php echo Yii::app()->controller->__trans('deposit'); ?></font></font></th>
@@ -4470,10 +4470,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 											foreach($floorHistoryList as $historyList){
 												if($historyList['vacancy_info'] == 0){
 													$vacantClass = 'full';
-													$vacantLabel = "<span style='color:red'>".Yii::app()->controller->__trans('満室').'</span>';
+													$vacantLabel = "<span style='color:red'>".'満室'.'</span>';
 												}else{
 													$vacantClass = 'empty';
-													$vacantLabel = "<span style='color:blue'>".Yii::app()->controller->__trans('空室').'</span>';
+													$vacantLabel = "<span style='color:blue'>".'空室'.'</span>';
 												}
 									?>
                                     	<tr>
@@ -4737,10 +4737,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 							<?php echo Yii::app()->controller->__trans('Updated by'); ?>
                         </th>
                         <th scope="col" class="fs">
-							<?php echo Yii::app()->controller->__trans('サイズ'); ?>
+							<?php echo 'サイズ'; ?>
                         </th>
                         <th scope="col" class="memo">
-							<?php echo Yii::app()->controller->__trans('メモ'); ?>
+							<?php echo 'メモ'; ?>
                         </th>
                         <th scope="col" class="bt_d">&nbsp;</th>
                     </tr>
@@ -4867,10 +4867,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 							
 							if($related['vacancy_info'] == '1'){
 								$vacancyClass = 'empty';
-								$vacLabel = Yii::app()->controller->__trans('空');
+								$vacLabel = '空';
 							}else{
 								$vacancyClass = 'full';
-								$vacLabel = Yii::app()->controller->__trans('満');
+								$vacLabel = '満';
 							}
 					?>
                     <tr class="bg_b bg <?php $this->changeColor($related['floor_id']); ?>">
@@ -4885,7 +4885,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         	<font><font>
 							<?php
                             if(strpos($related['floor_down'], '-') !== false){
-								$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $related['floor_down']);
+								$floorDown = '地下'.' '.str_replace("-", "", $related['floor_down']);
 							}else{
 								$floorDown = $related['floor_down'];
 							}
@@ -5025,9 +5025,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($related['repayment_reason']) && $related['repayment_reason'] != ""){
 										if($related['repayment_reason'] == 1){
-											echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+											echo "現賃料の<br>"; 
 										}elseif($related['repayment_reason'] == 2){
-											echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+											echo "解約時賃料の<br>"; 
 										}else{
 											echo '';
 										}
@@ -5039,7 +5039,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($related['repayment_amt_opt']) && $related['repayment_amt_opt'] != ""){
 										if($related['repayment_amt_opt'] == 1){
-											echo Yii::app()->controller->__trans('ヶ月'); 
+											echo "ヶ月"; 
 										}elseif($related['repayment_amt_opt'] == 2){
 											echo Yii::app()->controller->__trans('%')."<br>"; 
 										}else{
@@ -5146,10 +5146,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if(!empty($floorDetails)){
 											if($floorDetails['vacancy_info'] == '1'){
 												$vacancyClass = 'empty';
-												$vacLabel = Yii::app()->controller->__trans('空');
+												$vacLabel = '空';
 											}else{
 												$vacancyClass = 'full';
-												$vacLabel = Yii::app()->controller->__trans('満');
+												$vacLabel = '満';
 											}
                                         
                                 ?>
@@ -5165,7 +5165,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         	<font><font>
 							<?php
                             if(strpos($floorDetails['floor_down'], '-') !== false){
-								$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+								$floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
 							}else{
 								$floorDown = $floorDetails['floor_down'];
 							}
@@ -5305,9 +5305,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
 										if($floorDetails['repayment_reason'] == 1){
-											echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+											echo "現賃料の<br>"; 
 										}elseif($floorDetails['repayment_reason'] == 2){
-											echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+											echo "解約時賃料の<br>"; 
 										}else{
 											echo '';
 										}
@@ -5319,7 +5319,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
 										if($floorDetails['repayment_amt_opt'] == 1){
-											echo Yii::app()->controller->__trans('ヶ月'); 
+											echo 'ヶ月'; 
 										}elseif($floorDetails['repayment_amt_opt'] == 2){
 											echo Yii::app()->controller->__trans('%')."<br>"; 
 										}else{
@@ -5416,10 +5416,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 								$floorDetails = Floor::model()->findByPk($fId);
 								if($floorDetails['vacancy_info'] == '1'){
 									$vacancyClass = 'empty';
-									$vacLabel = Yii::app()->controller->__trans('空');
+									$vacLabel = '空';
 								}else{
 									$vacancyClass = 'full';
-									$vacLabel = Yii::app()->controller->__trans('満');
+									$vacLabel = '満';
 								}
 					?>
 					<tr class="bg_b bg">
@@ -5434,7 +5434,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                         	<font><font>
 							<?php
                             if(strpos($floorDetails['floor_down'], '-') !== false){
-								$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+								$floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
 							}else{
 								$floorDown = $floorDetails['floor_down'];
 							}
@@ -5574,9 +5574,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
 										if($floorDetails['repayment_reason'] == 1){
-											echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+											echo "現賃料の<br>"; 
 										}elseif($floorDetails['repayment_reason'] == 2){
-											echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+											echo "解約時賃料の<br>"; 
 										}else{
 											echo '';
 										}
@@ -5588,7 +5588,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 									
 									if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
 										if($floorDetails['repayment_amt_opt'] == 1){
-											echo Yii::app()->controller->__trans('ヶ月'); 
+											echo "ヶ月"; 
 										}elseif($floorDetails['repayment_amt_opt'] == 2){
 											echo Yii::app()->controller->__trans('%')."<br>"; 
 										}else{
@@ -5682,12 +5682,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if(isset($relatedAllFloorList) && count($relatedAllFloorList) > 0 ){
                                             foreach($relatedAllFloorList as $allFloor){
                                                 if(strpos($allFloor['floor_down'], '-') !== false){
-                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $allFloor['floor_down']);
+                                                    $floorDown = '地下'.' '.str_replace("-", "", $allFloor['floor_down']);
                                                 }else{
                                                     $floorDown = $allFloor['floor_down'];
                                                 }
                                     ?>
-                                    <option value="<?php echo $allFloor['floor_id']; ?>"> <font><font> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".Yii::app()->controller->__trans("階")." ".$allFloor['roomname'].")"; ?> </font></font> </option>
+                                    <option value="<?php echo $allFloor['floor_id']; ?>"> <font><font> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".'階'." ".$allFloor['roomname'].")"; ?> </font></font> </option>
                                     <?php
                                             }
                                         }
@@ -5712,12 +5712,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if(isset($relatedAllFloorList) && count($relatedAllFloorList) > 0 ){
                                             foreach($relatedAllFloorList as $allFloor){
                                                 if(strpos($allFloor['floor_down'], '-') !== false){
-                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $allFloor['floor_down']);
+                                                    $floorDown = '地下'.' '.str_replace("-", "", $allFloor['floor_down']);
                                                 }else{
                                                     $floorDown = $allFloor['floor_down'];
                                                 }
                                     ?>
-                                    <option <?php echo $allFloor['fixed_floor'] ? 'selected' : '';?> value="<?php echo $allFloor['floor_id']; ?>"> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".Yii::app()->controller->__trans("階")." ".$allFloor['roomname'].")"; ?> </option>
+                                    <option <?php echo $allFloor['fixed_floor'] ? 'selected' : '';?> value="<?php echo $allFloor['floor_id']; ?>"> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".'階'." ".$allFloor['roomname'].")"; ?> </option>
                                     <?php
                                             }
                                         }
@@ -5987,7 +5987,7 @@ if(count($getGoogleMapKeyDetails) > 0){
               <input type="checkbox" name="rentFloorId[]" id="rentFloorId" class="rentFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
 			  if(strpos($floor['floor_down'], '-') !== false){
-				  $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+				  $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
 			  }else{
 				  $floorDown = $floor['floor_down'];
 			  }
@@ -6083,7 +6083,7 @@ if(count($getGoogleMapKeyDetails) > 0){
               <input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
 			  if(strpos($floor['floor_down'], '-') !== false){
-				  $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
+				  $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
 			  }else{
 				  $floorDown = $floor['floor_down'];
 			  }

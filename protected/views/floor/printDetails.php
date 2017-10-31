@@ -446,7 +446,7 @@ if($requestData['print_type'] == 10){
         <!--fixed texts-->
         <th class="label_3"><?php echo Yii::app()->controller->__trans('募集階', 'ja'); ?></th>
         <!--fixed texts-->
-        <th class="label_4"<?php echo Yii::app()->controller->__trans('>面積(坪)', 'ja'); ?><br/>
+        <th class="label_4"><?php echo Yii::app()->controller->__trans('面積(坪)', 'ja'); ?><br/>
           (<?php echo Yii::app()->controller->__trans('m'); ?>&sup2;)</th>
         <!--fixed texts-->
         <th class="label_5"><?php echo Yii::app()->controller->__trans('賃料(坪単価)', 'ja'); ?><br/>
@@ -2019,7 +2019,7 @@ if($requestData['print_type'] == 11){
               <td class="date-move center"></td>
             </tr>
             <tr>
-              <td class="right-align notes" colspan="7"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額', 'ja'); ?><br/>
+              <td class="right-align notes" colspan="8"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額', 'ja'); ?><br/>
                 <?php echo Yii::app()->controller->__trans('賃料等課税対象となる金額には別途消費税が加算されます', 'ja'); ?></td>
             </tr>
           </table></td>

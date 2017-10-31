@@ -167,7 +167,7 @@
 													if($model->move_in_date == Yii::app()->controller->__trans('undecided')){
 														$selectOpt3 = 'selected';
 													}
-													$select .= "\t<option val='即' ".$selectOpt1.">".Yii::app()->controller->__trans('即')."</option>\n";
+													$select .= "\t<option val='即' ".$selectOpt1.">".Yii::app()->controller->__trans('immediately')."</option>\n";
 													$select .= "\t<option val='".Yii::app()->controller->__trans('ask')."' ".$selectOpt2.">".Yii::app()->controller->__trans('ask')."</option>\n";
 													$select .= "\t<option val='".Yii::app()->controller->__trans('undecided')."' ".$selectOpt3.">".Yii::app()->controller->__trans('undecided')."</option>\n";
 													for($i=$currYear; $i <= $setLoopForYear; $i++){
@@ -737,8 +737,8 @@
 													<?php $sel = 'selected'; ?>
                                                     <select name="Floor[repayment_reason]" id="f_price_amo_timeflag" data-role="none" class="repaymentReasonDrop repayment_opt_input">
                                                     	<option value="" selected=""></option>
-                                                        <option value="1" <?php echo isset($model->repayment_reason) && $model->repayment_reason == '1' ?  $sel :''; ?>><?php echo Yii::app()->controller->__trans('現賃料の');?></option>
-                                                        <option value="2" <?php echo isset($model->repayment_reason) && $model->repayment_reason == '2' ?  $sel :''; ?>><?php echo Yii::app()->controller->__trans('解約時賃料の');?></option>
+                                                        <option value="1" <?php echo isset($model->repayment_reason) && $model->repayment_reason == '1' ?  $sel :''; ?>><?php echo "現賃料の";?></option>
+                                                        <option value="2" <?php echo isset($model->repayment_reason) && $model->repayment_reason == '2' ?  $sel :''; ?>><?php echo "解約時賃料の";?></option>
                                                     </select>
                                                     <input type="text" name="Floor[repayment_amt]" value="<?php echo isset($model->repayment_amt) && $model->repayment_amt != '' ? $model->repayment_amt :''; ?>" class="ty8 mt price_amo repayment_amt repayment_opt_input">
                                                     <label class="rd2">
@@ -772,8 +772,8 @@
 													<?php $sele_ren = 'selected'; ?>
                                                     <select name="Floor[renewal_fee_reason]" id="f_price_rerent_timeflag" data-role="none" class="auto  price_rerent_input clearinput">
                                                     	<option value="">--- </option>
-                                                        <option value="1"  <?php echo isset($model->renewal_fee_reason) && $model->renewal_fee_reason == '1' ?  $sele_ren :''; ?>><?php echo Yii::app()->controller->__trans('現賃料の');?></option>
-                                                        <option value="2" <?php echo isset($model->renewal_fee_reason) && $model->renewal_fee_reason == '2' ?  $sele_ren :''; ?>><?php echo Yii::app()->controller->__trans('新賃料の');?></option>
+                                                        <option value="1"  <?php echo isset($model->renewal_fee_reason) && $model->renewal_fee_reason == '1' ?  $sele_ren :''; ?>><?php echo "現賃料の";?></option>
+                                                        <option value="2" <?php echo isset($model->renewal_fee_reason) && $model->renewal_fee_reason == '2' ?  $sele_ren :''; ?>><?php echo "新賃料の";?></option>
                                                     </select>
                                                     <input type="text" id="frenfr" name="Floor[renewal_fee_recent]" value="<?php echo isset($model->renewal_fee_recent) && $model->renewal_fee_recent != '' ? $model->renewal_fee_recent :''; ?>"  class="ty8 mt price_rerent renewal_fee_recent price_rerent_input clearinput">
 													<?php echo Yii::app()->controller->__trans('months');?>
@@ -835,10 +835,10 @@
 													<?php $select1='selected'; ?>
                                                     <select name="Floor[air_conditioning_facility_type]" class="auto">
                                                     	<option value="unknown" <?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == 'unknown' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('unknown');?></option>
-                                                        <option value="個別" <?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == '個別' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('個別');?></option>
-                                                        <option value="セントラル"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == 'セントラル' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('セントラル');?></option>
-                                                        <option value="個別・セントラル"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == '個別・セントラル' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('個別・セントラル');?></option>
-                                                        <option value="なし"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == 'なし' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('なし');?></option>
+                                                        <option value="個別" <?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == '個別' ?  $select1 :''; ?>><?php echo "個別";?></option>
+                                                        <option value="セントラル"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == 'セントラル' ?  $select1 :''; ?>><?php echo "セントラル";?></option>
+                                                        <option value="個別・セントラル"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == '個別・セントラル' ?  $select1 :''; ?>><?php echo "個別・セントラル";?></option>
+                                                        <option value="なし"<?php echo isset($model->air_conditioning_facility_type) && $model->air_conditioning_facility_type == 'なし' ?  $select1 :''; ?>><?php echo "なし";?></option>
                                                    	</select>
 													<?php echo Yii::app()->controller->__trans('details');?>
                                                     <input type="text" name="Floor[air_conditioning_details]" value="<?php echo isset($model->air_conditioning_details) && $model->air_conditioning_details != '' ? $model->air_conditioning_details :''; ?>" class="ty6">
@@ -1025,7 +1025,7 @@
                                                 </th>
                                                 <td>
                                                 	<input type="text" size="5" name="Floor[number_of_air_conditioning]" value="<?php echo isset($model->number_of_air_conditioning) && $model->number_of_air_conditioning != '' ?  $model->number_of_air_conditioning :''; ?>" class="ty8">
-													<?php echo Yii::app()->controller->__trans('基');?>
+													<?php echo "基";?>
                                                 </td>
                                             </tr>
                                             <?php /*?><tr>
@@ -1057,12 +1057,12 @@
 													<?php echo Yii::app()->controller->__trans('type');?>：
                                                     <select name="Floor[oa_type]" id="f_oa" data-role="none" class="auto">
                                                     	<option value="">-</option>
-                                                        <option value="非対応" <?php echo isset($model->oa_type) && $model->oa_type == '非対応' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('非対応');?></option>
-                                                        <option value="フリーアクセス" <?php echo isset($model->oa_type) && $model->oa_type == 'フリーアクセス' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('フリーアクセス');?></option>
+                                                        <option value="非対応" <?php echo isset($model->oa_type) && $model->oa_type == '非対応' ?  $select1 :''; ?>><?php echo "非対応";?></option>
+                                                        <option value="フリーアクセス" <?php echo isset($model->oa_type) && $model->oa_type == 'フリーアクセス' ?  $select1 :''; ?>><?php echo "フリーアクセス";?></option>
                                                         <option value="1WAY" <?php echo isset($model->oa_type) && $model->oa_type == '1WAY' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('1WAY');?></option>
                                                         <option value="2WAY" <?php echo isset($model->oa_type) && $model->oa_type == '2WAY' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('2WAY');?></option>
                                                         <option value="3WAY" <?php echo isset($model->oa_type) && $model->oa_type == '3WAY' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('3WAY');?></option>
-                                                        <option value="引き込み可" <?php echo isset($model->oa_type) && $model->oa_type == '引き込み可' ?  $select1 :''; ?>><?php echo Yii::app()->controller->__trans('引き込み可');?></option>
+                                                        <option value="引き込み可" <?php echo isset($model->oa_type) && $model->oa_type == '引き込み可' ?  $select1 :''; ?>><?php echo "引き込み可";?></option>
                                                    	</select>
 													<?php echo "フリアク高";?>：
                                                     <input type="text" name="Floor[oa_height]" value="<?php echo isset($model->oa_height   )&& $model->oa_height != ''? $model->oa_height :''; ?>"  class="ty1">
@@ -1521,9 +1521,9 @@
                                                             
                                                             if(isset($oFloor['repayment_reason']) && $oFloor['repayment_reason'] != ""){
                                                                 if($oFloor['repayment_reason'] == 1){
-                                                                    echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                    echo "現賃料の<br>"; 
                                                                 }elseif($oFloor['repayment_reason'] == 2){
-                                                                    echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                    echo "解約時賃料の<br>"; 
                                                                 }else{
                                                                     echo '';
                                                                 }
@@ -1773,9 +1773,9 @@
                                                                     
                                                                     if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                                         if($floorDetails['repayment_reason'] == 1){
-                                                                            echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                            echo "現賃料の<br>"; 
                                                                         }elseif($floorDetails['repayment_reason'] == 2){
-                                                                            echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                            echo "解約時賃料の<br>"; 
                                                                         }else{
                                                                             echo '';
                                                                         }
@@ -2606,9 +2606,9 @@
                                                         
                                                         if(isset($oFloor['repayment_reason']) && $oFloor['repayment_reason'] != ""){
                                                             if($oFloor['repayment_reason'] == 1){
-                                                                echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                echo "現賃料の<br>"; 
                                                             }elseif($oFloor['repayment_reason'] == 2){
-                                                                echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                echo "解約時賃料の<br>"; 
                                                             }else{
                                                                 echo '';
                                                             }
@@ -3107,9 +3107,9 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                                     if($floorDetails['repayment_reason'] == 1){
-                                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                        echo "現賃料の<br>"; 
                                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                        echo "解約時賃料の<br>"; 
                                                                     }else{
                                                                         echo '';
                                                                     }
@@ -3809,9 +3809,9 @@
                                                         
                                                         if(isset($oFloor['repayment_reason']) && $oFloor['repayment_reason'] != ""){
                                                             if($oFloor['repayment_reason'] == 1){
-                                                                echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                echo "現賃料の<br>"; 
                                                             }elseif($oFloor['repayment_reason'] == 2){
-                                                                echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                echo "解約時賃料の<br>"; 
                                                             }else{
                                                                 echo '';
                                                             }
@@ -4061,9 +4061,9 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                                     if($floorDetails['repayment_reason'] == 1){
-                                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                        echo "現賃料の<br>"; 
                                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                        echo "解約時賃料の<br>"; 
                                                                     }else{
                                                                         echo '';
                                                                     }
@@ -4311,9 +4311,9 @@
                                                                 
                                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                                     if($floorDetails['repayment_reason'] == 1){
-                                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                                        echo "現賃料の<br>"; 
                                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                                        echo "解約時賃料の<br>"; 
                                                                     }else{
                                                                         echo '';
                                                                     }

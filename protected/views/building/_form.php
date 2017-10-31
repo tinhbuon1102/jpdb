@@ -161,8 +161,8 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor'); ?>
                             </th>
                             <td>
-								<input type="text" id="avg_neighbor_fee_min" name="Building[avg_neighbor_fee_min]" value="<?php echo $model->avg_neighbor_fee_min?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            <input type="text" id="avg_neighbor_fee_max" name="Building[avg_neighbor_fee_max]" value="<?php echo $model->avg_neighbor_fee_max?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" id="avg_neighbor_fee_min" name="Building[avg_neighbor_fee_min]" value="<?php echo $model->avg_neighbor_fee_min?>" class="ty5">&nbsp;<?php echo "円"; ?> &nbsp;~
+                            <input type="text" id="avg_neighbor_fee_max" name="Building[avg_neighbor_fee_max]" value="<?php echo $model->avg_neighbor_fee_max?>" class="ty5">&nbsp;<?php echo "円"; ?>
                                 <p class="note">
 									<?php echo Yii::app()->controller->__trans('Please enter neighbor avg fee for premium office website.'); ?>
                                 </p>
@@ -173,8 +173,8 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor Calculated'); ?>
                             </th>
                             <td>
-								<input type="text" readonly="readonly" id="avg_neighbor_fee_min_sqm" name="Building[avg_neighbor_fee_min_sqm]" value="" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            	<input type="text" readonly="readonly" id="avg_neighbor_fee_max_sqm" name="Building[avg_neighbor_fee_max_sqm]" value="" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" readonly id="avg_neighbor_fee_min_sqm" name="Building[avg_neighbor_fee_min_sqm]" value="" class="ty5">&nbsp;<?php echo "円"; ?> &nbsp;~
+                            	<input type="text" readonly id="avg_neighbor_fee_max_sqm" name="Building[avg_neighbor_fee_max_sqm]" value="" class="ty5">&nbsp;<?php echo "円"; ?>
                             </td>
                         </tr>
                         <?php /*?><tr>
@@ -303,8 +303,8 @@
 							}
 						?>
                         <td>
-                        	<input type="text" name="Building[exp_rent]" value="<?php echo isset($expRent_exp1[0]) && $expRent_exp1[0] != '' ? $expRent_exp1[0] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            <input type="text" name="Building[exp_rent2]" value="<?php echo isset($expRent_exp1[1]) && $expRent_exp1[1] != '' ? $expRent_exp1[1] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;(&nbsp;
+                        	<input type="text" name="Building[exp_rent]" value="<?php echo isset($expRent_exp1[0]) && $expRent_exp1[0] != '' ? $expRent_exp1[0] :''; ?>" class="ty5">&nbsp;<?php echo "円"; ?> &nbsp;~
+                            <input type="text" name="Building[exp_rent2]" value="<?php echo isset($expRent_exp1[1]) && $expRent_exp1[1] != '' ? $expRent_exp1[1] :''; ?>" class="ty5">&nbsp;<?php echo "円"; ?> &nbsp;(&nbsp;
                             <label>
 								<?php $expRentCheck = 'checked'; ?>
                                 <input type="radio" name="Building[exp_rent_opt]" value="1" <?php echo isset($expRent_exp[1]) && $expRent_exp[1] == '1' ? $expRentCheck :''; ?> checked="" class="ip">
@@ -440,7 +440,7 @@
 			            	<?php echo Yii::app()->controller->__trans('std_floor_space Calculated'); ?>
 			            </td>
 			        	<td>
-							<input readonly="readonly" class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="">
+							<input readonly class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="">
 							<?php echo Yii::app()->controller->__trans('㎡/円');?>
 			        	</td>
 			        </tr>
