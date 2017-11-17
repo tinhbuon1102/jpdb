@@ -1,4 +1,4 @@
-                                   <tr>
+                                   <tr class="<?php echo ($list['info']['vacancy_info'] ? 'row-vacant' : 'row-novacant') ?>">
                                     <td colspan="6" style="text-align:left;">
                                         <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
                                                                                 
@@ -17,7 +17,7 @@
                                         
                                     </td>
                                     </tr>
- 			<tr class="trFloor <?php $this->changeColor($list['info']['floor_id']); ?>"  data-href='<?php echo Yii::app()->createUrl('building/singleBuilding',array('id'=>$list['info']['floor_id'])); ?>'>
+ 			<tr class="trFloor <?php echo ($list['info']['vacancy_info'] ? 'row-vacant' : 'row-novacant') ?> <?php $this->changeColor($list['info']['floor_id']); ?>"  data-href='<?php echo Yii::app()->createUrl('building/singleBuilding',array('id'=>$list['info']['floor_id'])); ?>'>
                             	<td>
                                 	<input type="hidden" name="hdnBuildingId" id="hdnBuildingId" class="hdnBuildingId" value="<?php echo $buildingList['building_id']; ?>" />
                                     <input type="hidden" name="hdnFloorId" id="hdnFloorId" class="hdnFloorId" value="<?php echo $list['info']['floor_id']; ?>" />

@@ -15,7 +15,8 @@ if(is_array($floorIds) && count($floorIds) > 0) {
 	$allFloorCounting = count($floorIds);
 }
 
-$allBuildingsStr = implode(',',$buildingIds);
+$buildingIds = $buildingIds ? $buildingIds : array();
+$allBuildingsStr = implode(',', $buildingIds);
 if(isset($topPage) && $topPage == 1){
 	//$this->render('searchedBuidingResult',array('resultData'=>$resultData,'fIds'=>$fIds,'topPage'=>1));
 	$conditionCriteria =  Yii::app()->user->getState("conditionCriteria");
@@ -288,7 +289,7 @@ if(isset($customCondition)){
             <?PHP } $ci++; ?>
         </div><!--/search-result-tool-->
         
-        <div class="list-item">
+        <div class="list-item" id="item_building_<?php echo $buildingList['building_id']?>">
         	<div class="main-info clearfix">
             	<div class="b-name">
                 	<h2><?php echo $buildingList['name']; 
@@ -525,8 +526,16 @@ if(isset($customCondition)){
                         
                             if(!empty($flootList['single_owner_window_array'])){
                                 foreach($flootList['single_owner_window_array'] as $list2){
-                                    ?>
-                                    <tr>
+                                	$countVacant = $countNoVacant = 0;
+                                	foreach ($list2['info'] as $floor_inside)
+                                	{
+                                		$countVacant += $floor_inside['vacancy_info'] ? 1 : 0;
+                                		$countNoVacant += $floor_inside['vacancy_info'] ? 0 : 1;
+                                	}
+                                	 
+                                	$rowVacantClass = ($countVacant && !$countNoVacant ? 'row-vacant' : (!$countVacant && $countNoVacant ? 'row-novacant' : ''));
+                                	?>
+                                	<tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
                                         <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
                                                                                 

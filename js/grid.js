@@ -81,6 +81,11 @@ $(document).ready(function(e) {
 		  calculatedFields('#avg_neighbor_fee_max', '#avg_neighbor_fee_max_sqm', OFFICE_DB_FEE_RATE);
 	  });
 	  
+	  $('body').on('change', '.dispEmptyOnly', function(e){
+		 var building_id = $('#negBuildId').val().trim();
+		 $('#item_building_'+building_id+' tr.row-novacant').toggle();
+	  });
+	  
 	  calculateFieldInit();
 	  
 $(document).on('click','.cart-content .header-title',function(e){	  

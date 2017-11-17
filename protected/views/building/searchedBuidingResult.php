@@ -288,7 +288,7 @@ if(isset($customCondition)){
             <?PHP } $ci++; ?>
         </div><!--/search-result-tool-->
         
-        <div class="list-item">
+        <div class="list-item" id="item_building_<?php echo $buildingList['building_id']?>">
         	<div class="main-info clearfix">
             	<div class="b-name">
                 	<h2><?php echo $buildingList['name']; 
@@ -525,8 +525,16 @@ if(isset($customCondition)){
                         
                             if(!empty($flootList['single_owner_window_array'])){
                                 foreach($flootList['single_owner_window_array'] as $list2){
+                                	$countVacant = $countNoVacant = 0;
+                                	foreach ($list2['info'] as $floor_inside)
+                                	{
+                                		$countVacant += $floor_inside['vacancy_info'] ? 1 : 0;
+                                		$countNoVacant += $floor_inside['vacancy_info'] ? 0 : 1;
+                                	}
+                                	
+                                	$rowVacantClass = ($countVacant && !$countNoVacant ? 'row-vacant' : (!$countVacant && $countNoVacant ? 'row-novacant' : ''));
                                     ?>
-                                    <tr>
+                                    <tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
                                         <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
                                                                                 
