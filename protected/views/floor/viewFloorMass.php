@@ -15,6 +15,12 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/default.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/result_data.css?1477663797" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/ui.datepicker.css" />
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/groovy.css" media="screen">
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new_style.css" />
+
+
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/jquery.ui.js"></script>
@@ -31,6 +37,8 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/ui.datepicker-ja.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/jquery.jgrowl.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/jquery.jgrowl.min.css" />
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/a2form.js"></script>
 
 
 <script>
@@ -256,7 +264,7 @@ div#contents table.fl_data_c th {
 		<td f_no="<?=$fid?>" col="f_update_flag" od=""  class="w edit" style="" scope="col">
 			<img id="f_update_flag<?=$fid?>" name="f_update_flag" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/img/ico_check_mark.gif" class="f_not_updated" style="display: none">
 			<div class="bt_update">
-                          <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid)); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid,'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;" style="padding: 7px; text-decoration: none; background-color: #2E7BBA; color: #fff;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                          <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid)); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$fid,'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;" style="padding: 7px; text-decoration: none; background-color: #2E7BBA; color: #fff;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
                                 
             </div>
 			<input type="hidden" name="f_update_flag[]" value="0">
@@ -388,6 +396,149 @@ div#contents table.fl_data_c th {
 	</tr>
 	</tbody>
 	</table>
+<div class="form_box"s>
+	   <div id="main" class="full-width">
+          <div class="tab_con" style="max-height: 365px">
+            <div class="manage-info table-box new_style_box">
+                <form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="<?php echo Yii::app()->createUrl('floor/addHistory'); ?>">
+                    <div class="manageInfoResponse">
+                        <input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo isset($_GET['id']) && $_GET['id'] != "" ? $_GET['id'] : 0; ?>"/>
+                        <input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
+                        <input type="hidden" name="base_url" id="base_url" value="<?php echo Yii::app()->request->baseUrl; ?>">
+                        <table class="newform_info ad_list" style="width: 100%">
+                            <tbody>
+                                <tr>
+                                    <th>Trader ID</th>
+                                    <td><input type="text" name="searchTradersText" class="ty3 searchTradersText2"  id="searchTraderText" ></td>
+                                    <th class="btn-cell">
+                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">Search Trader</a>
+                                    </th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <td>
+                                        <select id="trader_id_new" class="auto tradersListNEW" name="traders_id">
+                                          <option value="0">Already added traders</option>
+                                          <?php
+                                            if(!empty($trans_all)){
+                                                foreach($trans_all as $trans_alls){
+                                                    $selected = '';
+                                            ?>
+                                            <option value="<?php echo $trans_alls['trader_id']; ?>"  <?php echo $selected; ?>><?php echo $trans_alls['traderId'].' '.$trans_alls['trader_name']; ?></option>
+                                            <?php
+                                                }
+                                            }else{
+                                            ?>
+                                            <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available');?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select></td>
+                                    <th>&nbsp;</th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <th>Sorts</th>
+                                    <td>
+                                    <select name="traders_type" id="traders_type" data-role="none" class="traders_type" >
+                                    <option value="">-</option>
+                                    <option value="1">オーナー</option>
+                                    <option value="6">サブリース</option>
+                                    <option value="7">貸主代理</option>
+                                    <option value="8">AM</option>
+                                    <option value="10">業者</option>
+                                    <option value="4">仲介業者</option>
+                                    <option value="2">管理会社</option>
+                                    <option value="9">PM</option>
+                                    <option value="3">ゼネコン</option>
+                                    <option value="-1">不明</option>
+                                    </select>
+                                    </td>
+                                    <th>Transaction type</th>
+                                    <td>
+                                    <select name="management_type_traders" id="traders_contract" class="management_type_traders" data-role="none">
+                                      <option value="">-</option>
+                                      <option value="-1">不明</option>
+                                      <option value="1">専任媒介</option>
+                                      <option value="2">一般媒介</option>
+                                      <option value="3">代理</option>
+                                      <option value="4">貸主</option>
+                                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Company Name</th>
+                                    <td><input type="text" name="traders_company_name" id="traders_name" value="" class="ty6 traders_company_name" required></td>
+                                    <th>&nbsp;</th>
+                                    <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                    <th>TEL</th>
+                                    <td><input type="text" name="traders_tel" id="td_tel" value="" class="ty6 traders_tel" required></td>
+                                    <th>FAX</th>
+                                    <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" required></td>
+                               </tr>
+                               <tr>
+                                    <th>Person in charge1</th>
+                                    <td><input type="text" name="traders_person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
+                                    <th>Person in charge2</th>
+                                    <td><input type="text" name="traders_person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
+                               </tr>
+                               <tr>
+                                    <th>Fee</th>
+                                    <td colspan="3">
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="unknown" class="radiUnknown"> 不明</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="ask" class="radiAsk"> 相談</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="undecided" class="radiUndecided"> 未定</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="無し" class="radiNone"> 無し</label>
+                                   <label class="rd2">| <input type="text" name="traders_fee" id="traders_fee" size="5" value="" class="ty8 traders_fee"></label>
+                                    </td>
+                               </tr>
+                               <tr>
+                                    <th>Target Floors<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> Show only vacant floors</th>
+                                    <td colspan="3" class="floors_target_list">
+
+                                    <?php if(!empty($all_floors)){
+                                        foreach ($all_floors as $all_floor) {
+                                           if($all_floor['vacancy_info']==1){
+                                             $class_floor ='vac_floor';
+                                              $span_class  ="vac_span";
+                                           }
+                                           else{
+                                            $class_floor ='no_vac_floor';
+                                            $span_class  ="no_vac_span";
+                                           }
+                                           if(!empty($all_floor['floor_down'])){
+                                             $floor= ' '.$all_floor['floor_down'].' Floor';
+                                           }
+                                           else{
+                                            $floor= 'Blank Floor';
+                                           }
+                                        ?>
+                                            <span class="<?= $span_class?> negFloor floorEmpt"><input type="checkbox" name="targetFloorId[]" id="" class="targetFloorId <?= $class_floor ?>" value="<?= $all_floor['floor_id'] ?>"><?= $floor ?></span>
+                                        <?php
+                                        }
+                                    } ?>
+             
+                                    </td>
+                               </tr>
+                                </tbody>
+                        </table>
+                        <table class="edit_input f_info_b mline tb-floor one-col mix-col">
+                          <tbody>
+                            <tr>
+                              <td align="center"><button href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="btn2AddNeawHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                 </form>
+                </div>
+		</div><!--/tab_con-->
+		</div><!--/main-->
+
+</div>
 <div class="form_box">
 <table class="edit_input">
 	<tr>

@@ -335,6 +335,8 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/drag_drop/jquery.fileupload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.maskedinput.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/a2form.js"></script>
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/grid.js"></script>
 <script>

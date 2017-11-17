@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/groovy.css" media="screen">
 
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new_style.css" media="screen">
     
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
 

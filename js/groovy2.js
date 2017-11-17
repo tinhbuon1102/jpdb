@@ -236,20 +236,7 @@ $(document).ready(function(e) {
 			return true;
 		}
 	});
-	/**************************** end *******************************/
-	
-	/********************** Set fixed floor ****************************/
-	$(document).on('click','.btnAddFixedFloor',function(e){
-		var id = $("#fixed_floor").val();
-		var currentFloorId = $("#currentFloorId").val();
-		var url = baseUrl+'/index.php?r=floor/setFixedFloor';
-		$('body').LoadingOverlay("show");
-		call({url:url,params:{id:id,currentFloorId:currentFloorId},type:'POST',dataType:'json'},function(resp){
-			$('body').LoadingOverlay("hide");
-			alert(resp.msg)
-		});
-	});
-	/**************************** end *******************************/
+	/**************************** end *******************************/	
 
 	/********************** add fast floor ****************************/
 	$(document).on('click','.btnAddFastFloor',function(e){
@@ -1682,7 +1669,7 @@ $(document).ready(function(e) {
 		var companyIds = $('.hdnCompnayIds').val();
 		if(companyIds != ""){
 			if(confirm('Are you sure ?')){
-				var url = baseUrl+'/index.php?r=floor/deleteManagement';
+				var url = baseUrl+'/index.php?r=floor/deleteTrader';
 				call({url:url,params:{companyIds:companyIds},type:'POST',dataType : 'json'},function(resp){
 					if(resp.status == 1){
 						alert(resp.msg);

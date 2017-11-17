@@ -16,13 +16,23 @@ if(count($getGoogleMapKeyDetails) > 0){
 }
 /***************** end ****************/
 ?>
+
 <input type="hidden" name="hdnBid" class="hdnBid" value="<?php echo $globalBuildingId; ?>"/>
 <input type="hidden" name="hdnFid" class="hdnFid" value="<?php echo $globalFloorId; ?>"/>
 <style>
 #myChart{ display: block;width: 494px;height: 250px !important;position: relative; }
 .left-col .graph { margin-bottom: 307px !important; }
+
+.newform_info td {
+    padding: 5px;
+
+}
+.error_val{
+    border: 2px red !important;
+    border-style: dotted !important;
+  }
 </style>
-<div id="main" class="full-width">
+<div id="main" class="full-width" >
 	<div class="postbox">
     	<div id="post-31" class="post-31 post type-post status-publish format-standard has-post-thumbnail hentry category-search-result">
         <header class="m-title btnright clearfix">
@@ -36,14 +46,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                 <?php
                     if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
                         if(strpos($floorDetails['floor_down'], '-') !== false){
-                            $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
+                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
                         }else{
                             $floorDown = $floorDetails['floor_down'];
                         }									
                         if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
+                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
                         }else{
-                            echo $floorDown.' '.'階';
+                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
                         }
                     }
                     if(isset($floorDetails['roomname']) && $floorDetails['roomname'] != ""){
@@ -58,7 +68,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <?php echo isset($floorDetails['area_ping']) && $floorDetails['area_ping'] != "" ? $floorDetails['area_ping'].Yii::app()->controller->__trans('tsubo') : ""; ?>
                 </span>
                 <span class="pad-lef05">
-                    <?php echo isset($floorDetails['area_net']) && $floorDetails['area_net'] != "" ? 'ネット:'.$floorDetails['area_net'].'坪' : ""; ?>
+                    <?php echo isset($floorDetails['area_net']) && $floorDetails['area_net'] != "" ? 'ネット:'.$floorDetails['area_net'].Yii::app()->controller->__trans('坪') : ""; ?>
                 </span>
                 <?php
                     $managementCompartOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$globalFloorId.' AND is_compart = 1 ORDER BY ownership_management_id DESC LIMIT 1');
@@ -208,14 +218,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['vacancy_info']) && $floorDetails['vacancy_info'] != ""){
                                         if($floorDetails['vacancy_info'] == 1){
-                                            echo "<span style='color:blue'>空室</span>";
+                                            echo "<span style='color:blue'>".Yii::app()->controller->__trans('空室')."</span>";
                                             if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
                                             }
                                         }elseif($floorDetails['vacancy_info'] == 0){
-                                            echo "<span style='color:red'>".'満室'."</span>";
+                                            echo "<span style='color:red'>".Yii::app()->controller->__trans('満室')."</span>";
                                             if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
                                             }
                                         }else{
                                             echo '-';
@@ -227,17 +237,23 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
                                         if(strpos($floorDetails['floor_down'], '-') !== false){
-                                            $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
+                                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
                                         }else{
                                             $floorDown = $floorDetails['floor_down'];
                                         }
                                         if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-                                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
+                                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
                                         }else{
-                                            echo $floorDown.' '.'階';
+                                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
                                         }
                                         echo '<div class="floor_name">' . ($floorDetails['roomname'] ? ' ' . $floorDetails['roomname'] : '') . '</div>';
                                     }
+                                    ?>
+                                    <?php
+                                    //echo "<pre>";
+                                     //var_dump($floorDetails);
+                                     //die();
+
                                     ?>
                                     <?php echo HelperFunctions::showFixedFloorText($floorDetails)?>
                                 </td>
@@ -489,9 +505,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                         if($floorDetails['renewal_fee_reason'] == 1){
-                                            echo "現賃料の"; 
+                                            echo Yii::app()->controller->__trans('現賃料の'); 
                                         }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                            echo "新賃料の"; 
+                                            echo Yii::app()->controller->__trans('新賃料の'); 
                                         }else{
                                             echo '';
                                         }
@@ -522,9 +538,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                         if($floorDetails['repayment_reason'] == 1){
-                                            echo "現賃料の"; 
+                                            echo Yii::app()->controller->__trans('現賃料の'); 
                                         }elseif($floorDetails['repayment_reason'] == 2){
-                                            echo "解約時賃料の"; 
+                                            echo Yii::app()->controller->__trans('解約時賃料の'); 
                                         }else{
                                             echo '';
                                         }
@@ -536,7 +552,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                         if($floorDetails['repayment_amt_opt'] == 1){
-                                            echo "ヶ月"; 
+                                            echo Yii::app()->controller->__trans('ヶ月'); 
                                         }elseif($floorDetails['repayment_amt_opt'] == 2){
                                             echo Yii::app()->controller->__trans('%')."<br>"; 
                                         }else{
@@ -618,10 +634,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         $explodeString = explode('-',$floorDetails['air_conditioning_time_used']);
                                         if($explodeString[0] != 2){
                                             if($explodeString[0] == 0){
-                                                echo "不明";
+                                                echo Yii::app()->controller->__trans('不明');
                                             }
                                             if($explodeString[0] == 1){
-                                                echo "利用時間制限なし（24時間）";
+                                                echo Yii::app()->controller->__trans('利用時間制限なし（24時間）');
                                             }
                                         }else{
                                             echo Yii::app()->controller->__trans('weekday').'：- '.($explodeString[1] != "~" ? $explodeString[1] : "").'<br/>'.Yii::app()->controller->__trans('Sat').'：- '.($explodeString[2] != "~" ? $explodeString[2] : "").'<br/>'.Yii::app()->controller->__trans('Sun').'：- '.($explodeString[3] != "~" ? $explodeString[3] : "");
@@ -658,11 +674,11 @@ if(count($getGoogleMapKeyDetails) > 0){
 									<?php
                                     if(isset($floorDetails['separate_toilet_by_gender']) && $floorDetails['separate_toilet_by_gender'] != ""){
                                         if($floorDetails['separate_toilet_by_gender'] == 0){
-                                            echo "不明"; 
+                                            echo Yii::app()->controller->__trans('Unknown'); 
                                         }elseif($floorDetails['separate_toilet_by_gender'] == 1){
-                                            echo "無し"; 
+                                            echo Yii::app()->controller->__trans('無し'); 
                                         }elseif($floorDetails['separate_toilet_by_gender'] == 2){
-                                            echo "有り"; 
+                                            echo Yii::app()->controller->__trans('有り'); 
                                         }else{
                                             echo '-';
                                         }
@@ -894,7 +910,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             	$negVal = $negotiation['negotiation'];
                                                             }
 															if(strpos($floor['floor_down'], '-') !== false){
-                                                                $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
+                                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
                                                             }
@@ -921,13 +937,13 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                         if($negotiation['negotiation_type'] == 1){
                                                             echo '底値:';
                                                         }elseif($negotiation['negotiation_type'] == 2){
-                                                            echo '敷金:';
+                                                            echo Yii::app()->controller->__trans('敷金:');
                                                         }elseif($negotiation['negotiation_type'] == 3){
-                                                            echo '礼金:';
+                                                            echo Yii::app()->controller->__trans('礼金:');
                                                         }elseif($negotiation['negotiation_type'] == 5){
                                                             echo '目安値:';
                                                         }else{
-                                                            echo 'その他:';
+                                                            echo Yii::app()->controller->__trans('その他:');
                                                         }
                                                         echo ' '.$floorName;
                                                         ?>
@@ -947,464 +963,375 @@ if(count($getGoogleMapKeyDetails) > 0){
                     </div>
                 </div><!--/table-box-->
                 
-                <div class="manage-info table-box">
-                	<div class="ttl_h3 clearfix">
-                    	<h3><?php echo Yii::app()->controller->__trans('Manage Info'); ?></h3>
-                        <div class="bt_list">
-                        	<a class="detail_local_tab appentHistory" id="timeline" href="#" data-id="<?php echo $globalFloorId; ?>"><?php echo Yii::app()->controller->__trans('Add History'); ?></a>
-                        </div>
-                    </div>
+                <div class="manage-info table-box new_style_box">
                     <div class="manageInfoResponse">
-                    	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?><span class="button-right"><a id="add_new_owner" href="javascript:void(0)">Add</a></span></h4>
-                        <table class="admin_info admin_mb ad_list">
-                        	<tbody>
+                    	       <h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?><span class="button-right" ><a id="" href="javascript:void(0)" 
+                                 onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"
+
+                                >Edit</a></span></h4>
+                        <table class="newform_info ad_list">
+                            <tbody>
                                 <tr>
-                                    <th><?php echo "種別"; ?></th>
-                                    <th><?php echo Yii::app()->controller->__trans('management company name'); ?></th>
-                                    <th><?php echo Yii::app()->controller->__trans('Person in charge'); ?></th>
-                                    <th><font><font><?php echo Yii::app()->controller->__trans('TEL / FAX'); ?></font></font></th>
-                                    <th><?php echo Yii::app()->controller->__trans('Form of Transaction'); ?></th>
-                                    <th><?php echo Yii::app()->controller->__trans('Comission'); ?></th>
-                                    <th><?php echo Yii::app()->controller->__trans('Updated date'); ?></th>
+                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb">Window</h4></td>
+                               </tr>
+                                <tr>
+                                    <th class="sorts">Sorts</th>
+                                    <th class="com_name">Company name</th>
+                                    <th class="pic">PIC</th>
+                                    <th class="tel">TEL</th>
+                                    <th class="fax">FAX</th>
+                                    <th class="tt">Transaction type</th>
+                                    <th class="fee">Fee</th>
+                                    <th class="updated">Updated on</th>
+                                
                                 </tr>
                                 <?php
-									$query = 'SELECT * FROM (SELECT * FROM ownership_management ORDER BY ownership_management_id DESC) AS ownership_management where `building_id` = '.$globalBuildingId.'  AND `is_current` = 1 AND (`is_compart` = 1 OR `is_shared` = 1) GROUP BY ownership_management.ownership_type LIMIT 1';
-									$managementDiffOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-									if(isset($managementDiffOwnerDetails) && count($managementDiffOwnerDetails) > 0){
-										foreach($managementDiffOwnerDetails as $ownerList){
-											if($ownerList['ownership_type'] == 1){
-												$ownerClass = "ico_corptype_4";
-												$ownerClass = "";
-											}else{
-												$ownerClass = "";
-											}
-								?>
-                                <tr>
-                                	<td class="vendor_class">
-                                    	<span class="vendor_type">
-											<?php
-                                            if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-                                                echo $aVendorType[$ownerList['ownership_type']];
+                                    if(!empty($floor_windows)){
+                                        foreach($floor_windows as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
                                             }else{
                                                 echo '-';
                                             }
+
                                             ?>
-                                        </span>
-                                    </td>
-                                    <td class="<?php echo $ownerClass; ?>">
-                                    	<?php if($ownerList['is_compart'] != 0){ ?>
-                                        	<span class="owner-ship compart">区分所有</span>
-                                        <?php }else if($ownerList['is_shared'] != 0){ ?>
-                                        <span class="owner-ship shared">共用オーナー</span>
-                                        <?php } ?>
-                                    	<span class="window-label">窓口</span>
-                                        <?php
-										if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-											echo $ownerList['owner_company_name'];
-										}else{
-											echo '-';
-										}
-                                        ?>
-                                    </td>
-                                    <td class="ad_name">
-										<?php
-                                        if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                            echo $ownerList['person_in_charge1'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_contact">
-										<?php
-                                        if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                            echo $ownerList['company_tel'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_type">
-										<?php
-                                        if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-                                            if($ownerList['management_type'] == -1){
-                                             echo '不明'; 
-                                            }elseif($ownerList['management_type'] == 1){
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
                                                 echo '専任媒介';
-                                            }elseif($ownerList['management_type'] == 2){
+                                            }elseif($floor_window['management_type'] == 2){
                                                 echo '一般媒介';
-                                            }elseif($ownerList['management_type'] == 3){
+                                            }elseif($floor_window['management_type'] == 3){
                                                 echo '代理';
-                                            }elseif($ownerList['management_type'] == 4){
+                                            }elseif($floor_window['management_type'] == 4){
                                                 echo '貸主';
-                                            }elseif($ownerList['management_type'] == 6){
+                                            }elseif($floor_window['management_type'] == 6){
                                                 echo '業者';
                                             }else{
                                                 echo '-';
                                             }
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_charge">
-										<?php
-                                        if (is_numeric($ownerList['charge'])){
-                                                echo number_format($ownerList['charge'],1,'.','');
-                                            }
-                                            elseif (in_array($ownerList['charge'], array('ask', 'unknown', 'undecided'))){
-                                            	echo Yii::app()->controller->__trans($ownerList['charge']);
-                                            }
-                                            else{
-                                                echo $ownerList['charge'];
-                                            }
-                                        ?>
-                                    </td>
-                                    <td class="ad_update">
-										<?php
-                                        if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                            echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                				<?php
-				  						}
-			  						}
-			  					?>
-                                <?php
-			  					//$managementOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$globalFloorId.' AND is_current = 1 ORDER BY ownership_management_id DESC');
-								//$query = 'SELECT *,max(ownership_management_id) as id FROM ownership_management where `floor_id` = '.$floorDetails['building_id'].'  AND `is_current` = 1 GROUP by ownership_type ORDER by id DESC';
-								$query = 'SELECT * FROM (SELECT * FROM ownership_management ORDER BY ownership_management_id DESC) AS ownership_management where `building_id` = '.$globalBuildingId.'  AND `is_current` = 1 AND `is_compart` = 0 AND is_shared = 0 GROUP BY ownership_management.ownership_type LIMIT 1';
-								$managementOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-								//$managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' AND is_current = 1 GROUP BY ownership_type ORDER BY ownership_management_id DESC');
-								if(isset($managementOwnerDetails) && count($managementOwnerDetails) > 0){
-				  					foreach($managementOwnerDetails as $ownerList){
-										if($ownerList['ownership_type'] == 1){
-											$ownerClass = "ico_corptype_4";
-											$ownerClass = "";
-										}else{
-											$ownerClass = "";
-										}
-			  					?>
-                                <tr>
-                                	<td class="vendor_class">
-                                        <span class="vendor_type">
-                                            <?php
-											if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-												echo $aVendorType[$ownerList['ownership_type']];
-											}else{
-												echo '-';
-											}
+
                                             ?>
-                                        </span>
-                                    </td>
-                                    <td class="<?php echo $ownerClass; ?>">
-                                		<span class="window-label">窓口</span>
-                                        <?php
-										if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-											echo $ownerList['owner_company_name'];
-										}else{
-											echo '-';
-										}
-                                        ?>
-                                    </td>
-                                    <td class="ad_name">
-										<?php
-                                        if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                            echo $ownerList['person_in_charge1'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_contact">
-										<?php
-                                        if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                            echo $ownerList['company_tel'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_type">                                    
-										<?php
-										if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-											if($ownerList['management_type'] == -1){
-											 echo Yii::app()->controller->__trans('Unknown'); 
-											}elseif($ownerList['management_type'] == 1){
-												echo '専任媒介';
-											}elseif($ownerList['management_type'] == 2){
-												echo '一般媒介';
-											}elseif($ownerList['management_type'] == 3){
-												echo '代理';
-											}elseif($ownerList['management_type'] == 4){
-												echo '貸主';
-											}else{
-												echo '-';
-											}
-										}else{
-											echo '-';
-										}
-                                        ?>
-                                    </td>
-                                    <td class="ad_charge">
-										<?php
-                                        if (is_numeric($ownerList['charge'])){
-                                                echo number_format($ownerList['charge'],1,'.','');
-                                            }
-                                            elseif (in_array($ownerList['charge'], array('ask', 'unknown', 'undecided'))){
-                                            	echo Yii::app()->controller->__trans($ownerList['charge']);
-                                            }
-                                            else{
-                                                echo $ownerList['charge'];
-                                            }
-                                        ?>
-                                    </td>
-                                    <td class="ad_update">
-										<?php
-                                        if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                            echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
                                 <?php
-				  					}
-			  					}
-								?>
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO window Found</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+
+                                    ?>
+                                     <tr>
+                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue">Owner Info</h4></td>
+                                    </tr>
+                                    <?php
+                                    if(!empty($floor_owners)){
+                                        foreach($floor_owners as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+                                
+			  					  ?>
+                                  <tr>
+                                    <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg">Update history for windows・owners</h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;">Edit/View</a></span></td>
+                                  </tr>
+                                  <?php
+                                  if(!empty($floor_owners_history)){
+                                        foreach($floor_owners_history as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor History</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+                                
+                                  ?>
                             </tbody>
                         </table>
-                        <h4 class="ontable">
-							<?php echo Yii::app()->controller->__trans('property management history（Latest）'); ?>
-                        </h4>
-                        <table class="admin_info admin_mb ad_list">
-                        	<tbody>
-								<?php
-                                $managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' ORDER BY ownership_management_id DESC LIMIT 2');
-                                //$managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' GROUP BY ownership_type ORDER BY ownership_management_id DESC limit 2');
-                                if(isset($managementOwnerDetails) && count($managementOwnerDetails) > 0){
-                                    foreach($managementOwnerDetails as $ownerList){
-                                        if($ownerList['ownership_type'] == 1){
-                                            $ownerClass = "ico_corptype_4";
-                                            $ownerClass = "";
-                                        }else{
-                                            $ownerClass = "";
-                                        }
-                                ?>
-                                <tr>
-                                    <td class="vendor_class">
-                                        <span class="vendor_type">
-                                            <?php
-                                            if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-                                                echo $aVendorType[$ownerList['ownership_type']];
-                                            }else{
-                                                echo '-';
-                                            }
-                                            ?>
-                                        </span>
-                                    </td>
-                                    <td class="<?php echo $ownerClass; ?>">
-                                        <?php if($ownerList['is_compart'] != 0){?>
-                                                <span class="owner-ship compart">区分所有</span>
-                                        <?php }else if($ownerList['is_shared'] != 0){ ?>
-                                                <span class="owner-ship shared">共用オーナー</span>
-                                        <?php } ?>
-                                        <?php if($ownerList['is_current'] == 1){ ?>
-                                            <span class="window-label">窓口</span>
-                                        <?php } ?>
-                                        <?php
-                                        if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-                                            echo $ownerList['owner_company_name'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_name">
-                                        <?php
-                                        if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                            echo $ownerList['person_in_charge1'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_contact">
-                                        <?php
-                                        if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                            echo $ownerList['company_tel'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_type">
-                                        <?php
-                                        if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-                                            if($ownerList['management_type'] == -1){
-                                                echo '不明'; 
-                                            }elseif($ownerList['management_type'] == 1){
-                                                echo '専任媒介';
-                                            }elseif($ownerList['management_type'] == 2){
-                                                echo '一般媒介';
-                                            }elseif($ownerList['management_type'] == 3){
-                                                echo '代理';
-                                            }elseif($ownerList['management_type'] == 4){
-                                                echo '貸主';
-                                            }else{
-                                                echo '-';
-                                            }
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_charge">
-                                        <?php
-                                        if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                            if(is_numeric($ownerList['charge'])){
-                                                echo number_format($ownerList['charge'],1,'.','');
-                                            }else{
-                                                echo $ownerList['charge'];
-                                            }
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_update">
-                                        <?php
-                                        if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                            echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <?php
-                                    }
-                                }
-                                ?>
-                                <?php
-                                $managementOwnerDetails = array();
-                                //$managementOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$globalFloorId.' AND is_condominium_ownership = 1 ORDER BY ownership_management_id DESC LIMIT 2');
-                                //$managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' GROUP BY ownership_type ORDER BY ownership_management_id DESC limit 2');
-                                if(isset($managementOwnerDetails) && count($managementOwnerDetails) > 0){
-                                    foreach($managementOwnerDetails as $ownerList){
-                                        if($ownerList['ownership_type'] == 1){
-                                            $ownerClass = "ico_corptype_4";
-                                            $ownerClass = "";
-                                        }else{
-                                            $ownerClass = "";
-                                        }
-                                ?>
-                                <tr>
-                                    <td class="vendor_class">
-                                        <span class="vendor_type">
-                                            <?php
-                                            if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-                                                echo $aVendorType[$ownerList['ownership_type']];
-                                            }else{
-                                                echo '-';
-                                            }
-                                            ?>
-                                        </span>
-                                        <span style="background-color:#555; color:white; padding:1px;">
-                                            <?php if($ownerList['is_compart'] != 0){ ?>
-                                                区分所有
-                                            <?php }else if($ownerList['is_shared'] != 0){ ?>
-                                                共用オーナー
-                                            <?php } ?>
-                                        </span>
-                                    </td>
-                                    <td class="<?php echo $ownerClass; ?>">
-                                        <?php
-                                        if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-                                            echo $ownerList['owner_company_name'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_name">
-                                        <?php
-                                        if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                            echo $ownerList['person_in_charge1'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_contact">
-                                        <?php
-                                        if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                            echo $ownerList['company_tel'];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_type">
-                                        <?php
-                                        if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-                                            if($ownerList['management_type'] == -1){
-                                                echo '不明'; 
-                                            }elseif($ownerList['management_type'] == 1){
-                                                echo '専任媒介';
-                                            }elseif($ownerList['management_type'] == 2){
-                                                echo '一般媒介';
-                                            }elseif($ownerList['management_type'] == 3){
-                                                echo '代理';
-                                            }elseif($ownerList['management_type'] == 4){
-                                                echo '貸主';
-                                            }else{
-                                                echo '-';
-                                            }
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_charge">
-                                        <?php
-                                        if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                            if(is_numeric($ownerList['charge'])){
-                                                echo number_format($ownerList['charge'],1,'.','');
-                                            }else{
-                                                echo $ownerList['charge'];
-                                            }
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td class="ad_update">
-                                        <?php
-                                        if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                            echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <?php
-                                    }
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                     
                     </div>
-                    <div class="see-more">
-                    	<a href="#" class="seeMoreManagement"><i class="fa fa-chevron-right"></i><?php echo Yii::app()->controller->__trans('see more');  ?></a>
-                    </div>
+                   
                 </div><!--/table-box-->
+                <div class="history-info table-box new_style_box">
+                    <div class="ttl_h3 clearfix">
+                       <h3>Building info update history</h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">Add history</a></span>
+                    </div>
+                    <div class="manageInfoResponse">
+                        <table class="newform_info history_info_list">
+                            <tbody>
+                                <tr>
+                                   <th class="level">Level</th>
+                                    <th class="sorts">Sorts</th>
+                                    <th class="com_name">Company name</th>
+                                    <th class="pic">PIC</th>
+                                    <th class="tel">TEL</th>
+                                    <th class="fax">FAX</th>
+                                    <th class="tt">Transaction type</th>
+                                    <th class="fee">Fee</th>
+                                    <th class="updated">Updated on</th>
+                                </tr>
+                                <?php
+                                  if(!empty($building_history)){
+                                        foreach($building_history as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="level"><?= $floor_window['floor_id'] ?></td>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+                                
+                                  ?>
+                               
+                                </tbody>
+                        </table>
+                         <div class="see-more">
+                            <a href="#" class="seeMoreManagement"><i class="fa fa-chevron-right"></i><?php echo Yii::app()->controller->__trans('see more');  ?></a>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="building-info table-box">
                 	<div class="ttl_h3 clearfix">
@@ -1440,14 +1367,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 echo '-';
                                             }else{
                                                 if($floorUp != ""){
-                                                    echo '地上';
+                                                    echo Yii::app()->controller->__trans('地上');
                                                     echo $floorUp;
-                                                    echo '階';
+                                                    echo Yii::app()->controller->__trans('階');
                                                 }
                                                 if($floorDown != ""){
-                                                    echo '地下';
+                                                    echo Yii::app()->controller->__trans('地下');
                                                     echo $floorDown;
-                                                    echo '階';
+                                                    echo Yii::app()->controller->__trans('階');
                                                 }
                                             }
                                             ?>
@@ -1578,7 +1505,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 											<?php
                                             $extractParkingUnitNo = explode('-',$buildingDetails['parking_unit_no']);
                                             if($extractParkingUnitNo[0] == 1){
-                                                $parkingUnit = $extractParkingUnitNo[1].'台';
+                                                $parkingUnit = $extractParkingUnitNo[1].Yii::app()->controller->__trans('台');
                                             }else if($extractParkingUnitNo[0] == 2){
                                                 $parkingUnit = Yii::app()->controller->__trans('noexist');
                                             }else if($extractParkingUnitNo[0] == 3){
@@ -1707,7 +1634,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             }else if($wholesaleLease == 2){
                                                 $lease = Yii::app()->controller->__trans('Ask');
                                             }else if($wholesaleLease == 1){
-                                                $lease = '可能';
+                                                $lease = Yii::app()->controller->__trans('可能');;
                                             }else{
                                                 $lease = '-';
                                             }
@@ -1958,7 +1885,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <input type="hidden" name="hdnBuildingId" id="hdnBuildingId" class="hdnBuildingId" value="<?php echo $globalBuildingId; ?>" />
                                         <button type="button" class="btn btn-primary btnAddAll"><?php echo Yii::app()->controller->__trans('ADD ALL'); ?></button>
                                     </th>
-                                    <th><?php echo '空満'; ?></th>
+                                    <th><?php echo Yii::app()->controller->__trans('空満'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('number of stairs'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('area'); ?></th>
                                     <th><?php echo Yii::app()->controller->__trans('rent / Ping'); ?></th>
@@ -2018,7 +1945,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         
                                         if($related['vacancy_info'] == '1'){
                                             $vacancyClass = 'empty';
-                                            $vacLabel = '空';
+                                            $vacLabel = Yii::app()->controller->__trans('空');
                                         }else{
                                             continue;
                                         }
@@ -2043,16 +1970,16 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                     </td>
                                     <td>
-                                        <span style='color:blue'><?php echo '空室'; ?></span>
+                                        <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
 										<? if($related['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">'.'先行申込有り'.'</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
                                             }
 											?>
                                     </td>
                                     <td>
                                         <?php
                                         if(strpos($related['floor_down'], '-') !== false){
-                                            $floorDown = '地下'.' '.str_replace("-", "", $related['floor_down']);
+                                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $related['floor_down']);
                                         }else{
                                             $floorDown = $related['floor_down'];
                                         }
@@ -2149,7 +2076,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                             }
                                             if($related['key_money_month'] != ""){
-                                                echo $related['key_money_month'].' '.'ヶ月';
+                                                echo $related['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
                                             }
                                         ?>
                                     </td>
@@ -2169,9 +2096,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['renewal_fee_reason']) && $related['renewal_fee_reason'] != ""){
                                                 if($related['renewal_fee_reason'] == 1){
-                                                    echo '現賃料の'; 
+                                                    echo Yii::app()->controller->__trans('現賃料の'); 
                                                 }elseif($related['renewal_fee_reason'] == 2){
-                                                    echo '新賃料の'; 
+                                                    echo Yii::app()->controller->__trans('新賃料の'); 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2202,9 +2129,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['repayment_reason']) && $related['repayment_reason'] != ""){
                                                 if($related['repayment_reason'] == 1){
-                                                    echo "現賃料の<br>"; 
+                                                    echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
                                                 }elseif($related['repayment_reason'] == 2){
-                                                    echo "解約時賃料の<br>"; 
+                                                    echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2216,7 +2143,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['repayment_amt_opt']) && $related['repayment_amt_opt'] != ""){
                                                 if($related['repayment_amt_opt'] == 1){
-                                                    echo "ヶ月"; 
+                                                    echo Yii::app()->controller->__trans('ヶ月'); 
                                                 }elseif($related['repayment_amt_opt'] == 2){
                                                     echo Yii::app()->controller->__trans('%')."<br>"; 
                                                 }else{
@@ -2331,12 +2258,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                        <span style='color:blue'><?php echo "空室"; ?></span>
+                                        <span style='color:blue'><?php echo Yii::app()->controller->__trans('空室'); ?></span>
                                         </td>
                                         <td>
                                             <?php
                                             if(strpos($floorDetails['floor_down'], '-') !== false){
-                                                $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
+                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
                                             }else{
                                                 $floorDown = $floorDetails['floor_down'];
                                             }
@@ -2447,7 +2374,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
+                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
                                                 }
                                             ?>
                                         </td>
@@ -2467,9 +2394,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo '現賃料の'; 
+                                                        echo Yii::app()->controller->__trans('現賃料の'); 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo '新賃料の'; 
+                                                        echo Yii::app()->controller->__trans('新賃料の'); 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2500,9 +2427,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo "現賃料の<br>"; 
+                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo "解約時賃料の<br>"; 
+                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2514,7 +2441,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo "ヶ月"; 
+                                                        echo Yii::app()->controller->__trans('ヶ月'); 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -2622,16 +2549,16 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             <button type="button" class="btn btn-primary btnAddToCart <?php echo $addedcss;?>" <?php //echo $disabled; ?>><?php echo Yii::app()->controller->__trans($lbl1); ?></button>
                                         </td>
                                         <td>
-                                           <span style='color:blue'> <?php echo "空室"; ?></span>
+                                           <span style='color:blue'> <?php echo Yii::app()->controller->__trans('空室'); ?></span>
 										   <? if($floorDetails['preceding_user'] == 1){
-                                                echo '</br><span class="senko" style="background-color:yellow">先行申込有り</span>';
+                                                echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行申込有り').'</span>';
                                             }
 											?>
                                         </td>
                                         <td>
                                             <?php
                                             if(strpos($floorDetails['floor_down'], '-') !== false){
-                                                $floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
+                                                $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
                                             }else{
                                                 $floorDown = $floorDetails['floor_down'];
                                             }
@@ -2742,7 +2669,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                                 if($floorDetails['key_money_month'] != ""){
                                                     echo "<br>";
-                                                    echo $floorDetails['key_money_month'].' '.'ヶ月';
+                                                    echo $floorDetails['key_money_month'].' '.Yii::app()->controller->__trans('ヶ月');
                                                 }
                                             ?>
                                         </td>
@@ -2762,9 +2689,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo '現賃料の'; 
+                                                        echo Yii::app()->controller->__trans('現賃料の'); 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo '新賃料の'; 
+                                                        echo Yii::app()->controller->__trans('新賃料の'); 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2795,9 +2722,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo "現賃料の<br>"; 
+                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo "解約時賃料の<br>"; 
+                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2809,7 +2736,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
                                                     if($floorDetails['repayment_amt_opt'] == 1){
-                                                        echo "ヶ月"; 
+                                                        echo Yii::app()->controller->__trans('ヶ月'); 
                                                     }elseif($floorDetails['repayment_amt_opt'] == 2){
                                                         echo Yii::app()->controller->__trans('%')."<br>"; 
                                                     }else{
@@ -2865,254 +2792,398 @@ if(count($getGoogleMapKeyDetails) > 0){
             	<div class="content-manage-info">
                 	<h4 class="ontable">
                     	<?php echo Yii::app()->controller->__trans('Management Info'); ?>
-                        <a class="detail_local_tab appentHistory" id="timeline" href="#" data-id="<?php echo $globalFloorId; ?>" style="float:right;"><?php echo Yii::app()->controller->__trans('Add History'); ?></a>
+                        <a class="detail_local_tab " id="timeline" href="javascript:void(0)" data-id="<?php echo $globalFloorId; ?>" style="float:right;" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"><?php echo Yii::app()->controller->__trans('Add History'); ?></a>
                     </h4>
-                    <table class="admin_info current-owner">
-                    	<tbody>
-                            <tr>
-                                <th class="check">&nbsp;</th>
-                                <th>種別</th>
-                                <th><?php echo Yii::app()->controller->__trans('window・owner'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('charge in person'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('TEL / FAX'); ?></th>
-                                <th>取引形態</th>
-                                <th><?php echo Yii::app()->controller->__trans('comission'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('updated date'); ?></th>
-                            </tr>
-                            <?php
-								//$managementOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$floorDetails['floor_id'].' AND is_current = 1');
-                              	//$managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$floorDetails['building_id'].' AND is_current = 1');
-                              	$query = 'SELECT * FROM (SELECT * FROM ownership_management ORDER BY ownership_management_id DESC) AS ownership_management where `building_id` = '.$globalBuildingId.'  AND `is_current` = 1 GROUP BY ownership_management.ownership_type LIMIT 1';
-								
-								$managementOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-								if(isset($managementOwnerDetails) && count($managementOwnerDetails) > 0){
-									foreach($managementOwnerDetails as $ownerList){
-										if($ownerList['ownership_type'] == 1){
-											$ownerClass = "ico_corptype_4";
-											$ownerClass = "";
-										}else{
-											$ownerClass = "";
-										}
-							?>
-                            <tr>
-                            	<th class="check">
-                                	<input type="checkbox" name="delete_management_id" id="delete_management_id" class="delete_management_id" value="<?php echo $ownerList['ownership_management_id'] ?>">
-                                </th>
-                                <td class="vendor_class">
-                                	<span class="vendor_type">
-                                    	<?php
-										if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-											echo $aVendorType[$ownerList['ownership_type']];
-										}else{
-											echo '-';
-										}
-										?>
-                                    </span>
-                                </td>
-                                <td class="<?php echo $ownerClass; ?>">
-                                	<span class="window-label">窓口</span>
+                  <table class="newform_info ad_list">
+                            <tbody>
+                                <tr>
+                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb">Window</h4></td>
+                               </tr>
+                                <tr>
+                                    <th class="sorts">Sorts</th>
+                                    <th class="com_name">Company name</th>
+                                    <th class="pic">PIC</th>
+                                    <th class="tel">TEL</th>
+                                    <th class="fax">FAX</th>
+                                    <th class="tt">Transaction type</th>
+                                    <th class="fee">Fee</th>
+                                    <th class="updated">Updated on</th>
+                                
+                                </tr>
+                                <?php
+                                    if(!empty($floor_windows)){
+                                        foreach($floor_windows as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO window Found</td>
+                                        </tr>
                                     <?php
-									if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-										echo $ownerList['owner_company_name'];
-									}else{
-										echo '-';
-									}
-									?>
-                                </td>
-                                <td class="ad_name">
-									<?php
-                                    if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                        echo $ownerList['person_in_charge1'];
-                                    }else{
-                                        echo '-';
+
                                     }
+
                                     ?>
-                                </td>
-                                <td class="ad_contact">
-									<?php
-                                    if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                        echo $ownerList['company_tel'];
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_type">
-									<?php
-                                    if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-                                        if($ownerList['management_type'] == -1){
-                                            echo Yii::app()->controller->__trans('unknown');
-                                        }elseif($ownerList['management_type'] == 1){
-                                            echo '専任媒介';
-                                        }elseif($ownerList['management_type'] == 2){
-                                            echo '一般媒介';
-                                        }elseif($ownerList['management_type'] == 3){
-                                            echo '代理';
-                                        }elseif($ownerList['management_type'] == 4){
-                                            echo '貸主';
-                                        }else{
-                                            echo '-';
+                                     <tr>
+                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue">Owner Info</h4></td>
+                                    </tr>
+                                    <?php
+                                    if(!empty($floor_owners)){
+                                        foreach($floor_owners as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
                                         }
-                                    }else{
-                                        echo '-';
                                     }
+                                    else{
+
                                     ?>
-                                </td>
-                                <td class="ad_charge">
-									<?php
-                                    if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                        if (is_numeric($ownerList['charge'])){
-                                            echo number_format($ownerList['charge'],1,'.','');
-                                        }else{
-                                            echo $ownerList['charge'];
-                                        }
-                                    }else{
-                                        echo '-';
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                        </tr>
+                                    <?php
+
                                     }
-                                    ?>
-                                </td>
-                                <td class="ad_update">
-									<?php
-                                    if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                        echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
+                                
+                                  ?>
+                                   
+                                  
+                            </tbody>
+                        </table>
+                </div><!--/content-manage-info-->
+
+
+               <div class="history-info table-box new_style_box">
+                    <div class="ttl_h3 clearfix" style="height:45px">
+                       <h4 style="margin-top: 5px">Update history for windows・owners</h4><span class="button-right" style="margin-top: -40px">
+                         <a class="detail_local_tab " id="timeline" href="javascript:void(0)" data-id="<?php echo $globalFloorId; ?>"  onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"><?php echo Yii::app()->controller->__trans('Edit/view'); ?></a>
+                        </span>
+                    </div>
+                    
+                    <table class="admin_info past-owner">
+                        <tbody>
+                            <tr>
+                                <th class="level">-</th>
+                                <th class="sorts">Sorts</th>
+                                <th class="com_name">Company name</th>
+                                <th class="pic">PIC</th>
+                                <th class="tel">TEL</th>
+                                <th class="fax">FAX</th>
+                                <th class="tt">Transaction type</th>
+                                <th class="fee">Fee</th>
+                                <th class="updated">Updated on</th>
+                                
                             </tr>
-                            <?php
-									}
-								}
-							?>
-                       	</tbody>
+                             <?php
+                                  if(!empty($floor_owners_history)){
+                                        foreach($floor_owners_history as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="check">
+                                                <input type="checkbox" name="delete_management_id" id="delete_management_id" class="delete_management_id" value="<?php echo $floor_window['trader_id'] ?>">
+                                            </td>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+                                
+                                  ?>
+                        </tbody>
                     </table>
                 </div><!--/content-manage-info-->
-                <div class="content-manage-info">
-                	<h4 class="ontable"><?php echo Yii::app()->controller->__trans('past property manage history'); ?></h4>
+
+                      
+
+
+
+               <div class="history-info table-box new_style_box">
+                    <div class="ttl_h3 clearfix">
+                       <h3>Building info update history</h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">Add history</a></span>
+                    </div>
+                	
                     <table class="admin_info past-owner">
                     	<tbody>
-                        	<tr>
-                                <th class="check">&nbsp;</th>
-                                <th>種別</th>
-                                <th><?php echo Yii::app()->controller->__trans('window・owner'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('charge in person'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('TEL / FAX'); ?></th>
-                                <th>取引形態</th>
-                                <th><?php echo Yii::app()->controller->__trans('comission'); ?></th>
-                                <th><?php echo Yii::app()->controller->__trans('updated date'); ?></th>
-                            </tr>
-                            <?php
-								//$managementOwnerDetails = OwnershipManagement::model()->findAll('floor_id = '.$globalBuildingId.' AND is_current = 0 ORDER BY ownership_management_id DESC');
-								$managementOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' ORDER BY ownership_management_id DESC');
-								if(isset($managementOwnerDetails) && count($managementOwnerDetails) > 0){
-									foreach($managementOwnerDetails as $ownerList){
-										if($ownerList['ownership_type'] == 1){
-											$ownerClass = "ico_corptype_4";
-											$ownerClass = "";
-										}else{
-											$ownerClass = "";
-										}
-							?>
                             <tr>
-                                <th class="check">
-                                    <input type="checkbox" name="delete_management_id" id="delete_management_id" class="delete_management_id" value="<?php echo $ownerList['ownership_management_id'] ?>">
-                                </th>
-                                <td class="vendor_class">
-                                    <span class="vendor_type">
-                                        <?php
-                                        if(isset($ownerList['ownership_type']) && $ownerList['ownership_type'] != ""){
-                                            echo $aVendorType[$ownerList['ownership_type']];
-                                        }else{
-                                            echo '-';
-                                        }
-                                        ?>
-                                    </span>
-                                </td>
-                                <td class="<?php echo $ownerClass; ?>">
-                                    <?php if($ownerList['is_compart'] == 1){ ?>
-                                    <span class="lblSingleCompartType">区分所有</span>
-                                    <?php } ?>
-                                    <?php if($ownerList['is_shared'] == 1){ ?>
-                                    <span class="lblSingleSharedType">共用オーナー</span>
-                                    <?php } ?>
-                                    <?php if($ownerList['is_current'] == 1){ ?>
-                                    <span class="window-label">窓口</span>
-                                    <?php } ?>
-                                    <?php
-                                    if(isset($ownerList['owner_company_name']) && $ownerList['owner_company_name'] != ""){
-                                        echo $ownerList['owner_company_name'];
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_name">
-                                    <?php
-                                    if(isset($ownerList['person_in_charge1']) && $ownerList['person_in_charge1'] != ""){
-                                        echo $ownerList['person_in_charge1'];
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_contact">
-                                    <?php
-                                    if(isset($ownerList['company_tel']) && $ownerList['company_tel'] != ""){
-                                        echo $ownerList['company_tel'];
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_type">
-                                    <?php
-                                    if(isset($ownerList['management_type']) && $ownerList['management_type'] != ""){
-                                        if($ownerList['management_type'] == -1){
-                                            echo Yii::app()->controller->__trans('unknown');
-                                        }elseif($ownerList['management_type'] == 1){
-                                            echo '専任媒介';
-                                        }elseif($ownerList['management_type'] == 2){
-                                            echo '一般媒介';
-                                        }elseif($ownerList['management_type'] == 3){
-                                            echo '代理';
-                                        }elseif($ownerList['management_type'] == 4){
-                                            echo '貸主';
-                                        }else{
-                                            echo '-';
-                                        }
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_charge">
-                                    <?php
-                                    if(isset($ownerList['charge']) && $ownerList['charge'] != ""){
-                                        if (is_numeric($ownerList['charge'])){
-                                            echo number_format($ownerList['charge'],1,'.','');
-                                        }else{
-                                            echo $ownerList['charge'];
-                                        }
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="ad_update">
-                                    <?php
-                                    if(isset($ownerList['modified_on']) && $ownerList['modified_on'] != ""){
-                                        echo date('Y.m.d',strtotime($ownerList['modified_on']));
-                                    }else{
-                                        echo '-';
-                                    }
-                                    ?>
-                                </td>
+                                <th class="level">-</th>
+                                <th class="level">Level</th>
+                                <th class="sorts">Sorts</th>
+                                <th class="com_name">Company name</th>
+                                <th class="pic">PIC</th>
+                                <th class="tel">TEL</th>
+                                <th class="fax">FAX</th>
+                                <th class="tt">Transaction type</th>
+                                <th class="fee">Fee</th>
+                                <th class="updated">Updated on</th>
+                                
                             </tr>
-                            <?php
-									}
-								}
-							?>
+                             <?php
+                                  if(!empty($building_history_all)){
+                                        foreach($building_history_all as $floor_window){
+                                          ?>
+                                          <tr>
+                                             <td class="check">
+                                                <input type="checkbox" name="delete_management_id" id="delete_management_id" class="delete_management_id" value="<?php echo $floor_window['trader_id'] ?>">
+                                            </td>
+                                             <td class="level"><?= $floor_window['floor_id'] ?></td>
+                                             <td class="sorts">
+                                          <?php
+                                           if($floor_window['ownership_type'] == -1){
+                                               echo Yii::app()->controller->__trans('unknown');
+                                            }elseif($floor_window['ownership_type'] == 1){
+                                                echo Yii::app()->controller->__trans('owner');
+                                            }elseif($floor_window['ownership_type'] == 2){
+                                                echo Yii::app()->controller->__trans('management company');
+                                            }elseif($floor_window['ownership_type'] == 3){
+                                                echo Yii::app()->controller->__trans('general contractor');
+                                            }elseif($floor_window['ownership_type'] == 4){
+                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                            }elseif($floor_window['ownership_type'] == 6){
+                                                echo Yii::app()->controller->__trans('サブリース');
+                                            }elseif($floor_window['ownership_type'] == 7){
+                                                echo Yii::app()->controller->__trans('貸主代理');
+                                            }elseif($floor_window['ownership_type'] == 8){
+                                                 echo Yii::app()->controller->__trans('AM');
+                                            }elseif($floor_window['ownership_type'] == 9){
+                                                 echo Yii::app()->controller->__trans('PM');
+                                            }elseif($floor_window['ownership_type'] == 10){
+                                                echo Yii::app()->controller->__trans('業者');
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+                                            </td>
+                                            <td class="com_name"><?= $floor_window['owner_company_name']?></td>
+                                            <td class="pic"><?= $floor_window['person_in_charge1']?></td>
+                                            <td class="tel"><?= $floor_window['company_tel'] ?></td>
+                                            <td class="fax"><?= $floor_window['company_fax'] ?></td>
+                                            <td class="tt">
+                                            <?php
+                                            if($floor_window['management_type'] == -1){
+                                             echo Yii::app()->controller->__trans('Unknown'); 
+                                            }elseif($floor_window['management_type'] == 1){
+                                                echo '専任媒介';
+                                            }elseif($floor_window['management_type'] == 2){
+                                                echo '一般媒介';
+                                            }elseif($floor_window['management_type'] == 3){
+                                                echo '代理';
+                                            }elseif($floor_window['management_type'] == 4){
+                                                echo '貸主';
+                                            }elseif($floor_window['management_type'] == 6){
+                                                echo '業者';
+                                            }else{
+                                                echo '-';
+                                            }
+
+                                            ?>
+
+                                            </td>
+                                            <td class="fee"><?= $floor_window['charge'] ?></td>
+                                            <td class="updated"><?= date('d-m-Y', strtotime($floor_window['modified_on']))?></td>
+                                        </tr>
+
+                                <?php
+
+                                        }
+                                    }
+                                    else{
+
+                                    ?>
+                                        <tr>
+                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                        </tr>
+                                    <?php
+
+                                    }
+                                
+                                  ?>
                         </tbody>
                     </table>
                 </div><!--/content-manage-info-->
@@ -3224,14 +3295,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             $floorName = '';
                                             foreach($allocateFloorDetails as $floor){
                                                 if(strpos($floor['floor_down'], '-') !== false){
-                                                    $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
+                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
                                                 }else{
                                                     $floorDown = $floor['floor_down'];
                                                 }
                                                 if($floor['floor_up'] != ""){
-                                                    $floorName .= $floorDown." ~ ".$floor['floor_up'].' '.'階';
+                                                    $floorName .= $floorDown." ~ ".$floor['floor_up'].' '.Yii::app()->controller->__trans('階');
                                                 }else{
-                                                    $floorName .= $floorDown.' '.'階';
+                                                    $floorName .= $floorDown.' '.Yii::app()->controller->__trans('階');
                                                 }
                                                 if($merge['negotiation_type'] == 4){
                                                     $negUnitList = '円/坪';
@@ -3515,9 +3586,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 											$floorDown = $webFloor['floor_down'];
 										}									
 										if(isset($webFloor['floor_up']) && $webFloor['floor_up'] != ''){
-											echo $floorDown.' - '.$webFloor['floor_up'].' '.'階';
+											echo $floorDown.' - '.$webFloor['floor_up'].' '.Yii::app()->controller->__trans('階');
 										}else{
-											echo $floorDown.' '.'階';
+											echo $floorDown.' '.Yii::app()->controller->__trans('階');
 										}
 									}
 								?>
@@ -3599,7 +3670,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                   <input type="file" class="file_input_hidden uploadPlanClass" name="planPicture" id="planPicture" tabindex="1">
                                   <div class="standard_wraper">
                                   	<label>
-	                                  	<?php echo "基準階"; ?>
+	                                  	<?php echo Yii::app()->controller->__trans('基準階'); ?>
                                   	</label>
                                   	<input type="checkbox" name="planPictureStandard" id="planPictureStandard" />
                                   </div>
@@ -3641,10 +3712,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                             $flagClass = $lbl = '';
                             if($floor['vacancy_info'] == 1){
                                 $flagClass = 'empty';
-                                $lbl = '空';
+                                $lbl = Yii::app()->controller->__trans('空');
                             }else{
                                 $flagClass = 'full';
-                                $lbl = '満';
+                                $lbl = Yii::app()->controller->__trans('満');
                             }
                       ?>
                         <tr>
@@ -3660,15 +3731,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                           <td class="nm"><?php
                             if(isset($floor['floor_down']) && $floor['floor_down'] != ""){
                                 if(strpos($floor['floor_down'], '-') !== false){
-									$floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
+									$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
 								}else{
 									$floorDown = $floor['floor_down'];
 								}
 								
                                 if(isset($floor['floor_up']) && $floor['floor_up'] != ""){
-                                    echo $floorDown." ~ ".$floor['floor_up'].'階';
+                                    echo $floorDown." ~ ".$floor['floor_up'].Yii::app()->controller->__trans("階");
                                 }else{
-									echo $floorDown.'階';
+									echo $floorDown.Yii::app()->controller->__trans("階");
 								}
                                 if(isset($floor['roomname']) && $floor['roomname'] != ""){
                                     echo $floor['roomname'];
@@ -4022,14 +4093,14 @@ if(count($getGoogleMapKeyDetails) > 0){
 								<?php
 									if(isset($floorForPic['floor_down']) && $floorForPic['floor_down'] != ""){
 										if(strpos($floorForPic['floor_down'], '-') !== false){
-											$floorDown = '地下'.' '.str_replace("-", "", $floorForPic['floor_down']);
+											$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorForPic['floor_down']);
 										}else{
 											$floorDown = $floorForPic['floor_down'];
 										}									
 										if(isset($floorForPic['floor_up']) && $floorForPic['floor_up'] != ''){
-											echo $floorDown.' - '.$floorForPic['floor_up'].' '.'階';
+											echo $floorDown.' - '.$floorForPic['floor_up'].' '.Yii::app()->controller->__trans('階');
 										}else{
-											echo $floorDown.' '.'階';
+											echo $floorDown.' '.Yii::app()->controller->__trans('階');
 										}
 									}
 								?>
@@ -4418,9 +4489,9 @@ if(count($getGoogleMapKeyDetails) > 0){
 						$floorDown = $floorDetails['floor_down'];
 					}
 					if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-						$titleHistory .= $floorDown.' - '.$floorDetails['floor_up'].' '.'階';
+						$titleHistory .= $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
 					}else{
-						$titleHistory .= $floorDown.' '.'階';
+						$titleHistory .= $floorDown.' '.Yii::app()->controller->__trans('階');
 					}
 				}
 				$titleHistory .= '/';
@@ -4454,7 +4525,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                 	<tbody>
                     	<tr class="archive_ttl">
                         	<th scope="col" class="date"></th>
-                            <th scope="col" class="rm"><font><font><?php echo "空満"; ?></font></font></th>
+                            <th scope="col" class="rm"><font><font><?php echo Yii::app()->controller->__trans('空満'); ?></font></font></th>
                             <th scope="col" class="prm"><font><font><?php echo Yii::app()->controller->__trans('rent'); ?></font></font></th>
                             <th scope="col" class="csc"><font><font><?php echo Yii::app()->controller->__trans('condo fees'); ?></font></font></th>
                             <th scope="col" class="dps"><font><font><?php echo Yii::app()->controller->__trans('deposit'); ?></font></font></th>
@@ -4470,10 +4541,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 											foreach($floorHistoryList as $historyList){
 												if($historyList['vacancy_info'] == 0){
 													$vacantClass = 'full';
-													$vacantLabel = "<span style='color:red'>".'満室'.'</span>';
+													$vacantLabel = "<span style='color:red'>".Yii::app()->controller->__trans('満室').'</span>';
 												}else{
 													$vacantClass = 'empty';
-													$vacantLabel = "<span style='color:blue'>".'空室'.'</span>';
+													$vacantLabel = "<span style='color:blue'>".Yii::app()->controller->__trans('空室').'</span>';
 												}
 									?>
                                     	<tr>
@@ -4737,10 +4808,10 @@ if(count($getGoogleMapKeyDetails) > 0){
 							<?php echo Yii::app()->controller->__trans('Updated by'); ?>
                         </th>
                         <th scope="col" class="fs">
-							<?php echo 'サイズ'; ?>
+							<?php echo Yii::app()->controller->__trans('サイズ'); ?>
                         </th>
                         <th scope="col" class="memo">
-							<?php echo 'メモ'; ?>
+							<?php echo Yii::app()->controller->__trans('メモ'); ?>
                         </th>
                         <th scope="col" class="bt_d">&nbsp;</th>
                     </tr>
@@ -4806,848 +4877,237 @@ if(count($getGoogleMapKeyDetails) > 0){
 				}
 			}
 			?>
-            <table class="floor_data splite">
+            <table class="floor_data splite newform_info ad_lists">
             	<thead>
-                	<tr class="none">
-                   	<th scope="col" class="check">&nbsp;</th><!--added kyoko-->
-                    	<th scope="col" class="code"><?php echo Yii::app()->controller->__trans('code'); ?></th>
-                        <th scope="col" class="no"><?php echo Yii::app()->controller->__trans('number of stairs・room number'); ?></th>
-                        <th scope="col" class="spot"><font><font><?php echo Yii::app()->controller->__trans('number of Tsubo'); ?></font></font></th>
-                        <th scope="col" class="prm"><font><font><?php echo Yii::app()->controller->__trans('rent'); ?></font></font></th>
-                        <th scope="col" class="csc"><font><font><?php echo Yii::app()->controller->__trans('condo fees'); ?></font></font></th>
-                        <th scope="col" class="dps"><font><font><?php echo Yii::app()->controller->__trans('deposit'); ?></font></font></th>
-                        <th scope="col" class="money"><font><font><?php echo Yii::app()->controller->__trans('key money'); ?></font></font></th>
-                        <th scope="col" class="am"><font><font><?php echo Yii::app()->controller->__trans('repayment'); ?></font></font></th>
-                        <th scope="col" class="period"><?php echo Yii::app()->controller->__trans('contract years'); ?></th>
-                        <th scope="col" class="sc"><font><font><?php echo Yii::app()->controller->__trans('date move in'); ?></font></font></th>
-                        <th scope="col" class="update"><?php echo Yii::app()->controller->__trans('last modified'); ?></th>
-                        <th scope="col" class="bt">&nbsp;</th>
-                    </tr>
+                	 <tr>
+                        <th class="check">&nbsp;</th>
+                        <th class="id_floor">Floor_ID</th>
+                        <th class="id_floor">Floor ID</th>
+                        <th class="level_floor">Level of floor</th>
+                        <th class="size_floor">Size</th>
+                        <th class="updated_floor">Updated on</th>
+                        <th class="check">&nbsp;</th>
+                       </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="13" style="text-align:left;">
-                        <?php
-						//$commonOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$buildingDetails['building_id'].' AND is_compart != 1 AND is_shared != 1 GROUP BY owner_company_name');
-						
-						$query = 'SELECT * FROM (SELECT * FROM ownership_management ORDER BY ownership_management_id DESC) AS ownership_management where `building_id` = '.$buildingDetails['building_id'].'  AND `is_compart` != 1  AND `is_shared` != 1 GROUP BY ownership_management.ownership_type';
-						$commonOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-						
-                        if(isset($commonOwnerDetails) && count($commonOwnerDetails) > 0){
-                            foreach($commonOwnerDetails as $common){
-                        ?>
-                            <span class="vendor-label">
-                                <?php
-                                $managementArray = array(1 => Yii::app()->controller->__trans('owner'),6 => 'サブリース',7 => '貸主代理',	8 => 'AM',10 => '業者',4 => Yii::app()->controller->__trans('intermediary agent'),2 => Yii::app()->controller->__trans('management company'),9 => Yii::app()->controller->__trans('PM'),3 => Yii::app()->controller->__trans('general contractor'),-1 => Yii::app()->controller->__trans('unknown'));
-                                
-                                if(array_key_exists($common['ownership_type'],$managementArray)){
-                                    echo $managementArray[$common['ownership_type']];
-                                }													
-                                ?>
-                            </span>
-                            <?php echo $common['owner_company_name'];?>
-                        <?php
+                     <?php 
+                   if(!empty($comparted_array)){
+                     foreach ($comparted_array as $comparted_arrays) {
+ 
+              ?>
+                        <tr>
+                            <td colspan="6" class="trader_list">
+                            <span class="trader_item"><label class="trader_label owner_label bg_blue">Segment ownership</label></span>
+                            <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
+                            <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
+                        </tr>
+                    <?php 
+                                if($comparted_arrays['info']['vacancy_info']==0){
+                              $text="満";
+                              $vac_class="no_vacant";
                             }
-                        }
-                        ?>
-                        </td>
-                    </tr>
-                    <?php
-					if(isset($relatedFloors) && count($relatedFloors) > 0){
-						foreach($relatedFloors as $related){
-							if(in_array($related['floor_id'],$cFloorIds)){
-								continue;
-							}
-							if(in_array($related['floor_id'],$sFloorIds)){
-								continue;
-							}
-							
-							$related['floor_up'] = str_replace("'", '', $related['floor_up']);
-							$related['floor_down'] = str_replace("'", '', $related['floor_down']);
-							
-							if($related['vacancy_info'] == '1'){
-								$vacancyClass = 'empty';
-								$vacLabel = '空';
-							}else{
-								$vacancyClass = 'full';
-								$vacLabel = '満';
-							}
-					?>
-                    <tr class="bg_b bg <?php $this->changeColor($related['floor_id']); ?>">
-                    <th class="check_th"><input type="checkbox" name="show_frontend[]" <?php echo $related['show_frontend'] ? 'checked' : '';?> value="<?php echo $related['floor_id']?>" class="show_frontend"></th><!--added kyoko-->
-                    	<th scope="row" class="code_d">
-                        	<span class="rm-status <?php echo $vacancyClass; ?>">
-                            	<font><font><?php echo $vacLabel; ?></font></font>
-                            </span>
-                            <span class="no-id"> <?php echo $related['floor_id']; ?></span>
-                        </th>
-                        <td class="no">
-                        	<font><font>
-							<?php
-                            if(strpos($related['floor_down'], '-') !== false){
-								$floorDown = '地下'.' '.str_replace("-", "", $related['floor_down']);
-							}else{
-								$floorDown = $related['floor_down'];
-							}
-							$stairs = $floorDown;
-							$stairs .= '階'.$related['floor_up'];
-							echo $stairs.'  '.$related['roomname'];
-							?>
-                            </font></font>
-                        </td>
-                        <td class="spot">
-                        	<font><font>
-							<?php
-                            if($related['area_ping'] != ""){
-								echo $related['area_ping'].Yii::app()->controller->__trans('tsubo');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="prm">
-                            <font><font> 
-                  				<?php
-									if(isset($related['rent_unit_price']) && $related['rent_unit_price'] != "" && $related['rent_unit_price'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($related['rent_unit_price']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-										if($related['rent_unit_price_opt'] != ''){
-											if($related['rent_unit_price_opt'] == -1){
-												echo Yii::app()->controller->__trans('undecided');
-											}else if($related['rent_unit_price_opt'] == -2){
-												echo Yii::app()->controller->__trans('ask');
-											}
-										}else{
-											echo '-';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="csc">
-                            <font><font> 
-                            <?php
-								if(isset($related['unit_condo_fee']) && $related['unit_condo_fee'] != "" && $related['unit_condo_fee'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($related['unit_condo_fee']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-									if($related['unit_condo_fee_opt'] != ''){
-										if($related['unit_condo_fee_opt'] == 0){
-											echo Yii::app()->controller->__trans('none');
-										}else if($related['unit_condo_fee_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($related['unit_condo_fee_opt'] == -2){
-											echo Yii::app()->controller->__trans('ask');
-										}else if($related['unit_condo_fee_opt'] == -3){
-											echo '賃料に込み';
-										}
-									}else{
-										echo '-';
-									}
-								}
-							?>
-                  			</font></font>
-                       	</td>
-                        <td class="dps">
-                            <font><font> 
-                  				<?php
-									/*if(isset($related['total_deposit']) && $related['total_deposit'] != "0" && $related['total_deposit'] != ""){
-										echo Yii::app()->controller->renderPrice($related['total_deposit']).' 円';
-									}
-									if($related['deposit_opt'] != ''){
-										echo '<br/>';
-										if($related['deposit_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($related['deposit_opt'] == -3){
-											echo Yii::app()->controller->__trans('none');
-										}else if($related['deposit_opt'] == -2){
-											echo Yii::app()->controller->__trans('undecided･ask');
-										}
-									}*/
-									if(isset($related['deposit_month']) &&  $related['deposit_month'] != ''){
-										echo $related['deposit_month'].' ヶ月';
-									}else{
-										echo '-';
-									}
-								?>
-                  			</font></font><br>
-                  			<font><font> 
-                  				<?php
-									/*if(isset($related['deposit']) && $related['deposit'] != ""){
-										echo '('.$related['deposit'].Yii::app()->controller->__trans('yen / tsubo').')';
-									}else{
-										echo '';
-									}*/
-								?>
-                            </font></font>
-                        </td>
-                        <td class="money">
-                        	<font><font>
-                            <?php  
-								if(isset($related['key_money_opt']) && $related['key_money_opt'] != ""){
-									if($related['key_money_opt'] == 2){
-										echo Yii::app()->controller->__trans('None');
-									}elseif($related['key_money_opt'] == -1){
-										echo Yii::app()->controller->__trans('Unknown');
-									}elseif($related['key_money_opt'] == -2){
-										echo Yii::app()->controller->__trans('undecided･ask');
-									}else{
-										echo '';
-									}
-								}else{
-									echo '';
-								}
-								
-								if(isset($related['key_money_month']) && $related['key_money_month'] != ""){
-									echo $related['key_money_month'].Yii::app()->controller->__trans('month');
-								}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="am">
-                            <font><font>
-                  				<?php
-									if(isset($related['repayment_opt']) && $related['repayment_opt'] != ""){
-										if($related['repayment_opt'] == -3){
-											echo Yii::app()->controller->__trans('None')."<br>"; 
-										}elseif($related['repayment_opt'] == -4){
-											echo Yii::app()->controller->__trans('Unknown')."<br>"; 
-										}elseif($related['repayment_opt'] == -1){
-											echo Yii::app()->controller->__trans('Undecided')."<br>"; 
-										}elseif($related['repayment_opt'] == -2){
-											echo Yii::app()->controller->__trans('Ask')."<br>"; 
-										}elseif($related['repayment_opt'] == -5){
-											echo Yii::app()->controller->__trans('Sliding')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($related['repayment_reason']) && $related['repayment_reason'] != ""){
-										if($related['repayment_reason'] == 1){
-											echo "現賃料の<br>"; 
-										}elseif($related['repayment_reason'] == 2){
-											echo "解約時賃料の<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($related['repayment_amt']) && $related['repayment_amt'] != ""){
-										echo $related['repayment_amt'];
-									}
-									
-									if(isset($related['repayment_amt_opt']) && $related['repayment_amt_opt'] != ""){
-										if($related['repayment_amt_opt'] == 1){
-											echo "ヶ月"; 
-										}elseif($related['repayment_amt_opt'] == 2){
-											echo Yii::app()->controller->__trans('%')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="period">
-                        	<font><font>
-							<?php
-                            if(isset($related['contract_period_duration']) && $related['contract_period_duration'] != ""){
-								echo $related['contract_period_duration'];
-								echo $related['contract_period_duration'] > 1 && $related['contract_period_duration'] != "" ? Yii::app()->controller->__trans('years') : Yii::app()->controller->__trans('year');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                       	</td>
-                        <td class="sc">
-                        	<font><font>
-							<?php
-                            if(isset($related['move_in_date']) && $related['move_in_date'] != "" && (string)$related['move_in_date'] != "0"){
-								echo $related['move_in_date'];
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="update">
-                        	<font><font>
-							<?php
-                            if(isset($related['modified_on']) && $related['modified_on'] != ""){
-								if($related['modified_on'] != "0000-00-00 00:00:00"){
-									echo date('Y.m.d',strtotime($related['modified_on']));
-								}else{
-									echo date('Y.m.d',strtotime($related['added_on']));
-								}
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="bt">
-                        	<div class="bt_update">
-                            	<a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
-                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
-                           	</div>
-                        </td>
-                    </tr>
-                    <?
-						}
-					}
-					?>
+                            else{
+                                 $text="空";
+                                 $vac_class="vacant";     
+                            }
+
+                    ?>
+
+
+                  <tr>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
+                    <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
+                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                    <td class="bt">
+                            <div class="bt_update">
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
+                            </div>
+                    </td>
+                  </tr>
+                 <?php
+                   }
+                  }
+                 ?>
+
+                   <?php 
+                   if(!empty($multi_window_array)){
+                     foreach ($multi_window_array as $comparted_arrays) {
+        
+                     ?>
+                        <tr>
+                            <td colspan="6" class="trader_list">
+                            <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
+                            <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
+                        </tr>
+                    <?php 
+                                if($comparted_arrays['info']['vacancy_info']==0){
+                              $text="満";
+                              $vac_class="no_vacant";
+                            }
+                            else{
+                                 $text="空";
+                                 $vac_class="vacant";     
+                            }
+
+                    ?>
+
+
+                  <tr>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
+                    <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
+                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                    <td class="bt">
+                            <div class="bt_update">
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
+                            </div>
+                    </td>
+                  </tr>
+                 <?php
+                   }
+                  }
+                    //single window and owner started here
+                  if(!empty($single_owner_window_array)){
+                       foreach ($single_owner_window_array as $single_owner_window_arrays) {
+                  ?>
+                  <tr>
+                    <td colspan="6" class="trader_list">
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                  </tr>
+                    <?php  foreach($single_owner_window_arrays['info'] as $info){
+                            if($info['vacancy_info']==0){
+                              $text="満";
+                              $vac_class="no_vacant";
+                            }
+                            else{
+                                 $text="空";
+                                 $vac_class="vacant";     
+                            }
+
+                    ?>
+
+
+                  <tr>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $info['floorId'] ?></td>
+                    <td class="id_floor"><?= $info['floor_id'] ?></td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $info['area_m'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
+                     <td class="bt">
+                            <div class="bt_update">
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$info['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$info['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
+                            </div>
+                    </td>
+                  </tr>
+                 <?php
+                    }
+                   }
+                  }
+
+                  //single window and owner ends here 
+
+
+                     // multipal oweners start here
+              if(!empty($multi_owner_array)){
+                     foreach ($multi_owner_array as $comparted_arrays) {
+              ?>
+              <tr>
+                <td colspan="6" class="trader_list">
+                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
+                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
+              </tr>
+                    <?php 
+                      if($comparted_arrays['info']['vacancy_info']==0){
+                              $text="満";
+                              $vac_class="no_vacant";
+                            }
+                            else{
+                                 $text="空";
+                                 $vac_class="vacant";     
+                            }
+
+                    ?>
+
+
+                  <tr>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"></label> </td>
+                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
+                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
+                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                     <td class="bt">
+                            <div class="bt_update">
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['info']['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
+                            </div>
+                    </td>
+                  </tr>
+                 <?php
+                   }
+                  }
+                // multi Owners end here 
+
+
+
+            
+              if(!empty($no_owner_window)){
                     
-                    <?php                                
-                   				 $query = 'SELECT om.*
-									FROM ownership_management om
-									INNER JOIN floor f ON om.floor_id = f.floor_id
-									WHERE
-										om.building_id = '.(int)$globalBuildingId.'
-									AND om.is_compart = 1
-									ORDER BY
-										cast(f.floor_down AS SIGNED) ASC,
-										cast(f.floor_up AS SIGNED) ASC,
-										om.ownership_management_id DESC';
-								$allCompartOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-								
-                                $cFloorIDs = array();
-                                $ownerNames = array();
-                                foreach($allCompartOwnerDetails as $aFloor){
-                                    $cFloorIDs[] = $aFloor['floor_id'];
-                                    $ownerNames[$aFloor['ownership_type']] = $aFloor['owner_company_name'];
-                                }
-                                
-                                $cFloorIDs = array_unique($cFloorIDs);
-                                if(count($cFloorIDs) > 0){
-                                    foreach($cFloorIDs as $fId){
-                                        $oDetails = OwnershipManagement::model()->findAll('building_id = '.$globalBuildingId.' and floor_id ='.$fId.' AND is_compart = 1');
-                                ?>
-                                <tr>
-                                    <td colspan="12" style="text-align:left;">
-                                        <span class="labelCompartInSingle">区分所有フロア</span></br>
-                                        <?php foreach($ownerNames as $key=>$val){?>
-                                        <span class="vendor-label">
-                                            <?php
-                                            $managementArray = array(1 => Yii::app()->controller->__trans('owner'),6 => 'サブリース',7 => '貸主代理',	8 => 'AM',10 => '業者',4 => Yii::app()->controller->__trans('intermediary agent'),2 => Yii::app()->controller->__trans('management company'),9 => Yii::app()->controller->__trans('PM'),3 => Yii::app()->controller->__trans('general contractor'),-1 => Yii::app()->controller->__trans('unknown'));
-											if(array_key_exists($key,$managementArray)){
-                                                echo $managementArray[$key];
-                                            }													
-                                            ?>
-                                        </span>
-                                        <?php echo $val;?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php
-                                    //foreach($oDetails as $sharedDetails){
-                                        $floorDetails = Floor::model()->find('floor_id = '.$fId);
-                                        if(!empty($floorDetails)){
-											if($floorDetails['vacancy_info'] == '1'){
-												$vacancyClass = 'empty';
-												$vacLabel = '空';
-											}else{
-												$vacancyClass = 'full';
-												$vacLabel = '満';
-											}
-                                        
-                                ?>
-                                    <tr class="bg_b bg">
-                                    <th class="check_th"><input type="checkbox" name="show_frontend[]" <?php echo $floorDetails['show_frontend'] ? 'checked' : '';?> value="<?php echo $floorDetails['floor_id']?>" class="show_frontend"></th><!--added kyoko-->
-                    	<th scope="row" class="code_d">
-                        	<span class="rm-status <?php echo $vacancyClass; ?>">
-                            	<font><font><?php echo $vacLabel; ?></font></font>
-                            </span>
-                            <font><font> <?php echo $floorDetails['floor_id']; ?></font></font>
-                        </th>
-                        <td class="no">
-                        	<font><font>
-							<?php
-                            if(strpos($floorDetails['floor_down'], '-') !== false){
-								$floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
-							}else{
-								$floorDown = $floorDetails['floor_down'];
-							}
-							$stairs = $floorDown;
-							$stairs .= '階'.$floorDetails['floor_up'];
-							echo $stairs.'  '.$floorDetails['roomname'];
-							?>
-                            </font></font>
-                        </td>
-                        <td class="spot">
-                        	<font><font>
-							<?php
-                            if($floorDetails['area_ping'] != ""){
-								echo $floorDetails['area_ping'].Yii::app()->controller->__trans('tsubo');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="prm">
-                            <font><font> 
-                  				<?php
-									if(isset($floorDetails['rent_unit_price']) && $floorDetails['rent_unit_price'] != "" && $floorDetails['rent_unit_price'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($floorDetails['rent_unit_price']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-										if($floorDetails['rent_unit_price_opt'] != ''){
-											if($floorDetails['rent_unit_price_opt'] == -1){
-												echo Yii::app()->controller->__trans('undecided');
-											}else if($floorDetails['rent_unit_price_opt'] == -2){
-												echo Yii::app()->controller->__trans('ask');
-											}
-										}else{
-											echo '-';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="csc">
-                            <font><font> 
-                            <?php
-								if(isset($floorDetails['unit_condo_fee']) && $floorDetails['unit_condo_fee'] != "" && $floorDetails['unit_condo_fee'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($floorDetails['unit_condo_fee']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-									if($floorDetails['unit_condo_fee_opt'] != ''){
-										if($floorDetails['unit_condo_fee_opt'] == 0){
-											echo Yii::app()->controller->__trans('none');
-										}else if($floorDetails['unit_condo_fee_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($floorDetails['unit_condo_fee_opt'] == -2){
-											echo Yii::app()->controller->__trans('ask');
-										}else if($floorDetails['unit_condo_fee_opt'] == -3){
-											echo '賃料に込み<br/>(含む)';
-										}
-									}else{
-										echo '-';
-									}
-								}
-							?>
-                  			</font></font>
-                       	</td>
-                        <td class="dps">
-                            <font><font> 
-                  				<?php
-									/*if(isset($floorDetails['total_deposit']) && $floorDetails['total_deposit'] != "0" && $floorDetails['total_deposit'] != ""){
-										echo Yii::app()->controller->renderPrice($floorDetails['total_deposit']).' 円';
-									}
-									if($floorDetails['deposit_opt'] != ''){
-										echo '<br/>';
-										if($floorDetails['deposit_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($floorDetails['deposit_opt'] == -3){
-											echo Yii::app()->controller->__trans('none');
-										}else if($floorDetails['deposit_opt'] == -2){
-											echo Yii::app()->controller->__trans('undecided･ask');
-										}
-									}*/
-									if(isset($floorDetails['deposit_month']) &&  $floorDetails['deposit_month'] != ''){
-										echo '<br/>'.$floorDetails['deposit_month'].' ヶ月';
-									}else{
-										echo '-';
-									}
-								?>
-                  			</font></font><br>
-                  			<font><font> 
-                  				<?php
-									/*if(isset($floorDetails['deposit']) && $floorDetails['deposit'] != ""){
-										echo '('.$floorDetails['deposit'].Yii::app()->controller->__trans('yen / tsubo').')';
-									}else{
-										echo '';
-									}*/
-								?>
-                            </font></font>
-                        </td>
-                        <td class="money">
-                        	<font><font>
-                            <?php
-								if(isset($floorDetails['key_money_opt']) && $floorDetails['key_money_opt'] != ""){
-									if($floorDetails['key_money_opt'] == 2){
-										echo Yii::app()->controller->__trans('None');
-									}elseif($floorDetails['key_money_opt'] == -1){
-										echo Yii::app()->controller->__trans('Unknown');
-									}elseif($floorDetails['key_money_opt'] == -2){
-										echo Yii::app()->controller->__trans('undecided･ask');
-									}else{
-										echo '';
-									}
-								}else{
-									echo '';
-								}
-								
-								if(isset($floorDetails['key_money_month']) && $floorDetails['key_money_month'] != ""){
-									echo $floorDetails['key_money_month'].Yii::app()->controller->__trans('month');
-								}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="am">
-                            <font><font>
-                  				<?php
-									if(isset($floorDetails['repayment_opt']) && $floorDetails['repayment_opt'] != ""){
-										if($floorDetails['repayment_opt'] == -3){
-											echo Yii::app()->controller->__trans('None')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -4){
-											echo Yii::app()->controller->__trans('Unknown')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -1){
-											echo Yii::app()->controller->__trans('Undecided')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -2){
-											echo Yii::app()->controller->__trans('Ask')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -5){
-											echo Yii::app()->controller->__trans('Sliding')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
-										if($floorDetails['repayment_reason'] == 1){
-											echo "現賃料の<br>"; 
-										}elseif($floorDetails['repayment_reason'] == 2){
-											echo "解約時賃料の<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($floorDetails['repayment_amt']) && $floorDetails['repayment_amt'] != ""){
-										echo $floorDetails['repayment_amt'];
-									}
-									
-									if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
-										if($floorDetails['repayment_amt_opt'] == 1){
-											echo 'ヶ月'; 
-										}elseif($floorDetails['repayment_amt_opt'] == 2){
-											echo Yii::app()->controller->__trans('%')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="period">
-                        	<font><font>
-							<?php
-                            if(isset($floorDetails['contract_period_duration']) && $floorDetails['contract_period_duration'] != ""){
-								echo $floorDetails['contract_period_duration'];
-								echo $floorDetails['contract_period_duration'] > 1 && $floorDetails['contract_period_duration'] != "" ? Yii::app()->controller->__trans('years') : Yii::app()->controller->__trans('year');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                       	</td>
-                        <td class="sc">
-                        	<font><font>
-							<?php
-                            if(isset($floorDetails['move_in_date']) && $floorDetails['move_in_date'] != "" && (string)$floorDetails['move_in_date'] != "0"){
-								echo $floorDetails['move_in_date'];
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="update">
-                        	<font><font>
-							<?php
-							if(isset($floorDetails['modified_on']) && $floorDetails['modified_on'] != ""){
-								if($floorDetails['modified_on'] != "0000-00-00 00:00:00"){
-									echo date('Y.m.d',strtotime($floorDetails['modified_on']));
-								}else{
-									echo date('Y.m.d',strtotime($floorDetails['added_on']));
-								}
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="bt">
-                        	<div class="bt_update">
-                            	<a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
-                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
-                           	</div>
-                        </td>
-                    </tr>
-                                <?php
-                                        }
-                                    //}
-                                }
+              ?>
+              <tr>
+                <td colspan="6" class="trader_list">
+                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> NO Window</span>
+                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> NO Owners</span></td>
+              </tr>
+                    <?php 
+                    foreach ($no_owner_window as $comparted_arrays) {
+                      if($comparted_arrays['vacancy_info']==0){
+                              $text="満";
+                              $vac_class="no_vacant";
                             }
-                            ?>
-                    <?php
-					//$allSharedOwnerDetails = OwnershipManagement::model()->findAll('building_id = '.$buildingDetails['building_id'].' AND is_shared = 1');
-					$query = 'SELECT * FROM (SELECT * FROM ownership_management ORDER BY ownership_management_id DESC) AS ownership_management where `building_id` = '.$globalBuildingId.' AND `is_shared` = 1';
-					$allSharedOwnerDetails = Yii::app()->db->createCommand($query)->queryAll();
-					$sFloorIDs = array();
-					$ownerNames = array();
-					foreach($allSharedOwnerDetails as $aFloor){
-						$sFloorIDs[] = $aFloor['floor_id'];
-						$ownerNames[$aFloor['ownership_type']] = $aFloor['owner_company_name'];
-					}
-					$sFloorIDs = array_unique($sFloorIDs);
-					if(count($sFloorIDs) > 0){
-						foreach($sFloorIDs as $fId){
-						$oDetails = OwnershipManagement::model()->findAll('building_id = '.$buildingDetails['building_id'].' and floor_id ='.$fId.' AND is_shared = 1');
-					?>
-					<tr>
-						<td colspan="13" style="text-align:left;">
-                        	<span class="labelSharedInSingle">共用オーナーフロア</span><br/>
-                        	<?php foreach($oDetails as $own){?>							
-							<span class="vendor-label">
-								<?php
-								$managementArray = array(1 => Yii::app()->controller->__trans('owner'),6 => 'サブリース',7 => '貸主代理',	8 => 'AM',10 => '業者',4 => Yii::app()->controller->__trans('intermediary agent'),2 => Yii::app()->controller->__trans('management company'),9 => Yii::app()->controller->__trans('PM'),3 => Yii::app()->controller->__trans('general contractor'),-1 => Yii::app()->controller->__trans('unknown'));
-								if(array_key_exists($own['ownership_type'],$managementArray)){
-									echo $managementArray[$own['ownership_type']];
-								}
-								?>
-							</span>
-							<?php echo $own['owner_company_name'];?>
-                            <?php } ?>
-						</td>
-					</tr>
-					<?php
-							//foreach($oDetails as $sharedDetails){
-								$floorDetails = Floor::model()->findByPk($fId);
-								if($floorDetails['vacancy_info'] == '1'){
-									$vacancyClass = 'empty';
-									$vacLabel = '空';
-								}else{
-									$vacancyClass = 'full';
-									$vacLabel = '満';
-								}
-					?>
-					<tr class="bg_b bg">
-                   	<th class="check_th"><input type="checkbox" name="show_frontend[]" <?php echo $floorDetails['show_frontend'] ? 'checked' : '';?> value="<?php echo $floorDetails['floor_id']?>" class="show_frontend"></th><!--added kyoko-->
-                    	<th scope="row" class="code_d">
-                        	<span class="rm-status <?php echo $vacancyClass; ?>">
-                            	<font><font><?php echo $vacLabel; ?></font></font>
-                            </span>
-                            <font><font> <?php echo $floorDetails['floor_id']; ?></font></font>
-                        </th>
-                        <td class="no">
-                        	<font><font>
-							<?php
-                            if(strpos($floorDetails['floor_down'], '-') !== false){
-								$floorDown = '地下'.' '.str_replace("-", "", $floorDetails['floor_down']);
-							}else{
-								$floorDown = $floorDetails['floor_down'];
-							}
-							$stairs = $floorDown;
-							$stairs .= '階'.$floorDetails['floor_up'];
-							echo $stairs.'  '.$floorDetails['roomname'];
-							?>
-                            </font></font>
-                        </td>
-                        <td class="spot">
-                        	<font><font>
-							<?php
-                            if($floorDetails['area_ping'] != ""){
-								echo $floorDetails['area_ping'].Yii::app()->controller->__trans('tsubo');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="prm">
-                            <font><font> 
-                  				<?php
-									if(isset($floorDetails['rent_unit_price']) && $floorDetails['rent_unit_price'] != "" && $floorDetails['rent_unit_price'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($floorDetails['rent_unit_price']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-										if($floorDetails['rent_unit_price_opt'] != ''){
-											if($floorDetails['rent_unit_price_opt'] == -1){
-												echo Yii::app()->controller->__trans('undecided');
-											}else if($floorDetails['rent_unit_price_opt'] == -2){
-												echo Yii::app()->controller->__trans('ask');
-											}
-										}else{
-											echo '-';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="csc">
-                            <font><font> 
-                            <?php
-								if(isset($floorDetails['unit_condo_fee']) && $floorDetails['unit_condo_fee'] != "" && $floorDetails['unit_condo_fee'] != 0){
-										echo ''.Yii::app()->controller->renderPrice($floorDetails['unit_condo_fee']).Yii::app()->controller->__trans('yen / tsubo').'';
-									}else{
-									if($floorDetails['unit_condo_fee_opt'] != ''){
-										if($floorDetails['unit_condo_fee_opt'] == 0){
-											echo Yii::app()->controller->__trans('none');
-										}else if($floorDetails['unit_condo_fee_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($floorDetails['unit_condo_fee_opt'] == -2){
-											echo Yii::app()->controller->__trans('ask');
-										}else if($floorDetails['unit_condo_fee_opt'] == -3){
-											echo '賃料に込み<br/>(含む)';
-										}
-									}else{
-										echo '-';
-									}
-								}
-							?>
-                  			</font></font>
-                       	</td>
-                        <td class="dps">
-                            <font><font> 
-                  				<?php
-									/*if(isset($floorDetails['total_deposit']) && $floorDetails['total_deposit'] != "0" && $floorDetails['total_deposit'] != ""){
-										echo Yii::app()->controller->renderPrice($floorDetails['total_deposit']).' 円';
-									}
-									if($floorDetails['deposit_opt'] != ''){
-										echo '<br/>';
-										if($floorDetails['deposit_opt'] == -1){
-											echo Yii::app()->controller->__trans('undecided');
-										}else if($floorDetails['deposit_opt'] == -3){
-											echo Yii::app()->controller->__trans('none');
-										}else if($floorDetails['deposit_opt'] == -2){
-											echo Yii::app()->controller->__trans('undecided･ask');
-										}
-									}*/
-									if(isset($floorDetails['deposit_month']) &&  $floorDetails['deposit_month'] != ''){
-										echo ''.$floorDetails['deposit_month'].' ヶ月';
-									}else{
-										echo '-';
-									}
-								?>
-                  			</font></font><!--<br>-->
-                  			<font><font> 
-                  				<?php
-									/*if(isset($floorDetails['deposit']) && $floorDetails['deposit'] != ""){
-										echo '('.$floorDetails['deposit'].Yii::app()->controller->__trans('yen / tsubo').')';
-									}else{
-										echo '';
-									}*/
-								?>
-                            </font></font>
-                        </td>
-                        <td class="money">
-                        	<font><font>
-                            <?php
-								if(isset($floorDetails['key_money_opt']) && $floorDetails['key_money_opt'] != ""){
-									if($floorDetails['key_money_opt'] == 2){
-										echo Yii::app()->controller->__trans('None');
-									}elseif($floorDetails['key_money_opt'] == -1){
-										echo Yii::app()->controller->__trans('Unknown');
-									}elseif($floorDetails['key_money_opt'] == -2){
-										echo Yii::app()->controller->__trans('undecided･ask');
-									}else{
-										echo '';
-									}
-								}else{
-									echo '';
-								}
-								
-								if(isset($floorDetails['key_money_month']) && $floorDetails['key_money_month'] != ""){
-									echo $floorDetails['key_money_month'].Yii::app()->controller->__trans('month');
-								}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="am">
-                            <font><font>
-                  				<?php
-									if(isset($floorDetails['repayment_opt']) && $floorDetails['repayment_opt'] != ""){
-										if($floorDetails['repayment_opt'] == -3){
-											echo Yii::app()->controller->__trans('None')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -4){
-											echo Yii::app()->controller->__trans('Unknown')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -1){
-											echo Yii::app()->controller->__trans('Undecided')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -2){
-											echo Yii::app()->controller->__trans('Ask')."<br>"; 
-										}elseif($floorDetails['repayment_opt'] == -5){
-											echo Yii::app()->controller->__trans('Sliding')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
-										if($floorDetails['repayment_reason'] == 1){
-											echo "現賃料の<br>"; 
-										}elseif($floorDetails['repayment_reason'] == 2){
-											echo "解約時賃料の<br>"; 
-										}else{
-											echo '';
-										}
-									}
-									
-									if(isset($floorDetails['repayment_amt']) && $floorDetails['repayment_amt'] != ""){
-										echo $floorDetails['repayment_amt'];
-									}
-									
-									if(isset($floorDetails['repayment_amt_opt']) && $floorDetails['repayment_amt_opt'] != ""){
-										if($floorDetails['repayment_amt_opt'] == 1){
-											echo "ヶ月"; 
-										}elseif($floorDetails['repayment_amt_opt'] == 2){
-											echo Yii::app()->controller->__trans('%')."<br>"; 
-										}else{
-											echo '';
-										}
-									}
-								?>
-                  			</font></font>
-                        </td>
-                        <td class="period">
-                        	<font><font>
-							<?php
-                            if(isset($floorDetails['contract_period_duration']) && $floorDetails['contract_period_duration'] != ""){
-								echo $floorDetails['contract_period_duration'];
-								echo $floorDetails['contract_period_duration'] > 1 && $floorDetails['contract_period_duration'] != "" ? Yii::app()->controller->__trans('years') : Yii::app()->controller->__trans('year');
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                       	</td>
-                        <td class="sc">
-                        	<font><font>
-							<?php
-                            if(isset($floorDetails['move_in_date']) && $floorDetails['move_in_date'] != "" && (string)$floorDetails['move_in_date'] != "0"){
-								echo $floorDetails['move_in_date'];
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="update">
-                        	<font><font>
-							<?php
-							if(isset($floorDetails['modified_on']) && $floorDetails['modified_on'] != ""){
-								if($floorDetails['modified_on'] != "0000-00-00 00:00:00"){
-									echo date('Y.m.d',strtotime($floorDetails['modified_on']));
-								}else{
-									echo date('Y.m.d',strtotime($floorDetails['added_on']));
-								}
-							}else{
-								echo '-';
-							}
-							?>
-                            </font></font>
-                        </td>
-                        <td class="bt">
-                        	<div class="bt_update">
-                            	<a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
-                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$floorDetails['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
-                           	</div>
-                        </td>
-                    </tr>
-					<?php
-							//}
-						}
-					}
-					?>
+                            else{
+                                 $text="空";
+                                 $vac_class="vacant";     
+                            }
+
+                    ?>
+
+
+                  <tr>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
+                    <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
+                    <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $comparted_arrays['area_m'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
+                     <td class="bt">
+                            <div class="bt_update">
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'])); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['floor_id'],'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
+                                <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$related['floor_id'],'type'=>'duplicate')); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update',array('id'=>$comparted_arrays['floor_id'],'type'=>'duplicate','window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;"><?php echo Yii::app()->controller->__trans('複製'); ?></a>
+                            </div>
+                    </td>
+                  </tr>
+                 <?php
+                   }
+                  }
+
+              ?>
+                
+                
+                
+                 
+              
+				
                 </tbody>
             </table>
             <h4 class="ontable"><font><font>フロアの追加・削除</font></font></h4>
@@ -5682,12 +5142,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if(isset($relatedAllFloorList) && count($relatedAllFloorList) > 0 ){
                                             foreach($relatedAllFloorList as $allFloor){
                                                 if(strpos($allFloor['floor_down'], '-') !== false){
-                                                    $floorDown = '地下'.' '.str_replace("-", "", $allFloor['floor_down']);
+                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $allFloor['floor_down']);
                                                 }else{
                                                     $floorDown = $allFloor['floor_down'];
                                                 }
                                     ?>
-                                    <option value="<?php echo $allFloor['floor_id']; ?>"> <font><font> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".'階'." ".$allFloor['roomname'].")"; ?> </font></font> </option>
+                                    <option value="<?php echo $allFloor['floor_id']; ?>"> <font><font> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".Yii::app()->controller->__trans("階")." ".$allFloor['roomname'].")"; ?> </font></font> </option>
                                     <?php
                                             }
                                         }
@@ -5712,12 +5172,12 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         if(isset($relatedAllFloorList) && count($relatedAllFloorList) > 0 ){
                                             foreach($relatedAllFloorList as $allFloor){
                                                 if(strpos($allFloor['floor_down'], '-') !== false){
-                                                    $floorDown = '地下'.' '.str_replace("-", "", $allFloor['floor_down']);
+                                                    $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $allFloor['floor_down']);
                                                 }else{
                                                     $floorDown = $allFloor['floor_down'];
                                                 }
                                     ?>
-                                    <option <?php echo $allFloor['fixed_floor'] ? 'selected' : '';?> value="<?php echo $allFloor['floor_id']; ?>"> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".'階'." ".$allFloor['roomname'].")"; ?> </option>
+                                    <option <?php echo $allFloor['fixed_floor'] ? 'selected' : '';?> value="<?php echo $allFloor['floor_id']; ?>"> <?php echo $allFloor['floor_id']; ?> <?php echo "(".$floorDown; ?> <?php echo $allFloor['floor_up'] != "" ? " ~ ".$allFloor['floor_up'] : ""; ?> <?php echo " ".Yii::app()->controller->__trans("階")." ".$allFloor['roomname'].")"; ?> </option>
                                     <?php
                                             }
                                         }
@@ -5797,156 +5257,154 @@ if(count($getGoogleMapKeyDetails) > 0){
 <div class="modal-box hide" id="appendManagementModal">
   <div class="content managementHistoryContent">
     <div class="box-header">
-      <h2 class="popup-label"><?php echo Yii::app()->controller->__trans('Building management edit・add'); ?></h2>
+      <h2 class="popup-label">
+          Edit・Add building update info history
+      </h2>
       <button type="button" class="btnModalClose" id="btnModalClose">X</button>
     </div>
-    <div class="box-content">
+    <div class="box-content" >
     	<div class="messageManagement hide"></div>
-      <div class="formbox f-full owner-info">
-        <div class="table-inner">
-        	<?php
-			$divcls = $divlbl = '';
-			if($isCompart != ""){
-				$divcls = 'color-blue';
-				$divlbl = $isCompart;
-			}
-			
-			if($isShared != ""){
-				$divcls = 'color-orange';
-				$divlbl = $isShared;
-			}
-			?>
-        	<div class="differentOwner <?php echo $divcls; ?>"><?php echo $divlbl; ?></div>
-			<form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="">
-				<input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo isset($_GET['id']) && $_GET['id'] != "" ? $_GET['id'] : 0; ?>"/>
-				<input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
-				<?php /*?><table class="edit_input f_info_b mline tb-floor one-col mix-col">
-				  <tbody>
-					<tr>
-					  <th class="minsize"><?php echo Yii::app()->controller->__trans('this floor is condominium ownership'); ?></th>
-					  <td><label class="rd2">
-						  <input type="radio" value="1" name="is_condominium_ownership">
-						  <?php echo Yii::app()->controller->__trans('YES'); ?> </label>
-						<label class="rd2">
-						  <input type="radio" value="0" name="is_condominium_ownership">
-						 <?php echo Yii::app()->controller->__trans('NO'); ?>  </label></td>
-					</tr>
-				  </tbody>
-				</table><?php */?>
-				<table class="edit_input f_info mt tb-floor one-col mix-col">
-				  <tbody>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('trader ID'); ?></th>
-					  <td colspan="3">
-						<input type="text" name="searchTraderText" class="ty3 searchTraderText" id="searchTraderText" style="float:left;">
-						<input type="button" name="btnSearchTrader" id="btnSearchTrader" class="btnSearchTrader bt_entry autoWidth" value="業者を検索">
-						<br/>
-						<div class="traderResp">
-                        	<span id="owner_id_select">
-                            	<select id="tradersList"  class="auto tradersList" name="trader_id">
-                                	<option value="0"><?php echo Yii::app()->controller->__trans('saved traders'); ?>↓</option>
-									<?php
-                                    $tradersDetails = Traders::model()->findAll('is_active = 1 AND building_id = '.$buildingDetails['building_id'].' AND floor_id = '.$_GET['id']);
-									if(isset($tradersDetails) && count($tradersDetails) > 0){
-										foreach($tradersDetails as $tradersList){
-									?>
-                                    <option value="<?php echo $tradersList['trader_id']; ?>" ><?php echo $tradersList['traderId'].' '.$tradersList['trader_name']; ?></option>
-									<?php
-                                    	}
-									}else{
-									?>
-                                    <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available'); ?></option>
-									<?php
-                                    }
-									?>
-                                </select>
-                            </span> &nbsp;
-                        </div>
-                        <div class="loadTraders" style="display:none;">
-                            <div class="spinner">
-                                <div class="rect1"></div>
-                                <div class="rect2"></div>
-                                <div class="rect3"></div>
-                                <div class="rect4"></div>
-                                <div class="rect5"></div>
-                            </div>
-                        </div>
-					   <!-- ←
-						<input type="text" name="newTrader" id="newTrader" class="ty1 newTrader">
-						<input type="button" name="add-trader" id="btnAddTrader" class="btnAddTrader bt_entry autoWidth" value="Add Traders">--></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('ownership type'); ?></th>
-					  <td><select name="ownership_type" id="bo_type" data-role="none" class="ownership_type" required>
-						  <option value="">-</option>
-						  <?php 
-						  foreach ($aVendorType as $vendorValue => $vendorName)
-						  {
-							echo '<option value="'. $vendorValue .'" >'. $vendorName .'</option>';
-						  }
-						  ?>
-						</select></td>
-					  <th><?php echo Yii::app()->controller->__trans('Form of Transaction'); ?></th>
-					  <td><select name="management_type" id="bo_contract" class="management_type" data-role="none">
-						  <option value="">-</option>
-						  <option value="-1"><?php echo Yii::app()->controller->__trans('unknown'); ?></option>
-						  <option value="1">専任媒介</option>
-						  <option value="2">一般媒介</option>
-						  <option value="3">代理</option>
-						  <option value="4">貸主</option>
-						</select>
-					  </td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('Window'); ?></th>
-					  <td colspan="3"><input type="checkbox" name="is_current" id="is_current" class="is_current" value="1" /><?php echo Yii::app()->controller->__trans('Setting this trader owner properties window');?></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('company name'); ?></th>
-					  <td colspan="3"><input type="text" name="owner_company_name" id="bo_name" value="" class="ty6 owner_company_name" required></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('contact address'); ?></th>
-					  <td colspan="3"><input type="text" name="company_tel" id="bo_tel1" value="" class="ty6 company_tel"></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('person in charge1'); ?></th>
-					  <td><input type="text" name="person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
-					  <th><?php echo Yii::app()->controller->__trans('person in charge2'); ?></th>
-					  <td><input type="text" name="person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('charge'); ?></th>
-					  <td colspan="3">
-						<label class="rd2">
-							<input type="radio" name="charge" value="unknown" class="radiUnknown">
-							<?php echo Yii::app()->controller->__trans('unknown'); ?>
-						</label>
-						<label class="rd2">
-							<input type="radio" name="charge" value="ask" class="radiAsk">
-							<?php echo Yii::app()->controller->__trans('ask'); ?>
-						</label>
-						<label class="rd2">
-						  <input type="radio" name="charge" value="undecided" class="radiUndecided">
-						  <?php echo Yii::app()->controller->__trans('undecided'); ?>  </label>
-						<label class="rd2">
-						  <input type="radio" name="charge" value="<?php echo Yii::app()->controller->__trans('none'); ?>" class="radiNone">
-						  <?php echo Yii::app()->controller->__trans('none'); ?>  </label>
-						|
-						<input type="text" name="change_txt" id="bo_fee" size="5" value="" class="ty8 change_txt"></td>
-					</tr>
-				  </tbody>
-				</table>
-				<table class="edit_input f_info_b mline tb-floor one-col mix-col">
-				  <tbody>
-					<tr>
-					  <td align="center"><button type="button" name="btnAddNewHistory" class="btnAddNewHistory" id="btnAddNewHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
-					</tr>
-				  </tbody>
-				</table>
-          </form>
-        </div>
-      </div>
+      <div id="main" class="full-width">
+            <div class="tab_con" style="max-height: 365px">
+            <div class="manage-info table-box new_style_box">
+                <form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="<?php echo Yii::app()->createUrl('floor/addHistory'); ?>">
+                    <div class="manageInfoResponse">
+                        <input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo isset($_GET['id']) && $_GET['id'] != "" ? $_GET['id'] : 0; ?>"/>
+                        <input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
+                        <input type="hidden" name="base_url" id="base_url" value="<?php echo Yii::app()->request->baseUrl; ?>">
+                        <table class="newform_info ad_list">
+                            <tbody>
+                                <tr>
+                                    <th>Trader ID</th>
+                                    <td><input type="text" name="searchTradersText" class="ty3 searchTradersText2"  id="searchTraderText" ></td>
+                                    <th class="btn-cell">
+                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">Search Trader</a>
+                                    </th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <td>
+                                        <select id="trader_id_new" class="auto tradersListNEW" name="traders_id">
+                                          <option value="0">Already added traders</option>
+                                          <?php
+                                            if(!empty($trans_all)){
+                                                foreach($trans_all as $trans_alls){
+                                                    $selected = '';
+                                            ?>
+                                            <option value="<?php echo $trans_alls['trader_id']; ?>"  <?php echo $selected; ?>><?php echo $trans_alls['traderId'].' '.$trans_alls['trader_name']; ?></option>
+                                            <?php
+                                                }
+                                            }else{
+                                            ?>
+                                            <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available');?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select></td>
+                                    <th>&nbsp;</th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <th>Sorts</th>
+                                    <td>
+                                    <select name="traders_type" id="traders_type" data-role="none" class="traders_type" >
+                                    <option value="">-</option>
+                                    <option value="1">オーナー</option>
+                                    <option value="6">サブリース</option>
+                                    <option value="7">貸主代理</option>
+                                    <option value="8">AM</option>
+                                    <option value="10">業者</option>
+                                    <option value="4">仲介業者</option>
+                                    <option value="2">管理会社</option>
+                                    <option value="9">PM</option>
+                                    <option value="3">ゼネコン</option>
+                                    <option value="-1">不明</option>
+                                    </select>
+                                    </td>
+                                    <th>Transaction type</th>
+                                    <td>
+                                    <select name="management_type_traders" id="traders_contract" class="management_type_traders" data-role="none">
+                                      <option value="">-</option>
+                                      <option value="-1">不明</option>
+                                      <option value="1">専任媒介</option>
+                                      <option value="2">一般媒介</option>
+                                      <option value="3">代理</option>
+                                      <option value="4">貸主</option>
+                                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Company Name</th>
+                                    <td><input type="text" name="traders_company_name" id="traders_name" value="" class="ty6 traders_company_name" required></td>
+                                    <th>&nbsp;</th>
+                                    <td>&nbsp;</td>
+                               </tr>
+                               <tr>
+                                    <th>TEL</th>
+                                    <td><input type="text" name="traders_tel" id="td_tel" value="" class="ty6 traders_tel" ></td>
+                                    <th>FAX</th>
+                                    <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" ></td>
+                               </tr>
+                               <tr>
+                                    <th>Person in charge1</th>
+                                    <td><input type="text" name="traders_person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
+                                    <th>Person in charge2</th>
+                                    <td><input type="text" name="traders_person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
+                               </tr>
+                               <tr>
+                                    <th>Fee</th>
+                                    <td colspan="3">
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="unknown" class="radiUnknown"> 不明</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="ask" class="radiAsk"> 相談</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="undecided" class="radiUndecided"> 未定</label>
+                                    <label class="rd2"><input type="radio" name="charge_traders" value="無し" class="radiNone"> 無し</label>
+                                   <label class="rd2">| <input type="text" name="traders_fee" id="traders_fee" size="5" value="" class="ty8 traders_fee"></label>
+                                    </td>
+                               </tr>
+                               <tr>
+                                    <th>Target Floors<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> Show only vacant floors</th>
+                                    <td colspan="3" class="floors_target_list">
+
+                                    <?php if(!empty($all_floors)){
+                                        foreach ($all_floors as $all_floor) {
+                                           if($all_floor['vacancy_info']==1){
+                                             $class_floor ='vac_floor';
+                                              $span_class  ="vac_span";
+                                           }
+                                           else{
+                                            $class_floor ='no_vac_floor';
+                                            $span_class  ="no_vac_span";
+                                           }
+                                           if(!empty($all_floor['floor_down'])){
+                                             $floor= ' '.$all_floor['floor_down'].' Floor';
+                                           }
+                                           else{
+                                            $floor= 'Blank Floor';
+                                           }
+                                        ?>
+                                            <span class="<?= $span_class?> negFloor floorEmpt"><input type="checkbox" name="targetFloorId[]" id="" class="targetFloorId <?= $class_floor ?>" value="<?= $all_floor['floor_id'] ?>"><?= $floor ?></span>
+                                        <?php
+                                        }
+                                    } ?>
+             
+                                    </td>
+                               </tr>
+                                </tbody>
+                        </table>
+                        <table class="edit_input f_info_b mline tb-floor one-col mix-col">
+                          <tbody>
+                            <tr>
+                              <td align="center"><button href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="btn2AddNeawHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                 </form>
+                </div>
+</div><!--/tab_con-->
+</div><!--/main-->
+     
     </div>
   </div>
 </div>
@@ -5987,7 +5445,7 @@ if(count($getGoogleMapKeyDetails) > 0){
               <input type="checkbox" name="rentFloorId[]" id="rentFloorId" class="rentFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
 			  if(strpos($floor['floor_down'], '-') !== false){
-				  $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
+				  $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
 			  }else{
 				  $floorDown = $floor['floor_down'];
 			  }
@@ -6083,7 +5541,7 @@ if(count($getGoogleMapKeyDetails) > 0){
               <input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
 			  if(strpos($floor['floor_down'], '-') !== false){
-				  $floorDown = '地下'.' '.str_replace("-", "", $floor['floor_down']);
+				  $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
 			  }else{
 				  $floorDown = $floor['floor_down'];
 			  }

@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'update2', 'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend'),
+				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -864,434 +864,54 @@ class FloorController extends Controller{
 	}
 
 	public function actionUpdate2($id){
-		 $model=$this->loadModel($id);
-		$tradersDetails = Traders::model()->findAll('is_active = 1');
-		$useTypesDetails = UseTypes::model()->findAll('is_active = 1');
-		$floorSourceDetails = FloorSourceFromType::model()->findAll('is_active = 1');
-		$userList = Users::model()->findAll('is_active = 1 AND user_role = "a"');
-		$updateHistory = FloorUpdateHistory::model()->findAll('floor_id = '.$id.' ORDER BY floor_update_history_id DESC');
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		$getFlooOldDetails = Floor::model()->findByPk($id);
-		if(isset($_POST['Floor'])){		
-
-			if(isset($_GET['type']) && $_GET['type'] == 'duplicate' && $_GET['type'] != ""){
-				$model = new Floor;
-				$model->floorId = 'JPF'.mt_rand(1000,999999);
-			}else{
-				$model=$this->loadModel($id);
-			}
-			
-			$oldRentPrice = $model->rent_unit_price;
-			$newRentPrice = $_POST['Floor']['rent_unit_price'];
-			
-			if(isset($_POST['Floor']['buildingId']) && $_POST['Floor']['buildingId'] != ''){
-				$model->building_id = $_POST['Floor']['buildingId'];
-			}else{
-				$model->building_id = '';
-			}
-			$model->vacancy_info = $_POST['Floor']['vac_info'];
-			$model->preceding_user = $_POST['Floor']['pre_user'];
-			$model->preceding_details = $_POST['Floor']['pre_details'];
-			$model->preceding_check_datetime = $_POST['Floor']['pre_check_datetime'];
-			$model->move_in_date = $_POST['Floor']['move_date'];
-			$model->vacant_schedule = $_POST['Floor']['vac_sche'];
-			$model->floor_down = $_POST['Floor']['floor_down'];
-			$model->floor_up = $_POST['Floor']['floor_up'];
-			$model->roomname = $_POST['Floor']['roomname'];
-			if(isset($_POST['Floor']['maisonette_type']) && $_POST['Floor']['maisonette_type'] != ''){
-				$model->maisonette_type = $_POST['Floor']['maisonette_type'];
-			}else{
-				$model->maisonette_type = '';
-			}
-			$model->short_term_rent = $_POST['Floor']['short_term_rent'];
-			if(isset($_POST['Floor']['type_of_use']) && $_POST['Floor']['type_of_use'] != ''){
-				$model->type_of_use = implode(',',$_POST['Floor']['type_of_use']);
-			}
-			$model->area_ping = $_POST['Floor']['area_ping'];
-			$model->area_m = $_POST['Floor']['area_m'];
-			$model->area_net = $_POST['Floor']['area_net'];
-			if(isset($_POST['Floor']['calculation_method']) && $_POST['Floor']['calculation_method'] != ''){
-				$model->calculation_method = $_POST['Floor']['calculation_method'];
-			}else{
-				$model->calculation_method = '';
-			}
-			if(isset($_POST['Floor']['payment_by_installments']) && $_POST['Floor']['payment_by_installments'] != ''){
-				$model->payment_by_installments = $_POST['Floor']['payment_by_installments'];
-			}else{
-				$model->payment_by_installments = '';
-			}
-			
-			$model->core_section = isset($_POST['Floor']['core_section']) ? (int)$_POST['Floor']['core_section'] : 0;
-			$model->high_grade_building = isset($_POST['Floor']['high_grade_building']) ? (int)$_POST['Floor']['high_grade_building'] : 0;
-			
-			$model->payment_by_installments_note = $_POST['Floor']['payment_by_installments_detail'];
-			if(isset($_POST['Floor']['floor_partition']) && $_POST['Floor']['floor_partition'] != ''){
-				$model->floor_partition = implode(',',$_POST['Floor']['floor_partition']);
-			}else{
-				$model->floor_partition = '';
-			}
-			$model->rent_unit_price_opt = (int)$_POST['Floor']['rent_unit_price_opt'];
-			$model->rent_unit_price = $_POST['Floor']['rent_unit_price'];
-			$model->total_rent_price = $_POST['Floor']['total_rent_price'];
-			$model->unit_condo_fee_opt = (int)$_POST['Floor']['unit_condo_fee_opt'];
-			$model->unit_condo_fee = $_POST['Floor']['unit_condo_fee'];
-			$model->total_condo_fee = $_POST['Floor']['total_condo_fee'];
-			$model->deposit_opt = $_POST['Floor']['deposit_opt'];
-			$model->deposit_month = $_POST['Floor']['deposit_month'];
-			$model->deposit = $_POST['Floor']['deposit'];
-			$model->total_deposit = $_POST['Floor']['total_deposit'];
-			$model->key_money_opt = $_POST['Floor']['key_money_opt'];
-			$model->key_money_month = $_POST['Floor']['key_money_month'];
-			$model->repayment_opt = (int)$_POST['Floor']['repayment_opt'];
-			$model->repayment_reason = $_POST['Floor']['repayment_reason'];
-			$model->repayment_amt = $_POST['Floor']['repayment_amt'];
-			if(isset($_POST['Floor']['repayment_amt_opt']) && $_POST['Floor']['repayment_amt_opt'] != ''){
-				$model->repayment_amt_opt = $_POST['Floor']['repayment_amt_opt'];
-			}else{
-				$model->repayment_amt_opt = '';
-			}
-			$model->renewal_fee_opt	 = (int)$_POST['Floor']['renewal_fee_opt'];
-			$model->renewal_fee_reason	 = $_POST['Floor']['renewal_fee_reason'];
-			$model->renewal_fee_recent	 = $_POST['Floor']['renewal_fee_recent'];
-			$model->repayment_notes	 = $_POST['Floor']['repayment_notes'];
-			$model->notice_of_cancellation	 = $_POST['Floor']['notice_of_cancellation'];
-			if(isset($_POST['Floor']['contract_period_opt']) && $_POST['Floor']['contract_period_opt'] != ''){
-				$model->contract_period_opt	 = $_POST['Floor']['contract_period_opt'];
-			}else{
-				$model->contract_period_opt = '';
-			}
-			if(isset($_POST['Floor']['contract_period_optchk']) && $_POST['Floor']['contract_period_optchk'] != ''){
-				$model->contract_period_optchk	 = 1;
-			}
-			else {
-				$model->contract_period_optchk	 = '';
-			}
-			$model->contract_period_duration	 = $_POST['Floor']['contract_period_duration'];
-			$model->air_conditioning_facility_type	 = $_POST['Floor']['air_conditioning_facility_type'];
-			$model->air_conditioning_details	 = $_POST['Floor']['air_conditioning_details'];			
-
-			if(isset($_POST['Floor']['air_conditioning_time_used']) && $_POST['Floor']['air_conditioning_time_used'] == 2){
-				$model->air_conditioning_time_used	 = $_POST['Floor']['air_conditioning_time_used'].'-'.$_POST['Floor']['f_air_usetime_detail_week_start'].'~'.$_POST['Floor']['f_air_usetime_detail_week_finish'].'-'.$_POST['Floor']['f_air_usetime_detail_sat_start'].'~'.$_POST['Floor']['f_air_usetime_detail_sat_finish'].'-'.$_POST['Floor']['f_air_usetime_detail_sun_start'].'~'.$_POST['Floor']['f_air_usetime_detail_sun_finish'];
-			}else{
-				$model->air_conditioning_time_used	 = $_POST['Floor']['air_conditioning_time_used'];
-			}
-			$model->number_of_air_conditioning	 = $_POST['Floor']['number_of_air_conditioning'];
-			$model->optical_cable	 = (int)$_POST['Floor']['optical_cable'];
-			$model->oa_type = $_POST['Floor']['oa_type'];
-			$model->oa_height = $_POST['Floor']['oa_height'];
-			$model->ceiling_height = $_POST['Floor']['ceiling_height'];
-			$model->floor_material = $_POST['Floor']['floor_material'];
-			$model->electric_capacity = $_POST['Floor']['electric_capacity'];
-			$model->separate_toilet_by_gender = $_POST['Floor']['separate_toilet_by_gender'];
-			if(isset($_POST['Floor']['toilet_location']) && $_POST['Floor']['toilet_location'] != ''){
-				$model->toilet_location = $_POST['Floor']['toilet_location'];
-			}else{
-				$model->toilet_location = '';
-			}
-			if(isset($_POST['Floor']['washlet']) && $_POST['Floor']['washlet'] != ''){
-				$model->washlet = $_POST['Floor']['washlet'];
-			}else{
-				$model->washlet = '';
-			}
-			if(isset($_POST['Floor']['toilet_cleaning']) && $_POST['Floor']['toilet_cleaning']!= ''){
-				$model->toilet_cleaning = $_POST['Floor']['toilet_cleaning'];
-			}else{
-				$model->toilet_cleaning = '';
-			}
-			$model->notes = $_POST['Floor']['notes'];
-			if(isset($_POST['Floor']['floor_source_id']) && $_POST['Floor']['floor_source_id'] != ''){
-				$model->floor_source_id = $_POST['Floor']['floor_source_id'];
-			}
-			
-			if(isset($_POST['Floor']['web_publishing'])){
-				$model->web_publishing = $_POST['Floor']['web_publishing'];
-				if($_POST['Floor']['web_publishing_note'] != ""){
-					$model->web_publishing_note = $_POST['Floor']['web_publishing_note'];
-				}
-			}
-			
-			$model->update_person_in_charge = $_POST['Floor']['update_person_in_charge'];
-			$model->property_confirmation_person = $_POST['Floor']['property_confirmation_person'];
-
-			$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
-			$loguser_id = $user->user_id;
-			$model->modified_by = $loguser_id;
-			$model->modified_on = date('Y-m-d H:i:s');
-// 			print_r($model);
-// 			exit;
-			if($model->save(false)){
-				
-				// BEGIN - Create wordpress building reference
-				$params['building_id'] = $model->building_id;
-				$wordpress = new Wordpress();
-				$wordpress->processIntergrateWordpress($model->floor_id, Wordpress::FLOOR_TYPE, 'update', $params);
-				$wordpress->reGenerateLocations();
-				// End - processing with wordpress
-				
-				$buildingDetails = Building::model()->findByPk($_POST['Floor']['buildingId']);
-				$town = $buildingDetails->town;
-				Yii::app()->closetown->calculateMarketCloseTown($town);
-				
-				$updateHistory = new FloorUpdateHistory();
-				$updateHistory->floor_id = $model->floor_id;
-				$updateHistory->building_id = $_POST['Floor']['buildingId'];
-				$updateHistory->vacancy_info = $_POST['Floor']['vac_info'];
-				$updateHistory->rent_unit_price = $_POST['Floor']['rent_unit_price'];
-				$updateHistory->rent_unit_price_opt = (int)$_POST['Floor']['rent_unit_price_opt'];
-				$updateHistory->unit_condo_fee = $_POST['Floor']['unit_condo_fee'];
-				$updateHistory->unit_condo_fee_opt = (int)$_POST['Floor']['unit_condo_fee_opt'];
-				$updateHistory->deposit_month = $_POST['Floor']['deposit_month'];
-				$updateHistory->key_money_opt = $_POST['Floor']['key_money_opt'];
-				$updateHistory->key_money_month = $_POST['Floor']['key_money_month'];
-				$updateHistory->deposit = $_POST['Floor']['deposit'];
-				$updateHistory->deposit_opt = $_POST['Floor']['deposit_opt'];
-
-				if(isset($_POST['Floor']['floor_source_id']) && $_POST['Floor']['floor_source_id'] != ''){
-					$updateHistory->floor_source_id = $_POST['Floor']['floor_source_id'];
-				}
-				$updateHistory->confirmation = '';
-				$updateHistory->update_person_in_charge = $_POST['Floor']['update_person_in_charge'];
-				$updateHistory->property_confirmation_person = $_POST['Floor']['property_confirmation_person'];
-				$updateHistory->modified_on = date('Y-m-d H:i:s');
-				$updateHistory->price_rise = 0;
-				if($oldRentPrice != $newRentPrice){
-					$priceDifference = $newRentPrice - $oldRentPrice;
-					if($priceDifference > 0){
-						$updateHistory->price_rise = 1;
-					}else{
-						$updateHistory->price_rise = 0;
-					}
-				}
-				$getAvailableFloor = Floor::model()->findAll('building_id = '.$_POST['Floor']['buildingId'].' AND vacancy_info = 1');	
-				$updateHistory->available_floor = count($getAvailableFloor);
-				
-				$getFloorForRent = Floor::model()->findAll('building_id = '.$_POST['Floor']['buildingId'].' AND rent_unit_price_opt = 0');
-				$totalRentSum = 0;
-				$finalRentAvg = 0;
-				if(count($getFloorForRent) > 0 && !empty($getFloorForRent)){
-					foreach($getFloorForRent as $fLoop){
-						$totalRentSum += $fLoop['rent_unit_price'];
-					}
-					$finalRentAvg = $totalRentSum/count($getFloorForRent);
-				}
-				$updateHistory->current_average_rent = $finalRentAvg;
-				
-				$oldPrecedingUser = $getFlooOldDetails->preceding_user;
-				$updateHistory->what_to_check = '';
-				if($_POST['Floor']['pre_user'] != $oldPrecedingUser){
-					$updateHistory->what_to_check = '先行有りの解除/先行有り';
-				}
-						
-				if($updateHistory->save(false)){
-					$users=Users::model()->findByAttributes(array('username'=>Yii::app()->user->id));
-					$loguser_id = $users->user_id;
-					
-					$buildingDetails = Building::model()->findByPk($model->building_id);
-
-					$changeLogModel = new BuildingUpdateLog;
-					$changeLogModel->building_id = $_POST['Floor']['buildingId'];
-					if(isset($_GET['type']) && $_GET['type'] == 'duplicate' && $_GET['type'] != ""){
-						$changeLogModel->change_content = '<a href="'.Yii::app()->createUrl("building/singleBuilding",array("id"=>$model->floor_id)).'">'.Yii::app()->controller->__trans('New floor').' ID:'.$id.' ('.$buildingDetails['prefecture'].')</a>'.Yii::app()->controller->__trans('has been added');
-					}else{
-						$changeLogModel->change_content = '<a href="'.Yii::app()->createUrl("building/singleBuilding",array("id"=>$model->floor_id)).'">'.Yii::app()->controller->__trans('Floor info').' ID:'.$id.' ('.$buildingDetails['prefecture'].')</a>'.Yii::app()->controller->__trans('has been updated');
-					}
-					$changeLogModel->added_by = $loguser_id;
-					$changeLogModel->added_on = date('Y-m-d H:i:s');
-					if($changeLogModel->save(false)){
-						
-						//check for office alert
-						$cFloorId = $id;
-						$currentFloor = Floor::model()->findByPk($cFloorId);
-						
-						$criteria=new CDbCriteria();
-						$criteria->order='office_alert_id DESC';					
-						$officeAlertList = OfficeAlert::model()->findAll($criteria);
-						
-						$i = 1;
-						foreach($officeAlertList as $officeAlert){
-							$getConditions = SearchSettings::model()->findByPk($officeAlert->cond_id);
-							$cond = json_decode($getConditions->ss_json,true);
-							$floorId = explode(',',$officeAlert->floor_id);
-							
-							$oAlert = OfficeAlert::model()->findByPk($officeAlert->office_alert_id);
-							$pass = true;
-							
-							if((isset($cond['areaMinValue']) && $cond['areaMinValue'] != 0) || (isset($cond['areaMaxValue']) && $cond['areaMaxValue'] != 0)){
-								$fArea = $currentFloor->area_ping;
-								if(!($fArea > $cond['areaMinValue']) && !($fArea < $cond['areaMaxValue'])){
-									$pass = false;
-								}
-							}
-							
-							if((isset($cond['floorMin']) && $cond['floorMin'] != 0) || (isset($cond['floorMax']) && $cond['floorMax'] != 0)){
-								$fMin = $currentFloor->floor_down;
-								$fMax = $currentFloor->floor_up;
-								if(!($fMin > $cond['floorMin']) && !($fMax <= $cond['floorMax'])){
-									$pass = false;
-								}
-							}
-							
-							if((isset($cond['unitMinValue']) && $cond['unitMinValue'] != 0) || (isset($cond['unitMaxValue']) && $cond['unitMaxValue'] != 0)){
-								$fUnit = $currentFloor->rent_unit_price;
-								if(!($fUnit > $cond['unitMinValue']) && !($fUnit <= $cond['unitMaxValue'])){
-									$pass = false;
-								}
-							}
-							
-							if((isset($cond['costMinAmount']) && $cond['costMinAmount'] != 0) || (isset($cond['costMaxAmount']) && $cond['costMaxAmount'] != 0)){
-								$fCost = $currentFloor->unit_condo_fee;
-								if(!($fCost > $cond['costMinAmount']) && !($fCost <= $cond['costMaxAmount'])){
-									$pass = false;
-								}
-							}
-							
-							if((isset($cond['possibleDataMin']) && $cond['possibleDataMin'] != 0) || (isset($cond['possibleDataMax']) && $cond['possibleDataMax'] != 0)){
-								$fMoveDate = $currentFloor->move_in_date;
-								$expDate = explode('/',$fMoveDate);
-								if(!(is_int($expDate[2]))){
-									unset($expDate[2]);
-									array_push($expDate,1);
-								}
-								$expDate = implode('/',$expDate);
-								$convertTime = strtotime($expDate);
-								$minDate = strtotime($cond['possibleDataMin']);
-								$maxDate = strtotime($cond['possibleDataMax']);
-								if(!($convertTime > $minDate) && !($convertTime < $maxDate)){
-									$pass = false;
-								}
-							}
-							
-							if(isset($cond['statusRequirement']) && !empty($cond['statusRequirement'])){
-								if(in_array("2", $cond['statusRequirement'])){
-									$fVacantSchedule = $currentFloor->vacant_schedule;
-									$expDate = explode('/',$fVacantSchedule);
-									if(!(is_int($expDate[2]))){
-										unset($expDate[2]);
-										array_push($expDate,1);
-									}
-									
-									$convertTime = strtotime($expDate);
-									$todayDate = strtotime('today');
-									$oneYearOn = strtotime("+ 365 day");
-									if(!($convertTime >= $todayDate) && !($convertTime <= $oneYearOn)){
-										$pass = false;
-									}
-								}
-								
-								if(in_array("1", $cond['statusRequirement'])){
-									if($currentFloor->vacancy_info != 1){
-										$pass = false;
-									}
-								}
-								
-								if(in_array("3", $cond['statusRequirement'])){
-									if($currentFloor->vacancy_info != 0){
-										$pass = false;
-									}
-								}
-							}
-							
-							if(isset($cond['facilities']) && !empty($cond['facilities'])){
-								$facilities = $cond['facilities'];
-								foreach($facilities as $fac){
-									if(in_array($fac,array('1','3'))){
-										if($fac == 1){
-											if($currentFloor->separate_toilet_by_gender != 2){
-												$pass = false;
-											}
-										}else{
-											if($currentFloor->air_conditioning_facility_type != "個別・セントラル"){
-												$pass = false;
-											}
-										}
-									}else{
-										if($fac == '2'){
-											if($currentFloor->oa_type != 2){
-												$pass = false;
-											}
-										}
-										if($fac == '4'){
-											if($currentFloor->floor_partition == ""){
-												$pass = false;
-											}
-										}
-									}
-								}
-							}
-							
-							if(isset($cond['floorType']) && !empty($cond['floorType'])){
-								$floorType = $currentFloor->type_of_use;
-								$fType = explode(',',$floorType);
-								
-								foreach($cond['floorType'] as $type){
-									if(!(in_array($type,$fType))){
-										$pass = false;
-									}
-								}
-							}
-							
-							if(isset($cond['formTypeList']) && !empty($cond['formTypeList'])){
-								$formTypeList = OwnershipManagement::model()->findAll('floor_id = '.$cFloorId);
-								$fManagementType = array();
-								foreach($formTypeList as $fType){
-									$fManagementType[] = $fType->management_type;
-								}
-								foreach($cond['formTypeList'] as $formType){
-									if(!(in_array($formType,$fManagementType))){
-										$pass = false;
-									}
-								}
-							}
-							
-							if(isset($cond['lenderType']) && !empty($cond['lenderType'])){
-								$lenderTypeList = OwnershipManagement::model()->findAll('floor_id = '.$cFloorId);
-								$fOwnerType = array();
-								foreach($lenderTypeList as $fLType){
-									$fOwnerType[] = $fLType->ownership_type;
-								}
-								foreach($cond['lenderType'] as $lenderType){
-									if(!(in_array($lenderType,$fOwnerType))){
-										$pass = false;
-									}
-								}
-							}
-							
-							if(isset($cond['hdnAddressFloorId']) && $cond['hdnAddressFloorId'] != 0){
-								$sFloorId = explode(',',$cond['hdnAddressFloorId']);
-								if(!in_array($cFloorId,$sFloorId)){
-									$pass = false;
-								}
-							}
-							
-							if(in_array($cFloorId,$floorId)){
-								$afterDiffFloorId = array_diff($floorId, array($cFloorId));
-							}else{
-								$afterDiffFloorId = $floorId;
-							}
-							
-							if($pass == true){
-								array_push($afterDiffFloorId,$cFloorId);
-								$fIds = implode(',',$afterDiffFloorId);
-								$oAlert->floor_id = $fIds;
-								$oAlert->save(false);
-							}
-							$i++;
-						}
-						if(isset($_GET['window']) && $_GET['window'] == 1){
-							//Yii::app()->user->setFlash('success', "フロア情報の更新が完了しました");
-							$this->redirect(array('floor/update','id'=>$model->floor_id,'msg'=>1));
-						}elseif(isset($_GET['msg']) && $_GET['msg'] == 1){
-							$this->redirect(array('floor/update','id'=>$model->floor_id,'msg'=>1));
-						}else{
-							$this->redirect(array('building/singleBuilding','id'=>$model->floor_id));
-						}
-						die;
-					}
-				}
-			}
+		$model=$this->loadModel($id);
+		$floorData = Floor::model()->find('floor_id = '.$_REQUEST['id']);
+		$buildingDetails = Building::model()->findByPk($floorData['building_id']);
+		if(isset($buildingDetails) && count($buildingDetails) > 0){
+			$buildingName = $buildingDetails['name'];
+			$buildingRandId = $buildingDetails['buildingId'];
+			$buildingId = $buildingDetails['building_id'];
 		}
-		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails,'floorSourceDetails'=>$floorSourceDetails,'userList'=>$userList,'updateHistory'=>$updateHistory));
+
+        $multi_trader= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$buildingId.' AND own.is_multiple_window=1 AND own.is_compart =0'; 
+        $multi_trader = Yii::app()->db->createCommand($multi_trader)->queryAll();
+        $multi_window_array=$this->arranging_array_values($multi_trader);
+        //print_r($multi_window_array);
+
+        $multi_owner= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$buildingId.' AND own.is_shared =1 AND own.is_multiple_window=0 AND own.is_compart =0'; 
+        $multi_owner = Yii::app()->db->createCommand($multi_owner)->queryAll();
+        $multi_owner_array=$this->arranging_array_values($multi_owner);
+        //print_r($multi_owner_array);
+
+
+        $single_owner_window= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$buildingId.' AND own.is_shared = 0 AND own.is_multiple_window = 0 AND own.is_compart =0'; 
+        $single_owner_window = Yii::app()->db->createCommand($single_owner_window)->queryAll();
+        $single_owner_window_array=$this->arranging_array_values($single_owner_window);
+        $single_owner_window_array=$this-> arranging_array_values_same_owners($single_owner_window_array);
+      
+
+
+        $comparted= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$buildingId.'  AND own.is_compart =1'; 
+        $comparted = Yii::app()->db->createCommand($comparted)->queryAll();
+        $comparted_array=$this->arranging_array_values($comparted);
+
+        $no_owner_window= 'SELECT f.* FROM floor as f LEFT JOIN ownership_management as own ON own.floor_id = f.floor_id WHERE own.floor_id IS NULL and f.building_id='.$buildingId; 
+        $no_owner_window = Yii::app()->db->createCommand($no_owner_window)->queryAll();
+
+        $trans_all='SELECT * FROM `traders` WHERE `building_id`='.$buildingId.' AND `floor_id` ='.$_REQUEST['id'].' AND `is_active`=1';
+        $trans_all = Yii::app()->db->createCommand($trans_all)->queryAll();	
+        $floor_windows='SELECT * FROM ownership_management WHERE is_current =1 AND `floor_id` ='.$_REQUEST['id'];
+        $floor_windows = Yii::app()->db->createCommand($floor_windows)->queryAll();
+
+        $floor_owners='SELECT * FROM ownership_management WHERE is_current =0 AND `floor_id` ='.$_REQUEST['id'];
+        $floor_owners = Yii::app()->db->createCommand($floor_owners)->queryAll();
+
+        //print_r($comparted_array);
+
+
+
+
+		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all,  'floor_owners' => $floor_owners, 'floor_windows'=>$floor_windows));
 
 	}
 
@@ -1401,19 +1021,46 @@ class FloorController extends Controller{
 	
 	public function actionGetSeletectedTraderDetails(){
 		$traderId = $_REQUEST['trader'];
+		$trader_tel=$_REQUEST['trader_tel'];
+		$building_id=$_REQUEST['build_id'];
+		$floor_id=$_REQUEST['floor_id'];
+
+		if(!empty($_REQUEST['trader_tel'])){
+			if($floor_id==$building_id){
+				$traderDetails = Traders::model()->findAll('company_tel ="'.$trader_tel.'" AND building_id ="'.$building_id.'"');
+			}
+			else{
+                 $traderDetails = Traders::model()->findAll('company_tel ="'.$trader_tel.'" AND building_id ="'.$building_id.'" AND floor_id ="'.$floor_id.'"');
+			}
+			
+			if(!empty($traderDetails)){
+				$traderDetails=$traderDetails[0];
+			}
+		}
+		elseif(!empty($_REQUEST['trader'])){
+			if($floor_id==$building_id){
+               $traderDetails = Traders::model()->find('trader_id ="'.$traderId.'" AND building_id ="'.$building_id.'"');
+			}
+			else{
+			  $traderDetails = Traders::model()->find('trader_id ="'.$traderId.'" AND building_id ="'.$building_id.'" AND floor_id ="'.$floor_id.'"');	
+			}
+			
+		}
+		else{
+			die('blank Request');
+		}
 		//$traderDetails = OwnershipManagement::model()->find('trader_id = '.$traderId);
-		$traderDetails = Traders::model()->findByPk($traderId);
+		
 		//echo "<pre>";
-		//print_r($traderDetails);
-		if($traderId != "" && $traderId != 0){
+		if(($traderId != "" && $traderId != 0) || ($trader_tel !="")){
 			if(isset($traderDetails) && count($traderDetails)>0 && !empty($traderDetails)){
-				$resp = array('ownership_type'=>$traderDetails['ownership_type'],'management_type'=>$traderDetails['management_type'],'owner_company_name'=>$traderDetails['owner_company_name'],'company_tel'=>$traderDetails['company_tel'],'person_in_charge1'=>$traderDetails['person_in_charge1'],'person_in_charge2'=>$traderDetails['person_in_charge2'],'charge'=>$traderDetails['charge']);
+				$resp = array('ownership_type'=>$traderDetails['ownership_type'],'management_type'=>$traderDetails['management_type'],'owner_company_name'=>$traderDetails['owner_company_name'],'company_tel'=>$traderDetails['company_tel'],'person_in_charge1'=>$traderDetails['person_in_charge1'],'person_in_charge2'=>$traderDetails['person_in_charge2'],'charge'=>$traderDetails['charge'], 'trader_id'=>$traderDetails['trader_id'], 'company_fax'=>$traderDetails['company_fax']);
 				//print_r($resp);
 			}else{
-				$resp = array('ownership_type'=>'','management_type'=>'','owner_company_name'=>'','company_tel'=>'','person_in_charge1'=>'','person_in_charge2'=>'','charge'=>'');
+				$resp = array('ownership_type'=>'','management_type'=>'','owner_company_name'=>'','company_tel'=>'','person_in_charge1'=>'','person_in_charge2'=>'','charge'=>'', 'trader_id'=>'', 'company_fax'=>'');
 			}
 		}else{
-			$resp = array('ownership_type'=>'','management_type'=>'','owner_company_name'=>'','company_tel'=>'','person_in_charge1'=>'','person_in_charge2'=>'','charge'=>'');
+			$resp = array('ownership_type'=>'','management_type'=>'','owner_company_name'=>'','company_tel'=>'','person_in_charge1'=>'','person_in_charge2'=>'','charge'=>'', 'trader_id'=>'', 'company_fax'=>'');
 		}
 		echo json_encode($resp);
 		die;
@@ -3661,7 +3308,14 @@ class FloorController extends Controller{
 			$buildingDetails = Building::model()->findByPk($id);
 			$userList = Users::model()->findAll('is_active = 1 AND user_role = "a"');
 			$floorList = Floor::model()->findAll(" building_id = ".$id . " ORDER BY cast(floor_down as SIGNED) ASC, cast(floor_up as SIGNED) ASC");
-			$this->renderPartial('viewFloorMass',array('buildingDetails'=>$buildingDetails,'floorList'=> $floorList, 'users'=>$userList));
+
+            $trans_all='SELECT * FROM `traders` WHERE `building_id`='.$id.' AND `is_active`=1';
+            $trans_all = Yii::app()->db->createCommand($trans_all)->queryAll();	
+
+            $all_floors='SELECT * FROM `floor`  WHERE `building_id`='.$id;
+            $all_floors = Yii::app()->db->createCommand($all_floors)->queryAll();	
+
+			$this->renderPartial('viewFloorMass',array('buildingDetails'=>$buildingDetails,'floorList'=> $floorList, 'users'=>$userList, 'trans_all'=>$trans_all, 'all_floors'=>$all_floors));
 		}
 		die();
 	}
@@ -4094,6 +3748,252 @@ class FloorController extends Controller{
 		echo json_encode($resp);
 		die;
 	}
+
+	public function actionDeleteManagement2(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$test=0;
+		if(!empty($_POST['floors'])){
+			foreach ($_POST['floors'] as $floor) {
+				$ownershipManagement=new OwnershipManagement;
+				$test+=$ownershipManagement->deleteAll('floor_id ='.$floor);
+
+				
+			}
+			if($test > 0){
+					die('success');
+				}	
+
+			
+		}
+		
+		              
+	}
+
+
+	public function actionUpdateManagement2(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$inser_check=array();
+		if(!empty($_POST)){
+			if((!empty($_POST['hdnBillId']))&&(!empty($_POST['hdnFloorId'])) && ($_POST['total_window']>0) && ($_POST['total_owner']>0)){
+				$ownershipManagement_del=new OwnershipManagement;
+				$ownershipManagement_del->deleteAll('floor_id ='.$_POST['hdnFloorId']);
+				$shared_floor=0;
+				$comp_floor=0;
+				$multi_window=0;
+				$ownershipManagement=new OwnershipManagement;
+				//$ownershipManagement->deleteAll('floor_id ='.$_POST['hdnFloorId']);
+				$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId']);
+
+				$total_ownership=count($ownership);
+				if($total_ownership>0){
+					$ownership_shared=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId'].' AND is_shared = 1');
+					$total_ownership_shared=count($ownership_shared);
+					if($total_ownership_shared > 0){
+                          $shared_floor=1;
+					}
+					$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId'].' AND is_compart  = 1');
+					$total_ownership_comp=count($ownership_comp);
+					if($total_ownership_comp > 0){
+                          $comp_floor=1;
+					}
+					$ownership_window=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId'].' AND is_multiple_window  = 1');
+					$total_ownership_window=count($ownership_window);
+					if($total_ownership_window > 0){
+                          $multi_window=1;
+					}
+
+					$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId'].' AND is_current   = 1');
+					$total_ownership_window_all=count($ownership_window_all);
+					$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$_POST['hdnFloorId'].' AND building_id ='.$_POST['hdnBillId'].' AND is_current   = 0');
+					$total_ownership_owner_all=count($ownership_owner_all);
+                    
+                    if($_POST['total_window'] > 1){
+                    	$multi_window=1;
+
+                    }
+                    elseif(($_POST['total_window']==1)&&($total_ownership_window_all > 0)){
+                    	$multi_window=1;
+                    }
+                    else{
+                    	$multi_window=0;
+                    }
+
+                    if($_POST['total_owner'] > 1){
+                    	$shared_floor=1;
+
+                    }
+                    elseif(($_POST['total_owner']==1)&&($total_ownership_owner_all > 0)){
+                    	$shared_floor=1;
+                    }
+                    else{
+                    	$shared_floor=0;
+                    }
+				 
+				}
+			    if($_POST['total_owner'] > 1){
+                    	$shared_floor=1;
+
+                    }
+                if($_POST['total_window'] > 1){
+                    	$multi_window=1;
+                    }
+	            for($i=1; $i<=$_POST['total_window']; $i++){
+	              		$model = new Traders();
+	              		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+	              			//$model=$model->findByPk($_POST['trder_window'.$i]);
+	              		}
+						// $model->trader_name = $_POST['company_name_window'.$i];	
+						// $model->ownership_type = $_POST['ownership_type_window'.$i];
+						// $model->management_type = $_POST['management_type_window'.$i];
+						// $model->owner_company_name = $_POST['company_name_window'.$i];
+						// $model->company_tel = $_POST['tel_window'.$i];
+						// $model->company_fax  = $_POST['fax_window'.$i];
+						// $model->person_in_charge1 = $_POST['person_in_charge1_window'.$i];
+						// $model->person_in_charge2 = $_POST['person_in_charge2_window'.$i];
+						// if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+						// 	$model->charge = $_POST['charge_window'.$i];
+						// }else{
+						// 	if($_POST['change_txt_window'.$i] != ''){
+						// 		$model->charge = $_POST['change_txt_window'.$i];
+						// 	}else{
+						// 		$model->charge = '';
+						// 	}
+						// }
+						// if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+	     //          			$model->building_id = $_POST['hdnBillId'];
+						// 	$model->floor_id  = $_POST['hdnFloorId'];
+						// 	$model->modified_by = $logged_user_id;
+						// 	$model->modified_on = date('Y-m-d H:i:s');
+	     //          		}
+	     //          		else{
+	     //          			$model->building_id = $_POST['hdnBillId'];
+						// 	$model->floor_id  = $_POST['hdnFloorId'];
+						// 	$model->added_by = $logged_user_id;
+						// 	$model->added_on = date('Y-m-d H:i:s');
+						// 	$model->modified_by = $logged_user_id;
+						// 	$model->modified_on = date('Y-m-d H:i:s');
+						// 	$model->traderId = mt_rand(1000,99999);
+	     //          		}
+						// if($model->save(false)){
+						// 	$insert_id = Yii::app()->db->getLastInsertID();
+	     //          		}
+	     //          		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+	     //          				$insert_id=$_POST['trder_window'.$i];
+	     //          		}
+	              		$insert_id=0;
+		        $getManagementAvailable = new OwnershipManagement;
+		        $getManagementAvailable->floor_id  = $_POST['hdnFloorId'];
+				$getManagementAvailable->building_id  = $_POST['hdnBillId'];
+				$getManagementAvailable->is_compart = $comp_floor;
+				$getManagementAvailable->is_multiple_window = $multi_window;
+				$getManagementAvailable->is_shared  = $shared_floor;
+				$getManagementAvailable->trader_id = $insert_id;
+				$getManagementAvailable->ownership_type = $_POST['ownership_type_window'.$i];
+				$getManagementAvailable->management_type =$_POST['management_type_window'.$i];
+				$getManagementAvailable->is_current = 1;
+				$getManagementAvailable->owner_company_name =$_POST['company_name_window'.$i];
+				$getManagementAvailable->company_tel = $_POST['tel_window'.$i];
+				$getManagementAvailable->company_fax = $_POST['fax_window'.$i];
+				$getManagementAvailable->person_in_charge1 =  $_POST['person_in_charge1_window'.$i];
+				$getManagementAvailable->person_in_charge2 =  $_POST['person_in_charge2_window'.$i];
+				if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+					$getManagementAvailable->charge = $_POST['charge_window'.$i];
+				}
+				$getManagementAvailable->charge_text = $_POST['change_txt_window'.$i];
+				$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+				if($getManagementAvailable->save(false)){ 
+				  $inser_check[]=Yii::app()->db->getLastInsertID();    
+				}
+			}
+			for($i=1; $i<=$_POST['total_owner']; $i++){
+	              		$model = new Traders();
+	     //          		if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+	     //          			$model=$model->findByPk($_POST['trder_owner'.$i]);
+	     //          		}
+						// $model->trader_name = $_POST['company_name_owner'.$i];	
+						// $model->ownership_type = $_POST['ownership_type_owner'.$i];
+						// $model->management_type = $_POST['management_type_owner'.$i];
+						// $model->owner_company_name = $_POST['company_name_owner'.$i];
+						// $model->company_tel = $_POST['tel_owner'.$i];
+						// $model->company_fax  = $_POST['fax_owner'.$i];
+						// $model->person_in_charge1 = $_POST['person_in_charge1_owner'.$i];
+						// $model->person_in_charge2 = $_POST['person_in_charge2_owner'.$i];
+					 //    if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+	     //          			$model->building_id = $_POST['hdnBillId'];
+						// 	$model->floor_id  = $_POST['hdnFloorId'];
+						// 	$model->modified_by = $logged_user_id;
+						// 	$model->modified_on = date('Y-m-d H:i:s');
+	     //          		}
+	     //          		else{
+	     //          			$model->building_id = $_POST['hdnBillId'];
+						// 	$model->floor_id  = $_POST['hdnFloorId'];
+						// 	$model->added_by = $logged_user_id;
+						// 	$model->added_on = date('Y-m-d H:i:s');
+						// 	$model->modified_by = $logged_user_id;
+						// 	$model->modified_on = date('Y-m-d H:i:s');
+						// 	$model->traderId = mt_rand(1000,99999);
+	     //          		}
+				
+						// if($model->save(false)){
+						// 	$insert_id = Yii::app()->db->getLastInsertID();
+	     //          		}
+	     //          		if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+	     //          				$insert_id=$_POST['trder_window'.$i];
+	     //          		}
+	              		$insert_id=0;
+		        $getManagementAvailable = new OwnershipManagement;
+		        $getManagementAvailable->floor_id  = $_POST['hdnFloorId'];
+				$getManagementAvailable->building_id  = $_POST['hdnBillId'];
+				$getManagementAvailable->is_compart = $comp_floor;
+				$getManagementAvailable->is_multiple_window = $multi_window;
+				$getManagementAvailable->is_shared  = $shared_floor;
+				$getManagementAvailable->trader_id = $insert_id;
+				$getManagementAvailable->ownership_type = $_POST['ownership_type_owner'.$i];
+				$getManagementAvailable->management_type =$_POST['management_type_owner'.$i];
+				$getManagementAvailable->is_current = 0;
+				$getManagementAvailable->owner_company_name =$_POST['company_name_owner'.$i];
+				$getManagementAvailable->company_tel = $_POST['tel_owner'.$i];
+				$getManagementAvailable->company_fax = $_POST['fax_owner'.$i];
+				$getManagementAvailable->notes  = $_POST['note_owner'.$i];
+				$getManagementAvailable->person_in_charge1 =  $_POST['person_in_charge1_owner'.$i];
+				$getManagementAvailable->person_in_charge2 =  $_POST['person_in_charge2_owner'.$i];
+				$getManagementAvailable->notes =  $_POST['note_owner'.$i];
+				$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+				if($getManagementAvailable->save(false)){
+				  $inser_check[]=Yii::app()->db->getLastInsertID();       
+				}
+
+			}
+
+			if(count($inser_check)>0){
+				foreach ($ownership as $ownerships) {
+				    $ownerships->is_compart = $comp_floor;
+				    $ownerships->is_shared = $shared_floor;
+				    $ownerships->is_multiple_window = $multi_window;
+				    $ownerships->update(false); 
+				}
+				die('success');
+
+			}
+			else{
+				die('fail');
+			}
+
+		    echo count($inser_check);
+		}
+		else{
+			die("NO floor Id And Building Gets");
+		}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
 	
 	public function actionUpdateShowFrontend(){
 		if (isset($_POST['show_frontend']))
@@ -4145,4 +4045,511 @@ class FloorController extends Controller{
 	
 		echo '';
 	}
+
+
+	public function arranging_array_values($multi_trader){
+		$prv_floors=array();
+        $multi_trader_array=array();
+        foreach ($multi_trader as $multi_traders) {
+        	if(in_array($multi_traders['floor_id'], $prv_floors)){
+        		if(($multi_traders['owner_company_name']=="")||($multi_traders['owner_company_name']==" ")){
+        			$multi_traders['owner_company_name'] ="blank";
+        		}
+        		if($multi_traders['is_current'] == 1){
+        		   if(!empty($multi_trader_array[$multi_traders['floor_id']]['windows'])){
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['windows'] .= ' / '.$multi_traders['owner_company_name'];
+        		   }
+        		   else{
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['windows'] .= $multi_traders['owner_company_name'];
+        		   }
+                  
+            	}
+            	if($multi_traders['is_current'] == 0){
+            		if(!empty($multi_trader_array[$multi_traders['floor_id']]['owners'])){
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['owners'] .= ' / '.$multi_traders['owner_company_name'];
+        		   }
+        		   else{
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['owners'] .= $multi_traders['owner_company_name'];
+        		   }
+            	}
+        	}
+        	else{
+        		if(($multi_traders['owner_company_name']=="")||($multi_traders['owner_company_name']==" ")){
+        			$multi_traders['owner_company_name'] ="blank";
+        		}
+                $prv_floors[]=$multi_traders['floor_id'];
+                $multi_trader_array[$multi_traders['floor_id']]['windows']="";
+                $multi_trader_array[$multi_traders['floor_id']]['owners']="";
+        		$multi_trader_array[$multi_traders['floor_id']]['info']=$multi_traders;
+        		if($multi_traders['is_current'] == 1){
+                   $multi_trader_array[$multi_traders['floor_id']]['windows'] = $multi_traders['owner_company_name'];
+                   $multi_trader_array[$multi_traders['floor_id']]['windows_trader_id']=$multi_traders['trader_id'];
+            	}
+            	if($multi_traders['is_current'] == 0){
+                   $multi_trader_array[$multi_traders['floor_id']]['owners'] = $multi_traders['owner_company_name'];
+                   $multi_trader_array[$multi_traders['floor_id']]['owner_trader_id']=$multi_traders['trader_id'];
+        		}      	
+       		 }
+       	}
+        //echo "<pre>";
+       	//print_r($multi_trader_array);
+       	return $multi_trader_array;
+
+	}
+
+	public function arranging_array_values_same_owners($multi_trader){
+		$prv_window_trader=array();
+        $multi_trader_array=array();
+        //print_r($multi_trader);
+        foreach ($multi_trader as $multi_traders) {
+        	$new_window_trader=$multi_traders['owners'].'_'.$multi_traders['windows'];
+        	if(in_array($new_window_trader, $prv_window_trader)){
+        		$multi_trader_array[$new_window_trader]['info'][]=$multi_traders['info'];
+        	}
+        	else{
+                $prv_window_trader[]=$multi_traders['owners'].'_'.$multi_traders['windows'];
+        		$multi_trader_array[$new_window_trader]['owners']=$multi_traders['owners'];
+        		$multi_trader_array[$new_window_trader]['windows']=$multi_traders['windows'];
+        		$multi_trader_array[$new_window_trader]['info'][]=$multi_traders['info'];      	
+       		 }
+       	}
+       	return $multi_trader_array;
+	}
+
+   public function actionBlukUpdateManagement2(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$total_check=array();
+		if(!empty($_POST)){
+			if((!empty($_POST['bulk_upadte_floor']))&&(!empty($_POST['hdnBillId']))&&(!empty($_POST['hdnFloorId'])) && ($_POST['total_window']>0) && ($_POST['total_owner']>0)){
+				foreach ($_POST['bulk_upadte_floor'] as $floor_id) {
+					        $inser_check=array();
+							$shared_floor=0;
+							$comp_floor=0;
+							$multi_window=0;
+							$ownershipManagement=new OwnershipManagement;
+							$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId']);
+							$total_ownership=count($ownership);
+							if($total_ownership>0){
+								$ownership_shared=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId'].' AND is_shared = 1');
+								$total_ownership_shared=count($ownership_shared);
+								if($total_ownership_shared > 0){
+			                          $shared_floor=1;
+								}
+								$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId'].' AND is_compart  = 1');
+								$total_ownership_comp=count($ownership_comp);
+								if($total_ownership_comp > 0){
+			                          $comp_floor=1;
+								}
+								$ownership_window=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId'].' AND is_multiple_window  = 1');
+								$total_ownership_window=count($ownership_window);
+								if($total_ownership_window > 0){
+			                          $multi_window=1;
+								}
+
+								$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId'].' AND is_current   = 1');
+								$total_ownership_window_all=count($ownership_window_all);
+								$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND building_id ='.$_POST['hdnBillId'].' AND is_current   = 0');
+								$total_ownership_owner_all=count($ownership_owner_all);
+			                    
+			                    if($_POST['total_window'] > 1){
+			                    	$multi_window=1;
+
+			                    }
+			                    elseif(($_POST['total_window']==1)&&($total_ownership_window_all > 0)){
+			                    	$multi_window=1;
+			                    }
+			                    else{
+			                    	$multi_window=0;
+			                    }
+
+			                    if($_POST['total_owner'] > 1){
+			                    	$shared_floor=1;
+
+			                    }
+			                    elseif(($_POST['total_owner']==1)&&($total_ownership_owner_all > 0)){
+			                    	$shared_floor=1;
+			                    }
+			                    else{
+			                    	$shared_floor=0;
+			                    }
+							 
+							}
+						    if($_POST['total_owner'] > 1){
+			                    	$shared_floor=1;
+
+			                    }
+			                if($_POST['total_window'] > 1){
+			                    	$multi_window=1;
+			                    }
+				            for($i=1; $i<=$_POST['total_window']; $i++){
+				     //          		$model = new Traders();
+				     //          		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+				     //          			//$model=$model->findByPk($_POST['trder_window'.$i]);
+				     //          		}
+									// $model->trader_name = $_POST['company_name_window'.$i];	
+									// $model->ownership_type = $_POST['ownership_type_window'.$i];
+									// $model->management_type = $_POST['management_type_window'.$i];
+									// $model->owner_company_name = $_POST['company_name_window'.$i];
+									// $model->company_tel = $_POST['tel_window'.$i];
+									// $model->company_fax  = $_POST['fax_window'.$i];
+									// $model->person_in_charge1 = $_POST['person_in_charge1_window'.$i];
+									// $model->person_in_charge2 = $_POST['person_in_charge2_window'.$i];
+									// if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+									// 	$model->charge = $_POST['charge_window'.$i];
+									// }else{
+									// 	if($_POST['change_txt_window'.$i] != ''){
+									// 		$model->charge = $_POST['change_txt_window'.$i];
+									// 	}else{
+									// 		$model->charge = '';
+									// 	}
+									// }
+									// if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+				     //          			$model->building_id = $_POST['hdnBillId'];
+									// 	$model->floor_id  = $floor_id;
+									// 	$model->modified_by = $logged_user_id;
+									// 	$model->modified_on = date('Y-m-d H:i:s');
+				     //          		}
+				     //          		else{
+				     //          			$model->building_id = $_POST['hdnBillId'];
+									// 	$model->floor_id  = $floor_id;
+									// 	$model->added_by = $logged_user_id;
+									// 	$model->added_on = date('Y-m-d H:i:s');
+									// 	$model->modified_by = $logged_user_id;
+									// 	$model->modified_on = date('Y-m-d H:i:s');
+									// 	$model->traderId = mt_rand(1000,99999);
+				     //          		}
+									// if($model->save(false)){
+									// 	///$insert_id = Yii::app()->db->getLastInsertID();
+				     //          		}
+				     //          		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+				     //          				//$insert_id=$_POST['trder_window'.$i];
+				     //          		}
+				              		$insert_id=0;
+							        $getManagementAvailable = new OwnershipManagement;
+							        $getManagementAvailable->floor_id  = $floor_id;
+									$getManagementAvailable->building_id  = $_POST['hdnBillId'];
+									$getManagementAvailable->is_compart = $comp_floor;
+									$getManagementAvailable->is_multiple_window = $multi_window;
+									$getManagementAvailable->is_shared  = $shared_floor;
+									$getManagementAvailable->trader_id = $insert_id;
+									$getManagementAvailable->ownership_type = $_POST['ownership_type_window'.$i];
+									$getManagementAvailable->management_type =$_POST['management_type_window'.$i];
+									$getManagementAvailable->is_current = 1;
+									$getManagementAvailable->owner_company_name =$_POST['company_name_window'.$i];
+									$getManagementAvailable->company_tel = $_POST['tel_window'.$i];
+									$getManagementAvailable->company_fax = $_POST['fax_window'.$i];
+									$getManagementAvailable->person_in_charge1 =  $_POST['person_in_charge1_window'.$i];
+									$getManagementAvailable->person_in_charge2 =  $_POST['person_in_charge1_window'.$i];
+									if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+										$getManagementAvailable->charge = $_POST['charge_window'.$i];
+									}
+									$getManagementAvailable->charge_text = $_POST['change_txt_window'.$i];
+									$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+									if($getManagementAvailable->save(false)){ 
+									  $inser_check[]=Yii::app()->db->getLastInsertID();    
+									}
+								}
+								for($i=1; $i<=$_POST['total_owner']; $i++){
+						     //          		$model = new Traders();
+						     //          		if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+						     //          			//$model=$model->findByPk($_POST['trder_owner'.$i]);
+						     //          		}
+											// $model->trader_name = $_POST['company_name_owner'.$i];	
+											// $model->ownership_type = $_POST['ownership_type_owner'.$i];
+											// $model->management_type = $_POST['management_type_owner'.$i];
+											// $model->owner_company_name = $_POST['company_name_owner'.$i];
+											// $model->company_tel = $_POST['tel_owner'.$i];
+											// $model->company_fax  = $_POST['fax_owner'.$i];
+											// $model->person_in_charge1 = $_POST['person_in_charge1_owner'.$i];
+											// $model->person_in_charge2 = $_POST['person_in_charge2_owner'.$i];
+										 //    if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+						     //          			$model->building_id = $_POST['hdnBillId'];
+											// 	$model->floor_id  = $floor_id;
+											// 	$model->modified_by = $logged_user_id;
+											// 	$model->modified_on = date('Y-m-d H:i:s');
+						     //          		}
+						     //          		else{
+						     //          			$model->building_id = $_POST['hdnBillId'];
+											// 	$model->floor_id  = $floor_id;
+											// 	$model->added_by = $logged_user_id;
+											// 	$model->added_on = date('Y-m-d H:i:s');
+											// 	$model->modified_by = $logged_user_id;
+											// 	$model->modified_on = date('Y-m-d H:i:s');
+											// 	$model->traderId = mt_rand(1000,99999);
+						     //          		}
+									
+											// if($model->save(false)){
+											// 	//$insert_id = Yii::app()->db->getLastInsertID();
+						     //          		}
+						     //          		if(($_POST['trder_owner'.$i]!=0)&&('trder_owner'.$i!="")){
+						     //          				//$insert_id=$_POST['trder_window'.$i];
+						     //          		}
+						              		$insert_id=0;
+									        $getManagementAvailable = new OwnershipManagement;
+									        $getManagementAvailable->floor_id  = $floor_id;
+											$getManagementAvailable->building_id  = $_POST['hdnBillId'];
+											$getManagementAvailable->is_compart = $comp_floor;
+											$getManagementAvailable->is_multiple_window = $multi_window;
+											$getManagementAvailable->is_shared  = $shared_floor;
+											$getManagementAvailable->trader_id = $insert_id;
+											$getManagementAvailable->ownership_type = $_POST['ownership_type_owner'.$i];
+											$getManagementAvailable->management_type =$_POST['management_type_owner'.$i];
+											$getManagementAvailable->is_current = 0;
+											$getManagementAvailable->owner_company_name =$_POST['company_name_owner'.$i];
+											$getManagementAvailable->company_tel = $_POST['tel_owner'.$i];
+											$getManagementAvailable->company_fax = $_POST['fax_owner'.$i];
+											$getManagementAvailable->notes  = $_POST['note_owner'.$i];
+											$getManagementAvailable->person_in_charge1 =  $_POST['person_in_charge1_owner'.$i];
+											$getManagementAvailable->person_in_charge2 =  $_POST['person_in_charge1_owner'.$i];
+											$getManagementAvailable->notes =  $_POST['note_owner'.$i];
+											$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+											if($getManagementAvailable->save(false)){
+											  $inser_check[]=Yii::app()->db->getLastInsertID();
+											  $total_check[]=Yii::app()->db->getLastInsertID();     
+											}
+								}
+								if(count($inser_check)>0){
+									foreach ($ownership as $ownerships) {
+									    $ownerships->is_compart = $comp_floor;
+									    $ownerships->is_shared = $shared_floor;
+									    $ownerships->is_multiple_window = $multi_window;
+									    $ownerships->update(false); 
+									}	
+								}
+					
+				}
+				if(count($total_check)>0){
+                   die("success");
+				}
+				else{
+					die("fail");
+				}
+			}
+			else{
+				die("NO floor Id And Building Gets");
+			}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
+
+	function actionDelOwnerSingle(){
+		if(!empty($_POST['own_id'])){
+			    $own_id= $_POST['own_id'];
+			    $ownership_window_all=OwnershipManagement::model()->findAll('ownership_management_id  ='.$own_id);
+			    $floor_id=$ownership_window_all[0]['floor_id'];
+				$ownershipManagement=new OwnershipManagement;
+				$ownershipManagement->deleteAll('ownership_management_id ='.$own_id);
+				$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_compart  = 1');
+				$total_ownership_comp=count($ownership_comp);
+				if($total_ownership_comp > 0){
+	                  $comp_floor=1;
+				}
+				$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 1');
+				$total_ownership_window_all=count($ownership_window_all);
+				if($total_ownership_window_all > 1){
+	                  $multi_window=1;
+				}
+				else{
+					$multi_window=0;
+				}
+				$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 0');
+				$total_ownership_owner_all=count($ownership_owner_all);
+				if($total_ownership_owner_all > 1){
+	                  $shared_floor=1;
+				}
+				else{
+					$shared_floor=0;
+				}
+				$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id);
+				foreach ($ownership as $ownerships) {
+					    $ownerships->is_compart = $comp_floor;
+					    $ownerships->is_shared = $shared_floor;
+					    $ownerships->is_multiple_window = $multi_window;
+					    $ownerships->update(false); 
+					    
+				}
+
+		}
+
+	}
+
+	public function actionAddHistory(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$total_check=array();
+		if(!empty($_POST)){
+			if((!empty($_POST['targetFloorId']))&&(!empty($_POST['hdnBillId']))&&(!empty($_POST['hdnHistFloorId']))){
+				foreach ($_POST['targetFloorId'] as $floor_id) {
+					                $inser_check=array();
+				              		$model = new Traders();
+				              		if(($_POST['traders_id']!=0)&&('traders_id'!="")){
+				              			$model=$model->findByPk($_POST['traders_id']);
+				              		}
+									$model->trader_name = $_POST['traders_company_name'];	
+									$model->ownership_type = $_POST['traders_type'];
+									$model->management_type = $_POST['management_type_traders'];
+									$model->owner_company_name = $_POST['traders_company_name'];
+									$model->company_tel = $_POST['traders_tel'];
+									$model->company_fax  = $_POST['traders_fax'];
+									$model->person_in_charge1 = $_POST['traders_person_in_charge1'];
+									$model->person_in_charge2 = $_POST['traders_person_in_charge2'];
+									if(isset($_POST['charge_traders']) && ($_POST['charge_traders'] != '')){
+										$model->charge = $_POST['charge_traders'];
+									}else{
+										if($_POST['traders_fee'] != ''){
+											$model->charge = $_POST['traders_fee'];
+										}else{
+											$model->charge = '';
+										}
+									}
+									if(($_POST['traders_id']!=0)&&('traders_id'!="")){
+				              			$model->building_id = $_POST['hdnBillId'];
+										$model->floor_id  = $floor_id;
+										$model->modified_by = $logged_user_id;
+										$model->modified_on = date('Y-m-d H:i:s');
+				              		}
+				              		else{
+				              			$model->building_id = $_POST['hdnBillId'];
+										$model->floor_id  = $floor_id;
+										$model->added_by = $logged_user_id;
+										$model->added_on = date('Y-m-d H:i:s');
+										$model->modified_by = $logged_user_id;
+										$model->modified_on = date('Y-m-d H:i:s');
+										$model->traderId = mt_rand(1000,99999);
+				              		}
+									if($model->save(false)){
+										$total_check[] = Yii::app()->db->getLastInsertID();
+				              		}
+				              		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+				              				$total_check[]=$_POST['trder_window'];
+				              		}
+							
+					
+				}
+				if(count($total_check)>0){
+                   die("success");
+				}
+				else{
+					die("fail");
+				}
+			}
+			else{
+				die("NO floor Id And Building Gets");
+			}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
+
+
+
+	public function actionDeleteTrader(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$new= $_POST['companyIds'];
+		$new=explode(',' , $new);
+		if(!empty($new)){
+			foreach ($new as $floor) {
+				$traders=new Traders;
+				$test+=$traders->deleteAll('trader_id ='.$floor);
+				
+			}
+			if($test > 0){
+				$resp = array('status'=>1,'msg'=>Yii::app()->controller->__trans('Successfully deleted'));
+
+			}else{
+				$resp = array('status'=>0,'msg'=>Yii::app()->controller->__trans('Something went wrong'));
+			}
+
+			
+		}
+		else{
+				$resp = array('status'=>0,'msg'=>Yii::app()->controller->__trans('Something went wrong'));
+		}
+		
+		echo json_encode($resp);
+		die();              
+	}
+
+
+	function actionUpDateOwner(){
+		$prv_val =2500;
+		$count=0;
+		$ownership_shared=OwnershipManagement::model()->findAll();
+		$tolal_count12=count($ownership_shared);
+		echo $tolal_count12;
+		$count2=3000;
+		$floors=new Floor;
+		$all_floors= $floors->model()->findAll();
+		//print_r($all_floors);
+        foreach ($all_floors as $all_floor) {
+        	$shared_floor=0;
+        	$comp_floor=0;
+        	$multi_window=0;
+        	$ownershipManagement=new OwnershipManagement;
+			$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$all_floor->floor_id.' AND is_compart  = 1');
+			$total_ownership_comp=count($ownership_comp);
+			if($total_ownership_comp > 0){
+                  $comp_floor=1;
+			}
+			$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$all_floor->floor_id.' AND is_current   = 1');
+			$total_ownership_window_all=count($ownership_window_all);
+			if($total_ownership_window_all > 1){
+                  $multi_window=1;
+			}
+			else{
+				$multi_window=0;
+			}
+			$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$all_floor->floor_id.' AND is_current   = 0');
+			$total_ownership_owner_all=count($ownership_owner_all);
+			if($total_ownership_owner_all > 1){
+                  $shared_floor=1;
+			}
+			else{
+				$shared_floor=0;
+			}
+			$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$all_floor->floor_id);
+			foreach ($ownership as $ownerships) {
+				echo $count.'   ';
+        	if($tolal_count12 < $count){
+        		echo "done";
+        		break;
+        	}
+        	if($count <= $prv_val){
+        		$count++;
+        		continue;
+        	}
+        	if($count > $count2+$prv_val){
+        		echo "break";
+        		break;
+        	}
+				    $ownerships->is_compart = $comp_floor;
+				    $ownerships->is_shared = $shared_floor;
+				    $ownerships->is_multiple_window = $multi_window;
+				    $ownerships->update(false); 
+
+				    $count++;
+				}
+
+			//echo $all_floor->floor_id.':'.$shared_floor.$multi_window.$comp_floor.'<br>';
+        }
+
+
+
+	}
+
+
+	
+
+
 }
