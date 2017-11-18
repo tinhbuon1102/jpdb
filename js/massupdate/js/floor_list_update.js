@@ -1261,7 +1261,7 @@
 		$("td[col='f_floor']").each(function() // browse all rows (floors)
 		{
 			var td_f_no = $(this).attr("f_no");
-			
+			var numFieldEmpty = 0;
 			$(this).find("input.instant_edit").each(function() // f_floor_down <input> tag and f_floor_up <input> tag
 			{
 				// set default color to all
@@ -1277,13 +1277,18 @@
 				// check input data and set 'pink' color to error <input>
 				if ($(this).val() == null || isNaN($(this).val()) || $(this).val().trim().length == 0 || parseInt($(this).val()) == 0) // wrong data
 				{
-					$(this).css("background-color", "pink");
-					if (td_f_no == f_no)
-					{
-						result = false;
-					}
+					numFieldEmpty++;
 				}
 			});
+			
+			if (numFieldEmpty == 2)
+			{
+				$(this).find("input.instant_edit").css("background-color", "pink");
+				if (td_f_no == f_no)
+				{
+					result = false;
+				}
+			}
 		});
 		
 		return result;
