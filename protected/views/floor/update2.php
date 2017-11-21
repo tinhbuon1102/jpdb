@@ -395,7 +395,7 @@
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                   </tr>
                  <?php
@@ -430,7 +430,7 @@
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                   </tr>
                  <?php
@@ -469,7 +469,7 @@
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $info['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
                  <?php
@@ -506,7 +506,7 @@
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                      <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                   </tr>
                  <?php
@@ -544,7 +544,7 @@
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                   </tr>
                  <?php

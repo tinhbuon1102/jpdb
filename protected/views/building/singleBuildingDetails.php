@@ -1317,7 +1317,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                            <td class="col_full" colspan="8"> NO Building History</td>
                                         </tr>
                                     <?php
 
@@ -3068,7 +3068,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                            <td class="col_full" colspan="8"> NO Floor History</td>
                                         </tr>
                                     <?php
 
@@ -3177,7 +3177,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                            <td class="col_full" colspan="8"> NO History For  Building</td>
                                         </tr>
                                     <?php
 
@@ -4919,7 +4919,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                     <td class="bt">
                             <div class="bt_update">
@@ -4961,7 +4961,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                     <td class="bt">
                             <div class="bt_update">
@@ -5000,7 +5000,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $info['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                      <td class="bt">
                             <div class="bt_update">
@@ -5044,7 +5044,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
                      <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
                      <td class="bt">
                             <div class="bt_update">
@@ -5088,7 +5088,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
                     <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['area_m'] ?>坪</td>
+                    <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                      <td class="bt">
                             <div class="bt_update">
@@ -5342,9 +5342,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                </tr>
                                <tr>
                                     <th>TEL</th>
-                                    <td><input type="text" name="traders_tel" id="td_tel" value="" class="ty6 traders_tel" ></td>
+                                    <td><input type="text" name="traders_tel" id="td_tel" value="" class="ty6 traders_tel" required></td>
                                     <th>FAX</th>
-                                    <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" ></td>
+                                    <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" required></td>
                                </tr>
                                <tr>
                                     <th>Person in charge1</th>

@@ -2103,13 +2103,13 @@ class BuildingController extends Controller{
 			$query = 'SELECT * FROM 	ownership_management where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].' ORDER BY `modified_on` DESC' ;
 			$floor_owners_history = Yii::app()->db->createCommand($query)->queryAll();
 
-			$query = 'SELECT * FROM 	traders where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC LIMIT 3' ;
+			$query = 'SELECT * FROM 	traders_his where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC LIMIT 3' ;
 			$building_history = Yii::app()->db->createCommand($query)->queryAll();	
 
-			$query = 'SELECT * FROM 	traders where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC ' ;
+			$query = 'SELECT * FROM 	traders_his where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC ' ;
 			$building_history_all = Yii::app()->db->createCommand($query)->queryAll();	
 
-			$multi_trader= 'SELECT own.* , f.* from floor as f JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$floorDetails['building_id'].' AND own.is_multiple_window=1 AND own.is_compart =0'; 
+			$multi_trader= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$floorDetails['building_id'].' AND own.is_multiple_window=1 AND own.is_compart =0'; 
 	        $multi_trader = Yii::app()->db->createCommand($multi_trader)->queryAll();
 	        $multi_window_array=$this->arranging_array_values($multi_trader);
 
@@ -2135,7 +2135,7 @@ class BuildingController extends Controller{
 
 
 
-            $trans_all='SELECT * FROM `traders` WHERE `building_id`='.$floorDetails['building_id'].' AND `floor_id` ='.$_REQUEST['id'].' AND `is_active`=1';
+            $trans_all='SELECT * FROM `traders` WHERE `building_id`='.$floorDetails['building_id'];
             $trans_all = Yii::app()->db->createCommand($trans_all)->queryAll();	
 
             $all_floors='SELECT * FROM `floor`  WHERE `building_id`='.$floorDetails['building_id'];

@@ -1,7 +1,7 @@
  $(document).ready(function() {
-         //$("#searchTraderText").mask('00-0000-0000',{placeholder:"00-0000-0000"});
-         //$("#td_tel").mask('99-9999-9999',{placeholder:"99-9999-9999"});
-         //$("#td_fax").mask('99-9999-9999',{placeholder:"99-9999-9999"});
+         //$("#searchTraderText").mask('999-99999-99999',{placeholder:"000-00000-00000"});
+        // $("#td_tel").mask('999-99999-99999',{placeholder:"000-00000-00000"});
+        // $("#td_fax").mask('999-99999-99999',{placeholder:"000-00000-00000"});
          $('#show_vac_floors').click(function(event) {
             if ($('#show_vac_floors').is(':checked')) {
                  $(".no_vac_floor").prop('checked', false);
@@ -34,21 +34,21 @@
       $('#traders_name').removeClass('error_val');
      }
     
-    // if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
-    //    $('#td_tel').addClass('error_val');
-    //    error_count++;
+    if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
+       $('#td_tel').addClass('error_val');
+       error_count++;
 
-    // }
-    // else{
-    //   $('#td_tel').removeClass('error_val');
-    // }
-    // if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
-    //    $('#td_fax').addClass('error_val');
-    //    error_count++;
-    // }
-    // else{
-    //   $('#td_fax').removeClass('error_val');
-    // }
+    }
+    else{
+      $('#td_tel').removeClass('error_val');
+    }
+    if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
+       $('#td_fax').addClass('error_val');
+       error_count++;
+    }
+    else{
+      $('#td_fax').removeClass('error_val');
+    }
      if(error_count>0){
     alert("please fill all required fields");
     return false;
@@ -112,11 +112,25 @@ $('#btn2AddNeawHistory').click(function(event) {
             })
             .done(function(res) {
                 if(res != 'blank Request'){
-                update_ajax_fileld(res);
+                   var res = JSON.parse(res); 
+                    var option=""
+                    if(res.status=='success'){
+                       $.each( res.traders, function( key, trd ) {
+                          option += '<option value="'+trd.trader_id+'">'+trd.traderId+'&nbsp;'+trd.trader_name+'</option>';
+                        });
+                       alert('Trader Found Please Select Trader');
+                        
+                    }
+                    else{
+                         alert('No Trader Found');
+                        option += '<option value="0"> No Trader Found</option>';
+                    }
+                    $('#trader_id_new').html('');
+                    $('#trader_id_new').html(option);
                 }
-            else{
-              alert('Field Is blank');
-            }
+              else{
+                alert('Field Is blank');
+              }
             })
             .fail(function() {
                 alert('somthing went wrong');

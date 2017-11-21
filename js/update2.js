@@ -356,7 +356,21 @@ $(function(){
         	})
         	.done(function(res) {
         		if(res != 'blank Request'){
-        		update_ajax_fileld(res,  tabtype, tab);
+              var res = JSON.parse(res); 
+              var option=""
+              if(res.status=='success'){
+                 $.each( res.traders, function( key, trd ) {
+                    option += '<option value="'+trd.trader_id+'">'+trd.traderId+'&nbsp;'+trd.trader_name+'</option>';
+                  });
+                 alert('Trader Found Please Select Trader');
+                  
+              }
+              else{
+                   alert('No Trader Found');
+                  option += '<option value="0"> No Trader Found</option>';
+              }
+              $('#trader_search_'+tabtype+tab).html('');
+              $('#trader_search_'+tabtype+tab).html(option);
         		}
             else{
               alert('Field Is blank');
