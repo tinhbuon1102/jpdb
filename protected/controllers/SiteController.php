@@ -416,20 +416,24 @@ class SiteController extends Controller{
 		    $multi_trader= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_multiple_window=1 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')'; 
  			$multi_trader = Yii::app()->db->createCommand($multi_trader)->queryAll();
 	        $multi_window_array=$this->arranging_array_values($multi_trader);
-
+            $multi_window_array=$this->arranging_array_values_same_multi_owners($multi_window_array);
 
 	        $multi_owner= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE  f.building_id='.$building_id.' AND own.is_shared = 1  AND own.is_compart =0 AND own.is_multiple_window=0 AND f.floor_id IN ('.$floor_id.')'; 
 	        $multi_owner = Yii::app()->db->createCommand($multi_owner)->queryAll();
 	        $multi_owner_array=$this->arranging_array_values($multi_owner);
+	        $multi_owner_array=$this->arranging_array_values_same_multi_owners($multi_owner_array);
 	        //print_r($multi_owner_array);
 
 	        $single_owner_window= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_shared = 0 AND own.is_multiple_window = 0 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')'; 
 	        $single_owner_window = Yii::app()->db->createCommand($single_owner_window)->queryAll();
 	        $single_owner_window_array=$this->arranging_array_values($single_owner_window);
 	        $single_owner_window_array=$this-> arranging_array_values_same_owners($single_owner_window_array);
+
+
 	        $comparted= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.'  AND own.is_compart =1 AND f.floor_id IN ('.$floor_id.')'; 
         	$comparted = Yii::app()->db->createCommand($comparted)->queryAll();
         	$comparted_array=$this->arranging_array_values($comparted);
+        	$comparted_array=$this->arranging_array_values_same_multi_owners($comparted_array);
 
 	        $no_owner_window= 'SELECT f.* FROM floor as f LEFT JOIN ownership_management as own ON own.floor_id = f.floor_id WHERE own.floor_id IS NULL and f.building_id='.$building_id.' AND f.floor_id IN ('.$floor_id.')'; 
             $no_owner_window = Yii::app()->db->createCommand($no_owner_window)->queryAll();
@@ -455,22 +459,29 @@ class SiteController extends Controller{
         		if($multi_traders['is_current'] == 1){
         		   if(!empty($multi_trader_array[$multi_traders['floor_id']]['windows'])){
         		   	  $multi_trader_array[$multi_traders['floor_id']]['windows'] .= ' / '.$multi_traders['owner_company_name'];
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['windows_array'][] = $multi_traders['owner_company_name'];
         		   }
         		   else{
         		   	  $multi_trader_array[$multi_traders['floor_id']]['windows'] .= $multi_traders['owner_company_name'];
+        		   	  $multi_trader_array[$multi_traders['floor_id']]['windows_array'][] = $multi_traders['owner_company_name'];
+
         		   }
                   
             	}
             	if($multi_traders['is_current'] == 0){
             		if(!empty($multi_trader_array[$multi_traders['floor_id']]['owners'])){
         		   	  $multi_trader_array[$multi_traders['floor_id']]['owners'] .= ' / '.$multi_traders['owner_company_name'];
+        		   	   $multi_trader_array[$multi_traders['floor_id']]['owners_array'][] = $multi_traders['owner_company_name'];
         		   }
         		   else{
         		   	  $multi_trader_array[$multi_traders['floor_id']]['owners'] .= $multi_traders['owner_company_name'];
+        		   	   $multi_trader_array[$multi_traders['floor_id']]['owners_array'][] = $multi_traders['owner_company_name'];
         		   }
             	}
         	}
         	else{
+        		$multi_trader_array[$multi_traders['floor_id']]['owners_array']=array();
+        		$multi_trader_array[$multi_traders['floor_id']]['windows_array']=array();
         		if(($multi_traders['owner_company_name']=="")||($multi_traders['owner_company_name']==" ")){
         			$multi_traders['owner_company_name'] ="blank";
         		}
@@ -481,10 +492,12 @@ class SiteController extends Controller{
         		if($multi_traders['is_current'] == 1){
                    $multi_trader_array[$multi_traders['floor_id']]['windows'] = $multi_traders['owner_company_name'];
                    $multi_trader_array[$multi_traders['floor_id']]['windows_trader_id']=$multi_traders['trader_id'];
+                   $multi_trader_array[$multi_traders['floor_id']]['windows_array'][] = $multi_traders['owner_company_name'];
             	}
             	if($multi_traders['is_current'] == 0){
                    $multi_trader_array[$multi_traders['floor_id']]['owners'] = $multi_traders['owner_company_name'];
                    $multi_trader_array[$multi_traders['floor_id']]['owner_trader_id']=$multi_traders['trader_id'];
+                   $multi_trader_array[$multi_traders['floor_id']]['owners_array'][] = $multi_traders['owner_company_name'];
         		}      	
        		 }
        	}
@@ -512,6 +525,32 @@ class SiteController extends Controller{
        	}
        	return $multi_trader_array;
 	}
+
+	public function arranging_array_values_same_multi_owners($multi_trader){
+		$prv_window_trader_array=array();
+        $multi_trader_array=array();
+        foreach ($multi_trader as $multi_traders) {
+         	   $check_array_win =$multi_traders['windows_array'];
+         	   $check_array_own =$multi_traders['owners_array'];
+         	   sort($check_array_win);
+         	   sort($check_array_own);
+         	   $check_array_win=implode('_', $check_array_win);
+         	   $check_array_own=implode('_', $check_array_own);
+         	   $new_name=$check_array_win.'_'.$check_array_own;
+         	   if(in_array($new_name, $prv_window_trader_array)){
+        		    $multi_trader_array[$new_name]['info'][]=$multi_traders['info'];
+	           }
+	           else{
+	                $prv_window_trader_array[]=$new_name;
+	        		$multi_trader_array[$new_name]['owners']=$multi_traders['owners'];
+	        		$multi_trader_array[$new_name]['windows']=$multi_traders['windows'];
+	        		$multi_trader_array[$new_name]['info'][]=$multi_traders['info'];      	
+	       		}
+         	  
+       		 }
+       	return $multi_trader_array;
+	}
+
 
 
 }

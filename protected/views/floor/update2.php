@@ -367,18 +367,16 @@
 
 
               <?php 
-                   if(!empty($comparted_array)){
-                     foreach ($comparted_array as $comparted_arrays) {
- 
-              ?>
-              <tr>
-                <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Segment ownership</label></span>
-                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
-              </tr>
-                    <?php 
-                      if($comparted_arrays['info']['vacant_schedule']==0){
+                 if(!empty($comparted_array)){
+                       foreach ($comparted_array as $single_owner_window_arrays) {
+                  ?>
+                  <tr>
+                    <td colspan="6" class="trader_list">
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                  </tr>
+                    <?php  foreach($single_owner_window_arrays['info'] as $info){
+                            if($info['vacancy_info']==0){
                               $text="満";
                               $vac_class="no_vacant";
                             }
@@ -391,29 +389,30 @@
 
 
                   <tr>
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
-                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
-                    <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
-                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
-                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $info['floorId'] ?></td>
+                    <td class="id_floor"><?= $info['floor_id'] ?></td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
                  <?php
+                    }
                    }
                   }
                 // comparted windows end here
 
                 // multipal windows start here
-              if(!empty($multi_window_array)){
-                     foreach ($multi_window_array as $comparted_arrays) {
-              ?>
-              <tr>
-                <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
-              </tr>
-                    <?php 
-                      if($comparted_arrays['info']['vacant_schedule']==0){
+                if(!empty($multi_window_array)){
+                       foreach ($multi_window_array as $single_owner_window_arrays) {
+                  ?>
+                  <tr>
+                    <td colspan="6" class="trader_list">
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                  </tr>
+                    <?php  foreach($single_owner_window_arrays['info'] as $info){
+                            if($info['vacancy_info']==0){
                               $text="満";
                               $vac_class="no_vacant";
                             }
@@ -426,14 +425,15 @@
 
 
                   <tr>
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"></label> </td>
-                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
-                    <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
-                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
-                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $info['floorId'] ?></td>
+                    <td class="id_floor"><?= $info['floor_id'] ?></td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
                  <?php
+                    }
                    }
                   }
                 // multi windows end here 
@@ -452,7 +452,7 @@
                     <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
-                            if($info['vacant_schedule']==0){
+                            if($info['vacancy_info']==0){
                               $text="満";
                               $vac_class="no_vacant";
                             }
@@ -480,16 +480,16 @@
                   //single window and owner ends here 
                  
                 // multipal oweners start here
-              if(!empty($multi_owner_array)){
-                     foreach ($multi_owner_array as $comparted_arrays) {
-              ?>
-              <tr>
-                <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $comparted_arrays['windows'] ?></span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> <?= $comparted_arrays['owners'] ?></span></td>
-              </tr>
-                    <?php 
-                      if($comparted_arrays['info']['vacant_schedule']==0){
+               if(!empty($multi_owner_array)){
+                       foreach ($multi_owner_array as $single_owner_window_arrays) {
+                  ?>
+                  <tr>
+                    <td colspan="6" class="trader_list">
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                  </tr>
+                    <?php  foreach($single_owner_window_arrays['info'] as $info){
+                            if($info['vacancy_info']==0){
                               $text="満";
                               $vac_class="no_vacant";
                             }
@@ -502,14 +502,15 @@
 
 
                   <tr>
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['info']['floor_id']?>"></label> </td>
-                    <td class="id_floor"><?= $comparted_arrays['info']['floorId'] ?></td>
-                     <td class="id_floor"><?= $comparted_arrays['info']['floor_id'] ?></td>
-                    <td class="level_floor"><?= $comparted_arrays['info']['floor_down'] ?>th floor</td>
-                    <td class="size_floor"><?= $comparted_arrays['info']['area_ping'] ?>坪</td>
-                    <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['info']['modified_on'])) ?></td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="id_floor"><?= $info['floorId'] ?></td>
+                    <td class="id_floor"><?= $info['floor_id'] ?></td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
+                    <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
                  <?php
+                    }
                    }
                   }
                 // multi Owners end here 
@@ -527,7 +528,7 @@
               </tr>
                     <?php 
                     foreach ($no_owner_window as $comparted_arrays) {
-                      if($comparted_arrays['vacant_schedule']==0){
+                      if($comparted_arrays['vacancy_info']==0){
                               $text="満";
                               $vac_class="no_vacant";
                             }

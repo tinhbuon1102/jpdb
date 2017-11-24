@@ -15,11 +15,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/default.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/result_data.css?1477663797" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/ui.datepicker.css" />
-<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/groovy.css" media="screen">
-<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
-<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new_style.css" />
-
 
 
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/jquery.js"></script>
@@ -37,9 +32,23 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/ui.datepicker-ja.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/js/jquery.jgrowl.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/jquery.jgrowl.min.css" />
+
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/a2form.js"></script>
-
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new_style.css" media="screen">
+<style type="text/css">
+  .bootom_pad{
+    margin-bottom: 10px !important;
+        padding-bottom: 22px !important;
+  }
+  .own_back{
+    background-color: #76ade5 !important;
+  }
+  .error_val{
+    border: 2px red !important;
+    border-style: dotted !important;
+  }
+ </style>
 
 <script>
 	var baseUrl = "<?php echo Yii::app()->request->baseUrl; ?>";
@@ -171,6 +180,7 @@ div#contents table.fl_data_c th {
 	<tr>
 		<th scope="col" class="ck">&nbsp;</th>
 		<th scope="col" col="f_no" class="w" >フロアID</th>
+		<th scope="col" col="f_no" class="w" >Edit</th>
 		<th scope="col" col="f_update_flag" class="w">更新日の<br>更新</th>
 		<th scope="col" col="f_thisupdate" class="w">更新日</th>
 		<th scope="col" col="f_floor" class="w">階数</th>
@@ -253,7 +263,7 @@ div#contents table.fl_data_c th {
 		$d1 = date('Y-m-d H:i:s',strtotime($floor['modified_on']));
 		$d2 = date('y.m.d H',strtotime($floor['modified_on']));
 	?>
-	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist <?php echo $floor->fixed_floor ? 'fixed_floor_mass' : ''?>">
+	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist ">
 		<input type="hidden" name="f_id[]" value="<?=$fid?>">
 		<td f_no="<?=$fid?>" col="" od=""  class="ck" scope="col">
 			<input type="checkbox" class="mass_update_target" value="<?=$fid?>">
@@ -261,16 +271,18 @@ div#contents table.fl_data_c th {
 		<td>
 			<a style="background-color:#333; padding:3px; color:white; border-radius: 3px;"><?=$fid?></a>
 		</td>
-		<td f_no="<?=$fid?>" col="f_update_flag" od=""  class="w edit" style="" scope="col">
-			<img id="f_update_flag<?=$fid?>" name="f_update_flag" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/img/ico_check_mark.gif" class="f_not_updated" style="display: none">
+		<td>
 			<div class="bt_update">
                           <a href="<?php echo Yii::app()->createUrl('floor/update',array('id'=>$fid)); ?>" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$fid,'window'=>1)); ?>', 'newwindow', 'width=1052, height=600'); return false;" style="padding: 7px; text-decoration: none; background-color: #2E7BBA; color: #fff;"><?php echo Yii::app()->controller->__trans('Edit'); ?></a>
                                 
             </div>
+		</td>
+		<td f_no="<?=$fid?>" col="f_update_flag" od=""  class="w edit" style="" scope="col">
+			<img id="f_update_flag<?=$fid?>" name="f_update_flag" src="<?php echo Yii::app()->request->baseUrl; ?>/js/massupdate/css/img/ico_check_mark.gif" class="f_not_updated">
 			<input type="hidden" name="f_update_flag[]" value="0">
 		</td>
 		<td f_no="<?=$fid?>" col="f_thisupdate" od="<?=$d1?>" class="w " style="" scope="col"><?=$d2?>時</td>
-		<td f_no="<?=$fid?>" col="f_floor" od=""  f_floor_down='<?=$floor->floor_down?>' f_floor_up='<?=$floor->floor_up?>'  class="w edit" style="" scope="col"><?=$floor->floor_down?>階 <?php echo HelperFunctions::showFixedFloorText($floor)?></td>
+		<td f_no="<?=$fid?>" col="f_floor" od=""  f_floor_down='<?=$floor->floor_down?>' f_floor_up='<?=$floor->floor_up?>'  class="w edit" style="" scope="col"><?=$floor->floor_down?>階</td>
 		<td f_no="<?=$fid?>" col="f_kubun" od="<?=$isCompartOpt?>"  class="w edit" style="" scope="col"><?=$isCompartOpt?></td>
 		<td f_no="<?=$fid?>" col="f_roomname" od="<?=$floor->roomname?>"  class="w edit" style="" scope="col"><?=$floor->roomname?></td>
 		<td f_no="<?=$fid?>" col="f_emp" od="<?=$floor->vacancy_info?>"  class="w edit" style="color:<? echo $floor->vacancy_info==0?"red":"blue"?>; font-weight:bold; " scope="col"><?=$floor->vacancy_info?></td>
@@ -396,16 +408,123 @@ div#contents table.fl_data_c th {
 	</tr>
 	</tbody>
 	</table>
-<div class="form_box"s>
-	   <div id="main" class="full-width">
-          <div class="tab_con" style="max-height: 365px">
+<div class="form_box">
+<table class="edit_input">
+	<tr>
+		<th>今回の情報源</th>
+		<td>
+			<label class="rd2"><input type="radio" name="fh_source" value="2"  checked> リスト</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="3" > 広告</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="4" > 電話</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="5" > 案内</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="6" > 面談</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="7" > 契約</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="8" > ｱｯﾄﾎｰﾑｳｪﾌﾞ</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="9" > ｱｯﾄﾎｰﾑ以外のｳｪﾌﾞ</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="10" > 外部修正依頼</label>
+			<label class="rd2"><input type="radio" name="fh_source" value="11" > その他</label>
+		</td>
+	</tr>
+	
+	<tr>
+		<th>更新担当</th>
+		<td>
+			<select name='fh_update_rep' id='fh_update_rep' data-role='none' >
+				<option value=''>-</option>
+				<?php
+					if(isset($users) && count($users)){
+						foreach($users as $user){
+							$userFull = AdminDetails::model()->find('user_id = '.$user['user_id']);
+				?>
+				<option value="<?php echo $user['user_id']; ?>" ><?php echo $userFull['full_name']; ?></option>
+				<?php
+                		}
+					}
+				?>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<th>物件確認担当</th>
+		<td>
+			<select name='fh_source_rep' id='fh_source_rep' data-role='none' >
+				<option value=''>-</option>
+				<?php
+					if(isset($users) && count($users)){
+						foreach($users as $user){
+							$userFull = AdminDetails::model()->find('user_id = '.$user['user_id']);
+				?>
+				<option value="<?php echo $user['user_id']; ?>" ><?php echo $userFull['full_name']; ?></option>
+				<?php
+                		}
+					}
+				?>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<th>更新日</th>
+		<td>
+		<label><input type="checkbox" name="update_all_floor_update_date" value="0" > 全フロアの更新日を本日にする</label>
+		</td>
+	</tr>
+</table>
+</div><!--div.form_box-->
+
+<div class="bt_input_box">
+	<input type="hidden" name="b_no" value="<?=$buildingDetails['building_id']?>">
+	<input type="submit" value="フロア情報を更新" class="bt_fl_update">
+</div>
+</form>
+</div><!--div.main-->
+</div><!--div.contents-->
+
+<?php 
+if($update_management==1) {
+?>
+<script>
+$(function() {
+	$("#appendManagementModal").dialog({
+		modal: true,
+		autoOpen: true,
+		width: 952,
+		resizable:false,
+		title: "<?php echo Yii::app()->controller->__trans('Building management edit・add'); ?>",
+		buttons: {
+		}
+	});
+});
+</script>
+
+<div id="dialog"> 
+</div>
+<!--Modal Popup for append management history-->
+<dl id="appendManagementModal" class="popup_ty5 dialog">
+<dd>
+        	<?php
+// 			$divcls = $divlbl = '';
+// 			if($isCompart != ""){
+// 				$divcls = 'color-blue';
+// 				$divlbl = $isCompart;
+// 			}
+			
+// 			if($isShared != ""){
+// 				$divcls = 'color-orange';
+// 				$divlbl = $isShared;
+// 			}
+			?>
+        	<div class="differentOwner <?php echo $divcls; ?>"><?php echo $divlbl; ?></div>
+        	<div id="main" class="full-width">
+            <div class="tab_con" style="max-height: 365px">
             <div class="manage-info table-box new_style_box">
                 <form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="<?php echo Yii::app()->createUrl('floor/addHistory'); ?>">
                     <div class="manageInfoResponse">
                         <input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo isset($_GET['id']) && $_GET['id'] != "" ? $_GET['id'] : 0; ?>"/>
                         <input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
                         <input type="hidden" name="base_url" id="base_url" value="<?php echo Yii::app()->request->baseUrl; ?>">
-                        <table class="newform_info ad_list" style="width: 100%">
+                        <table class="newform_info ad_list">
                             <tbody>
                                 <tr>
                                     <th>Trader ID</th>
@@ -535,246 +654,9 @@ div#contents table.fl_data_c th {
                     </div>
                  </form>
                 </div>
-		</div><!--/tab_con-->
-		</div><!--/main-->
-
-</div>
-<div class="form_box">
-<table class="edit_input">
-	<tr>
-		<th>今回の情報源</th>
-		<td>
-			<label class="rd2"><input type="radio" name="fh_source" value="2"  checked> リスト</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="3" > 広告</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="4" > 電話</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="5" > 案内</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="6" > 面談</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="7" > 契約</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="8" > ｱｯﾄﾎｰﾑｳｪﾌﾞ</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="9" > ｱｯﾄﾎｰﾑ以外のｳｪﾌﾞ</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="10" > 外部修正依頼</label>
-			<label class="rd2"><input type="radio" name="fh_source" value="11" > その他</label>
-		</td>
-	</tr>
-	
-	<tr>
-		<th>更新担当</th>
-		<td>
-			<select name='fh_update_rep' id='fh_update_rep' data-role='none' >
-				<option value=''>-</option>
-				<?php
-					if(isset($users) && count($users)){
-						foreach($users as $user){
-							$userFull = AdminDetails::model()->find('user_id = '.$user['user_id']);
-				?>
-				<option value="<?php echo $user['user_id']; ?>" ><?php echo $userFull['full_name']; ?></option>
-				<?php
-                		}
-					}
-				?>
-			</select>
-		</td>
-	</tr>
-	
-	<tr>
-		<th>物件確認担当</th>
-		<td>
-			<select name='fh_source_rep' id='fh_source_rep' data-role='none' >
-				<option value=''>-</option>
-				<?php
-					if(isset($users) && count($users)){
-						foreach($users as $user){
-							$userFull = AdminDetails::model()->find('user_id = '.$user['user_id']);
-				?>
-				<option value="<?php echo $user['user_id']; ?>" ><?php echo $userFull['full_name']; ?></option>
-				<?php
-                		}
-					}
-				?>
-			</select>
-		</td>
-	</tr>
-	
-	<tr>
-		<th>更新日</th>
-		<td>
-		<label><input type="checkbox" name="update_all_floor_update_date" value="0" > 全フロアの更新日を本日にする</label>
-		</td>
-	</tr>
-</table>
-</div><!--div.form_box-->
-
-<div class="bt_input_box">
-	<input type="hidden" name="b_no" value="<?=$buildingDetails['building_id']?>">
-	<input type="submit" value="フロア情報を更新" class="bt_fl_update">
-</div>
-</form>
-</div><!--div.main-->
-</div><!--div.contents-->
-
-<?php 
-if($update_management==1) {
-?>
-<script>
-$(function() {
-	$("#appendManagementModal").dialog({
-		modal: true,
-		autoOpen: true,
-		width: 952,
-		resizable:false,
-		title: "<?php echo Yii::app()->controller->__trans('Building management edit・add'); ?>",
-		buttons: {
-		}
-	});
-});
-</script>
-
-<div id="dialog"> 
-</div>
-<!--Modal Popup for append management history-->
-<dl id="appendManagementModal" class="popup_ty5 dialog">
-<dd>
-        	<?php
-// 			$divcls = $divlbl = '';
-// 			if($isCompart != ""){
-// 				$divcls = 'color-blue';
-// 				$divlbl = $isCompart;
-// 			}
+</div><!--/tab_con-->
+</div><!--/main-->
 			
-// 			if($isShared != ""){
-// 				$divcls = 'color-orange';
-// 				$divlbl = $isShared;
-// 			}
-			?>
-        	<div class="differentOwner <?php echo $divcls; ?>"><?php echo $divlbl; ?></div>
-			<form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="">
-				<input type="hidden" name="hdnHistFloorId" id="hdnHistFloorId" value="<?php echo implode(',', $arr_floor); ?>"/>
-				<input type="hidden" name="hdnBillId" id="hdnBillId" value="<?php echo $buildingDetails['building_id']; ?>"/>
-				<?php /*?><table class="edit_input f_info_b mline tb-floor one-col mix-col">
-				  <tbody>
-					<tr>
-					  <th class="minsize"><?php echo Yii::app()->controller->__trans('this floor is condominium ownership'); ?></th>
-					  <td><label class="rd2">
-						  <input type="radio" value="1" name="is_condominium_ownership">
-						  <?php echo Yii::app()->controller->__trans('YES'); ?> </label>
-						<label class="rd2">
-						  <input type="radio" value="0" name="is_condominium_ownership">
-						 <?php echo Yii::app()->controller->__trans('NO'); ?>  </label></td>
-					</tr>
-				  </tbody>
-				</table><?php */?>
-				<table class="edit_input f_info">
-				  <tbody>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('trader ID'); ?></th>
-					  <td colspan="3">
-						<input type="text" name="searchTraderText" class="ty3 searchTraderText" id="searchTraderText" style="float:left;">
-						<input type="button" name="btnSearchTrader" id="btnSearchTrader" class="btnSearchTrader bt_entry autoWidth" value="業者を検索">
-						<br/>
-						<div class="traderResp">
-                        	<span id="owner_id_select">
-                            	<select id="tradersList"  class="auto tradersList" name="trader_id">
-                                	<option value="0"><?php echo Yii::app()->controller->__trans('saved traders'); ?>↓</option>
-									<?php
-                                    $tradersDetails = Traders::model()->findAll('is_active = 1 AND building_id = '.$buildingDetails['building_id'].' AND floor_id IN ('.implode(',', $arr_floor).')');
-									if(isset($tradersDetails) && count($tradersDetails) > 0){
-										foreach($tradersDetails as $tradersList){
-									?>
-                                    <option value="<?php echo $tradersList['trader_id']; ?>" ><?php echo $tradersList['traderId'].' '.$tradersList['trader_name']; ?></option>
-									<?php
-                                    	}
-									}else{
-									?>
-                                    <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available'); ?></option>
-									<?php
-                                    }
-									?>
-                                </select>
-                            </span> &nbsp;
-                        </div>
-                        <div class="loadTraders" style="display:none;">
-                            <div class="spinner">
-                                <div class="rect1"></div>
-                                <div class="rect2"></div>
-                                <div class="rect3"></div>
-                                <div class="rect4"></div>
-                                <div class="rect5"></div>
-                            </div>
-                        </div>
-					   <!-- 
-						<input type="text" name="newTrader" id="newTrader" class="ty1 newTrader">
-						<input type="button" name="add-trader" id="btnAddTrader" class="btnAddTrader bt_entry autoWidth" value="Add Traders">--></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('ownership type'); ?></th>
-					  <td><select name="ownership_type" id="bo_type" data-role="none" class="ownership_type" required>
-						  <option value="">-</option>
-						  <?php 
-						  foreach ($aVendorType as $vendorValue => $vendorName)
-						  {
-							echo '<option value="'. $vendorValue .'" >'. $vendorName .'</option>';
-						  }
-						  ?>
-						</select></td>
-					  <th><?php echo Yii::app()->controller->__trans('Form of Transaction'); ?></th>
-					  <td><select name="management_type" id="bo_contract" class="management_type" data-role="none">
-						  <option value="">-</option>
-						  <option value="-1"><?php echo Yii::app()->controller->__trans('unknown'); ?></option>
-						  <option value="1">専任媒介</option>
-						  <option value="2">一般媒介</option>
-						  <option value="3">代理</option>
-						  <option value="4">貸主</option>
-						</select>
-					  </td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('Window'); ?></th>
-					  <td colspan="3"><input type="checkbox" name="is_current" id="is_current" class="is_current" value="1" /><?php echo Yii::app()->controller->__trans('Setting this trader owner properties window');?></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('company name'); ?></th>
-					  <td colspan="3"><input type="text" name="owner_company_name" id="bo_name" value="" class="ty6 owner_company_name" required></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('contact address'); ?></th>
-					  <td colspan="3"><input type="text" name="company_tel" id="bo_tel1" value="" class="ty6 company_tel"></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('person in charge1'); ?></th>
-					  <td><input type="text" name="person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
-					  <th><?php echo Yii::app()->controller->__trans('person in charge2'); ?></th>
-					  <td><input type="text" name="person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
-					</tr>
-					<tr>
-					  <th><?php echo Yii::app()->controller->__trans('charge'); ?></th>
-					  <td colspan="3">
-						<label class="rd2">
-							<input type="radio" name="charge" value="unknown" class="radiUnknown">
-							<?php echo Yii::app()->controller->__trans('unknown'); ?>
-						</label>
-						<label class="rd2">
-							<input type="radio" name="charge" value="ask" class="radiAsk">
-							<?php echo Yii::app()->controller->__trans('ask'); ?>
-						</label>
-						<label class="rd2">
-						  <input type="radio" name="charge" value="undecided" class="radiUndecided">
-						  <?php echo Yii::app()->controller->__trans('undecided'); ?>  </label>
-						<label class="rd2">
-						  <input type="radio" name="charge" value="<?php echo Yii::app()->controller->__trans('none'); ?>" class="radiNone">
-						  <?php echo Yii::app()->controller->__trans('none'); ?>  </label>
-						|
-						<input type="text" name="change_txt" id="bo_fee" size="5" value="" class="ty8 change_txt"></td>
-					</tr>
-				  </tbody>
-				</table>
-				<table class="edit_input f_info_b mline tb-floor one-col mix-col">
-				  <tbody>
-					<tr>
-					  <td align="center"><button type="button" name="btnAddNewHistory" class="btnAddNewHistory" id="btnAddNewHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
-					</tr>
-				  </tbody>
-				</table>
-          </form>
 </dd>          
 </dl>
 <?php 

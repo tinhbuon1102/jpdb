@@ -492,35 +492,101 @@ if(isset($customCondition)){
                                         }
 						
 							$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
-							$logged_user_id = $user->user_id;							
-							
-							
-							if(!empty($flootList['comparted_array'])){
-								foreach($flootList['comparted_array'] as $list){
-
-									
-                                    include 'tr_test.php' ;	
-									
-						?> 
-                       
-                       	<?php
-								}
-                            
-                            }
-
-                            if(!empty($flootList['multi_window_array'])){
-                                foreach($flootList['multi_window_array'] as $list){
-
-                                  
-
-                                    include 'tr_test.php' ; 
+							$logged_user_id = $user->user_id;		
+						
+                            if(!empty($flootList['comparted_array'])){
+                                foreach($flootList['comparted_array'] as $list2){
+                                    $countVacant = $countNoVacant = 0;
+                                    foreach ($list2['info'] as $floor_inside)
+                                    {
+                                        $countVacant += $floor_inside['vacancy_info'] ? 1 : 0;
+                                        $countNoVacant += $floor_inside['vacancy_info'] ? 0 : 1;
+                                    }
                                     
-                        ?> 
+                                    $rowVacantClass = ($countVacant && !$countNoVacant ? 'row-vacant' : (!$countVacant && $countNoVacant ? 'row-novacant' : ''));
+                                    ?>
+                                    <tr class="<?php echo $rowVacantClass?>">
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                          <?= $list2['windows'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                           
+                                          <?= $list2['owners'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    </tr>
+
+
+                                <?php
+
+                                    foreach ($list2['info'] as $list) {
+                                      
+
+                                        include 'tr_test2.php' ; 
+                                            # code...
+                                        }
+    
                        
-                        <?php
                                 }
                             
                             }
+								
+                            
+                            if(!empty($flootList['multi_window_array'])){
+                                foreach($flootList['multi_window_array'] as $list2){
+                                    $countVacant = $countNoVacant = 0;
+                                    foreach ($list2['info'] as $floor_inside)
+                                    {
+                                        $countVacant += $floor_inside['vacancy_info'] ? 1 : 0;
+                                        $countNoVacant += $floor_inside['vacancy_info'] ? 0 : 1;
+                                    }
+                                    
+                                    $rowVacantClass = ($countVacant && !$countNoVacant ? 'row-vacant' : (!$countVacant && $countNoVacant ? 'row-novacant' : ''));
+                                    ?>
+                                    <tr class="<?php echo $rowVacantClass?>">
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                          <?= $list2['windows'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                           
+                                          <?= $list2['owners'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    </tr>
+
+
+                                <?php
+
+                                    foreach ($list2['info'] as $list) {
+                                      
+
+                                        include 'tr_test2.php' ; 
+                                            # code...
+                                        }
+    
+                       
+                                }
+                            
+                            }
+  
 
                         
                             if(!empty($flootList['single_owner_window_array'])){
@@ -563,30 +629,59 @@ if(isset($customCondition)){
                                         include 'tr_test2.php' ; 
                                             # code...
                                         }
-
-                                    
-                                    
-                        ?> 
+    
                        
-                        <?php
                                 }
                             
                             }
 
 
                              if(!empty($flootList['multi_owner_array'])){
-                                foreach($flootList['multi_owner_array'] as $list){
-
-                                  
-
-                                    include 'tr_test.php' ; 
+                                foreach($flootList['multi_owner_array'] as $list2){
+                                    $countVacant = $countNoVacant = 0;
+                                    foreach ($list2['info'] as $floor_inside)
+                                    {
+                                        $countVacant += $floor_inside['vacancy_info'] ? 1 : 0;
+                                        $countNoVacant += $floor_inside['vacancy_info'] ? 0 : 1;
+                                    }
                                     
-                        ?> 
+                                    $rowVacantClass = ($countVacant && !$countNoVacant ? 'row-vacant' : (!$countVacant && $countNoVacant ? 'row-novacant' : ''));
+                                    ?>
+                                    <tr class="<?php echo $rowVacantClass?>">
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                          <?= $list2['windows'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    <td colspan="6" style="text-align:left;">
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                                                                
+                                        <span class="vendor-label">
+                                           
+                                          <?= $list2['owners'] ?>
+                                        </span>
+                                        
+                                    </td>
+                                    </tr>
+
+
+                                <?php
+
+                                    foreach ($list2['info'] as $list) {
+                                      
+
+                                        include 'tr_test2.php' ; 
+                                            # code...
+                                        }
+    
                        
-                        <?php
                                 }
                             
                             }
+                               
 
 
 

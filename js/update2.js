@@ -296,7 +296,13 @@ $(function(){
         	var tab = $(this).attr('count');
         	var tabtype = $(this).attr('tabtype');
         	var val = $(this).val();
-        	search_trader(val, tabtype, tab);
+          if(val > 0){
+             search_trader(val, tabtype, tab);
+          }
+          else{
+            blank_fileld(tabtype, tab);
+          }
+        	
         });
 
       
@@ -307,6 +313,140 @@ $(function(){
         	var val = $('#search_'+tabtype+tab).val();
         	var res= search_trader_tel(val, tabtype, tab);
         });
+
+         $('#main').on( "keyup", ".search_by_tel", function() {
+           if($(this).val()==""){
+             var attr = $(this).parent().next().children().attr('tabtype');
+             var count =$(this).attr('count');
+             var traders_option =$('#traders_option').html();
+             $('#trader_search_'+attr+count).html(traders_option);
+           }
+        });
+
+        $('#main').on( "change", "select", function() {
+           var str =$(this).attr('id');
+           if(str.search("trader_search_") > -1){
+             return false;
+           }
+           var curr_elem_val =$(this).val();
+           var curr_elem_id =$(this).attr('id');
+           var count = $(this).parent().parent().parent().parent().parent().attr('count');
+           var id   =  $(this).parent().parent().parent().parent().parent().attr('id')
+           var entryArray =id.split(count);
+           var type =entryArray[0];
+           var trader_id =$('#trader_search_'+type+count).val();
+           check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+        });
+
+        $('#main').on( "change", "input[type=text]", function() {
+           var str =$(this).attr('class');
+           if(str.search("search_by_tel") > -1){
+             return false;
+           }
+           if(str.search("change_txt") > -1){
+             return false;
+           }
+           var curr_elem_val =$(this).val();
+           var curr_elem_id =$(this).attr('id');
+           var count = $(this).parent().parent().parent().parent().parent().attr('count');
+           var id   =  $(this).parent().parent().parent().parent().parent().attr('id')
+           var entryArray =id.split(count);
+           var type =entryArray[0];
+           var trader_id =$('#trader_search_'+type+count).val();
+           check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+        });
+
+
+        function check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id){
+            var entryArray =curr_elem_id.split(type+count);
+            var tab_name="";
+            var error_str="";
+            var error_count =0;
+            switch (entryArray[0]) {
+                case 'company_name_':
+                    tab_name = "Company Name";
+                    break;
+                case 'tel_':
+                    tab_name = "Tel Number";
+                    break;
+                case 'fax_':
+                    tab_name = "Fax Number";
+                    break;
+                case 'person_in_charge1_':
+                    tab_name = "Person In Charge1 ";
+                    break;
+                case 'person_in_charge2_':
+                    tab_name = "Person In Charge2 ";
+                    break;
+                case 'ownership_type_':
+                    tab_name = "Sorts";
+                    break;
+                case 'management_type_':
+                    tab_name = "Transaction type";
+                    break;  
+            }
+            var window_count =$('#total_window').val();
+            var owner_count =$('#total_owner').val();
+            for(var i=1; window_count >= i; i++){
+              if((type=="window")&&(count==i)){
+                continue;
+              }
+                var new_trader_id =$('#trader_search_window'+i).val();
+                if(new_trader_id == trader_id){
+                     error_str +=' Window '+i+',';
+                     error_count++;
+                }
+             
+            }
+            for(var i=1; owner_count >= i; i++){
+              if((type=="owner")&&(count==i)){
+                continue;
+              }
+              var new_trader_id =$('#trader_search_owner'+i).val();
+                if(new_trader_id == trader_id){
+                     error_str +=' Owner '+i+',';
+                     error_count++;
+                }
+
+            }
+            if(error_count > 0){
+              if(confirm('same trader used for'+error_str+ ' it will also change the '+ tab_name+' at '+error_str+' Are You Sure to chnage it' )){
+                   chnage_all_value_trader(curr_elem_val, entryArray[0], type, count, trader_id);
+              }
+            }
+    
+   
+      }
+  
+
+       function chnage_all_value_trader(curr_elem_val, element, type, count, trader_id){
+            var window_count =$('#total_window').val();
+            var owner_count =$('#total_owner').val();
+            for(var i=1; window_count >= i; i++){
+              if((type=="window")&&(count==i)){
+                continue;
+              }
+                var new_trader_id =$('#trader_search_window'+i).val();
+                if(new_trader_id == trader_id){
+                  $('#'+element+'window'+i).val(curr_elem_val);
+                     
+                }
+             
+            }
+            for(var i=1; owner_count >= i; i++){
+              if((type=="owner")&&(count==i)){
+                continue;
+              }
+              var new_trader_id =$('#trader_search_owner'+i).val();
+                if(new_trader_id == trader_id){
+                    $('#'+element+'owner'+i).val(curr_elem_val);
+                }
+
+            }
+
+       }
+
+         
           
         function search_trader(traders_id, tabtype, tab){
           var baseUrl=$('#base_url').val();
@@ -359,6 +499,7 @@ $(function(){
               var res = JSON.parse(res); 
               var option=""
               if(res.status=='success'){
+                 option += '<option value="0">Please Select Saved Trader</option>';
                  $.each( res.traders, function( key, trd ) {
                     option += '<option value="'+trd.trader_id+'">'+trd.traderId+'&nbsp;'+trd.trader_name+'</option>';
                   });
@@ -400,6 +541,22 @@ $(function(){
          	 }
         	//;
         	
+        }
+
+        function blank_fileld(tabtype, tab){
+           $('#ownership_type_'+tabtype+tab).val("");
+           $('#company_name_'+tabtype+tab).val("");
+           $('#management_type_'+tabtype+tab).val("");
+           $('#tel_'+tabtype+tab).val("");
+           $('#fax_'+tabtype+tab).val("");
+           $('#person_in_charge1_'+tabtype+tab).val("");
+           $('#person_in_charge2_'+tabtype+tab).val("");
+           if(tabtype='window'){
+             $('#change_txt_'+tabtype+tab).val("");
+             $("input[name=charge_"+tabtype+tab+"]").prop('checked', false);
+           }
+          //;
+          
         }
 
          $('#main').on( "click", "#sameinfo", function() {
@@ -483,14 +640,14 @@ function check_validity(action="normal"){
       $('#company_name_window'+i).removeClass('error_val');
      }
     
-    // if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
-    //    $('#tel_window'+i).addClass('error_val');
-    //    error_count++;
+    if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
+       $('#tel_window'+i).addClass('error_val');
+       error_count++;
 
-    // }
-    // else{
-    //   $('#tel_window'+i).removeClass('error_val');
-    // }
+    }
+    else{
+      $('#tel_window'+i).removeClass('error_val');
+    }
     // if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
     //    $('#fax_window'+i).addClass('error_val');
     //    error_count++;
@@ -498,7 +655,7 @@ function check_validity(action="normal"){
     // else{
     //   $('#fax_window'+i).removeClass('error_val');
     // }
-    //alert(error_count);
+   // alert(error_count);
   }
    for(var i=1; owner_count >= i; i++){
     cname = $('#company_name_owner'+i).val();
@@ -511,13 +668,13 @@ function check_validity(action="normal"){
     else{
         $('#company_name_owner'+i).removeClass('error_val');
     }
-    // if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
-    //    $('#tel_owner'+i).addClass('error_val');
-    //    error_count++;
-    // }
-    // else{
-    //    $('#tel_owner'+i).removeClass('error_val');
-    // }
+    if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
+       $('#tel_owner'+i).addClass('error_val');
+       error_count++;
+    }
+    else{
+       $('#tel_owner'+i).removeClass('error_val');
+    }
     // if((typeof fax == "undefined")||(cname == "")||(fax=='000-00000-00000')){
     //    $('#fax_owner'+i).addClass('error_val');
     //    error_count++;
@@ -529,6 +686,10 @@ function check_validity(action="normal"){
   if(error_count>0){
     error_count 
     alert(" please fill all required fields");
+    return false;
+  }
+  var same_check=check_same_validity();
+  if(!same_check){
     return false;
   }
   else{
@@ -545,6 +706,49 @@ function check_validity(action="normal"){
 
 
 }
+
+ function check_same_validity(){
+  var window_count =$('#total_window').val();
+  var owner_count =$('#total_owner').val();
+  var cname="";
+  var tel="";
+  var cname_cam="";
+  var tel_cam="";
+  for(var i=1; window_count >= i; i++){
+    cname = $('#company_name_window'+i).val();
+    tel = $('#tel_window'+i).val();
+    for(var j=1; window_count >= j; j++){
+      if(i==j){
+        continue; 
+      }
+      cname_cam = $('#company_name_window'+j).val();
+      tel_cam = $('#tel_window'+j).val();
+      if((cname_cam==cname)&&(tel_cam==tel)){
+         alert('window '+i+' and window '+j+' Having same Company name and phone number');
+         return false;
+      }
+    }
+  }
+   for(var i=1; owner_count >= i; i++){
+    cname = $('#company_name_owner'+i).val();
+    tel = $('#tel_owner'+i).val();
+    for(var j=1; window_count >= j; j++){
+      if(i==j){
+        continue; 
+      }
+      cname_cam = $('#company_name_owner'+j).val();
+      tel_cam = $('#tel_owner'+j).val();
+      if((cname_cam==cname)&&(tel_cam==tel)){
+         alert('owner '+i+' and owner '+j+' Having same Company name and phone number');
+         return false;
+      }
+    }
+  }
+
+  return true;
+
+}
+
  $(document).on('click','#upadte_floor', function(e){
   check_validity('normal');
  });

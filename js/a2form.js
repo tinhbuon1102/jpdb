@@ -42,13 +42,13 @@
     else{
       $('#td_tel').removeClass('error_val');
     }
-    if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
-       $('#td_fax').addClass('error_val');
-       error_count++;
-    }
-    else{
-      $('#td_fax').removeClass('error_val');
-    }
+    // if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
+    //    $('#td_fax').addClass('error_val');
+    //    error_count++;
+    // }
+    // else{
+    //   $('#td_fax').removeClass('error_val');
+    // }
      if(error_count>0){
     alert("please fill all required fields");
     return false;
