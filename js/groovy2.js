@@ -238,6 +238,21 @@ $(document).ready(function(e) {
 	});
 	/**************************** end *******************************/	
 
+	/********************** Set fixed floor ****************************/
+	$(document).on('click','.btnAddFixedFloor',function(e){
+		var id = $(".selectedFloorToDelete").val();
+		var currentFloorId = $("#currentFloorId").val();
+		var url = baseUrl+'/index.php?r=floor/deleteFloor';
+		call({url:url,params:{id:id,currentFloorId:currentFloorId},type:'POST',dataType:'json'},function(resp){
+			if(resp.available == 0){
+				window.location.href = baseUrl+resp.url;
+			}else{
+				window.location.href = baseUrl+resp.url;
+			}
+		});
+	});
+	/**************************** end *******************************/
+
 	/********************** add fast floor ****************************/
 	$(document).on('click','.btnAddFastFloor',function(e){
 		var numberOfFloor = $(".addFastFloorNum").val();

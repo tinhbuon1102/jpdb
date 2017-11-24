@@ -479,6 +479,9 @@
 								$expBuildingDeadLine = explode('-',$model->building_with_deadline); 
 								$chk = 'checked';
 							}
+							else {
+								$expBuildingDeadLine = array(0, 0);
+							}
 						 ?>
                         <input type="checkbox" name="Building[building_with_deadline]" value="1" <?php echo isset($expBuildingDeadLine[0]) && $expBuildingDeadLine[0] == 1 ? $chk:''; ?> class="ip building_with_deadline">
                         <?php echo Yii::app()->controller->__trans('Time-limited property'); ?>&nbsp;&nbsp;
