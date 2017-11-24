@@ -240,15 +240,13 @@ $(document).ready(function(e) {
 
 	/********************** Set fixed floor ****************************/
 	$(document).on('click','.btnAddFixedFloor',function(e){
-		var id = $(".selectedFloorToDelete").val();
+		var id = $("#fixed_floor").val();
 		var currentFloorId = $("#currentFloorId").val();
-		var url = baseUrl+'/index.php?r=floor/deleteFloor';
+		var url = baseUrl+'/index.php?r=floor/setFixedFloor';
+		$('body').LoadingOverlay("show");
 		call({url:url,params:{id:id,currentFloorId:currentFloorId},type:'POST',dataType:'json'},function(resp){
-			if(resp.available == 0){
-				window.location.href = baseUrl+resp.url;
-			}else{
-				window.location.href = baseUrl+resp.url;
-			}
+			alert(resp.msg)
+			$('body').LoadingOverlay("hide");
 		});
 	});
 	/**************************** end *******************************/
