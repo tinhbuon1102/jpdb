@@ -2100,7 +2100,7 @@ class BuildingController extends Controller{
 			$query = 'SELECT * FROM ownership_management where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].'  AND `is_current` = 0 ORDER BY `modified_on` DESC' ;
 			$floor_owners = Yii::app()->db->createCommand($query)->queryAll();	
 
-			$query = 'SELECT * FROM 	ownership_management where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].' ORDER BY `modified_on` DESC' ;
+			$query = 'SELECT * FROM 	ownership_management_his where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].' ORDER BY `modified_on` DESC' ;
 			$floor_owners_history = Yii::app()->db->createCommand($query)->queryAll();
 
 			$query = 'SELECT * FROM 	traders_his where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC LIMIT 3' ;

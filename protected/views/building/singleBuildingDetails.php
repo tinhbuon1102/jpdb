@@ -1143,7 +1143,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                 
 			  					  ?>
                                   <tr>
-                                    <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg">Update history for windows・owners</h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;">Edit/View</a></span></td>
+                                    <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg">Update history for windows・owners</h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="seeMoreManagement bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" >Edit/View</a></span></td>
                                   </tr>
                                   <?php
                                   if(!empty($floor_owners_history)){
@@ -2977,7 +2977,6 @@ if(count($getGoogleMapKeyDetails) > 0){
                <div class="history-info table-box new_style_box">
                     <div class="ttl_h3 clearfix" style="height:45px">
                        <h4 style="margin-top: 5px">Update history for windows・owners</h4><span class="button-right" style="margin-top: -40px">
-                         <a class="detail_local_tab " id="timeline" href="javascript:void(0)" data-id="<?php echo $globalFloorId; ?>"  onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"><?php echo Yii::app()->controller->__trans('Edit/view'); ?></a>
                         </span>
                     </div>
                     

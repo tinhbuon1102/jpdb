@@ -338,6 +338,15 @@ $(function(){
            check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
         });
 
+        $('#main').on( "click", "select", function() {
+           var str =$(this).attr('id');
+           if(str.search("trader_search_") > -1){
+             return false;
+           }
+          $('#main').attr('field_prv_val', $(this).val());
+        });
+
+
         $('#main').on( "change", "input[type=text]", function() {
            var str =$(this).attr('class');
            if(str.search("search_by_tel") > -1){
@@ -354,6 +363,17 @@ $(function(){
            var type =entryArray[0];
            var trader_id =$('#trader_search_'+type+count).val();
            check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+        });
+
+         $('#main').on( "focus", "input[type=text]", function() {
+           var str =$(this).attr('class');
+           if(str.search("search_by_tel") > -1){
+             return false;
+           }
+           if(str.search("change_txt") > -1){
+             return false;
+           }
+          $('#main').attr('field_prv_val', $(this).val());
         });
 
 
@@ -412,6 +432,9 @@ $(function(){
             if(error_count > 0){
               if(confirm('same trader used for'+error_str+ ' it will also change the '+ tab_name+' at '+error_str+' Are You Sure to chnage it' )){
                    chnage_all_value_trader(curr_elem_val, entryArray[0], type, count, trader_id);
+              }
+              else{
+                 $('#'+curr_elem_id).val($('#main').attr('field_prv_val'));
               }
             }
     
@@ -886,3 +909,8 @@ function check_validity(action="normal"){
         return false;
       }        
     });
+
+
+
+
+   

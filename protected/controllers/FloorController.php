@@ -3938,6 +3938,29 @@ class FloorController extends Controller{
 				$getManagementAvailable->charge_text = $_POST['change_txt_window'.$i];
 				$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
 
+				$getManagementAvailableHis = new OwnershipManagementHis;
+		        $getManagementAvailableHis->floor_id  = $_POST['hdnFloorId'];
+				$getManagementAvailableHis->building_id  = $_POST['hdnBillId'];
+				$getManagementAvailableHis->is_compart = $comp_floor;
+				$getManagementAvailableHis->is_multiple_window = $multi_window;
+				$getManagementAvailableHis->is_shared  = $shared_floor;
+				$getManagementAvailableHis->trader_id = $insert_id;
+				$getManagementAvailableHis->ownership_type = $_POST['ownership_type_window'.$i];
+				$getManagementAvailableHis->management_type =$_POST['management_type_window'.$i];
+				$getManagementAvailableHis->is_current = 1;
+				$getManagementAvailableHis->owner_company_name =$_POST['company_name_window'.$i];
+				$getManagementAvailableHis->company_tel = $_POST['tel_window'.$i];
+				$getManagementAvailableHis->company_fax = $_POST['fax_window'.$i];
+				$getManagementAvailableHis->person_in_charge1 =  $_POST['person_in_charge1_window'.$i];
+				$getManagementAvailableHis->person_in_charge2 =  $_POST['person_in_charge2_window'.$i];
+
+				if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+					$getManagementAvailableHis->charge = $_POST['charge_window'.$i];
+				}
+				$getManagementAvailableHis->charge_text = $_POST['change_txt_window'.$i];
+				$getManagementAvailableHis->modified_on = date('Y-m-d H:i:s');
+				$getManagementAvailableHis->save(false);
+
 				$update['ownership_type']= $_POST['ownership_type_window'.$i];
 				$update['management_type']= $_POST['management_type_window'.$i];
 				$update['owner_company_name']= $_POST['company_name_window'.$i];
@@ -4032,6 +4055,25 @@ class FloorController extends Controller{
 				$getManagementAvailable->notes =  $_POST['note_owner'.$i];
 				$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
 
+				$getManagementAvailableHis = new OwnershipManagementHIS;
+		        $getManagementAvailableHis->floor_id  = $_POST['hdnFloorId'];
+				$getManagementAvailableHis->building_id  = $_POST['hdnBillId'];
+				$getManagementAvailableHis->is_compart = $comp_floor;
+				$getManagementAvailableHis->is_multiple_window = $multi_window;
+				$getManagementAvailableHis->is_shared  = $shared_floor;
+				$getManagementAvailableHis->trader_id = $insert_id;
+				$getManagementAvailableHis->ownership_type = $_POST['ownership_type_owner'.$i];
+				$getManagementAvailableHis->management_type =$_POST['management_type_owner'.$i];
+				$getManagementAvailableHis->is_current = 0;
+				$getManagementAvailableHis->owner_company_name =$_POST['company_name_owner'.$i];
+				$getManagementAvailableHis->company_tel = $_POST['tel_owner'.$i];
+				$getManagementAvailableHis->company_fax = $_POST['fax_owner'.$i];
+				$getManagementAvailableHis->notes  = $_POST['note_owner'.$i];
+				$getManagementAvailableHis->person_in_charge1 =  $_POST['person_in_charge1_owner'.$i];
+				$getManagementAvailableHis->person_in_charge2 =  $_POST['person_in_charge2_owner'.$i];
+				$getManagementAvailableHis->notes =  $_POST['note_owner'.$i];
+				$getManagementAvailableHis->modified_on = date('Y-m-d H:i:s');
+                $getManagementAvailableHis->save(false);
 
 				$update['ownership_type']= $_POST['ownership_type_owner'.$i];
 				$update['management_type']= $_POST['management_type_owner'.$i];
@@ -4389,8 +4431,31 @@ class FloorController extends Controller{
 									}
 									$getManagementAvailable->charge_text = $_POST['change_txt_window'.$i];
 									$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+
+									$getManagementAvailableHis = new OwnershipManagementHis;
+							        $getManagementAvailableHis->floor_id  = $floor_id;
+									$getManagementAvailableHis->building_id  = $_POST['hdnBillId'];
+									$getManagementAvailableHis->is_compart = $comp_floor;
+									$getManagementAvailableHis->is_multiple_window = $multi_window;
+									$getManagementAvailableHis->is_shared  = $shared_floor;
+									$getManagementAvailableHis->trader_id = $insert_id;
+									$getManagementAvailableHis->ownership_type = $_POST['ownership_type_window'.$i];
+									$getManagementAvailableHis->management_type =$_POST['management_type_window'.$i];
+									$getManagementAvailableHis->is_current = 1;
+									$getManagementAvailableHis->owner_company_name =$_POST['company_name_window'.$i];
+									$getManagementAvailableHis->company_tel = $_POST['tel_window'.$i];
+									$getManagementAvailableHis->company_fax = $_POST['fax_window'.$i];
+									$getManagementAvailableHis->person_in_charge1 =  $_POST['person_in_charge1_window'.$i];
+									$getManagementAvailableHis->person_in_charge2 =  $_POST['person_in_charge2_window'.$i];
+
+									if(isset($_POST['charge_window'.$i]) && ($_POST['charge_window'.$i] != '')){
+										$getManagementAvailableHis->charge = $_POST['charge_window'.$i];
+									}
+									$getManagementAvailableHis->charge_text = $_POST['change_txt_window'.$i];
+									$getManagementAvailableHis->modified_on = date('Y-m-d H:i:s');
+									$getManagementAvailableHis->save(false);
 									
-					               $update['ownership_type']= $_POST['ownership_type_window'.$i];
+					                $update['ownership_type']= $_POST['ownership_type_window'.$i];
 									$update['management_type']= $_POST['management_type_window'.$i];
 									$update['owner_company_name']= $_POST['company_name_window'.$i];
 									$update['company_tel']= $_POST['tel_window'.$i];
@@ -4485,6 +4550,26 @@ class FloorController extends Controller{
 											$getManagementAvailable->person_in_charge2 =  $_POST['person_in_charge1_owner'.$i];
 											$getManagementAvailable->notes =  $_POST['note_owner'.$i];
 											$getManagementAvailable->modified_on = date('Y-m-d H:i:s');
+
+											$getManagementAvailableHis = new OwnershipManagementHIS;
+									        $getManagementAvailableHis->floor_id  = $floor_id;
+											$getManagementAvailableHis->building_id  = $_POST['hdnBillId'];
+											$getManagementAvailableHis->is_compart = $comp_floor;
+											$getManagementAvailableHis->is_multiple_window = $multi_window;
+											$getManagementAvailableHis->is_shared  = $shared_floor;
+											$getManagementAvailableHis->trader_id = $insert_id;
+											$getManagementAvailableHis->ownership_type = $_POST['ownership_type_owner'.$i];
+											$getManagementAvailableHis->management_type =$_POST['management_type_owner'.$i];
+											$getManagementAvailableHis->is_current = 0;
+											$getManagementAvailableHis->owner_company_name =$_POST['company_name_owner'.$i];
+											$getManagementAvailableHis->company_tel = $_POST['tel_owner'.$i];
+											$getManagementAvailableHis->company_fax = $_POST['fax_owner'.$i];
+											$getManagementAvailableHis->notes  = $_POST['note_owner'.$i];
+											$getManagementAvailableHis->person_in_charge1 =  $_POST['person_in_charge1_owner'.$i];
+											$getManagementAvailableHis->person_in_charge2 =  $_POST['person_in_charge2_owner'.$i];
+											$getManagementAvailableHis->notes =  $_POST['note_owner'.$i];
+											$getManagementAvailableHis->modified_on = date('Y-m-d H:i:s');
+							                $getManagementAvailableHis->save(false);
 
 								
 											$update['ownership_type']= $_POST['ownership_type_owner'.$i];
