@@ -402,7 +402,7 @@ if($requestData['print_type'] == 10){
      }
     ?>
       <!--author company name *common-->
-      <p class="address"><?php echo $company->address; ?></p>      
+      <p class="address"><?php echo $language == 'ja' ? $company->address : $company->address_en; ?></p>      
       <!--author company address *common-->
       <p class="tel"><?php echo $company->phone; ?></p>
       <!--author company tel *common-->
@@ -843,7 +843,7 @@ if($requestData['print_type']==8){
      }
     ?>
       <!--author company name *common-->
-      <p class="address"><?php echo $company->address; ?></p>
+      <p class="address"><?php echo $language == 'ja' ? $company->address : $company->address_en; ?></p>
       <!--author company address *common-->     
       <p class="tel"><?php echo $company->phone; ?></p>
       <!--author company tel *common-->
@@ -1574,7 +1574,7 @@ if($requestData['print_type'] == 11){
      }
     ?>
 
-      <p class="address"><?php echo $company['address']; ?></p>
+      <p class="address"><?php echo $language == 'ja' ? $company['address'] : $company['address_en']; ?></p>
       
       <p class="tel"><?php echo $company['phone'];  ?></p>
       

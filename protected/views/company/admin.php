@@ -36,6 +36,7 @@ $('.search-form form').submit(function(){
             <div class="divSpace">
             	<input type="text" name="name" id="name" class="name form-input" placeholder="Company Name" value="" required/>
                 <input type="text" name="address" id="address" placeholder="Address" class="address form-input" required >
+                <input type="text" name="address_en" id="address_en" placeholder="English Address" class="address form-input" required >
                 <input type="text" name="phone" id="phone" placeholder="Phone"  class="phone form-input" required/>
                 <input type="email" name="email" id="email" placeholder="Email" class="email form-input" required>
 				<input type="file" name="image" id="image" placeholder="logo" class="logo form-input" />
@@ -59,6 +60,7 @@ $('.search-form form').submit(function(){
 		'company_id',
 		'name',
 		'address',
+		'address_en',
 		'phone',
 		'email',
 		// 'compay_logo',
@@ -107,15 +109,14 @@ $(document).ready(function(e) {
 	});	
 	
 	$(document).on('click','.ajax-link',function(e){
-		console.log("aaaa");
 	    e.preventDefault();
 		var url = $(this).attr('href');
 		call({url:url,params:{},type:'GET'},function(resp){
 			//alert('Successfully Data Added');
-			console.log(resp);
 			$('#id').val(resp.company_id);
 			$('#name').val(resp.name);
 			$('#address').val(resp.address);
+			$('#address_en').val(resp.address_en);
 			$('#phone').val(resp.phone);
 			$('#email').val(resp.email);
 			$('#image').val(resp.image);
@@ -176,7 +177,6 @@ function addUpdateCompany(){
     processData: false, // Don't process the files
     contentType: false, // Set content type to false as jQuery will tell the server its a query string request
     success: function(resp, textStatus, jqXHR){
-			console.log(resp);
 			//while insert data
 			if(resp.status == 1){
 				$('.form-reponse').html(resp.msg);

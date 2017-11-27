@@ -95,6 +95,7 @@ class CompanyController extends Controller
 			 $id = $getArray['id'];	
 			 $name = $getArray['name'];
 			 $address = $getArray['address'];
+			 $address_en = $getArray['address_en'];
 			 $phone = $getArray['phone'];	
 			 $email = $getArray['email'];
 			 $company_logo = $getArray['company_logo'];
@@ -114,6 +115,7 @@ class CompanyController extends Controller
 			$companyDetails = Company::model()->findByPk($id);
 			$companyDetails->name = $name;	
 			$companyDetails->address = $address;	
+			$companyDetails->address_en = $address_en;	
 			$companyDetails->phone = $phone;	
 			$companyDetails->email = $email;
 			if(isset($_FILES['company_logo']['name']) && $_FILES['company_logo']['name']){
@@ -138,6 +140,7 @@ class CompanyController extends Controller
 			$company = new Company;	
 			$company->name = $name;	
 			$company->address = $address;	
+			$company->address_en = $address_en;	
 			$company->phone = $phone;	
 			$company->email = $email;
 			if(isset($_FILES['company_logo']['name']) && $_FILES['company_logo']['name']){
