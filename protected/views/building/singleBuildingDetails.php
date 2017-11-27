@@ -1055,7 +1055,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"><?php echo Yii::app()->controller->__trans('業者が見つかりません'); ?><!--no window found--></td>
+                                            <td class="col_full" colspan="8"><?php echo Yii::app()->controller->__trans('窓口はまだ登録されていません'); ?><!--no window found--></td>
                                         </tr>
                                     <?php
 
@@ -1135,7 +1135,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"><!--NO Floor Owner--><?php echo Yii::app()->controller->__trans('業者が見つかりません'); ?></td>
+                                            <td class="col_full" colspan="8"><!--NO Floor Owner--><?php echo Yii::app()->controller->__trans('オーナーはまだ登録されていません'); ?></td>
                                         </tr>
                                     <?php
 
