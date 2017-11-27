@@ -52,7 +52,7 @@
   ?>                   
               <div class="manageInfoResponse">
                     <div class="ttl_h3 clearfix">
-                       <h3>Edit Window・Owner</h3>
+                       <h3>窓口・オーナー編集<!--Edit Window・Owner--></h3>
                     </div>
                <form name="frmAddManagementHistoryNew" id="frmAddManagementHistoryNew" class="frmAddManagementHistory" action="<?php echo Yii::app()->createUrl('floor/UpdateManagement2'); ?>" method="post">   
                     <input type="hidden" name="hdnBillId" id="hdnBillId" class="hdnBillId" value="<?php echo $buildingId; ?>" />
