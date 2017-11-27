@@ -5272,7 +5272,7 @@ if(count($getGoogleMapKeyDetails) > 0){
   <div class="content managementHistoryContent">
     <div class="box-header">
       <h2 class="popup-label">
-          Edit・Add building update info history
+          物件更新履歴を編集<!--Edit・Add building update info history-->
       </h2>
       <button type="button" class="btnModalClose" id="btnModalClose">X</button>
     </div>
@@ -5289,10 +5289,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                         <table class="newform_info ad_list">
                             <tbody>
                                 <tr>
-                                    <th>Trader ID</th>
+                                    <th><!--Trader ID-->業者ID</th>
                                     <td><input type="text" name="searchTradersText" class="ty3 searchTradersText2"  id="searchTraderText" ></td>
                                     <th class="btn-cell">
-                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">Search Trader</a>
+                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">業者を検索</a>
                                     </th>
                                     <td>&nbsp;</td>
                                 </tr>
@@ -5300,7 +5300,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <th>&nbsp;</th>
                                     <td>
                                         <select id="trader_id_new" class="auto tradersListNEW" name="traders_id">
-                                          <option value="0">Already added traders</option>
+                                          <option value="0">既に追加済みの業者<!--Already added traders--></option>
                                           <?php
                                             if(!empty($trans_all)){
                                                 foreach($trans_all as $trans_alls){
@@ -5311,7 +5311,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }
                                             }else{
                                             ?>
-                                            <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available');?></option>
+                                            <option value=""><?php echo Yii::app()->controller->__trans('登録済みの業者がありません');?></option>
                                             <?php
                                             }
                                             ?>
@@ -5320,7 +5320,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <th>Sorts</th>
+                                    <th>種別<!--Sorts--></th>
                                     <td>
                                     <select name="traders_type" id="traders_type" data-role="none" class="traders_type" >
                                     <option value="">-</option>
@@ -5336,7 +5336,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <option value="-1">不明</option>
                                     </select>
                                     </td>
-                                    <th>Transaction type</th>
+                                    <th>管理種別<!--Transaction type--></th>
                                     <td>
                                     <select name="management_type_traders" id="traders_contract" class="management_type_traders" data-role="none">
                                       <option value="">-</option>
@@ -5349,7 +5349,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Company Name</th>
+                                    <th>社名<!--Company Name--></th>
                                     <td><input type="text" name="traders_company_name" id="traders_name" value="" class="ty6 traders_company_name" ></td>
                                     <th>&nbsp;</th>
                                     <td>&nbsp;</td>
@@ -5361,13 +5361,13 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" ></td>
                                </tr>
                                <tr>
-                                    <th>Person in charge1</th>
+                                    <th>担当者1<!--Person in charge1--></th>
                                     <td><input type="text" name="traders_person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
-                                    <th>Person in charge2</th>
+                                    <th>担当者2<!--Person in charge2--></th>
                                     <td><input type="text" name="traders_person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
                                </tr>
                                <tr>
-                                    <th>Fee</th>
+                                    <th>手数料<!--Fee--></th>
                                     <td colspan="3">
                                     <label class="rd2"><input type="radio" name="charge_traders" value="unknown" class="radiUnknown"> 不明</label>
                                     <label class="rd2"><input type="radio" name="charge_traders" value="ask" class="radiAsk"> 相談</label>
@@ -5377,7 +5377,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     </td>
                                </tr>
                                <tr>
-                                    <th>Target Floors<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> Show only vacant floors</th>
+                                    <th>対象フロア<!--Target Floors--><br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示<!--Show only vacant floors--></th>
                                     <td colspan="3" class="floors_target_list">
 
                                     <?php if(!empty($all_floors)){
