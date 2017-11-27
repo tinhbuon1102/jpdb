@@ -3,6 +3,7 @@
 $gApiKey = "AIzaSyCMeCU-45BrK0vyJCc4y2TYMdDJLNGdifM";//$_GET['key']
 $zoom = isset($_GET['zoom'])?$_GET['zoom']:16;
 $type = $_GET['type']==1?1:0;
+$language = isset($_GET['print_language']) ? $_GET['print_language'] : 'ja';
 ?>
 <html>
   <head>
@@ -10,7 +11,7 @@ $type = $_GET['type']==1?1:0;
   	<style type="text/css">
   		html, body { width:100%;height:100%;margin: 0px; padding: 0px; font-family: 'Noto Sans Japanese', sans-serif; }
   	</style>
-	<script src="https://maps.googleapis.com/maps/api/js?key=<?=$gApiKey?>"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?language=<?php echo $language?>&key=<?=$gApiKey?>"></script>
 	  	
 <?php  if($type==0) {?> 	
 

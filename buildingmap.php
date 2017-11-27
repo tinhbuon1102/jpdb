@@ -4,6 +4,7 @@ $lat = isset($_GET['lat'])?$_GET['lat']:0;
 $lng = isset($_GET['lng'])?$_GET['lng']:0;
 $gApiKey = "AIzaSyCMeCU-45BrK0vyJCc4y2TYMdDJLNGdifM";//$_GET['key']
 $zoom = isset($_GET['zoom'])?$_GET['zoom']:16;
+$language = isset($_GET['print_language']) ? $_GET['print_language'] : 'ja';
 ?>
 <html>
   <head>
@@ -42,7 +43,7 @@ $zoom = isset($_GET['zoom'])?$_GET['zoom']:16;
 
     </script>
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=<?=$gApiKey?>&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=<?=$gApiKey?>&callback=initMap&language=<?php echo $language?>">
     </script>
   </body>
 </html>

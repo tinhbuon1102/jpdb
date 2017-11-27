@@ -2834,9 +2834,9 @@ if(isset($_GET['print_map'])) {
 <div class="sheet_wrapper">
   <section class="sheet" style="page-break-before:always;"> 
 	<?php if($_GET['print_type']==8) {?>
-	<iframe id="map_whole" name="map_whole" src="/wholemap_portrait.php?key=<?=$gApiKey?>&zoom=<?=$zoom?>&type=<?=$type?>" style="width:179mm;height:277mm;"></iframe>
+	<iframe id="map_whole" name="map_whole" src="/wholemap_portrait.php?key=<?=$gApiKey?>&zoom=<?=$zoom?>&type=<?=$type?>&print_language=<?php echo $language?>" style="width:179mm;height:277mm;"></iframe>
 	<?php } else {?>
-	<iframe id="map_whole" name="map_whole" src="/wholemap.php?key=<?=$gApiKey?>&zoom=<?=$zoom?>&type=<?=$type?>" style="width:277mm;height:179mm;"></iframe>
+	<iframe id="map_whole" name="map_whole" src="/wholemap.php?key=<?=$gApiKey?>&zoom=<?=$zoom?>&type=<?=$type?>&print_language=<?php echo $language?>" style="width:277mm;height:179mm;"></iframe>
 	<?php } ?>
   </section>
 </div>	
