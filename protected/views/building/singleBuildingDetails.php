@@ -5099,8 +5099,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
                     <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $comparted_arrays);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $comparted_arrays);?>
 					</td>
                     <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
