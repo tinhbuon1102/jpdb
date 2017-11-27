@@ -425,7 +425,7 @@ if($requestData['print_type'] == 10){
   </section>
 </div>
 <?php } ?>
-<?php if(isset($requestData['print_route']) && $requestData['print_route'] == 1) {?>
+<?php if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {?>
 <div class="client"></div>
 <div class="sheet_wrapper">
   <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
@@ -869,7 +869,7 @@ if($requestData['print_type']==8){
 </div>
 <?php
 		}
-		if(isset($requestData['print_route']) && $requestData['print_route'] == 1) {
+		if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {
 		?>
 <div class="sheet_wrapper">
   <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
@@ -1600,7 +1600,7 @@ if($requestData['print_type'] == 11){
 </div>
 <?php
 	}
-	if(isset($requestData['print_route']) && $requestData['print_route'] == 1){
+	if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja'){
 	?>
 <div class="sheet_wrapper">
   <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
