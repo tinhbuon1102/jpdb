@@ -392,7 +392,10 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -428,7 +431,10 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -468,7 +474,10 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -505,7 +514,10 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -544,7 +556,10 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
-                    <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $comparted_arrays);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $comparted_arrays);?>
+					</td>
                     <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                   </tr>
