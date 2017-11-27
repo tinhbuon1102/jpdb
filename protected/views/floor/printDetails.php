@@ -771,7 +771,7 @@ if($requestData['print_type'] == 10){
   <section class="sheet"> <?php echo '<span class="build_title">'.$buildingNumber.'.'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en'])."<span>"; 
 //($buildCart['bill_check']==1?'':' ビル').
   ?><br>
-	<iframe id="map_<?=$buildingNumber?>" name="map_<?=$buildingNumber?>" src="http://office-jpdb.com/buildingmap.php?key=<?=$gApiKey?>&lat=<?=$lat?>&lng=<?=$lng?>&zoom=<?=$zoom?>" style="width:277mm;height:179mm;"></iframe>
+	<iframe id="map_<?=$buildingNumber?>" name="map_<?=$buildingNumber?>" src="http://office-jpdb.com/buildingmap.php?key=<?=$gApiKey?>&lat=<?=$lat?>&lng=<?=$lng?>&zoom=<?=$zoom?>&print_language=<?php echo $language?>" style="width:277mm;height:179mm;"></iframe>
 <!-- <img style="width: 277mm; height:180mm" src = "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $address;?>&zoom=15.5&scale=2&size=640x480&maptype=roadmap&markers=color:red%7C<?php echo $lat.','.$lng?>&key=<?php echo $gApiKey;?>" /> -->
   </section>
 </div>

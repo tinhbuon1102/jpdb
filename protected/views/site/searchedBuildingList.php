@@ -247,6 +247,22 @@ if(isset($customCondition)){
             </form>
         </div>    
     </div>
+    
+    <?php if (isset($pages) && !empty($pages)) {
+			$pgWidget = '<div class="pagination search_building_pages" >';
+			$pgWidget .= $this->widget('CLinkPager', array(
+				'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+				'nextPageLabel'=>'<i class="fa fa-chevron-right"></i>',
+				'selectedPageCssClass' => 'active',
+				'htmlOptions'=>array('class'=>'pagination'),
+				'header'=>'',
+				'pages'=>$pages,
+			),true);
+			$pgWidget .= '</div>';
+			echo $pgWidget;
+		}
+		?>
+		
     <?php
 	if(isset($resultData) && count($resultData) > 0){
 		$ci = 0;
@@ -450,7 +466,7 @@ if(isset($customCondition)){
 										//$floorList = Floor::model()->findAllByAttributes(array('floor_id'=>$floorIds));
                                             //code dated 13-11-2017 by sisfy 
 										//$flootList = Floor::model()->findAll($floorQuery.' AND building_id = '.$buildingList['building_id'] . ' ORDER BY cast(floor_down as SIGNED) ASC, cast(floor_up as SIGNED) ASC');
-                                      $flootList=SiteController::floor_array($floorQuery, $buildingList['building_id']);
+                                      $flootList=SiteController::floor_array($floorQuery.' AND building_id = '.$buildingList['building_id'] . ' ORDER BY cast(floor_down as SIGNED) ASC, cast(floor_up as SIGNED) ASC', $buildingList['building_id']);
 
 
 
@@ -898,6 +914,22 @@ if(isset($customCondition)){
         </div>
         <?php
 			}
+		?>
+		<?php if (isset($pages) && !empty($pages)) {
+			$pgWidget = '<div class="pagination search_building_pages" >';
+			$pgWidget .= $this->widget('CLinkPager', array(
+				'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+				'nextPageLabel'=>'<i class="fa fa-chevron-right"></i>',
+				'selectedPageCssClass' => 'active',
+				'htmlOptions'=>array('class'=>'pagination'),
+				'header'=>'',
+				'pages'=>$pages,
+			),true);
+			$pgWidget .= '</div>';
+			echo $pgWidget;
+		}
+		?>
+		<?php
 		}else{
 		?>
         <h4><?php echo Yii::app()->controller->__trans('No Records available for given condition'); ?> .</h4>
