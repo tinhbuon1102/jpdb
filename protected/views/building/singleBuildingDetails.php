@@ -1247,7 +1247,11 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         foreach($building_history as $floor_window){
                                           ?>
                                           <tr>
-                                             <td class="level"><?= $floor_window['floor_id'] ?></td>
+                                             <td class="level">
+                                             	<?php $floorWindowDetail = Floor::model()->findByPk($floor_window['floor_id']); ?>
+                                             	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floorWindowDetail);?>
+                                             	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $floorWindowDetail);?>
+                                             </td>
                                              <td class="sorts">
                                           <?php
                                            if($floor_window['ownership_type'] == -1){
