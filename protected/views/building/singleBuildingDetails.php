@@ -4915,7 +4915,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                      <td class="bt">
@@ -4956,23 +4959,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor">
-						<?php
-                    if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
-                        if(strpos($floorDetails['floor_down'], '-') !== false){
-                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
-                        }else{
-                            $floorDown = $floorDetails['floor_down'];
-                        }									
-                        if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
-                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
-                        }else{
-                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
-                        }
-                    }
-                    if(isset($floorDetails['roomname']) && $floorDetails['roomname'] != ""){
-                        echo '&nbsp;'.$floorDetails['roomname'];
-                    }
-                ?>
+						<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
 					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
@@ -5015,7 +5003,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                      <td class="bt">
@@ -5059,7 +5050,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                      <td class="bt">
@@ -5104,7 +5098,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
+                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
+					</td>
                     <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                      <td class="bt">

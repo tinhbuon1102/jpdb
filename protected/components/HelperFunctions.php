@@ -224,6 +224,11 @@ class HelperFunctions extends CApplicationComponent {
 				}
 				break;
 		
+			case "roomname":
+				if(isset($floor['roomname']) && $floor['roomname'] != ""){
+					echo '&nbsp;'.$floor['roomname'];
+				}
+				break;
 			case "rent_unit_price_opt":
 				return $floor[$field] == FLOOR_UNIT_OPTION_UNDECIDED ? Yii::app()->controller->__trans('Undecided') : Yii::app()->controller->__trans('Ask');
 				break;
