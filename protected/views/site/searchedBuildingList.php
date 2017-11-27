@@ -510,7 +510,7 @@ if(isset($customCondition)){
                                     ?>
                                     <tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">窓口<!--Windows--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                           <?= $list2['windows'] ?>
@@ -518,7 +518,7 @@ if(isset($customCondition)){
                                         
                                     </td>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">オーナー<!--Owners--><!--Windows--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
@@ -561,7 +561,7 @@ if(isset($customCondition)){
                                     ?>
                                     <tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">窓口<!--Windows--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                           <?= $list2['windows'] ?>
@@ -569,7 +569,7 @@ if(isset($customCondition)){
                                         
                                     </td>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">オーナー<!--Owners--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
@@ -613,7 +613,7 @@ if(isset($customCondition)){
                                 	?>
                                 	<tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">窓口<!--Windows--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                           <?= $list2['windows'] ?>
@@ -621,7 +621,7 @@ if(isset($customCondition)){
                                         
                                     </td>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">オーナー<!--Owners--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
@@ -666,7 +666,7 @@ if(isset($customCondition)){
                                     ?>
                                     <tr class="<?php echo $rowVacantClass?>">
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">Windows</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px">窓口<!--Windows--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                           <?= $list2['windows'] ?>
@@ -674,7 +674,7 @@ if(isset($customCondition)){
                                         
                                     </td>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owners</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">オーナー<!--Owners--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
@@ -714,20 +714,20 @@ if(isset($customCondition)){
                                 ?>
                                     <tr>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px"> Window</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #12AAEB; margin-bottom: 5px"> 窓口<!--Window--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
-                                           NO Window
+                                          無し<!-- No Window-->
                                         </span>
                                         
                                     </td>
                                     <td colspan="6" style="text-align:left;">
-                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">Owner</span><br/>
+                                        <span class="labelSharedInSingle" style="background-color: #2773C0; margin-bottom: 5px">オーナー<!--Owner--></span><br/>
                                                                                 
                                         <span class="vendor-label">
                                            
-                                           NO Owner
+                                           無し<!-- No Owner-->
                                         </span>
                                         
                                     </td>

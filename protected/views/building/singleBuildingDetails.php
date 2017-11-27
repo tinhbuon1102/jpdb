@@ -505,9 +505,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                         if($floorDetails['renewal_fee_reason'] == 1){
-                                            echo Yii::app()->controller->__trans('現賃料の'); 
+                                            echo '現賃料の'; 
                                         }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                            echo Yii::app()->controller->__trans('新賃料の'); 
+                                            echo '新賃料の'; 
                                         }else{
                                             echo '';
                                         }
@@ -538,9 +538,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     
                                     if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                         if($floorDetails['repayment_reason'] == 1){
-                                            echo Yii::app()->controller->__trans('現賃料の'); 
+                                            echo '現賃料の'; 
                                         }elseif($floorDetails['repayment_reason'] == 2){
-                                            echo Yii::app()->controller->__trans('解約時賃料の'); 
+                                            echo '解約時賃料の'; 
                                         }else{
                                             echo '';
                                         }
@@ -1501,7 +1501,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 											<?php
                                             $extractParkingUnitNo = explode('-',$buildingDetails['parking_unit_no']);
                                             if($extractParkingUnitNo[0] == 1){
-                                                $parkingUnit = $extractParkingUnitNo[1].Yii::app()->controller->__trans('台');
+                                                $parkingUnit = $extractParkingUnitNo[1].'台';
                                             }else if($extractParkingUnitNo[0] == 2){
                                                 $parkingUnit = Yii::app()->controller->__trans('noexist');
                                             }else if($extractParkingUnitNo[0] == 3){
@@ -2092,9 +2092,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['renewal_fee_reason']) && $related['renewal_fee_reason'] != ""){
                                                 if($related['renewal_fee_reason'] == 1){
-                                                    echo Yii::app()->controller->__trans('現賃料の'); 
+                                                    echo '現賃料の'; 
                                                 }elseif($related['renewal_fee_reason'] == 2){
-                                                    echo Yii::app()->controller->__trans('新賃料の'); 
+                                                    echo '新賃料の'; 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2125,9 +2125,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             
                                             if(isset($related['repayment_reason']) && $related['repayment_reason'] != ""){
                                                 if($related['repayment_reason'] == 1){
-                                                    echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                    echo "現賃料の<br>"; 
                                                 }elseif($related['repayment_reason'] == 2){
-                                                    echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                    echo "解約時賃料の<br>"; 
                                                 }else{
                                                     echo '';
                                                 }
@@ -2390,9 +2390,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2685,9 +2685,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['renewal_fee_reason']) && $floorDetails['renewal_fee_reason'] != ""){
                                                     if($floorDetails['renewal_fee_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の'); 
+                                                        echo '現賃料の'; 
                                                     }elseif($floorDetails['renewal_fee_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('新賃料の'); 
+                                                        echo '新賃料の'; 
                                                     }else{
                                                         echo '';
                                                     }
@@ -2718,9 +2718,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 
                                                 if(isset($floorDetails['repayment_reason']) && $floorDetails['repayment_reason'] != ""){
                                                     if($floorDetails['repayment_reason'] == 1){
-                                                        echo Yii::app()->controller->__trans('現賃料の')."<br>"; 
+                                                        echo "現賃料の<br>"; 
                                                     }elseif($floorDetails['repayment_reason'] == 2){
-                                                        echo Yii::app()->controller->__trans('解約時賃料の')."<br>"; 
+                                                        echo "解約時賃料の<br>"; 
                                                     }else{
                                                         echo '';
                                                     }

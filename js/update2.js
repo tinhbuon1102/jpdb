@@ -32,28 +32,39 @@ $(function(){
        	var tab ='<div id="'+tab_id+'" count="'+count+'">';
         tab+=    '<input type="hidden" id="update_'+tabtype+count+'" name="update_'+tabtype+count+'" value="0">';
        	tab+=    '<h4 class="ontable '+tab_classs+'">';
-        tab+=       '<span id="count_'+tabtype+'_'+count+'">'+count+'.&nbsp;</span>'+tabtype;
+        if(tabtype=='window'){
+          var tab_name_main ='窓口'; 
+        }
+        else{
+           var tab_name_main ='オーナー'; 
+        }
+        tab+=       '<span id="count_'+tabtype+'_'+count+'">'+count+'.&nbsp;</span>'+tab_name_main;
 	      tab+=	    '<span class="button-right">';
-	      tab+=          		'<a id="add_another_window" class="bg_blue '+own_back+' side_button  add_another_'+tabtype+'" href="javascript:void(0)">Add another '+tabtype+'</a>';
+        if(tabtype=='window'){
+           var a_name='他の窓口を追加';
+        }
+        else{
+          var a_name='他のオーナーを追加';
+        }
+	      tab+=          		'<a id="add_another_window" class="bg_blue '+own_back+' side_button  add_another_'+tabtype+'" href="javascript:void(0)">'+a_name+'</a>';
 	      tab+=        '</span>';
         tab+=   '</h4>';
 		    tab+=	'<table class="newform_info ad_list">';
         tab+=       '<tbody>';
         if(tabtype=="owner"){
-       	  	
        	  	if(count==1){
                 tab += '<tr class="no_border">';
 				tab +=		'<th colspan="4" class="bold_td col_3">';
-				tab +=			'<input type="checkbox" name="sameinfo"  id="sameinfo" value="sameinfo"> Same as window';
+				tab +=			'<input type="checkbox" name="sameinfo"  id="sameinfo" value="sameinfo"> 窓口情報と同じ';
 				tab +=        '</th>';
 				tab += '</tr>';
              }
 			
        	}
         tab+=         '<tr>';
-        tab+=           '<th>Trader ID</th>';
+        tab+=           '<th>業者ID</th>';
         tab+=            '<td><input type="text" name="search_'+tab_id+'" count="'+count+'"  class="search_by_tel mask_tel ty3 searchWindowText" id="search_'+tab_id+'"></td>';
-        tab+=           '<th class="btn-cell"><a href="javascript:void(0)"  id="search_tel'+tab_id+'" class="button style_navy search_tel" count="'+count+'" tabtype="'+tabtype+'">Search Trader</a></th>';
+        tab+=           '<th class="btn-cell"><a href="javascript:void(0)"  id="search_tel'+tab_id+'" class="button style_navy search_tel" count="'+count+'" tabtype="'+tabtype+'">業者を検索</a></th>';
         tab+=           '<td>&nbsp;</td>';
         tab+=         '</tr>';
         tab+=         '<tr>';
@@ -65,13 +76,13 @@ $(function(){
         tab+=           '<td>&nbsp;</td>';
         tab+=         '</tr>';
         tab+=         '<tr>';
-        tab+=           '<th>Sorts</th>';
+        tab+=           '<th>種別</th>';
         tab+=           '<td>';
         tab+=               '<select name="ownership_type_'+tab_id+'" id="ownership_type_'+tab_id+'" data-role="none" class="window_type" required>';
         tab+=        ownership_type;                         
         tab+=               '</select>';
         tab+=           '</td>';
-        tab+=           '<th>Transaction type</th>';
+        tab+=           '<th>管理種別</th>';
         tab+=           '<td>';
         tab+=             '<select name="management_type_'+tab_id+'" id="management_type_'+tab_id+'" class="management_type_window" data-role="none">';
         tab+=        management_type;				  
@@ -79,7 +90,7 @@ $(function(){
         tab+=           '</td>';
         tab+=         '</tr>'
         tab+=         '<tr>'
-        tab+=           '<th>Company Name</th>';
+        tab+=           '<th>社名</th>';
 		tab+=			'<td>';
 		tab+=			  '<input type="text" name="company_name_'+tab_id+'" id="company_name_'+tab_id+'" value="" class="ty6 window_company_name" required="">';
 		tab+=			'</td>';
@@ -97,18 +108,18 @@ $(function(){
         tab+=               '</td>';
         tab+=            '</tr>';
         tab+=             '<tr>';
-        tab+=               '<th>Person in charge1</th>';
+        tab+=               '<th>担当者1</th>';
 		tab+=				 '<td>';
 		tab+=				   '<input type="text" name="person_in_charge1_'+tab_id+'" id="person_in_charge1_'+tab_id+'" value="" class="ty3 person_in_charge1">';
 		tab+=				  '</td>';
-		tab+=				  '<th>Person in charge2</th>';
+		tab+=				  '<th>担当者2</th>';
 	    tab+=                  '<td>';
 	    tab+=                   '<input type="text" name="person_in_charge2_'+tab_id+'" id="person_in_charge2_'+tab_id+'" value="" class="ty3 person_in_charge2">';
 	    tab+=                  '</td>';
         tab+=             '</tr>';
         if(tabtype=="window"){
 	        tab+=             '<tr>';
-	        tab+=                 '<th>Fee</th>';
+	        tab+=                 '<th>手数料</th>';
 			tab+=				  '<td colspan="3">';
 			tab+=					 '<label class="rd2"><input type="radio" name="charge_'+tab_id+'" value="'+unknown+'" class="radiUnknown">'+unknown+'</label>';
 			tab+=					 '<label class="rd2"><input type="radio" name="charge_'+tab_id+'" value="'+ask+'" class="radiAsk"> '+ask+'</label>';
@@ -120,7 +131,7 @@ $(function(){
         }
          if(tabtype=="owner"){
          	tab+= 	'<tr>';
-            tab+=       '<th>Note</th>';
+            tab+=       '<th>備考</th>';
             tab+=        '<td colspan="3" class="col_3">';
             tab+=			'<input type="text" name="note_'+tab_id+'" id="note_'+tab_id+'" value="" class="owner_note_ty">';
             tab+=			'</td>';

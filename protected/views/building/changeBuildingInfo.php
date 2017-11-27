@@ -129,8 +129,8 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor'); ?>
                             </th>
                             <td>
-								<input type="text" id="avg_neighbor_fee_min" name="avg_neighbor_fee_min" value="<?php echo @$buildingDetails['avg_neighbor_fee_min']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                           		<input type="text" id="avg_neighbor_fee_max" name="avg_neighbor_fee_max" value="<?php echo @$buildingDetails['avg_neighbor_fee_max']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" id="avg_neighbor_fee_min" name="avg_neighbor_fee_min" value="<?php echo @$buildingDetails['avg_neighbor_fee_min']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?> &nbsp;~
+                           		<input type="text" id="avg_neighbor_fee_max" name="avg_neighbor_fee_max" value="<?php echo @$buildingDetails['avg_neighbor_fee_max']?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?>
                                 <p class="note">
 									<?php echo Yii::app()->controller->__trans('Please enter neighbor avg fee for premium office website.'); ?>
                                 </p>
@@ -141,8 +141,8 @@
 								<?php echo Yii::app()->controller->__trans('Average rent of neighbor Calculated'); ?>
                             </th>
                             <td>
-								<input type="text" readonly="readonly" id="avg_neighbor_fee_min_sqm" name="avg_neighbor_fee_min_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                            	<input type="text" readonly="readonly" id="avg_neighbor_fee_max_sqm" name="avg_neighbor_fee_max_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?>
+								<input type="text" readonly="readonly" id="avg_neighbor_fee_min_sqm" name="avg_neighbor_fee_min_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?> &nbsp;~
+                            	<input type="text" readonly="readonly" id="avg_neighbor_fee_max_sqm" name="avg_neighbor_fee_max_sqm" value="<?php echo isset($buildingDetails['avg_neighbor_fee_min_sqm']) ? $buildingDetails['avg_neighbor_fee_min_sqm'] : ''?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?>
                             </td>
                         </tr>
                         
@@ -264,8 +264,8 @@
 				}
 			?>
             <td>
-            	<input type="text" name="exp_rent" value="<?php echo isset($expRent_exp1[0]) && $expRent_exp1[0] != '' ? $expRent_exp1[0] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;~
-                <input type="text" name="exp_rent2" value="<?php echo isset($expRent_exp1[1]) && $expRent_exp1[1] != '' ? $expRent_exp1[1] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('円'); ?> &nbsp;(&nbsp;
+            	<input type="text" name="exp_rent" value="<?php echo isset($expRent_exp1[0]) && $expRent_exp1[0] != '' ? $expRent_exp1[0] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?> &nbsp;~
+                <input type="text" name="exp_rent2" value="<?php echo isset($expRent_exp1[1]) && $expRent_exp1[1] != '' ? $expRent_exp1[1] :''; ?>" class="ty5">&nbsp;<?php echo Yii::app()->controller->__trans('yen'); ?> &nbsp;(&nbsp;
                 <label>
                 	<?php $expRentCheck = 'checked'; ?>
                     <input type="radio" name="exp_rent_opt" value="1" <?php echo isset($expRent_exp[1]) && $expRent_exp[1] == '1' ? $expRentCheck :''; ?> checked="" class="ip">
@@ -381,7 +381,7 @@
             	<input class="ty5 std_floor_space" name="std_floor_space" id="std_floor_space" type="text" value="<?php echo isset($std_floor_space) && $std_floor_space != "" ? $std_floor_space : ''; ?>">
                 <font>
                 	<font>
-                    	&nbsp;<?php echo Yii::app()->controller->__trans('坪'); ?>
+                    	&nbsp;<?php echo Yii::app()->controller->__trans('tsubo'); ?>
                     </font>
                 </font>
 			</td>
@@ -391,8 +391,7 @@
             	<?php echo Yii::app()->controller->__trans('std_floor_space Calculated'); ?>
             </td>
         	<td>
-				<input readonly="readonly" class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="<?php echo isset($std_floor_space_calculated) && $std_floor_space_calculated != "" ? $std_floor_space_calculated : ''; ?>">
-				<?php echo Yii::app()->controller->__trans('㎡/円');?>
+				<input readonly="readonly" class="ty5 std_floor_space_calculated" name="std_floor_space_calculated" id="std_floor_space_calculated" type="text" value="<?php echo isset($std_floor_space_calculated) && $std_floor_space_calculated != "" ? $std_floor_space_calculated : ''; ?>">m&sup2;
         	</td>
         </tr>
         <tr>
@@ -596,7 +595,7 @@
                     }
                     ?>
                 </select>
-                <font><?php echo Yii::app()->controller->__trans('基 '); ?></font>
+                <font><?php echo Yii::app()->controller->__trans('base'); ?></font>
                 <label class="rd4">
                     <input type="radio" name="elevator" class="ele_noexist" value="2"  <?php echo isset($elevator_exp[0]) && $elevator_exp[0] == '2' ? $checked :''; ?>>
                     <font><font><?php echo Yii::app()->controller->__trans('noexist'); ?> </font></font>
@@ -897,7 +896,7 @@
                     <?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>（
                 <input type="text" name="b_parking_num" id="parking_unit_no_text" value="<?php if(isset($unitNo[1]) && $unitNo[1] != ''){echo $unitNo[1];}else{echo '';} ?>" class="ty11" style="width: 10%;">
-                <font><font> <?php echo Yii::app()->controller->__trans('台'); ?>) </font></font>
+                <font><font> <?php echo Yii::app()->controller->__trans('spaces'); ?>) </font></font>
                 <label class="rd4">
                     <input type="radio" name="parking_unit_no" value="2" <?php echo isset($unitNo[0]) && $unitNo[0] == '2' ? $checked :''; ?> class="parking_radio_2">
                     <font><font> <?php echo Yii::app()->controller->__trans('noexist'); ?></font></font>
@@ -946,7 +945,7 @@
                     <input type="radio" name="limit_time_week" value="1" <?php echo isset($limitWeek[0]) && $limitWeek[0] == '1' ? $limitCheck :''; ?> class="ip limit1"> <?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="limit_time_week" value="2" <?php echo isset($limitWeek[0]) && $limitWeek[0] == '2' ? $limitCheck :''; ?>  class="ip limit2"> <?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="limit_time_week" value="2" <?php echo isset($limitWeek[0]) && $limitWeek[0] == '2' ? $limitCheck :''; ?>  class="ip limit2"> <?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_limit_open_time_week_start" class="b_entrance" name="limit_time_week_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1003,7 +1002,7 @@
                     <input type="radio" name="limit_time_sat" checked value="1" <?php echo isset($limitSat[0]) && $limitSat[0] == '1' ? $limitCheck :''; ?>  class="ip limit3"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="limit_time_sat" value="2" <?php echo isset($limitSat[0]) && $limitSat[0] == '2' ? $limitCheck :''; ?> class="ip limit4"> <?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="limit_time_sat" value="2" <?php echo isset($limitSat[0]) && $limitSat[0] == '2' ? $limitCheck :''; ?> class="ip limit4"> <?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_limit_open_time_sat_start" class="b_entrance" name="limit_time_sat_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1060,7 +1059,7 @@
                     <input type="radio" name="limit_time_sun" checked value="1" <?php echo isset($limitSun[0]) && $limitSun[0] == '1' ? $limitCheck :''; ?> class="ip limit5"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="limit_time_sun" value="2" <?php echo isset($limitSun[0]) && $limitSun[0] == '2' ? $limitCheck :''; ?> class="ip limit6"><?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="limit_time_sun" value="2" <?php echo isset($limitSun[0]) && $limitSun[0] == '2' ? $limitCheck :''; ?> class="ip limit6"><?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_limit_open_time_sun_start" class="b_entrance" name="limit_time_sun_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1152,7 +1151,7 @@
                     <input type="radio" name="air_condition_week" value="1" <?php echo isset($airWeek[0]) && $airWeek[0] == '1' ? $airCheck :''; ?> class="ip airCondition1"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="air_condition_week" value="2" <?php echo isset($airWeek[0]) && $airWeek[0] == '2' ? $airCheck :''; ?> class="ip airCondition2"><?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="air_condition_week" value="2" <?php echo isset($airWeek[0]) && $airWeek[0] == '2' ? $airCheck :''; ?> class="ip airCondition2"><?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_condition_open_time_week_start" class="b_entrance" name="air_condition_week_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1209,7 +1208,7 @@
                     <input type="radio" name="air_condition_sat" value="1" <?php echo isset($airSat[0]) && $airSat[0] == '1' ? $airCheck :''; ?> class="ip airCondition3"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="air_condition_sat" value="2" <?php echo isset($airSat[0]) && $airSat[0] == '2' ? $airCheck :''; ?> class="ip airCondition4"> <?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="air_condition_sat" value="2" <?php echo isset($airSat[0]) && $airSat[0] == '2' ? $airCheck :''; ?> class="ip airCondition4"> <?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_condition_open_time_sat_start" class="b_entrance" name="air_condition_sat_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1266,7 +1265,7 @@
                     <input type="radio" name="air_condition_sun" value="1" <?php echo isset($airSun[0]) && $airSun[0] == '1' ? $airCheck :''; ?> class="ip airCondition5"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="air_condition_sun" value="2" <?php echo isset($airSun[0]) && $airSun[0] == '2' ? $airCheck :''; ?> class="ip airCondition6"><?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="air_condition_sun" value="2" <?php echo isset($airSun[0]) && $airSun[0] == '2' ? $airCheck :''; ?> class="ip airCondition6"><?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_condition_open_time_sun_start" class="b_entrance" name="air_condition_sun_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1358,7 +1357,7 @@
                     <input type="radio" name="park_time_week" value="1" class="ip" <?php echo isset($parkWeek[0]) && $parkWeek[0] == '1' ? $parkCheck :''; ?>><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="park_time_week" value="2"  <?php echo isset($parkWeek[0]) && $parkWeek[0] == '2' ? $parkCheck :''; ?> class="ip"> <?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="park_time_week" value="2"  <?php echo isset($parkWeek[0]) && $parkWeek[0] == '2' ? $parkCheck :''; ?> class="ip"> <?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_park_open_time_week_start" class="b_entrance" name="park_time_week_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1415,7 +1414,7 @@
                     <input type="radio" name="park_time_sat" value="1" <?php echo isset($parkSat[0]) && $parkSat[0] == '1' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="park_time_sat" value="2" <?php echo isset($parkSat[0]) && $parkSat[0] == '2' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="park_time_sat" value="2" <?php echo isset($parkSat[0]) && $parkSat[0] == '2' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_park_open_time_sat_start" class="b_entrance" name="park_time_sat_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1472,7 +1471,7 @@
                     <input type="radio" name="park_time_sun" value="1" <?php echo isset($parkSun[0]) && $parkSun[0] == '1' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('Nothing'); ?>
                 </label>
                 <label>
-                    <input type="radio" name="park_time_sun" value="2" <?php echo isset($parkSun[0]) && $parkSun[0] == '2' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('有'); ?>
+                    <input type="radio" name="park_time_sun" value="2" <?php echo isset($parkSun[0]) && $parkSun[0] == '2' ? $parkCheck :''; ?> class="ip"><?php echo Yii::app()->controller->__trans('exist'); ?>
                 </label>
                 <select id="b_park_open_time_sun_start" class="b_entrance" name="park_time_sun_start">
                     <option value=""><font><font>-</font></font></option>
@@ -1545,13 +1544,13 @@
                     <input type="radio" name="air_control_type" value="0"  <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '0' ? $airControlCheck :''; ?> class="ip"><font><font> <?php echo Yii::app()->controller->__trans('unknown'); ?></font></font>
                 </label>
                 <label class="rd4">
-                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '2' ? $airControlCheck :''; ?> value="2"><font><font><?php echo Yii::app()->controller->__trans('個別'); ?> </font></font>
+                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '2' ? $airControlCheck :''; ?> value="2"><font><font><?php echo '個別'; ?> </font></font>
                 </label>
                 <label class="rd4">
-                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '1' ? $airControlCheck :''; ?> value="1"><font><font> <?php echo Yii::app()->controller->__trans('セントラル'); ?></font></font>
+                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '1' ? $airControlCheck :''; ?> value="1"><font><font> <?php echo 'セントラル'; ?></font></font>
                 </label>
                 <label class="rd4">
-                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '3' ? $airControlCheck :''; ?> value="1"><font><font> <?php echo Yii::app()->controller->__trans('個別・セントラル'); ?></font></font>
+                    <input type="radio" name="air_control_type" <?php echo isset($buildingDetails['air_control_type']) && $buildingDetails['air_control_type'] == '3' ? $airControlCheck :''; ?> value="1"><font><font> <?php echo '個別・セントラル'; ?></font></font>
                 </label>
             </td>
         </tr>

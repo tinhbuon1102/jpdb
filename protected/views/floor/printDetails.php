@@ -978,18 +978,18 @@ if($requestData['print_type']==8){
           <?php
 			$elevatorExp = explode('-',$buildCart['elevator']);
             if($elevatorExp[0] == 1){
-            	echo Yii::app()->controller->__trans('Exist');
+            	echo Yii::app()->controller->__trans('有り');
 				if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 					echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
-					echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
-					echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
-					echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
-					echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
+					//echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
+					//echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
+					//echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
+					//echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
 					if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                 }else if($elevatorExp[0] == -2){
                 	echo Yii::app()->controller->__trans('不明', 'ja');
                 }else if($elevatorExp[0] == 2){
-                	echo Yii::app()->controller->__trans('無', 'ja');
+                	echo Yii::app()->controller->__trans('無し', 'ja');
                 }else{
                 	echo '-';
                 }
@@ -1603,9 +1603,7 @@ if($requestData['print_type'] == 11){
 	if(isset($requestData['print_route']) && $requestData['print_route'] == 1){
 	?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
-    
-  </section>
+  <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
 </div>
 <?php
 	}
@@ -2241,14 +2239,14 @@ if($requestData['print_type'] == 11){
                                                                 if(strlen($buildCart['elevator']) > 2){
                                                                     $elevatorExp = explode('-',$buildCart['elevator']);
                                                                     if($elevatorExp[0] == 1){
-                                                                        echo Yii::app()->controller->__trans('有', 'ja');
+                                                                        echo Yii::app()->controller->__trans('有り', 'ja');
 																		if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 																		
 																		echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
-																		echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
-																		echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
-																		echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
-																		echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
+																		//echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
+																		//echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用', 'ja') : "";
+																		//echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗', 'ja') : "";
+																		//echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
 																		if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                                                                     }else{
                                                                         echo '-';
@@ -2257,7 +2255,7 @@ if($requestData['print_type'] == 11){
                                                                     if($buildCart['elevator'] == -2){
                                                                         echo Yii::app()->controller->__trans('不明', 'ja');
                                                                     }else if($buildCart['elevator'] == 2){
-                                                                        echo Yii::app()->controller->__trans('無', 'ja');
+                                                                        echo Yii::app()->controller->__trans('無し', 'ja');
                                                                     }
                                                                 }
                                                             }else{
@@ -2637,7 +2635,7 @@ if($requestData['print_type'] == 11){
                                                             $limit_of_usage_time = explode(',',$buildCart['limit_of_usage_time']);
                                                             $limitTimeExplode = explode('-',$limit_of_usage_time[0]);
                                                             if($limitTimeExplode[0] == 1){
-                                                                echo Yii::app()->controller->__trans('平日', 'ja').': '.Yii::app()->controller->__trans('無', 'ja');
+                                                                echo Yii::app()->controller->__trans('平日', 'ja').': '.Yii::app()->controller->__trans('無し', 'ja');
                                                             }else if($limitTimeExplode[0] == 2){
                                                                 echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode[1].')';
                                                             }else if($limitTimeExplode[0] == 3){
@@ -2652,7 +2650,7 @@ if($requestData['print_type'] == 11){
                                                             if(isset($limit_of_usage_time[1]) && count($limit_of_usage_time[1]) > 0){
                                                                 $limitTimeExplode2 = explode('-',$limit_of_usage_time[1]);
                                                                 if($limitTimeExplode2[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').' : '.Yii::app()->controller->__trans('無', 'ja');
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').' : '.Yii::app()->controller->__trans('無し', 'ja');
                                                                 }else if($limitTimeExplode2[0] == 2){
                                                                     echo Yii::app()->controller->__trans('土曜', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode2[1].')';
                                                                 }else if($limitTimeExplode2[0] == 3){
@@ -2668,7 +2666,7 @@ if($requestData['print_type'] == 11){
                                                             if(isset($limit_of_usage_time[2]) && count($limit_of_usage_time[2]) > 0){
                                                                 $limitTimeExplode3 = explode('-',$limit_of_usage_time[2]);
                                                                 if($limitTimeExplode3[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無し', 'ja');
                                                                 }else if($limitTimeExplode3[0] == 2){
                                                                     echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$limitTimeExplode3[1].')';
                                                                 }else if($limitTimeExplode3[0] == 3){
@@ -2693,7 +2691,7 @@ if($requestData['print_type'] == 11){
                                                                 $opTimeExp = explode(',',$buildCart['ent_op_cl_time']);
                                                                 $opTimeExplode = explode('-',$opTimeExp[0]);
                                                                 if($opTimeExplode[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
+                                                                    echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('無し', 'ja');
                                                                 }else if($opTimeExplode[0] == 2){
                                                                     echo Yii::app()->controller->__trans('平日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$opTimeExplode[1].')';
                                                                 }else if($opTimeExplode[0] == 3){
@@ -2708,11 +2706,11 @@ if($requestData['print_type'] == 11){
                                                             if(isset($opTimeExp[1]) && count($opTimeExp[1]) > 0){
                                                                 $opTimeExplode2= explode('-',$opTimeExp[1]);
                                                                 if($opTimeExplode2[0] == 1){
-                                                                    echo '土曜 : '.Yii::app()->controller->__trans('無', 'ja');
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').'：'.Yii::app()->controller->__trans('無し', 'ja');
                                                                 }else if($opTimeExplode2[0] == 2){
-                                                                    echo '土曜： 制限有り('.$opTimeExplode2[1].')';
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').'：'.Yii::app()->controller->__trans('制限有り', 'ja').'('.$opTimeExplode2[1].')';
                                                                 }else if($opTimeExplode2[0] == 3){
-                                                                    echo '土曜 : '.Yii::app()->controller->__trans('不明', 'ja');
+                                                                    echo Yii::app()->controller->__trans('土曜', 'ja').'：'.Yii::app()->controller->__trans('不明', 'ja');
                                                                 }else{
                                                                     echo '-';
                                                                 }
@@ -2724,7 +2722,7 @@ if($requestData['print_type'] == 11){
                                                             if(isset($opTimeExp[2]) && count($opTimeExp[2])>0){
                                                                 $opTimeExplode3= explode('-',$opTimeExp[2]);
                                                                 if($opTimeExplode3[0] == 1){
-                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無', 'ja');
+                                                                    echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('無し', 'ja');
                                                                 }else if($opTimeExplode3[0] == 2){
                                                                     echo Yii::app()->controller->__trans('休日', 'ja').'： '.Yii::app()->controller->__trans('制限有り', 'ja').'('.$opTimeExplode3[1].')';
                                                                 }else if($opTimeExplode3[0] == 3){

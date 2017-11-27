@@ -1045,9 +1045,24 @@ class FloorController extends Controller{
 				die;
 			}
 			else{
-                $resp_array=array('status'=>'fail', 'traders'=> 'No trader Found');
+                $traderDetails = Traders::model()->findAll('trader_name ="'.$trader_tel.'"');
+                $count=0;
+                foreach ($traderDetails as $traderDetail) {
+				$trades[$count]['trader_id']= $traderDetail['trader_id'];
+				$trades[$count]['trader_name']= $traderDetail['trader_name'];
+				$trades[$count]['traderId']= $traderDetail['traderId'];
+				$count++;
+				}
+				if(!empty($trades)){
+				$resp_array=array('status'=>'success', 'traders'=> $trades);
 				echo json_encode($resp_array);
 				die;
+				}
+				else{
+					$resp_array=array('status'=>'fail', 'traders'=> "no record found");
+				   echo json_encode($resp_array);
+				   die;
+				}
 			}
 		}
 		elseif(!empty($_REQUEST['trader'])){
