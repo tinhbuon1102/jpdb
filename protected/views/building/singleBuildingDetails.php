@@ -621,11 +621,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                 </td>
                                 <td>
 									<?php
-                                    if(isset($floorDetails['air_conditioning_facility_type']) && $floorDetails['air_conditioning_facility_type'] != ""){
-                                        echo Yii::app()->controller->__trans($floorDetails['air_conditioning_facility_type']);
-                                    }else{
-                                        echo '-';
-                                    }
+                                    echo HelperFunctions::translateBuildingValue('air_conditioning_facility_type', $buildingDetails, $floorDetails);
                                     ?>
                                 </td>
                                 <td colspan="2">

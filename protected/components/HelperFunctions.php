@@ -232,6 +232,15 @@ class HelperFunctions extends CApplicationComponent {
 			case "rent_unit_price_opt":
 				return $floor[$field] == FLOOR_UNIT_OPTION_UNDECIDED ? Yii::app()->controller->__trans('Undecided') : Yii::app()->controller->__trans('Ask');
 				break;
+				
+			case "air_conditioning_facility_type":
+				if ($floor[$field])
+				{
+					return $floor[$field] == 'unknown' ? Yii::app()->controller->__trans($floor[$field]) : $floor[$field];
+				}
+				else {
+					return FIELD_MISSING_VALUE;
+				}
 		
 			case "unit_condo_fee" :
 				if (!$floor['unit_condo_fee'])
