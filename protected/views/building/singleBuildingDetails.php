@@ -968,21 +968,21 @@ if(count($getGoogleMapKeyDetails) > 0){
                     	       <h4 class="ontable"><?php echo Yii::app()->controller->__trans('Window・Owner'); ?><span class="button-right" ><a id="" href="javascript:void(0)" 
                                  onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"
 
-                                >Edit</a></span></h4>
+                                ><?php echo Yii::app()->controller->__trans('編集'); ?></a></span></h4>
                         <table class="newform_info ad_list">
                             <tbody>
                                 <tr>
-                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb">Window</h4></td>
+                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb"><?php echo Yii::app()->controller->__trans('窓口'); ?></h4></td>
                                </tr>
                                 <tr>
-                                    <th class="sorts">Sorts</th>
-                                    <th class="com_name">Company name</th>
-                                    <th class="pic">PIC</th>
+                                    <th class="sorts"><?php echo Yii::app()->controller->__trans('種別'); ?></th>
+                                    <th class="com_name"><?php echo Yii::app()->controller->__trans('社名'); ?></th>
+                                    <th class="pic"><?php echo Yii::app()->controller->__trans('Person in charge'); ?></th>
                                     <th class="tel">TEL</th>
                                     <th class="fax">FAX</th>
-                                    <th class="tt">Transaction type</th>
-                                    <th class="fee">Fee</th>
-                                    <th class="updated">Updated on</th>
+                                    <th class="tt"><?php echo Yii::app()->controller->__trans('管理種別'); ?></th>
+                                    <th class="fee"><?php echo Yii::app()->controller->__trans('手数料'); ?></th>
+                                    <th class="updated"><?php echo Yii::app()->controller->__trans('更新日'); ?></th>
                                 
                                 </tr>
                                 <?php
@@ -1055,7 +1055,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO window Found</td>
+                                            <td class="col_full" colspan="8"><?php echo Yii::app()->controller->__trans('業者が見つかりません'); ?><!--no window found--></td>
                                         </tr>
                                     <?php
 
@@ -1063,7 +1063,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                      <tr>
-                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue">Owner Info</h4></td>
+                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue"><?php echo Yii::app()->controller->__trans('オーナー'); ?></h4></td>
                                     </tr>
                                     <?php
                                     if(!empty($floor_owners)){
@@ -1073,15 +1073,15 @@ if(count($getGoogleMapKeyDetails) > 0){
                                              <td class="sorts">
                                           <?php
                                            if($floor_window['ownership_type'] == -1){
-                                               echo Yii::app()->controller->__trans('unknown');
+                                               echo Yii::app()->controller->__trans('不明');
                                             }elseif($floor_window['ownership_type'] == 1){
-                                                echo Yii::app()->controller->__trans('owner');
+                                                echo Yii::app()->controller->__trans('オーナー');
                                             }elseif($floor_window['ownership_type'] == 2){
-                                                echo Yii::app()->controller->__trans('management company');
+                                                echo Yii::app()->controller->__trans('管理会社');
                                             }elseif($floor_window['ownership_type'] == 3){
-                                                echo Yii::app()->controller->__trans('general contractor');
+                                                echo Yii::app()->controller->__trans('ゼネコン');
                                             }elseif($floor_window['ownership_type'] == 4){
-                                               echo Yii::app()->controller->__trans('intermediary agent');
+                                               echo Yii::app()->controller->__trans('仲介業者');
                                             }elseif($floor_window['ownership_type'] == 6){
                                                 echo Yii::app()->controller->__trans('サブリース');
                                             }elseif($floor_window['ownership_type'] == 7){
@@ -1135,7 +1135,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                            <td class="col_full" colspan="8"><!--NO Floor Owner--><?php echo Yii::app()->controller->__trans('業者が見つかりません'); ?></td>
                                         </tr>
                                     <?php
 
@@ -1143,7 +1143,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                 
 			  					  ?>
                                   <tr>
-                                    <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg">Update history for windows・owners</h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="seeMoreManagement bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" >Edit/View</a></span></td>
+                                    <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg"><?php echo Yii::app()->controller->__trans('窓口・オーナー更新履歴'); ?></h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="seeMoreManagement bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" >編集/閲覧</a></span></td>
                                   </tr>
                                   <?php
                                   if(!empty($floor_owners_history)){
@@ -1215,7 +1215,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor History</td>
+                                            <td class="col_full" colspan="8"> <!--NO Floor History--><?php echo Yii::app()->controller->__trans('履歴なし'); ?></td>
                                         </tr>
                                     <?php
 
@@ -1230,21 +1230,21 @@ if(count($getGoogleMapKeyDetails) > 0){
                 </div><!--/table-box-->
                 <div class="history-info table-box new_style_box">
                     <div class="ttl_h3 clearfix">
-                       <h3>Building info update history</h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">Add history</a></span>
+                       <h3><?php echo Yii::app()->controller->__trans('物件更新履歴'); ?></h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">履歴を追加</a></span>
                     </div>
                     <div class="manageInfoResponse">
                         <table class="newform_info history_info_list">
                             <tbody>
                                 <tr>
-                                   <th class="level">Level</th>
-                                    <th class="sorts">Sorts</th>
-                                    <th class="com_name">Company name</th>
-                                    <th class="pic">PIC</th>
+                                   <th class="level"><!--Level--><?php echo Yii::app()->controller->__trans('number of stairs'); ?></th>
+                                    <th class="sorts"><?php echo Yii::app()->controller->__trans('種別'); ?></th>
+                                    <th class="com_name"><?php echo Yii::app()->controller->__trans('社名'); ?></th>
+                                    <th class="pic"><?php echo Yii::app()->controller->__trans('Person in charge'); ?></th>
                                     <th class="tel">TEL</th>
                                     <th class="fax">FAX</th>
-                                    <th class="tt">Transaction type</th>
-                                    <th class="fee">Fee</th>
-                                    <th class="updated">Updated on</th>
+                                    <th class="tt"><?php echo Yii::app()->controller->__trans('管理種別'); ?></th>
+                                    <th class="fee"><?php echo Yii::app()->controller->__trans('手数料'); ?></th>
+                                    <th class="updated"><?php echo Yii::app()->controller->__trans('更新日'); ?></th>
                                 </tr>
                                 <?php
                                   if(!empty($building_history)){
@@ -2792,22 +2792,22 @@ if(count($getGoogleMapKeyDetails) > 0){
             	<div class="content-manage-info">
                 	<h4 class="ontable">
                     	<?php echo Yii::app()->controller->__trans('Management Info'); ?>
-                        <a class="detail_local_tab " id="timeline" href="javascript:void(0)" data-id="<?php echo $globalFloorId; ?>" style="float:right;" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"><?php echo Yii::app()->controller->__trans('Add History'); ?></a>
+                        <a class="detail_local_tab " id="timeline" href="javascript:void(0)" data-id="<?php echo $globalFloorId; ?>" style="float:right;" onclick="window.open('<?php echo Yii::app()->createUrl('floor/update2',array('id'=>$globalFloorId)); ?>', 'newwindow', 'height=' + (screen.height-120) + ',width=' + screen.width); return false;"><?php echo Yii::app()->controller->__trans('編集'); ?></a>
                     </h4>
                   <table class="newform_info ad_list">
                             <tbody>
                                 <tr>
-                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb">Window</h4></td>
+                                <td class="col_full" colspan="8"><h4 class="ontable bg_lb">窓口<!--Window--></h4></td>
                                </tr>
                                 <tr>
-                                    <th class="sorts">Sorts</th>
-                                    <th class="com_name">Company name</th>
-                                    <th class="pic">PIC</th>
+                                    <th class="sorts">種別<!--Sorts--></th>
+                                    <th class="com_name">社名<!--Company name--></th>
+                                    <th class="pic">担当者<!--PIC--></th>
                                     <th class="tel">TEL</th>
                                     <th class="fax">FAX</th>
-                                    <th class="tt">Transaction type</th>
-                                    <th class="fee">Fee</th>
-                                    <th class="updated">Updated on</th>
+                                    <th class="tt">管理種別<!--Transaction type--></th>
+                                    <th class="fee">手数料<!--Fee--></th>
+                                    <th class="updated">更新日<!--Updated on--></th>
                                 
                                 </tr>
                                 <?php
@@ -2880,7 +2880,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO window Found</td>
+                                            <td class="col_full" colspan="8"> 窓口情報無し</td>
                                         </tr>
                                     <?php
 
@@ -2888,7 +2888,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                      <tr>
-                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue">Owner Info</h4></td>
+                                        <td class="col_full" colspan="8"><h4 class="ontable bg_blue">オーナー</h4></td>
                                     </tr>
                                     <?php
                                     if(!empty($floor_owners)){
@@ -2960,7 +2960,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor Owner</td>
+                                            <td class="col_full" colspan="8"> オーナ情報無し</td>
                                         </tr>
                                     <?php
 
@@ -2976,7 +2976,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                <div class="history-info table-box new_style_box">
                     <div class="ttl_h3 clearfix" style="height:45px">
-                       <h4 style="margin-top: 5px">Update history for windows・owners</h4><span class="button-right" style="margin-top: -40px">
+                       <h4 style="margin-top: 5px">窓口・オーナー更新履歴<!--Update history for windows・owners--></h4><span class="button-right" style="margin-top: -40px">
                         </span>
                     </div>
                     
@@ -2984,14 +2984,14 @@ if(count($getGoogleMapKeyDetails) > 0){
                         <tbody>
                             <tr>
                                 <th class="level">-</th>
-                                <th class="sorts">Sorts</th>
-                                <th class="com_name">Company name</th>
-                                <th class="pic">PIC</th>
+                                <th class="sorts">種別<!--Sorts--></th>
+                                <th class="com_name">社名<!--Company name--></th>
+                                <th class="pic">担当者<!--PIC--></th>
                                 <th class="tel">TEL</th>
                                 <th class="fax">FAX</th>
-                                <th class="tt">Transaction type</th>
-                                <th class="fee">Fee</th>
-                                <th class="updated">Updated on</th>
+                                <th class="tt">管理種別<!--Transaction type--></th>
+                                <th class="fee">手数料<!--Fee--></th>
+                                <th class="updated">更新日<!--Updated on--></th>
                                 
                             </tr>
                              <?php
@@ -3067,7 +3067,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                                     ?>
                                         <tr>
-                                            <td class="col_full" colspan="8"> NO Floor History</td>
+                                            <td class="col_full" colspan="8"> 履歴無し</td>
                                         </tr>
                                     <?php
 
@@ -3084,22 +3084,22 @@ if(count($getGoogleMapKeyDetails) > 0){
 
                <div class="history-info table-box new_style_box">
                     <div class="ttl_h3 clearfix">
-                       <h3>Building info update history</h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">Add history</a></span>
+                       <h3>物件更新履歴<!--Building info update history--></h3><span class="button-right"><a id="add_history" class="bg_blue side_button appentHistory" href="javascript:void(0)">履歴を追記</a></span>
                     </div>
                 	
                     <table class="admin_info past-owner">
                     	<tbody>
                             <tr>
                                 <th class="level">-</th>
-                                <th class="level">Level</th>
-                                <th class="sorts">Sorts</th>
-                                <th class="com_name">Company name</th>
-                                <th class="pic">PIC</th>
+                                <th class="level"><!--Level-->階数</th>
+                                <th class="sorts"><!--Sorts-->種別</th>
+                                <th class="com_name"><!--Company name-->社名</th>
+                                <th class="pic"><!--PIC-->担当者</th>
                                 <th class="tel">TEL</th>
                                 <th class="fax">FAX</th>
-                                <th class="tt">Transaction type</th>
-                                <th class="fee">Fee</th>
-                                <th class="updated">Updated on</th>
+                                <th class="tt"><!--Transaction type-->管理種別</th>
+                                <th class="fee"><!--Fee-->手数料</th>
+                                <th class="updated"><!--Updated on-->更新日</th>
                                 
                             </tr>
                              <?php
@@ -4880,11 +4880,11 @@ if(count($getGoogleMapKeyDetails) > 0){
             	<thead>
                 	 <tr>
                         <th class="check">&nbsp;</th>
-                        <th class="id_floor">Floor_ID</th>
-                        <th class="id_floor">Floor ID</th>
-                        <th class="level_floor">Level of floor</th>
-                        <th class="size_floor">Size</th>
-                        <th class="updated_floor">Updated on</th>
+                        <th class="id_floor">フロアID<!--Floor_ID--></th>
+                        <th class="id_floor">フロアID<!--Floor_ID--></th>
+                        <th class="level_floor">階数<!--Level of floor--></th>
+                        <th class="size_floor">面積<!--Size--></th>
+                        <th class="updated_floor">更新日<!--Updated on--></th>
                         <th class="check">&nbsp;</th>
                        </tr>
                 </thead>
@@ -4895,8 +4895,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb"><!--Window-->窓口</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue"><!--Owner-->オーナー</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -4935,8 +4935,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--Window--></label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -4955,7 +4955,25 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
+                    <td class="level_floor">
+						<?php
+                    if(isset($floorDetails['floor_down']) && $floorDetails['floor_down'] != ""){
+                        if(strpos($floorDetails['floor_down'], '-') !== false){
+                            $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floorDetails['floor_down']);
+                        }else{
+                            $floorDown = $floorDetails['floor_down'];
+                        }									
+                        if(isset($floorDetails['floor_up']) && $floorDetails['floor_up'] != ''){
+                            echo $floorDown.' - '.$floorDetails['floor_up'].' '.Yii::app()->controller->__trans('階');
+                        }else{
+                            echo $floorDown.' '.Yii::app()->controller->__trans('階');
+                        }
+                    }
+                    if(isset($floorDetails['roomname']) && $floorDetails['roomname'] != ""){
+                        echo '&nbsp;'.$floorDetails['roomname'];
+                    }
+                ?>
+					</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                      <td class="bt">
@@ -4977,8 +4995,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb"><!--Window-->窓口</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue"><!--Owner-->オーナー</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -5021,8 +5039,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--Window--></label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -5065,8 +5083,8 @@ if(count($getGoogleMapKeyDetails) > 0){
               ?>
               <tr>
                 <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> NO Window</span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> NO Owners</span></td>
+                <span class="trader_item"><label class="trader_label window_label bg_lb">窓口</label> 無し<!--NO Window--></span>
+                <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー</label> 無し<!--NO Owners--></span></td>
               </tr>
                     <?php 
                     foreach ($no_owner_window as $comparted_arrays) {
@@ -5086,7 +5104,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
-                    <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                      <td class="bt">

@@ -70,21 +70,21 @@
                             <input type="hidden" name="update_window<?= $count ?>" value="1">
                             <input type="hidden" name="update_window_id<?= $count ?>" value="<?= $floor_window['ownership_management_id'] ?>">
                             <h4 class="ontable bg_lb">
-                              <span id="count_window_<?= $count ?>"><?= $count ?>.&nbsp;</span>window
+                              <span id="count_window_<?= $count ?>"><?= $count ?>.&nbsp;</span>窓口<!--window-->
                               <span class="button-right">
-                                <a id="add_another_window" class="bg_blue  side_button  add_another_window" href="javascript:void(0)">Add another window
+                                <a id="add_another_window" class="bg_blue  side_button  add_another_window" href="javascript:void(0)">他の窓口を追加<!--Add another window-->
                                 </a>
                               </span>
                             </h4>
                             <table class="newform_info ad_list">
                               <tbody>
                                 <tr>
-                                  <th>Trader ID</th>
+                                  <th><!--Trader ID-->業者ID</th>
                                   <td>
                                     <input type="text" name="search_window<?= $count ?>" count="<?= $count ?>" class="search_by_tel mask_tel ty3 searchWindowText" id="search_window<?= $count ?>">
                                   </td>
                                   <th class="btn-cell">
-                                    <a href="javascript:void(0)" id="search_telwindow<?= $count ?>" class="button style_navy search_tel" count="<?= $count ?>" tabtype="window">Search Trader
+                                    <a href="javascript:void(0)" id="search_telwindow<?= $count ?>" class="button style_navy search_tel" count="<?= $count ?>" tabtype="window">業者を検索<!--Search Trader-->
                                     </a>
                                   </th>
                                   <td>&nbsp;</td>
@@ -105,7 +105,7 @@
                                               }
                                           }else{
                                           ?>
-                                          <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available');?></option>
+                                          <option value=""><?php echo Yii::app()->controller->__trans('業者がありません');?></option>
                                           <?php
                                           }
                                           ?>
@@ -116,7 +116,7 @@
                                   <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                  <th>Sorts</th>
+                                  <th>種別<!--Sorts--></th>
                                   <td>
                                     <select name="ownership_type_window<?= $count ?>" id="ownership_type_window<?= $count ?>" data-role="none" class="window_type" required="">
                                       <option value="">-</option>
@@ -133,7 +133,7 @@
                                       
                                     </select>
                                   </td>
-                                  <th>Transaction type</th>
+                                  <th>管理種別<!--Transaction type--></th>
                                   <td>
                                     <select name="management_type_window<?= $count ?>" id="management_type_window<?= $count ?>" class="management_type_window" data-role="none">
                                        <option value="">-</option>
@@ -146,7 +146,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <th>Company Name</th>
+                                  <th>社名<!--Company Name--></th>
                                   <td>
                                     <input type="text" name="company_name_window<?= $count ?>" id="company_name_window<?= $count ?>" value="<?= $floor_window['owner_company_name'] ?>" class="ty6 window_company_name" required="">
                                   </td>
@@ -163,17 +163,17 @@
                                   </td>
                                 </tr>
                                   <tr>
-                                    <th>Person in charge1</th>
+                                    <th>担当者1<!--Person in charge1--></th>
                                     <td>
                                       <input type="text" name="person_in_charge1_window<?= $count ?>" id="person_in_charge1_window<?= $count ?>" value="<?= $floor_window['person_in_charge1'] ?>" class="ty3 person_in_charge1">
                                     </td>
-                                    <th>Person in charge2</th>
+                                    <th>担当者2<!--Person in charge2--></th>
                                     <td>
                                       <input type="text" name="person_in_charge2_window<?= $count ?>" id="person_in_charge2_window<?= $count ?>" value="<?= $floor_window['person_in_charge2'] ?>" class="ty3 person_in_charge2">
                                     </td>
                                   </tr>
                                   <tr>
-                                    <th>Fee</th>
+                                    <th>手数料<!--Fee--></th>
                                     <td colspan="3">
                                       <label class="rd2">
                                         <input type="radio" name="charge_window<?= $count ?>"  value="不明" class="radiUnknown" <?php if($floor_window['charge']=='不明') echo "checked";  ?>>不明
@@ -195,7 +195,7 @@
                               </table>
                               <h4 class="ontable bg_lb bootom_pad">
                                 <span class="button-right">
-                                  <a id="remove_window<?= $count ?>" own_id="<?= $floor_window['ownership_management_id'] ?>" class="bg_blue side_button   remove_window" href="javascript:void(0)" div_id="window<?= $count ?>" style="display: <?= $count > 1 ?  "inline" : 'none'; ?>">Remove window</a></span>
+                                  <a id="remove_window<?= $count ?>" own_id="<?= $floor_window['ownership_management_id'] ?>" class="bg_blue side_button   remove_window" href="javascript:void(0)" div_id="window<?= $count ?>" style="display: <?= $count > 1 ?  "inline" : 'none'; ?>">窓口を削除<!--Remove window--></a></span>
                                 </h4>
                         </div>
 
@@ -218,24 +218,24 @@
                           <div id="owner<?= $count ?>" count="<?= $count ?>">
                             <input type="hidden" name="update_owner<?= $count ?>" value="1">
                             <h4 class="ontable bg_blue">
-                              <span id="count_owner_<?= $count ?>"><?= $count ?>.&nbsp;</span>owner
+                              <span id="count_owner_<?= $count ?>"><?= $count ?>.&nbsp;</span>オーナー<!--owner-->
                               <span class="button-right">
-                                <a id="add_another_owner" class="bg_blue own_back side_button  add_another_owner" href="javascript:void(0)">Add another owner
+                                <a id="add_another_owner" class="bg_blue own_back side_button  add_another_owner" href="javascript:void(0)">他のオーナーを追加<!--Add another owner-->
                                 </a>
                               </span>
                             </h4>
                             <table class="newform_info ad_list">
                               <tbody>
                                 <?php if($count == 1) {?>
-                                <tr class="no_border"><th colspan="4" class="bold_td col_3"><input name="sameinfo" id="sameinfo" value="sameinfo" type="checkbox"> Same as window</th></tr>
+                                <tr class="no_border"><th colspan="4" class="bold_td col_3"><input name="sameinfo" id="sameinfo" value="sameinfo" type="checkbox"> 窓口情報と同じ<!--Same as window--></th></tr>
                                 <?php } ?>
                                 <tr>
-                                  <th>Trader ID</th>
+                                  <th>業者ID<!--Trader ID--></th>
                                   <td>
                                     <input type="text" name="search_owner<?= $count ?>" count="<?= $count ?>" class="search_by_tel mask_tel ty3 searchownerText" id="search_owner<?= $count ?>">
                                   </td>
                                   <th class="btn-cell">
-                                    <a href="javascript:void(0)" id="search_telowner<?= $count ?>" class="button style_navy search_tel" count="<?= $count ?>" tabtype="owner">Search Trader
+                                    <a href="javascript:void(0)" id="search_telowner<?= $count ?>" class="button style_navy search_tel" count="<?= $count ?>" tabtype="owner">業者を検索<!--Search Trader-->
                                     </a>
                                   </th>
                                   <td>&nbsp;</td>
@@ -256,7 +256,7 @@
                                               }
                                           }else{
                                           ?>
-                                          <option value=""><?php echo Yii::app()->controller->__trans('No Trader Available');?></option>
+                                          <option value=""><?php echo Yii::app()->controller->__trans('業者がありません');?></option>
                                           <?php
                                           }
                                           ?>
@@ -267,7 +267,7 @@
                                   <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                  <th>Sorts</th>
+                                  <th>種別<!--Sorts--></th>
                                   <td>
                                     <select name="ownership_type_owner<?= $count ?>" id="ownership_type_owner<?= $count ?>" data-role="none" class="owner_type" required="">
                                       <option value="">-</option>
@@ -284,7 +284,7 @@
                                       
                                     </select>
                                   </td>
-                                  <th>Transaction type</th>
+                                  <th>管理種別<!--Transaction type--></th>
                                   <td>
                                     <select name="management_type_owner<?= $count ?>" id="management_type_owner<?= $count ?>" class="management_type_owner" data-role="none">
                                        <option value="">-</option>
@@ -297,7 +297,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <th>Company Name</th>
+                                  <th>社名<!--Company Name--></th>
                                   <td>
                                     <input type="text" name="company_name_owner<?= $count ?>" id="company_name_owner<?= $count ?>" value="<?= $floor_window['owner_company_name'] ?>" class="ty6 owner_company_name" required="">
                                   </td>
@@ -314,23 +314,23 @@
                                   </td>
                                 </tr>
                                   <tr>
-                                    <th>Person in charge1</th>
+                                    <th>担当者1<!--Person in charge1--></th>
                                     <td>
                                       <input type="text" name="person_in_charge1_owner<?= $count ?>" id="person_in_charge1_owner<?= $count ?>" value="<?= $floor_window['person_in_charge1'] ?>" class="ty3 person_in_charge1">
                                     </td>
-                                    <th>Person in charge2</th>
+                                    <th>担当者2<!--Person in charge2--></th>
                                     <td>
                                       <input type="text" name="person_in_charge2_owner<?= $count ?>" id="person_in_charge2_owner<?= $count ?>" value="<?= $floor_window['person_in_charge2'] ?>" class="ty3 person_in_charge2">
                                     </td>
                                   </tr>
                                   <tr>
-                                   <th>Note</th><td colspan="3" class="col_3"><input name="note_owner<?= $count ?>" id="note_owner<?= $count ?>" value="<?= $floor_window['notes'] ?>" class="owner_note_ty" type="text"></td>
+                                   <th>備考<!--Note--></th><td colspan="3" class="col_3"><input name="note_owner<?= $count ?>" id="note_owner<?= $count ?>" value="<?= $floor_window['notes'] ?>" class="owner_note_ty" type="text"></td>
                                   </tr>
                                 </tbody>
                               </table>
                               <h4 class="ontable bg_blue bootom_pad">
                                 <span class="button-right">
-                                  <a id="remove_owner<?= $count ?>" own_id="<?= $floor_window['ownership_management_id'] ?>" class="bg_blue side_button own_back  remove_owner" href="javascript:void(0)" div_id="owner<?= $count ?>" style="display: <?= $count > 1 ?  "inline" : 'none'; ?>">Remove owner</a></span>
+                                  <a id="remove_owner<?= $count ?>" own_id="<?= $floor_window['ownership_management_id'] ?>" class="bg_blue side_button own_back  remove_owner" href="javascript:void(0)" div_id="owner<?= $count ?>" style="display: <?= $count > 1 ?  "inline" : 'none'; ?>">オーナーを削除<!--Remove owner--></a></span>
                                 </h4>
                         </div>
 
@@ -346,21 +346,21 @@
                    <table class="newform_info traders_list">
                    <thead>
             <tr class="no_border">
-              <td colspan="6" class="bold_td col_full"><input type="checkbox" name="check_all_floor"  id="check_all_floor" value=""> Check all floors</td>
+              <td colspan="6" class="bold_td col_full"><input type="checkbox" name="check_all_floor"  id="check_all_floor" value=""> 全てのフロアにチェック<!--Check all floors--></td>
               <td>
                 <span class="button-right" style="width: 120px;margin-top: -9px;">
-                  <a  class="bg_blue side_button own_back  " href="javascript:void(0)" id="upadte_floor">Updates
+                  <a  class="bg_blue side_button own_back  " href="javascript:void(0)" id="upadte_floor">更新<!--Updates-->
                   </a>
                 </span>
                 </td>
             </tr>
              <tr>
               <th class="check">&nbsp;</th>
-              <th class="id_floor">Floor_ID</th>
-              <th class="id_floor">Floor ID</th>
-              <th class="level_floor">Level of floor</th>
-              <th class="size_floor">Size</th>
-              <th class="updated_floor">Updated on</th>
+              <th class="id_floor">フロアID<!--Floor_ID--></th>
+              <th class="id_floor">フロアID<!--Floor_ID--></th>
+              <th class="level_floor">階数<!--level of floor--></th>
+              <th class="size_floor">面積<!--Size--></th>
+              <th class="updated_floor">更新日<!--Updated on--></th>
              </tr>
              </thead>
              <tbody>
@@ -372,8 +372,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -408,8 +408,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--WIndow--></label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -448,8 +448,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--Window--></label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -523,8 +523,8 @@
               ?>
               <tr>
                 <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> NO Window</span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> NO Owners</span></td>
+                <span class="trader_item"><label class="trader_label window_label bg_lb">窓口</label> 無し</span>
+                <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー</label> 無し</span></td>
               </tr>
                     <?php 
                     foreach ($no_owner_window as $comparted_arrays) {
@@ -558,12 +558,12 @@
                 <td colspan="6" class="bold_td col_full" style="margin-top: 10px; position: absolute;">
                   <span class="" style="width: 120px;margin-right: 45px;">
                     <a  class="bg_blue side_button own_back  " href="javascript:void(0)" id="bulk_upadte_floor">
-                       Bulk Update
+                       一括更新<!--Bulk Update-->
                     </a>
                   </span>
                   <span class="" style="width: 120px;">
                     <a  class="bg_blue side_button own_back  " href="javascript:void(0)" id="bulk_del_floor" style="background-color: #ff0000 !important"> 
-                      Bulk Delete
+                      一括削除<!--Bulk Delete-->
                     </a>
                   </span>
                   </td>
