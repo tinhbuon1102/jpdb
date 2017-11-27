@@ -28,7 +28,7 @@ function calculatedFields(oldField, newField, rate){
 		var formatedTotal = '';
 		if (orginal_vale && !isNaN(orginal_vale))
 		{
-			if (oldField == 'std_floor_space')
+			if (oldField == '#std_floor_space')
 			{
 				var price_calculated = orginal_vale * rate;
 			}
