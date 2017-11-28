@@ -170,7 +170,7 @@ class HelperFunctions extends CApplicationComponent {
 	}
 	
 	
-	public static function translateBuildingValue($field, $building, $floor = array()){
+	public static function translateBuildingValue($field, $building = array(), $floor = array()){
 
 		global $wpdb;
 		$field = trim($field);

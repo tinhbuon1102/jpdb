@@ -269,7 +269,10 @@ div#contents table.fl_data_c th {
 			<input type="checkbox" class="mass_update_target" value="<?=$fid?>">
 		</td>
 		<td>
-			<a style="background-color:#333; padding:3px; color:white; border-radius: 3px;"><?=$fid?></a>
+			<a style="background-color:#333; padding:3px; color:white; border-radius: 3px;">
+				<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floor);?>
+              	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $floor);?>
+			</a>
 		</td>
 		<td>
 			<div class="bt_update">
