@@ -530,10 +530,10 @@ $(function() {
                         <table class="newform_info ad_list">
                             <tbody>
                                 <tr>
-                                    <th>Trader ID</th>
+                                    <th>業者ID<!--Trader ID--></th>
                                     <td><input type="text" name="searchTradersText" class="ty3 searchTradersText2"  id="searchTraderText" ></td>
                                     <th class="btn-cell">
-                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">Search Trader</a>
+                                        <a href="javaScript:void(0)" class="button style_navy" id="btnSearchTrader">業者を検索</a>
                                     </th>
                                     <td>&nbsp;</td>
                                 </tr>
@@ -541,7 +541,7 @@ $(function() {
                                     <th>&nbsp;</th>
                                     <td>
                                         <select id="trader_id_new" class="auto tradersListNEW" name="traders_id">
-                                          <option value="0">Already added traders</option>
+                                          <option value="0">既に追加済みの業者</option>
                                           <?php
                                             if(!empty($trans_all)){
                                                 foreach($trans_all as $trans_alls){
@@ -561,7 +561,7 @@ $(function() {
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <th>Sorts</th>
+                                    <th>種別</th>
                                     <td>
                                     <select name="traders_type" id="traders_type" data-role="none" class="traders_type" >
                                     <option value="">-</option>
@@ -577,7 +577,7 @@ $(function() {
                                     <option value="-1">不明</option>
                                     </select>
                                     </td>
-                                    <th>Transaction type</th>
+                                    <th>管理種別</th>
                                     <td>
                                     <select name="management_type_traders" id="traders_contract" class="management_type_traders" data-role="none">
                                       <option value="">-</option>
@@ -590,7 +590,7 @@ $(function() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Company Name</th>
+                                    <th>社名</th>
                                     <td><input type="text" name="traders_company_name" id="traders_name" value="" class="ty6 traders_company_name" required></td>
                                     <th>&nbsp;</th>
                                     <td>&nbsp;</td>
@@ -602,13 +602,13 @@ $(function() {
                                     <td><input type="text" name="traders_fax" id="td_fax" value="" class="ty6 traders_fax" required></td>
                                </tr>
                                <tr>
-                                    <th>Person in charge1</th>
+                                    <th>担当者1</th>
                                     <td><input type="text" name="traders_person_in_charge1" id="bo_rep1" value="" class="ty3 person_in_charge1"></td>
-                                    <th>Person in charge2</th>
+                                    <th>担当者2</th>
                                     <td><input type="text" name="traders_person_in_charge2" id="bo_rep2" value="" class="ty3 person_in_charge2"></td>
                                </tr>
                                <tr>
-                                    <th>Fee</th>
+                                    <th>手数料</th>
                                     <td colspan="3">
                                     <label class="rd2"><input type="radio" name="charge_traders" value="unknown" class="radiUnknown"> 不明</label>
                                     <label class="rd2"><input type="radio" name="charge_traders" value="ask" class="radiAsk"> 相談</label>
@@ -618,7 +618,7 @@ $(function() {
                                     </td>
                                </tr>
                                <tr>
-                                    <th>Target Floors<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> Show only vacant floors</th>
+                                    <th>対象フロア<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示</th>
                                     <td colspan="3" class="floors_target_list">
 
                                     <?php if(!empty($all_floors)){
@@ -632,7 +632,7 @@ $(function() {
                                             $span_class  ="no_vac_span";
                                            }
                                            if(!empty($all_floor['floor_down'])){
-                                             $floor= ' '.$all_floor['floor_down'].' Floor';
+                                             $floor= ' '.$all_floor['floor_down'].' F';
                                            }
                                            else{
                                             $floor= 'Blank Floor';
