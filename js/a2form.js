@@ -1,21 +1,31 @@
  $(document).ready(function() {
-         //$("#searchTraderText").mask('999-99999-99999',{placeholder:"000-00000-00000"});
-        // $("#td_tel").mask('999-99999-99999',{placeholder:"000-00000-00000"});
-        // $("#td_fax").mask('999-99999-99999',{placeholder:"000-00000-00000"});
-         $('#show_vac_floors').click(function(event) {
-            if ($('#show_vac_floors').is(':checked')) {
-                 $(".no_vac_floor").prop('checked', false);
-                 $('.vac_span').show();
-                 $('.no_vac_span').hide();
-            }
-            else{
-                //$(".vac_floor").prop('checked', false );
-                //$(".no_vac_floor").prop('checked', false);
-                $('.vac_span').show();
-                $('.no_vac_span').show();
+     //$("#searchTraderText").mask('999-99999-99999',{placeholder:"000-00000-00000"});
+    // $("#td_tel").mask('999-99999-99999',{placeholder:"000-00000-00000"});
+    // $("#td_fax").mask('999-99999-99999',{placeholder:"000-00000-00000"});
+     $('#show_vac_floors').click(function(event) {
+        if ($('#show_vac_floors').is(':checked')) {
+             $(".no_vac_floor").prop('checked', false);
+             $('.vac_span').show();
+             $('.no_vac_span').hide();
+        }
+        else{
+            //$(".vac_floor").prop('checked', false );
+            //$(".no_vac_floor").prop('checked', false);
+            $('.vac_span').show();
+            $('.no_vac_span').show();
 
-          }
+      }
     }); 
+     
+    $('html').on('change', '.check_all_vacant', function(){
+    	 if($(this).is(':checked')){
+    		 $(this).closest('table').find('.vac_span input[type="checkbox"]').prop('checked', true);
+    	 }
+    	 else {
+    		 $(this).closest('table').find('.vac_span input[type="checkbox"]').prop('checked', false);
+    	 }
+     });
+     
     $("#frmAddNewHistory").submit(function(e){ e. preventDefault(); });
 
   function check_validity(){
