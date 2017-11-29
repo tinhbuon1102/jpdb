@@ -5514,9 +5514,14 @@ if(count($getGoogleMapKeyDetails) > 0){
           <tr>
             <td><span class="inputLab"><?php echo Yii::app()->controller->__trans('Input'); ?></span></td>
             <td><span class="inputPre"></span><input type="text" name="negotiationAmt" id="negotiationAmt" class="negotiationAmt" style="width:50% !important;"/>
-				<select class="select_short"><option value="">-</option><option value="前半">前半</option><option value="半ば">半ば</option><option value="後半">後半</option></select>
-              &nbsp;&nbsp;&nbsp;
-			  <span class="inputPost"><?php echo Yii::app()->controller->__trans('Yen / tsubo'); ?></span> </td>
+					<select class="select_short" name="negotiationAmtRange" id="negotiationAmtRange" style="display: none">
+						<option value="">-</option>
+						<option value="前半">前半</option>
+						<option value="半ば">半ば</option>
+						<option value="後半">後半</option>
+					</select>
+					&nbsp;&nbsp;&nbsp;
+					<span class="inputPost"><?php echo Yii::app()->controller->__trans('Yen / tsubo'); ?></span> </td>
           </tr>
           <tr class="inputNote">
           	<td><span><?php echo Yii::app()->controller->__trans('Note'); ?></span></td>

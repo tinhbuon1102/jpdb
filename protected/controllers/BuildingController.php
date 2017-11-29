@@ -3370,6 +3370,7 @@ class BuildingController extends Controller{
 			else 
 				$model->negotiation_note = "";
 			$model->negotiation = $getArray['negotiationAmt'];
+			$model->negotiation_range = $getArray['negotiationAmtRange'];
 			$model->allocate_floor_id = $flr;
 			/*
 			comment added by krunal as change no #47 by client

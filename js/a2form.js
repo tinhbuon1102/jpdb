@@ -26,6 +26,17 @@
     	 }
      });
      
+    $('html').on('change', '#frmAddRentNegotiation .negotiationType', function(){
+    	if($(this).val() == 5)
+    	{
+    		$('#negotiationAmtRange').show();
+    	}
+    	else {
+    		$('#negotiationAmtRange').hide();
+    		$('#negotiationAmtRange').val('');
+    	}
+    });
+    
     $("#frmAddNewHistory").submit(function(e){ e. preventDefault(); });
 
   function check_validity(){
