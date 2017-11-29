@@ -53,6 +53,11 @@
 .no_bg {
 	background: none !important;
 }
+
+tr.fixed_floor {
+	background: #dff2ff;
+}
+
 .inline-h4 {
 	display: inline-block;
 }

@@ -263,7 +263,7 @@ div#contents table.fl_data_c th {
 		$d1 = date('Y-m-d H:i:s',strtotime($floor['modified_on']));
 		$d2 = date('y.m.d H',strtotime($floor['modified_on']));
 	?>
-	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist ">
+	<tr f_no="<?=$fid?>" f_emp="<?php echo (int)$floor->vacancy_info?>" class="floorlist <?php echo $floor['fixed_floor'] ? 'fixed_floor' : ''?>">
 		<input type="hidden" name="f_id[]" value="<?=$fid?>">
 		<td f_no="<?=$fid?>" col="" od=""  class="ck" scope="col">
 			<input type="checkbox" class="mass_update_target" value="<?=$fid?>">
