@@ -5377,7 +5377,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     </td>
                                </tr>
                                <tr>
-                                    <th>対象フロア<!--Target Floors--><br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示<!--Show only vacant floors--></th>
+                                    <th>対象フロア<!--Target Floors--><br/><span><input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示</span><!--Show only vacant floors--><br/>
+										<span><input type="checkbox" name="" id="" class=""/><?php echo Yii::app()->controller->__trans('check all vacant floors'); ?></span></th>
                                     <td colspan="3" class="floors_target_list">
 
                                     <?php if(!empty($all_floors)){
@@ -5524,10 +5525,14 @@ if(count($getGoogleMapKeyDetails) > 0){
           </tr>
           <tr>
             <td>
-				<?php echo Yii::app()->controller->__trans('対象フロア'); ?>
+				<?php echo Yii::app()->controller->__trans('対象フロア'); ?><br/>
             	<span>
                 	<input type="checkbox" name="dispEmptyOnly" id="dispEmptyOnly" class="dispEmptyOnly"/>
-                    <?php echo Yii::app()->controller->__trans('空きのみ表示'); ?>
+                    <?php echo Yii::app()->controller->__trans('空室のみ表示'); ?>
+                </span><br/>
+				<span>
+                	<input type="checkbox" name="" id="" class=""/>
+                    <?php echo Yii::app()->controller->__trans('check all vacant floors'); ?>
                 </span>
             </td>
             <td><?php
