@@ -30,10 +30,12 @@
     	if($(this).val() == 5)
     	{
     		$('#negotiationAmtRange').show();
+    		$('.inputPost').hide();
     	}
     	else {
     		$('#negotiationAmtRange').hide();
     		$('#negotiationAmtRange').val('');
+    		$('.inputPost').show();
     	}
     });
     

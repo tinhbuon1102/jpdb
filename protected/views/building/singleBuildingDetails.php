@@ -5521,7 +5521,6 @@ if(count($getGoogleMapKeyDetails) > 0){
 						<option value="後半">後半</option>
 					</select>
 					&nbsp;&nbsp;&nbsp;
-					<span class="inputPost"><?php echo Yii::app()->controller->__trans('Yen / tsubo'); ?></span> </td>
           </tr>
           <tr class="inputNote">
           	<td><span><?php echo Yii::app()->controller->__trans('Note'); ?></span></td>
