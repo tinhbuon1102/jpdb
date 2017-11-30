@@ -1129,17 +1129,17 @@ if($requestData['print_type']==8){
 						$negUnitB = '';
 						$negUnit = '';
 						if($log['negotiation_type'] == 1){
-							$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
+							//$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
 							$negUnitB = ' | ¥';
 						}elseif($log['negotiation_type'] == 5){
-							$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
+							//$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
 							$negUnitB = ' | ¥';
 						}elseif($log['negotiation_type'] == 2 || $log['negotiation_type'] == 3){
 							$negUnit = Yii::app()->controller->__trans('ヶ月', 'ja');
 						}
 						
 						//$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').' | '.$negUnitB.Yii::app()->controller->renderPrice($log['negotiation']).' '.$negUnit;
-						$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').''.$negUnitB.$log['negotiation'].$negUnit  . ' ' . $log['negotiation_range'];
+						$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').''.$negUnitB.$log['negotiation']  . ' ' . $log['negotiation_range'];
 						
 						if ($log['negotiation_note'])
 						{
@@ -1174,6 +1174,16 @@ if($requestData['print_type']==8){
     <?php
     	}
 	?>
+	  <table class="buildId_info">
+      <tbody>
+        <tr>
+          <td class="cam_date">date</td>
+          <!--date of updated-->
+          <td colspan="6">buildId content here</td>
+          <!--updated thing--> 
+        </tr>
+      </tbody>
+    </table>
     <!--floor info-->
     <table class="f_info">
       <tbody>
