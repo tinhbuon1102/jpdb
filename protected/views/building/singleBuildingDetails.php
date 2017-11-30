@@ -342,11 +342,11 @@ if(count($getGoogleMapKeyDetails) > 0){
 										
 										$RNHistory = RentNegotiation::model()->find('allocate_floor_id = :afId and negotiation_type = :ngt',array(':afId'=>$floorDetails['floor_id'],':ngt'=>1));
 										if($RNHistory){
-											echo "<br /><span class='option_1'> 底値: ".$RNHistory['negotiation']." 円</span>";
+											echo "<br /><span class='option_1'> 底値: ".$RNHistory['negotiation']." 円 ". $RNHistory['negotiation_range'] ."</span>";
 										}
 										$RNHistory2 = RentNegotiation::model()->find('allocate_floor_id = :afId and negotiation_type = :ngt',array(':afId'=>$floorDetails['floor_id'],':ngt'=>5));
 										if($RNHistory2){
-											echo "<br /><span class='option_2'> 目安値: ".$RNHistory2['negotiation']." 円 </span>";
+											echo "<br /><span class='option_2'> 目安値: ".$RNHistory2['negotiation']." 円 ". $RNHistory2['negotiation_range'] ."</span>";
 										}
                                     ?>
                                 </td>
@@ -910,7 +910,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             }else{
                                                                 $floorDown = $floor['floor_down'];
                                                             }
-                                                            $floorName .= $negUnitB.$negVal.$negUnit . ' ';
+                                                            $floorName .= $negUnitB.$negVal.$negUnit . ' ' . $negotiation['negotiation_range'] . ' ';
                                                             
                                                             $floorName .= $floorDown;
                                                             if($floor['floor_up'] != ""){

@@ -3280,7 +3280,7 @@ class BuildingController extends Controller{
 											$negUnitB = '¥';
 											$negVal = number_format($negotiationList['negotiation']);
 										}elseif($negotiationList['negotiation_type'] == 5){
-											$negUnit = '(共益費込み)';
+											$negUnit = '';
 											$negUnitB = '¥';
 											$negVal = number_format($negotiationList['negotiation']);
 										}elseif($negotiationList['negotiation_type'] == 2 || 
@@ -3302,7 +3302,7 @@ class BuildingController extends Controller{
 											$floorName .= $floorDown.' '.Yii::app()->controller->__trans("階");
 										}
 										
-										$floorName .= " / ".$floor['area_ping'].' '.Yii::app()->controller->__trans("tsubo").' | '.$negUnitB .' '. $negVal.' '.$negUnit.' '.$negotiationList['negotiation_note'];
+										$floorName .= " / ".$floor['area_ping'].' '.Yii::app()->controller->__trans("tsubo").' | '.$negUnitB .' '. $negVal.' '.$negUnit.' ' . $negotiationList['negotiation_range'] .' ' .$negotiationList['negotiation_note'];
 									}
 								}else{
 									$floorName = '';
