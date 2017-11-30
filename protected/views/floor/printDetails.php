@@ -235,11 +235,6 @@ section.sheet.cover {
     display: table-cell;
     width: auto;
 }
-section.sheet.commercial table.b_data_new td.trader_type {
-    border-bottom: 1px solid #CCC;
-    line-height: 1.6;
-	padding-top: 10px;
-}
 
 /* プレビュー用のスタイル */
 @media screen 
@@ -1015,42 +1010,6 @@ if($requestData['print_type']==8){
         </tr>
       </tbody>
     </table>
-	  <!--20171129 added-->
-	  <table class="b_data b_data_new">
-		  <tbody>
-			  <tr>
-				  <td class="trader_type window_type" colspan="4">Window</td>
-			  </tr>
-			  <tr>
-				  <td class="bo_name"><span class="owner_type">{Sort}</span>{Company Name}</td>
-				  <td class="bo_tel1">{TEL}</td>
-				  <td class="bo_fee">{fee}</td>
-				  <td class="bo_upd">更新日：{last updated date}</td>
-			  </tr>
-			   <tr>
-				  <td class="bo_name"><span class="owner_type">{Sort}</span>{Company Name}</td>
-				  <td class="bo_tel1">{TEL}</td>
-				  <td class="bo_fee">{fee}</td>
-				  <td class="bo_upd">更新日：{last updated date}</td>
-			  </tr>
-			  <tr>
-				  <td class="trader_type owner_type" colspan="4">Owner</td>
-			  </tr>
-			  <tr>
-				  <td class="bo_name"><span class="owner_type">{Sort}</span>{Company Name}</td>
-				  <td class="bo_tel1">{TEL}</td>
-				  <td class="bo_fee">{fee}</td>
-				  <td class="bo_upd">更新日：{last updated date}</td>
-			  </tr>
-			  <tr>
-				  <td class="bo_name"><span class="owner_type">{Sort}</span>{Company Name}</td>
-				  <td class="bo_tel1">{TEL}</td>
-				  <td class="bo_fee">{fee}</td>
-				  <td class="bo_upd">更新日：{last updated date}</td>
-			  </tr>
-		  </tbody>
-	  </table>
-	  <!--/20171129 added-->
     <table class="b_data">
       <tbody>
         <?php
