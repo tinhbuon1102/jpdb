@@ -705,17 +705,17 @@ if($requestData['print_type'] == 10){
 	              	$rentNegotiationDetails = $rentNegotiationDetails[0];
 	              	//print_r($rentNegotiationDetails);
 	              	if($rentNegotiationDetails['negotiation_type']==1) {
-	              		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+	              		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
 	              	} else if($rentNegotiationDetails['negotiation_type']==5) {
-	              		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+	              		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
 	              	} else{
 	              		//echo '-';
 	              		$temp = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' AND (negotiation_type = 1 OR negotiation_type=5) order by rent_negotiation_id desc LIMIT 1');
 	              		$temp = $temp[0];
 	              		if($temp['negotiation_type']==1) {
-	              			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+	              			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
 	              		} else if($temp['negotiation_type']==5) {
-	              			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+	              			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
 	              		} else{
 	              			echo '-';
 	              		}
@@ -1108,6 +1108,7 @@ if($requestData['print_type']==8){
 				$allocateFloorDetails = Floor::model()->findAllByAttributes(array('floor_id'=>explode(',',$log['allocate_floor_id'])));
 				if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
 					$floorName = '';
+					$negotiationNote = array();
 					foreach($allocateFloorDetails as $floor){
 						if(strpos($floor['floor_down'], '-') !== false){
 							$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floor['floor_down']);
@@ -1138,8 +1139,14 @@ if($requestData['print_type']==8){
 						}
 						
 						//$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').' | '.$negUnitB.Yii::app()->controller->renderPrice($log['negotiation']).' '.$negUnit;
-						$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').''.$negUnitB.$log['negotiation'].$negUnit;
-					}									
+						$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').''.$negUnitB.$log['negotiation'].$negUnit  . ' ' . $log['negotiation_range'];
+						
+						if ($log['negotiation_note'])
+						{
+							$negotiationNote[] = $log['negotiation_note'];
+						}
+					}
+					$floorName .= $floorName . (!empty($negotiationNote) ? '<div class="negotiation_note">'. implode('/', $negotiationNote) .'</div>' : '');
 				}else{
 					$floorName = '';
 				}
@@ -1959,16 +1966,16 @@ if($requestData['print_type'] == 11){
                                                         	$rentNegotiationDetails = $rentNegotiationDetails[0];
 //                                                         	print_r($rentNegotiationDetails);
                                                         	if($rentNegotiationDetails['negotiation_type']==1) {
-                                                        		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+                                                        		echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
                                                         	} else if($rentNegotiationDetails['negotiation_type']==5) {
-                                                        		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+                                                        		echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']).Yii::app()->controller->__trans('円', 'ja') . ' ' . $rentNegotiationDetails['negotiation_range'];
                                                         	} else{
                                                         		$temp = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' AND (negotiation_type = 1 OR negotiation_type=5) order by rent_negotiation_id desc LIMIT 1');
                                                         		$temp = $temp[0];
                                                         		if($temp['negotiation_type']==1) {
-                                                        			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+                                                        			echo Yii::app()->controller->__trans('low price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
                                                         		} else if($temp['negotiation_type']==5) {
-                                                        			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja');
+                                                        			echo Yii::app()->controller->__trans('standard price').': '.Yii::app()->controller->renderPrice($temp['negotiation']).Yii::app()->controller->__trans('円', 'ja')  . ' ' . $rentNegotiationDetails['negotiation_range'];
                                                         		} else{
                                                         			echo '-';
                                                         		}
