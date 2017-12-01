@@ -1142,8 +1142,8 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <td class="col_full bg_navy" colspan="8"><h4 class="ontable inline-h4 no_bg"><?php echo Yii::app()->controller->__trans('窓口・オーナー更新履歴'); ?></h4><span class="button-right" style="margin-top: 4px"><a id="edit_history_wo" class="seeMoreManagement bg_blue side_button" href="javascript:void(0)" style="margin-right: 5px" >編集/閲覧</a></span></td>
                                   </tr>
                                   <?php
-                                  if(!empty($floor_owners_history)){
-                                        foreach($floor_owners_history as $floor_window){
+                                  if(!empty($floor_owners_history_limit)){
+                                        foreach($floor_owners_history_limit as $floor_window){
                                           ?>
                                           <tr>
                                              <td class="sorts">

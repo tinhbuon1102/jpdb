@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner'),
+				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner', 'getTraderByTel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -1032,7 +1032,7 @@ class FloorController extends Controller{
 		$trades=array();
 		if(!empty($_REQUEST['trader_tel'])){
 			$count=0;
-			$traderDetails = Traders::model()->findAll('company_tel ="'.$trader_tel.'"');
+			$traderDetails = Traders::model()->findAll('company_tel LIKE "%'.$trader_tel.'%"');
 			foreach ($traderDetails as $traderDetail) {
 				$trades[$count]['trader_id']= $traderDetail['trader_id'];
 				$trades[$count]['trader_name']= $traderDetail['trader_name'];
@@ -1045,7 +1045,7 @@ class FloorController extends Controller{
 				die;
 			}
 			else{
-                $traderDetails = Traders::model()->findAll('trader_name ="'.$trader_tel.'"');
+                $traderDetails = Traders::model()->findAll('trader_name LIKE"%'.$trader_tel.'%"');
                 $count=0;
                 foreach ($traderDetails as $traderDetail) {
 				$trades[$count]['trader_id']= $traderDetail['trader_id'];
@@ -1467,7 +1467,7 @@ class FloorController extends Controller{
 			$allFloorIds = array_unique($allFloorIds,SORT_REGULAR);
 		}
 		
-		$this->renderPartial('printDetails',array('buildCartDetails'=>$buildCartDetails,'requestData'=> $requestData,'proposedFloors'=>$allFloorIds));
+		$this->renderPartial('printDetails_new',array('buildCartDetails'=>$buildCartDetails,'requestData'=> $requestData,'proposedFloors'=>$allFloorIds));
 	}	
 
 	public function actionAddSingleBuildToCart(){
@@ -4913,6 +4913,25 @@ class FloorController extends Controller{
         );
 
         return $floors;
+	}
+
+	public function actionGetTraderByTel(){
+		$trader_tel=$_REQUEST['trader_tel'];
+		if(!empty($trader_tel)){
+			$traderDetails = Traders::model()->findAll('company_tel = "'.$trader_tel.'"');
+		}
+		//echo count($traderDetails);
+		if(count($traderDetails)<1){
+			$resp_array=array('status'=>'success');
+			echo json_encode($resp_array);
+			die;
+
+		}
+		else{
+			$resp_array=array('status'=>'fail');
+			echo json_encode($resp_array);
+			die;
+		}
 	}
 
 }
