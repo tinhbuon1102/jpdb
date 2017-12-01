@@ -1467,7 +1467,7 @@ class FloorController extends Controller{
 			$allFloorIds = array_unique($allFloorIds,SORT_REGULAR);
 		}
 		
-		$this->renderPartial('printDetails_new',array('buildCartDetails'=>$buildCartDetails,'requestData'=> $requestData,'proposedFloors'=>$allFloorIds));
+		$this->renderPartial('printDetails',array('buildCartDetails'=>$buildCartDetails,'requestData'=> $requestData,'proposedFloors'=>$allFloorIds));
 	}	
 
 	public function actionAddSingleBuildToCart(){
