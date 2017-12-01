@@ -10,9 +10,11 @@
 				  <td class="trader_type window_type" colspan="4">Window</td>
 			  </tr>
 			  <?php
+			    $floor_id = 0;
 			    if(!empty($floorDetails_allfloor['windows_trader_id'] )){
 			    	foreach ($floorDetails_allfloor['windows_trader_id'] as $trader) {
 			    	 $owner = OwnershipManagement::model()->find('ownership_management_id='.$trader);
+			    	   $floor_id = $owner['floor_id'];
 			    		?>
                             <tr>
 							  <td class="bo_name"><span class="owner_type"><?=  $managementArray[$owner['ownership_type']] ?></span><?=  $owner['owner_company_name'] ?></td>
@@ -33,6 +35,7 @@
 			    if(!empty($floorDetails_allfloor['owner_trader_id'] )){
 			    	foreach ($floorDetails_allfloor['owner_trader_id'] as $trader) {
 			    	 $owner = OwnershipManagement::model()->find('ownership_management_id='.$trader);
+			    	  $floor_id = $owner['floor_id'];
 			    		?>
                             <tr>
 							  <td class="bo_name"><span class="owner_type"><?=  $managementArray[$owner['ownership_type']] ?></span><?=  $owner['owner_company_name'] ?></td>
@@ -48,6 +51,99 @@
 		  </tbody>
 	  </table>
 	  <!--/20171129 added-->
+
+	   <!--start to show window history-->
+	  <table class="b_data b_data_history window_history">
+		  <tbody>
+			  <tr>
+				  <th class="bdata_title" colspan="4">Window Hisotry</th>
+			  </tr>
+			  <!--show latest 5 histories-->
+			  <?php
+
+                  if($floor_id != 0){
+                    $win_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 1');
+                  }
+
+                  if(!empty($win_his)){
+                  	$count=1;
+                  	$trader_id=array();
+                  	foreach ($win_his as $owner) {
+                  		if($count > 5){
+                           break;
+                  		}
+                  		if(in_array($owner['trader_id'], $trader_id)){
+                  			continue;
+                  		}
+                  		$trader_id[]=$owner['trader_id'];
+                     ?>
+                         <tr>
+							  <th class="bo_name"><span class="owner_type "><?=  $managementArray[$owner['ownership_type']] ?></span><!--owner type--><?=  $owner['owner_company_name'] ?></th>
+							  <th class="bo_tel1"><?= $owner['company_tel'] ?></th>
+							  <th class="bo_fee"<?=  $owner['charge'] ?></th>
+							  <th class="bo_upd"><?=  date('y-m-d', strtotime($owner['modified_on'])) ?></th>
+						  </tr>
+
+                     <?php
+                     $count++;
+                  	}
+                  }
+                  else{
+                  	?>
+                  	 <tr>
+				        <th colspan="4"> No history Found</th>
+			  		</tr>
+
+			  	  <?php
+
+                  }
+
+			 	 ?>
+		  </tbody>
+	  </table>
+	  <!--end of showing window history-->
+	  <!--start to show owner history-->
+	  <table class="b_data b_data_history owner_history">
+		  <tbody>
+			  <tr>
+				  <th class="bdata_title" colspan="4">Owner Hisotry</th>
+			  </tr>
+
+			    <?php
+
+                  if($floor_id != 0){
+                    $owner_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 0 limit 1');
+                  }
+
+                  if(!empty($owner_his)){
+                  	foreach ($owner_his as $owner) {
+                  		
+                  		
+                     ?>
+                         <tr>
+							  <th class="bo_name"><span class="owner_type "><?=  $managementArray[$owner['ownership_type']] ?></span><!--owner type--><?=  $owner['owner_company_name'] ?></th>
+							  <th class="bo_tel1"><?= $owner['company_tel'] ?></th>
+							  <th class="bo_fee"<?=  $owner['charge'] ?></th>
+							  <th class="bo_upd"><?=  date('y-m-d', strtotime($owner['modified_on'])) ?></th>
+						  </tr>
+
+                     <?php
+                     
+                  	}
+                  }
+                  else{
+                  	?>
+                  	 <tr>
+				        <th colspan="4"> No history Found</th>
+			  		</tr>
+
+			  	  <?php
+
+                  }
+			    ?>
+		  </tbody>
+	  </table>
+	  <!--end of showing owner history-->
 
 
     <!--floor info-->
