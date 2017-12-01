@@ -1174,16 +1174,9 @@ if($requestData['print_type']==8){
     <?php
     	}
 	?>
-	  <table class="buildId_info">
-      <tbody>
-        <tr>
-          <td class="cam_date">date</td>
-          <!--date of updated-->
-          <td colspan="6">buildId content here</td>
-          <!--updated thing--> 
-        </tr>
-      </tbody>
-    </table>
+    
+    <?php echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));?>
+    
     <!--floor info-->
     <table class="f_info">
       <tbody>

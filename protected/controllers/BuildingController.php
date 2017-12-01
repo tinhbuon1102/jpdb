@@ -2103,6 +2103,9 @@ class BuildingController extends Controller{
 			$query = 'SELECT * FROM 	ownership_management_his where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].' ORDER BY `modified_on` DESC' ;
 			$floor_owners_history = Yii::app()->db->createCommand($query)->queryAll();
 
+			$query = 'SELECT * FROM 	ownership_management_his where `building_id` = '.$floorDetails['building_id'].' AND floor_id='.$_REQUEST['id'].' ORDER BY `modified_on` DESC LIMIT 4' ;
+			$floor_owners_history_limit = Yii::app()->db->createCommand($query)->queryAll();
+
 			$query = 'SELECT * FROM 	traders_his where `building_id` = '.$floorDetails['building_id'].' ORDER BY `modified_on` DESC LIMIT 3' ;
 			$building_history = Yii::app()->db->createCommand($query)->queryAll();	
 
@@ -2144,7 +2147,7 @@ class BuildingController extends Controller{
             $all_floors='SELECT * FROM `floor`  WHERE `building_id`='.$floorDetails['building_id'];
             $all_floors = Yii::app()->db->createCommand($all_floors)->queryAll();	
 			$this->pageTitle = $buildingDetails['name'].' | Japan Properties DB';
-			$this->render('singleBuildingDetails',array('floorDetails'=>$floorDetails,'buildingDetails'=>$buildingDetails, 'floor_windows'=>$floor_windows, 'floor_owners'=>$floor_owners, 'floor_owners_history'=>$floor_owners_history, 'building_history' =>$building_history, 'building_history_all'=>$building_history_all, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all, 'all_floors'=>$all_floors));
+			$this->render('singleBuildingDetails',array('floorDetails'=>$floorDetails,'buildingDetails'=>$buildingDetails, 'floor_windows'=>$floor_windows, 'floor_owners'=>$floor_owners, 'floor_owners_history'=>$floor_owners_history, 'building_history' =>$building_history, 'building_history_all'=>$building_history_all, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all, 'all_floors'=>$all_floors, 'floor_owners_history_limit' => $floor_owners_history_limit));
 		}else{
 			$this->redirect(array('searchBuilding'));
 		}
@@ -3263,88 +3266,7 @@ class BuildingController extends Controller{
 		}		
 
 		if(isset($rentNegotiationDetails) && count($rentNegotiationDetails) > 0){
-			$resp = '<table class="tblFreeRent">
-						<tbody>';
-						//$days = array('month'=>'Mon','fire'=>'Tue','water'=>'Wed','wood'=>'Thu','gold'=>'Fri','soil'=>'Sat','day'=>'Sun');
-						$days = array('月'=>'Mon','火'=>'Tue','水'=>'Wed','木'=>'Thu','金'=>'Fri','土'=>'Sat','日'=>'Sun');
-							foreach($rentNegotiationDetails as $negotiationList){
-								$allocateFloorDetails = Floor::model()->findAllByAttributes(array('floor_id'=>explode(',',$negotiationList['allocate_floor_id'])));
-								if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
-									$floorName = '';
-									foreach($allocateFloorDetails as $floor){
-										$negUnitB = '';
-										$negUnit = '';
-										$negVal = '';
-										if($negotiationList['negotiation_type'] == 1){
-											$negUnit = '(共益費込み)';
-											$negUnitB = '¥';
-											$negVal = number_format($negotiationList['negotiation']);
-										}elseif($negotiationList['negotiation_type'] == 5){
-											$negUnit = '';
-											$negUnitB = '¥';
-											$negVal = number_format($negotiationList['negotiation']);
-										}elseif($negotiationList['negotiation_type'] == 2 || 
-											$negotiationList['negotiation_type'] == 3){
-											$negUnit = 'ヶ月';
-											$negVal = $negotiationList['negotiation'];
-										}else{
-											$negVal = $negotiationList['negotiation'];
-										}
-												
-										if(strpos($floor['floor_down'], '-') !== false){
-											$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
-										}else{
-											$floorDown = $floor['floor_down'];
-										}
-										if($floor['floor_up'] != ""){
-											$floorName .= $floorDown." ~ ".$floor['floor_up'];
-										}else{
-											$floorName .= $floorDown.' '.Yii::app()->controller->__trans("階");
-										}
-										
-										$floorName .= " / ".$floor['area_ping'].' '.Yii::app()->controller->__trans("tsubo").' | '.$negUnitB .' '. $negVal.' '.$negUnit.' ' . $negotiationList['negotiation_range'] .' ' .$negotiationList['negotiation_note'];
-									}
-								}else{
-									$floorName = '';
-								}
-								$day = array_search((date('D',strtotime($negotiationList['added_on']))), $days);
-						$resp .= '<tr>
-									<td class="tdRent_check_wraper"><input type="checkbox" name="tdRentCheck['. $negotiationList['rent_negotiation_id'] .']" class="tdRentCheck" value="'. $negotiationList['rent_negotiation_id'] .'"/></td>
-									<td>'.date('Y.m.d',strtotime($negotiationList['added_on'])).'('.$day.')</td>';
-								$personIncharge = AdminDetails::model()->find('user_id = '.$negotiationList['person_incharge']);
-						$resp .= '<td>'.$personIncharge['full_name'].'</td>';
-						$resp .= '<td>';
-									/*if($negotiationList['negotiation_type'] == 1){
-										$resp .= Yii::app()->controller->__trans('Tsubo unit price').' ( '.Yii::app()->controller->__trans('floor').' ) ';
-									}elseif($negotiationList['negotiation_type'] == 2){
-										$resp .= Yii::app()->controller->__trans("Deposit negotiation value");
-									}elseif($negotiationList['negotiation_type'] == 3){
-										$resp .= Yii::app()->controller->__trans("Key money negotiation value");
-									}else if($negotiationList['negotiation_type'] == 5){
-										$resp .= Yii::app()->controller->__trans('Tsubo').' ( '.Yii::app()->controller->__trans('reference value').' ) ';
-									}else{
-										$resp .= Yii::app()->controller->__trans("Other negotiations information");
-									}*/
-									if($negotiationList['negotiation_type'] == 1){
-										$resp .= '底値： ';
-									}elseif($negotiationList['negotiation_type'] == 2){
-										$resp .= '敷金交渉値： ';
-									}elseif($negotiationList['negotiation_type'] == 3){
-										$resp .= Yii::app()->controller->__trans("Key money negotiation value");
-									}else if($negotiationList['negotiation_type'] == 5){
-										$resp .= '目安値： ';
-									}else{
-										$resp .= Yii::app()->controller->__trans("Other negotiations information");
-									}
-							$resp .= '<br/>'.$floorName.'</td>
-								</tr>';
-							}
-				$resp .= '<tr>
-							<td class="tdTrans">
-								<button type="button" name="btnDeleteRentHistory" id="btnDeleteRentHistory" class="btnDeleteRentHistory">一括削除</button>
-							</td>
-						</tr></tbody>
-					</table>';
+			$resp = HelperFunctions::generateTableNegotiation($rentNegotiationDetails);
 		}else{
 			$resp = Yii::app()->controller->__trans("No Rent Negotiation Available");
 		}		
