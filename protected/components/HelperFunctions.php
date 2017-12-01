@@ -570,4 +570,130 @@ class HelperFunctions extends CApplicationComponent {
 		$floor = (object)$floor;
 		return $floor->fixed_floor ? '<div class="fixed_floor">常に表示</div>' : '';
 	}
+	
+	public static function generateTableNegotiation($rentNegotiationDetails, $params = array())
+	{
+		if ( isset($rentNegotiationDetails) && count($rentNegotiationDetails) > 0 )
+		{
+			$resp = '<table class="tblFreeRent">
+						<tbody>';
+			$days = array(
+				'月' => 'Mon',
+				'火' => 'Tue',
+				'水' => 'Wed',
+				'木' => 'Thu',
+				'金' => 'Fri',
+				'土' => 'Sat',
+				'日' => 'Sun'
+			);
+			foreach ( $rentNegotiationDetails as $negotiationList )
+			{
+				$allocateFloorDetails = Floor::model()->findAllByAttributes(array(
+					'floor_id' => explode(',', $negotiationList['allocate_floor_id'])
+				));
+				if ( isset($allocateFloorDetails) && count($allocateFloorDetails) > 0 )
+				{
+					$floorName = '';
+					foreach ( $allocateFloorDetails as $floor )
+					{
+						$negUnitB = '';
+						$negUnit = '';
+						$negVal = '';
+						if ( $negotiationList['negotiation_type'] == 1 )
+						{
+							$negUnit = '(共益費込み)';
+							$negUnitB = '¥';
+							$negVal = number_format($negotiationList['negotiation']);
+						}
+						elseif ( $negotiationList['negotiation_type'] == 5 )
+						{
+							$negUnit = '';
+							$negUnitB = '¥';
+							$negVal = number_format($negotiationList['negotiation']);
+						}
+						elseif ( $negotiationList['negotiation_type'] == 2 || $negotiationList['negotiation_type'] == 3 )
+						{
+							$negUnit = 'ヶ月';
+							$negVal = $negotiationList['negotiation'];
+						}
+						else
+						{
+							$negVal = $negotiationList['negotiation'];
+						}
+						
+						if ( strpos($floor['floor_down'], '-') !== false )
+						{
+							$floorDown = Yii::app()->controller->__trans("地下") . ' ' . str_replace("-", "", $floor['floor_down']);
+						}
+						else
+						{
+							$floorDown = $floor['floor_down'];
+						}
+						if ( $floor['floor_up'] != "" )
+						{
+							$floorName .= $floorDown . " ~ " . $floor['floor_up'];
+						}
+						else
+						{
+							$floorName .= $floorDown . ' ' . Yii::app()->controller->__trans("階");
+						}
+						
+						$floorName .= " / " . $floor['area_ping'] . ' ' . Yii::app()->controller->__trans("tsubo") . ' | ' . $negUnitB . ' ' . $negVal . ' ' . $negUnit . ' ' . $negotiationList['negotiation_range'] . ' ' . $negotiationList['negotiation_note'];
+					}
+				}
+				else
+				{
+					$floorName = '';
+				}
+				$day = array_search((date('D', strtotime($negotiationList['added_on']))), $days);
+				$resp .= '<tr>';
+				
+				if (!isset($params['no_button']))
+				{
+					$resp .= '<td class="tdRent_check_wraper"><input type="checkbox" name="tdRentCheck[' . $negotiationList['rent_negotiation_id'] . ']" class="tdRentCheck" value="' . $negotiationList['rent_negotiation_id'] . '"/></td>';
+				}
+				
+				$resp .= '<td>' . date('Y.m.d', strtotime($negotiationList['added_on'])) . '(' . $day . ')</td>';
+				
+				$personIncharge = AdminDetails::model()->find('user_id = ' . $negotiationList['person_incharge']);
+				$resp .= '<td>' . $personIncharge['full_name'] . '</td>';
+				$resp .= '<td>';
+				if ( $negotiationList['negotiation_type'] == 1 )
+				{
+					$resp .= '底値： ';
+				}
+				elseif ( $negotiationList['negotiation_type'] == 2 )
+				{
+					$resp .= '敷金交渉値： ';
+				}
+				elseif ( $negotiationList['negotiation_type'] == 3 )
+				{
+					$resp .= Yii::app()->controller->__trans("Key money negotiation value");
+				}
+				else if ( $negotiationList['negotiation_type'] == 5 )
+				{
+					$resp .= '目安値： ';
+				}
+				else
+				{
+					$resp .= Yii::app()->controller->__trans("Other negotiations information");
+				}
+				$resp .= '<br/>' . $floorName . '</td>
+								</tr>';
+			}
+			
+			if (!isset($params['no_button']))
+			{
+				$resp .= '<tr>
+							<td class="tdTrans">
+								<button type="button" name="btnDeleteRentHistory" id="btnDeleteRentHistory" class="btnDeleteRentHistory">一括削除</button>
+							</td>
+						</tr>';
+			}
+			
+			$resp .= '</tbody>
+					</table>';
+		}
+		return $resp;
+	}
 }
