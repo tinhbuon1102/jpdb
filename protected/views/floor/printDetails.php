@@ -1059,6 +1059,57 @@ if($requestData['print_type']==8){
         <!--/loop of owner if owners are multiple-->
       </tbody>
     </table>
+	  <!--start to show window history-->
+	  <table class="b_data b_data_history window_history">
+		  <tbody>
+			  <tr>
+				  <th class="bdata_title" colspan="4">Window Hisotry</th>
+			  </tr>
+			  <!--show latest 5 histories-->
+			  <tr>
+				  <th class="bo_name"><span class="owner_type ">[ownership_type]</span><!--owner type-->[company name]</th>
+				  <th class="bo_tel1">[tel]</th>
+				  <th class="bo_fee">[fee]</th>
+				  <th class="bo_upd">[updated date]</th>
+			  </tr>
+			  <tr>
+				  <th class="bo_name"><span class="owner_type ">[ownership_type]</span><!--owner type-->[company name]</th>
+				  <th class="bo_tel1">[tel]</th>
+				  <th class="bo_fee">[fee]</th>
+				  <th class="bo_upd">[updated date]</th>
+			  </tr>
+			  <tr>
+				  <th class="bo_name"><span class="owner_type ">[ownership_type]</span><!--owner type-->[company name]</th>
+				  <th class="bo_tel1">[tel]</th>
+				  <th class="bo_fee">[fee]</th>
+				  <th class="bo_upd">[updated date]</th>
+			  </tr>
+			  <tr>
+				  <th class="bo_name"><span class="owner_type ">[ownership_type]</span><!--owner type-->[company name]</th>
+				  <th class="bo_tel1">[tel]</th>
+				  <th class="bo_fee">[fee]</th>
+				  <th class="bo_upd">[updated date]</th>
+			  </tr>
+		  </tbody>
+	  </table>
+	  <!--end of showing window history-->
+	  <!--start to show owner history-->
+	  <table class="b_data b_data_history owner_history">
+		  <tbody>
+			  <tr>
+				  <th class="bdata_title" colspan="4">Owner Hisotry</th>
+			  </tr>
+			  <!--show latest 1 history-->
+			  <tr>
+				  <th class="bo_name"><span class="owner_type ">[ownership_type]</span><!--owner type-->[company name]</th>
+				  <th class="bo_tel1">[tel]</th>
+				  <th class="bo_fee">[fee]</th>
+				  <th class="bo_upd">[updated date]</th>
+			  </tr>
+		  </tbody>
+	  </table>
+	  <!--end of showing owner history-->
+	  
     <p class="last_update"><!--label--><?php echo Yii::app()->controller->__trans('ビル情報最終更新', 'ja'); ?>：<!--/label--> 
       <?php echo $buildCart['modified_on']; ?><!--latest updated date of building info--> 
     </p>

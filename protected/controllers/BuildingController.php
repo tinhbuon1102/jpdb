@@ -38,7 +38,7 @@ class BuildingController extends Controller{
 						'printBuildingDetails','route','getNearestStation','getCorporationList','getLineList','getStationList','getBuildingList',
 						'getDisctrictList','getDisctrictListTest','getTownList','getTownListTest','buildingFilterByAddress','getCustomerDrop','sort',
 						'deleteBulkTrans','deleteOfficeAlert','cloneOfficeAlert','removeFreeRent', 'deleteBulkNego', 'isExist', 'migrateOfficeWordpress', 'sendEmailFollowed',
-						'getStationsLines', 'saveStaionLines'
+					'getStationsLines', 'saveStaionLines', 'allTraders'
 				),
 				'users'=>array('@'),
 			),
@@ -5586,5 +5586,12 @@ class BuildingController extends Controller{
             	'no_owner_window'=>$no_owner_window
             );
             return $floors;
+	}
+
+
+	public function actionallTraders(){
+		echo "test";
+
+		$this->render('no_content',array('model'=>'test'));
 	}
 }
