@@ -1052,113 +1052,36 @@ if($requestData['print_type']==8){
 		$addedOnArray = array();
 		$transmissionMattersDetails = TransmissionMatters::model()->findAll('building_id = '.$buildCart['building_id']);
 		$negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart['building_id'].' order by rent_negotiation_id desc');
-		$mergeArray = array_merge_recursive($transmissionMattersDetails,$negotiationDetails);
-		foreach($mergeArray as $merge){
-			$addedOnArray[] = date('Y.m.d',strtotime($merge['added_on']));
-		}
-		array_multisort($addedOnArray,SORT_DESC,$mergeArray);
-			
-// 			for ($j=0; $j<20; $j++) {
-// 				$mergeArray[] = $mergeArray[0];
-// 			}
+		
 			?>
-    <?php
-            	//$buildLogDetails = BuildingUpdateLog::model()->findAll('building_id ='.$buildCart['building_id'].' order by building_update_log_id desc limit 10');
-		foreach($mergeArray as $indexLog => $log){
-//		if ($indexLog >= 18) {
-//			if ($indexLog == 18) {
-//				echo '</section></div>';
-//				echo '<div class="sheet_wrapper"><section class="sheet commercial">';
-//			}
-//			continue;
-//		}
-//		$count2RowAbove ++;
-	?>
-    <table class="camp_info">
-      <tbody>
-        <tr>
-          <td class="cam_date"><?php  echo date('y-m-d',strtotime($log['added_on'])); ?></td>
-          <!--date of updated-->
-          <td colspan="6">
-          <?php
-			//echo $log['change_content'];
-			if(isset($log['note'])){
-				if($log['note'] != ""){
-					echo $log['note'];
-				}else{
-					echo '-';
-				}
-			}
-			if(isset($log['negotiation_type'])){
-				$allocateFloorDetails = Floor::model()->findAllByAttributes(array('floor_id'=>explode(',',$log['allocate_floor_id'])));
-				if(isset($allocateFloorDetails) && count($allocateFloorDetails) > 0){
-					$floorName = '';
-					$negotiationNote = array();
-					foreach($allocateFloorDetails as $floor){
-						if(strpos($floor['floor_down'], '-') !== false){
-							$floorDown = Yii::app()->controller->__trans("地下", 'ja').' '.str_replace("-", "", $floor['floor_down']);
-						}else{
-							$floorDown = $floor['floor_down'];
-						}
-						if($floor['floor_up'] != ""){
-							$floorName .= $floorDown." ~ ".$floor['floor_up'].' '.Yii::app()->controller->__trans('階', 'ja');
-						}else{
-							$floorName .= $floorDown.' '.Yii::app()->controller->__trans('階', 'ja');
-						}
-						/*if($merge['negotiation_type'] == 4){
-							$negUnitList = '';
-						}else{
-							$negUnitList = '¥';
-						}
-						*/
-						$negUnitB = '';
-						$negUnit = '';
-						if($log['negotiation_type'] == 1){
-							//$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
-							$negUnitB = ' | ¥';
-						}elseif($log['negotiation_type'] == 5){
-							//$negUnit = '('.Yii::app()->controller->__trans('共益費込み', 'ja').')';
-							$negUnitB = ' | ¥';
-						}elseif($log['negotiation_type'] == 2 || $log['negotiation_type'] == 3){
-							$negUnit = Yii::app()->controller->__trans('ヶ月', 'ja');
-						}
-						
-						//$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').' | '.$negUnitB.Yii::app()->controller->renderPrice($log['negotiation']).' '.$negUnit;
-						$floorName .= " / ".$floor['area_ping'].Yii::app()->controller->__trans('tsubo').''.$negUnitB.$log['negotiation']  . ' ' . $log['negotiation_range'];
-						
-						if ($log['negotiation_note'])
-						{
-							$negotiationNote[] = $log['negotiation_note'];
-						}
-					}									
-					$floorName = $floorName . (!empty($negotiationNote) ? '<div class="negotiation_note">'. implode('/', $negotiationNote) .'</div>' : '');
-				}else{
-					$floorName = '';
-				}
-				
-				if($log['negotiation_type'] == 1){
-					echo Yii::app()->controller->__trans('坪単価(底値)', 'ja');
-				}elseif($log['negotiation_type'] == 2){									
-					echo Yii::app()->controller->__trans('敷金交渉値', 'ja');
-				}elseif($log['negotiation_type'] == 3){
-					echo Yii::app()->controller->__trans('礼金交渉値', 'ja');
-				}elseif($log['negotiation_type'] == 5){
-					echo '坪単価(目安値)';
-				}									
-				else{
-					echo Yii::app()->controller->__trans('その他交渉情報', 'ja');
-				}
-				//echo " ".$log['negotiation'].'<br/>'.$floorName;
-				echo " ".$floorName;
-			}
-		?></td>
-          <!--updated thing--> 
-        </tr>
-      </tbody>
-    </table>
-    <?php
-    	}
-	?>
+	
+			<table class="camp_info">
+				<tbody>
+				<?php
+				        if(isset($transmissionMattersDetails) && count($transmissionMattersDetails) > 0){
+				            foreach($transmissionMattersDetails as $list){ 
+				        ?>
+				        <tr>
+				            <td class="cam_date">
+				                <?php
+				                $days = array('月'=>'Mon','火'=>'Tue','水'=>'Wed','木'=>'Thu','金'=>'Fri','土'=>'Sat','日'=>'Sun');
+				                $day = array_search((date('D',strtotime($list['added_on']))), $days);
+				                echo date('Y.m.d',strtotime($list['added_on']));
+				                ?>
+				                (<?php echo $day; ?>)
+				            </td>
+				            <td>
+				                <?php
+				                echo (strlen($list['note']) > 28 ? mb_substr($list['note'], 0, 28,'UTF-8').' ...' : $list['note']); ?>
+				            </td>
+				        </tr>
+				        <?php
+				            $i++;
+				            }
+				        }
+				        ?>
+				    </tbody>
+			</table>
    <?php echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));?>	
   </section>
 <?php

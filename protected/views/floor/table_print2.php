@@ -36,6 +36,7 @@
 // 							}
 				
 			$countFloor = 0;
+			$no_owner_window = is_array($no_owner_window) ? $no_owner_window : array();
 			foreach($no_owner_window as $floor){
 				//echo $floor['floor_id'];
 				
