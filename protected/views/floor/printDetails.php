@@ -1366,7 +1366,10 @@ if($requestData['print_type'] == 11){
             <?php
 // 				$pFloors = explode(',',$prosalData['floor_id']);
             	$pFloors = $proposedFloors;
+            	$aRentPrice = array();
 				foreach($floorDetails as $indexFloor => $floor){
+					$aRentPrice[$floor['rent_unit_price_opt']] = isset($aRentPrice[$floor['rent_unit_price_opt']]) ? $aRentPrice[$floor['rent_unit_price_opt']] : 0;
+					$aRentPrice[$floor['rent_unit_price_opt']]++;
                 	$floorId = Floor::model()->findByPk($floor['floor_id']);
                     if($indexFloor && $indexFloor<=20 && ($indexFloor % 19 == 0 || ($indexFloor > 20 && $indexFloor % 20 == 11))) {
                     	echo '</table></td></tr></table></section></div>
@@ -1624,10 +1627,14 @@ if($requestData['print_type'] == 11){
               <td class="condo-fee right-align"></td>
               <td class="date-move center"></td>
             </tr>
+            
+            
+           <?php if (count($aRentPrice[-2]) != count($floorDetails)) {?>
             <tr>
               <td class="right-align notes" colspan="8"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額', 'ja'); ?><br/>
                 <?php echo Yii::app()->controller->__trans('賃料等課税対象となる金額には別途消費税が加算されます', 'ja'); ?></td>
             </tr>
+            <?php }?>
           </table></td>
       </tr>
       
