@@ -31,7 +31,7 @@
 											$vacInfo = '';
 										}
 										echo $vacInfo;
-										if($list->preceding_user == 1){
+										if($list['preceding_user'] == 1){
 												echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行有').'</span>';
 											}
 									?>
@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                 	<?php
-										$area = $list->area_ping;
+										$area = $list['area_ping'];
 										if($area != ""){
 											echo $area.' '.Yii::app()->controller->__trans('tsubo');
 										}else{
@@ -258,10 +258,10 @@
 									?>
                                     	<li><span class="icon-jpdb-facilities-icons-earthquake"></span></li>
                                     <?php } ?>
-                                    <?php if($list->oa_type == 'フリーアクセス'){ ?>
+                                    <?php if($list['oa_type'] == 'フリーアクセス'){ ?>
                                     	<li> <span class="icon-jpdb-facilities-icons-oa"></span></li>
                                     <?php } ?>
-									<?php if($list->payment_by_installments == 1 || $list->payment_by_installments == 2){ ?>
+									<?php if($list['payment_by_installments'] == 1 || $list['payment_by_installments'] == 2){ ?>
                                     	<li> <span class="icon-jpdb-facilities-icons-split"></span></li>
                                     <?php } ?>
                                     </ul>
