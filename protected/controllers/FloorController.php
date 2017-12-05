@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner', 'getTraderByTel'),
+				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner', 'getTraderByTel', 'getTraderById' ,'editTrader'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -911,12 +911,16 @@ class FloorController extends Controller{
         $floor_owners='SELECT * FROM ownership_management WHERE is_current =0 AND `floor_id` ='.$_REQUEST['id'];
         $floor_owners = Yii::app()->db->createCommand($floor_owners)->queryAll();
 
+        $all_teaders_db= 'SELECT `trader_id`, `company_tel`, `owner_company_name` FROM `traders` '; 
+        $all_teaders_db = Yii::app()->db->createCommand($all_teaders_db)->queryAll();
+       
+
         //print_r($comparted_array);
 
 
 
 
-		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all,  'floor_owners' => $floor_owners, 'floor_windows'=>$floor_windows));
+		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all,  'floor_owners' => $floor_owners, 'floor_windows'=>$floor_windows, 'all_teaders_db'=>$all_teaders_db));
 
 	}
 
@@ -4933,5 +4937,108 @@ class FloorController extends Controller{
 			die;
 		}
 	}
+
+	public function actionGetTraderById(){
+		$trader_id=$_REQUEST['trader_id'];
+		if(!empty($trader_id)){
+			$traderDetails = Traders::model()->find('trader_id = "'.$trader_id.'"');
+			if(!empty($traderDetails)){
+			   $trader['trader_id']=$traderDetails['trader_id'];
+			   $trader['owner_company_name']=$traderDetails['owner_company_name'];
+			   $trader['company_tel']=$traderDetails['company_tel'];
+			   $trader['company_fax']=$traderDetails['company_fax'];
+               $trader['person_in_charge1']=$traderDetails['person_in_charge1'];
+               $trader['person_in_charge2']=$traderDetails['person_in_charge2'];
+               $trader['company_fax']=$traderDetails['company_fax'];
+               $trader['ownership_type']=$traderDetails['ownership_type'];
+               $trader['management_type']=$traderDetails['management_type'];
+               $trader['charge']=$traderDetails['charge'];
+               $resp_array=array('status'=>'success', 'traderDetails'=>$trader);
+				echo json_encode($resp_array);
+				die;
+			}
+			else{
+               $resp_array=array('status'=>'fail');
+				echo json_encode($resp_array);
+				die;
+			}
+		}
+		else{
+			$resp_array=array('status'=>'fail');
+			echo json_encode($resp_array);
+			die;
+
+		}
+	}
+
+
+
+	public function actionEditTrader(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$total_check=array();
+		if(!empty($_POST)){
+			print_r($_POST);
+			die();
+			if((!empty($_POST['trader_id']))){
+					                $inser_check=array();
+				              		$model = new Traders();
+									$model->trader_name = $_POST['traders_company_name'];	
+									$model->ownership_type = $_POST['traders_type'];
+									$model->management_type = $_POST['management_type_traders'];
+									$model->owner_company_name = $_POST['traders_company_name'];
+									$model->company_tel = $_POST['traders_tel'];
+									$model->company_fax  = $_POST['traders_fax'];
+									$model->person_in_charge1 = $_POST['traders_person_in_charge1'];
+									$model->person_in_charge2 = $_POST['traders_person_in_charge2'];
+									if(isset($_POST['charge_traders']) && ($_POST['charge_traders'] != '')){
+										$model->charge = $_POST['charge_traders'];
+									}else{
+										if($_POST['traders_fee'] != ''){
+											$model->charge = $_POST['traders_fee'];
+										}else{
+											$model->charge = '';
+										}
+									}
+									if(($_POST['traders_id']!=0)&&('traders_id'!="")){
+				              			$model->building_id = $_POST['hdnBillId'];
+										$model->floor_id  = $floor_id;
+										$model->modified_by = $logged_user_id;
+										$model->modified_on = date('Y-m-d H:i:s');
+				              		}
+				              		else{
+				              			$model->building_id = $_POST['hdnBillId'];
+										$model->floor_id  = $floor_id;
+										$model->added_by = $logged_user_id;
+										$model->added_on = date('Y-m-d H:i:s');
+										$model->modified_by = $logged_user_id;
+										$model->modified_on = date('Y-m-d H:i:s');
+										$model->traderId = mt_rand(1000,99999);
+				              		}
+									if($model->save(false)){
+										$total_check[] = Yii::app()->db->getLastInsertID();
+				              		}
+				              		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
+				              				$total_check[]=$_POST['trder_window'];
+				              		}
+				if(count($total_check)>0){
+                   die("success");
+				}
+				else{
+					die("fail");
+				}
+			}
+			else{
+				die("NO floor Id And Building Gets");
+			}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
+
 
 }

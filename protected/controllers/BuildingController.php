@@ -5590,8 +5590,10 @@ class BuildingController extends Controller{
 
 
 	public function actionallTraders(){
-		echo "test";
-
-		$this->render('no_content',array('model'=>'test'));
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		$all_teaders_db= 'SELECT * FROM `traders` ORDER BY trader_id DESC';
+		$all_teaders_db = Yii::app()->db->createCommand($all_teaders_db)->queryAll();
+		$this->render('no_content',array('all_teaders_db'=>$all_teaders_db));
 	}
 }
