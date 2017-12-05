@@ -4153,10 +4153,10 @@ class FloorController extends Controller{
 	}
 	
 	public function actionUpdateShowFrontend(){
-		if (isset($_POST['bulk_upadte_floor']))
+		if (isset($_POST['show_frontend']))
 		{
 			$wordpress = new Wordpress();
-			foreach ($_POST['bulk_upadte_floor'] as $floor_id => $show_frontend)
+			foreach ($_POST['show_frontend'] as $floor_id => $show_frontend)
 			{
 				$floor = Floor::model()->findByPk($floor_id);
 				if ($floor)
