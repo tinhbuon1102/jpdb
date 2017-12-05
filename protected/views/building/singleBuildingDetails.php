@@ -4912,7 +4912,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
 
                   <tr class="<?php echo $info['fixed_floor'] ? 'fixed_floor' : ''?>">
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor show_frontend" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor">
@@ -4955,7 +4955,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
 
                   <tr class="<?php echo $info['fixed_floor'] ? 'fixed_floor' : ''?>">
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor show_frontend" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor">
@@ -5000,7 +5000,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
 
                   <tr class="<?php echo $info['fixed_floor'] ? 'fixed_floor' : ''?>">
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor show_frontend" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor">
@@ -5047,7 +5047,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
 
                   <tr class="<?php echo $info['fixed_floor'] ? 'fixed_floor' : ''?>">
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor show_frontend" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
                     <td class="level_floor">
@@ -5095,7 +5095,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 
 
                   <tr class="<?php echo $comparted_arrays['fixed_floor'] ? 'fixed_floor' : ''?>">
-                    <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
+                    <td class="check"><input type="checkbox" class="bulk_upadte_floor show_frontend" name="bulk_upadte_floor[]" <?php echo $info['show_frontend'] ? 'checked' : '';?> value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
                     <td class="level_floor">
