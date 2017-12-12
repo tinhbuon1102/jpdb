@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="en">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' type='text/css' media='all' />
+<script src="http://office-jpdb.com/js/jquery.min.js"></script>
+<title>Calculation</title>
+<style>
+	.container {
+        padding-top: 50px; 
+    }
+	    
+    @media (min-width: 500px){
+	    .container {
+	        max-width: 500px;
+	    }
+    }
+</style>
+</head>
+<body>
+	<div class="container">
+		<form>
+			<div class="form-group">
+				<label for="old">Sell Price</label>
+				<input type="text" class="form-control" size="200" id="old">
+			</div>
+			<div class="form-group">
+				<label for="new">Buy Price</label>
+				<input type="text" class="form-control" size="200" id="new">
+			</div>
+			<div class="form-group">
+				<label for="percen" >Percent</label>
+				<input type="text" class="form-control" size="200" id="percent">
+			</div>
+			<button class="btn btn-primary" id="calculate_btn">Calculate</button>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	jQuery(function($){
+		$('html').on('click', '#calculate_btn', function(e){
+			e.preventDefault();
+			var spread = $('#new').val() - $('#old').val();
+			var percent = spread * 100 / $('#new').val();
+			percent = isNaN(percent) ? 0 : percent;
+			$('#percent').val(percent.toFixed(1) + '%');
+		});
+	})
+</script>
+</html>
