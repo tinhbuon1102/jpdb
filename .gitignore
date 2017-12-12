@@ -23,5 +23,6 @@ assets
 .idea
 .project
 .settings
+cal.html
 protected/config/database.php
 
