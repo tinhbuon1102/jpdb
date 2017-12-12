@@ -83,7 +83,7 @@ img { max-width: 277mm; height: auto; }
 .author p.company_name { font-size: 16pt; margin-bottom: 3mm; font-weight: bold; }
 .author p { line-height: 1.2; }
 .route-map { width: 219mm; height: 155mm; display: block;margin: 0 auto;}
-.notice { padding-top: 5mm; width: 277mm; }
+.notice { padding-top: 5mm; width: 231mm; }
 .half { width: 50%; float: left; }
 .notice p { font-size: 6pt; margin: 0; }
 table { border-collapse: collapse; }
@@ -91,7 +91,7 @@ td.center { text-align: center; }
 td.right-align { text-align: right; }
 th.building-name { width: 110mm; }
 th.building-addr { width: 80mm; }
-table.building-profile { border-collapse: collapse; width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;}
+table.building-profile { border-collapse: collapse; width: <?php print (!isset($_REQUEST['print'])) ? '231mm' : '100%'; ?>;}
 table.building-profile th { border-bottom: 1px solid #000; font-size: 11pt; font-weight: normal; padding-top: 8mm; }
 table.building-profile td { font-size: 11pt; border-bottom: 1px solid #c9c9c9; line-height: 7mm; height: 7mm; }
 caption { background: #e11b30; color: #000; text-transform: uppercase; padding: 1mm 0; font-family: HelveticaNeue-bold; }
@@ -264,9 +264,10 @@ section.sheet.cover {
 	{ /* ドロップシャドウ */
 		/*margin: 0mm;*/
 		padding: <?php print (!isset($_REQUEST['print'])) ? '10mm' : '0'; ?>;
-		width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;
+		/*width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;*/
+		width: <?php print (!isset($_REQUEST['print'])) ? '231mm' : '100%'; ?>;
 		height: auto;
-		min-height: 190mm;
+		/*min-height: 190mm;*/
 	}
 	<?php }else {?>
 	.sheet {
@@ -879,12 +880,29 @@ if($requestData['print_type']==8){
 <?php
         } ?>
 <div class="sheet_wrapper">
+	<input type="hidden" id="total_bulidings" value="<?= count($buildCartDetails)?>">
 <?php         
 		$buildingNumber = 1;
+		$count=0;
+		$prv=0;
 		foreach($buildCartDetails as $buildCart){
+			$count++;
+		?>
+        <?php
+         if($count>1){
+            $margin= "25px !important";
+         }
+         else{
+              $margin= "0";
+         	}
+         if($prv == $count){
+         	$count = $count+1;
+         }
 		?>
 
-  <section class="sheet commercial">
+        
+  <section class="sheet commercial" id='sheet_commercial_<?=$count ?>' style="padding:25px;  margin-top:<?= $margin ?>">
+  	<?php $prv=$count;?>
     <table class="bd_data">
       <tbody>
         <tr>
@@ -2537,5 +2555,39 @@ var call = function(data,callback){
 	}).fail(function(r) {
 	}).comple
 }
+
+
+// $(document).ready(function() {
+// 	var tt_bulid = $('#total_bulidings').val();
+// 	tt_bulid=parseInt(tt_bulid);
+// 	var jk =1;
+// 	for (var i = 1; tt_bulid >= i; i++) {
+// 		 while(jk >= 1){
+// 		 	if($('#sheet_commercial_'+jk).length){
+// 				var height = $('#sheet_commercial_'+jk).height();
+// 				if((height/1000)>1){
+// 				   var new_hei = (height%1000);
+// 				   new_hei=parseInt(new_hei);
+// 				   new_hei=1000-new_hei;
+// 				   $('#sheet_commercial_'+jk).css('margin-bottom', new_hei);
+// 				}
+// 				else{
+// 				     new_hei=parseInt(height);
+// 				     new_hei=1000-new_hei;
+// 				     $('#sheet_commercial_'+jk).css('margin-bottom', new_hei);
+
+// 				}
+// 				jk++;
+// 				break;
+	   			 
+// 			}
+// 			else{
+				
+// 				jk++;
+// 			}
+
+// 		 }
+// 		}	
+// });
 </script>
 </body>

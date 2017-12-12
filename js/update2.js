@@ -32,30 +32,25 @@ $(function(){
        	var tab ='<div id="'+tab_id+'" count="'+count+'">';
         tab+=    '<input type="hidden" id="update_'+tabtype+count+'" name="update_'+tabtype+count+'" value="0">';
        	tab+=    '<h4 class="ontable '+tab_classs+'">';
-        if(tabtype=='window'){
-          var tab_name_main ='窓口'; 
-        }
-        else{
-           var tab_name_main ='オーナー'; 
-        }
-        tab+=       '<span id="count_'+tabtype+'_'+count+'">'+count+'.&nbsp;</span>'+tab_name_main;
+        tab+=       '<span id="count_'+tabtype+'_'+count+'">'+count+'.&nbsp;</span>'+tabtype;
 	      tab+=	    '<span class="button-right">';
-        if(tabtype=='window'){
-           var a_name='他の窓口を追加';
+        if(tabtype=="owner"){
+            var add_tap_text ="他のオーナーを追加";
         }
         else{
-          var a_name='他のオーナーを追加';
+          var add_tap_text ="他の窓口を追加";
         }
-	      tab+=          		'<a id="add_another_window" class="bg_blue '+own_back+' side_button  add_another_'+tabtype+'" href="javascript:void(0)">'+a_name+'</a>';
+	      tab+=          		'<a id="add_another_window" class="bg_blue '+own_back+' side_button  add_another_'+tabtype+'" href="javascript:void(0)">'+add_tap_text+'</a>';
 	      tab+=        '</span>';
         tab+=   '</h4>';
 		    tab+=	'<table class="newform_info ad_list">';
         tab+=       '<tbody>';
         if(tabtype=="owner"){
+       	  	
        	  	if(count==1){
                 tab += '<tr class="no_border">';
 				tab +=		'<th colspan="4" class="bold_td col_3">';
-				tab +=			'<input type="checkbox" name="sameinfo"  id="sameinfo" value="sameinfo"> 窓口情報と同じ';
+				tab +=			'<input type="checkbox" name="sameinfo"  id="sameinfo" value="sameinfo"> Same as window';
 				tab +=        '</th>';
 				tab += '</tr>';
              }
@@ -142,7 +137,13 @@ $(function(){
         tab+=        '</table>';
         tab+=        '<h4 class="ontable '+tab_classs+' bootom_pad">' 
 	    tab+=                    '<span class="button-right">';
-	    tab+=                     	'<a id="remove_'+tab_id+'" own_id="0" class="bg_blue side_button ' +own_back+'  remove_'+tabtype+'" href="javascript:void(0)"  div_id="'+tab_id+'" >Remove '+ tabtype+'</a>';
+       if(tabtype=="owner"){
+            var remove_tap_text ="オーナーを削除";
+        }
+        else{
+          var remove_tap_text ="窓口を削除";
+        }
+	    tab+=                     	'<a id="remove_'+tab_id+'" own_id="0" class="bg_blue side_button ' +own_back+'  remove_'+tabtype+'" href="javascript:void(0)"  div_id="'+tab_id+'" >'+ remove_tap_text+'</a>';
 	    tab+=                     '</span>';
 	    tab+=                '</h4>';
         tab+=     '</div>';
@@ -346,7 +347,9 @@ $(function(){
            var entryArray =id.split(count);
            var type =entryArray[0];
            var trader_id =$('#trader_search_'+type+count).val();
-           check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+           if((trader_id!=0)&&(trader_id!='')){
+            check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+          }
         });
 
         $('#main').on( "click", "select", function() {
@@ -373,7 +376,9 @@ $(function(){
            var entryArray =id.split(count);
            var type =entryArray[0];
            var trader_id =$('#trader_search_'+type+count).val();
-           check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+           if((trader_id!=0)&&(trader_id!='')){
+            check_same_treader_name(curr_elem_val, curr_elem_id, type, count, trader_id);
+           }
         });
 
          $('#main').on( "focus", "input[type=text]", function() {
@@ -722,6 +727,16 @@ function check_validity(action="normal"){
     alert(" please fill all required fields");
     return false;
   }
+
+  var same_no = check_same_validity_all_ph_exit();
+  if(!same_no){
+    return false;
+  }
+
+  var hyfne=check_same_validity_all_ph_hyfne();
+  if(!hyfne){
+    return false;
+  }
   var same_check=check_same_validity();
   if(!same_check){
     return false;
@@ -920,6 +935,152 @@ function check_validity(action="normal"){
         return false;
       }        
     });
+
+
+  /******************* Checking telphone number ********************/
+   function checking_ph_exit_ajax(tel){
+        var baseUrl = $('#base_url').val();
+        baseUrl = baseUrl+'/index.php?r=floor/getTraderByTel';
+      $.ajax({
+            async: true,
+            url: baseUrl,
+            type: 'POST',
+            data: {trader_tel : tel},
+          })
+          .done(function(res) {
+            var res = JSON.parse(res); 
+            console.log(res);
+            if(res.status == 'success'){
+              //alert('done');
+              
+            }
+            else{
+              alert('phone No Already exit');
+              
+            }
+          })
+          .fail(function() {
+            alert('somthing went wrong');
+          })  
+   
+  }
+
+  /******************* Checking telphone number ********************/
+   function checking_ph_exit(tel, id){
+     var count =0;
+     var all_teaders_db =$('#all_teaders_db').val();
+     var traders = JSON.parse(all_teaders_db);
+     jQuery.each( traders, function( i, trader ) {
+        // if((trader.company_tel==tel)&&(trader.trader_id!=id)){ 
+          if((trader.company_tel==tel)&&(id==0)){ 
+          count++;
+          return false;
+         }
+      });
+     if(count>0){
+      return false;
+     }
+    return true;
+  }
+
+  
+function check_same_validity_all_ph_exit(){
+    var window_count =$('#total_window').val();
+    var owner_count =$('#total_owner').val();
+    var error="";
+    var tel="";
+    for(var i=1; window_count >= i; i++){
+      tel = $('#tel_window'+i).val();
+      var trader_id = $('#trader_search_window'+i).val();
+      if(!checking_ph_exit(tel, trader_id)){
+         error +='Window '+i+' ';
+      }
+    }
+     for(var i=1; owner_count >= i; i++){
+      tel = $('#tel_owner'+i).val();
+      var trader_id = $('#trader_search_owner'+i).val();
+      if(!checking_ph_exit(tel, trader_id)){
+         error +='Owner '+i+' ';
+      }
+     
+    }
+    if(error != ''){
+      alert(error+' using phone number already used');
+      return false;
+    }
+
+    return true;
+
+}
+
+
+
+
+  $('#main').on( "blur", ".window_tel", function() {
+     var tel =$(this).val();
+     var curr_elem_id =$(this).attr('id');
+     var count = $(this).parent().parent().parent().parent().parent().attr('count');
+     var id   =  $(this).parent().parent().parent().parent().parent().attr('id')
+     var entryArray =id.split(count);
+     var type =entryArray[0];
+     if(tel.search("-")==-1){
+        alert("phone number doesn't include '-'");
+        return false;
+      }
+     var trader_id =$('#trader_search_'+type+count).val();
+     if(!checking_ph_exit(tel, trader_id)){
+       alert('Phone number already exit');
+     }
+  });
+
+
+  $('#main').on( "blur", ".owner_tel", function() {
+     var tel =$(this).val();
+     var curr_elem_id =$(this).attr('id');
+     var count = $(this).parent().parent().parent().parent().parent().attr('count');
+     var id   =  $(this).parent().parent().parent().parent().parent().attr('id')
+     var entryArray =id.split(count);
+     var type =entryArray[0];
+      if(tel.search("-")==-1){
+        alert("phone number doesn't include '-'");
+        return false;
+      }
+     var trader_id =$('#trader_search_'+type+count).val();
+     if(!checking_ph_exit(tel, trader_id)){
+       alert('Phone number already exit');
+     }
+
+  });
+
+  function check_same_validity_all_ph_hyfne(){
+    var window_count =$('#total_window').val();
+    var owner_count =$('#total_owner').val();
+    var error="";
+    var tel="";
+    for(var i=1; window_count >= i; i++){
+      tel = $('#tel_window'+i).val();
+      if(tel.search("-")==-1){
+         error +='Window '+i+' ';
+      }
+    }
+     for(var i=1; owner_count >= i; i++){
+      tel = $('#tel_owner'+i).val();
+      if(tel.search("-")==-1){
+         error +='Owner '+i+' ';
+      } 
+    }
+    if(error != ''){
+      alert(error+"phone number doesn't include '-'");
+      return false;
+    }
+
+    return true;
+
+}
+
+
+
+
 
 
 

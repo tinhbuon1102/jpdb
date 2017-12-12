@@ -29,7 +29,7 @@ class FloorController extends Controller{
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner', 'getTraderByTel', 'getTraderById' ,'editTrader'),
+				'actions'=>array('create','update',  'update2', 'addHistory', 'updateManagement2','blukUpdateManagement2','deleteManagement2', 'delOwnerSingle', 'deleteTrader',  'getSearchedTraderList','getSeletectedTraderDetails','addFloorToCart','removeFloorFromCart','appendNewManagementHistory','addNewManagementHistory','deleteFloor', 'setFixedFloor', 'addFastFloor','addNewPlanPicture','allocatePlanToFloor','removeSelectedPlanPicture','addAllFromToCart','addProposedToCart','addSingleBuildToCart','removeAllItemCart','Clonesettings','deleteManagement','removeFloorToCart','checkRoomNumber','sortCart','bulkDelete', 'viewFloorMass', 'updateFloorMass', 'copyFloorMass', 'deleteFloorMass', 'insertFloorMass','appendNewManagementHistoryMass','updateShowFrontend', 'upDateOwner', 'getTraderByTel', 'getTraderById' ,'editTrader', 'delTrader', 'bulkDelTrader'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -913,6 +913,12 @@ class FloorController extends Controller{
 
         $all_teaders_db= 'SELECT `trader_id`, `company_tel`, `owner_company_name` FROM `traders` '; 
         $all_teaders_db = Yii::app()->db->createCommand($all_teaders_db)->queryAll();
+        $count==0;
+        foreach ($all_teaders_db as $all_teaders_dbs) {
+        	$traders_all_db[$count]['trader_id']=$all_teaders_dbs['trader_id'];
+        	$traders_all_db[$count]['company_tel']=$all_teaders_dbs['company_tel'];
+        	$count++;
+        }
        
 
         //print_r($comparted_array);
@@ -920,7 +926,7 @@ class FloorController extends Controller{
 
 
 
-		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all,  'floor_owners' => $floor_owners, 'floor_windows'=>$floor_windows, 'all_teaders_db'=>$all_teaders_db));
+		$this->renderPartial('update2',array('model'=>$model,'tradersDetails'=>$tradersDetails,'useTypesDetails'=>$useTypesDetails, 'comparted_array'=>$comparted_array, 'single_owner_window_array' => $single_owner_window_array, 'multi_window_array'=> $multi_window_array, 'multi_owner_array'=>$multi_owner_array, 'no_owner_window'=>$no_owner_window, 'trans_all'=>$trans_all,  'floor_owners' => $floor_owners, 'floor_windows'=>$floor_windows, 'all_teaders_db'=>$traders_all_db));
 
 	}
 
@@ -4669,6 +4675,9 @@ class FloorController extends Controller{
 				if($total_ownership_comp > 0){
 	                  $comp_floor=1;
 				}
+				else{
+					$comp_floor=0;
+				}
 				$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 1');
 				$total_ownership_window_all=count($ownership_window_all);
 				if($total_ownership_window_all > 1){
@@ -4978,49 +4987,34 @@ class FloorController extends Controller{
 		$logged_user_id = $user->user_id;
 		$total_check=array();
 		if(!empty($_POST)){
-			print_r($_POST);
-			die();
 			if((!empty($_POST['trader_id']))){
-					                $inser_check=array();
-				              		$model = new Traders();
-									$model->trader_name = $_POST['traders_company_name'];	
-									$model->ownership_type = $_POST['traders_type'];
-									$model->management_type = $_POST['management_type_traders'];
-									$model->owner_company_name = $_POST['traders_company_name'];
-									$model->company_tel = $_POST['traders_tel'];
-									$model->company_fax  = $_POST['traders_fax'];
-									$model->person_in_charge1 = $_POST['traders_person_in_charge1'];
-									$model->person_in_charge2 = $_POST['traders_person_in_charge2'];
-									if(isset($_POST['charge_traders']) && ($_POST['charge_traders'] != '')){
-										$model->charge = $_POST['charge_traders'];
-									}else{
-										if($_POST['traders_fee'] != ''){
-											$model->charge = $_POST['traders_fee'];
-										}else{
-											$model->charge = '';
-										}
-									}
-									if(($_POST['traders_id']!=0)&&('traders_id'!="")){
-				              			$model->building_id = $_POST['hdnBillId'];
-										$model->floor_id  = $floor_id;
-										$model->modified_by = $logged_user_id;
-										$model->modified_on = date('Y-m-d H:i:s');
-				              		}
-				              		else{
-				              			$model->building_id = $_POST['hdnBillId'];
-										$model->floor_id  = $floor_id;
-										$model->added_by = $logged_user_id;
-										$model->added_on = date('Y-m-d H:i:s');
-										$model->modified_by = $logged_user_id;
-										$model->modified_on = date('Y-m-d H:i:s');
-										$model->traderId = mt_rand(1000,99999);
-				              		}
-									if($model->save(false)){
-										$total_check[] = Yii::app()->db->getLastInsertID();
-				              		}
-				              		if(($_POST['trder_window'.$i]!=0)&&('trder_window'.$i!="")){
-				              				$total_check[]=$_POST['trder_window'];
-				              		}
+                $inser_check=array();
+          		$model = new Traders();
+          		$model=$model->findByPk($_POST['trader_id']);
+				$model->trader_name = $_POST['traders_company_name'];	
+				$model->ownership_type = $_POST['traders_type'];
+				$model->management_type = $_POST['management_type_traders'];
+				$model->owner_company_name = $_POST['traders_company_name'];
+				$model->company_tel = $_POST['traders_tel'];
+				$model->company_fax  = $_POST['traders_fax'];
+				$model->person_in_charge1 = $_POST['traders_person_in_charge1'];
+				$model->person_in_charge2 = $_POST['traders_person_in_charge2'];
+				$model->charge = $_POST['traders_fee'];
+				$model->modified_by = $logged_user_id;
+				$model->modified_on = date('Y-m-d H:i:s');
+				if($model->save(false)){
+					$total_check[] = Yii::app()->db->getLastInsertID();
+          		}
+          		$update['ownership_type']= $_POST['traders_type'];
+				$update['management_type']= $_POST['management_type_traders'];
+				$update['owner_company_name']= $_POST['traders_company_name'];
+				$update['company_tel']= $_POST['traders_tel'];
+				$update['company_fax']= $_POST['traders_fax'];
+				$update['person_in_charge1']=  $_POST['traders_person_in_charge1'];
+				$update['person_in_charge2']= $_POST['traders_person_in_charge2'];
+				$update['modified_on']= date('Y-m-d H:i:s');
+				$getManagementAvailable_update_all=new OwnershipManagement;
+				$getManagementAvailable_update_all->updateAll($update, 'trader_id ='.$_POST['trader_id'] );				
 				if(count($total_check)>0){
                    die("success");
 				}
@@ -5029,7 +5023,139 @@ class FloorController extends Controller{
 				}
 			}
 			else{
-				die("NO floor Id And Building Gets");
+				die("NO Trader Id");
+			}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
+	public function actionDelTrader(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		if(!empty($_POST)){
+			if((!empty($_POST['trader_id']))){
+				$trader_id= $_POST['trader_id'];
+			    $ownership_window_all=OwnershipManagement::model()->findAll('trader_id  ='.$trader_id);
+			    $floor_array=array();
+			    foreach ($ownership_window_all as $ownership_window_alls) {
+			    	     if(in_array($ownership_window_alls['floor_id'], $floor_array)){
+			    	     	continue;
+			    	     }
+			    	     $floor_array[]= $ownership_window_alls['floor_id']; 
+			    }
+			    $ownershipManagement=new OwnershipManagement;
+			    $ownershipManagement->deleteAll('trader_id ='.$trader_id);
+			    foreach ($floor_array as $floor_id) {
+			    	$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_compart  = 1');
+					$total_ownership_comp=count($ownership_comp);
+					if($total_ownership_comp > 0){
+		                  $comp_floor=1;
+					}
+					else{
+						$comp_floor=0;
+					}
+					$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 1');
+					$total_ownership_window_all=count($ownership_window_all);
+					if($total_ownership_window_all > 1){
+		                  $multi_window=1;
+					}
+					else{
+						$multi_window=0;
+					}
+					$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 0');
+					$total_ownership_owner_all=count($ownership_owner_all);
+					if($total_ownership_owner_all > 1){
+		                  $shared_floor=1;
+					}
+					else{
+						$shared_floor=0;
+					}
+					$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id);
+					foreach ($ownership as $ownerships) {
+						    $ownerships->is_compart = $comp_floor;
+						    $ownerships->is_shared = $shared_floor;
+						    $ownerships->is_multiple_window = $multi_window;
+						    $ownerships->update(false); 
+						    
+					}
+
+			    }
+					$model = new Traders();
+					$model->deleteAll('trader_id  ='.$trader_id);
+			}
+			else{
+				die("NO Trader Id");
+			}
+
+	    }
+           
+		else{
+			die("NO Data");
+		}
+		
+	}
+
+	public function actionBulkDelTrader(){
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$logged_user_id = $user->user_id;
+		if(!empty($_POST)){
+			if((!empty($_POST['update_trader']))){
+				        foreach ($_POST['update_trader'] as $trader_id){
+						    $ownership_window_all=OwnershipManagement::model()->findAll('trader_id  ='.$trader_id);
+						    $floor_array=array();
+						    foreach ($ownership_window_all as $ownership_window_alls) {
+						    	     if(in_array($ownership_window_alls['floor_id'], $floor_array)){
+						    	     	continue;
+						    	     }
+						    	     $floor_array[]= $ownership_window_alls['floor_id']; 
+						    }
+						    $ownershipManagement=new OwnershipManagement;
+						    $ownershipManagement->deleteAll('trader_id ='.$trader_id);
+						    foreach ($floor_array as $floor_id) {
+						    	$ownership_comp=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_compart  = 1');
+								$total_ownership_comp=count($ownership_comp);
+								if($total_ownership_comp > 0){
+					                  $comp_floor=1;
+								}
+								else{
+									$comp_floor=0;
+								}
+								$ownership_window_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 1');
+								$total_ownership_window_all=count($ownership_window_all);
+								if($total_ownership_window_all > 1){
+					                  $multi_window=1;
+								}
+								else{
+									$multi_window=0;
+								}
+								$ownership_owner_all=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id.' AND is_current   = 0');
+								$total_ownership_owner_all=count($ownership_owner_all);
+								if($total_ownership_owner_all > 1){
+					                  $shared_floor=1;
+								}
+								else{
+									$shared_floor=0;
+								}
+								$ownership=OwnershipManagement::model()->findAll('floor_id  ='.$floor_id);
+								foreach ($ownership as $ownerships) {
+									    $ownerships->is_compart = $comp_floor;
+									    $ownerships->is_shared = $shared_floor;
+									    $ownerships->is_multiple_window = $multi_window;
+									    $ownerships->update(false); 
+									    
+								}
+
+						    }
+								$model = new Traders();
+								$model->deleteAll('trader_id  ='.$trader_id);
+				}
+			}
+			else{
+				die("NO Trader Id");
 			}
 
 	    }
@@ -5042,3 +5168,4 @@ class FloorController extends Controller{
 
 
 }
+

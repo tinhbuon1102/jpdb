@@ -25,6 +25,30 @@
 	.ui-draggable .box-header {
      padding: 10px 10px;
    }
+   .btnAddNewHistory2:hover{
+   	text-decoration: none
+   }
+
+  .error_val{
+    border: 2px red !important;
+    border-style: dotted !important;
+  }
+  #trader_table_info{
+  	margin-top: 50px;
+  }
+  #trader_table_previous{
+  	margin-top: 50px;
+  }
+  #main {
+  	padding-bottom: 0px;
+  }
+  .own_back:hover{
+  	text-decoration: none;
+  	background-color: #12AAEB;
+  }
+  .bg_blue:hover{
+  	background-color: #12AAEB !important;
+  }
 </style>
 <div id="content">
 	<div id="main" class="list-traders">
@@ -34,6 +58,7 @@
 				<thead>
 					<tr>
 						<th id="trader-grid_c0"><a class="sort-link" href="javaScript:void(0)">#</a></th>
+						<th id="trader-grid_c0"><a class="sort-link" href="javaScript:void(0)">- </a></th>
 						<th id="trader-grid_c0"><a class="sort-link" href="javaScript:void(0)">Trader ID</a></th>
 						<th id="trader-grid_c1"><a class="sort-link" href="javaScript:void(0)">Trader Name</a></th>
 						<th id="trader-grid_c2"><a class="sort-link" href="javaScript:void(0)">TEL</a></th>
@@ -47,19 +72,35 @@
 					<?php $count=1;  foreach ($all_teaders_db as $all_teader_db) { ?>
 					<tr class="odd">
 						<td><?= $count ?></td>
-						<td><?= $all_teader_db['trader_id'] ?></td>
+						<td><input type="checkbox" class="bulk_upadte_trader" name="bulk_upadte_trader[]" value="<?= $all_teader_db['trader_id']?>"></td>
+						<td><?= $all_teader_db['traderId'] ?></td>
 						<td><?= $all_teader_db['owner_company_name'] ?></td>
 						<td><?= $all_teader_db['company_tel'] ?></td>
 						<td><?= $all_teader_db['person_in_charge1'] ?></td>
 						<td><?= $all_teader_db['charge'] ?></td>
 						<td class="button-column">
 							<a class="TraderUpdate ajax-link edit_trader_btn"  trader_id="<?= $all_teader_db['trader_id'] ?>" title="trader_<?= $all_teader_db['trader_id'] ?>" href="javaScript:void(0)"><i class="fa fa-pencil"></i></a>
-							<a title="Delete" class="delete" href="javaScript:void(0)" trader_id="<?= $all_teader_db['trader_id'] ?>" title="trader_<?= $all_teader_db['trader_id'] ?>"><i class="fa fa-trash-o"></i></a>
+							<a title="Delete" class="delete_trader" href="javaScript:void(0)" trader_id="<?= $all_teader_db['trader_id'] ?>" title="trader_<?= $all_teader_db['trader_id'] ?>"><i class="fa fa-trash-o"></i></a>
 						</td>
 					</tr>
 
 					<?php $count++; }  ?>
 					
+				</tbody>
+			</table>
+			<table class="items" id="" style="position: relative;top: -90px;">
+				<tbody>
+					 <tr class="no_border" style="">
+			               <td  class="bold_td col_full" style="left: -140px;"><input type="checkbox" name="check_all_floor"  id="check_all_trader" value=""> 全ての業者をチェック
+			               </td>
+			                <td>
+				                <span class="button-right" style="width: 180px;margin-top: -9px;">
+				                  <a  class="bg_blue side_button own_back" href="javascript:void(0)" id="bulk_delete_traders">業者を一括削除
+				                  </a>
+				                </span>
+			                </td>
+		            </tr>
+	
 				</tbody>
 			</table>
 		</div>
@@ -73,7 +114,6 @@
     </div>
 
     <div class="box-content">
-    	<form name="frmTraderData" id="frmTraderData" class="text-center" action="" method="post" enctype="">
       		<input type="hidden" name="id" id="id" value="0" />
             <div class="divSpace form_style1">
 				<div class="row">
@@ -129,7 +169,6 @@
 
             <div class="divResponse"><span class="form-reponse"></span></div>
             <button type="submit" class="btn-default btnSubmit">Add Trader</button>
-      	</form>
     </div>
   </div>
 </div>
@@ -150,7 +189,7 @@
             <div class="manage-info table-box new_style_box">
             	<input type="hidden" name="base_url" id="base_url" value="<?php echo Yii::app()->request->baseUrl; ?>">
                 <form name="frmAddNewHistory" id="frmEditTrader" class="frmAddNewHistory" action="<?php echo Yii::app()->createUrl('floor/editTrader'); ?>">
-                	<input type="hidden" name="traders_id" id="traders_id" value="">
+                	<input type="hidden" name="trader_id" id="traders_id" value="">
                     <div class="manageInfoResponse">
                         <table class="newform_info ad_list">
                             <tbody>
@@ -275,7 +314,7 @@
                         <table class="edit_input f_info_b mline tb-floor one-col mix-col">
                           <tbody>
                             <tr>
-                              <td align="center"><button href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="update_trader"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
+                              <td align="center" style="text-align:center"><a href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="update_trader" style="background-color: #15304B; padding: 14px; color:#fff;"><?php echo Yii::app()->controller->__trans('Update Trader'); ?> </a></td>
                             </tr>
                           </tbody>
                         </table>
@@ -299,6 +338,16 @@
 	  		e.preventDefault();
 	  		var trader_id =$(this).attr('trader_id');
 	  		find_trader(trader_id);
+	  		return false;
+	 		
+   	    });
+
+   	    $(document).on('click','.delete_trader',function(e){
+	  		e.preventDefault();
+	  		var trader_id =$(this).attr('trader_id');
+	  		if(confirm('Are You to delete this trader')){
+	  			del_trader(trader_id);
+	  		}
 	  		return false;
 	 		
    	    });
@@ -342,7 +391,33 @@
 	          })  
 
    	    }
+
+   	     function del_trader(trader_id){
+   	      var baseUrl = $('#base_url').val();
+          baseUrl = baseUrl+'/index.php?r=floor/delTrader';
+	      $.ajax({
+	            url: baseUrl,
+	            type: 'POST',
+	            data: {trader_id : trader_id},
+	            beforeSend: function() {
+			       document.getElementById("frmEditTrader").reset(); 
+			    }
+	          })
+	          .done(function(res) {
+	               alert('Trader is deleted');
+                    location.reload();
+	          })
+	          .fail(function() {
+	            alert('somthing went wrong');
+	          })  
+
+   	    }
    	    $('#update_trader').click(function(event) {
+   	    	check_validity();
+   	    });
+
+
+   	    function submit_form(){
    	    	 var formdata = $('#frmEditTrader').serialize();
              var url = $('#frmEditTrader').attr('action');
               $.ajax({
@@ -364,5 +439,111 @@
                   .fail(function() {
                     alert('somthing went wrong');
                   })  
-   	    });
+   	    }
+
+   function check_validity(){
+    var error_count=0;
+    var cname="";
+    var tel="";
+    var fax="";
+    cname = $('#traders_name').val();
+    tel = $('#td_tel').val();
+    fax = $('#td_fax').val();
+    if((typeof cname == "undefined")||(cname == "")){
+       $('#traders_name').addClass('error_val');
+       error_count++;
+     }
+     else{
+      $('#traders_name').removeClass('error_val');
+     }
+    
+    if((typeof tel == "undefined")||(tel == "")||(tel=='000-00000-00000')){
+       $('#td_tel').addClass('error_val');
+       error_count++;
+
+    }
+    else{
+      $('#td_tel').removeClass('error_val');
+    }
+    // if((typeof fax == "undefined")||(fax == "")||(fax=='000-00000-00000')){
+    //    $('#td_fax').addClass('error_val');
+    //    error_count++;
+    // }
+    // else{
+    //   $('#td_fax').removeClass('error_val');
+    // }
+     if(error_count>0){
+    alert("please fill all required fields");
+    return false;
+    }
+   else{ 		
+    submit_form();
+   
+   }
+  }
+
+
+  $('#main').on( "click", "#check_all_trader", function() {
+            if ($('#check_all_trader').is(':checked')) {
+              $(".bulk_upadte_trader").prop('checked', true);
+              
+            }
+            else{
+               $(".bulk_upadte_trader").prop('checked', false);
+            }
+    });
+
+  $('#main').on( "click", ".paginate_button", function() {
+      $(".check_all_trader").prop('checked', false);
+       $(".bulk_upadte_trader").prop('checked', false);
+            
+    });
+
+
+  
+
+   $('#main').on( "click", "#bulk_delete_traders", function() {
+         var update_trader = [];
+          $.each($(".bulk_upadte_trader:checked"), function(){            
+              update_trader.push($(this).val());
+          });
+
+          if(update_trader.length > 0){
+            if(confirm("Are You Sure to Delete Selected Trader")){
+            	//console.log(update_trader);
+                delete_tradres(update_trader);
+            }
+            else{
+              return false;
+            }
+
+          }
+          else{
+            alert('No Trader Is selected');
+            return false;
+          }        
+           
+    });
+
+
+  function delete_tradres(update_trader){
+    var baseUrl = $('#base_url').val();
+        baseUrl = baseUrl+'/index.php?r=floor/bulkDelTrader';
+      $.ajax({
+            url: baseUrl,
+            type: 'POST',
+            data: {update_trader:update_trader},
+          })
+          .done(function(res) {
+              alert('Data is Deleted.');
+              location.reload();
+          })
+          .fail(function() {
+            alert('somthing went wrong');
+          })  
+   
+  }
+
+
+
 </script>

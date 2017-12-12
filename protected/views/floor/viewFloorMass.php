@@ -48,6 +48,79 @@
     border: 2px red !important;
     border-style: dotted !important;
   }
+
+  .newform_info.ad_list th{
+  	color: rgba(89,122,150,1) !important;
+	font-family: "Noto Sans Japanese", serif !important;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+  }
+  .newform_info{
+  	height: 30px;
+	line-height: 30px;
+  }
+
+   .newform_info.ad_list td{
+   	padding: 5px;
+   	padding-left:10px; 
+   }
+
+  .newform_info.ad_list input[type="text"], .newform_info.ad_list input[type="password"], .newform_info.ad_list input[type="email"], .newform_info.ad_list input[type="search"], .newform_info.ad_list textarea, newform_info.ad_list select {
+    margin: 0;
+    margin-bottom: 0px;
+    padding: 6px 4px;
+    max-width: 100%;
+    outline: none;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    color: #777;
+    vertical-align: bottom;
+    font-size: 12px;
+    width: 95%;
+}
+#btnSearchTrader{
+	width: 100px;
+	text-align: center;
+}
+
+#trader_id_new{
+	width: 98%;
+	border: 1px solid #ddd;
+	height: 30px;
+}
+#traders_type{
+	width: 98%;
+	border: 1px solid #ddd;
+	height: 30px;
+}
+#traders_contract{
+	width: 98%;
+	border: 1px solid #ddd;
+	height: 30px;
+}
+
+#btn2AddNeawHistory, .newform_info.ad_list .button, .newform_info.ad_list  button, .newform_info.ad_list input[type="submit"], .newform_info.ad_list input[type="reset"], .newform_info.ad_list input[type="button"] {
+		display: inline-block;
+		text-decoration: none;
+		margin: 0;
+		padding: 8px 10px;
+		border: none;
+		width: 100%;
+		color: #FFF !important;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: normal;
+		cursor: pointer;
+		background: rgba(18,170,235,1);
+}
+
+
+
  </style>
 
 <script>
@@ -180,7 +253,7 @@ div#contents table.fl_data_c th {
 	<tr>
 		<th scope="col" class="ck">&nbsp;</th>
 		<th scope="col" col="f_no" class="w" >フロアID</th>
-		<th scope="col" col="f_no" class="w" >Edit</th>
+		<th scope="col" col="f_no" class="w" >窓口・オーナー</th>
 		<th scope="col" col="f_update_flag" class="w">更新日の<br>更新</th>
 		<th scope="col" col="f_thisupdate" class="w">更新日</th>
 		<th scope="col" col="f_floor" class="w">階数</th>
@@ -493,6 +566,7 @@ $(function() {
 		modal: true,
 		autoOpen: true,
 		width: 952,
+		top:-250,
 		resizable:false,
 		title: "<?php echo Yii::app()->controller->__trans('Building management edit・add'); ?>",
 		buttons: {
@@ -501,7 +575,7 @@ $(function() {
 });
 </script>
 
-<div id="dialog"> 
+<div id="dialog" style="margin-top: -350px!important;"> 
 </div>
 <!--Modal Popup for append management history-->
 <dl id="appendManagementModal" class="popup_ty5 dialog">
@@ -520,7 +594,7 @@ $(function() {
 			?>
         	<div class="differentOwner <?php echo $divcls; ?>"><?php echo $divlbl; ?></div>
         	<div id="main" class="full-width">
-            <div class="tab_con" style="max-height: 365px">
+            <div class="tab_con" style="">
             <div class="manage-info table-box new_style_box">
                 <form name="frmAddNewHistory" id="frmAddNewHistory" class="frmAddNewHistory" action="<?php echo Yii::app()->createUrl('floor/addHistory'); ?>">
                     <div class="manageInfoResponse">
@@ -614,7 +688,7 @@ $(function() {
                                     <label class="rd2"><input type="radio" name="charge_traders" value="ask" class="radiAsk"> 相談</label>
                                     <label class="rd2"><input type="radio" name="charge_traders" value="undecided" class="radiUndecided"> 未定</label>
                                     <label class="rd2"><input type="radio" name="charge_traders" value="無し" class="radiNone"> 無し</label>
-                                   <label class="rd2">| <input type="text" name="traders_fee" id="traders_fee" size="5" value="" class="ty8 traders_fee"></label>
+                                   <label class="rd2"><input type="text" name="traders_fee" id="traders_fee" size="5" value="" class="ty8 traders_fee"></label>
                                     </td>
                                </tr>
                                <tr>
@@ -650,7 +724,7 @@ $(function() {
                         <table class="edit_input f_info_b mline tb-floor one-col mix-col">
                           <tbody>
                             <tr>
-                              <td align="center"><button href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="btn2AddNeawHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
+                              <td align="center" style="padding: 5px"><button href="javaScript:void(0)" name="btnAddNewHistory" class="btnAddNewHistory2" id="btn2AddNeawHistory"><?php echo Yii::app()->controller->__trans('Append History'); ?> </button></td>
                             </tr>
                           </tbody>
                         </table>
@@ -665,5 +739,10 @@ $(function() {
 <?php 
 }
 ?>
+<script type="text/javascript">
+	$(window).load(function() {
+		$('.ui-draggable').css('top', '-220px');
+	});
+</script>
 </body>
 </html>

@@ -105,7 +105,7 @@
                                               }
                                           }else{
                                           ?>
-                                          <option value=""><?php echo Yii::app()->controller->__trans('業者がありません');?></option>
+                                          <option value="0"><?php echo Yii::app()->controller->__trans('業者がありません');?></option>
                                           <?php
                                           }
                                           ?>
@@ -218,7 +218,7 @@
                           <div id="owner<?= $count ?>" count="<?= $count ?>">
                             <input type="hidden" name="update_owner<?= $count ?>" value="1">
                             <h4 class="ontable bg_blue">
-                              <span id="count_owner_<?= $count ?>"><?= $count ?>.&nbsp;</span>オーナー<!--owner-->
+                              <span id="count_owner_<?= $count ?>"><?= $count ?>.&nbsp;</span>owner
                               <span class="button-right">
                                 <a id="add_another_owner" class="bg_blue own_back side_button  add_another_owner" href="javascript:void(0)">他のオーナーを追加<!--Add another owner-->
                                 </a>
@@ -297,7 +297,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <th>社名<!--Company Name--></th>
+                                  <th>管理種別<!--Transaction type--></th>
                                   <td>
                                     <input type="text" name="company_name_owner<?= $count ?>" id="company_name_owner<?= $count ?>" value="<?= $floor_window['owner_company_name'] ?>" class="ty6 owner_company_name" required="">
                                   </td>
@@ -356,7 +356,7 @@
             </tr>
              <tr>
               <th class="check">&nbsp;</th>
-              <th class="id_floor">フロアID<!--Floor_ID--></th>
+               <th class="id_floor">フロアID<!--Floor_ID--></th>
               <th class="id_floor">フロアID<!--Floor_ID--></th>
               <th class="level_floor">階数<!--level of floor--></th>
               <th class="size_floor">面積<!--Size--></th>
@@ -372,8 +372,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口</label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -392,10 +392,7 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
-					</td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -411,8 +408,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--WIndow--></label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -431,10 +428,7 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
-					</td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -454,8 +448,8 @@
                   ?>
                   <tr>
                     <td colspan="6" class="trader_list">
-                    <span class="trader_item"><label class="trader_label window_label bg_lb">窓口<!--Window--></label> <?= $single_owner_window_arrays['windows'] ?></span>
-                    <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー<!--Owner--></label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
+                    <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> <?= $single_owner_window_arrays['windows'] ?></span>
+                    <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label>  <?= $single_owner_window_arrays['owners'] ?></span></td>
                   </tr>
                     <?php  foreach($single_owner_window_arrays['info'] as $info){
                             if($info['vacancy_info']==0){
@@ -474,10 +468,7 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
-					</td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -514,10 +505,7 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $info['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $info['floorId'] ?></td>
                     <td class="id_floor"><?= $info['floor_id'] ?></td>
-                    <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $info);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $info);?>
-					</td>
+                    <td class="level_floor"><?= $info['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $info['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($info['modified_on'])) ?></td>
                   </tr>
@@ -535,8 +523,8 @@
               ?>
               <tr>
                 <td colspan="6" class="trader_list">
-                <span class="trader_item"><label class="trader_label window_label bg_lb">窓口</label> 無し</span>
-                <span class="trader_item"><label class="trader_label owner_label bg_blue">オーナー</label> 無し</span></td>
+                <span class="trader_item"><label class="trader_label window_label bg_lb">Window</label> NO Window</span>
+                <span class="trader_item"><label class="trader_label owner_label bg_blue">Owner</label> NO Owners</span></td>
               </tr>
                     <?php 
                     foreach ($no_owner_window as $comparted_arrays) {
@@ -556,10 +544,7 @@
                     <td class="check"><input type="checkbox" class="bulk_upadte_floor" name="bulk_upadte_floor[]" value="<?= $comparted_arrays['floor_id']?>"><label class="<?=$vac_class?>  vacant_status"> <?=$text?></label> </td>
                     <td class="id_floor"><?= $comparted_arrays['floorId'] ?></td>
                     <td class="id_floor"><?= $comparted_arrays['floor_id'] ?></td>
-                    <td class="level_floor">
-                    	<?php echo HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $comparted_arrays);?>
-                    	<?php echo HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $comparted_arrays);?>
-					</td>
+                    <td class="level_floor"><?= $comparted_arrays['floor_down'] ?>th floor</td>
                     <td class="size_floor"><?= $comparted_arrays['area_ping'] ?>坪</td>
                     <td class="updated_floor"><?= date('Y-m-d', strtotime($comparted_arrays['modified_on'])) ?></td>
                   </tr>
@@ -573,7 +558,7 @@
                 <td colspan="6" class="bold_td col_full" style="margin-top: 10px; position: absolute;">
                   <span class="" style="width: 120px;margin-right: 45px;">
                     <a  class="bg_blue side_button own_back  " href="javascript:void(0)" id="bulk_upadte_floor">
-                       一括更新<!--Bulk Update-->
+                        一括更新<!--Bulk Update-->
                     </a>
                   </span>
                   <span class="" style="width: 120px;">
@@ -641,6 +626,8 @@
     <option value="3" <?php echo $mSelect4; ?>><?php echo Yii::app()->controller->__trans('代理');?></option>
     <option value="4" <?php echo $mSelect5; ?>><?php echo Yii::app()->controller->__trans('貸主');?></option>
 </select>
+
+<input type='hidden' id='all_teaders_db' value='<?php echo json_encode($all_teaders_db) ?>' >
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.maskedinput.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/update2.js"></script>
