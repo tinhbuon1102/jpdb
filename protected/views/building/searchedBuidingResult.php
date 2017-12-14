@@ -1005,6 +1005,8 @@ if(isset($customCondition)){
             	<span>
                 	<input type="checkbox" name="dispEmptyOnly" id="dispEmptyOnly" class="dispEmptyOnly"/>
                     <?php echo Yii::app()->controller->__trans('空きのみ表示'); ?>
+                    <br />
+                    <span><input type="checkbox" class="check_all_vacant"/><?php echo Yii::app()->controller->__trans('check all vacant floors'); ?></span>
                 </span>
             </td>
             <td>

@@ -692,7 +692,10 @@ $(function() {
                                     </td>
                                </tr>
                                <tr>
-                                    <th>対象フロア<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示</th>
+                                    <th>対象フロア<br/> <input type="checkbox" id="show_vac_floors" class="filter_floors" name="filter_floor"> 空室のみ表示
+                                    	<br />
+                    					<span><input type="checkbox" class="check_all_vacant"/><?php echo Yii::app()->controller->__trans('check all vacant floors'); ?></span>
+                                    </th>
                                     <td colspan="3" class="floors_target_list">
 
                                     <?php if(!empty($all_floors)){

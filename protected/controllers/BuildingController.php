@@ -3252,15 +3252,25 @@ class BuildingController extends Controller{
 		if(isset($getFoorList) && count($getFoorList) > 0){
 			$floorRander = '';
 			foreach($getFoorList as $floor){
+				
+				if($floor['vacancy_info']==1){
+					$class_floor ='vac_floor';
+					$span_class  ="vac_span";
+				}
+				else{
+					$class_floor ='no_vac_floor';
+					$span_class  ="no_vac_span";
+				}
+				
 				if($floor['floor_down'] == "" && $floor['area_m'] == ""){
-				$floorRander .= '<input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/> -';
+				$floorRander .= '<span class="'. $span_class .' negFloor floorEmpt"><input class="'.$class_floor.'" type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/> -</span>';
 				}else{
 					if(strpos($floor['floor_down'], '-') !== false){
 						$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
 					}else{
 						$floorDown = $floor['floor_down'];
 					}
-				$floorRander .= '<input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/>'.$floorDown.(isset($floor['floor_up']) && $floor['floor_up'] != "" ? " ~ ".$floor['floor_up'] : "").(isset($floor['area_ping']) && $floor['area_ping'] != "" ? "/".$floor['area_ping']." ".Yii::app()->controller->__trans("tsubo") : "");
+				$floorRander .= '<span class="'. $span_class .' negFloor floorEmpt"><input class="'.$class_floor.'" type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/>'.$floorDown.(isset($floor['floor_up']) && $floor['floor_up'] != "" ? " ~ ".$floor['floor_up'] : "").(isset($floor['area_ping']) && $floor['area_ping'] != "" ? "/".$floor['area_ping']." ".Yii::app()->controller->__trans("tsubo") : "") . '</span>';
 				}
 			}
 		}		
