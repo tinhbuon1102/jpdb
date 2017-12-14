@@ -295,14 +295,14 @@
                                             $class_floor ='no_vac_floor';
                                             $span_class  ="no_vac_span";
                                            }
-                                           if(!empty($all_floor['floor_down'])){
-                                             $floor= ' '.$all_floor['floor_down'].' Floor';
-                                           }
-                                           else{
-                                            $floor= 'Blank Floor';
-                                           }
                                         ?>
-                                            <span class="<?= $span_class?> negFloor floorEmpt"><input type="checkbox" name="targetFloorId[]" id="" class="targetFloorId <?= $class_floor ?>" value="<?= $all_floor['floor_id'] ?>"><?= $floor ?></span>
+                                            <span class="<?= $span_class?> negFloor floorEmpt"><input type="checkbox" name="targetFloorId[]" id="" class="targetFloorId <?= $class_floor ?>" value="<?= $all_floor['floor_id'] ?>">
+                                            <?php 
+                                            $floorDown = HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $all_floor);
+                                            $roomName = HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $all_floor);
+                                            echo $floorDown . ($roomName ? '(' . $roomName . ')' : '');
+                                            ?>
+                                            </span>
                                         <?php
                                         }
                                     } ?>

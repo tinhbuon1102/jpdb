@@ -3262,16 +3262,10 @@ class BuildingController extends Controller{
 					$span_class  ="no_vac_span";
 				}
 				
-				if($floor['floor_down'] == "" && $floor['area_m'] == ""){
-				$floorRander .= '<span class="'. $span_class .' negFloor floorEmpt"><input class="'.$class_floor.'" type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/> -</span>';
-				}else{
-					if(strpos($floor['floor_down'], '-') !== false){
-						$floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
-					}else{
-						$floorDown = $floor['floor_down'];
-					}
-				$floorRander .= '<span class="'. $span_class .' negFloor floorEmpt"><input class="'.$class_floor.'" type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="'.$floor['floor_id'].'"/>'.$floorDown.(isset($floor['floor_up']) && $floor['floor_up'] != "" ? " ~ ".$floor['floor_up'] : "").(isset($floor['area_ping']) && $floor['area_ping'] != "" ? "/".$floor['area_ping']." ".Yii::app()->controller->__trans("tsubo") : "") . '</span>';
-				}
+				$floorName = HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floor);
+				$roomName = HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $floor);
+				$floorName = $floorName . ($roomName ? '('.$roomName.')' : '');
+				$floorRander .= '<span class="'.$span_class.' negFloor floorEmpt"><input type="checkbox" name="targetFloorId[]" id="" class="targetFloorId '.$class_floor.'" value="'.$floor['floor_id'].'">'.$floorName .'</span>';
 			}
 		}		
 
