@@ -112,8 +112,11 @@ class SiteController extends Controller{
 		//$result = Yii::app()->db->createCommand($query)->queryAll();
 		$buildingDetails = array();
 		$customerDetails  = array();
-		$buildingDetails = Building::model()->findAll('name LIKE "%'.$keyword.'%"');
-		$customerDetails = Customer::model()->findAll('company_name LIKE "%'.$keyword.'%"');
+		if (trim($keyword))
+		{	
+			$buildingDetails = Building::model()->findAll('name LIKE "%'.$keyword.'%"');
+			$customerDetails = Customer::model()->findAll('company_name LIKE "%'.$keyword.'%"');
+		}
 		if(isset($buildingDetails) && count($buildingDetails) > 0 && !empty($buildingDetails)){
 			$this->render('searchedBuildingList',array('resultData'=>$buildingDetails));
 		}else if(isset($customerDetails) && count($customerDetails) > 0 && !empty($customerDetails)){
