@@ -5562,13 +5562,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                             <span class="negFloor <?php echo $floorEmptStatus; ?>">
               <input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
-			  if(strpos($floor['floor_down'], '-') !== false){
-				  $floorDown = Yii::app()->controller->__trans("地下").' '.str_replace("-", "", $floor['floor_down']);
-			  }else{
-				  $floorDown = $floor['floor_down'];
-			  }
+              $floorDown = HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floor);
+              $roomName = HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $floor);
+              echo $floorDown . ($roomName ? '(' . $roomName . ')' : '');
 			  ?>
-              <?php echo $floorDown; ?><?php echo isset($floor['floor_up']) && $floor['floor_up'] != "" ? " ~ ".$floor['floor_up'] : ""; ?><?php echo ' 階'; ?><?php echo isset($floor['area_ping']) && $floor['area_ping'] != "" ? "/".$floor['area_ping']." 坪" : ""; ?>
               </span>
               <?php
                                 }

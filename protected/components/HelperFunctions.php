@@ -226,7 +226,10 @@ class HelperFunctions extends CApplicationComponent {
 		
 			case "roomname":
 				if(isset($floor['roomname']) && $floor['roomname'] != ""){
-					echo '&nbsp;'.$floor['roomname'];
+					return '&nbsp;'.$floor['roomname'];
+				}
+				else {
+					return '';
 				}
 				break;
 			case "rent_unit_price_opt":
