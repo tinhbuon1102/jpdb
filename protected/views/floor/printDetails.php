@@ -1647,7 +1647,8 @@ if($requestData['print_type'] == 11){
             </tr>
             
             
-           <?php if (count($aRentPrice[-2]) != count($floorDetails)) {?>
+           <?php 
+           if ($aRentPrice[-2] != count($floorDetails)) {?>
             <tr>
               <td class="right-align notes" colspan="8"><?php echo Yii::app()->controller->__trans('上段：坪単価 下段：総額', 'ja'); ?><br/>
                 <?php echo Yii::app()->controller->__trans('賃料等課税対象となる金額には別途消費税が加算されます', 'ja'); ?></td>
