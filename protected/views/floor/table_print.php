@@ -53,6 +53,12 @@
 	  <!--/20171129 added-->
 
 	   <!--start to show window history-->
+	   <?php 
+	   if($floor_id != 0){
+	   	$win_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 1');
+	   }
+	   if(!empty($win_his)){
+	   ?>
 	  <table class="b_data b_data_history window_history">
 		  <tbody>
 			  <tr>
@@ -60,12 +66,6 @@
 			  </tr>
 			  <!--show latest 5 histories-->
 			  <?php
-
-                  if($floor_id != 0){
-                    $win_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 1');
-                  }
-
-                  if(!empty($win_his)){
                   	$count=1;
                   	$trader_id=array();
                   	foreach ($win_his as $owner) {
@@ -87,38 +87,29 @@
                      <?php
                      $count++;
                   	}
-                  }
-                  else{
-                  	?>
-                  	 <tr>
-				        <th colspan="4"> No history Found</th>
-			  		</tr>
-
-			  	  <?php
-
-                  }
-
 			 	 ?>
 		  </tbody>
 	  </table>
+	  <?php }?>
 	  <!--end of showing window history-->
 	  <!--start to show owner history-->
+	  <?php 
+	  if($floor_id != 0){
+	  	$owner_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 0 limit 1');
+	  }
+	  
+	  if(!empty($owner_his)){
+	  ?>
 	  <table class="b_data b_data_history owner_history">
 		  <tbody>
 			  <tr>
 				  <th class="bdata_title" colspan="4">Owner Hisotry</th>
 			  </tr>
-
 			    <?php
-
                   if($floor_id != 0){
                     $owner_his = OwnershipManagementHis::model()->findAll('floor_id='.$floor_id.' AND is_current = 0 limit 1');
                   }
-
-                  if(!empty($owner_his)){
                   	foreach ($owner_his as $owner) {
-                  		
-                  		
                      ?>
                          <tr>
 							  <th class="bo_name"><span class="owner_type "><?=  $managementArray[$owner['ownership_type']] ?></span><!--owner type--><?=  $owner['owner_company_name'] ?></th>
@@ -130,19 +121,10 @@
                      <?php
                      
                   	}
-                  }
-                  else{
-                  	?>
-                  	 <tr>
-				        <th colspan="4"> No history Found</th>
-			  		</tr>
-
-			  	  <?php
-
-                  }
 			    ?>
 		  </tbody>
 	  </table>
+	  <?php }?>
 	  <!--end of showing owner history-->
 
 
