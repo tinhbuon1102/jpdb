@@ -7,7 +7,7 @@
    	         ?>
 		  <tbody>
 			  <tr>
-				  <td class="trader_type window_type" colspan="4">Window</td>
+				  <td class="trader_type window_type" colspan="4"><?php echo Yii::app()->controller->__trans('Window'); ?></td>
 			  </tr>
 			  <?php
 			    $floor_id = 0;
@@ -29,7 +29,7 @@
 			  ?>
 			  
 			  <tr>
-				  <td class="trader_type owner_type" colspan="4">Owner</td>
+				  <td class="trader_type owner_type" colspan="4"><?php echo Yii::app()->controller->__trans('Owner'); ?></td>
 			  </tr>
 			    <?php
 			    if(!empty($floorDetails_allfloor['owner_trader_id'] )){
@@ -62,7 +62,7 @@
 	  <table class="b_data b_data_history window_history">
 		  <tbody>
 			  <tr>
-				  <th class="bdata_title" colspan="4">Window Hisotry</th>
+				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('Window History'); ?></th>
 			  </tr>
 			  <!--show latest 5 histories-->
 			  <?php
@@ -103,7 +103,7 @@
 	  <table class="b_data b_data_history owner_history">
 		  <tbody>
 			  <tr>
-				  <th class="bdata_title" colspan="4">Owner Hisotry</th>
+				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('Owner History'); ?></th>
 			  </tr>
 			    <?php
                   if($floor_id != 0){
