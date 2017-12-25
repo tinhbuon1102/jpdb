@@ -446,7 +446,7 @@ $(function(){
 
             }
             if(error_count > 0){
-              if(confirm('same trader used for'+error_str+ ' it will also change the '+ tab_name+' at '+error_str+' Are You Sure to chnage it' )){
+              if(confirm(''+error_str+ 'はすでに登録されており、 '+ tab_name+'が変更されます。本当に更新しますか？' )){
                    chnage_all_value_trader(curr_elem_val, entryArray[0], type, count, trader_id);
               }
               else{
@@ -993,14 +993,14 @@ function check_same_validity_all_ph_exit(){
       tel = $('#tel_window'+i).val();
       var trader_id = $('#trader_search_window'+i).val();
       if(!checking_ph_exit(tel, trader_id)){
-         error +='Window '+i+' ';
+         error +='窓口'+i+' ';
       }
     }
      for(var i=1; owner_count >= i; i++){
       tel = $('#tel_owner'+i).val();
       var trader_id = $('#trader_search_owner'+i).val();
       if(!checking_ph_exit(tel, trader_id)){
-         error +='Owner '+i+' ';
+         error +='オーナー'+i+' ';
       }
      
     }
@@ -1024,12 +1024,12 @@ function check_same_validity_all_ph_exit(){
      var entryArray =id.split(count);
      var type =entryArray[0];
      if(tel.search("-")==-1){
-        alert("phone number doesn't include '-'");
+        alert("電話番号には'-'ハイフンをいれてください。");
         return false;
       }
      var trader_id =$('#trader_search_'+type+count).val();
      if(!checking_ph_exit(tel, trader_id)){
-       alert('Phone number already exit');
+       alert('この電話番号は既に登録されています。');
      }
   });
 
@@ -1042,13 +1042,13 @@ function check_same_validity_all_ph_exit(){
      var entryArray =id.split(count);
      var type =entryArray[0];
       if(tel.search("-")==-1){
-        alert("phone number doesn't include '-'");
+        alert("電話番号には'-'ハイフンをいれてください。");
         return false;
       }
      var trader_id =$('#trader_search_'+type+count).val();
      if(!checking_ph_exit(tel, trader_id)){
-       alert('Phone number already exit');
-     }
+       alert('この電話番号は既に登録されています。');s
+     }s
 
   });
 
@@ -1070,7 +1070,7 @@ function check_same_validity_all_ph_exit(){
       } 
     }
     if(error != ''){
-      alert(error+"phone number doesn't include '-'");
+      alert(error+"電話番号には'-'ハイフンをいれてください。");
       return false;
     }
 
