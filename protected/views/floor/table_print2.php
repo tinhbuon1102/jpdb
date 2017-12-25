@@ -5,17 +5,6 @@
                  $managementArray = array('1'=>'オーナー','6'=>'サブリース','7'=>'貸主代理','8'=>Yii::app()->controller->__trans('AM'),'10'=>'業者','4'=>'仲介業者','2'=>'管理会社','9'=>Yii::app()->controller->__trans('PM'),													'3'=>'ゼネコン','-1'=>'不明',);
 
    	         ?>
-		  <tbody>
-			  <tr>
-				  <td class="trader_type window_type" colspan="4">No Window</td>
-			  </tr>
-			  
-			  
-			  <tr>
-				  <td class="trader_type owner_type" colspan="4">No Owner</td>
-			  </tr>
-			   
-		  </tbody>
 	  </table>
 	  <!--/20171129 added-->
 
@@ -36,7 +25,7 @@
 // 							}
 				
 			$countFloor = 0;
-			$no_owner_window = is_array($no_owner_window) ? $no_owner_window : array();
+			$no_owner_window = is_array($all_fllors['no_owner_window']) ? $all_fllors['no_owner_window'] : array();
 			foreach($no_owner_window as $floor){
 				//echo $floor['floor_id'];
 				

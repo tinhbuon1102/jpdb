@@ -1025,10 +1025,18 @@ if($requestData['print_type']==8){
 			}
 		  ?></td>
           <!--parking value--> 
+          
+          <!-- Building Note-->
+          <td>
+          	<?php echo $buildCart['notes']?>
+          </td>
+          <!-- Building Note End-->
+          
         </tr>
       </tbody>
     </table>
     <?php 
+    echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));
        $all_fllors=FloorController::cart_print_view($buildCart['building_id'], $glob_where);
     if(!empty($all_fllors['comparted_array'])){
     	foreach ($all_fllors['comparted_array'] as $floorDetails_allfloor) {
@@ -1100,7 +1108,6 @@ if($requestData['print_type']==8){
 				        ?>
 				    </tbody>
 			</table>
-   <?php echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));?>	
   </section>
 <?php
 			$buildingNumber++;
