@@ -3255,11 +3255,11 @@ class BuildingController extends Controller{
 				
 				if($floor['vacancy_info']==1){
 					$class_floor ='vac_floor';
-					$span_class  ="vac_span";
+					$span_class  ="floorEmpt vac_span";
 				}
 				else{
 					$class_floor ='no_vac_floor';
-					$span_class  ="no_vac_span";
+					$span_class  ="floorNotEmpt no_vac_span";
 				}
 				
 				$floorName = HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floor);
