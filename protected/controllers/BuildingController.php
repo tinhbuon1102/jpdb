@@ -3287,7 +3287,7 @@ class BuildingController extends Controller{
 		$users=Users::model()->findByAttributes(array('username'=>Yii::app()->user->id));
      	$loguser_id = $users->user_id;		
 		try{
-		foreach($getArray['negFloorId'] as $flr){
+		foreach($getArray['targetFloorId'] as $flr){
 			$model = new RentNegotiation;
 			$model->building_id = $getArray['negBuildId'];
 			$model->negotiation_type = $getArray['negotiationType'];

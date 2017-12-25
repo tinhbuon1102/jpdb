@@ -5554,13 +5554,13 @@ if(count($getGoogleMapKeyDetails) > 0){
                                 if($floor['floor_down'] == "" && $floor['area_ping'] == ""){
                             ?>
                             <span class="negFloor <?php echo $floorEmptStatus; ?>">
-                            	<input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/> -
+                            	<input type="checkbox" name="targetFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/> -
                             </span>
               <?php
                                 }else{
                             ?>
                             <span class="negFloor <?php echo $floorEmptStatus; ?>">
-              <input type="checkbox" name="negFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/>
+              <input type="checkbox" name="targetFloorId[]" id="negFloorId" class="negFloorId" value="<?php echo $floor['floor_id']; ?>"/>
               <?php
               $floorDown = HelperFunctions::translateBuildingValue('floor_up_down', $buildingDetails, $floor);
               $roomName = HelperFunctions::translateBuildingValue('roomname', $buildingDetails, $floor);
