@@ -1036,6 +1036,7 @@ if($requestData['print_type']==8){
       </tbody>
     </table>
     <?php 
+    $negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart['building_id'].' order by rent_negotiation_id desc');
     echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));
        $all_fllors=FloorController::cart_print_view($buildCart['building_id'], $glob_where);
     if(!empty($all_fllors['comparted_array'])){
@@ -1077,7 +1078,6 @@ if($requestData['print_type']==8){
     <?php
 		$addedOnArray = array();
 		$transmissionMattersDetails = TransmissionMatters::model()->findAll('building_id = '.$buildCart['building_id']);
-		$negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart['building_id'].' order by rent_negotiation_id desc');
 		
 			?>
 	
