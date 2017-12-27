@@ -162,6 +162,11 @@ table.lists tr:nth-child(even) td { background-color: #f4f4f4; }
 table.lists tr.row_second td, table.building-list td table.lists td.center.label_3 { border-bottom: 1px solid #CCC; }
 table.building-list td table.lists td.center.label_3 { border-right: 1px solid #CCC; }
 table.building-list td table.facility-info td { border-bottom: 1px solid #CCC; }
+th.bdata_title, td.trader_type.owner_type, td.trader_type.window_type {
+    border-bottom: 1px solid #e9e9e9;
+    line-height: 1.2 !important;
+    padding-top: 10px !important;
+}
 /*table.lists tr:nth-child(odd) td {
 
     border-bottom: 1px solid #ffffff;
@@ -181,7 +186,7 @@ table.facility-info td.comment-texts { font-size: 5pt !important; height: auto; 
 /*****ver3***********/
 
 .commercial table { width: 100%; }
-td.cam_date { width: 20mm; }
+td.cam_date { width: 24mm; }
 th.bo_name { width: 370px; }
 th.bo_fee { width: 12mm; }
 th.bo_tel1 { width: 58mm;}
@@ -996,7 +1001,7 @@ if($requestData['print_type']==8){
           <?php
 			$elevatorExp = explode('-',$buildCart['elevator']);
             if($elevatorExp[0] == 1){
-            	echo Yii::app()->controller->__trans('有り');
+            	echo '有';
 				if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 					echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
 					//echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗', 'ja') : "";
@@ -1005,9 +1010,9 @@ if($requestData['print_type']==8){
 					//echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].Yii::app()->controller->__trans('基', 'ja') : "";
 					if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                 }else if($elevatorExp[0] == -2){
-                	echo Yii::app()->controller->__trans('不明', 'ja');
+                	echo '不明';
                 }else if($elevatorExp[0] == 2){
-                	echo Yii::app()->controller->__trans('無し', 'ja');
+                	echo '無';
                 }else{
                 	echo '-';
                 }

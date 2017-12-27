@@ -515,11 +515,11 @@ if($requestData['print_type'] ==8){
                         <td class="b_usetime" style="font-size: 8pt;border: none;text-align: left;padding: 0;width: 21mm;">
                         	24H
                         </td>
-                        <td class="b_ev_num" style="font-size: 8pt;border: none;text-align: left;padding: 0;width: 21mm;">
+                        <td class="b_ev_num ev_num" style="font-size: 8pt;border: none;text-align: left;padding: 0;width: 21mm;">
 							<?php
                                 $elevatorExp = explode('-',$buildCart['elevator']);
                                 if($elevatorExp[0] == 1){
-                                    echo Yii::app()->controller->__trans('Exist');
+                                    echo '有';
 									if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 									
 									echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基') : "";
@@ -529,9 +529,9 @@ if($requestData['print_type'] ==8){
 									echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].'基' : "";
 									if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
                                 }else if($elevatorExp[0] == -2){
-                                    echo Yii::app()->controller->__trans('unknown');
+                                    echo Yii::app()->controller->__trans('不明');
                                 }else if($elevatorExp[0] == 2){
-                                    echo Yii::app()->controller->__trans('noexist');
+                                    echo Yii::app()->controller->__trans('無');
                                 }else{
                                     echo '-';
                                 }
@@ -541,11 +541,11 @@ if($requestData['print_type'] ==8){
                         	<?php
                             	$parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
 								if($parkingUnitNo[0] == 1){
-									echo Yii::app()->controller->__trans('exist').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台').')' : "");
+									echo Yii::app()->controller->__trans('有').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台').')' : "");
 								}else if($parkingUnitNo[0] == 2){
-									echo Yii::app()->controller->__trans('noexist');
+									echo Yii::app()->controller->__trans('無');
 								}else if($parkingUnitNo[0] == 3){
-									echo Yii::app()->controller->__trans('exist but unknown unit number');
+									echo Yii::app()->controller->__trans('有るが台数不明');
 								}
 							?>
                         </td>

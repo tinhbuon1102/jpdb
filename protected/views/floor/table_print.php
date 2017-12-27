@@ -62,7 +62,7 @@
 	  <table class="b_data b_data_history window_history">
 		  <tbody>
 			  <tr>
-				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('Window History'); ?></th>
+				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('窓口履歴'); ?></th>
 			  </tr>
 			  <!--show latest 5 histories-->
 			  <?php
@@ -103,7 +103,7 @@
 	  <table class="b_data b_data_history owner_history">
 		  <tbody>
 			  <tr>
-				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('Owner History'); ?></th>
+				  <th class="bdata_title" colspan="4"><?php echo Yii::app()->controller->__trans('オーナー履歴'); ?></th>
 			  </tr>
 			    <?php
                   if($floor_id != 0){
