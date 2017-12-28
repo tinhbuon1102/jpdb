@@ -65,6 +65,12 @@ img.company_name {
 }
 td.f_price_t_rent { height: 16mm; }
 img { max-width: 277mm; height: auto; }
+table.building-profile td.center.const_th {
+    width: 55mm;
+}
+table.building-profile td.establish_th {
+    width: 45mm;
+}
 .build_title { margin-top: 10px; margin-bottom: 10px; font-size: 20px; }
 .cover h1 { font-size: 30px; margin-top: 0; }
 .headtitle-wrapper { position: absolute; left: 0; bottom: 60mm; z-index: 3; padding: 12mm 10mm; width: 150mm; min-height: 45mm; display: block; background: url(images/wht_08.png) repeat;}
@@ -100,6 +106,13 @@ table.single-info td.title { font-size: 24pt; }
 table.building-profile.single-info td { height: auto; line-height: 1.6; border: none; }
 table.building-profile.single-info th { border-color: #c9c9c9; }
 table.building-profile.single-info td table caption { text-align: left; background: none; color: #e11b30; font-weight: bold; border-left: 4px solid #e11b30; padding: 0; text-indent: 2mm; line-height: 1.2; font-size: 9pt; }
+table.current_status {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+table.building-profile.single-info td table th.senko_th {
+    width: 14mm;
+}
 table.building-profile.single-info td table td, table.building-profile.single-info td table th { font-size: 8pt; line-height: 1; height: 4mm; padding: 0; }
 table.building-profile.single-info td table th { padding: 2mm 0 1mm; }
 table.building-profile.single-info td table td.notes { line-height: 1.4; }
@@ -1272,10 +1285,10 @@ if($requestData['print_type'] == 11){
         <td class="center"><?php echo ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
         <td class="center"><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?></td>
-        <td class="center"><?php echo HelperFunctions::translateBuildingValue('built_year', $buildCart); ?></td>
+        <td class="center establish_th"><?php echo HelperFunctions::translateBuildingValue('built_year', $buildCart); ?></td>
         <td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'m&sup2;' : "-"; ?></td>
         <?php /*?><td class="center"><?php echo $buildCart['total_floor_space'] != "" ? $buildCart['total_floor_space'].'坪' : "-"; ?></td><?php */?>
-        <td class="center">
+        <td class="center const_th">
         <?php
         /*$typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
         echo $typeDetails['construction_type_name'];*/
@@ -1293,7 +1306,7 @@ if($requestData['print_type'] == 11){
     </table>
     <div class="notice clearfix">
       <div class="half left">
-        <p><?php echo Yii::app()->controller->__trans('※契約面積・金額が㎡表示の物件は坪に換算しています。(坪換算値=3.3058)。', 'ja'); ?></p>
+        <p><?php echo Yii::app()->controller->__trans('※契約面積・金額が㎡表示の物件は坪に換算しています。(坪換算値=3.30578)。', 'ja'); ?></p>
         <!--fixed texts-->
         <p><?php echo Yii::app()->controller->__trans('※賃貸条件や建物設備は変更する可能性があります。正式正確な内容につきましては重要事項説明書をもってご説明致します。', 'ja'); ?></p>
         <!--fixed texts-->
@@ -1385,7 +1398,8 @@ if($requestData['print_type'] == 11){
         <table class="current_status">
             <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
             <tr>
-              <th><?php echo Yii::app()->controller->__trans('階数', 'ja'); ?></th>
+				<th class="senko_th"></th>
+              <th class="stairs"><?php echo Yii::app()->controller->__trans('階数', 'ja'); ?></th>
               <th colspan="2"><?php echo Yii::app()->controller->__trans('面積', 'ja'); ?></th>
               <th></th>
               <th><?php echo Yii::app()->controller->__trans('預託金', 'ja'); ?></th>
@@ -1416,7 +1430,8 @@ if($requestData['print_type'] == 11){
 							             	<table class="current_status" style="margin-top: 10px">
 												<span class="caption">'. Yii::app()->controller->__trans("募集状況", 'ja').'</span>
 		                                        <tr>
-		                                            <th>'. Yii::app()->controller->__trans("階数", 'ja').'</th>
+												<th class="senko_th"></th>
+		                                            <th class="stairs">'. Yii::app()->controller->__trans("階数", 'ja').'</th>
 		                                            <th colspan="2">'. Yii::app()->controller->__trans("面積", 'ja').'('. Yii::app()->controller->__trans("ネット", 'ja').')</th>
 													<th></th>
 		                                            <th>'. Yii::app()->controller->__trans("預託金", 'ja').'</th>
@@ -1427,11 +1442,16 @@ if($requestData['print_type'] == 11){
 					}
             ?>
             <tr>
-              <td class="stairs center">
-			  	<?php
-				if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
+				<td class="senko_td center">
+					<?php
+					if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
 					echo '<span class="senko">'.Yii::app()->controller->__trans('先行有', 'ja').'</span>';
 				}
+					?>
+				</td>
+              <td class="stairs center">
+			  	<?php
+				
 				
 				if(isset($floorId['floor_down']) && $floorId['floor_down'] != ""){
 					if(strpos($floorId['floor_down'], '-') !== false){
@@ -1498,7 +1518,7 @@ if($requestData['print_type'] == 11){
               	else if((int)$floorId['calculation_method']==2) echo "G";
               ?>
               </td>  
-              <td class="deposit right-align"><font><font>
+              <td class="deposit center"><font><font>
                 <?php
                                                         if(isset($floorId['deposit']) && $floorId['deposit'] != "" && $floorId['deposit'] != 0){
 //                                                         	if(isset($floorId['rent_unit_price_opt']) && ($floorId['rent_unit_price_opt'] == -1 || $floorId['rent_unit_price_opt'] == -2)) {
@@ -1529,7 +1549,7 @@ if($requestData['print_type'] == 11){
 														}														
                                                     ?>
                 </font></font></td>
-              <td class="rent-fee right-align"><font><font>
+              <td class="rent-fee center"><font><font>
                 <?php
                                                         if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
                                                             echo Yii::app()->controller->renderPrice($floorId['rent_unit_price']).Yii::app()->controller->__trans('円 / 坪', 'ja');
@@ -1547,7 +1567,7 @@ if($requestData['print_type'] == 11){
 														}
                                                     ?>
                 </font></font></td>
-              <td class="condo-fee right-align"><font><font>
+              <td class="condo-fee center"><font><font>
                 <?php
                                                         if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee']).Yii::app()->controller->__trans('円 / 坪', 'ja');
@@ -1575,11 +1595,12 @@ if($requestData['print_type'] == 11){
               <?php $sum_are_net += $floorId['area_m']; ?>
             </tr>
             <tr>
+				<td class="senko_td center"></td>
               <td class="stairs center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
-              <td class="deposit right-align"><font><font>
+              <td class="deposit center"><font><font>
                 <?php/*
                                                         if(isset($floorId['total_deposit']) && $floorId['total_deposit'] != "0" && $floorId['total_deposit'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_deposit']).' 円';
@@ -1588,7 +1609,7 @@ if($requestData['print_type'] == 11){
 														}*/
                                                     ?>
                 </font></font></td>
-              <td class="rent-fee right-align"><font><font>
+              <td class="rent-fee center"><font><font>
                 <?php
 				                                        if(isset($floorId['total_rent_price']) && $floorId['total_rent_price'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円', 'ja');
@@ -1620,7 +1641,7 @@ if($requestData['print_type'] == 11){
                                                         }
                                                     ?>
                 </font></font></td>
-              <td class="condo-fee right-align"><font><font>
+              <td class="condo-fee center"><font><font>
                 <?php
                                                         if(isset($floorId['total_condo_fee']) && $floorId['total_condo_fee'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_condo_fee']).Yii::app()->controller->__trans('円', 'ja');
@@ -1637,13 +1658,14 @@ if($requestData['print_type'] == 11){
             <!--blank cell *if there are 3 floors that you choose-->
             <?php for($i=0; $i< 15 - (count($floorDetails) * 2) - 1; $i++) {?>
             <tr>
+				<td class="senko_td center"></td>
               <td class="stairs center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
-              <td class="deposit right-align"></td>
-              <td class="rent-fee right-align"></td>
-              <td class="condo-fee right-align"></td>
+              <td class="deposit center"></td>
+              <td class="rent-fee center"></td>
+              <td class="condo-fee center"></td>
               <td class="date-move center"></td>
             </tr>
             <?php }?>
@@ -1652,9 +1674,9 @@ if($requestData['print_type'] == 11){
               <td class="space center"><?php echo $sum_arem; ?><?php echo Yii::app()->controller->__trans('坪', 'ja'); ?></td>
               <td class="space center"><?php echo $sum_are_net; ?><?php echo Yii::app()->controller->__trans('m'); ?>&sup2;</td>
               <td class="space center"></td>
-              <td class="deposit right-align"></td>
-              <td class="rent-fee right-align"></td>
-              <td class="condo-fee right-align"></td>
+              <td class="deposit center"></td>
+              <td class="rent-fee center"></td>
+              <td class="condo-fee center"></td>
               <td class="date-move center"></td>
             </tr>
             

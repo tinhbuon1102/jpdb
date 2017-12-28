@@ -243,13 +243,13 @@
           <?php
           if(isset($floorId['contract_period_opt']) && $floorId['contract_period_opt'] != ""){
           	if($floorId['contract_period_opt'] == 1){
-          		echo Yii::app()->controller->__trans('定期・普通', 'ja');
+          		echo Yii::app()->controller->__trans('普通借家', 'ja');
           	}elseif($floorId['contract_period_opt'] == 2){
-          		echo Yii::app()->controller->__trans('定期・普通', 'ja');
+          		echo Yii::app()->controller->__trans('定借', 'ja');
           	}elseif($floorId['contract_period_opt'] == 3){
           		echo Yii::app()->controller->__trans('定借希望', 'ja');
           	}else{
-          		echo Yii::app()->controller->__trans('定期', 'ja');
+          		echo Yii::app()->controller->__trans('', 'ja');
           	}
           }else{
           	echo '-';
