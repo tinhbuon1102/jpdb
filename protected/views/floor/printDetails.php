@@ -1344,10 +1344,21 @@ if($requestData['print_type'] == 11){
 					unset($floorDetails[$floorKey]);
 				}
 			}
-// 			for ($i=0; $i<20; $i++) {
-// 				$floorDetails[] = $floorDetails[0];
-// 			}
-// 			echo '<pre>'; print_r($floorDetails);die;
+			
+			$iNoSenko = 0;
+			$bHasSenko = true;
+			foreach($floorDetails as $indexFloor => $floor){
+				$floorId = Floor::model()->findByPk($floor['floor_id']);
+				if(!isset($floorId['preceding_user']) || $floorId['preceding_user'] == 0){
+					$iNoSenko ++;
+				}
+				
+				if (count($floorDetails) == $iNoSenko)
+				{
+					$bHasSenko = false;
+				}
+			}
+			
 			$sum_arem = 0;
 			$sum_are_net = 0;
 			if(count($floorDetails) <= 9 || true){
@@ -1404,7 +1415,9 @@ if($requestData['print_type'] == 11){
         <table class="current_status">
             <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
             <tr>
+            	<?php if ($bHasSenko) {?>
 				<th class="senko_th senko_<?php echo $buildCart['building_id']?>"></th>
+				<?php }?>
               <th class="stairs"><?php echo Yii::app()->controller->__trans('階数', 'ja'); ?></th>
               <th colspan="2"><?php echo Yii::app()->controller->__trans('面積', 'ja'); ?></th>
               <th></th>
@@ -1417,7 +1430,6 @@ if($requestData['print_type'] == 11){
 // 				$pFloors = explode(',',$prosalData['floor_id']);
             	$pFloors = $proposedFloors;
             	$aRentPrice = array();
-            	$iNoSenko = 0;
 				foreach($floorDetails as $indexFloor => $floor){
 					$aRentPrice[$floor['rent_unit_price_opt']] = isset($aRentPrice[$floor['rent_unit_price_opt']]) ? $aRentPrice[$floor['rent_unit_price_opt']] : 0;
 					$aRentPrice[$floor['rent_unit_price_opt']]++;
@@ -1436,9 +1448,9 @@ if($requestData['print_type'] == 11){
 							             <td class="td_col2_3">
 							             	<table class="current_status" style="margin-top: 10px">
 												<span class="caption">'. Yii::app()->controller->__trans("募集状況", 'ja').'</span>
-		                                        <tr>
-												<th class="senko_th senko_'.$buildCart['building_id'].'"></th>
-		                                            <th class="stairs">'. Yii::app()->controller->__trans("階数", 'ja').'</th>
+		                                        <tr>';
+												echo $bHasSenko ? '<th class="senko_th senko_'.$buildCart['building_id'].'"></th>' : '';
+		                                            echo '<th class="stairs">'. Yii::app()->controller->__trans("階数", 'ja').'</th>
 		                                            <th colspan="2">'. Yii::app()->controller->__trans("面積", 'ja').'('. Yii::app()->controller->__trans("ネット", 'ja').')</th>
 													<th></th>
 		                                            <th>'. Yii::app()->controller->__trans("預託金", 'ja').'</th>
@@ -1449,23 +1461,15 @@ if($requestData['print_type'] == 11){
 					}
             ?>
             <tr>
+            	<?php if ($bHasSenko) {?>
 				<td class="senko_td center senko_<?php echo $buildCart['building_id']?>">
 					<?php
 					if(isset($floorId['preceding_user']) && $floorId['preceding_user'] != 0){
 						echo '<span class="senko">'.Yii::app()->controller->__trans('先行有', 'ja').'</span>';
 					}
-					else {
-						$iNoSenko ++;
-						
-						if (count($floorDetails) == $iNoSenko)
-						{
-							echo '<style>
-								.senko_'.$buildCart['building_id'].'{display: none;}
-							</style>';
-						}
-					}
 					?>
 				</td>
+				<?php }?>
               <td class="stairs center">
 			  	<?php
 				
@@ -1612,7 +1616,9 @@ if($requestData['print_type'] == 11){
               <?php $sum_are_net += $floorId['area_m']; ?>
             </tr>
             <tr>
+            	<?php if ($bHasSenko) {?>
 				<td class="senko_td center senko_<?php echo $buildCart['building_id']?>"></td>
+				<?php }?>
               <td class="stairs center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
@@ -1675,7 +1681,9 @@ if($requestData['print_type'] == 11){
             <!--blank cell *if there are 3 floors that you choose-->
             <?php for($i=0; $i< 15 - (count($floorDetails) * 2) - 1; $i++) {?>
             <tr>
+            	<?php if ($bHasSenko) {?>
 				<td class="senko_td center senko_<?php echo $buildCart['building_id']?>"></td>
+				<?php }?>
               <td class="stairs center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
