@@ -1056,7 +1056,13 @@ if($requestData['print_type']==8){
     <?php 
     $negotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart['building_id'].' order by rent_negotiation_id desc');
     echo HelperFunctions::generateTableNegotiation($negotiationDetails, array('no_button' => 1, 'header' => 1));
-       $all_fllors=FloorController::cart_print_view($buildCart['building_id'], $glob_where);
+    if ($_GET['hdnProArticleId'])
+    {
+    	$all_fllors=HelperFunctions::floor_array(HelperFunctions::buildQuery('proposed', $_GET['hdnProArticleId']), $buildCart['building_id']);
+    }
+    else {
+    	$all_fllors=HelperFunctions::floor_array(HelperFunctions::buildQuery('cart'), $buildCart['building_id']);
+    }
     if(!empty($all_fllors['comparted_array'])){
     	foreach ($all_fllors['comparted_array'] as $floorDetails_allfloor) {
     		include 'table_print.php';
