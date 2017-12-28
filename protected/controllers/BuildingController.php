@@ -1407,8 +1407,8 @@ class BuildingController extends Controller{
 				if(isset($searchallCond[0])) $searchallCond = $searchallCond[0];
 				if(count($resultData) > 0){ 
 					$this->render('searchedBuidingResult',array('resultData'=>$resultData,'floorIds'=>$aFloor,'buildingIds'=>$buildngIds,'customCondition'=>$searchallCond,'cityCondition'=>$cityCondition));
+					die;
 				}
-				die;
 			}
 			
 			if(isset($_GET['oid']) && $_GET['oid'] != '' && $_GET['oid'] != 0){
@@ -1441,8 +1441,8 @@ class BuildingController extends Controller{
 					foreach($floorAry as $fv) $floorIds[] = $fv['floor_id'];
 					
 					$this->render('searchedBuidingResult',array('resultData'=>$resultData,'floorIds'=>$floorIds,'buildingIds'=>array($_GET['id']),'cityCondition'=>$cityCondition));
+					die;
 				}
-				die;
 			}
 			
 			if(isset($_GET['fIds']) && $_GET['fIds'] != '' && $_GET['fIds'] != 0){
