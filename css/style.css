@@ -93,6 +93,12 @@ a.sendupdate-button {
 .select_short {
 	width: auto;
 }
+td button[type="button"].btnAddToCart.remove {
+    background: #aaaaaa;
+}
+td button[type="button"].btnAddToCart.remove:hover, td button[type="button"].btnAddToCart.remove:focus {
+    background: red;
+}
 /************
 
 

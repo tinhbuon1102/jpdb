@@ -45,7 +45,7 @@
 		$('html').on('click', '#calculate_btn', function(e){
 			e.preventDefault();
 			var spread = $('#new').val() - $('#old').val();
-			var percent = spread * 100 / $('#new').val();
+			var percent = spread * 100 / $('#old').val();
 			percent = isNaN(percent) ? 0 : percent;
 			$('#percent').val(percent.toFixed(1) + '%');
 		});

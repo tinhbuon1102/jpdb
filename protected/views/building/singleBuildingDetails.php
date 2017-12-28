@@ -630,10 +630,10 @@ if(count($getGoogleMapKeyDetails) > 0){
                                         $explodeString = explode('-',$floorDetails['air_conditioning_time_used']);
                                         if($explodeString[0] != 2){
                                             if($explodeString[0] == 0){
-                                                echo Yii::app()->controller->__trans('不明');
+                                                echo '不明';
                                             }
                                             if($explodeString[0] == 1){
-                                                echo Yii::app()->controller->__trans('利用時間制限なし（24時間）');
+                                                echo '利用時間制限なし（24時間）';
                                             }
                                         }else{
                                             echo Yii::app()->controller->__trans('weekday').'：- '.($explodeString[1] != "~" ? $explodeString[1] : "").'<br/>'.Yii::app()->controller->__trans('Sat').'：- '.($explodeString[2] != "~" ? $explodeString[2] : "").'<br/>'.Yii::app()->controller->__trans('Sun').'：- '.($explodeString[3] != "~" ? $explodeString[3] : "");
@@ -1825,7 +1825,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                     <div class="bt_update">
 		                            	<input type="hidden" name="buildingID" class="buildingID" value="<?php echo $globalBuildingId; ?>"/>
 		                                <a href="#" class="btnTranslateLines">
-		                                	<?php echo Yii::app()->controller->__trans('Translate Station Lines'); ?>
+		                                	<?php echo '路線の英語訳を編集'; ?>
 		                                </a>
 		                            </div>
                                 </dd>

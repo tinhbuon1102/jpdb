@@ -681,7 +681,7 @@ class HelperFunctions extends CApplicationComponent {
 				{
 					$resp .= Yii::app()->controller->__trans("Other negotiations information");
 				}
-				$resp .= '<br/>' . $floorName . '</td>
+				$resp .= '' . $floorName . '</td>
 								</tr>';
 			}
 			

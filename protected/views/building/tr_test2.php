@@ -32,7 +32,7 @@
 										}
 										echo $vacInfo;
 										if($list['preceding_user'] == 1){
-												echo '</br><span class="senko" style="background-color:yellow">'.Yii::app()->controller->__trans('先行有').'</span>';
+												echo '</br><span class="senko" style="background-color:yellow">先行有</span>';
 											}
 									?>
                                	</td>
