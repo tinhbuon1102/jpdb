@@ -1581,7 +1581,7 @@ if($requestData['print_type'] == 11){
 															if($floorId['rent_unit_price_opt'] == -1){
 																echo Yii::app()->controller->__trans('未定', 'ja');
 															}else if($floorId['rent_unit_price_opt'] == -2){
-																echo Yii::app()->controller->__trans('相談', 'ja');
+																echo Yii::app()->controller->__trans('POA', 'ja');
 															}
 														}else{
 															echo '';
