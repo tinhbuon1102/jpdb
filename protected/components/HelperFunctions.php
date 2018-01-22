@@ -560,6 +560,16 @@ class HelperFunctions extends CApplicationComponent {
 				}
 				
 				break;
+			
+			case 'renewal_data' :
+				if ($current_lang == 'en')
+				{
+					$return = $building['renewal_data_en'] ? $building['renewal_data_en'] : FIELD_MISSING_VALUE;
+				}
+				else {
+					$return = $building['renewal_data'] ? $building['renewal_data'] : FIELD_MISSING_VALUE;
+				}
+				break;
 				
 			default :
 		

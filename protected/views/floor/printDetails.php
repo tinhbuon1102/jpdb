@@ -1787,7 +1787,8 @@ if($requestData['print_type'] == 11){
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('リニューアル', 'ja'); ?></th>
-                    <td><?php echo $buildCart['renewal_data'] != "" ? $buildCart['renewal_data'] : "-"; ?></td>
+                    <td>
+                    <?php  echo HelperFunctions::translateBuildingValue('renewal_data', $buildCart); ?>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
