@@ -348,7 +348,7 @@ table tr, img, blockquote {page-break-inside: avoid !important;}
 </style>
 </head>
 
-<body class="<?php print (isset($_REQUEST['print'])) ? 'twoprint' : ''; ?>">
+<body class="<?php print (isset($_REQUEST['print'])) ? 'twoprint' : ''; ?> <?php echo $language ?>">
 <?php if(!isset($_GET['print'])){ ?>
 <input type="button" name="makePdf" id="makePdf" class="makePdf btnMakePdf" value="Export PDF" data-url="<?php  if(isset($_SERVER['REQUEST_URI'])) echo $_SERVER['REQUEST_URI']; else echo ""; ?>" data-pdfUrl="<?php echo Yii::app()->createUrl('proposedArticle/newPdf'); ?>" data-id="<?php echo $_GET['hdnProArticleId']; ?>"/>
 <div style="width: 35px;height: 32px;position: absolute;top: 10px;left: 125px; display:none;" class="dispLoader">
