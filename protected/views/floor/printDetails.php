@@ -1399,7 +1399,7 @@ if($requestData['print_type'] == 11){
         	if (count($floorDetails) > 1)
         	{
         		// Show Plan from article field
-        		$plan_id = $buildCart['article_plan_id'];
+        		$plan_id = $buildCart['plan_standard_id'];
         	}
         	else {
         		// Show Plan for current floor
