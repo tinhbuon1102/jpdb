@@ -102,7 +102,10 @@ table.building-profile th { border-bottom: 1px solid #000; font-size: 11pt; font
 table.building-profile td { font-size: 11pt; border-bottom: 1px solid #c9c9c9; line-height: 7mm; height: 7mm; }
 caption { background: #e11b30; color: #000; text-transform: uppercase; padding: 1mm 0; font-family: HelveticaNeue-bold; }
 .caption { text-align: left; background: none; color: #e11b30; font-weight: bold; border-left: 4px solid #e11b30; padding: 0; text-indent: 2mm; line-height: 1.2; font-size: 9pt; display: inline-block; }
-table.single-info td.title { font-size: 24pt; }
+table.single-info td.title {
+    font-size: 18pt;
+    padding-bottom: 10px;
+}
 table.building-profile.single-info td { height: auto; line-height: 1.6; border: none; }
 table.building-profile.single-info th { border-color: #c9c9c9; }
 table.building-profile.single-info td table caption { text-align: left; background: none; color: #e11b30; font-weight: bold; border-left: 4px solid #e11b30; padding: 0; text-indent: 2mm; line-height: 1.2; font-size: 9pt; }
@@ -114,7 +117,7 @@ table.building-profile.single-info td table th.senko_th {
     width: 14mm;
 }
 body.en table.building-profile.single-info td table th.senko_th {
-    width: 20mm;
+    width: 24mm;
 }
 table.building-profile.single-info td table td, table.building-profile.single-info td table th { font-size: 8pt; line-height: 1; height: 4mm; padding: 0; }
 table.building-profile.single-info td table th { padding: 2mm 0 1mm; }
@@ -1391,7 +1394,7 @@ if($requestData['print_type'] == 11){
         ?>
         <td rowspan="2" class="td_col1_3">
         <img src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>"/>
-        <div style="padding-top:15px" class="plan-img">
+        
         <?php
         	if (count($floorDetails) > 1)
         	{
@@ -1413,7 +1416,11 @@ if($requestData['print_type'] == 11){
         		$planName = 'no_plan.jpg';
         	}
 			?>
-          <img src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$planName; ?>" /></div>
+			<?php //if ( isset($planPictureDetails) && count($planPictureDetails) > 0 ) { ?>
+			<div style="padding-top:15px" class="plan-img"><img src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$planName; ?>" /></div>
+			<?php //} else { ?>
+			<?php //} ?>
+          
         </td>
         <td class="td_col2_3">
         <table class="current_status">
@@ -1705,7 +1712,7 @@ if($requestData['print_type'] == 11){
             </tr>
             <?php }?>
             <tr>
-              <td class="total"><?php echo Yii::app()->controller->__trans('計', 'ja'); ?></td>
+              <td class="total" <? if ($bHasSenko) { echo 'colspan="2"'; }?>><?php echo Yii::app()->controller->__trans('計', 'ja'); ?></td>
               <td class="space center"><?php echo $sum_arem; ?><?php echo Yii::app()->controller->__trans('坪', 'ja'); ?></td>
               <td class="space center"><?php echo $sum_are_net; ?><?php echo Yii::app()->controller->__trans('m'); ?>&sup2;</td>
               <td class="space center"></td>
