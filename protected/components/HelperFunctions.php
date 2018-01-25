@@ -578,22 +578,33 @@ class HelperFunctions extends CApplicationComponent {
 				if ($current_lang == 'en')
 				{
 					$rentNegotiationDetails['negotiation_range'] = trim($rentNegotiationDetails['negotiation_range']);
-					$multiple = 1;
+					$multiple = 0;
 					switch ($rentNegotiationDetails['negotiation_range']) {
 						case '前半' :
-							$multiple = 1.3;
+							$multiple = 3000;
 							break;
 						case '半ば' :
-							$multiple = 1.6;
+							$multiple = 6000;
 							break;
 						case '後半' :
-							$multiple = 1.8;
+							$multiple = 8000;
 							break;
 					}
-					$rentNegotiationDetails['negotiation'] = $rentNegotiationDetails['negotiation'] * $multiple;
+					$aNegotiationVal = array (10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000);
+					if (in_array($rentNegotiationDetails['negotiation'], $aNegotiationVal))
+					{
+						$rentNegotiationDetails['negotiation'] = $rentNegotiationDetails['negotiation'] + $multiple;
+					}
+					
+					$return = 'Round ' . ($rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0);
+					$return .= ' ' . Yii::app()->controller->__trans('円', 'ja');
+				}
+				else {
+					$return = $rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0;
+					$return .= Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
 				}
 				
-				$return = $rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0;
+				
 				return $return;
 				break;
 				
