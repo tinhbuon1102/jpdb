@@ -569,6 +569,30 @@ class HelperFunctions extends CApplicationComponent {
 				else {
 					$return = $building['renewal_data'] ? $building['renewal_data'] : FIELD_MISSING_VALUE;
 				}
+				return $return;
+				break;
+				
+			case 'negotiation':
+				$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$building["building_id"].' AND allocate_floor_id='.$floor['floor_id'].' order by rent_negotiation_id desc LIMIT 1');
+				$rentNegotiationDetails = $rentNegotiationDetails[0];
+				if ($current_lang == 'en')
+				{
+					$rentNegotiationDetails['negotiation_range'] = trim($rentNegotiationDetails['negotiation_range']);
+					switch ($rentNegotiationDetails['negotiation_range']) {
+						case '前半' :
+							$multiple = 1.3;
+							break;
+						case '半ば' :
+							$multiple = 1.6;
+							break;
+						case '後半' :
+							$multiple = 1.8;
+							break;
+					}
+					$rentNegotiationDetails['negotiation'] = $rentNegotiationDetails['negotiation'] * $multiple;
+				}
+				$return = Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']);
+				return $return;
 				break;
 				
 			default :
@@ -601,6 +625,23 @@ class HelperFunctions extends CApplicationComponent {
 			);
 			foreach ( $rentNegotiationDetails as $negotiationList )
 			{
+				$current_lang = isset($_REQUEST['print_language']) ? $_REQUEST['print_language'] : 'ja';
+				if ($current_lang == 'en')
+				{
+					$negotiationList['negotiation_range'] = trim($negotiationList['negotiation_range']);
+					switch ($negotiationList['negotiation_range']) {
+						case '前半' :
+							$multiple = 1.3;
+							break;
+						case '半ば' :
+							$multiple = 1.6;
+							break;
+						case '後半' :
+							$multiple = 1.8;
+							break;
+					}
+					$negotiationList['negotiation'] = $negotiationList['negotiation'] * $multiple;
+				}
 				$allocateFloorDetails = Floor::model()->findAllByAttributes(array(
 					'floor_id' => explode(',', $negotiationList['allocate_floor_id'])
 				));
