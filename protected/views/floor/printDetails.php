@@ -729,14 +729,19 @@ if($requestData['print_type'] == 10){
 	              }else if($floorId['rent_unit_price_opt']==-1 || $floorId['rent_unit_price_opt']==-2) {
 	              	$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' order by rent_negotiation_id desc LIMIT 1');
 	              	$rentNegotiationDetails = $rentNegotiationDetails[0];
-	              	$rentNegotiationValue = HelperFunctions::translateBuildingValue('negotiation', $buildCart, $floorId);
-	              	
-	              	if($rentNegotiationDetails['negotiation_type']==1) {
-	              		echo Yii::app()->controller->__trans('low price').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
-	              	} else if($rentNegotiationDetails['negotiation_type']==5) {
-	              		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
-	              	} else{
-	              		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+	              	if ($rentNegotiationDetails['negotiation']) {
+		              	$rentNegotiationValue = HelperFunctions::translateBuildingValue('negotiation', $buildCart, $floorId);
+		              	
+		              	if($rentNegotiationDetails['negotiation_type']==1) {
+		              		echo Yii::app()->controller->__trans('low price').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+		              	} else if($rentNegotiationDetails['negotiation_type']==5) {
+		              		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+		              	} else{
+		              		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+		              	}
+	              	}
+	              	else{
+	              		echo '-';
 	              	}
 	              }
 	              else{
@@ -1649,14 +1654,20 @@ if($requestData['print_type'] == 11){
                                                         	
                                                         	$rentNegotiationDetails = RentNegotiation::model()->findAll('building_id = '.$buildCart["building_id"].' AND allocate_floor_id='.$floorId['floor_id'].' order by rent_negotiation_id desc LIMIT 1');
                                                         	$rentNegotiationDetails = $rentNegotiationDetails[0];
-                                                        	$rentNegotiationValue = HelperFunctions::translateBuildingValue('negotiation', $buildCart, $floorId);
                                                         	
-                                                        	if($rentNegotiationDetails['negotiation_type']==1) {
-                                                        		echo Yii::app()->controller->__trans('low price').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
-                                                        	} else if($rentNegotiationDetails['negotiation_type']==5) {
-                                                        		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
-                                                        	} else{
-                                                        		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+                                                        	if ($rentNegotiationDetails['negotiation']) {
+	                                                        	$rentNegotiationValue = HelperFunctions::translateBuildingValue('negotiation', $buildCart, $floorId);
+	                                                        	
+	                                                        	if($rentNegotiationDetails['negotiation_type']==1) {
+	                                                        		echo Yii::app()->controller->__trans('low price').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+	                                                        	} else if($rentNegotiationDetails['negotiation_type']==5) {
+	                                                        		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+	                                                        	} else{
+	                                                        		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+	                                                        	}
+                                                        	}
+                                                        	else {
+                                                        		echo '-';
                                                         	}
                                                         }
                                                         else{

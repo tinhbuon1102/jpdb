@@ -578,6 +578,7 @@ class HelperFunctions extends CApplicationComponent {
 				if ($current_lang == 'en')
 				{
 					$rentNegotiationDetails['negotiation_range'] = trim($rentNegotiationDetails['negotiation_range']);
+					$multiple = 1;
 					switch ($rentNegotiationDetails['negotiation_range']) {
 						case '前半' :
 							$multiple = 1.3;
@@ -591,7 +592,8 @@ class HelperFunctions extends CApplicationComponent {
 					}
 					$rentNegotiationDetails['negotiation'] = $rentNegotiationDetails['negotiation'] * $multiple;
 				}
-				$return = Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']);
+				
+				$return = $rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0;
 				return $return;
 				break;
 				
