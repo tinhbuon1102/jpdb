@@ -736,7 +736,7 @@ if($requestData['print_type'] == 10){
 	              	} else if($rentNegotiationDetails['negotiation_type']==5) {
 	              		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja')  . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
 	              	} else{
-	              		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+	              		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
 	              	}
 	              }
 	              else{
@@ -1656,7 +1656,7 @@ if($requestData['print_type'] == 11){
                                                         	} else if($rentNegotiationDetails['negotiation_type']==5) {
                                                         		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
                                                         	} else{
-                                                        		echo Yii::app()->controller->__trans('目安値', 'ja').': '.$rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
+                                                        		echo $rentNegotiationValue.Yii::app()->controller->__trans('円', 'ja') . ' ' . Yii::app()->controller->__trans($rentNegotiationDetails['negotiation_range'], 'ja');
                                                         	}
                                                         }
                                                         else{
