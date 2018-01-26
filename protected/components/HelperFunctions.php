@@ -584,7 +584,7 @@ class HelperFunctions extends CApplicationComponent {
 							$multiple = 3000;
 							break;
 						case '半ば' :
-							$multiple = 6000;
+							$multiple = 5000;
 							break;
 						case '後半' :
 							$multiple = 8000;
@@ -596,7 +596,7 @@ class HelperFunctions extends CApplicationComponent {
 						$rentNegotiationDetails['negotiation'] = $rentNegotiationDetails['negotiation'] + $multiple;
 					}
 					
-					$return = 'Round ' . ($rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0);
+					$return = 'around ' . ($rentNegotiationDetails['negotiation'] ? Yii::app()->controller->renderPrice($rentNegotiationDetails['negotiation']) : 0);
 					$return .= ' ' . Yii::app()->controller->__trans('円', 'ja');
 				}
 				else {
