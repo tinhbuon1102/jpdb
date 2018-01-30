@@ -223,15 +223,15 @@
           <td class="f_oa" style="width:30px;">
           <?php
 				if($floorId['oa_type'] == '非対応'){
-					echo 'OA'.Yii::app()->controller->__trans('非対応', 'ja');
-				}else if($floorId['oa_type'] == 'フリーアクセス'){
 					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
+				}else if($floorId['oa_type'] == 'フリーアクセス'){
+					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
 				}else if($floorId['oa_type'] == '1WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
+					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else if($floorId['oa_type'] == '2WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
+					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else if($floorId['oa_type'] == '3WAY'){
-					echo 'OA'.Yii::app()->controller->__trans('有', 'ja');
+					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else if($floorId['oa_type'] == '引き込み可'){
 					echo 'OA'.Yii::app()->controller->__trans('無', 'ja');
 				}else{
