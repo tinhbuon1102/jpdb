@@ -939,30 +939,31 @@ class HelperFunctions extends CApplicationComponent {
 			
 	}
 	public static function trader_owner_find($floor_id, $building_id){
-		$multi_trader= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_multiple_window=1 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')';
+		$order = ' ORDER BY cast(f.floor_down as SIGNED) ASC, cast(f.floor_up as SIGNED) ASC';
+		$multi_trader= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_multiple_window=1 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')' . $order;
 		$multi_trader = Yii::app()->db->createCommand($multi_trader)->queryAll();
 		$multi_window_array=self::arranging_array_values($multi_trader);
 		$multi_window_array=self::arranging_array_values_same_multi_owners($multi_window_array);
 	
 	
-		$multi_owner= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE  f.building_id='.$building_id.' AND own.is_shared = 1  AND own.is_compart =0 AND own.is_multiple_window=0 AND f.floor_id IN ('.$floor_id.')';
+		$multi_owner= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE  f.building_id='.$building_id.' AND own.is_shared = 1  AND own.is_compart =0 AND own.is_multiple_window=0 AND f.floor_id IN ('.$floor_id.')' . $order;
 		$multi_owner = Yii::app()->db->createCommand($multi_owner)->queryAll();
 		$multi_owner_array=self::arranging_array_values($multi_owner);
 		$multi_owner_array=self::arranging_array_values_same_multi_owners($multi_owner_array);
 		//print_r($multi_owner_array);
 	
-		$single_owner_window= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_shared = 0 AND own.is_multiple_window = 0 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')';
+		$single_owner_window= 'SELECT own.* , f.* from floor as f  JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.' AND own.is_shared = 0 AND own.is_multiple_window = 0 AND own.is_compart =0 AND f.floor_id IN ('.$floor_id.')' . $order;
 		$single_owner_window = Yii::app()->db->createCommand($single_owner_window)->queryAll();
 		$single_owner_window_array=self::arranging_array_values($single_owner_window);
 		$single_owner_window_array=self:: arranging_array_values_same_owners($single_owner_window_array);
 	
 	
-		$comparted= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.'  AND own.is_compart =1 AND f.floor_id IN ('.$floor_id.')';
+		$comparted= 'SELECT own.* , f.* from floor as f RIGHT JOIN ownership_management as own on f.floor_id = own.floor_id WHERE f.building_id='.$building_id.'  AND own.is_compart =1 AND f.floor_id IN ('.$floor_id.')' . $order;
 		$comparted = Yii::app()->db->createCommand($comparted)->queryAll();
 		$comparted_array=self::arranging_array_values($comparted);
 		$comparted_array=self::arranging_array_values_same_multi_owners($comparted_array);
 	
-		$no_owner_window= 'SELECT f.* FROM floor as f LEFT JOIN ownership_management as own ON own.floor_id = f.floor_id WHERE own.floor_id IS NULL and f.building_id='.$building_id.' AND f.floor_id IN ('.$floor_id.')';
+		$no_owner_window= 'SELECT f.* FROM floor as f LEFT JOIN ownership_management as own ON own.floor_id = f.floor_id WHERE own.floor_id IS NULL and f.building_id='.$building_id.' AND f.floor_id IN ('.$floor_id.')' . $order;
 		$no_owner_window = Yii::app()->db->createCommand($no_owner_window)->queryAll();
 	
 		$floors=array(
