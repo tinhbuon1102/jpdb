@@ -116,6 +116,7 @@ class TradersController extends Controller{
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Traders']))
 		{
+			$_GET['Traders'] = array_map('trim', $_GET['Traders']);
 			$model->attributes = $_GET['Traders'];	
 		}
 
