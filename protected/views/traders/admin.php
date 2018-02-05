@@ -87,6 +87,7 @@ $('.search-form form').submit(function(){
 	'id'=>'traders-grid',
 
 	'htmlOptions' => array('class' => 'tbl'),
+	'filter'=>$model,
 
 	'dataProvider'=>$model->search(),
 
@@ -94,26 +95,21 @@ $('.search-form form').submit(function(){
 		array(
 
 			'name'=>'trader_id',
-
-			'filter'=>false,
-
 			),
 	
 		array(
 
 			'name'=>'trader_name',
 
-			'filter'=>false,
-
 		),
 
 		array(
 
 			'header'=>'Status',
-
+			'filter'=>false,
 			'name'=>'is_active',
 
-			'filter'=>false,
+			
 
 			'value'=>function($data,$row){
 
@@ -138,23 +134,16 @@ $('.search-form form').submit(function(){
 		array(
 
 			'name'=>'added_on',
-
 			'filter'=>false,
+			
 
 		),
 
 		array(
 
 			'name'=>'modified_on',
-
 			'filter'=>false,
-
-		),
-		array(
-
-			'name'=>'traderId',
-
-			'filter'=>false,
+			
 
 		),
 

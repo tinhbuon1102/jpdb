@@ -115,7 +115,9 @@ class TradersController extends Controller{
 		$model=new Traders('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Traders']))
-		$model->attributes=$_GET['Traders'];	
+		{
+			$model->attributes = $_GET['Traders'];	
+		}
 
 		$this->pageTitle = 'Trader List | '.Yii::app()->params['name'];
 		$this->render('admin',array('model'=>$model,));
