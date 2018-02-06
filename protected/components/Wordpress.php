@@ -173,6 +173,7 @@ class Wordpress extends CApplicationComponent
 		$office_type_id_ori = $office_type_id;
 		$current_date = date('Y-m-d H:i:s');
 		
+		$aBuildingImages = array();
 		foreach ($post_types as $post_type){
 			$post_ids = array();
 		foreach ($langs as $lang)
@@ -583,16 +584,10 @@ class Wordpress extends CApplicationComponent
 					$aImages = explode(',', $aImage);
 					$image = Yii::app()->getBaseUrl(true) . '/buildingPictures/front/'.$aImages[0];
 						
-					// create curl resource
-					$ch = curl_init();
-					// set url
-					curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?api_add_image='.$image .'&post_id='.$post_ids['ja'] .'&building_id='.$building->building_id);
-					//return the transfer as a string
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-					// $output contains the output string
-					$output = curl_exec($ch);
-					// close curl resource to free up system resources
-					curl_close($ch);
+					$aBuildingImages['api_add_image'][] = $aImages[0];
+					$aBuildingImages['post_id'][] = $post_ids['ja'];
+					$aBuildingImages['building_id'][] = $building->building_id;
+					
 				}
 			}
 			
@@ -601,6 +596,20 @@ class Wordpress extends CApplicationComponent
 				$this->is_bulk_added = true;
 			}
 			
+		}
+		
+		if (count($aBuildingImages))
+		{
+			// create curl resource
+			$ch = curl_init();
+			// set url
+			curl_setopt($ch, CURLOPT_URL, get_option('siteurl') . '/?image_base_url=' . Yii::app()->getBaseUrl(true) . urlencode('/buildingPictures/front/') . '&' . http_build_query($aBuildingImages));
+			//return the transfer as a string
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			// $output contains the output string
+			$output = curl_exec($ch);
+			// close curl resource to free up system resources
+			curl_close($ch);
 		}
 		
 		if (count($_POST) || $_GET['id'])
