@@ -138,6 +138,7 @@ $('#btn2AddNeawHistory').click(function(event) {
                    var res = JSON.parse(res); 
                     var option=""
                     if(res.status=='success'){
+                    	option += '<option value="">Please select saved trader</option>';
                        $.each( res.traders, function( key, trd ) {
                           option += '<option value="'+trd.trader_id+'">'+trd.traderId+'&nbsp;'+trd.trader_name+'</option>';
                         });
