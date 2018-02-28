@@ -119,7 +119,7 @@ if(isset($customCondition)){
             </div>
             <form method="get" name="mainSearchCondition" id="mainSearchCondition" action="<?php echo Yii::app()->createUrl('site/frontSearch'); ?>">
             	<input type="hidden" name="r" value='site/frontSearch' />
-            	<input type="hidden" name="sortby" id="sortby_hidden" value='' />
+            	<input type="hidden" name="sortby" id="sortby_hidden" value='<?php echo isset($_REQUEST['sortby']) ? $_REQUEST['sortby'] : ''?>' />
             	<div id="dynamic_hidden_fields"></div>
                 <div class="room-data clearfix condition_results">
                     <div id="hidden_search_fields" style="clear: both;">
