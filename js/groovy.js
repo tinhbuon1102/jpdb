@@ -1134,6 +1134,10 @@ $(document).ready(function(e) {
 		if (sortby)
 			$('#dynamic_hidden_fields').append('<input type="hidden" name="sortby" value="'+ sortby +'"/>');
 	}
+	$(document).on('click', '.reset_hidden_button', function(e){
+		location.href = $('#mainSearchCondition').attr('action');
+	});
+	
 	$(document).on('change', '#site_building_sortby', function(e){
 		$('#sortby_hidden').val($(this).val());
 		$('#mainSearchCondition').submit();

@@ -153,6 +153,9 @@ if(isset($customCondition)){
                     	<div class="bt-refine">
                         	<input type="submit" name="search" value="検索">
                        	</div>
+                       	<div class="refine-more">
+                        	<input type="button" class="reset_hidden_button"  value="リセット">
+                       	</div>
                     </div>
                 </div>
             </form>
