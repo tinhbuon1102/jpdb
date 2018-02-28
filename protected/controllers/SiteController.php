@@ -139,7 +139,7 @@ class SiteController extends Controller{
 		$criteria->order = 'f.modified_on DESC';
 		
 		
-		
+// 		echo '<pre>'; print_r($_REQUEST);die;
 		// Search with conditions
 		if ($_REQUEST['keyword'])
 		{
@@ -153,6 +153,12 @@ class SiteController extends Controller{
 				t.name_kana LIKE "%'.$keyword.'%" OR
 				t.old_name LIKE "%'.$keyword.'%"
 			)');
+		}
+		
+		if ($_REQUEST['is_featured'])
+		{
+			$is_featured = $_REQUEST['is_featured'];
+			$criteria->addInCondition('t.is_featured', array(1),' AND');
 		}
 		
 		if ($_REQUEST['location'])
@@ -219,44 +225,64 @@ class SiteController extends Controller{
 			$criteria->addBetweenCondition('f.move_in_date > 0 AND DATE_FORMAT(STR_TO_DATE(SUBSTR(move_in_date,1,7), "%Y/%m"), "%Y-%m")', $move_in_date_min, $move_in_date_max);
 		}
 		
-		// Order by
-		// Search with conditions
-		if ($_REQUEST['order_by'])
+		$_REQUEST['sortby'] = $_REQUEST['sortby'] ? (int)trim($_REQUEST['sortby']) : 0;
+		
+		if ($_REQUEST['sortby'])
 		{
-			$orderby = $_REQUEST['order_by'];
-			
-			$aReturn['location_asc'] = Yii::app()->controller->__trans('Location Ascending');
-			$aReturn['location_desc'] = Yii::app()->controller->__trans('Location Descending');
-			
-			$aReturn['size_asc'] = Yii::app()->controller->__trans('Size Ascending');
-			$aReturn['size_desc'] = Yii::app()->controller->__trans('Size Descending');
-			
-			$aReturn['name_asc'] = Yii::app()->controller->__trans('Name Ascending');
-			$aReturn['name_desc'] = Yii::app()->controller->__trans('Name Descending');
-			
-			switch ($orderby)
+			switch ($_REQUEST['sortby'])
 			{
-				case 'location_asc' :
-					$criteria->order = 't.district ASC';
+				case 1:
+					// 築年浅順:from yougest established year
+					$criteria->order = 't.built_year ASC';
 					break;
-				case 'location_desc' :
-					$criteria->order = 't.district DESC';
+				case 2:
+					// 駅近:from nearest station
+					$criteria->order = ' cast(bs.distance as unsigned) ASC ';
+					$criteria->join .= ' LEFT JOIN building_station bs ON t.building_id = bs.building_id';
 					break;
-				case 'name_asc' :
-					$criteria->order = 't.name ASC';
+				case 3:
+					// 坪数:from largest area by tsubo
+					$criteria->select = 't.*, MAX(f.area_ping) as areaPing';
+					$criteria->order = ' areaPing DESC ';
+					$criteria->group = ' t.building_id ';
 					break;
-				case 'name_desc' :
-					$criteria->order = 't.name DESC';
+				case 4:
+					// 基準階面積:from largest average floor area
+					$criteria->order = ' std_floor_space DESC ';
+						
 					break;
-				case 'size_asc' :
-					$criteria->order = 'cast(REPLACE(f.area_ping, ",", "") as SIGNED) ASC';
+				case 5:
+					// 賃料:from cheapest rent price
+					$criteria->select = 't.*, AVG(f.total_rent_price) as TotalRentPrice';
+					$criteria->order = ' TotalRentPrice ASC ';
 					break;
-				case 'size_desc' :
-					$criteria->order = 'cast(REPLACE(f.area_ping, ",", "") as SIGNED) DESC';
+				case 6:
+					// 保証金: from chepeat deposit price
+					$criteria->select = 't.*, AVG(f.total_deposit) as TotalDeposit';
+					$criteria->order = ' TotalDeposit ASC ';
+					break;
+				case 7:
+					// フリーレント期間: from longest free rent term
+					$criteria->select = 't.*, MAX(fr.free_rent_month) as FreeRentMonth';
+					$criteria->order = ' FreeRentMonth DESC ';
+					$criteria->join .= ' LEFT JOIN free_rent fr ON t.building_id = fr.building_id';
+					break;
+				case 8:
+					// 手数料:from cheapest commision fee
+					$criteria->select = 't.*, MIN(om.charge) as CommisionFee';
+					$criteria->order = ' CommisionFee ASC ';
+					$criteria->join .= ' LEFT JOIN ownership_management om ON t.building_id = om.building_id';
+					break;
+				case 9:
+					// 更新日: from latest updated building/floor
+					$criteria->select = 't.*, AVG(f.modified_on) as Modified';
+					$criteria->order = ' Modified DESC ';
+					break;
+				default:
+					$criteria->order = ' postal_code_order ASC  ';
 					break;
 			}
 		}
-		
 		$count= Building::model()->count($criteria);
 		
 		$pages = new CPagination($count);
@@ -264,7 +290,6 @@ class SiteController extends Controller{
 		$pages->applyLimit($criteria);
 		
 		$buildingDetails = Building::model()->findAll($criteria);
-		
 		foreach ($buildingDetails as &$building)
 		{
 			$floorCriteria = clone $criteria;

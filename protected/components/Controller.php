@@ -67,6 +67,14 @@ class Controller extends CController {
 	public static function getBuildingFormMapper()
 	{
 		$mapper = array(
+				'is_featured' => array(
+					'name' => 'フィーチャー物件',
+					'parent' => ''
+				),
+				'keyword' => array(
+					'name' => '建物名',
+					'parent' => ''
+				),
 				'areaMinValue' => array(
 						'name' => '下限(坪)',
 						'parent' => '面積'

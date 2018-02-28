@@ -117,130 +117,41 @@ if(isset($customCondition)){
                     </form>
                 </div>
             </div>
-            <form method="get" name="mainSearchCondition" id="mainSearchCondition" action="<?php echo Yii::app()->createUrl('building/searchBuildingResult'); ?>">
+            <form method="get" name="mainSearchCondition" id="mainSearchCondition" action="<?php echo Yii::app()->createUrl('site/frontSearch'); ?>">
+            	<input type="hidden" name="r" value='site/frontSearch' />
+            	<input type="hidden" name="sortby" id="sortby_hidden" value='' />
             	<div id="dynamic_hidden_fields"></div>
                 <div class="room-data clearfix condition_results">
-                	<ul class="searchTab clearfix" data-tabname="area">
-					<?php
-                    	$condReq = $_REQUEST;
-						//echo '<pre>'; print_r($condReq);die;
-						if(isset($customCondition)) $condReq = $customCondition;
-						echo Yii::app()->controller->__getCondition($condReq);
-						if(isset($_REQUEST['final_redi'])){
-							$finalRediEx = explode('~',$_REQUEST['final_redi']);
-							if(isset($finalRediEx[0]) && isset($finalRediEx[1])){
-								if(isset($finalRediEx[2]) && $finalRediEx[2] != ''){
-									if($finalRediEx[2] == 'drop'){
-										echo '<li><span class="condition_name condition_name_list">'.$finalRediEx[0].'の値下がり物件（'.$finalRediEx[1].'）<span></li>';
-									}else{
-										echo '<li><span class="condition_name condition_name_list">'.$finalRediEx[0].'の値上がり物件（'.$finalRediEx[1].'）<span></li>';
-									}
-								}else{
-									echo '<li><span class="condition_name condition_name_list">'.$finalRediEx[0].'の新着・更新空き物件（'.$finalRediEx[1].'）<span></li>';
-								}
-							}
-						}
-          $distrincts = Yii::app()->controller->__getConditionsForView($condReq);
-
-          foreach ($distrincts as $distrinct) {
-            echo "<li>" . $distrinct . "</li>";
-          }
-                    ?>
-                    <!-- <div class="selectedSearchCriteria"> -->
-                        <!-- <div class="divSelArea"> -->
-                            <?php echo $cityCondition; ?>
-                        <!-- </div> -->
-                    <!-- </div> -->
-                    </ul>
-                    
-                    <div id="hidden_search_fields" style="clear: both; display: none;">
+                    <div id="hidden_search_fields" style="clear: both;">
 						<?php $aFormMapper = Yii::app()->controller->getBuildingFormMapper(); ?>
                         <div class="more-filter">
+                        	<div class="col_two clearfix">
                         	<div class="second_part">
                             	<div class="TextField">
                                 	<div class="searchform-param">
-                                    	<label class="searchform-label date-update"><?php echo Yii::app()->controller->__trans('Facilities'); ?></label>
+                                    	<label class="searchform-label date-update"><?php echo Yii::app()->controller->__trans('Featured'); ?></label>
                                         <div class="fac-check-wrapper">
-											<?php foreach($aFormMapper['facilities'] as $value => $field){ ?>
-                                            	<input type="checkbox" class="checkbox-one" value="<?php echo $value?>" name="facilities[]" <?php echo in_array($value, (array)$_REQUEST['facilities']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-											<?php } ?>
+                                            <input type="checkbox" class="checkbox-one" value="1" name="is_featured" <?php echo $_REQUEST['is_featured'] == 1 ? 'checked' : ''; ?>/><?php echo $aFormMapper['is_featured']['name']?>
                                         </div>
                                     </div>
                                 </div>
                            	</div>
-                            <div class="second_part">
+                        	<div class="second_part">
                             	<div class="TextField">
                                 	<div class="searchform-param">
-                                    	<label class="searchform-label date-update Floor-title"><?php echo Yii::app()->controller->__trans('Type of Floor'); ?></label>
-                                        <span class="searchform-input-wrapper select-numbers search-floor">
-											<?php foreach($aFormMapper['floorType'] as $value => $field){ ?>
-                                            	<input type="checkbox" class="checkbox-one" value="<?php echo $value?>" name="floorType[]" <?php echo in_array($value, (array)$_REQUEST['floorType']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-											<?php } ?>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col_two clearfix">
-                            	<div class="second_part">
-                                	<div class="TextField">
-                                    	<div class="searchform-param">
-                                        	<label class="searchform-label date-update passible-title"><?php echo Yii::app()->controller->__trans('Form of Transaction'); ?></label>
-                                            <span class="searchform-input-wrapper select-numbers search-floor">
-												<?php foreach($aFormMapper['formTypeList'] as $value => $field){ ?>
-                                                	<input type="checkbox" class="checkbox-one" value="<?php echo $value?>" name="formTypeList[]" <?php echo in_array($value, (array)$_REQUEST['formTypeList']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-                                                <?php } ?>
-                                            </span>
+                                    	<label class="searchform-label date-update"><?php echo $aFormMapper['keyword']['name']; ?></label>
+                                        <div class="fac-check-wrapper">
+                                            <input type="text" class="checkbox-one" value="<?php echo $_REQUEST['keyword']?>" name="keyword" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="second_part">
-                                	<div class="TextField">
-                                    	<div class="searchform-param">
-                                        	<label class="searchform-label date-update type-title"><?php echo Yii::app()->controller->__trans('Type of Lender'); ?></label>
-                                            <span class="searchform-input-wrapper select-numbers search-floor">
-												<?php foreach($aFormMapper['lenderType'] as $value => $field){ ?>
-                                                	<input type="checkbox" class="checkbox-one" value="<?php echo $value?>" name="lenderType[]" <?php echo in_array($value, (array)$_REQUEST['lenderType']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-												<?php } ?>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col_two clearfix">
-                            	<div class="second_part">
-                                	<div class="TextField">
-                                    	<div class="searchform-param">
-                                        	<label class="searchform-label date-update passible-title"><?php echo Yii::app()->controller->__trans('Walk from a Station'); ?></label>
-                                            <div class="fac-check-wrapper">
-												<?php foreach($aFormMapper['walkFromStation'] as $value => $field){ ?>
-                                                	<input type="radio" class="checkbox-one walkFromStation" value="<?php echo $value?>" name="walkFromStation" <?php echo in_array($value, (array)$_REQUEST['walkFromStation']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-												<?php } ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="second_part">
-                                	<div class="TextField">
-                                    	<div class="searchform-param">
-                                        	<label class="searchform-label date-update"><?php echo Yii::app()->controller->__trans('Short Rent'); ?></label>
-                                            <span class="searchform-input-wrapper select-numbers search-floor">
-												<?php foreach($aFormMapper['shortRent'] as $value => $field){ ?>
-                                                	<input type="checkbox" value="<?php echo $value?>" name="shortRent" <?php echo in_array($value, (array)$_REQUEST['shortRent']) ? 'checked' : ''; ?>/><?php echo $field['name']?>
-												<?php } ?>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           	</div>
+                           	</div>
                         </div>
                     </div>
                     <div class="searchform-controls clearfix">
                     	<div class="bt-refine">
-                        	<input type="button" name="search" id="search_hidden_submit"  value="検索">
-                       	</div>
-                        <div class="refine-more">
-                        	<input type="button" class="result_hidden_button"  value="さらに絞り込む">
-                            <input type="button" class="result_hidden_button"  value="絞り込み条件を隠す" style="display: none;">
+                        	<input type="submit" name="search" value="検索">
                        	</div>
                     </div>
                 </div>
@@ -288,7 +199,7 @@ if(isset($customCondition)){
             <dl class="viewmode">
                 <dt>並び替え：</dt>
                 <dd class="sortlist">
-                    <select class="sortbox-parts" id="building_sortby">
+                    <select class="sortbox-parts" id="site_building_sortby">
                     	<option value="0">Select Order</option>
                         <option value="1" <?php if ($_REQUEST['sortby'] == 1) echo 'selected="selected"'?>>築年浅順</option><!--from built newly-->
                         <option value="2" <?php if ($_REQUEST['sortby'] == 2) echo 'selected="selected"'?>>駅近</option><!--closer from station-->
@@ -1042,7 +953,7 @@ if(isset($customCondition)){
           <tr>
             <td><span class="inputLab"><?php echo Yii::app()->controller->__trans('Input'); ?></span></td>
             <td><span class="inputPre"></span><input type="text" name="negotiationAmt" id="negotiationAmt" class="negotiationAmt" style="width:50% !important;"/>
-              <select class="select_short" name="negotiationAmtRange" id="negotiationAmtRange" style="display: none">
+              <select class="select_short" name="negotiationAmtRange" id="negotiationAmtRange">
 						<option value="">-</option>
 						<option value="前半">前半</option>
 						<option value="半ば">半ば</option>
