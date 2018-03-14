@@ -342,6 +342,10 @@ if(isset($customCondition)){
                     	<dt>手数料</dt>
                         <?php
                         	$finalComission = OwnershipManagement::model()->findAll('building_id = '.$buildingList['building_id'].' ORDER BY `ownership_management_id` DESC LIMIT 1');
+                        	
+                        	$traderQuery = 'SELECT * FROM 	traders_his where `building_id` = '.$buildingList['building_id'].' ORDER BY `modified_on` DESC LIMIT 1' ;
+                        	$building_history = Yii::app()->db->createCommand($traderQuery)->queryRow();
+                        	
 						?>
                         <dd class="charge-fee">
 						<?php
@@ -361,7 +365,7 @@ if(isset($customCondition)){
                         if(isset($finalComission[0]['modified_on']) && $finalComission[0]['modified_on'] != ""){
 						?>
                         <dd class="updated-date">
-							<?php echo date('Y.m.d',strtotime($finalComission[0]['modified_on'])); ?>
+							<?php echo date('Y.m.d',strtotime($building_history['modified_on'])); ?>
                         </dd>
 						<?php
                         }
