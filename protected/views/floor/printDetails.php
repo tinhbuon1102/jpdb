@@ -2249,23 +2249,11 @@ if($requestData['print_type'] == 11){
                     <tbody>
                     	<tr>
                         	<th>
-								<?php echo Yii::app()->controller->__trans('契約年数', 'ja'); ?>
+								<?php echo Yii::app()->controller->__trans('契約形態', 'ja'); ?>
                             </th>
                             <!--fixed texts-->
                             <td>
-								<?php
-									$temp = '';
-                                	if(count($contractdiff) > 0){
-										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年', 'ja') : ' '.Yii::app()->controller->__trans('年', 'ja'));
-									}else{
-										$contactVar = array_values($contractArray);
-										if($contactVar[0] != ""){
-											$temp = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
-										}else{
-											$temp = '-';
-										}
-									}
-								?>
+								
 								<?php
 									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
 									foreach($contractDefaultArray as $key=>$val){
@@ -2281,6 +2269,19 @@ if($requestData['print_type'] == 11){
 										echo $temp;
 									else 
 										echo $temp.':'.$contractPeriodOptChk;
+								?>
+								<?php
+									$temp = '';
+                                	if(count($contractdiff) > 0){
+										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年', 'ja') : ' '.Yii::app()->controller->__trans('年', 'ja'));
+									}else{
+										$contactVar = array_values($contractArray);
+										if($contactVar[0] != ""){
+											$temp = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
+										}else{
+											$temp = '-';
+										}
+									}
 								?>
                             </td>
                         </tr>
