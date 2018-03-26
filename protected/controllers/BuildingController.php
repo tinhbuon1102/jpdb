@@ -2170,15 +2170,15 @@ class BuildingController extends Controller{
 	}	
 
 	public function getAddressByGoogleMap($address, $lang = 'ja'){
-		$json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false&language=" . $lang);
+		$json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false&key=". GOOGLE_API_KEY ."&language=" . $lang);
 		$json = json_decode($json);
 	
 		$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
 		$long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
 	
 		// retrieve data with lat/long to get full data
-		$json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false&language=".$lang);
-		$json = json_decode($json);
+// 		$json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false&language=".$lang);
+// 		$json = json_decode($json);
 	
 		foreach($json->results[0]->address_components as $comp){
 			if(in_array('administrative_area_level_1',$comp->types)){
