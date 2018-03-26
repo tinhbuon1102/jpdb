@@ -2253,35 +2253,35 @@ if($requestData['print_type'] == 11){
                             </th>
                             <!--fixed texts-->
                             <td>
-								
-								<?php
-									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
-									foreach($contractDefaultArray as $key=>$val){
-										if(in_array($key,$contractOptArray)){
-											$temp .= ' - '.$val;
-											break;
-										}
-									}
-									
-									if($temp=='-' && $contractPeriodOptChk!='')
-										echo $contractPeriodOptChk;
-									else if($contractPeriodOptChk=='')
-										echo $temp;
-									else 
-										echo $temp.':'.$contractPeriodOptChk;
-								?>
 								<?php
 									$temp = '';
+									$contract_year = '';
                                 	if(count($contractdiff) > 0){
 										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年', 'ja') : ' '.Yii::app()->controller->__trans('年', 'ja'));
 									}else{
 										$contactVar = array_values($contractArray);
 										if($contactVar[0] != ""){
-											$temp = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
+											$contract_year = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
 										}else{
-											$temp = '-';
+											$temp = ($temp ? ' - ' : '');
 										}
 									}
+								?>
+								<?php
+								$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
+									foreach($contractDefaultArray as $key=>$val){
+										if(in_array($key,$contractOptArray)){
+											$temp .= ($temp ? ' - ' : '') .$val;
+											break;
+										}
+									}
+									
+									if((!$temp || $temp=='-') && $contractPeriodOptChk!='')
+										echo $contractPeriodOptChk . ' ' . $contract_year;
+									else if($contractPeriodOptChk=='')
+										echo $temp .' ' . $contract_year;
+									else 
+										echo $temp.':'.$contractPeriodOptChk . ' '  . $contract_year;
 								?>
                             </td>
                         </tr>
