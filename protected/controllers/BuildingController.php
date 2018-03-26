@@ -1877,7 +1877,7 @@ class BuildingController extends Controller{
 			}else if($_REQUEST['buildingSearchAddress'] != ''  && $_REQUEST['cityName'] == 'searchByNearAdd'){
 				if(!$resultData) $resultData = array(); $bArray = array();
 				if(isset($_REQUEST['radiusValue'])){
-					$geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$_REQUEST['buildingSearchAddress'].'&sensor=false');
+					$geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$_REQUEST['buildingSearchAddress'].'&sensor=false&key='. GOOGLE_API_KEY);
 					$output = json_decode($geocode);
 					$latitude = $output->results[0]->geometry->location->lat;
 					$longitude = $output->results[0]->geometry->location->lng;
