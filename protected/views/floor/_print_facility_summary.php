@@ -293,22 +293,39 @@
 			<tr>
 			<th><?php echo Yii::app()->controller->__trans('契約形態', 'ja'); ?></th><!--label-->
 			<td>
-				<?php
-									$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
+			<?php
+									$temp = '';
+									$contract_year = '';
+                                	if(count($contractdiff) > 0){
+										$temp = min($contractArray).(min($contractArray) != max($contractArray) ? ' ~ '.max($contractArray).Yii::app()->controller->__trans('年', 'ja') : ' '.Yii::app()->controller->__trans('年', 'ja'));
+									}else{
+										$contactVar = array_values($contractArray);
+										if($contactVar[0] != ""){
+											$contract_year = $contactVar[0].Yii::app()->controller->__trans('年', 'ja');
+										}else{
+											$temp = ($temp ? ' - ' : '');
+										}
+									}
+								?>
+								<?php
+								$contractDefaultArray = array('1'=>Yii::app()->controller->__trans('普通借家', 'ja'),'2'=>Yii::app()->controller->__trans('定借', 'ja'),'3'=>Yii::app()->controller->__trans('定借希望', 'ja'));
 									foreach($contractDefaultArray as $key=>$val){
 										if(in_array($key,$contractOptArray)){
-											$temp .= ''.$val;
+											$temp .= ($temp ? ' - ' : '') .$val;
 											break;
 										}
 									}
 									
-									if($temp=='-' && $contractPeriodOptChk!='')
-										echo Yii::app()->controller->__trans($contractPeriodOptChk, 'ja');
-									else if($contractPeriodOptChk=='')
-										echo $temp;
-									else 
-										echo $temp.':'. Yii::app()->controller->__trans($contractPeriodOptChk, 'ja');
+								$temp = ($temp ? $temp : '-');
+								
+								if((!$temp || $temp=='-') && $contractPeriodOptChk!='')
+									echo $contractPeriodOptChk . ' ' . $contract_year;
+								else if($contractPeriodOptChk=='')
+									echo $temp .' ' . $contract_year;
+								else 
+									echo $temp.':'.$contractPeriodOptChk . ' '  . $contract_year;
 								?>
+								
 			</td>
 			</tr>
 		<tr>
