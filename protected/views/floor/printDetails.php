@@ -2157,7 +2157,7 @@ if($requestData['print_type'] == 11){
 														if(isset($floorId['roomname']) && $floorId['roomname'] != ""){
 															$fName .= '&nbsp;'.$floorId['roomname'];
 														}
-														$keyMoneyDetails .= ($val!=''?$val.'ヶ月':'').(count($keyMoneyMonthArray) > 2 ? '('.$fName.')'.$slsh : '');
+														$keyMoneyDetails .= ($val!=''?$val.Yii::app()->controller->__trans('ヶ月', 'ja'):'').(count($keyMoneyMonthArray) > 2 ? '('.$fName.')'.$slsh : '');
 														$j++;
 													}
 												}
