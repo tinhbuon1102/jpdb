@@ -2276,12 +2276,14 @@ if($requestData['print_type'] == 11){
 										}
 									}
 									
-									if((!$temp || $temp=='-') && $contractPeriodOptChk!='')
-										echo $contractPeriodOptChk . ' ' . $contract_year;
-									else if($contractPeriodOptChk=='')
-										echo $temp .' ' . $contract_year;
-									else 
-										echo $temp.':'.$contractPeriodOptChk . ' '  . $contract_year;
+								$temp = ($temp ? $temp : '-');
+								
+								if((!$temp || $temp=='-') && $contractPeriodOptChk!='')
+									echo $contractPeriodOptChk . ' ' . $contract_year;
+								else if($contractPeriodOptChk=='')
+									echo $temp .' ' . $contract_year;
+								else 
+									echo $temp.':'.$contractPeriodOptChk . ' '  . $contract_year;
 								?>
                             </td>
                         </tr>
