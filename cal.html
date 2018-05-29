@@ -16,28 +16,51 @@
 	    
     @media (min-width: 500px){
 	    .container {
-	        max-width: 500px;
+	        max-width: 800px;
 	    }
     }
 </style>
 </head>
 <body>
 	<div class="container">
-		<form>
-			<div class="form-group">
-				<label for="old">Sell Price</label>
-				<input type="text" class="form-control" size="200" id="old">
+		<div class="row">
+			<div class="col-md-6">
+				<form>
+					<h4>Calculate Percent</h4>
+					<div class="form-group">
+						<label for="old">High Price</label>
+						<input type="text" class="form-control" size="200" id="old">
+					</div>
+					<div class="form-group">
+						<label for="new">Low Price</label>
+						<input type="text" class="form-control" size="200" id="new">
+					</div>
+					<div class="form-group">
+						<label for="percen" >Percent</label>
+						<input type="text" class="form-control" size="200" id="percent">
+					</div>
+					<button class="btn btn-primary" id="calculate_btn">Calculate</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="new">Buy Price</label>
-				<input type="text" class="form-control" size="200" id="new">
+			<div class="col-md-6">
+				<form>
+					<h4>Calculate Low Price</h4>
+					<div class="form-group">
+						<label for="old_2">High Price</label>
+						<input type="text" class="form-control" size="200" id="old_2">
+					</div>
+					<div class="form-group">
+						<label for="percent_2" >Percent</label>
+						<input type="text" class="form-control" size="200" id="percent_2">
+					</div>
+					<div class="form-group">
+						<label for="new_2">Low Price</label>
+						<input type="text" class="form-control" size="200" id="new_2">
+					</div>					
+					<button class="btn btn-primary" id="calculate_btn_2">Calculate Low Price</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="percen" >Percent</label>
-				<input type="text" class="form-control" size="200" id="percent">
-			</div>
-			<button class="btn btn-primary" id="calculate_btn">Calculate</button>
-		</form>
+		</div>		
 	</div>
 </body>
 <script type="text/javascript">
@@ -48,6 +71,14 @@
 			var percent = spread * 100 / $('#old').val();
 			percent = isNaN(percent) ? 0 : percent;
 			$('#percent').val(percent.toFixed(1) + '%');
+		});
+		
+		$('html').on('click', '#calculate_btn_2', function(e){
+			e.preventDefault();
+			var spread = $('#old_2').val() * $('#percent_2').val();
+			var percent = spread / 100;
+			percent = isNaN(percent) ? 0 : percent;
+			$('#new_2').val($('#old_2').val()  - percent);
 		});
 	})
 </script>

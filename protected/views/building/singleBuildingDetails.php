@@ -357,7 +357,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 									}else{
 										if($floorDetails['unit_condo_fee_opt'] != ''){
 											if($floorDetails['unit_condo_fee_opt'] == 0){
-												echo Yii::app()->controller->__trans('none');
+												echo Yii::app()->controller->__trans('None');
 											}else if($floorDetails['unit_condo_fee_opt'] == -1){
 												echo Yii::app()->controller->__trans('undecided');
 											}else if($floorDetails['unit_condo_fee_opt'] == -2){
@@ -388,7 +388,7 @@ if(count($getGoogleMapKeyDetails) > 0){
 											if($floorDetails['deposit_opt'] == -1){
 												echo Yii::app()->controller->__trans('undecided').'<br/>';
 											}else if($floorDetails['deposit_opt'] == -3){
-												echo Yii::app()->controller->__trans('none').'<br/>';
+												echo Yii::app()->controller->__trans('None').'<br/>';
 											}else if($floorDetails['deposit_opt'] == -2){
 												echo Yii::app()->controller->__trans('ask').'<br/>';
 											}
@@ -1422,9 +1422,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             if($elevatorNonStop == 0){
                                                 $elevatorNonStopOpt = Yii::app()->controller->__trans('Unknown');
                                             }else if($elevatorNonStop == 1){
-                                                $elevatorNonStopOpt = Yii::app()->controller->__trans('Noexist');
+                                                $elevatorNonStopOpt = Yii::app()->controller->__trans('None');
                                             }else if($elevatorNonStop == 2){
-                                                $elevatorNonStopOpt = Yii::app()->controller->__trans('Exist');
+                                                $elevatorNonStopOpt = Yii::app()->controller->__trans('exist');
                                             }else{
                                                 $elevatorNonStopOpt = '-';
                                             }
@@ -1507,7 +1507,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             if($extractParkingUnitNo[0] == 1){
                                                 $parkingUnit = $extractParkingUnitNo[1].'台';
                                             }else if($extractParkingUnitNo[0] == 2){
-                                                $parkingUnit = Yii::app()->controller->__trans('noexist');
+                                                $parkingUnit = Yii::app()->controller->__trans('None');
                                             }else if($extractParkingUnitNo[0] == 3){
                                                 $parkingUnit = Yii::app()->controller->__trans('exist but unknown unit number');
                                             }else{
@@ -1569,7 +1569,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             }else if($extractElevator[0] == 1){
                                                 $elevator = $extractElevator[1].Yii::app()->controller->__trans('base');
                                             }else if($extractElevator[0] == 2){
-                                                $elevator = Yii::app()->controller->__trans('noexist');
+                                                $elevator = Yii::app()->controller->__trans('None');
                                             }else{
                                                 $elevator = '-';
                                             }
@@ -1587,7 +1587,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             }else if($entranceWithAttention == 2){
                                                 $attention =  Yii::app()->controller->__trans('exist');
                                             }else if($entranceWithAttention == 1){
-                                                $attention =  Yii::app()->controller->__trans('noexist');
+                                                $attention =  Yii::app()->controller->__trans('None');
                                             }else{
                                                 $attention = '-';
                                             }
@@ -1680,9 +1680,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             if($elevatorHall == 0){
                                                 $hall = Yii::app()->controller->__trans('unknown');
                                             }else if($elevatorHall == 2){
-                                                $hall = Yii::app()->controller->__trans('Exist');
+                                                $hall = Yii::app()->controller->__trans('exist');
                                             }else if($elevatorHall == 1){
-                                                $hall = Yii::app()->controller->__trans('Noexist');
+                                                $hall = Yii::app()->controller->__trans('None');
                                             }else{
                                                 $hall = '-';
                                             }
@@ -1698,9 +1698,9 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             if($entAutoLock == 0){
                                                 $autoLock =  Yii::app()->controller->__trans('unknown');
                                             }else if($entAutoLock == 2){
-                                                $autoLock = Yii::app()->controller->__trans('Exist');
+                                                $autoLock = Yii::app()->controller->__trans('exist');
                                             }else if($entAutoLock == 1){
-                                                $autoLock = Yii::app()->controller->__trans('Noexist');
+                                                $autoLock = Yii::app()->controller->__trans('None');
                                             }else{
                                                 $autoLock = '-';
                                             }
@@ -2021,7 +2021,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                             }else{
                                                 if($related['unit_condo_fee_opt'] != ''){
                                                     if($related['unit_condo_fee_opt'] == 0){
-                                                        echo Yii::app()->controller->__trans('none');
+                                                        echo Yii::app()->controller->__trans('None');
                                                     }else if($related['unit_condo_fee_opt'] == -1){
                                                         echo Yii::app()->controller->__trans('undecided');
                                                     }else if($related['unit_condo_fee_opt'] == -2){
@@ -2045,7 +2045,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 if($related['deposit_opt'] == -1){
                                                     echo Yii::app()->controller->__trans('undecided');
                                                 }else if($related['deposit_opt'] == -3){
-                                                    echo Yii::app()->controller->__trans('none');
+                                                    echo Yii::app()->controller->__trans('None');
                                                 }else if($related['deposit_opt'] == -2){
                                                     echo Yii::app()->controller->__trans('undecided･ask');
                                                 }
@@ -2312,7 +2312,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }else{
                                                     if($floorDetails['unit_condo_fee_opt'] != ''){
                                                         if($floorDetails['unit_condo_fee_opt'] == 0){
-                                                            echo Yii::app()->controller->__trans('none');
+                                                            echo Yii::app()->controller->__trans('None');
                                                         }else if($floorDetails['unit_condo_fee_opt'] == -1){
                                                             echo Yii::app()->controller->__trans('undecided');
                                                         }else if($floorDetails['unit_condo_fee_opt'] == -2){
@@ -2344,7 +2344,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                     if($related['deposit_opt'] == -1){
                                                         echo Yii::app()->controller->__trans('undecided');
                                                     }else if($related['deposit_opt'] == -3){
-                                                        echo Yii::app()->controller->__trans('none');
+                                                        echo Yii::app()->controller->__trans('None');
                                                     }else if($related['deposit_opt'] == -2){
                                                         echo Yii::app()->controller->__trans('undecided･ask');
                                                     }
@@ -2607,7 +2607,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                 }else{
                                                     if($floorDetails['unit_condo_fee_opt'] != ''){
                                                         if($floorDetails['unit_condo_fee_opt'] == 0){
-                                                            echo Yii::app()->controller->__trans('none');
+                                                            echo Yii::app()->controller->__trans('None');
                                                         }else if($floorDetails['unit_condo_fee_opt'] == -1){
                                                             echo Yii::app()->controller->__trans('undecided');
                                                         }else if($floorDetails['unit_condo_fee_opt'] == -2){
@@ -2639,7 +2639,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                     if($related['deposit_opt'] == -1){
                                                         echo Yii::app()->controller->__trans('undecided');
                                                     }else if($related['deposit_opt'] == -3){
-                                                        echo Yii::app()->controller->__trans('none');
+                                                        echo Yii::app()->controller->__trans('None');
                                                     }else if($related['deposit_opt'] == -2){
                                                         echo Yii::app()->controller->__trans('undecided･ask');
                                                     }
@@ -4600,7 +4600,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                         }else{
                                                             if($historyList['unit_condo_fee_opt'] != ''){
                                                                 if($historyList['unit_condo_fee_opt'] == "0"){
-                                                                    echo Yii::app()->controller->__trans('none').'<br>';
+                                                                    echo Yii::app()->controller->__trans('None').'<br>';
                                                                 }else if($historyList['unit_condo_fee_opt'] == "-1"){
                                                                     echo Yii::app()->controller->__trans('undecided').'<br>';
                                                                 }else if($historyList['unit_condo_fee_opt'] == "-2"){
@@ -4635,7 +4635,7 @@ if(count($getGoogleMapKeyDetails) > 0){
                                                             if($historyList['deposit_opt'] == -1){
                                                                 echo Yii::app()->controller->__trans('undecided');
                                                             }else if($historyList['deposit_opt'] == -3){
-                                                                echo Yii::app()->controller->__trans('none');
+                                                                echo Yii::app()->controller->__trans('None');
                                                             }else if($historyList['deposit_opt'] == -2){
                                                                 echo Yii::app()->controller->__trans('undecided･ask');
                                                             }

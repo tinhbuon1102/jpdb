@@ -17,6 +17,7 @@ protected/extensions
 wp
 framework
 assets
+logs
 
 .DS_Store
 .buildpath

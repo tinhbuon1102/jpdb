@@ -598,7 +598,7 @@
                 <font><?php echo Yii::app()->controller->__trans('base'); ?></font>
                 <label class="rd4">
                     <input type="radio" name="elevator" class="ele_noexist" value="2"  <?php echo isset($elevator_exp[0]) && $elevator_exp[0] == '2' ? $checked :''; ?>>
-                    <font><font><?php echo Yii::app()->controller->__trans('noexist'); ?> </font></font>
+                    <font><font><?php echo Yii::app()->controller->__trans('none'); ?> </font></font>
                 </label>
             </td>
         </tr>
@@ -617,7 +617,7 @@
                 </label>
                 <label class="rd4">
                 	<input type="radio" name="elevator_non_stop" <?php echo isset($buildingDetails['elevator_non_stop']) && $buildingDetails['elevator_non_stop'] == '1' ? $checked :''; ?> value="1">
-                    <font><font> <?php echo Yii::app()->controller->__trans('noexist'); ?></font></font>
+                    <font><font> <?php echo Yii::app()->controller->__trans('none'); ?></font></font>
                 </label>
             </td>
         </tr>
@@ -636,7 +636,7 @@
                 </label>
                 <label class="rd4">
                     <input type="radio" name="elevator_hall" value="1" <?php echo isset($buildingDetails['elevator_hall']) && $buildingDetails['elevator_hall'] == '1' ? $checked :''; ?>>
-                    <font><font><?php echo Yii::app()->controller->__trans('noexist'); ?>  </font></font>
+                    <font><font><?php echo Yii::app()->controller->__trans('none'); ?>  </font></font>
                 </label>
             </td>
         </tr>
@@ -653,7 +653,7 @@
                 </label>
                 <label class="rd4">
                     <input type="radio" name="entrance_with_attention" value="1" <?php echo isset($buildingDetails['entrance_with_attention']) && $buildingDetails['entrance_with_attention'] == '1' ? $checked :''; ?>>
-                    <font><font><?php echo Yii::app()->controller->__trans('noexist'); ?> </font></font>
+                    <font><font><?php echo Yii::app()->controller->__trans('none'); ?> </font></font>
                 </label>
             </td>
         </tr>
@@ -878,7 +878,7 @@
                 </label>
                 <label class="rd4">
                     <input type="radio" name="ent_auto_lock" value="1" <?php echo isset($buildingDetails['ent_auto_lock']) && $buildingDetails['ent_auto_lock'] == '1' ? $checked :''; ?>>
-                    <font><font><?php echo Yii::app()->controller->__trans('noexist'); ?> </font></font>
+                    <font><font><?php echo Yii::app()->controller->__trans('none'); ?> </font></font>
                 </label>
             </td>
         </tr>
@@ -899,7 +899,7 @@
                 <font><font> <?php echo Yii::app()->controller->__trans('spaces'); ?>) </font></font>
                 <label class="rd4">
                     <input type="radio" name="parking_unit_no" value="2" <?php echo isset($unitNo[0]) && $unitNo[0] == '2' ? $checked :''; ?> class="parking_radio_2">
-                    <font><font> <?php echo Yii::app()->controller->__trans('noexist'); ?></font></font>
+                    <font><font> <?php echo Yii::app()->controller->__trans('none'); ?></font></font>
                 </label>
                 <label class="rd4">
                     <input type="radio" name="parking_unit_no" value="3" <?php echo isset($unitNo[0]) && $unitNo[0] == '3' ? $checked :''; ?> class="parking_radio_3">
@@ -1564,10 +1564,10 @@
                     <input type="radio" name="opticle_cable" value="0"  <?php echo isset($buildingDetails['opticle_cable']) && $buildingDetails['opticle_cable'] == '0' ? $opCableCheck :''; ?> checked=""  class="ip"><font><font><?php echo Yii::app()->controller->__trans('unknown'); ?> </font></font>
                 </label>
                 <label class="rd4">
-                    <input type="radio" name="opticle_cable" <?php echo isset($buildingDetails['opticle_cable']) && $buildingDetails['opticle_cable'] == '2' ? $opCableCheck :''; ?> value="2"><font><font><?php echo Yii::app()->controller->__trans('Pull Yes'); ?> </font></font>
+                    <input type="radio" name="opticle_cable" <?php echo isset($buildingDetails['opticle_cable']) && $buildingDetails['opticle_cable'] == '2' ? $opCableCheck :''; ?> value="2"><font><font><?php echo Yii::app()->controller->__trans('installed'); ?> </font></font>
                 </label>
                 <label class="rd4">
-                    <input type="radio" name="opticle_cable"  <?php echo isset($buildingDetails['opticle_cable']) && $buildingDetails['opticle_cable'] == '1' ? $opCableCheck :''; ?> value="1"><font><font><?php echo Yii::app()->controller->__trans('Nothing'); ?> </font></font>
+                    <input type="radio" name="opticle_cable"  <?php echo isset($buildingDetails['opticle_cable']) && $buildingDetails['opticle_cable'] == '1' ? $opCableCheck :''; ?> value="1"><font><font><?php echo Yii::app()->controller->__trans('not installed'); ?> </font></font>
                 </label>
             </td>
         </tr>

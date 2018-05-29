@@ -72,7 +72,7 @@
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$renewalOpt = Yii::app()->controller->__trans('None');
+										$renewalOpt = Yii::app()->controller->__trans('none');
 									}else if($val == -1){
 										$renewalOpt = Yii::app()->controller->__trans('unknown');
 									}else if($val == -2){
@@ -137,7 +137,7 @@
 								}
 								if($val != 0 && $val != ""){
 									if($val == 2){
-										$keyMoneyOpt = Yii::app()->controller->__trans('無し', 'ja');
+										$keyMoneyOpt = Yii::app()->controller->__trans('無', 'ja');
 									}else if($val == -1){
 										$keyMoneyOpt = Yii::app()->controller->__trans('不明', 'ja');
 									}else if($val == -2){
@@ -203,7 +203,7 @@
 														}
 														if($val != 0 && $val != ""){
 															if($val == -3){
-																$repaymentOpt = Yii::app()->controller->__trans('無し', 'ja');
+																$repaymentOpt = Yii::app()->controller->__trans('無', 'ja');
 															}else if($val == -4){
 																$repaymentOpt = Yii::app()->controller->__trans('不明', 'ja');
 															}else if($val == -1){
@@ -354,7 +354,7 @@
 						if($floor['air_conditioning_facility_type']=="個別") $res[1]=Yii::app()->controller->__trans('個別', 'ja');
 						if($floor['air_conditioning_facility_type']=="セントラル") $res[2]=Yii::app()->controller->__trans('セントラル', 'ja');
 						if($floor['air_conditioning_facility_type']=="不明" || $floor['air_conditioning_facility_type']=="unknown") $res[3]=Yii::app()->controller->__trans('不明', 'ja');
-						if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無し', 'ja');
+						if($floor['air_conditioning_facility_type']=="無し") $res[4]=Yii::app()->controller->__trans('無', 'ja');
 					}
 					
 					$result = '-';
@@ -454,52 +454,52 @@
 				?>
 			</td><!--celling height-->
 		</tr>
-		<!--<tr>
-			<th>光ケーブル</th>
+		<tr>
+			<th><?php echo Yii::app()->controller->__trans('光ケーブル', 'ja'); ?></th>
 			<td>
 				<?php
-					/*if($buildCart['opticle_cable'] == 0){
-						echo Yii::app()->controller->__trans('unknown');
-					}else if($buildCart['opticle_cable'] == 1){
-						echo Yii::app()->controller->__trans('Pull Yes');
-					}else if($buildCart['opticle_cable'] == 2){
-						echo Yii::app()->controller->__trans('Nothing');
-					}else{
-						echo '-';
-					}*/
+				if($buildCart['opticle_cable'] == 0){
+					echo Yii::app()->controller->__trans('不明', 'ja');
+				}else if($buildCart['opticle_cable'] == 1){
+					echo Yii::app()->controller->__trans('設置', 'ja');
+				}else if($buildCart['opticle_cable'] == 2){
+					echo Yii::app()->controller->__trans('未設置', 'ja');
+				}else{
+					echo '-';
+				}
 				?>
 			</td>
 		</tr>
 		<tr>
-			<th>エレベーター</th>
+			<th><?php echo Yii::app()->controller->__trans('エレベーター', 'ja'); ?></th>
 							<td>
                                 <?php
-					/*if(isset($buildCart['elevator']) && $buildCart['elevator'] != ''){
+					if(isset($buildCart['elevator']) && $buildCart['elevator'] != ''){
 						if(strlen($buildCart['elevator']) > 2){
 							$elevatorExp = explode('-',$buildCart['elevator']);
 							if($elevatorExp[0] == 1){
-								echo Yii::app()->controller->__trans('Exist');
-								if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
+								echo Yii::app()->controller->__trans('有', 'ja');
+								if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '';
 								
-								echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基') : "";
+								/*echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基') : "";
 								echo isset($elevatorExp[2]) && $elevatorExp[2] != "" ? '/'.$elevatorExp[2].Yii::app()->controller->__trans('人乗') : "";
 								echo isset($elevatorExp[3]) && $elevatorExp[3] != "" ? $elevatorExp[3].Yii::app()->controller->__trans('基・人荷用') : "";
 								echo isset($elevatorExp[4]) && $elevatorExp[4] != "" ? $elevatorExp[4].Yii::app()->controller->__trans('人乗') : "";
-								echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].'基' : "";
-								if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo ')';
+								echo isset($elevatorExp[5]) && $elevatorExp[5] != "" ? $elevatorExp[5].'基' : "";*/
+								if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '';
 							}else{
 								echo '-';
 							}
 						}else{
 							if($buildCart['elevator'] == -2){
-								echo Yii::app()->controller->__trans('unknown');
+								echo Yii::app()->controller->__trans('不明', 'ja');
 							}else if($buildCart['elevator'] == 2){
-								echo Yii::app()->controller->__trans('noexist');
+								echo Yii::app()->controller->__trans('無', 'ja');
 							}
 						}
 					}else{
 						echo '-';
-					}*/
+					}
 				?>
 			</td><!--elevetor-->
 		<!--</tr>

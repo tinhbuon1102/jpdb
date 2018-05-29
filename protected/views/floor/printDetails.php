@@ -97,7 +97,7 @@ td.center { text-align: center; }
 td.right-align { text-align: right; }
 th.building-name { width: 110mm; }
 th.building-addr { width: 80mm; }
-table.building-profile { border-collapse: collapse; width: <?php print (!isset($_REQUEST['print'])) ? '231mm' : '100%'; ?>;}
+table.building-profile { border-collapse: collapse; width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;}
 table.building-profile th { border-bottom: 1px solid #000; font-size: 11pt; font-weight: normal; padding-top: 8mm; }
 table.building-profile td { font-size: 11pt; border-bottom: 1px solid #c9c9c9; line-height: 7mm; height: 7mm; }
 caption { background: #e11b30; color: #000; text-transform: uppercase; padding: 1mm 0; font-family: HelveticaNeue-bold; }
@@ -123,9 +123,9 @@ table.building-profile.single-info td table td, table.building-profile.single-in
 table.building-profile.single-info td table th { padding: 2mm 0 1mm; }
 table.building-profile.single-info td table th.calc_type { width: 8mm; }
 table.building-profile.single-info td table td.notes { line-height: 1.4; }
-td.td_col1_3 { width: 24%; vertical-align: top; }
-td.td_col2_3 { width: 76%; }
-td.td_col2_3 { padding: 0 0 0 10mm; vertical-align: top; }
+td.td_col1_3 { width: 53mm; vertical-align: top; }
+td.td_col2_3 { width: auto; }
+td.td_col2_3 { padding: 0 0 0 5mm; vertical-align: top; }
 td.td_col2_3 table { width: 100%; }
 td.td_col1_3 img { width: 100%; }
 table.building-profile.single-info td table.current_status tr:nth-child(odd) td { background-color: #ffffff; }
@@ -140,7 +140,7 @@ table.building-profile.single-info td table.summary.time-to-use td { font-size: 
 table.building-profile.single-info td table td.pad-left { padding-left: 5mm; }
 table.building-profile.single-info td table.summary th { width: 21mm; }
 table.building-profile.single-info td table.summary caption { margin-bottom: 1mm; }
-table.building-details { margin-top: 3mm; }
+table.building-details { margin-top: 5mm; }
 table.building-profile.single-info td.title { border-top: 5px solid #e11b30; }
 table.summary.building-summary, table.summary.contract-info { margin-bottom: 4mm; }
 table.summary.time-to-use { margin-bottom: 10mm; }
@@ -279,6 +279,7 @@ section.sheet.cover {
 		background: white; /* 背景を白く */
 		background: #ffffff;
 		box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+		padding: 10mm;
 	}
 	<?PHP }else{ ?> 
 	.sheet_wrapper {width:100%;}
@@ -288,23 +289,24 @@ section.sheet.cover {
 	.sheet 
 	{ /* ドロップシャドウ */
 		/*margin: 0mm;*/
-		padding: <?php print (!isset($_REQUEST['print'])) ? '10mm' : '0'; ?>;
+		padding: <?php print (!isset($_REQUEST['print'])) ? '5mm' : '0'; ?>;
 		/*width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;*/
-		width: <?php print (!isset($_REQUEST['print'])) ? '231mm' : '100%'; ?>;
-		height: auto;
+		width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;
+		height: <?php print (!isset($_REQUEST['print'])) ? '190mm' : '100%'; ?>;
+		/*height: auto;*/
 		/*min-height: 190mm;*/
 	}
 	<?php }else {?>
 	.sheet {
-		padding: <?php print (!isset($_REQUEST['print'])) ? '10mm' : '0'; ?>;
+		padding: <?php print (!isset($_REQUEST['print'])) ? '5mm' : '0'; ?>;
 	}
 	<?php }?>
 }
 
 <?php if($requestData['print_type']!=8){?>
-@page { size: A4 landscape; margin: 0mm; }
+@page { size: A4 landscape; margin: 0; }
 <?php } else {?>
-@page { size: A4; margin: 8mm 15mm 8mm 15mm; }
+@page { size: A4; margin: 0; }
 <?php }?>
 
 @media print 
@@ -315,7 +317,8 @@ section.sheet.cover {
 	table tr, img, blockquote {page-break-inside: avoid !important;}
 /*   	.sheet{margin:5%;width:90%;height:80%}  */
 <?php if($requestData['print_type']!=8){?>
-	.sheet{padding:2.5% 0 0 0; margin:5% 3% 0 3%;width:90%;}
+	/*.sheet{padding:2.5% 0 0 0; margin:5% 3% 0 3%;width:90%;}*/
+	.sheet{padding: 0; margin: 10mm 10mm; width:277mm;}
 <?php }?>
 	.sheet.cover{margin:0 !important;}
 }	
@@ -964,9 +967,9 @@ if($requestData['print_type']==8){
 				if($buildCart['opticle_cable'] == 0){
 					echo Yii::app()->controller->__trans('不明', 'ja');
 				}else if($buildCart['opticle_cable'] == 1){
-					echo Yii::app()->controller->__trans('引き込み有', 'ja');
+					echo Yii::app()->controller->__trans('設置', 'ja');
 				}else if($buildCart['opticle_cable'] == 2){
-					echo Yii::app()->controller->__trans('無し', 'ja');
+					echo Yii::app()->controller->__trans('未設置', 'ja');
 				}else{
 					echo '-';
 				}
@@ -1036,7 +1039,7 @@ if($requestData['print_type']==8){
           ?></td>
           <!--elevetor value-->
           <td class="b_parking_num">
-          P<?php
+          P&nbsp;<?php
           	$parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
 			if($parkingUnitNo[0] == 1){
 				echo Yii::app()->controller->__trans('有', 'ja').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台', 'ja').')' : "");
@@ -1371,7 +1374,7 @@ if($requestData['print_type'] == 11){
   <section class="sheet">
     <table class="building-profile single-info">
       <tr>
-        <td colspan="2" class="title"><?php echo $buildingNumber.'-'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
+        <td colspan="4" class="title"><?php echo $buildingNumber.'-'. ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
       </tr>
       <tr>
@@ -1389,7 +1392,7 @@ if($requestData['print_type'] == 11){
 	        	$buildPics = 'noimg_building.png';
 	        }
         ?>
-        <td rowspan="2" class="td_col1_3">
+        <td rowspan="4" class="td_col1_3">
         <img src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>"/>
         
         <?php
@@ -1419,7 +1422,7 @@ if($requestData['print_type'] == 11){
 			<?php //} ?>
           
         </td>
-        <td class="td_col2_3">
+        <td class="td_col2_3" rowspan="3" colspan="3">
         <table class="current_status">
             <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
             <tr>
@@ -1445,7 +1448,7 @@ if($requestData['print_type'] == 11){
                     if($indexFloor && $indexFloor<=20 && ($indexFloor % 19 == 0 || ($indexFloor > 20 && $indexFloor % 20 == 11))) {
                     	echo '</table></td></tr></table></section></div>
 							<div class="sheet_wrapper">
-								<section class="sheet">
+								<section class="sheet manyfloors">
 									<table class="building-profile single-info">
 										<tr>
 											<td colspan="2" class="title"></td>
@@ -1453,7 +1456,7 @@ if($requestData['print_type'] == 11){
 										<tr>
 											<td class="td_col1_3">
 							            </td>
-							             <td class="td_col2_3">
+							             <td class="td_col2_3" rowspan="3" colspan="3">
 							             	<table class="current_status" style="margin-top: 10px">
 												<span class="caption">'. Yii::app()->controller->__trans("募集状況", 'ja').'</span>
 		                                        <tr>';
@@ -1726,27 +1729,31 @@ if($requestData['print_type'] == 11){
             <?php }?>
           </table></td>
       </tr>
+	<tr></tr>
+	<tr></tr>
       
       <?php 
-                        if (count($floorDetails) > 13 && count($floorDetails) <= 19) {
+                        /*if (count($floorDetails) > 13 && count($floorDetails) <= 19) {
                         	echo '</table></section></div>
 									<div class="sheet_wrapper">
-									<section class="sheet manyfloors">
+									<section class="sheet manyfloors_info">
 									<table class="building-profile single-info casemore">
 									
 									';
-                        }?>
+                        }*/?>
                         <tr>
-							<? if (count($floorDetails) > 19) { ?>
-                        <td class="td_col1_3"></td>
+							<? if (count($floorDetails) > 13) { ?>
+                        <td class="td_col1_3" rowspan="4"></td>
 						<? } ?>
                         
       
 									
       
-        <td class="var-top td_col2_3 details"><table class="building-details">
+        <td class="var-top td_col2_3 details" colspan="3">
+			<table class="building-details">
             <tr>
-              <td class="var-top"><table class="summary building-summary">
+              <td class="var-top col_4">
+				  <table class="summary building-summary">
                   <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></span>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
@@ -1765,7 +1772,8 @@ if($requestData['print_type'] == 11){
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('規模', 'ja'); ?></th>
-                    <td><?php
+                    <td>
+						<?php
                                                         	if(isset($buildCart['floor_scale']) && $buildCart['floor_scale'] != ""){
 																$scaleExp = explode('-',$buildCart['floor_scale']);
 																$floorGround = $scaleExp[0];
@@ -1784,7 +1792,8 @@ if($requestData['print_type'] == 11){
 															}else{
 																echo '-';
 															}
-														?></td>
+														?>
+					  </td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('リニューアル', 'ja'); ?></th>
@@ -1811,6 +1820,8 @@ if($requestData['print_type'] == 11){
                     <td><?php echo $buildCart['shared_rate'] != "" ? $buildCart['shared_rate'].'%' : "-"; ?></td>
                   </tr>
                 </table>
+				</td>
+				<td class="var-top col_4">
                 <table class="summary facility-summary">
                   <span class="caption"><?php echo Yii::app()->controller->__trans('設備概要', 'ja'); ?></span>
                   <tr>
@@ -1929,9 +1940,9 @@ if($requestData['print_type'] == 11){
                                                             if($buildCart['opticle_cable'] == 0){
                                                                 echo Yii::app()->controller->__trans('不明', 'ja');
                                                             }else if($buildCart['opticle_cable'] == 1){
-                                                                echo Yii::app()->controller->__trans('引き込み有', 'ja');
+                                                                echo Yii::app()->controller->__trans('設置', 'ja');
                                                             }else if($buildCart['opticle_cable'] == 2){
-                                                                echo Yii::app()->controller->__trans('無', 'ja');
+                                                                echo Yii::app()->controller->__trans('未設置', 'ja');
                                                             }else{
                                                                 echo '-';
                                                             }
@@ -1944,7 +1955,7 @@ if($requestData['print_type'] == 11){
                                                                 if(strlen($buildCart['elevator']) > 2){
                                                                     $elevatorExp = explode('-',$buildCart['elevator']);
                                                                     if($elevatorExp[0] == 1){
-                                                                        echo Yii::app()->controller->__trans('有り', 'ja');
+                                                                        echo Yii::app()->controller->__trans('有', 'ja');
 																		if($elevatorExp[1] != "" || $elevatorExp[2] != "" || $elevatorExp[3] != "" || $elevatorExp[4] != "" || $elevatorExp[5] != "") echo '(';
 																		
 																		echo isset($elevatorExp[1]) && $elevatorExp[1] != "" ? $elevatorExp[1].Yii::app()->controller->__trans('基', 'ja') : "";
@@ -1960,7 +1971,7 @@ if($requestData['print_type'] == 11){
                                                                     if($buildCart['elevator'] == -2){
                                                                         echo Yii::app()->controller->__trans('不明', 'ja');
                                                                     }else if($buildCart['elevator'] == 2){
-                                                                        echo Yii::app()->controller->__trans('無し', 'ja');
+                                                                        echo Yii::app()->controller->__trans('無', 'ja');
                                                                     }
                                                                 }
                                                             }else{
@@ -1974,7 +1985,7 @@ if($requestData['print_type'] == 11){
                                                             if(isset($buildCart['parking_unit_no']) && count($buildCart['parking_unit_no']) > 0){
                                                                 $parkingUnitNo = explode('-',$buildCart['parking_unit_no']);
                                                                 if($parkingUnitNo[0] == 1){
-                                                                   echo Yii::app()->controller->__trans('exist').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台', 'ja').')' : "");
+                                                                   echo Yii::app()->controller->__trans('有', 'ja').($parkingUnitNo[1] != "" ? '('.$parkingUnitNo[1].' '.Yii::app()->controller->__trans('台', 'ja').')' : "");
                                                                 }else if($parkingUnitNo[0] == 2){
                                                                     echo Yii::app()->controller->__trans('無', 'ja');
                                                                 }else if($parkingUnitNo[0] == 3){
@@ -1985,7 +1996,7 @@ if($requestData['print_type'] == 11){
                                                         ?></td>
                   </tr>
                 </table></td>
-              <td class="pad-left var-top">
+              <td class="pad-left var-top col_4">
               	<table class="summary contract-info">
 					<?php
                     	$contractArray = $renewalArray = $renewalFeeMonthArray = $keymoneyArray = $keyMoneyMonthArray = $amortizationArray = $repaymentMonthArray = array();
@@ -2490,7 +2501,8 @@ if($requestData['print_type'] == 11){
                                             }
                                             ?></td>
             </tr>
-          </table></td>
+          </table>
+		</td>
       </tr>
     </table>
   </section>
