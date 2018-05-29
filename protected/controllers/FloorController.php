@@ -1272,12 +1272,13 @@ class FloorController extends Controller{
 		$allBuildId = explode(',',$buildingId);
 		$searchcrietaria = $_REQUEST['searchcrietaria'];
 		$allFloorId = explode(',',$floorIds);
+
+		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
+		$loguser_id = $user->user_id;
 		
 		foreach($allFloorId as $floor){
 			if($floor == '') continue;
 			$cartModel = new Cart();
-			$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
-			$loguser_id = $user->user_id;
 			$checkAvailable = Cart::model()->find('floor_id = '.$floor.' AND user_id = '.$loguser_id);
 			if(count($checkAvailable) > 0){
 				continue;
@@ -1293,7 +1294,7 @@ class FloorController extends Controller{
 				$cartModel->save(false);
 			}
 		}	
-
+		
 		$cartDetails = Cart::model()->findAll('user_id = '.$loguser_id);
 		$itemCount = " (".count($cartDetails).")";
 		$i = 0;
