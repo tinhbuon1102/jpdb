@@ -1352,6 +1352,8 @@ if($requestData['print_type'] == 11){
 				}
 			}
 			
+			//Reset index $floorDetails
+			$floorDetails = array_values($floorDetails);
 			$iNoSenko = 0;
 			$bHasSenko = true;
 			foreach($floorDetails as $indexFloor => $floor){
