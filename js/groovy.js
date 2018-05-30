@@ -1190,20 +1190,7 @@ $(document).ready(function(e) {
 	$(document).on('click','.btnAddAll',function(e){
 		e.stopPropagation();
 		e.preventDefault();
-		var floorId = $(this).parent().find('.hdnAllFloorIds').val();
-		var buildingId = $(this).parent().find('.hdnBuildingId').val();
-		var searchcrietaria = $('.hdnSearchCriteria').val(); 
-		$(this).closest('.room-table').find('.btnAddToCart').html('削除');
-		$(this).closest('.room-table').find('.btnAddToCart').removeClass('add');
-		$(this).closest('.room-table').find('.btnAddToCart').addClass('remove');
-		$(this).closest('.room-table').find('.btnAddToCart').attr('value',1);
-		$(this).attr('disabled',true);
-		var url = baseUrl+'/index.php?r=floor/addAllFromToCart';
-		call({url:url,params:{floorId:floorId,buildingId:buildingId,searchcrietaria:searchcrietaria},type:'POST',dataType : 'json'},function(resp){
-			$('.cartResp').html(resp.respData);
-			$('.respTotalItemCount').html(resp.count);
-			$('.list-nav').trigger('click');
-		});
+		$(this).closest('table').find('.btnAddToCart.add').trigger('click');
 	});
 	/****************************** end ******************************/
 	 
