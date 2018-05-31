@@ -1732,7 +1732,7 @@ if($requestData['print_type'] == 11){
 									';
                         }*/?>
                         <tr>
-							<? if (count($floorDetails) > 14) { ?>
+							<? if($countIndexFloor >= 14 || count($floorDetails) > 14) { ?>
                         <td class="td_col1_3" rowspan="4"></td>
 						<? } ?>
                         
