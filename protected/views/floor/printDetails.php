@@ -531,7 +531,6 @@ if($requestData['print_type'] == 10){
 					$countFloor = count($floorDetails);
 				}
 				$breakFloorDetails = false;
-				$indexFloor = 0;
 				foreach($floorDetails as $indexFloorPrint => $floorPrintDetail){
 					$indexFloor ++;
 					
