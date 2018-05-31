@@ -162,6 +162,7 @@ th.label_1 { width: 8mm; }
 th.label_2 { width: 65mm; }
 .label_3 { width: 11mm; }
 .label_4, .label_5, .label_6, .label_7 { width: 22mm; }
+.label_5 { width: 25mm; }
 .label_7_1, .label_7_2, .label_7_3, .label_7_4 { width: 15mm; }
 .label_8 { width: 20mm; }
 th.label_9 { /*width: 55mm;*/ }
@@ -179,7 +180,7 @@ table.building-list td table.lists td { padding: 0; }
 td.label_4, td.label_5, td.label_6, td.label_7 { text-align: right; }
 td.label_4.center { text-align: center; }
 table.lists tr:nth-child(even) td { background-color: #f4f4f4; }
-table.lists tr.row_second td, table.building-list td table.lists td.center.label_3 { border-bottom: 1px solid #CCC; }
+table.lists tr.row_second td, table.building-list td table.lists td.center.label_3 { border-bottom: 1px solid #CCC; width: 13mm; }
 table.building-list td table.lists td.center.label_3 { border-right: 1px solid #CCC; }
 table.building-list td table.facility-info td { border-bottom: 1px solid #CCC; }
 th.bdata_title, td.trader_type.owner_type, td.trader_type.window_type {
@@ -1744,7 +1745,7 @@ if($requestData['print_type'] == 11){
 									';
                         }*/?>
                         <tr>
-							<? if (count($floorDetails) > 13) { ?>
+							<? if (count($floorDetails) > 14) { ?>
                         <td class="td_col1_3" rowspan="4"></td>
 						<? } ?>
                         
