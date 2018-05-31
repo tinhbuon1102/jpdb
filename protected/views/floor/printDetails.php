@@ -539,7 +539,7 @@ if($requestData['print_type'] == 10){
 						break;
 					}
 					
-					if($indexFloor && ($indexFloor % 14 == 0 )) {
+					if($indexFloor && ($indexFloor % 16 == 0 )) {
 						echo '</table></td>';
 					    include('_print_facility_summary.php');
 						include('_print_type2_bldimg.php');
