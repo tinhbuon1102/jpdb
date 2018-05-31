@@ -1444,34 +1444,16 @@ if($requestData['print_type'] == 11){
 // 				$pFloors = explode(',',$prosalData['floor_id']);
             	$pFloors = $proposedFloors;
             	$aRentPrice = array();
+            	$countIndexFloor = 0;
 				foreach($floorDetails as $indexFloor => $floor){
+					$countIndexFloor ++ ;
+					if ($countIndexFloor > 19) $countIndexFloor = 0;
+					
 					$aRentPrice[$floor['rent_unit_price_opt']] = isset($aRentPrice[$floor['rent_unit_price_opt']]) ? $aRentPrice[$floor['rent_unit_price_opt']] : 0;
 					$aRentPrice[$floor['rent_unit_price_opt']]++;
                 	$floorId = Floor::model()->findByPk($floor['floor_id']);
-                    if($indexFloor && $indexFloor<=20 && ($indexFloor % 19 == 0 || ($indexFloor > 20 && $indexFloor % 20 == 11))) {
-                    	echo '</table></td></tr></table></section></div>
-							<div class="sheet_wrapper">
-								<section class="sheet manyfloors">
-									<table class="building-profile single-info">
-										<tr>
-											<td colspan="2" class="title"></td>
-							            </tr>
-										<tr>
-											<td class="td_col1_3">
-							            </td>
-							             <td class="td_col2_3" rowspan="3" colspan="3">
-							             	<table class="current_status" style="margin-top: 10px">
-												<span class="caption">'. Yii::app()->controller->__trans("募集状況", 'ja').'</span>
-		                                        <tr>';
-												echo $bHasSenko ? '<th class="senko_th senko_'.$buildCart['building_id'].'"></th>' : '';
-		                                            echo '<th class="stairs">'. Yii::app()->controller->__trans("階数", 'ja').'</th>
-		                                            <th colspan="2">'. Yii::app()->controller->__trans("面積", 'ja').'('. Yii::app()->controller->__trans("ネット", 'ja').')</th>
-													<th class="calc_type"></th>
-		                                            <th>'. Yii::app()->controller->__trans("預託金", 'ja').'</th>
-		                                            <th>'. Yii::app()->controller->__trans("賃料", 'ja').'</th>
-		                                            <th>'. Yii::app()->controller->__trans("共益費", 'ja').'</th>
-		                                            <th>'. Yii::app()->controller->__trans("入居予定日/備考", 'ja').'</th>
-		                                        </tr>';
+                    if(($indexFloor && $indexFloor<=20 && ($indexFloor % 19 == 0 || ($indexFloor > 20 && $indexFloor % 20 == 11)))) {
+                    		echo HelperFunctions::generatePrintBreakRow($buildCart, $bHasSenko);
 					}
             ?>
             <tr>
@@ -1722,6 +1704,11 @@ if($requestData['print_type'] == 11){
               <td class="date-move center"></td>
             </tr>
             
+            <?php 
+            if($countIndexFloor >= 14) {
+            		echo HelperFunctions::generatePrintBreakRow($buildCart, $bHasSenko, false);
+            }
+            ?>
             
            <?php 
            if ($aRentPrice[-2] != count($floorDetails)) {?>
