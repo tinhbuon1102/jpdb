@@ -2545,11 +2545,6 @@ if(isset($_GET['print_map'])) {
 	$type = isset($_GET['show_numbering'])?1:0;
 	$zoom = isset($_GET['zoom'])?$_GET['zoom']:16;
 ?>
-<script type="text/javascript">
-	var locations = <?=json_encode($array)?>;
-	var buildings =<?=json_encode($buildNameArray)?>;
-</script>
-
 <div class="sheet_wrapper">
   <section class="sheet" style="page-break-before:always;"> 
 	<?php if($_GET['print_type']==8) {?>
@@ -2561,6 +2556,11 @@ if(isset($_GET['print_map'])) {
 </div>	
 <?php } ?>
 
+<?php if(!isset($_GET['print'])){ ?>
+<script type="text/javascript">
+	var locations = <?=json_encode($array)?>;
+	var buildings =<?=json_encode($buildNameArray)?>;
+</script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <script type="text/javascript">
 $(document).ready(function(e) {
@@ -2676,5 +2676,6 @@ var call = function(data,callback){
 // 		}	
 // });
 </script>
+<?php }?>
 </body>
 </html>
