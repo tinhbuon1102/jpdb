@@ -101,15 +101,10 @@ class ProposedArticleController extends Controller{
 	public function actionTestPdf(){
 		
 		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1&print=true&zoom=16';
-		$sContent = file_get_contents($url);
-		$doc = new DOMDocument();
-		
-		$internalErrors = libxml_use_internal_errors(true);
-		$doc->loadHTML($sContent);
-		libxml_use_internal_errors($internalErrors);
 		
 		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
 		$fName = 'proposed_article_'.time().'.pdf';
+		$file_path = $images_path.'/'.$fName;
 		
 		$snappy = new Pdf('/usr/local/wkhtmltox/bin/wkhtmltopdf');
 		
@@ -122,12 +117,15 @@ class ProposedArticleController extends Controller{
 		$snappy->setOption('margin-right', 0);
 		$snappy->setOption('margin-bottom', 0);
 		
-// 		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
-		$snappy->generate($url, $images_path.'/'.$fName);
-		header('Content-Type: application/pdf');
-// 		// Remove the next line to let the browser display the PDF
-		header('Content-Disposition: attachment; filename="file.pdf"');
-		echo $snappy->getOutput($images_path.'/'.$fName);
+		$snappy->generate($url, $file_path);
+		
+// 		header('Content-Type: application/pdf');
+// 		// 		// Remove the next line to let the browser display the PDF
+// 		header('Content-Disposition: attachment; filename="file.pdf"');
+		
+		
+// 		echo $snappy->getOutput($file_path);
+// 		die;
 		
 		
 // 		require_once(Yii::app()->basePath . "/vendors/mpdf/mpdf.php");
