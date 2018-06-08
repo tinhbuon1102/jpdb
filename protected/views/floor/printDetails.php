@@ -1747,8 +1747,8 @@ if($requestData['print_type'] == 11){
 			<table class="building-details">
             <tr>
               <td class="var-top col_4">
+                  <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></span> 
 				  <table class="summary building-summary">
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('ビル概要', 'ja'); ?></span>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
                     <td><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?>
