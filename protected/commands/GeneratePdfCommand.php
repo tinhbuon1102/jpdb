@@ -26,29 +26,7 @@ class GeneratePdfCommand extends CConsoleCommand
     $snappy->setOption('margin-right', 0);
     $snappy->setOption('margin-bottom', 0);
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
-    if (strpos($pdfUrl, 'test') !== -1)
-    {
-    		$sContent = file_get_contents($url);
-    		$doc = new DOMDocument();
-    		
-    		$internalErrors = libxml_use_internal_errors(true);
-    		$doc->loadHTML($sContent);
-    		libxml_use_internal_errors($internalErrors);
-    		
-    		$divMeta = $doc->getElementById('makePdf');
-    		$divMeta->parentNode->removeChild($divMeta);
-    		$divMetaLoader = $doc->getElementById('dispLoader');
-    		$divMetaLoader->parentNode->removeChild($divMetaLoader);
-    		$sContent = $doc->saveHTML();
-    		
-    		$sContent = '<html><body>hehehehe</body></html>';
-    		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
-//     		$snappy->generate($url, $images_path.'/'.$fName);
-    		
-    }
-    else{
-    		$snappy->generate($url, $images_path.'/'.$fName);
-    }
+    $snappy->generate($url, $images_path.'/'.$fName);
 
     if(file_exists($images_path.'/'.$fName)){
       $reps = array('status'=>1,'url'=>$domain.'/pdfArticle/'.$fName);
