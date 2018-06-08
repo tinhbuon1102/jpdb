@@ -2445,12 +2445,12 @@ if($requestData['print_type'] == 11){
                                                                 }
                                                             }
                                                         ?></td>
+                  </tr>
                     <?php
                                                             }
                                                     }
                                                     ?>
-                  </tr>
-                  <br/>
+                  
                 </table>
                 <?php
                                             if($buildCart['exp_rent_disabled'] != 1){
