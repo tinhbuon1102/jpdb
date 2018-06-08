@@ -653,7 +653,7 @@ if($requestData['print_type'] == 10){
 						echo '-';
 					}
 				?>
-                </font></font> 
+                 
                 <?php
 					if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
 						echo Yii::app()->controller->renderPrice($floorId['rent_unit_price'])/*.Yii::app()->controller->__trans('yen / tsubo')*/;
@@ -661,7 +661,7 @@ if($requestData['print_type'] == 10){
 						echo '';
 					}
 				?>
-                </font></font></td>
+                </td>
               <td class="label_6">
                 <?php
 					if($floorId['unit_condo_fee'] == ""){
@@ -680,7 +680,7 @@ if($requestData['print_type'] == 10){
 						}
 					}
 				?>
-                </font></font> 
+                 
                 <?php
 					if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
 						echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee'])/*.Yii::app()->controller->__trans('yen / tsubo')*/;
@@ -688,7 +688,7 @@ if($requestData['print_type'] == 10){
 						echo '';
 					}
 				?>
-                </font></font></td>
+                </td>
               <td class="label_7">
                <?php
 				if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
@@ -709,7 +709,7 @@ if($requestData['print_type'] == 10){
 						echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 					}
 				?>
-                </font></font><br>
+                <br>
                 
                 <?php
 // 					if(isset($floorId['deposit']) && $floorId['deposit'] != ""){
@@ -718,7 +718,7 @@ if($requestData['print_type'] == 10){
 // 						echo '';
 // 					}
 				?>
-                </font></font>
+                
                 <?php
 				}
 				?>
@@ -1490,7 +1490,7 @@ if($requestData['print_type'] == 11){
 					echo '&nbsp;'.$floorId['roomname'];
 				}
 				?></td>
-              <td class="space center"><font> <font>
+              <td class="space center">
                 <?php
                                                         if(isset($floorId['area_ping']) && $floorId['area_ping'] != ""){
                                                             echo $floorId['area_ping']." ".Yii::app()->controller->__trans('坪', 'ja');
@@ -1515,8 +1515,8 @@ if($requestData['print_type'] == 11){
                                                                 
                                                         }
                                                         ?>
-                </font> </font></td>
-              <td class="space center"><font> <font>
+                </td>
+              <td class="space center">
                 <?php
                                                     if(isset($floorId['area_m']) && $floorId['area_m'] != ""){
                                                         echo $floorId['area_m']." ".Yii::app()->controller->__trans('m&sup2;');
@@ -1524,7 +1524,7 @@ if($requestData['print_type'] == 11){
                                                         echo '-';
                                                     }
                                                     ?>
-                </font> </font> <font> <font>
+                
                 <?php
                                                     if(isset($floorId['area_net']) && $floorId['area_net'] != ""){
                                                         echo Yii::app()->controller->__trans('ネット', 'ja').": ".$floorId['area_net'].Yii::app()->controller->__trans('坪', 'ja');
@@ -1532,7 +1532,7 @@ if($requestData['print_type'] == 11){
                                                         echo '';
                                                     }
                                                     ?>
-                </font> </font></td>
+                </td>
               <td class="center">
               <?php 
               	if((int)$floorId['calculation_method']==1) echo "N";
@@ -1569,7 +1569,7 @@ if($requestData['print_type'] == 11){
 															echo $floorId['deposit_month'].Yii::app()->controller->__trans('ヶ月', 'ja');
 														}														
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="rent-fee center">
                 <?php
                                                         if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
@@ -1593,7 +1593,7 @@ if($requestData['print_type'] == 11){
 															echo '';
 														}
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="condo-fee center">
                 <?php
                                                         if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
@@ -1614,7 +1614,7 @@ if($requestData['print_type'] == 11){
 															}
                                                         }
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="date-move center">
               	<?php  echo HelperFunctions::translateBuildingValue('move_in_date', $buildCart, $floorId); ?>
 			</td>
@@ -1637,7 +1637,7 @@ if($requestData['print_type'] == 11){
 															echo '';
 														}*/
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="rent-fee center">
                 <?php
 				                                        if(isset($floorId['total_rent_price']) && $floorId['total_rent_price'] != ""){
@@ -1666,7 +1666,7 @@ if($requestData['print_type'] == 11){
                                                             echo '-';
                                                         }
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="condo-fee center">
                 <?php
                                                         if(isset($floorId['total_condo_fee']) && $floorId['total_condo_fee'] != ""){
@@ -1675,7 +1675,7 @@ if($requestData['print_type'] == 11){
                                                             
                                                         }
                                                     ?>
-                </font></font></td>
+                </td>
               <td class="date-move center"></td>
             </tr>
             <?php
