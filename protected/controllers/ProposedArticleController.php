@@ -171,18 +171,6 @@ class ProposedArticleController extends Controller{
 			
 		$user = Yii::app()->user->getId();
 
-		if ($_REQUEST['pdfUrl'] == 'L2luZGV4LnBocD9wcmludF9sYW5ndWFnZT1qYSZwcmludENhcnQ9MSZ1c2VyPXN1cGVyYWRtaW4mcHJpbnRfdHlwZT0xMSZyPWZsb29yJTJGYWRkUHJvcG9zZWRUb0NhcnQmdGVzdD0x')
-		{
-			echo '<pre>'; print_r(array(
-      $cmd,
-      $id,
-      $zoom,
-      $zoom_building,
-      $user,
-      str_replace("&", '\&', $pdfUrl),
-      $fName
-    )); die;
-		}
     self::runCommand(sprintf(
       $cmd,
       $id,
