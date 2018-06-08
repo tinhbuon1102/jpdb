@@ -2250,7 +2250,7 @@ if($requestData['print_type'] == 11){
                                                 $contractdiff= array_diff_assoc($contractArray, array_unique($contractArray));
                                             ?>
                  	<span class="caption">
-						<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>
+						<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>1111
                     </span>
                     <tbody>
                     	<tr>
@@ -2332,13 +2332,15 @@ if($requestData['print_type'] == 11){
                         </tr>
                     </tbody>
                 </table>
+                <?php 
+                if(isset($requestData['print_time_floor']) || isset($requestData['print_time_entrance'])){
+                	?>
+                 <span class="caption"><?php echo Yii::app()->controller->__trans('使用時間', 'ja'); ?></span>
+                <?php
+                }
+                ?>
                 <table class="summary time-to-use">
                   <?php
-					if(isset($requestData['print_time_floor']) || isset($requestData['print_time_entrance'])){
-                  ?>
-                  <span class="caption"><?php echo Yii::app()->controller->__trans('使用時間', 'ja'); ?></span>
-                  <?php
-					}
                                                 if(isset($requestData['print_time_floor']) == 1){
                                                     $limit_of_usage_time =  array();
                                                     if(isset($buildCart['limit_of_usage_time']) && $buildCart['limit_of_usage_time'] != ''){
