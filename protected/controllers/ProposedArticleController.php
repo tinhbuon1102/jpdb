@@ -159,9 +159,15 @@ class ProposedArticleController extends Controller{
 
 // 		$sContent = file_get_contents('http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1');
 // 		$doc = new DOMDocument();
+		
+// 		$internalErrors = libxml_use_internal_errors(true);
 // 		$doc->loadHTML($sContent);
+// 		libxml_use_internal_errors($internalErrors);
+		
 // 		$divMeta = $doc->getElementById('makePdf');
 // 		$divMeta->parentNode->removeChild($divMeta);
+// 		$divMetaLoader = $doc->getElementById('dispLoader');
+// 		$divMetaLoader->parentNode->removeChild($divMetaLoader);
 // 		$sContent = $doc->saveHTML();
 		
 // 		echo $sContent;die;
