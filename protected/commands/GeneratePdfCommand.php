@@ -28,8 +28,8 @@ class GeneratePdfCommand extends CConsoleCommand
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
     if (strpos($pdfUrl, 'test') !== -1)
     {
-    		$url = '<html><body>abdf</body></html>';
-    		$snappy->generateFromHtml($url, $images_path.'/'.$fName);
+    		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1';
+    		$snappy->generate($url, $images_path.'/'.$fName);
     		
 //     		echo $url;die;
     }
