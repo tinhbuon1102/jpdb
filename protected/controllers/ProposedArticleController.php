@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 Yii::import('application.vendors.*');
 require_once('vendor/autoload.php');
 use Knp\Snappy\Pdf;
@@ -99,48 +99,55 @@ class ProposedArticleController extends Controller{
 	}
 	
 	public function actionTestPdf(){
-		$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
-		$logged_user_id = $user->user_id;
 		
-		$requestData = $_REQUEST;
-		$propsedArticleId = $_REQUEST['hdnProArticlePdfId'];
+		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1';
+		$sContent = file_get_contents($url);
+		$doc = new DOMDocument();
 		
-		$buildingDetails = ProposedArticle::model()->findByPk($propsedArticleId);
-	    $buildingId = $buildingDetails['building_id'];
-		$allBuildId = explode(',',$buildingId);
+		$internalErrors = libxml_use_internal_errors(true);
+		$doc->loadHTML($sContent);
+		libxml_use_internal_errors($internalErrors);
 		
-		$floorIds = $buildingDetails['floor_id'];
-		$allFloorIds = array();
-		$fIds = explode(',',$floorIds);
-		foreach($fIds as $fId){
-			$fDetails = Floor::model()->findBypk($fId);
-			if(count($fDetails) > 0){
-				$allFloorIds[] = $fId;
-			}
-		}
-		foreach($allBuildId as $id){
-			$bDetails = Building::model()->findByPk($id);
-			if(count($bDetails) > 0){
-				$buildCartDetails[] = $bDetails;
-			}
-		}
+		$divMeta = $doc->getElementById('makePdf');
+		$divMeta->parentNode->removeChild($divMeta);
+		$divMetaLoader = $doc->getElementById('dispLoader');
+		$divMetaLoader->parentNode->removeChild($divMetaLoader);
+		$sContent = $doc->saveHTML();
 		
-		include(Yii::app()->basePath . "/vendors/mpdf/mpdf.php");
-		//$stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/custPdf.css');
 		
-		$html = $this->renderPartial('testForPdf',array('buildCartDetails'=>$buildCartDetails,'requestData'=> $requestData,'proposedFloors'=>$allFloorIds),true);
+		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
+		$fName = 'proposed_article_'.time().'.pdf';
 		
-		$mpdf = new mPDF('utf-8', 'A4');
+		$snappy = new Pdf('/usr/local/wkhtmltox/bin/wkhtmltopdf');
 		
-		$mpdf->autoScriptToLang = true;
-		$mpdf->autoLangToFont = true;
-		//$mpdf->setAutoTopMargin = 'stretch'; // Set pdf top margin to stretch to avoid content overlapping
-		//$mpdf->setAutoBottomMargin = 'stretch'; // Set pdf bottom margin to stretch to avoid content overlapping
+		$snappy->setOption('javascript-delay', 20000);
+		$snappy->setOption('page-width', 297);
+		$snappy->setOption('page-height', 210);
+		$snappy->setOption('print-media-type', true);
+		$snappy->setOption('margin-left', 0);
+		$snappy->setOption('margin-top', 0);
+		$snappy->setOption('margin-right', 0);
+		$snappy->setOption('margin-bottom', 0);
 		
-        //$mpdf->WriteHTML($stylesheet,1); // Writing style to pdf
-		$mpdf->WriteHTML($html); // Writing html to pdf
+		//$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
+		header('Content-Type: application/pdf');
+		// Remove the next line to let the browser display the PDF
+		header('Content-Disposition: attachment; filename="file.pdf"');
+		echo $snappy->getOutputFromHtml($sContent);
+		
+		
+// 		require_once(Yii::app()->basePath . "/vendors/mpdf/mpdf.php");
+// 		$mpdf = new mPDF('utf-8', 'A4');
+		
+// 		$mpdf->autoScriptToLang = true;
+// 		$mpdf->autoLangToFont = true;
+// 		//$mpdf->setAutoTopMargin = 'stretch'; // Set pdf top margin to stretch to avoid content overlapping
+// 		//$mpdf->setAutoBottomMargin = 'stretch'; // Set pdf bottom margin to stretch to avoid content overlapping
+		
+//         //$mpdf->WriteHTML($stylesheet,1); // Writing style to pdf
+// 		$mpdf->WriteHTML($sContent); // Writing html to pdf
  
-		$mpdf->Output('proposed_article_'.time().'.pdf','D'); // For Download
+// 		$mpdf->Output('proposed_article_'.time().'.pdf','D'); // For Download
 	}
 
   public static function runCommand($command) {
