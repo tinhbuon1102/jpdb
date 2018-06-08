@@ -108,13 +108,6 @@ class ProposedArticleController extends Controller{
 		$doc->loadHTML($sContent);
 		libxml_use_internal_errors($internalErrors);
 		
-		$divMeta = $doc->getElementById('makePdf');
-		$divMeta->parentNode->removeChild($divMeta);
-		$divMetaLoader = $doc->getElementById('dispLoader');
-		$divMetaLoader->parentNode->removeChild($divMetaLoader);
-		$sContent = $doc->saveHTML();
-		
-		
 		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
 		$fName = 'proposed_article_'.time().'.pdf';
 		
