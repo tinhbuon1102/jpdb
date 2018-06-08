@@ -1817,8 +1817,8 @@ if($requestData['print_type'] == 11){
                 </table>
 				</td>
 				<td class="var-top col_4">
-                <table class="summary facility-summary">
                   <span class="caption"><?php echo Yii::app()->controller->__trans('設備概要', 'ja'); ?></span>
+                <table class="summary facility-summary">
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('空調制御', 'ja'); ?></th>
                     <td><?php
