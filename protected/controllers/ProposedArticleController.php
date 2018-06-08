@@ -112,8 +112,8 @@ class ProposedArticleController extends Controller{
 		$snappy->setOption('page-size', 'A4');
 		$snappy->setOption('enable-javascript', true);
 		$snappy->setOption('javascript-delay', 20000);
-		$snappy->setOption('page-width', 210);
-		$snappy->setOption('page-height', 297);
+		$snappy->setOption('page-width', 297);
+		$snappy->setOption('page-height', 210);
 		$snappy->setOption('print-media-type', true);
 		$snappy->setOption('margin-left', 0);
 		$snappy->setOption('margin-top', 0);
