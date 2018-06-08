@@ -1279,10 +1279,10 @@ if($requestData['print_type'] == 11){
 	?>
 <div class="sheet_wrapper">
   <section class="sheet">
-  	<caption>
-      <?php echo Yii::app()->controller->__trans('office building profile'); ?>
-    </caption>
     <table class="building-profile">
+    	<caption>
+      office building profile    
+     </caption>
       <tr>
         <th class="center">No</th>
         <th class="building-name"><?php echo Yii::app()->controller->__trans('ビル名', 'ja'); ?></th>
