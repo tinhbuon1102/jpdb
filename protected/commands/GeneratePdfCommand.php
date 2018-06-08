@@ -29,9 +29,21 @@ class GeneratePdfCommand extends CConsoleCommand
     if (strpos($pdfUrl, 'test') !== -1)
     {
     		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1';
-    		$snappy->generate($url, $images_path.'/'.$fName);
+    		$sContent = file_get_contents($url);
+    		$doc = new DOMDocument();
     		
-//     		echo $url;die;
+    		$internalErrors = libxml_use_internal_errors(true);
+    		$doc->loadHTML($sContent);
+    		libxml_use_internal_errors($internalErrors);
+    		
+    		$divMeta = $doc->getElementById('makePdf');
+    		$divMeta->parentNode->removeChild($divMeta);
+    		$divMetaLoader = $doc->getElementById('dispLoader');
+    		$divMetaLoader->parentNode->removeChild($divMetaLoader);
+    		$sContent = $doc->saveHTML();
+    		
+    		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
+    		
     }
     else{
     		$snappy->generate($url, $images_path.'/'.$fName);
