@@ -165,7 +165,7 @@ class ProposedArticleController extends Controller{
 		$zoom = $_POST['zoom'];
 		$zoom_building = $_POST['zoom_building'];
 		$pdfUrl = base64_decode($_POST['pdfUrl']);				
-		$fName = $id.'_proposed_article'.time().'.pdf';
+		$fName = ($id ? $id . '_' : '') . 'proposed_article'.time().'.pdf';
 		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
 		//check pdf already available or not
 		$pDetails = PdfLog::model()->find('pdf_url = "'.$pdfUrl.'"');		
