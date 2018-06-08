@@ -28,7 +28,8 @@ class GeneratePdfCommand extends CConsoleCommand
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
     if ($_GET['test'])
     {
-    		echo $url;die;
+    		$url = '<html><body>abdf</body></html>'
+//     		echo $url;die;
     }
     $snappy->generate($url, $images_path.'/'.$fName);
 
