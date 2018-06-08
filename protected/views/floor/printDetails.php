@@ -1993,7 +1993,7 @@ if($requestData['print_type'] == 11){
                 </table></td>
               <td class="pad-left var-top col_4">
               	<span class="caption">
-					<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>1111
+					<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>
                 </span>
               	<table class="summary contract-info">
 					<?php
