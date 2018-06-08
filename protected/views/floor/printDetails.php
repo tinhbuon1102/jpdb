@@ -1279,10 +1279,10 @@ if($requestData['print_type'] == 11){
 	?>
 <div class="sheet_wrapper">
   <section class="sheet">
-    <table class="building-profile">
-      <caption>
+  	<caption>
       <?php echo Yii::app()->controller->__trans('office building profile'); ?>
-      </caption>
+    </caption>
+    <table class="building-profile">
       <tr>
         <th class="center">No</th>
         <th class="building-name"><?php echo Yii::app()->controller->__trans('ビル名', 'ja'); ?></th>
@@ -1313,7 +1313,6 @@ if($requestData['print_type'] == 11){
 				$typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
                                                             echo $typeDetails['construction_type_name'] !='' ? Yii::app()->controller->__trans($typeDetails['construction_type_name'], 'ja') : '-';
         ?></td>
-      </tr>
       <?php
 		      $array[] = $buildCart['map_lat'].','.$buildCart['map_long'];
 		      $buildNameArray[] = ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
@@ -1321,6 +1320,7 @@ if($requestData['print_type'] == 11){
 	      }
       }
       ?>
+      </tr>
     </table>
     <div class="notice clearfix">
       <div class="half left">
