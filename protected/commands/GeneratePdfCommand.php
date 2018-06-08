@@ -26,11 +26,6 @@ class GeneratePdfCommand extends CConsoleCommand
     $snappy->setOption('margin-right', 0);
     $snappy->setOption('margin-bottom', 0);
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
-    if ($_GET['test'])
-    {
-    		$url = '<html><body>abdf</body></html>';
-//     		echo $url;die;
-    }
     $snappy->generate($url, $images_path.'/'.$fName);
 
     if(file_exists($images_path.'/'.$fName)){
