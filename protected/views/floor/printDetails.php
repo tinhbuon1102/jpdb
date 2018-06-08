@@ -2556,7 +2556,6 @@ if(isset($_GET['print_map'])) {
 </div>	
 <?php } ?>
 
-<?php if(!isset($_GET['print'])){ ?>
 <script type="text/javascript">
 	var locations = <?=json_encode($array)?>;
 	var buildings =<?=json_encode($buildNameArray)?>;
@@ -2676,6 +2675,5 @@ var call = function(data,callback){
 // 		}	
 // });
 </script>
-<?php }?>
 </body>
 </html>
