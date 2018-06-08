@@ -2543,7 +2543,7 @@ if(isset($_GET['print_map'])) {
 	$type = isset($_GET['show_numbering'])?1:0;
 	$zoom = isset($_GET['zoom'])?$_GET['zoom']:16;
 ?>
-<script>
+<script type="text/javascript">
 	var locations = <?=json_encode($array)?>;
 	var buildings =<?=json_encode($buildNameArray)?>;
 </script>
@@ -2560,7 +2560,7 @@ if(isset($_GET['print_map'])) {
 <?php } ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<script>
+<script type="text/javascript">
 $(document).ready(function(e) {
     /*************** print to pdf export ******************/
     <?php if($_GET['print_type']!=8) {?>
