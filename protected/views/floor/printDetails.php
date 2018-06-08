@@ -1291,7 +1291,7 @@ if($requestData['print_type'] == 11){
         <th class="floor-space"><?php echo Yii::app()->controller->__trans('延床面積', 'ja'); ?></th>
         <th class="floor-construction"><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
       </tr>
-      <tr>
+      
         <?php
         if(isset($buildCartDetails) && count($buildCartDetails) > 0){
         	$user = Users::model()->findByAttributes(array('username'=>Yii::app()->user->getId()));
@@ -1299,6 +1299,7 @@ if($requestData['print_type'] == 11){
         	$buildingNumber = 1;
         	foreach($buildCartDetails as $buildCart){
         ?>
+        <tr>
         <td class="center"><?php echo $buildingNumber; ?></td>
         <td class="center"><?php echo ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']); 
         //if($buildCart['bill_check']==0) echo " ビル";?></td>
@@ -1313,6 +1314,7 @@ if($requestData['print_type'] == 11){
 				$typeDetails = ConstructionType::model()->findByPk($buildCart['construction_type_id']);
                                                             echo $typeDetails['construction_type_name'] !='' ? Yii::app()->controller->__trans($typeDetails['construction_type_name'], 'ja') : '-';
         ?></td>
+        </tr>
       <?php
 		      $array[] = $buildCart['map_lat'].','.$buildCart['map_long'];
 		      $buildNameArray[] = ($language == 'ja' ? $buildCart['name'] : $buildCart['name_en']);
@@ -1320,7 +1322,6 @@ if($requestData['print_type'] == 11){
 	      }
       }
       ?>
-      </tr>
     </table>
     <div class="notice clearfix">
       <div class="half left">
