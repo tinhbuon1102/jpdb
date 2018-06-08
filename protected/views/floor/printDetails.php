@@ -1992,6 +1992,9 @@ if($requestData['print_type'] == 11){
                   </tr>
                 </table></td>
               <td class="pad-left var-top col_4">
+              	<span class="caption">
+					<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>1111
+                </span>
               	<table class="summary contract-info">
 					<?php
                     	$contractArray = $renewalArray = $renewalFeeMonthArray = $keymoneyArray = $keyMoneyMonthArray = $amortizationArray = $repaymentMonthArray = array();
@@ -2249,9 +2252,6 @@ if($requestData['print_type'] == 11){
 												
                                                 $contractdiff= array_diff_assoc($contractArray, array_unique($contractArray));
                                             ?>
-                 	<span class="caption">
-						<?php echo Yii::app()->controller->__trans('契約内容', 'ja'); ?>1111
-                    </span>
                     <tbody>
                     	<tr>
                         	<th>
