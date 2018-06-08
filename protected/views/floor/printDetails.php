@@ -427,7 +427,7 @@ if($requestData['print_type'] == 10){
     <?php 
      if($company_id==1) {
     ?>
-     <img src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo" src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
     ?>
@@ -462,7 +462,7 @@ if($requestData['print_type'] == 10){
 <?php if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {?>
 <div class="client"></div>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
+  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
     
   </section>
 </div>
@@ -865,7 +865,7 @@ if($requestData['print_type']==8){
       <?php 
      if($company_id==1) {
     ?>
-     <img src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo" src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
     ?>
@@ -903,7 +903,7 @@ if($requestData['print_type']==8){
 		if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {
 		?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
+  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
     
   </section>
 </div>
@@ -1227,12 +1227,12 @@ if($requestData['print_type'] == 11){
       <?php 
      if($company_id==1) {
     ?>
-     <img src="http://office-jpdb.com/images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo"  src="http://office-jpdb.com/images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
      	if($company['company_logo'] && $company['company_logo'] != "company_logo/") :
     ?>
-    <img class="company_name" src="<?php echo Yii::app()->baseUrl.$company['company_logo']?>" width="auto" height="26px" />
+    <img alt="company"  class="company_name" src="<?php echo Yii::app()->baseUrl.$company['company_logo']?>" width="auto" height="26px" />
     <br/>
     	<?php else : ?>
       <p class="company_name"><?php echo $company['name']; // echo $company->name; ?></p>
@@ -1272,7 +1272,7 @@ if($requestData['print_type'] == 11){
 	if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja'){
 	?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img src="images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
+  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
 </div>
 <?php
 	}
@@ -1400,7 +1400,7 @@ if($requestData['print_type'] == 11){
 	        }
         ?>
         <td rowspan="4" class="td_col1_3">
-        <img src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>"/>
+        <img alt="building"  src="<?php echo Yii::app()->baseUrl.'/buildingPictures/'.$buildPics; ?>"/>
         
         <?php
         	if (count($floorDetails) > 1)
@@ -1424,7 +1424,7 @@ if($requestData['print_type'] == 11){
         	}
 			?>
 			<?php //if ( isset($planPictureDetails) && count($planPictureDetails) > 0 ) { ?>
-			<div style="padding-top:15px" class="plan-img"><img src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$planName; ?>" /></div>
+			<div style="padding-top:15px" class="plan-img"><img alt="plan"  src="<?php echo Yii::app()->baseUrl.'/planPictures/'.$planName; ?>" /></div>
 			<?php //} else { ?>
 			<?php //} ?>
           
@@ -2560,7 +2560,7 @@ if(isset($_GET['print_map'])) {
 </div>	
 <?php } ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <script type="text/javascript">
 $(document).ready(function(e) {
     /*************** print to pdf export ******************/
