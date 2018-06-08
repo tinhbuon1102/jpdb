@@ -109,8 +109,8 @@ class ProposedArticleController extends Controller{
 		$snappy = new Pdf('/usr/local/wkhtmltox/bin/wkhtmltopdf');
 		
 		$snappy->setOption('javascript-delay', 20000);
-		$snappy->setOption('page-width', 297);
-		$snappy->setOption('page-height', 210);
+		$snappy->setOption('page-width', 210);
+		$snappy->setOption('page-height', 297);
 		$snappy->setOption('print-media-type', true);
 		$snappy->setOption('margin-left', 0);
 		$snappy->setOption('margin-top', 0);
