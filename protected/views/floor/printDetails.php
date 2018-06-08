@@ -1751,7 +1751,7 @@ if($requestData['print_type'] == 11){
 				  <table class="summary building-summary">
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('所在地', 'ja'); ?></th>
-                    <td><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?>
+                    <td><?php  echo HelperFunctions::translateBuildingValue('address', $buildCart); ?></td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('交通', 'ja'); ?></th>
