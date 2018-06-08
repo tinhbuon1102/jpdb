@@ -100,7 +100,7 @@ class ProposedArticleController extends Controller{
 	
 	public function actionTestPdf(){
 		
-		$url = 'http://office-jpdb.com/print.html?print=true&zoom=16';
+		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1&print=true&zoom=16';
 		
 		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
 		$fName = 'proposed_article_test_'.time().'.pdf';
