@@ -323,7 +323,7 @@ section.sheet.cover {
 /*   	.sheet{margin:5%;width:90%;height:80%}  */
 <?php if($requestData['print_type']!=8){?>
 	/*.sheet{padding:2.5% 0 0 0; margin:5% 3% 0 3%;width:90%;}*/
-	.sheet{padding: 0 10mm; margin: 0;}
+	.sheet{padding-top: 0; padding-bottom: 0; padding-left: 5mm; padding-right: 5mm; margin: 0;}
 <?php }?>
 	.sheet.cover{margin:0 !important;}
 }	
