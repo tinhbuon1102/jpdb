@@ -1430,8 +1430,8 @@ if($requestData['print_type'] == 11){
           
         </td>
         <td class="td_col2_3" rowspan="3" colspan="3">
+        <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
         <table class="current_status">
-            <span class="caption"><?php echo Yii::app()->controller->__trans('募集状況', 'ja'); ?></span>
             <tr>
             	<?php if ($bHasSenko) {?>
 				<th class="senko_th senko_<?php echo $buildCart['building_id']?>"></th>
