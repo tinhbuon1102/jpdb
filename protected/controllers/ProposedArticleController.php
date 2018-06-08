@@ -129,11 +129,11 @@ class ProposedArticleController extends Controller{
 		$snappy->setOption('margin-right', 0);
 		$snappy->setOption('margin-bottom', 0);
 		
-		//$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
+		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
 		header('Content-Type: application/pdf');
 		// Remove the next line to let the browser display the PDF
 		header('Content-Disposition: attachment; filename="file.pdf"');
-		echo $snappy->getOutputFromHtml($sContent);
+		echo $snappy->getOutput($images_path.'/'.$fName);
 		
 		
 // 		require_once(Yii::app()->basePath . "/vendors/mpdf/mpdf.php");
