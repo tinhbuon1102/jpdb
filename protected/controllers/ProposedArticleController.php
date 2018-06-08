@@ -103,7 +103,7 @@ class ProposedArticleController extends Controller{
 		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1&print=true&zoom=16';
 		
 		$images_path = realpath(Yii::app()->basePath . '/../pdfArticle');
-		$fName = 'proposed_article_'.time().'.pdf';
+		$fName = 'proposed_article_test_'.time().'.pdf';
 		$file_path = $images_path.'/'.$fName;
 		
 		$snappy = new Pdf('/usr/local/wkhtmltox/bin/wkhtmltopdf');

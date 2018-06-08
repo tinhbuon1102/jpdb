@@ -10,7 +10,7 @@ if (in_array($_REQUEST['print_type'], array(10, 11)) && false)
 {
 	$glob_where = ' and vacancy_info = 1';
 }
-
+$site_url = Yii::app()->getBaseUrl(true) . '/';
 $glob_where .= ' ORDER BY cast(floor_down AS SIGNED) ASC, cast(floor_up AS SIGNED) ASC';
 /***************** end ****************/
 
@@ -427,7 +427,7 @@ if($requestData['print_type'] == 10){
     <?php 
      if($company_id==1) {
     ?>
-     <img alt="logo" src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo" src="<?php echo $site_url?>images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
     ?>
@@ -462,13 +462,13 @@ if($requestData['print_type'] == 10){
 <?php if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {?>
 <div class="client"></div>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
+  <section class="sheet"> <img alt="map"  src="<?php echo $site_url?>images/new_route_map.jpg" class="route-map"><!--image of route map-->
     
   </section>
 </div>
 <?php }?>
 <!--<td colspan="2" class="title">AAA Building</td><!--one of building name--> 
-<!--<td class="td_col1_3"><img src="images/aaa_building.jpg" /></td><!--one of building main image-->
+<!--<td class="td_col1_3"><img src="<?php echo $site_url?>images/aaa_building.jpg" /></td><!--one of building main image-->
 <div class="sheet_wrapper" style="">
   <section class="sheet">
     <table class="building-list" style="page-break-inside: avoid !important;">
@@ -865,7 +865,7 @@ if($requestData['print_type']==8){
       <?php 
      if($company_id==1) {
     ?>
-     <img alt="logo" src="images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo" src="<?php echo $site_url?>images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
     ?>
@@ -903,7 +903,7 @@ if($requestData['print_type']==8){
 		if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja') {
 		?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map-->
+  <section class="sheet"> <img alt="map"  src="<?php echo $site_url?>images/new_route_map.jpg" class="route-map"><!--image of route map-->
     
   </section>
 </div>
@@ -1227,7 +1227,7 @@ if($requestData['print_type'] == 11){
       <?php 
      if($company_id==1) {
     ?>
-     <img alt="logo"  src="http://office-jpdb.com/images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
+     <img alt="logo"  src="<?php echo $site_url?>images/pa_logo.png" width="230px" height="auto" style="margin-bottom:20px;" />
     <?php 
      } else {
      	if($company['company_logo'] && $company['company_logo'] != "company_logo/") :
@@ -1272,7 +1272,7 @@ if($requestData['print_type'] == 11){
 	if(isset($requestData['print_route']) && $requestData['print_route'] == 1 && $language == 'ja'){
 	?>
 <div class="sheet_wrapper">
-  <section class="sheet"> <img alt="map"  src="images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
+  <section class="sheet"> <img alt="map"  src="<?php echo $site_url?>images/new_route_map.jpg" class="route-map"><!--image of route map--></section>
 </div>
 <?php
 	}
