@@ -28,10 +28,14 @@ class GeneratePdfCommand extends CConsoleCommand
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
     if (strpos($pdfUrl, 'test') !== -1)
     {
-    		$url = 'https://vnexpress.net/';
+    		$url = '<html><body>abdf</body></html>';
+    		$snappy->generateFromHtml($url, $images_path.'/'.$fName);
+    		
 //     		echo $url;die;
     }
-    $snappy->generate($url, $images_path.'/'.$fName);
+    else{
+    		$snappy->generate($url, $images_path.'/'.$fName);
+    }
 
     if(file_exists($images_path.'/'.$fName)){
       $reps = array('status'=>1,'url'=>$domain.'/pdfArticle/'.$fName);
