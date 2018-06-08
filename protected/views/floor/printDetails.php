@@ -26,8 +26,9 @@ if(isset($_GET['proposedUsername'])) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $language ?>" lang="<?php echo $language ?>">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
+<title>Printing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 body, html { margin: 0px; padding: 0px; }
 body { counter-reset: sheet; /* カウンタの初期化 */ font-family: 'Noto Sans Japanese', sans-serif; }
@@ -640,7 +641,7 @@ if($requestData['print_type'] == 10){
 						echo '';
 					}
 				?></td>
-              <td class="label_5"><font><font>
+              <td class="label_5">
                 <?php
 					if($floorId['rent_unit_price_opt'] != ''){
 						if($floorId['rent_unit_price_opt'] == -1){
@@ -652,7 +653,7 @@ if($requestData['print_type'] == 10){
 						echo '-';
 					}
 				?>
-                </font></font> <font><font>
+                </font></font> 
                 <?php
 					if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
 						echo Yii::app()->controller->renderPrice($floorId['rent_unit_price'])/*.Yii::app()->controller->__trans('yen / tsubo')*/;
@@ -661,7 +662,7 @@ if($requestData['print_type'] == 10){
 					}
 				?>
                 </font></font></td>
-              <td class="label_6"><font><font>
+              <td class="label_6">
                 <?php
 					if($floorId['unit_condo_fee'] == ""){
 						if($floorId['unit_condo_fee_opt'] != ''){
@@ -679,7 +680,7 @@ if($requestData['print_type'] == 10){
 						}
 					}
 				?>
-                </font></font> <font><font>
+                </font></font> 
                 <?php
 					if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
 						echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee'])/*.Yii::app()->controller->__trans('yen / tsubo')*/;
@@ -692,7 +693,7 @@ if($requestData['print_type'] == 10){
                <?php
 				if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
 				?>
-                <font><font>
+                
                 <?php
 					if($floorId['deposit_opt'] != ''){
 						echo '<br/>';
@@ -709,7 +710,7 @@ if($requestData['print_type'] == 10){
 					}
 				?>
                 </font></font><br>
-                <font><font>
+                
                 <?php
 // 					if(isset($floorId['deposit']) && $floorId['deposit'] != ""){
 // 						echo Yii::app()->controller->renderPrice($floorId['deposit'])/*.Yii::app()->controller->__trans('yen / tsubo')*/;
@@ -1538,7 +1539,7 @@ if($requestData['print_type'] == 11){
               	else if((int)$floorId['calculation_method']==2) echo "G";
               ?>
               </td>  
-              <td class="deposit center"><font><font>
+              <td class="deposit center">
                 <?php
                                                         if(isset($floorId['deposit']) && $floorId['deposit'] != "" && $floorId['deposit'] != 0){
 //                                                         	if(isset($floorId['rent_unit_price_opt']) && ($floorId['rent_unit_price_opt'] == -1 || $floorId['rent_unit_price_opt'] == -2)) {
@@ -1569,7 +1570,7 @@ if($requestData['print_type'] == 11){
 														}														
                                                     ?>
                 </font></font></td>
-              <td class="rent-fee center"><font><font>
+              <td class="rent-fee center">
                 <?php
                                                         if(isset($floorId['rent_unit_price']) && $floorId['rent_unit_price'] != "" && $floorId['rent_unit_price'] != 0){
                                                             echo Yii::app()->controller->renderPrice($floorId['rent_unit_price']).Yii::app()->controller->__trans('円 / 坪', 'ja');
@@ -1593,7 +1594,7 @@ if($requestData['print_type'] == 11){
 														}
                                                     ?>
                 </font></font></td>
-              <td class="condo-fee center"><font><font>
+              <td class="condo-fee center">
                 <?php
                                                         if(isset($floorId['unit_condo_fee']) && $floorId['unit_condo_fee'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['unit_condo_fee']).Yii::app()->controller->__trans('円 / 坪', 'ja');
@@ -1628,7 +1629,7 @@ if($requestData['print_type'] == 11){
               <td class="space center"></td>
               <td class="space center"></td>
               <td class="space center"></td>
-              <td class="deposit center"><font><font>
+              <td class="deposit center">
                 <?php/*
                                                         if(isset($floorId['total_deposit']) && $floorId['total_deposit'] != "0" && $floorId['total_deposit'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_deposit']).' 円';
@@ -1637,7 +1638,7 @@ if($requestData['print_type'] == 11){
 														}*/
                                                     ?>
                 </font></font></td>
-              <td class="rent-fee center"><font><font>
+              <td class="rent-fee center">
                 <?php
 				                                        if(isset($floorId['total_rent_price']) && $floorId['total_rent_price'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_rent_price']).Yii::app()->controller->__trans('円', 'ja');
@@ -1666,7 +1667,7 @@ if($requestData['print_type'] == 11){
                                                         }
                                                     ?>
                 </font></font></td>
-              <td class="condo-fee center"><font><font>
+              <td class="condo-fee center">
                 <?php
                                                         if(isset($floorId['total_condo_fee']) && $floorId['total_condo_fee'] != ""){
                                                             echo Yii::app()->controller->renderPrice($floorId['total_condo_fee']).Yii::app()->controller->__trans('円', 'ja');
