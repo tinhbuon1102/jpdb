@@ -151,7 +151,7 @@ td.facility_summary > table.facility-info > tbody > tr > th {
     padding: 0 1mm;
     font-weight: normal;
     font-size: 7pt;
-    width: 18mm;
+    width: 20mm;
     border-bottom: 1px solid #CCC;
 	text-align: left;
 }
@@ -159,9 +159,10 @@ table.building-list { width: 100%; }
 table.building-list th { font-size: 5pt; line-height: 1.1; background: #e11b30; padding: 2mm 0; }
 table.building-list td { font-size: 7pt; border-right: 1px solid #CCC; line-height: 1.2; }
 th.label_1 { width: 8mm; }
-th.label_2 { width: 65mm; }
+th.label_2 { width: 60mm; }
 .label_3 { width: 11mm; }
-.label_4, .label_5, .label_6, .label_7 { width: 22mm; }
+.label_6 { width: 26mm; }
+.label_4, .label_5, .label_7 { width: 22mm; }
 .label_5 { width: 25mm; }
 .label_7_1, .label_7_2, .label_7_3, .label_7_4 { width: 15mm; }
 .label_8 { width: 20mm; }
