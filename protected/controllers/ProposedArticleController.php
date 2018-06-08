@@ -171,7 +171,7 @@ class ProposedArticleController extends Controller{
 			
 		$user = Yii::app()->user->getId();
 
-		if ($_GET['test'])
+		if ($_GET['pdfUrl'] == 'L2luZGV4LnBocD9wcmludF9sYW5ndWFnZT1qYSZwcmludENhcnQ9MSZ1c2VyPXN1cGVyYWRtaW4mcHJpbnRfdHlwZT0xMSZyPWZsb29yJTJGYWRkUHJvcG9zZWRUb0NhcnQmdGVzdD0x')
 		{
 			echo '<pre>'; print_r(array(
       $cmd,
