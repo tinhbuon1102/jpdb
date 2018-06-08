@@ -2340,7 +2340,7 @@ if($requestData['print_type'] == 11){
                 }
                 ?>
                 <table class="summary time-to-use">
-                <tr><td></td></tr>
+                <tr><th></th><td></td></tr>
                   <?php
                                                 if(isset($requestData['print_time_floor']) == 1){
                                                     $limit_of_usage_time =  array();
