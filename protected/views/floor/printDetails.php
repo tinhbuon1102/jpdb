@@ -1793,6 +1793,7 @@ if($requestData['print_type'] == 11){
                     <th><?php echo Yii::app()->controller->__trans('リニューアル', 'ja'); ?></th>
                     <td>
                     <?php  echo HelperFunctions::translateBuildingValue('renewal_data', $buildCart); ?>
+                    </td>
                   </tr>
                   <tr>
                     <th><?php echo Yii::app()->controller->__trans('構造', 'ja'); ?></th>
