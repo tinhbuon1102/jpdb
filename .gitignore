@@ -26,4 +26,5 @@ logs
 .settings
 cal.html
 protected/config/database.php
+protected/vendors/mpdf
 
