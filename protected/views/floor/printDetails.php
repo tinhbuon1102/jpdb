@@ -1723,8 +1723,8 @@ if($requestData['print_type'] == 11){
             <?php }?>
           </table></td>
       </tr>
-	<tr></tr>
-	<tr></tr>
+	<tr><td></td></tr>
+	<tr><td></td></tr>
       
       <?php 
                         /*if (count($floorDetails) > 13 && count($floorDetails) <= 19) {
