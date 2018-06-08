@@ -296,8 +296,8 @@ section.sheet.cover {
 		/*margin: 0mm;*/
 		padding: <?php print (!isset($_REQUEST['print'])) ? '5mm' : '0'; ?>;
 		/*width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;*/
-		width: <?php print (!isset($_REQUEST['print'])) ? '210mm' : '100%'; ?>;
-		height: <?php print (!isset($_REQUEST['print'])) ? '297mm' : '100%'; ?>;
+		width: <?php print (!isset($_REQUEST['print'])) ? '277mm' : '100%'; ?>;
+		height: <?php print (!isset($_REQUEST['print'])) ? '190mm' : '100%'; ?>;
 		/*height: auto;*/
 		/*min-height: 190mm;*/
 	}
