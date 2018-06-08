@@ -18,7 +18,7 @@ class GeneratePdfCommand extends CConsoleCommand
     $snappy = new Pdf('/usr/local/wkhtmltox/bin/wkhtmltopdf');
 
     $snappy->setOption('javascript-delay', 20000);
-    $snappy->setOption('page-width', 287);
+    $snappy->setOption('page-width', 297);
     $snappy->setOption('page-height', 210);
     $snappy->setOption('print-media-type', true);
     $snappy->setOption('margin-left', 0);
