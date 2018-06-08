@@ -28,20 +28,21 @@ class GeneratePdfCommand extends CConsoleCommand
     $url = urldecode($domain.$pdfUrl.'&print=true&zoom='.$zoom.'&zoombuilding='.$zoom_building.'&user='.$user);
     if (strpos($pdfUrl, 'test') !== -1)
     {
-    		$sContent = file_get_contents($url);
-    		$doc = new DOMDocument();
+//     		$sContent = file_get_contents($url);
+//     		$doc = new DOMDocument();
     		
-    		$internalErrors = libxml_use_internal_errors(true);
-    		$doc->loadHTML($sContent);
-    		libxml_use_internal_errors($internalErrors);
+//     		$internalErrors = libxml_use_internal_errors(true);
+//     		$doc->loadHTML($sContent);
+//     		libxml_use_internal_errors($internalErrors);
     		
-    		$divMeta = $doc->getElementById('makePdf');
-    		$divMeta->parentNode->removeChild($divMeta);
-    		$divMetaLoader = $doc->getElementById('dispLoader');
-    		$divMetaLoader->parentNode->removeChild($divMetaLoader);
-    		$sContent = $doc->saveHTML();
+//     		$divMeta = $doc->getElementById('makePdf');
+//     		$divMeta->parentNode->removeChild($divMeta);
+//     		$divMetaLoader = $doc->getElementById('dispLoader');
+//     		$divMetaLoader->parentNode->removeChild($divMetaLoader);
+//     		$sContent = $doc->saveHTML();
     		
-    		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
+//     		$snappy->generateFromHtml($sContent, $images_path.'/'.$fName);
+    		$snappy->generate($url, $images_path.'/'.$fName);
     		
     }
     else{
