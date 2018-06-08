@@ -100,7 +100,7 @@ class ProposedArticleController extends Controller{
 	
 	public function actionTestPdf(){
 		
-		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor/addProposedToCart&test=1&print=true&zoom=16';
+		$url = 'http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1&print=true&zoom=16';
 		$sContent = file_get_contents($url);
 		$doc = new DOMDocument();
 		
