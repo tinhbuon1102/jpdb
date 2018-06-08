@@ -157,6 +157,16 @@ class ProposedArticleController extends Controller{
 
 	public function actionNewPdf(){
 
+		$sContent = file_get_contents('http://office-jpdb.com/index.php?print_language=ja&printCart=1&user=superadmin&print_type=11&r=floor%2FaddProposedToCart&test=1');
+		$doc = new DOMDocument();
+		$doc->loadHTML($sContent);
+		$divMeta = $doc->getElementById('makePdf');
+		$divMeta->parentNode->removeChild($divMeta);
+		$sContent = $doc->saveHTML();
+		
+		echo $sContent;die;
+		
+		
 	  $cmd = 'php protected/yiic.php generatepdf index --id=%s --zoom=%s --zoom_building=%s --user=%s --pdfUrl=%s --fName=%s';
     $domain = "http://office-jpdb.com";
 // 		$domain = "http://localhost:9992";		
